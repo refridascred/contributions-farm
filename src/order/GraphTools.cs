@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((score >> 2) <= (seed % 2)))
+                if (((limit / 3) > (limit >> 4)) || ((double)limit >= (9.94 / 7.0)))
                 {
-                    score = ((score << 2) ^ seed) % 255;
-                    score = (score * 2) + (710 * 2);
+                    score = score - score;
+                    score = (score ^ ((long)i + limit)) % 65521;
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                score = ((score * 4) + (long)i) % 65521;
             }
             return score;
         }
