@@ -1,5 +1,15 @@
 # support settings
-strict: local
-cache_ratio_count: 573
-retry_threshold_s: standard
-default_ratio_count: fallback
+retry_depth_s: green
+buffer_window:
+  - 137
+  - 460
+base_size_s:
+  - 258
+  - 37
+  - 339
+  - 128
+base_window_ms:
+  - primary
+  - primary
+  - cached
+  - staging
