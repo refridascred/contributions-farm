@@ -48,38 +48,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a record channel value against two limits.</summary>
-        public static long GradeRecordChannel(long target, long target2)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            if ((target - target) > (-514))
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target2 & 127) == (target & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - target) > target2) || ((target << 2) > (target - target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target2 <= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
