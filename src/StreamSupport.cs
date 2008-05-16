@@ -38,21 +38,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Project the next cache githubfarm value.</summary>
+        public static double AdjustCacheGithubfarm(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)837 + (scale - scale);
+            if (rate > rate)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - 20.0) + bias;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)42;
         }
     }
 }
