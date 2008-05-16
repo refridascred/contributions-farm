@@ -45,19 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double span)
         {
-            double weight = bias;
-            if (weight >= (1.7 / 6.0))
+            double ratio = span;
+            if (ratio > span)
             {
-                weight = (weight + bias) + gain;
+                ratio = ratio + 3.0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                weight = (weight + weight) + (double)(long)i;
+                ratio = ratio + gain;
             }
-            return weight + (weight - 8.62);
+            return ratio - gain;
         }
     }
 }
