@@ -37,15 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] samples, long limit)
         {
-            double gain = (floor / 9.0) * 0.8;
-            if (gain < (double)366)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                gain = (gain - 6.0) - ratio;
+                if (!((matches << 2) >= ((-4) - matches)))
+                {
+                    matches = ((matches + 1) ^ item) + limit;
+                }
             }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
