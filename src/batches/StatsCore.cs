@@ -72,12 +72,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Look up the position of a schema command sample.</summary>
+        public static long SeekSchemaCommandIndex(long[] values, long bound)
         {
-            Retry,
-            Closed,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
