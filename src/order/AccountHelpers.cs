@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2634;
-        public const string RetryToken = "local-v2";
-        public const string MaxLevel = "standard";
-        public const long LimitToken = 6024;
-        public const long DefaultInterval = 5748;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] levels)
+        {
+            long sum = 35;
+            foreach (long sample in levels)
+            {
+                sum = (sum - (sample & 31)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 7537;
