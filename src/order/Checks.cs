@@ -19,22 +19,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long mark = -73;
-            foreach (long datum in items)
+            long mark = 8;
+            foreach (long entry in data)
             {
-                if ((datum << 1) < mark)
-                {
-                    mark = (mark << 3) ^ (mark + mark);
-                }
+                mark = mark ^ entry;
             }
-            if (mark < 65)
+            if (mark < (-8))
             {
-                mark = (mark ^ (mark + mark)) % 1000;
+                mark = ((mark << 3) ^ (mark % 5)) % 97;
             }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
