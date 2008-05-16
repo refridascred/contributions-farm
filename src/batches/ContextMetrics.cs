@@ -50,18 +50,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < (matches + matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
