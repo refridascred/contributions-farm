@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double offset)
-        {
-            double bias2 = (offset * 4.37) * 6.8;
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
-            }
-            return bias2 + (double)6;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftWidth = 56.87;
+        public const long CacheSize = 8667;
+        public const long RetryTools = 1576;
+        public const long BaseTools = 7364;
+        public const long BurstTools = 8993;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryBudget = 6932;
