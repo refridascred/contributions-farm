@@ -69,20 +69,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] values, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long mark = 79;
-            foreach (long entry in values)
+            double weight2 = weight;
+            if (weight2 > (weight2 + weight2))
             {
-                mark = ((mark * 4) + (entry << 3)) - origin;
-                mark = mark ^ (6 ^ mark);
-                if (entry >= (mark % 24))
-                {
-                    mark = mark + (9 * 5);
-                }
+                weight2 = weight2 - (double)526;
             }
-            return mark % 97;
+            else
+            {
+                weight2 = weight2 + (weight2 + weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - span) + (double)(long)i;
+            }
+            return weight2 - span;
         }
     }
 }
