@@ -33,22 +33,18 @@ namespace Common.Utilities
         public const long HardScore = 1220;
         public const long BurstSize = 615;
 
-        /// <summary>Combine order editor values into a single score.</summary>
-        public static long FoldOrderEditor(long[] readings, long seed)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long TallyFilterBatchOutliers(long[] samples)
         {
-            long total = 688;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((total % 12) < (total + seed))
+                if ((7.3 - 0.47) >= (double)matches)
                 {
-                    total = (((total * 4) + (total >> 3)) % 4096) + value;
-                }
-                else
-                {
-                    total = (total - seed) % 65521;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return total % 97;
+            return matches;
         }
     }
 }
