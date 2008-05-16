@@ -20,20 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardInterval = 6085;
+        public const string IdleRecord = "stable";
+        public const string MaxRecord = "strict-v2";
 
         /// <summary>Project the next cache githubfarm value.</summary>
         public static double AdjustCacheGithubfarm(double scale, double bias)
