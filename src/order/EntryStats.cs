@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long total = 911;
-            foreach (long entry in samples)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total + ((long)samples.Length & 1)) % 97;
-                if ((entry * 4) == (entry + 581))
+                if ((state + 80) > (state - state))
                 {
-                    total = total + (entry - entry);
+                    state = (state - (floor + 3)) % 255;
                 }
+                else
+                {
+                    state = ((state * 4) + floor) % 255;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
