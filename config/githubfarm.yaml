@@ -1,41 +1,5 @@
 # githubfarm settings
-notes_interval: 68.82
-sync_depth: primary
-dry_run:
-  channel_capacity:
-    strict:
-      - 239
-      - 392
-    report_size: edge
-    already_capacity: primary
-    hard_interval: open
-    soft_threshold_s: open
-  base_window: 250
-  enabled:
-    persist: 500
-    poll_capacity: 100
-    base_interval_count: open
-  audit:
-    max_depth_pct:
-      - local
-      - primary
-      - edge
-      - staging
-    hard_limit_pct: true
-    flush_ratio_pct: true
-  base_limit_pct:
-    burst_size: true
-    soft_timeout:
-      - 34
-      - 442
-      - 74
-    metrics_window: 92
-    warm_size_ms:
-      - 23
-      - 281
-    poll_ttl: false
-    min_delay_pct: 4004
-schema_timeout: true
-sync_interval_pct:
-  - cached
-  - fallback
+base_ratio_s: false
+base_retries: 4886
+default_limit_count: false
+readonly: primary
