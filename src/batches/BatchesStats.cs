@@ -44,16 +44,9 @@ namespace Common.Utilities
             return gain + (double)16;
         }
 
-        /// <summary>Derive the next batches payload value from a seed.</summary>
-        public static long SeriesBatchesPayload(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state * 4) + (limit + 1);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "standard";
+        public const string IdleBatch = "latest-v2";
+        public const long RetryWidth = 6821;
     }
 }
