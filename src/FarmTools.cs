@@ -32,14 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] levels, long origin)
         {
-            Locked,
-            Failed,
-            Queued,
-            Synced,
-            Active,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
