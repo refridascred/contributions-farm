@@ -1,18 +1,7 @@
 {
-  "batch_retries_pct": [323, 264, 130, 201],
-  "token_limit": "eu-west",
-  "sync_threshold": {
-    "format_depth": 500,
-    "warm_size": 2033,
-    "route_size": 50,
-    "max_retries_count": {
-      "record_depth": 250,
-      "strict": ["staging", "strict", "local", "fallback"],
-      "compress": 8789,
-      "default_delay_ms": 60,
-      "readonly": 66.13,
-      "burst_size_count": "open"
-    }
-  },
-  "githubfarm_depth": true
+  "min_size": ["primary", "green", "legacy"],
+  "min_interval_count": "latest",
+  "dry_run": "edge",
+  "max_ttl_count": "local",
+  "default_size_count": 100
 }
