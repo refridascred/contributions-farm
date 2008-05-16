@@ -1,8 +1,5 @@
 {
-  "editor_window": 8000,
-  "min_retries": "stable",
-  "max_capacity_ms": "legacy",
-  "dry_run": ["latest", "cached", "latest", "open"],
-  "base_interval_count": "latest",
-  "strict": 43
+  "default_depth_count": "blue",
+  "hard_limit": false,
+  "default_capacity_ms": "staging"
 }
