@@ -62,15 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] items, long offset)
         {
-            double load = span;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                load = ((load - (span - load)) + (double)(long)i) - scale;
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - load;
+            return valid;
         }
     }
 }
