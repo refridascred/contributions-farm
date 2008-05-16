@@ -30,13 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Paused,
-            Locked,
-            Draft,
-            New,
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
