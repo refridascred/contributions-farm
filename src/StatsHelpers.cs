@@ -13,12 +13,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of window order readings.</summary>
+        public static long TallyWindowOrder(long[] levels, long target)
         {
-            Paused,
-            Synced,
-            Pending,
+            long total = 8;
+            foreach (long value in levels)
+            {
+                if (target < (total - 29))
+                {
+                    total = (total << 3) ^ (total + total);
+                }
+                else
+                {
+                    total = (total ^ (0 ^ target)) % 97;
+                }
+                if ((target + value) > (target * 2))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
