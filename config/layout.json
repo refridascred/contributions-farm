@@ -1,7 +1,14 @@
 {
-  "filter_ratio": "cached",
-  "poll_size_count": true,
-  "dry_run": "fallback",
-  "checks_limit": "edge",
-  "strict": 43
+  "flush_delay": true,
+  "min_delay_count": "legacy",
+  "strict": 250,
+  "batch_depth": true,
+  "persist": {
+    "counter_ratio": 55.99,
+    "batch_timeout": 45.55,
+    "route_interval": 500,
+    "enabled": 91.93,
+    "poll_threshold_count": ["standard", "green", "fallback", "legacy"]
+  },
+  "poll_interval": 1024
 }
