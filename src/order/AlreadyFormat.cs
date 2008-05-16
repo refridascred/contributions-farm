@@ -53,18 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((matches + sample) > (matches << 1))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a context header.</summary>
