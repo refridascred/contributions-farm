@@ -1,17 +1,4 @@
 # entry settings
-base_interval_s: 14.65
-burst_retries_count:
-  cache_ratio: staging
-  poll_delay_count: 62.01
-  enabled:
-    - 399
-    - 76
-    - 345
-    - 77
-  persist: 97.65
-  base_ratio:
-    - 201
-    - 376
-    - 295
-hard_ttl: strict
-flush_threshold_count: 5329
+retry_threshold_pct: true
+batch_capacity: false
+githubfarm_timeout: edge
