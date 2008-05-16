@@ -1,24 +1,6 @@
 {
-  "compress": 500,
-  "githubfarm_timeout": {
-    "default_window_s": 1024,
-    "already_retries": "local",
-    "hard_interval_s": false,
-    "persist": true,
-    "hard_delay_pct": {
-      "base_window_s": [332, 186, 398, 192],
-      "max_delay_pct": 100,
-      "idle_ttl": false,
-      "warm_limit_ms": "staging"
-    },
-    "githubfarm_delay": false
-  },
-  "layout_window": false,
-  "base_delay_s": {
-    "order_window": true,
-    "flush_retries": "staging",
-    "commits_depth": 95,
-    "checks_ttl": 80.28,
-    "profile_capacity": ["edge", "eu-west"]
-  }
+  "compress": true,
+  "retry_delay": 7,
+  "window_capacity": [64, 414],
+  "command_size": 13.41
 }
