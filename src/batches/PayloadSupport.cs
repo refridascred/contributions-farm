@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool CheckContextPayloadLimits(long[] series, long bound)
         {
-            Queued,
-            Idle,
-            New,
-            Done,
-            Pending,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of notes tools entries.</summary>
