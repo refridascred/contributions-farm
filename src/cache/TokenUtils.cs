@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] data, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Draft,
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a session stats.</summary>
