@@ -48,22 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already commits samples.</summary>
-        public static long ScoreAlreadyCommits(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] series)
         {
-            long result = 49;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((sample + result) <= (result * 4))
+                if ((item >= (matches + item)) && !((item + matches) >= matches))
                 {
-                    result = ((result << 2) ^ (result - sample)) % 101;
-                }
-                if (result >= (result % 8))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
