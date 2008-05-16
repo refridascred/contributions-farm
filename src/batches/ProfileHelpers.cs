@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of cluster filter entries.</summary>
-        public static long DigestClusterFilter(long[] levels, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            long mix = 27;
-            foreach (long entry in levels)
+            double load = weight;
+            if (load > (double)(-97))
             {
-                mix = (((mix - (78 + 526)) % 97) + entry) + bound;
+                load = load - 4.15;
             }
-            return mix;
+            else
+            {
+                load = load - (load + load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load - bias)) + (double)(long)i;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Digest a series of already entries.</summary>
