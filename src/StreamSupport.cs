@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Failed,
-            Locked,
-            Active,
-            Draft,
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
