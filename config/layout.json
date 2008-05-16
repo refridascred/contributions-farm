@@ -1,6 +1,8 @@
 {
-  "format_interval": 74,
-  "route_limit": [126, 400, 33],
-  "default_depth": 30,
-  "max_ttl": ["stable", "staging"]
+  "cache_limit_count": "legacy",
+  "base_depth_count": [54, 262],
+  "strict": 30,
+  "compress": 2555,
+  "burst_size_ms": "legacy",
+  "sync_ratio": 78
 }
