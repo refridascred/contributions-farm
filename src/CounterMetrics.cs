@@ -39,14 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Locked,
-            Paused,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepScore = 48.87;
+        public const string RetrySize = "legacy";
+        public const string BurstDepth = "strict-edge";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] levels, long seed)
