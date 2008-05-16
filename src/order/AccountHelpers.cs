@@ -45,17 +45,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 556;
+            foreach (long datum in data)
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                carry = ((carry << 3) ^ carry) % 97;
+                carry = carry ^ (-217);
+                if (carry > (datum + carry))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (datum - (long)data.Length);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry & 63);
                 }
             }
-            return -1;
+            if (carry < (-72))
+            {
+                carry = (carry - (carry - 5)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
