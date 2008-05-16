@@ -50,16 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session token counter forward.</summary>
-        public static long SeriesSessionToken(long step)
+        /// <summary>Grade a already cluster value against two limits.</summary>
+        public static long SortAlreadyCluster(long bound, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            if ((origin ^ bound) != (origin + bound))
             {
-                score = (score * 3) + (score >> 3);
-                score = ((score * 3) + (long)i) % 65521;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (!(bound < (bound << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin > 543)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
