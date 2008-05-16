@@ -47,39 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] samples, long bound)
         {
-            long edge = target - origin;
-            if ((origin < target) && (target <= (edge + target)))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((edge % 64) < target) || ((1 + 7) < (target - edge)))
+                if (value < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge + edge) <= (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((edge - 10) == (target * 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a stream stats.</summary>
