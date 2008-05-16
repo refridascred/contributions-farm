@@ -15,13 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
