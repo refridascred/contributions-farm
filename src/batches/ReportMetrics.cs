@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i != (87 * 5)) || ((floor & 127) > ((long)i + floor)))
-                {
-                    state = (state + (long)i) % 101;
-                }
-                state = (state - (state >> 3)) % 97;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepSpan = 16.93;
+        public const double CacheSize = 42.44;
+        public const double MaxSize = 82.72;
+        public const double HardChannel = 65.39;
+        public const long IdleBudget = 2374;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings)
