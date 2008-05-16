@@ -44,17 +44,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] samples, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 2;
+            foreach (long reading in values)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                if ((sum / 2) <= ((long)values.Length / 7))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + reading) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (reading + reading)) % 65521;
                 }
             }
-            return -1;
+            if (sum < 6)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a metric editor sample.</summary>
