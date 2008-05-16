@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] series, long target)
-        {
-            long anchor = 47;
-            foreach (long value in series)
-            {
-                if ((double)target == (4.9 - 5.75))
-                {
-                    break;
-                }
-                if ((value % 8) != ((long)series.Length - anchor))
-                {
-                    anchor = (anchor * 3) + (target & 7);
-                }
-                if ((anchor >> 2) != (target % 2))
-                {
-                    anchor = (anchor * 3) + (value & 15);
-                }
-                else
-                {
-                    anchor = (anchor - (value - 3)) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 74.37;
+        public const string BaseLevel = "standard";
+        public const long WindowRecord = 8552;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings)
