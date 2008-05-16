@@ -21,18 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue session samples are out of range.</summary>
-        public static long TallyQueueSessionOutliers(long[] values, long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item / 9) > item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + bound;
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
