@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long step)
+        /// <summary>Validate editor cache readings against a bound.</summary>
+        public static bool ValidateEditorCacheBounds(long[] levels, long seed)
         {
-            long total = 783;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                total = ((total + 48) + reading) - step;
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 71)
-            {
-                total = (total - ((-65) - 78)) % 101;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
