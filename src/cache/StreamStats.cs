@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
