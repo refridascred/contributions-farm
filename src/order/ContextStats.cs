@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long BurstSpan = 3763;
         public const double BatchPayload = 10.87;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Accumulate account samples.</summary>
