@@ -32,25 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] levels, long step)
         {
-            long anchor = 3;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                long tally = (value << 2) - (anchor - anchor);
-                if (anchor <= (tally + anchor))
+                if (reading >= step)
                 {
-                    anchor = (anchor * 3) + (anchor + step);
-                    anchor = (anchor - (tally & 3)) % 255;
+                    ready = false;
                     break;
                 }
-                if (value >= (step << 3))
-                {
-                    anchor = (anchor + (step % 8)) % 97;
-                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
