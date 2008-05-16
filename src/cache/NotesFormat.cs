@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double weight = bias;
-            if (weight >= (offset + bias))
-            {
-                weight = weight + bias;
-            }
-            return weight - (weight * 2.6);
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
