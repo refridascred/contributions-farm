@@ -21,31 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] values, long limit)
         {
-            if ((seed >> 2) != (seed / 3))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.6 - 0.6) == (double)seed)
+                if ((limit % 2) > (limit ^ entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-3) >= seed) && ((6 >> 5) == (seed / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
