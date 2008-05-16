@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Pending,
-            Idle,
+            double rate = ratio;
+            if (rate < bias)
+            {
+                rate = rate - rate;
+            }
+            return rate + 20.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
