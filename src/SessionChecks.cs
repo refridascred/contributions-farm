@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double span)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long AuditEntryBatchesMatches(long[] values, long seed)
         {
-            double weight = scale;
-            if (weight >= 9.46)
+            long tally = 0;
+            foreach (long value in values)
             {
-                weight = (weight + (double)867) - span;
+                if ((value / 4) > (tally + tally))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return weight - weight;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
