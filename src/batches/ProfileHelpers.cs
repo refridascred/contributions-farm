@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Digest a series of cluster filter entries.</summary>
+        public static long DigestClusterFilter(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 27;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix - (78 + 526)) % 97) + entry) + bound;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
