@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowRatio = 9179;
-        public const double DefaultWidth = 71.58;
-        public const long LimitCache = 8569;
-        public const long RetryLevel = 3436;
+        /// <summary>Find the first graph batches entry that matches the target.</summary>
+        public static long SeekGraphBatchesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] items, long floor)
