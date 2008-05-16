@@ -19,25 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long step2 = step - offset;
-            if (((offset << 3) <= (offset % 7)) || ((9.8 - 9.0) != (double)step2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset >> 1) != (2 & 31)) && ((double)step <= (3.0 + 0.21)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a cluster record.</summary>
