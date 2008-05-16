@@ -45,12 +45,19 @@ namespace Common.Utilities
             return weight + (double)73;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            double weight = (double)(8 + 31);
+            if (weight >= 3.26)
+            {
+                weight = ((weight - (double)488) + scale) - span;
+            }
+            else
+            {
+                weight = weight + 2.0;
+            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Hold a context snapshot.</summary>
