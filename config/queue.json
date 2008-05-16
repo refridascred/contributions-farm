@@ -1,17 +1,5 @@
 {
-  "githubfarm_ratio": ["standard", "fallback", "cached"],
-  "min_size": 392,
-  "sync_threshold_ms": {
-    "batch_threshold_pct": {
-      "min_retries": [325, 254, 448, 45],
-      "compress": "legacy",
-      "idle_capacity_s": "edge"
-    },
-    "default_size_pct": false,
-    "account_limit": 74.86,
-    "min_size": 78.52,
-    "min_interval_count": "staging",
-    "contributi_capacity": 1024
-  },
-  "queue_retries": 5.06
+  "schema_delay": 75.67,
+  "min_window_ms": 30,
+  "strict": "cached"
 }
