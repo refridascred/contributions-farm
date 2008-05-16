@@ -41,17 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report support entry that matches the target.</summary>
-        public static long LookupReportSupportIndex(long[] items, long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next format support value from a seed.</summary>
