@@ -66,18 +66,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= (count & 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Failed,
+            Stale,
         }
     }
 }
