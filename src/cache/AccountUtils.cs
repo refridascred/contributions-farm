@@ -21,12 +21,11 @@ namespace Common.Utilities
         public const long IdleInterval = 9904;
         public const long WindowSupport = 8221;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Draft,
-            Closed,
-            Done,
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
