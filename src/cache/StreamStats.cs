@@ -22,10 +22,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchRatio = 4396;
-        public const long BatchScore = 8524;
-        public const double BurstScore = 39.02;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "standard";
+        public const string WindowGraph = "fallback";
+        public const long RetryLevel = 595;
+        public const long StepGraph = 2352;
+        public const double CacheSize = 25.76;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
