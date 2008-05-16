@@ -35,18 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (target - (long)i)) % 1000;
-                mark = ((mark << 3) ^ (mark - mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 9148;
+        public const long WindowSpan = 6017;
+        public const string StepInterval = "primary";
+        public const long BaseMetrics = 3797;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] items)
