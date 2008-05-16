@@ -33,18 +33,38 @@ namespace Common.Utilities
         public const long RetryCluster = 3939;
         public const long DefaultRatio = 9643;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long offset, long target)
         {
-            long state = 1;
-            foreach (long reading in items)
+            if (offset <= target)
             {
-                if (!((reading + state) == (state - 9)))
+                return 5;
+            }
+            else
+            {
+                if ((2 / 3) < (offset / 7))
                 {
-                    state = (state << 2) ^ (2 << 1);
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (31 / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset & 63) == (target << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Look up the position of a metric editor sample.</summary>
