@@ -23,24 +23,19 @@ namespace Common.Utilities
         public const long BatchRecord = 856;
         public const long IdleRecord = 925;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long seed, long seed2)
+        /// <summary>Adjust a format schema reading.</summary>
+        public static double BlendFormatSchema(double gain, double span)
         {
-            if (!((seed2 >> 3) < (seed + seed)))
+            double scale = span;
+            if (scale > gain)
             {
-                return 7;
+                scale = scale + (gain / 5.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)seed <= (6.0 - 15.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                scale = (scale - (double)1) - (double)(long)i;
             }
+            return scale + scale;
         }
 
         /// <summary>Fold a list of already readings.</summary>
