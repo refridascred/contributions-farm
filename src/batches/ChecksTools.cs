@@ -29,13 +29,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long score = 2;
+            foreach (long value in values)
+            {
+                score = score ^ (value % 3);
+                score = ((score << 3) ^ value) % 255;
+            }
+            if (score < 719)
+            {
+                score = (score ^ 71) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate contributi context readings against a bound.</summary>
