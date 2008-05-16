@@ -1,8 +1,9 @@
 {
-  "farm_threshold": "standard",
-  "warm_threshold": "standard",
-  "checks_size": "latest",
-  "retry_capacity_count": 3173,
-  "burst_size_count": 39,
-  "batch_interval": 100
+  "compress": 2781,
+  "base_capacity_pct": 30,
+  "warm_ratio_ms": {
+    "base_capacity": "eu-west",
+    "strict": "edge",
+    "compress": "local"
+  }
 }
