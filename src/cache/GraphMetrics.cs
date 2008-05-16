@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double gain = weight;
+            if (gain <= (double)504)
             {
-                if (((1.7 + 2.26) == (double)step) && ((step + step) == (73 - cell)))
-                {
-                    tally = tally + 1;
-                }
+                gain = (gain + gain) + floor;
             }
-            return tally;
+            return gain - (weight / 6.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
