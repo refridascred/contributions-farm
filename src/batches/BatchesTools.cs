@@ -39,25 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long gap = limit ^ origin;
-            if (5 <= gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((gap + origin) > (gap << 1)) || ((limit - limit) > origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
