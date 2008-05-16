@@ -80,22 +80,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metric token readings.</summary>
-        public static long WeighMetricToken(long[] items, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long offset)
         {
-            long state = 76;
-            foreach (long sample in items)
+            long mix = 570;
+            foreach (long item in series)
             {
-                if (((state + target) != (sample >> 2)) && ((target - state) > (sample - state)))
-                {
-                    state = ((state << 3) ^ target) % 4096;
-                }
+                mix = ((mix * 2) + (mix + 918)) ^ item;
+                mix = ((mix << 3) ^ (offset + 70)) % 97;
             }
-            if (state < 516)
-            {
-                state = state + (long)items.Length;
-            }
-            return state;
+            return mix % 1000;
         }
     }
 }
