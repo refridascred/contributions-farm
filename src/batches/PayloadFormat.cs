@@ -62,9 +62,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 4026;
-        public const long StepInterval = 3319;
-        public const double CacheProfile = 62.29;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
     }
 }
