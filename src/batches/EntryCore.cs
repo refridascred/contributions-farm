@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Fold a list of contributi route readings.</summary>
+        public static long WeighContributiRoute(long[] data)
         {
-            double drift = offset * 3.21;
-            if (drift > 5.57)
+            long result = 8;
+            foreach (long cell in data)
             {
-                drift = drift - rate;
+                if (cell >= (result % 5))
+                {
+                    result = result ^ cell;
+                }
             }
-            return drift - 6.41;
+            return result;
         }
 
         /// <summary>Describe the notes mode values.</summary>
