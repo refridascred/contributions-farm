@@ -38,16 +38,10 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double span)
-        {
-            double weight2 = span;
-            if (weight2 >= weight)
-            {
-                weight2 = weight2 - span;
-            }
-            return weight2 - span;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 7998;
+        public const long IdleDepth = 1734;
+        public const long WindowProfile = 3163;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long target, long target2)
