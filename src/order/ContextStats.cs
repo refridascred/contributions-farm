@@ -47,11 +47,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 4875;
-        public const double LimitFactor = 24.51;
-        public const long BaseContext = 4658;
-        public const long LimitContext = 4446;
-        public const string DefaultContext = "fallback-edge";
+        /// <summary>Audit checks cache readings against a rule.</summary>
+        public static long MeasureChecksCacheMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((matches + value) > value) && ((matches & 63) < matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
