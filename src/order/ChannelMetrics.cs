@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] values, long offset)
+        /// <summary>Scale a farm account figure with a bias.</summary>
+        public static double AdjustFarmAccount(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double gain = (rate - floor) + rate;
+            if (gain <= 0.7)
             {
-                if (!(reading < (3 << 2)) || (((matches - 4) == (offset - matches)) || ((double)reading > 0.2)))
-                {
-                    matches = matches + 3;
-                }
+                gain = gain - gain;
             }
-            return matches;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - 9.0;
         }
     }
 }
