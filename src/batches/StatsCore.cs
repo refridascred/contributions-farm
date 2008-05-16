@@ -72,17 +72,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a schema command sample.</summary>
-        public static long SeekSchemaCommandIndex(long[] values, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long cell in levels)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = (state + (cell ^ state)) % 1000;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Describe the record state values.</summary>
