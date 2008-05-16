@@ -37,18 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadGaps(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((tally * 4) > (datum + (long)series.Length))
+                if (datum <= floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
