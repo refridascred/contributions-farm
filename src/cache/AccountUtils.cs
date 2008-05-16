@@ -32,32 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long state = 939;
-            foreach (long value in items)
+            long result = 81;
+            foreach (long reading in levels)
             {
-                if ((value + 60) != (state + state))
+                result = (result + (reading ^ reading)) % 101;
+                result = ((result << 3) ^ (reading * 5)) % 4096;
+                if (!((double)result != (4.8 / 3.0)))
                 {
-                    state = state + state;
-                    state = (state - (value & 127)) % 1000;
-                    continue;
+                    result = (result * 2) + (reading + reading);
                 }
-                if ((8.84 - 17.0) > (double)state)
-                {
-                    state = state - (state - state);
-                }
-                else
-                {
-                    state = state - (state % 100);
-                }
-                if (((long)items.Length + value) > (value - value))
+                if (!((result & 127) >= result))
                 {
                     break;
                 }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Roll a report counter forward.</summary>
