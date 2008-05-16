@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const long HardScore = 1220;
         public const long BurstSize = 615;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] readings)
+        /// <summary>Combine order editor values into a single score.</summary>
+        public static long FoldOrderEditor(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long total = 688;
+            foreach (long value in readings)
             {
-                if (((seen & 31) == (seen * 3)) && (((reading + seen) > seen) && ((seen + reading) <= reading)))
+                if ((total % 12) < (total + seed))
                 {
-                    seen = seen + 2;
+                    total = (((total * 4) + (total >> 3)) % 4096) + value;
+                }
+                else
+                {
+                    total = (total - seed) % 65521;
                 }
             }
-            return seen;
+            return total % 97;
         }
     }
 }
