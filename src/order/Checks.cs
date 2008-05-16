@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine cluster batch values into a single score.</summary>
-        public static long FoldClusterBatch(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long step)
         {
-            long state = 499;
-            foreach (long datum in levels)
+            long score = 10;
+            foreach (long entry in samples)
             {
-                if ((9 % 10) <= datum)
-                {
-                    state = (state + (datum >> 3)) % 65521;
-                }
+                score = (((score + (8 - 79)) % 65521) + entry) - step;
             }
-            return state % 65521;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
