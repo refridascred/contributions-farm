@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] series, long offset)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long TallySchemaPayloadGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value < (217 % 3))
+                if (8.6 <= (double)entry)
                 {
-                    count = (count + 2) - offset;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
