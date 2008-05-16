@@ -1,18 +1,7 @@
 # githubfarm settings
-batches_size:
-  layout_delay: 42
-  compress:
-    report_capacity:
-      - standard
-      - fallback
-      - cached
-    default_capacity_s: fallback
-    hard_limit_s: 6035
-    idle_delay_s: true
-    verbose: true
-  idle_retries: fallback
-  already_delay: eu-west
-  audit: 434
-  session_delay: 86
-tools_size: false
-max_depth_s: 77.21
+idle_threshold_count: 46.61
+default_ttl: 250
+burst_window_pct: 100
+strict: stable
+idle_ttl_count: edge
+command_limit: 31.88
