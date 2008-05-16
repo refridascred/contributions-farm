@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a stats checks reading by value.</summary>
-        public static long LocateStatsChecksIndex(long[] samples, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
