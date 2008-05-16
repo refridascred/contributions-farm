@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Audit buffer window readings against a rule.</summary>
+        public static long MeasureBufferWindowMatches(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((double)item > 8.0)
                 {
-                    score = ((score << 2) ^ (score & 63)) - (long)i2;
+                    hits = hits + 2;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
