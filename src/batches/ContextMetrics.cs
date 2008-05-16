@@ -60,21 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)2 + rate;
+            if (scale <= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (rate / 2.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - offset;
         }
     }
 }
