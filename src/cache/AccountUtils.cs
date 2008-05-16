@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings)
         {
-            long prev = origin ^ bound;
-            if (((bound * 2) > (prev - origin)) || ((79 & 3) <= (bound + prev)))
+            long mark = 947;
+            foreach (long item in readings)
             {
-                return 6;
+                mark = ((mark << 2) ^ (item - mark)) % 65521;
             }
-            else
-            {
-                if (!((double)prev > 6.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev % 2) >= (prev + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (5.0 * 0.29))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Combine record batches values into a single score.</summary>
