@@ -11,10 +11,40 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long StepCount = 762;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 97.57;
-        public const long StepInterval = 6762;
-        public const long StepFactor = 2954;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long offset2)
+        {
+            long offset3 = offset - offset2;
+            if (offset2 < (offset3 / 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset3 >> 2) != (399 << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset3 << 1) >= (offset2 ^ (-2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) <= (offset3 + offset3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] samples)
