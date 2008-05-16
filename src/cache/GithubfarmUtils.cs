@@ -51,22 +51,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(entry < hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
