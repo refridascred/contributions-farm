@@ -1,14 +1,5 @@
 # githubfarm settings
-warm_depth_ms:
-  payload_interval: 500
-  account_interval: 17.97
-  audit: true
-  flush_delay: staging
-persist: true
-checks_interval: 6744
-soft_size: 88.84
-editor_retries:
-  - 340
-  - 137
-  - 458
-  - 136
+record_depth: 560
+sync_depth_ms: 6535
+hard_threshold_s: 73.31
+max_ttl: blue
