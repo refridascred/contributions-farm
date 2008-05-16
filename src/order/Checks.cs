@@ -45,24 +45,17 @@ namespace Common.Utilities
         public const long LimitCache = 8569;
         public const long RetryLevel = 3436;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long floor)
         {
-            if (!((step * 4) == (step / 3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 3) == (907 - bound))
+                if (items[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
