@@ -1,6 +1,10 @@
-id,ratio,owner,region
-1,649,47.14,green
-2,43.27,225,563
-3,339,699,eu-west
-4,70.97,42.38,14.09
-5,31.75,legacy,57
+id,owner,state,label
+1,cached,7.81,4
+2,79.97,eu-west,80
+3,eu-west,open,37.49
+4,61.13,725,standard
+5,942,427,staging
+6,49.77,899,158
+7,916,42.79,270
+8,785,blue,576
+9,924,stable,cached
