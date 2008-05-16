@@ -26,18 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] items, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mark = 257;
+            foreach (long sample in values)
             {
-                if ((40 & 63) > (count - entry))
-                {
-                    count = (count + 1) - origin;
-                }
+                mark = ((mark * 5) + (sample ^ limit)) % 101;
             }
-            return count;
+            return mark % 65521;
         }
     }
 }
