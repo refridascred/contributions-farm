@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Done,
-            Active,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardInterval = 5406;
+        public const long BaseDepth = 9679;
+        public const double RetryContributi = 66.92;
+        public const long SoftContributi = 7871;
+        public const long MaxWidth = 8559;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long offset, long bound)
