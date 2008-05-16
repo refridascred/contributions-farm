@@ -29,11 +29,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 7292;
-        public const long MaxSchema = 8843;
-        public const string CacheRatio = "alpha-1";
-        public const long DefaultBudget = 1003;
-        public const long RetrySchema = 2552;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
