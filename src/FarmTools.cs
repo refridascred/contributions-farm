@@ -34,19 +34,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate token format samples.</summary>
-        public static long CombineTokenFormat(long[] samples)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long step)
         {
-            long anchor = 32;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (value + 51)) % 4096;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 274)
-            {
-                anchor = anchor + (5 - anchor);
-            }
-            return anchor;
+            return -1;
         }
     }
 }
