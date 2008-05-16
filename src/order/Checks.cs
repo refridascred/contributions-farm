@@ -50,11 +50,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2184;
-        public const double WindowInterval = 53.54;
-        public const long MinRatio = 2322;
-        public const long RetryCounter = 8961;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally ^ value) <= (tally / 9))
+                {
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string HardTimeout = "fallback-1";
