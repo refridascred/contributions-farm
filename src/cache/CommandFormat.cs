@@ -22,14 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxSize = "latest-1";
+        public const long BatchRecord = 856;
+        public const long IdleRecord = 925;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
