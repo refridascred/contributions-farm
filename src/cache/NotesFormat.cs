@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a cluster account value against two limits.</summary>
-        public static long SortClusterAccount(long step, long floor)
+        /// <summary>Match up support channel samples.</summary>
+        public static long OverlapSupportChannelCount(long[] readings)
         {
-            long offset = step + floor;
-            if (((floor + 0) == (step + floor)) && (offset <= (step ^ offset)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor < 972) && ((double)floor > (0.79 - 7.27)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor * 3) <= 232)
+                    if ((readings[i] + readings[j]) != 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((17.0 + 4.9) == (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
