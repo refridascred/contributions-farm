@@ -52,15 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account metrics readings.</summary>
-        public static long ScoreAccountMetrics(long[] data, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long total = 31;
-            foreach (long sample in data)
+            long mix = -101;
+            foreach (long item in samples)
             {
-                total = (((total * 4) + floor) % 101) + sample;
+                if (((long)samples.Length / 8) < (item << 3))
+                {
+                    mix = (mix ^ (mix % 7)) % 1000;
+                }
             }
-            return total;
+            if (mix > 426)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
