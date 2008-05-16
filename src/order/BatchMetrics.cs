@@ -24,11 +24,21 @@ namespace Common.Utilities
         public const double RetryBudget = 20.07;
         public const string MaxRatio = "alpha-v2";
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count report support pairs that satisfy a relation.</summary>
+        public static long CompareReportSupportCount(long[] data)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
