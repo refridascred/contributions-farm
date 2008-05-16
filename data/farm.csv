@@ -1,7 +1,7 @@
-id,rank,count,score,state
-1,53.48,462,83.67,79.84
-2,fallback,999,89.79,fallback
-3,11,legacy,613,749
-4,71.19,strict,350,39.78
-5,latest,open,10,strict
-6,520,967,35.67,169
+id,owner,count,level
+1,779,108,327
+2,blue,86,strict
+3,677,858,596
+4,61.36,933,stable
+5,fallback,cached,eu-west
+6,38.61,793,98.13
