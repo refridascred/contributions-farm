@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long BatchScore = 8524;
         public const double BurstScore = 39.02;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)matches > (11.0 - 12.0))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
