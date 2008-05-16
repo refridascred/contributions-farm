@@ -40,12 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
+            Dropped,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
