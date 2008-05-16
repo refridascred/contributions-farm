@@ -1,8 +1,7 @@
-id,owner,rank
-1,latest,edge
-2,legacy,92.24
-3,229,0.08
-4,965,96.85
-5,31.54,local
-6,871,620
-7,901,267
+id,state,ratio
+1,65.34,stable
+2,edge,726
+3,962,open
+4,729,577
+5,620,85.46
+6,primary,47.17
