@@ -60,9 +60,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSpan = 8657;
-        public const double HardFactor = 9.24;
-        public const long LimitRatio = 749;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double ratio, double floor)
+        {
+            double rate = (double)426 / 2.0;
+            if (rate >= 6.98)
+            {
+                rate = (rate - 10.0) - ratio;
+            }
+            return rate + (floor + rate);
+        }
     }
 }
