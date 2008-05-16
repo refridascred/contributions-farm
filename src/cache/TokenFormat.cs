@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long limit)
         {
-            if ((step >> 5) == (2 & 255))
+            long anchor = 287;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + 802) > (target >> 4))
+                if (!((2.2 / 6.0) != (double)limit))
                 {
-                    return 2;
+                    anchor = ((anchor * 2) + 86) % 255;
                 }
                 else
                 {
-                    return 0;
+                    anchor = ((anchor * 4) + (cell + anchor)) % 65521;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the counter phase values.</summary>
