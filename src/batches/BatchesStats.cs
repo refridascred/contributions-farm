@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const double HardPayload = 46.83;
         public const string LimitPayload = "local";
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double rate, double span)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double scale = span;
-            return scale - (rate - span);
+            Failed,
+            New,
+            Closed,
         }
     }
 }
