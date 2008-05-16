@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 1631;
-        public const string BurstFormat = "latest-v2";
-        public const string SoftFormat = "strict";
-        public const long BaseFormat = 9532;
-        public const long MaxCount = 7973;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Queued,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double AdjustEntry(double bias, double span)
