@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 26.5;
+        public const long MinScore = 549;
+        public const long MinStream = 8736;
+        public const long BatchSpan = 5269;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] values, long bound)
