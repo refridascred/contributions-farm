@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine editor checks values into a single score.</summary>
-        public static long DigestEditorChecks(long[] items)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            long total = 8;
-            foreach (long item in items)
+            double bias2 = (offset * 4.37) * 6.8;
+            for (int i = 0; i < 2; i++)
             {
-                if ((item << 2) > (item + item))
-                {
-                    total = total ^ item;
-                }
+                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
             }
-            return total % 1000;
+            return bias2 + (double)6;
         }
 
         /// <summary>Digest a series of command entries.</summary>
