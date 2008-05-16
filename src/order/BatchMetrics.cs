@@ -64,18 +64,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((((matches % 24) <= (matches - step)) && (9.15 > (double)step)) || ((matches * 2) >= 47))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 4392;
+        public const long BurstProfile = 2576;
+        public const long IdleSpan = 1017;
+        public const long BaseProfile = 415;
     }
 }
