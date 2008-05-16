@@ -49,21 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 1;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mix - 830) > mix)
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (((mix + 84) % 65521) - entry) - floor;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Match up record samples.</summary>
