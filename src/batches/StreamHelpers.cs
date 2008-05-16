@@ -13,17 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] data, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
