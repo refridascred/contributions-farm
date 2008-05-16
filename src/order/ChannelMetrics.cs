@@ -35,39 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long bound = seed + origin;
-            if ((origin ^ seed) <= (seed * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < 7.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound % 100) != (origin >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
