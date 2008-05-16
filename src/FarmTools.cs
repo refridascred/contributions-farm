@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long step)
         {
-            Stale,
-            Idle,
-            Draft,
-            Done,
-            Locked,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue phase values.</summary>
