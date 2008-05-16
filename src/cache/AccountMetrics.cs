@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] items)
-        {
-            long mix = 36;
-            foreach (long cell in items)
-            {
-                if (mix <= (mix * 5))
-                {
-                    mix = mix - (cell + cell);
-                }
-                if ((cell >> 5) <= mix)
-                {
-                    mix = (mix + cell) % 4096;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5838;
+        public const long BaseInterval = 5792;
+        public const string BaseGithubfarm = "strict";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long floor)
