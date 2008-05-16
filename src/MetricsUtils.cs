@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long BurstScore = 5355;
         public const string MinQueue = "fallback-v2";
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
