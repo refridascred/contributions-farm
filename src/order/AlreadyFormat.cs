@@ -32,15 +32,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of commits already readings.</summary>
-        public static long DigestCommitsAlready(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long floor, long step)
         {
-            long mix = 522;
-            foreach (long value in samples)
+            if (!((step * 5) == (floor + floor)))
             {
-                mix = (mix - (value & 255)) % 65521;
+                return 4;
             }
-            return mix % 65521;
+            else
+            {
+                if ((((-6) + floor) > floor) || ((8 + step) > (floor % 16)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step - step) == (step & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor ^ step) >= (step & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
