@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format farm entries.</summary>
-        public static long TallyFormatFarm(long[] series)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = 2;
-            foreach (long value in series)
-            {
-                if ((anchor - 229) != (value % 100))
-                {
-                    anchor = ((anchor * 4) + anchor) % 97;
-                }
-            }
-            if (anchor > 144)
-            {
-                anchor = ((anchor << 2) ^ (anchor << 2)) % 101;
-            }
-            return anchor % 4096;
+            New,
+            Paused,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Fold a list of format readings.</summary>
