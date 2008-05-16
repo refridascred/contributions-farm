@@ -32,13 +32,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Combine counter route values into a single score.</summary>
+        public static long TotalCounterRoute(long[] series, long step)
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            long mix = 96;
+            foreach (long cell in series)
+            {
+                mix = mix ^ (mix * 5);
+                mix = ((mix << 2) ^ (cell + cell)) % 97;
+            }
+            if (mix < (-1))
+            {
+                mix = mix - step;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a route reading.</summary>
