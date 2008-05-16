@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCount = 10.04;
-        public const double IdleBudget = 52.21;
-        public const long LimitRatio = 8612;
-        public const double MinSize = 70.09;
-        public const string BaseCounter = "fallback-edge";
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double weight, double floor)
+        {
+            double rate = floor;
+            return (rate - 8.28) + weight;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long RollAccount(long seed)
