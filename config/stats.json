@@ -1,5 +1,6 @@
 {
-  "batch_window_count": 90,
-  "enabled": "staging",
-  "cache_ttl_count": 100
+  "idle_depth_s": false,
+  "hard_threshold": "cached",
+  "soft_window_count": 8607,
+  "dry_run": "open"
 }
