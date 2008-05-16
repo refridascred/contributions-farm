@@ -42,13 +42,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Look up the position of a commits cache sample.</summary>
+        public static long LookupCommitsCacheIndex(long[] readings, long limit)
         {
-            New,
-            Idle,
-            Closed,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
