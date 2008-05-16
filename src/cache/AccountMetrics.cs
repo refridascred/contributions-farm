@@ -88,13 +88,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
