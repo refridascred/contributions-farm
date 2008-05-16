@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
