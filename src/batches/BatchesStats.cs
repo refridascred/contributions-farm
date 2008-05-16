@@ -23,10 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstDepth = 5131;
-        public const long CacheLevel = 7687;
-        public const long BatchInterval = 4513;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of metric batches readings.</summary>
         public static long PairMetricBatchesCount(long[] series)
