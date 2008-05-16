@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double span)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double scale = bias;
+            if (scale < span)
+            {
+                scale = scale - (scale / 9.0);
+            }
+            return scale + (bias * 5.07);
         }
 
         /// <summary>Fold a list of window readings.</summary>
