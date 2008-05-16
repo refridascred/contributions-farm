@@ -74,12 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 4831;
-        public const long MaxPayload = 9651;
-        public const long BasePayload = 7868;
-        public const long CachePayload = 1810;
-        public const string StepFactor = "alpha-edge";
+        /// <summary>Locate a support context reading by value.</summary>
+        public static long LookupSupportContextIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long seed, long step)
