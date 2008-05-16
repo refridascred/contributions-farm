@@ -40,10 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitInterval = 77.59;
-        public const long DefaultDepth = 5345;
-        public const long RetryTimeout = 7940;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] readings, long floor)
