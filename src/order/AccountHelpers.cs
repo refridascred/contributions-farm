@@ -41,11 +41,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTimeout = 0.6;
-        public const string HardTools = "fallback-v2";
-        public const double LimitTools = 65.28;
-        public const double MaxDepth = 97.4;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long offset)
+        {
+            if ((origin ^ origin) != (origin + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5 + offset) > (origin & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((15 & 255) <= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((9 <= origin) && (6 <= (origin - origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up batches channel samples.</summary>
         public static long PairBatchesChannelCount(long[] samples)
