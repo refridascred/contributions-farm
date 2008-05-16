@@ -1,6 +1,7 @@
 {
-  "idle_depth_s": false,
-  "hard_threshold": "cached",
-  "soft_window_count": 8607,
-  "dry_run": "open"
+  "poll_retries_count": 89.13,
+  "idle_window": "fallback",
+  "sync_ttl_s": 1.74,
+  "batch_delay": 5639,
+  "already_window": [258, 154, 139, 157]
 }
