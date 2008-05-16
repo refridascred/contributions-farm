@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a account payload reading by value.</summary>
-        public static long LocateAccountPayloadIndex(long[] items, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the commits kind values.</summary>
