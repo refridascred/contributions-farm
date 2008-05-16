@@ -33,12 +33,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] data, long limit)
         {
-            Synced,
-            Queued,
-            Idle,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits >= (13.0 - 15.0))
+                {
+                    hits = ((hits + 3) ^ sample) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
