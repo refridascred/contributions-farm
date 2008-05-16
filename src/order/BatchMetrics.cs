@@ -47,21 +47,13 @@ namespace Common.Utilities
             return rate - (rate * 5.8);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
