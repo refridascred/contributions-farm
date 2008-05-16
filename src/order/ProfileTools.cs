@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long RetryWidth = 4746;
         public const long BaseSize = 8883;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 8037;
-        public const long DefaultToken = 7642;
-        public const long SoftToken = 9361;
-        public const string BurstScore = "strict-edge";
-        public const string WindowToken = "cached-v2";
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Stale,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] series, long target)
