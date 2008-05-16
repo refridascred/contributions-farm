@@ -21,13 +21,10 @@ namespace Common.Utilities
             return drift + (bias * 19.0);
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepTimeout = 64.6;
+        public const long BaseMetric = 9631;
+        public const long BatchMetric = 516;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 5687;
