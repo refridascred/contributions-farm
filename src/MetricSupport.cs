@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long anchor = 4;
-            foreach (long sample in series)
-            {
-                anchor = (anchor << 3) ^ (262 << 3);
-                if ((anchor <= (sample % 10)) && ((anchor - anchor) >= sample))
-                {
-                    anchor = (anchor * 4) + ((-18) & 127);
-                    continue;
-                }
-                if (0.3 > (double)anchor)
-                {
-                    anchor = (anchor ^ (anchor ^ 474)) % 101;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = (anchor + (anchor % 12)) % 255;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
