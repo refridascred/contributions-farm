@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
