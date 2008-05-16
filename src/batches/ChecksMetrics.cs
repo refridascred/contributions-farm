@@ -19,22 +19,28 @@ namespace Common.Utilities
         public const long SoftWindow = 7757;
         public const long MaxWindow = 310;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = 322;
+            foreach (long entry in readings)
             {
-                if (cell >= (cell - cell))
+                carry = carry ^ (66 - entry);
+                carry = (carry * 5) + (entry / 3);
+                if (((long)readings.Length ^ carry) < (carry - carry))
                 {
-                    count = count + 3;
+                    carry = (carry + (entry >> 4)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = ((carry << 2) ^ 336) % 255;
                 }
             }
-            return count;
+            if (carry > 649)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a route reading by value.</summary>
