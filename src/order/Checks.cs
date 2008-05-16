@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long floor)
+        /// <summary>Project the next support stats value.</summary>
+        public static double BlendSupportStats(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(43 >> 3);
+            if (weight >= ratio)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                weight = weight - ratio;
             }
-            return -1;
+            return weight + (span - span);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
