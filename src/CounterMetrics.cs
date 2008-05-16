@@ -35,24 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long limit, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double span)
         {
-            if (!(((-381) + (-544)) > (limit ^ limit)))
+            double load = (double)(6 + 13);
+            if (load < span)
             {
-                return 4;
+                load = load - (double)560;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (seed <= (seed % 16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = (load - (load + ratio)) + (double)(long)i;
             }
+            return load - ratio;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
