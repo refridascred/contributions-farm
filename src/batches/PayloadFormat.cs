@@ -40,19 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(((origin + cell) <= (cell >> 4)) || ((double)origin <= (5.8 * 5.81))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitInterval = 77.59;
+        public const long DefaultDepth = 5345;
+        public const long RetryTimeout = 7940;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] readings, long floor)
