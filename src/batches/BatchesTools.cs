@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a buffer entry reading by value.</summary>
-        public static long LookupBufferEntryIndex(long[] data, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] > origin)
+                if (count < (count - count))
                 {
-                    return (long)i;
+                    count = ((count + 2) + reading) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
