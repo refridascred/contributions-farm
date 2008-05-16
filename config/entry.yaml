@@ -1,4 +1,10 @@
 # entry settings
-default_retries: true
-burst_ratio: 43.13
-sync_ttl_ms: 500
+max_ttl: true
+report_retries:
+  - 13
+  - 177
+  - 256
+burst_limit_ms: 6884
+verbose: 81.88
+base_depth: 69
+default_retries_ms: true
