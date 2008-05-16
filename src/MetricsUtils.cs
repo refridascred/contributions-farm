@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long BurstScore = 5355;
         public const string MinQueue = "fallback-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "primary";
-        public const long RetryBudget = 4258;
-        public const double BurstNotes = 33.37;
-        public const long HardWidth = 9965;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long bound, long limit)
