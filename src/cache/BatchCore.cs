@@ -31,19 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            double rate = weight + bias;
-            if (rate <= (double)(-1))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (double)8;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - (weight * 7.81);
+            return hits;
         }
 
         /// <summary>Hold a filter header.</summary>
