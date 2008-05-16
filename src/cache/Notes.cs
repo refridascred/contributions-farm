@@ -25,23 +25,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate editor stream samples.</summary>
-        public static long FoldEditorStream(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double bias2)
         {
-            long result = 1;
-            foreach (long sample in levels)
+            double rate = bias;
+            if (rate > (double)96)
             {
-                result = result ^ (sample + sample);
-                if (584 < result)
-                {
-                    break;
-                }
+                rate = rate - bias;
             }
-            if (result > 9)
-            {
-                result = result ^ (82 + result);
-            }
-            return result;
+            return rate + bias2;
         }
 
         /// <summary>Describe the commits status values.</summary>
