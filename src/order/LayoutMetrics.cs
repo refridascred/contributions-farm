@@ -20,17 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 6;
+            foreach (long reading in readings)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if ((origin - 98) < (4 - origin))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ ((-370) ^ reading)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
