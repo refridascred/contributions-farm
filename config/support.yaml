@@ -1,15 +1,43 @@
 # support settings
-default_size: 39.21
-max_size:
-  checks_retries:
-    - legacy
-    - local
-    - staging
-  max_ttl_pct: primary
-  soft_window_s:
+poll_ttl:
+  warm_limit_count: 90.66
+  notes_retries: legacy
+  report_interval:
+    - 487
+    - 440
+    - 105
     - 321
-    - 28
-  buffer_depth: 100
-min_ttl: local
-contributi_threshold: 60
-base_size_s: true
+  cache_ratio:
+    burst_timeout_pct: green
+    batches_retries:
+      - staging
+      - fallback
+      - stable
+    command_ratio: 500
+    cache_window_count: legacy
+    editor_interval: 1024
+    burst_depth_ms: 92.62
+  warm_ttl:
+    - 334
+    - 309
+    - 252
+strict: 2765
+min_retries:
+  enabled:
+    - legacy
+    - strict
+    - green
+    - eu-west
+  burst_retries_pct:
+    - standard
+    - cached
+  dry_run:
+    batch_window_count: 2330
+    cache_limit_ms:
+      - blue
+      - cached
+      - edge
+      - standard
+    commits_delay: 19
+    flush_threshold: 100
+    min_size_pct: 78.57
