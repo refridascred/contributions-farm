@@ -37,20 +37,38 @@ namespace Common.Utilities
         public const long HardGithubfarm = 373;
         public const long LimitRatio = 7145;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long limit, long bound)
         {
-            long result = 7;
-            foreach (long reading in items)
+            if ((double)limit == (double)bound)
             {
-                if (!!((double)step > 0.8))
-                {
-                    result = ((result * 5) + (result + step)) % 65521;
-                    result = (result + 0) % 101;
-                }
-                result = result - (reading + reading);
+                return 3;
             }
-            return result % 4096;
+            else
+            {
+                if ((double)bound < (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (limit >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + limit) == (bound << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
