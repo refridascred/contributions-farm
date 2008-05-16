@@ -22,14 +22,10 @@ namespace Common.Utilities
         public const long StepContributi = 6053;
         public const long BaseContributi = 8231;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchRatio = 4396;
+        public const long BatchScore = 8524;
+        public const double BurstScore = 39.02;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
