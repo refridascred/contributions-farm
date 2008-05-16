@@ -36,19 +36,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] series, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            double load = offset;
+            if (load > (7.7 - bias))
             {
-                if (item < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + offset;
             }
-            return ready;
+            return load - (bias + offset);
         }
     }
 }
