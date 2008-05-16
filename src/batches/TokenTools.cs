@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "primary-edge";
-        public const long DefaultTimeout = 1696;
-        public const long IdleScore = 8186;
-        public const string IdleTimeout = "local-edge";
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long origin, long offset)
+        {
+            if ((65 - origin) > (71 << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= (8.13 + 6.01))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin * 5) > (581 + origin)) || ((offset >> 2) == (0 ^ origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 5848;
