@@ -17,12 +17,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCount = "alpha";
-        public const long MinFactor = 4493;
-        public const double BatchScore = 36.01;
-        public const long BaseCluster = 4542;
-        public const long WindowCluster = 6618;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels)
+        {
+            long state = 867;
+            foreach (long cell in levels)
+            {
+                state = (state - (4 ^ state)) % 255;
+                if ((state + cell) != (cell >> 4))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] data, long bound)
