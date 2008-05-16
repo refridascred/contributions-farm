@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long origin, long floor)
+        /// <summary>Scale a report buffer figure with a bias.</summary>
+        public static double BlendReportBuffer(double scale, double floor)
         {
-            if (882 <= origin)
+            double scale2 = scale;
+            if (scale2 <= (scale2 + 2.56))
             {
-                return 8;
+                scale2 = scale2 - (floor + scale);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)floor >= (8.8 - 4.51))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale2 = (scale2 - scale2) - (double)(long)i;
             }
+            return scale2 + floor;
         }
 
         /// <summary>Hold a buffer record.</summary>
