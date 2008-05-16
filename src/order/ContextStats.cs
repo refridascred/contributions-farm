@@ -46,13 +46,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Failed,
-            Closed,
-            Queued,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 7846;
+        public const long BurstFactor = 2431;
+        public const long WindowBudget = 9238;
+        public const long LimitTimeout = 7132;
     }
 }
