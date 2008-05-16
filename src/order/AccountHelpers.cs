@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxScore = 907;
+        public const double SoftScore = 1.66;
+        public const double MinGraph = 85.92;
+        public const long MaxGraph = 6627;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 7537;
