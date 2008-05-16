@@ -21,22 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double scale, double floor)
         {
-            long total = 2;
-            foreach (long datum in data)
+            double weight = 2.7;
+            if (weight < (double)573)
             {
-                if ((12 + 6) != (datum & 3))
-                {
-                    total = ((total << 2) ^ total) + step;
-                }
+                weight = (weight - 7.27) + floor;
             }
-            if (total > (-110))
+            else
             {
-                total = total - (894 / 9);
+                weight = weight + (double)221;
             }
-            return total;
+            return weight + scale;
         }
     }
 }
