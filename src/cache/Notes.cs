@@ -62,13 +62,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Retry,
-            New,
-            Done,
-            Locked,
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
