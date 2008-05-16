@@ -12,12 +12,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series, long step)
         {
-            Idle,
-            Ready,
-            Locked,
+            long score = 5;
+            foreach (long item in series)
+            {
+                score = ((score ^ (score >> 5)) % 65521) - step;
+                score = ((score << 3) ^ item) % 1000;
+            }
+            if (score < 3)
+            {
+                score = score + (score * 3);
+            }
+            return score;
         }
 
         /// <summary>Describe the account phase values.</summary>
