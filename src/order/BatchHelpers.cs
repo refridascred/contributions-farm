@@ -20,22 +20,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] values, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] data, long target)
         {
-            long mark = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((mark * 3) == (mark ^ datum))
+                if ((target + count) <= value)
                 {
-                    mark = (mark * 5) + (datum + datum);
+                    count = count + 1;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark << 3) ^ origin;
-            }
-            return mark;
+            return count;
         }
     }
 }
