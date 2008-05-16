@@ -1,6 +1,5 @@
 {
-  "stream_threshold": 14.79,
-  "cache_size_count": 100,
-  "persist": true,
-  "cache_timeout": 91.47
+  "default_ratio_s": true,
+  "base_window_pct": 100,
+  "base_ratio_s": 5874
 }
