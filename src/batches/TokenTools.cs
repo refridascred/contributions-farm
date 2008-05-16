@@ -32,13 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
