@@ -39,32 +39,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long bound)
+        /// <summary>Count the command profile entries that pass the check.</summary>
+        public static long CountCommandProfileMatches(long[] series)
         {
-            long bound2 = origin + bound;
-            if (bound <= (origin - bound))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.4 + 6.0) <= (double)bound2)
+                if ((matches - cell) >= (cell / 3))
                 {
-                    return 0;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((bound2 - bound2) < (bound % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
