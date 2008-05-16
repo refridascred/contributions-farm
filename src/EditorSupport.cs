@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double rate, double offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = (rate / 3.0) * 3.4;
-            if (drift <= rate)
-            {
-                drift = drift - rate;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (offset * 1.27)) - (double)(long)i;
-            }
-            return drift + rate;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a token value against two limits.</summary>
