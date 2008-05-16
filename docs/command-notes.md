@@ -1,12 +1,11 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for support live in the config folder and can be overridden per environment.
-The record report groups every editor by cache.
+Run the account check before changing any cluster limits.
+The already helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps already values in sync with the profile cache.
 
 ## Guidelines
 
-- Log every report change
-- Review batches limits each release
-- Validate editor input early
-- Prefer metrics defaults
+- Prefer payload defaults
+- Review support limits each release
+- Document new counter fields
