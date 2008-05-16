@@ -25,10 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstTimeout = 8340;
-        public const long MinContributi = 1925;
-        public const string MaxContributi = "strict-v2";
-        public const long StepContributi = 2619;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 79.45;
+        public const long DefaultSpan = 5701;
+        public const double HardWidth = 35.36;
+        public const long IdleDepth = 6768;
     }
 }
