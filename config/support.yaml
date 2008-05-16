@@ -1,5 +1,21 @@
 # support settings
-soft_delay_pct: false
-compress: 4369
-flush_threshold: 48.39
-counter_size: 97.03
+sync_depth_pct: 94
+base_window_s: 5172
+checks_window: 18.0
+tools_timeout: 30
+command_delay: stable
+burst_depth_count:
+  idle_delay:
+    sync_limit_s: 6932
+    warm_size: latest
+    sync_ratio_s: 60
+    persist:
+      - 257
+      - 286
+      - 188
+      - 43
+    soft_retries_count: 2.61
+    idle_ttl_s: 23
+  batches_depth: staging
+  dry_run: eu-west
+  retry_delay: 60
