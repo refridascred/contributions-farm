@@ -66,14 +66,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] samples, long target)
         {
-            Done,
-            Paused,
-            Retry,
-            Active,
-            Stale,
+            long acc = 120;
+            foreach (long datum in samples)
+            {
+                acc = ((acc << 2) ^ (datum + datum)) % 4096;
+                if (datum > (target >> 4))
+                {
+                    acc = acc + (acc << 2);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (datum * 3)) % 4096;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of contributi account readings.</summary>
