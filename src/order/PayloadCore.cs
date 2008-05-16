@@ -14,14 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Failed,
-            Done,
-            New,
-            Stale,
-            Ready,
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
