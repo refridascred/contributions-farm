@@ -64,18 +64,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels, long limit)
+        /// <summary>Audit stats graph readings against a rule.</summary>
+        public static long CountStatsGraphOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((count ^ value) >= (value + value))
+                if ((double)limit > 7.1)
                 {
-                    count = (count + 1) + limit;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
