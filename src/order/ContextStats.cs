@@ -47,22 +47,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit checks cache readings against a rule.</summary>
-        public static long MeasureChecksCacheMatches(long[] values)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((matches + value) > value) && ((matches & 63) < matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
