@@ -41,25 +41,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            long next = bound - target;
-            if ((bound << 2) < (target & 7))
+            double gain = floor;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                gain = (gain - floor) - (double)(long)i;
             }
-            else
-            {
-                if (!((11 & 1) <= (next + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return gain + weight;
         }
     }
 }
