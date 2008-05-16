@@ -20,16 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long mark = 21;
+            foreach (long item in items)
             {
-                carry = (carry * 4) + 844;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (((item - mark) != (mark / 5)) || ((double)item > (8.1 * 8.8)))
+                {
+                    mark = (mark << 3) ^ ((long)items.Length + mark);
+                }
             }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate token format samples.</summary>
