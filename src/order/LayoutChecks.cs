@@ -97,19 +97,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin / 5) <= (datum / 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 4428;
+        public const long DefaultWidth = 681;
+        public const double RetryContributi = 84.77;
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] levels)
