@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] values, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 883;
+            foreach (long item in readings)
             {
-                if (!((count - count) >= count))
+                if (((item - item) <= (total ^ total)) || ((double)total >= (1.0 - 14.0)))
                 {
-                    count = ((count + 3) ^ datum) - seed;
+                    total = ((total * 3) + (item << 2)) % 65521;
+                }
+                if ((double)item != (double)total)
+                {
+                    total = (total * 4) + 765;
+                }
+                if ((total << 1) == (item ^ (long)readings.Length))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Derive the next window notes value from a seed.</summary>
