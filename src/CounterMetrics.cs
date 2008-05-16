@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepScore = 48.87;
-        public const string RetrySize = "legacy";
-        public const string BurstDepth = "strict-edge";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((((matches ^ reading) < reading) || ((matches & 63) > reading)) || (((reading % 60) < reading) || ((reading / 9) >= reading)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] levels, long seed)
