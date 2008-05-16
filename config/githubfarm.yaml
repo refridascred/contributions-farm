@@ -1,16 +1,13 @@
 # githubfarm settings
-batch_timeout_count: 500
-retry_capacity: 0.49
-channel_window: eu-west
-graph_timeout: 66
-poll_retries:
-  soft_size: 7963
-  idle_size:
-    readonly: 37.48
-    window_capacity: 3547
-    batches_window: 9021
-    hard_threshold_s: 250
-    sync_delay: 3612
-    dry_run: 59
-  graph_limit: 346
-idle_size: 3.06
+audit: cached
+burst_threshold_s: primary
+strict:
+  - 139
+  - 276
+  - 291
+  - 445
+poll_depth_ms:
+  - 44
+  - 411
+  - 310
+sync_timeout_ms: 30
