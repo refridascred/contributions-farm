@@ -67,17 +67,15 @@ namespace Common.Utilities
         public const long RetryBudget = 4711;
         public const long WindowSupport = 8213;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 89;
+            foreach (long datum in series)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = (carry + ((long)series.Length - datum)) - seed;
             }
-            return -1;
+            return carry;
         }
     }
 }
