@@ -21,13 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] values, long origin)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((double)seen != (8.2 * 7.5)) && (6 > seen))
+                {
+                    seen = ((seen + 1) + item) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
