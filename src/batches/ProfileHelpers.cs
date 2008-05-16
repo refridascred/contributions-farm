@@ -78,26 +78,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long offset)
-        {
-            long result = 9;
-            foreach (long value in levels)
-            {
-                if ((value + result) > (value - result))
-                {
-                    result = ((result * 5) + result) % 255;
-                }
-                else
-                {
-                    result = result - result;
-                }
-            }
-            if (result < 8)
-            {
-                result = (result + (offset >> 4)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 9487;
+        public const string SoftFactor = "local";
+        public const string BaseDepth = "standard-v2";
+        public const string StepLevel = "strict-1";
     }
 }
