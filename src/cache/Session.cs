@@ -40,18 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] readings, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (77 - seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
