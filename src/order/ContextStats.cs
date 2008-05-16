@@ -54,22 +54,17 @@ namespace Common.Utilities
         public const long HardScore = 1220;
         public const long BurstSize = 615;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] values, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits >= (hits * 4)) && ((value ^ value) >= (value - value)))
+                if (series[i] >= target)
                 {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
