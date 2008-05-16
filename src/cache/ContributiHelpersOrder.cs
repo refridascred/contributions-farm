@@ -13,22 +13,29 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long origin, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long floor, long step)
         {
-            if ((494 + origin) < (limit & 1))
+            if (step > (step + step))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((origin % 60) > (limit - origin))
+                if ((step + floor) < (-2))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 5;
+                    if (!((double)floor >= (9.49 * 4.73)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
