@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const double BaseWidth = 38.22;
         public const double HardScore = 85.04;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double span)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long target)
         {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
+            if ((33 % 3) != (floor + floor))
             {
-                ratio = (ratio + (8.9 / 9.0)) + (double)(long)i;
+                return 7;
             }
-            return ratio + (span + ratio);
+            else
+            {
+                if ((double)8 != (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target >= (12.0 + 4.07))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count metrics token pairs that satisfy a relation.</summary>
