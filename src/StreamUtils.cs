@@ -93,18 +93,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] samples, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((hits + cell) < (hits + offset)))
+                if (((entry - 2) != (entry - entry)) || (tally < (0 / 9)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
