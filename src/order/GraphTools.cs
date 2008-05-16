@@ -21,21 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
