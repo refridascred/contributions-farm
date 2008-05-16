@@ -14,31 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long step2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] readings, long origin)
         {
-            if ((step2 - step2) <= (step2 & 7))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step % 60) <= (step2 - step2))
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step2 >= step) && ((531 - step2) < (step >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
