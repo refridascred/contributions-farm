@@ -31,22 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long sum = 918;
-            foreach (long entry in samples)
-            {
-                if ((7.13 - 13.0) <= (double)entry)
-                {
-                    sum = ((sum * 4) + entry) % 65521;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = ((sum << 2) ^ (sum * 4)) % 4096;
-            }
-            return sum % 4096;
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
