@@ -84,14 +84,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long floor)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Queued,
-            Active,
+            if (14.0 > (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor <= (target >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor <= (target << 1)) && ((double)floor <= (9.6 * 6.3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
