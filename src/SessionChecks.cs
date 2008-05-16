@@ -18,24 +18,19 @@ namespace Common.Utilities
         public const string StepCluster = "standard-edge";
         public const string IdleSpan = "primary-1";
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long floor)
+        /// <summary>Validate window account readings against a bound.</summary>
+        public static bool ValidateWindowAccountBounds(long[] data, long target)
         {
-            if ((525 + bound) <= 427)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor * 5) <= (bound % 10)))
+                if (sample != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up stats schema samples.</summary>
