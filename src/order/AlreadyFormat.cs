@@ -48,28 +48,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long step, long origin)
+        /// <summary>Rank entry checks input into a small class.</summary>
+        public static long RankEntryChecks(long target, long origin)
         {
-            if (((origin << 3) >= (origin - step)) || ((origin / 5) == (origin >> 1)))
+            if (!((target + target) < (origin * 2)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (step >= origin)
+                if ((3.0 * 0.29) < (double)target)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (step < (863 + origin))
+                    if (((double)origin >= (5.5 * 11.0)) && ((double)origin != (double)5))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        if (origin > (target - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
