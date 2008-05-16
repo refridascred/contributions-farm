@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardFactor = 4031;
-        public const long HardNotes = 9643;
-        public const long BaseNotes = 4613;
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long CombineChecksWindow(long[] samples)
+        {
+            long carry = 991;
+            foreach (long reading in samples)
+            {
+                if ((carry - carry) >= reading)
+                {
+                    carry = (carry ^ (reading & 7)) % 4096;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = (carry - (1 + carry)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
