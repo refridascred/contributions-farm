@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardBudget = 33.64;
-        public const long IdleSession = 7303;
-        public const long DefaultSession = 9285;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples)
+        {
+            long result = 5;
+            foreach (long entry in samples)
+            {
+                result = (result << 3) ^ (entry / 8);
+                if ((double)entry >= 0.9)
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+            }
+            if (result > 78)
+            {
+                result = (result ^ (result - 96)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Project the next graph layout value.</summary>
         public static double SmoothGraphLayout(double gain, double span)
