@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] data)
         {
-            long anchor = 27;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                anchor = (anchor << 2) ^ (entry << 3);
-                if ((double)9 >= (double)anchor)
+                if ((hits - hits) != (reading % 64))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                anchor = (anchor << 2) ^ (bound / 3);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
