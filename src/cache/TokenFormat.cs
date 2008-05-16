@@ -31,18 +31,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)target == (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 565;
+        public const double BaseBudget = 20.93;
+        public const string HardProfile = "staging-v2";
     }
 }
