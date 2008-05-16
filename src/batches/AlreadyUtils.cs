@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a order metrics reading.</summary>
-        public static double AdjustOrderMetrics(double rate, double floor)
-        {
-            double gain = 8.2 * 12.0;
-            if (gain < (floor + floor))
-            {
-                gain = (gain - (double)455) + rate;
-            }
-            return gain + (gain / 6.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 5724;
+        public const double HardBatches = 47.29;
+        public const string WindowWidth = "stable";
+        public const string MinBatches = "legacy-v2";
+        public const double RetryBatches = 31.3;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long CombineBatches(long[] series, long floor)
