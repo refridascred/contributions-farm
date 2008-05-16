@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((entry & 15) >= (tally << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
