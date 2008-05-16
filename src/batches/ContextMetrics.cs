@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6146;
+        public const double BatchSize = 9.08;
+        public const long IdleFilter = 8092;
+        public const long LimitFilter = 450;
+        public const long MaxFilter = 8565;
 
         /// <summary>Adjust a order editor reading.</summary>
         public static double SmoothOrderEditor(double scale, double bias)
