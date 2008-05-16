@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryWidth = 1453;
-        public const double BaseBudget = 61.55;
-        public const long SoftPayload = 4158;
-        public const double SoftSize = 91.31;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double span)
+        {
+            double drift = 7.8 * 6.2;
+            if (drift > (drift / 5.0))
+            {
+                drift = ((drift - (double)82) + scale) - span;
+            }
+            return drift + (double)974;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaBounds(long[] values, long seed)
