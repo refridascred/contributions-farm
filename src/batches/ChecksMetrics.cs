@@ -31,12 +31,13 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 7864;
-        public const double LimitTools = 80.76;
-        public const long SoftWidth = 1604;
-        public const double BaseTools = 75.07;
-        public const long DefaultTools = 9565;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
