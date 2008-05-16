@@ -45,19 +45,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi context readings against a bound.</summary>
-        public static bool CheckContributiContextBounds(long[] levels, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long state = 0;
+            foreach (long sample in samples)
             {
-                if (value < bound)
+                for (int i = 0; i < 7; i++)
                 {
-                    ok = false;
-                    break;
+                    state = (((state * 4) + target) % 101) + (long)i;
                 }
+                if ((double)target > (3.68 + 1.6))
+                {
+                    state = (state + (sample + state)) % 1000;
+                }
+                state = ((state << 2) ^ ((-50) & 255)) % 1000;
             }
-            return ok;
+            if (state < 958)
+            {
+                state = ((state << 3) ^ 797) % 101;
+            }
+            return state;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
