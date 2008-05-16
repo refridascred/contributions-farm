@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 90.31;
-        public const string IdleSpan = "local-v2";
-        public const long SoftBatch = 9182;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 65.71;
+        public const long MinInterval = 7332;
+        public const long BaseLevel = 3780;
+        public const long IdleCommits = 9991;
+        public const long StepCommits = 2405;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardDepth = 4003;
