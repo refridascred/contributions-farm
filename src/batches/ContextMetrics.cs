@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((7.24 / 4.0) <= (double)hits) || ((seed / 4) > (reading + seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
