@@ -1,23 +1,19 @@
 # githubfarm settings
-max_timeout: true
-githubfarm_window: 69.68
-batch_interval_count: true
-default_retries_count:
-  - standard
-  - eu-west
-  - legacy
-verbose:
-  soft_limit:
-    sync_ratio: primary
-    contributi_size: 1
-    min_window: eu-west
-  idle_limit: stable
-  default_window_ms: 90.12
-  format_timeout: true
-  burst_timeout: latest
-  session_ratio:
-    cache_timeout: 93.19
-    compress: true
-    retry_window_pct: false
-    dry_run: 6.92
-    warm_delay_s: open
+sync_window:
+  - cached
+  - cached
+cache_timeout: 8.8
+min_retries:
+  compress: true
+  hard_interval: true
+  retry_retries_s: 76.94
+  soft_retries: strict
+  poll_size_count: latest
+  already_capacity: 30
+strict: fallback
+sync_capacity: 30
+record_delay:
+  - 294
+  - 493
+  - 300
+  - 120
