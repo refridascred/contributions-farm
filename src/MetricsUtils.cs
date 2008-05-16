@@ -20,32 +20,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            long step = bound + seed;
-            if ((878 + bound) <= bound)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + 90) == (step << 2))
+                if (!((sample - sample) < sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + seed) <= seed) && ((bound + bound) < (216 << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
