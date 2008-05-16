@@ -21,31 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            if ((double)target == (9.7 - 9.5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((target * 5) != (target & 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((4 % 60) < (target % 64)) && ((double)origin >= (14.0 / 7.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
