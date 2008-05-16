@@ -1,7 +1,10 @@
 {
-  "audit": true,
-  "min_ttl_ms": 250,
-  "batch_timeout_count": "fallback",
-  "notes_limit": 43.0,
-  "retry_capacity_s": true
+  "audit": "staging",
+  "tools_ratio": "latest",
+  "warm_threshold": 57.78,
+  "poll_ttl": {
+    "idle_threshold_count": ["strict", "edge"],
+    "retry_threshold_s": 5880,
+    "burst_size_s": ["legacy", "latest", "latest"]
+  }
 }
