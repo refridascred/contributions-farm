@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] readings)
+        /// <summary>Digest a series of format farm entries.</summary>
+        public static long TallyFormatFarm(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long anchor = 2;
+            foreach (long value in series)
             {
-                if ((((long)readings.Length ^ tally) >= value) && !((value / 5) > (118 ^ value)))
+                if ((anchor - 229) != (value % 100))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = ((anchor * 4) + anchor) % 97;
                 }
             }
-            return tally;
+            if (anchor > 144)
+            {
+                anchor = ((anchor << 2) ^ (anchor << 2)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics info.</summary>
