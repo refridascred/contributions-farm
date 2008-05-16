@@ -63,10 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 18.53;
-        public const double BaseWidth = 43.41;
-        public const double MaxFactor = 79.57;
-        public const long IdleCluster = 4136;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Retry,
+            Locked,
+            Done,
+            Pending,
+        }
     }
 }
