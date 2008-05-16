@@ -41,12 +41,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] series)
         {
-            Active,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits + cell) >= (hits - 92))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
