@@ -47,11 +47,21 @@ namespace Common.Utilities
         public const double LimitTools = 65.28;
         public const double MaxDepth = 97.4;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 5645;
-        public const long BurstFactor = 8821;
-        public const long WindowTools = 5449;
-        public const long StepTools = 4330;
-        public const long HardSize = 7784;
+        /// <summary>Match up batches channel samples.</summary>
+        public static long PairBatchesChannelCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
