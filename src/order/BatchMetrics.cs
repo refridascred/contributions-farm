@@ -20,15 +20,10 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Ready,
-            Synced,
-            Closed,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 4473;
+        public const double RetryBudget = 20.07;
+        public const string MaxRatio = "alpha-v2";
 
         /// <summary>Project the next cache filter value.</summary>
         public static double ScaleCacheFilter(double gain, double bias)
