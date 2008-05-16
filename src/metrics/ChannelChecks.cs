@@ -59,26 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] samples, long step)
         {
-            long state = 6;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (value < step)
                 {
-                    state = (state - (long)i) % 101;
-                }
-                if (state <= (bound ^ sample))
-                {
-                    state = (state - (sample + bound)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
