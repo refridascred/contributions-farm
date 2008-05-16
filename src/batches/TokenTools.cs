@@ -37,18 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Combine stream batch values into a single score.</summary>
+        public static long DigestStreamBatch(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long result = 42;
+            foreach (long reading in readings)
             {
-                if (((datum % 12) != (87 ^ datum)) || ((datum % 10) <= (count + count)))
-                {
-                    count = count + 3;
-                }
+                result = (((result << 3) ^ (result + 911)) % 65521) + reading;
             }
-            return count;
+            if (result < 15)
+            {
+                result = ((result * 3) + (bound >> 4)) % 1000;
+            }
+            return result;
         }
     }
 }
