@@ -1,16 +1,6 @@
 {
-  "dry_run": {
-    "default_window_pct": [17, 388, 207, 59],
-    "retry_timeout": 5661,
-    "hard_threshold_pct": 500,
-    "enabled": 86.34
-  },
-  "tools_size": {
-    "command_window": "open",
-    "contributi_interval": 74,
-    "hard_interval_count": 64.3,
-    "sync_limit_pct": 9.68
-  },
-  "warm_size": 16.02,
-  "format_capacity": 30
+  "default_ttl_ms": 73.41,
+  "order_threshold": 60,
+  "soft_interval": 3372,
+  "retry_timeout_s": 88
 }
