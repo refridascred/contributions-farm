@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardLevel = 5880;
-        public const long IdleMetric = 4482;
-        public const double BatchMetric = 21.26;
-        public const double WindowSize = 64.36;
+        /// <summary>Rank format batches input into a small class.</summary>
+        public static long ClassifyFormatBatches(long target, long offset)
+        {
+            if ((offset / 9) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset == (5.0 - 2.37))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset % 10) == (offset & 255)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] readings, long step)
