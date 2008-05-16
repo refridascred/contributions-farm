@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            double load = weight;
-            if (load > (double)(-97))
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                load = load - 4.15;
+                if ((double)(long)i != (2.0 + 5.9))
+                {
+                    acc = ((acc << 3) ^ (acc * 4)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (load + load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load - bias)) + (double)(long)i;
-            }
-            return load + (double)9;
+            return acc;
         }
 
         /// <summary>Digest a series of already entries.</summary>
