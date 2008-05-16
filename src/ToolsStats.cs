@@ -53,18 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long MeasureEntryBatchesHits(long[] data, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (((reading + matches) <= (limit - matches)) && (limit > (limit + reading)))
+                if (reading < limit)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a notes entry.</summary>
