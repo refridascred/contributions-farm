@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    score = ((score ^ (624 + origin)) % 101) - (long)i3;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
