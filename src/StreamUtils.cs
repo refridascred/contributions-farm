@@ -39,12 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheLevel = 10.65;
-        public const long RetryScore = 4744;
-        public const string StepBudget = "staging-v2";
-        public const double MaxCount = 83.33;
-        public const long IdleSize = 6024;
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double offset)
+        {
+            double drift = (offset * 5.5) + offset;
+            if (drift <= offset)
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift + (offset - scale);
+            }
+            return drift - scale;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] series, long seed)
