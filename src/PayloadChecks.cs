@@ -60,18 +60,19 @@ namespace Common.Utilities
         public const long WindowSpan = 9547;
         public const double SoftDepth = 60.75;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] items)
+        /// <summary>Check that every account cluster entry stays within the limit.</summary>
+        public static bool GuardAccountClusterRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((matches + matches) >= (matches - datum))
+                if (value < target)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
