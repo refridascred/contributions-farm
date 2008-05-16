@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate farm metric readings against a bound.</summary>
-        public static bool GuardFarmMetricRange(long[] data, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (datum != floor)
+                if ((259 > ((-7) + entry)) && (251 < entry))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
