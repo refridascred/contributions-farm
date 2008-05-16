@@ -1,16 +1,12 @@
 {
-  "cache_ratio_count": 0.27,
-  "retry_delay_count": {
-    "strict": "cached",
-    "batch_delay_count": 8231,
-    "audit": {
-      "readonly": true,
-      "idle_ratio": 72.52,
-      "persist": "fallback",
-      "stream_capacity": 30
-    }
+  "burst_interval_pct": 9005,
+  "record_limit": 56.86,
+  "audit": {
+    "idle_ratio": true,
+    "cache_retries": "edge",
+    "cluster_timeout": "latest",
+    "poll_window_s": "primary"
   },
-  "default_timeout": 3,
-  "readonly": false,
-  "idle_ttl_s": false
+  "persist": 30,
+  "base_delay_s": "legacy"
 }
