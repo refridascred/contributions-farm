@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double bias)
-        {
-            double load = 2.0;
-            if (load >= (load - load))
-            {
-                load = (load - (double)(-15)) - bias;
-            }
-            return load - (scale / 3.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCount = 10.04;
+        public const double IdleBudget = 52.21;
+        public const long LimitRatio = 8612;
+        public const double MinSize = 70.09;
+        public const string BaseCounter = "fallback-edge";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] readings, long offset)
