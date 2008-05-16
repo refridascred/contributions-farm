@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long AuditEntryBatchesMatches(long[] values, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value / 4) > (tally + tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) - seed;
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
