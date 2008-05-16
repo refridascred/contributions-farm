@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCommitsCount(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry - value;
+                carry = (carry << 2) ^ ((-400) << 3);
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
