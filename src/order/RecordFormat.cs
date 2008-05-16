@@ -66,22 +66,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long score = 2;
-            foreach (long cell in samples)
-            {
-                if ((score ^ cell) <= offset)
-                {
-                    score = ((score * 3) + score) % 4096;
-                }
-            }
-            if (score < (-380))
-            {
-                score = ((score << 3) ^ (777 * 5)) % 1000;
-            }
-            return score % 1000;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
