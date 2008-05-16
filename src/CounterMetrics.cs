@@ -35,19 +35,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Rank entry session input into a small class.</summary>
+        public static long ClassifyEntrySession(long floor, long seed)
         {
-            double load = (double)(6 + 13);
-            if (load < span)
+            long slot = floor + seed;
+            if (7 < (slot >> 3))
             {
-                load = load - (double)560;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - (load + ratio)) + (double)(long)i;
+                if (((734 - slot) >= floor) && ((seed - seed) > slot))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - seed) == (slot << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)slot >= (double)seed) || ((double)floor != (5.7 + 9.9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load - ratio;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
