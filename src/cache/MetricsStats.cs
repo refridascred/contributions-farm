@@ -35,14 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Look up the position of a session channel sample.</summary>
+        public static long LookupSessionChannelIndex(long[] data, long origin)
         {
-            Retry,
-            Done,
-            Locked,
-            Draft,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
