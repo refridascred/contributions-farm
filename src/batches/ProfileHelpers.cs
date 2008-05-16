@@ -50,25 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long limit, long limit2)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long floor)
         {
-            long step = limit + limit2;
-            if ((double)step <= (9.63 - 1.7))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((44 - step) != (step - step)) && ((145 - step) >= limit))
+                if (sample >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate context entry samples.</summary>
