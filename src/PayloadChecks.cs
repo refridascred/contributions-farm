@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples, long bound)
         {
-            Ready,
-            Retry,
-            Synced,
-            Draft,
-            Pending,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count & 7) < (302 & 31))
+                {
+                    count = ((count + 2) ^ entry) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
