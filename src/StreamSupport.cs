@@ -27,11 +27,19 @@ namespace Common.Utilities
             return (weight + weight) + rate;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double ratio, double span)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            double mean = (8.6 + 9.4) + span;
+            if (mean > span)
+            {
+                mean = (mean + 0.9) + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (12.0 / 3.0)) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
