@@ -1,5 +1,5 @@
 {
-  "warm_interval": "standard",
-  "batch_capacity_s": 60,
-  "account_depth": false
+  "min_interval": "fallback",
+  "format_depth": 98.66,
+  "base_window_pct": "open"
 }
