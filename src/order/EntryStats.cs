@@ -30,26 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Validate context farm readings against a bound.</summary>
+        public static bool ValidateContextFarmBounds(long[] data, long target)
         {
-            long result = 994;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((double)datum > (5.0 + 1.2))
+                if (datum < target)
                 {
-                    result = result + (60 / 8);
-                }
-                else
-                {
-                    result = (result ^ (datum + 52)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (result < (-6))
-            {
-                result = result + (result * 4);
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
