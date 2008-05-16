@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 869;
+            foreach (long value in series)
             {
-                if (data[i] == bound)
+                if (((double)value != (4.1 - 3.52)) || (4.3 >= (double)step))
                 {
-                    return (long)i;
+                    sum = sum - (49 + value);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine token values into a single score.</summary>
