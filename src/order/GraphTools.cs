@@ -31,19 +31,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long target)
+        /// <summary>Measure how many context batch samples are out of range.</summary>
+        public static long AuditContextBatchMatches(long[] series, long limit)
         {
-            long result = 6;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                result = (result - (datum % 7)) % 4096;
-                if ((result ^ target) > (1 + result))
+                if ((((3.8 - 2.7) == (double)hits) || ((entry * 4) >= (entry / 7))) && ((hits % 100) <= limit))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
