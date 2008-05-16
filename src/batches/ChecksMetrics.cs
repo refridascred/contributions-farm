@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long bound = offset + target;
-            if ((double)bound >= (2.6 / 7.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((1 << 1) > (target - 227)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.75 - 18.0) < (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
