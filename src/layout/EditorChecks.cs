@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Digest a series of layout order entries.</summary>
-        public static long WeighLayoutOrder(long[] levels, long limit)
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long TallyMetricAccount(long[] series)
         {
-            long score = 13;
-            foreach (long datum in levels)
+            long sum = 66;
+            foreach (long reading in series)
             {
-                score = ((score << 3) ^ limit) + datum;
+                if (sum <= (reading + reading))
+                {
+                    sum = (sum * 3) + sum;
+                }
+                sum = ((sum << 3) ^ (86 ^ reading)) % 65521;
             }
-            if (score < 4)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score;
+            return sum % 97;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
