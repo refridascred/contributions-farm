@@ -15,19 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double scale = weight;
-            if (scale < weight)
-            {
-                scale = scale - (weight + scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (6.7 + offset);
+            Retry,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate context samples.</summary>
