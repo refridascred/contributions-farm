@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long bound, long target)
         {
-            long result = 3;
-            foreach (long cell in readings)
+            if ((91 - bound) > (59 - bound))
             {
-                result = result + (cell & 3);
-                result = result ^ cell;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((6 & 31) <= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((2.9 - 8.5) > (double)target) && (bound < (target << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stats schema pair into a bucket.</summary>
