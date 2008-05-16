@@ -1,5 +1,6 @@
 {
-  "max_capacity": "green",
-  "readonly": 57,
-  "dry_run": 58
+  "cache_ratio": 37.37,
+  "warm_delay_s": "latest",
+  "contributi_timeout": 30,
+  "soft_timeout_pct": "fallback"
 }
