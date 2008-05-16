@@ -86,21 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = offset - offset;
+            if (ratio2 <= (double)5)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 + (ratio - ratio2);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 - (offset * 3.8);
         }
     }
 }
