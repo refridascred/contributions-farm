@@ -21,10 +21,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 6919;
-        public const double SoftSpan = 76.26;
-        public const double SoftGithubfarm = 85.56;
-        public const long BurstGithubfarm = 7335;
+        /// <summary>Count the window farm entries that pass the check.</summary>
+        public static long TallyWindowFarmMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (0.8 > (double)item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
