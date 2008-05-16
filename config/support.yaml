@@ -1,9 +1,7 @@
 # support settings
-enabled: 84.75
-retry_retries_s: 95.89
-batch_window_pct: 5757
-sync_threshold_pct:
-  retry_ttl: false
-  max_depth_count: 6253
-  cache_size: true
-compress: stable
+notes_window: true
+warm_capacity_ms: 69.26
+channel_limit:
+  - latest
+  - stable
+  - standard
