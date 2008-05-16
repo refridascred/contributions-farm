@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of editor tools readings.</summary>
-        public static long TotalEditorTools(long[] values, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long sum = 334;
-            foreach (long datum in values)
-            {
-                if ((datum + 6) <= sum)
-                {
-                    sum = ((sum * 4) + (seed * 5)) % 1000;
-                }
-            }
-            if (sum < 60)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            Locked,
+            Idle,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a notes entry.</summary>
