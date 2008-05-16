@@ -47,18 +47,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] readings, long floor)
+        /// <summary>Project the next batches batch value.</summary>
+        public static double SmoothBatchesBatch(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)floor <= (double)cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double rate = offset * 10.0;
+            return (rate + (double)56) + ratio;
         }
     }
 }
