@@ -26,23 +26,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (19.0 - 3.78))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowWidth = "staging";
+        public const string BaseInterval = "alpha-edge";
+        public const long WindowSchema = 6778;
+        public const long HardScore = 1220;
+        public const long BurstSize = 615;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportGaps(long[] readings)
