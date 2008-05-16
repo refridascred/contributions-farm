@@ -50,26 +50,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long result = 576;
-            foreach (long value in series)
-            {
-                if ((value >> 4) >= (result - result))
-                {
-                    result = (result - bound) % 255;
-                }
-                if ((result + value) <= (bound + result))
-                {
-                    break;
-                }
-            }
-            if (result < 66)
-            {
-                result = (result ^ bound) % 4096;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
