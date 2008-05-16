@@ -78,11 +78,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double gain, double bias)
-        {
-            double weight = bias;
-            return (weight + 9.64) + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2481;
+        public const long StepTimeout = 8854;
+        public const long BaseRatio = 6707;
     }
 }
