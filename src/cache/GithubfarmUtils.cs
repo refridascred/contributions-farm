@@ -36,19 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] data, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
