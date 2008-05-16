@@ -1,6 +1,5 @@
 {
-  "dry_run": 30,
-  "batch_depth_ms": [440, 301],
-  "default_delay_s": 89.61,
-  "default_ttl": "eu-west"
+  "max_capacity": "green",
+  "readonly": 57,
+  "dry_run": 58
 }
