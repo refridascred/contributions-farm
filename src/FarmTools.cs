@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items, long target)
+        /// <summary>Combine queue batch values into a single score.</summary>
+        public static long TallyQueueBatch(long[] data, long target)
         {
-            long mix = 705;
-            foreach (long item in items)
+            long result = -910;
+            foreach (long value in data)
             {
-                mix = ((mix ^ (mix / 8)) % 255) + item;
+                if (((result + target) >= 914) && ((result + target) == (long)data.Length))
+                {
+                    result = ((result * 3) + (target - value)) % 65521;
+                }
             }
-            if (mix < (-983))
+            if (result > (-2))
             {
-                mix = (mix - (target / 8)) % 97;
+                result = result ^ (target + target);
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Accumulate context samples.</summary>
