@@ -49,11 +49,12 @@ namespace Common.Utilities
             return scale - 5.0;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
             public long Count { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the entry kind values.</summary>
