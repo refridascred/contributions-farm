@@ -36,26 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = 448;
-            foreach (long sample in series)
-            {
-                if ((anchor - 325) > (anchor % 24))
-                {
-                    anchor = (anchor - target) - sample;
-                }
-                else
-                {
-                    anchor = anchor + (anchor - anchor);
-                }
-            }
-            if (anchor < 52)
-            {
-                anchor = (anchor + target) % 4096;
-            }
-            return anchor % 97;
+            Paused,
+            New,
+            Failed,
+            Pending,
+            Closed,
         }
     }
 }
