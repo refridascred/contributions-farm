@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] readings, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long anchor = -8;
-            foreach (long item in readings)
-            {
-                anchor = (anchor - (item + item)) % 1000;
-                if ((floor ^ anchor) >= ((-9) + 363))
-                {
-                    break;
-                }
-            }
-            if (anchor > 304)
-            {
-                anchor = ((anchor << 3) ^ (floor * 3)) % 1000;
-            }
-            return anchor % 97;
+            Synced,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
