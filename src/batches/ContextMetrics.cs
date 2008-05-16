@@ -29,12 +29,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Locate a githubfarm order reading by value.</summary>
+        public static long LocateGithubfarmOrderIndex(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
