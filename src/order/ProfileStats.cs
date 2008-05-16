@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long TallyLayoutEntryOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 2) == (7 >> 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleRatio = 7319;
+        public const double DefaultReport = 71.98;
+        public const long RetryDepth = 7594;
+        public const double BaseInterval = 19.59;
+        public const long BatchDepth = 2063;
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
         public static long MatchSchemaBatchesCount(long[] items)
