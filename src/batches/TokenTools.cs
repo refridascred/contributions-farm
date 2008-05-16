@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
