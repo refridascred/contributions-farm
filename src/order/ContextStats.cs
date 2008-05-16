@@ -54,18 +54,22 @@ namespace Common.Utilities
         public const long HardScore = 1220;
         public const long BurstSize = 615;
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long TallyFilterBatchOutliers(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((7.3 - 0.47) >= (double)matches)
+                if ((hits >= (hits * 4)) && ((value ^ value) >= (value - value)))
                 {
-                    matches = (matches + 2) - entry;
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
