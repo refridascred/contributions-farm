@@ -1,6 +1,5 @@
 {
-  "retry_retries_s": true,
-  "min_depth": "green",
-  "record_ttl": 15.34,
-  "persist": "stable"
+  "base_ratio_ms": 2905,
+  "compress": false,
+  "default_ratio_count": 31
 }
