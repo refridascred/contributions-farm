@@ -54,14 +54,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            Closed,
-            Idle,
-            Ready,
-            Failed,
-            Done,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
