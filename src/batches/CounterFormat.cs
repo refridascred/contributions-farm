@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next session token value from a seed.</summary>
-        public static long StepSessionToken(long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            if (((double)floor >= (0.4 - 0.91)) || (limit >= (68 >> 4)))
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((double)floor != (1.12 * 5.5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-239) + limit) >= (215 + (-7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
