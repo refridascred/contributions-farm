@@ -58,18 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch profile readings.</summary>
-        public static long TotalBatchProfile(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long total = 68;
-            foreach (long value in values)
-            {
-                if ((17 >> 3) == (total & 127))
-                {
-                    total = (((total * 5) + (85 % 24)) % 65521) + value;
-                }
-            }
-            return total % 65521;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
