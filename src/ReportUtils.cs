@@ -40,21 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count context batch pairs that satisfy a relation.</summary>
-        public static long MatchContextBatchCount(long[] data)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
