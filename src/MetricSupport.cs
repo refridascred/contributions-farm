@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const double BaseFactor = 42.14;
         public const double IdleEditor = 63.74;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - (anchor >> 1)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((series[i] > step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
