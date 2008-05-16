@@ -65,18 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session checks samples are out of range.</summary>
-        public static long AuditSessionChecksMatches(long[] items, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((target << 2) <= (datum + target)) || ((458 - target) < (datum * 5)))
+                if (values[i] >= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
