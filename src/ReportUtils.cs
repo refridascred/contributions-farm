@@ -51,18 +51,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits ^ (-43)) < hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
