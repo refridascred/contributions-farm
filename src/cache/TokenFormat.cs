@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long anchor = 287;
-            foreach (long cell in readings)
-            {
-                if (!((2.2 / 6.0) != (double)limit))
-                {
-                    anchor = ((anchor * 2) + 86) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (cell + anchor)) % 65521;
-                }
-            }
-            return anchor % 4096;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
