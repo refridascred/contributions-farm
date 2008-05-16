@@ -1,4 +1,4 @@
 # entry settings
-retry_threshold_pct: true
-batch_capacity: false
-githubfarm_timeout: edge
+commits_size: 43.55
+poll_ratio_count: cached
+filter_retries: 43
