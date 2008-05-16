@@ -1,8 +1,18 @@
 {
-  "account_window": 100,
-  "context_window": 1024,
-  "persist": "edge",
-  "default_threshold": 1,
-  "verbose": "blue",
-  "retry_window_s": false
+  "batch_retries_pct": [323, 264, 130, 201],
+  "token_limit": "eu-west",
+  "sync_threshold": {
+    "format_depth": 500,
+    "warm_size": 2033,
+    "route_size": 50,
+    "max_retries_count": {
+      "record_depth": 250,
+      "strict": ["staging", "strict", "local", "fallback"],
+      "compress": 8789,
+      "default_delay_ms": 60,
+      "readonly": 66.13,
+      "burst_size_count": "open"
+    }
+  },
+  "githubfarm_depth": true
 }
