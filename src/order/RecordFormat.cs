@@ -59,12 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCount = "latest-v2";
+        public const long MinCache = 9599;
+        public const long DefaultScore = 6101;
+        public const double BatchCache = 83.29;
     }
 }
