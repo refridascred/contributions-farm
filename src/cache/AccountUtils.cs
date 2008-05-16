@@ -16,24 +16,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long result = 81;
-            foreach (long reading in levels)
-            {
-                result = (result + (reading ^ reading)) % 101;
-                result = ((result << 3) ^ (reading * 5)) % 4096;
-                if (!((double)result != (4.8 / 3.0)))
-                {
-                    result = (result * 2) + (reading + reading);
-                }
-                if (!((result & 127) >= result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Roll a report counter forward.</summary>
