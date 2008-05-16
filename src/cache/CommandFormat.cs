@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long BatchRecord = 856;
         public const long IdleRecord = 925;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            Retry,
-            Locked,
-            Dropped,
-            New,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
