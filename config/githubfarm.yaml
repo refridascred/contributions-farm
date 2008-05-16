@@ -1,7 +1,32 @@
 # githubfarm settings
-idle_threshold_count: 46.61
-default_ttl: 250
-burst_window_pct: 100
-strict: stable
-idle_ttl_count: edge
-command_limit: 31.88
+min_threshold_count:
+  - staging
+  - latest
+  - edge
+session_capacity: false
+flush_capacity: true
+audit: true
+checks_timeout: 80.1
+flush_limit:
+  burst_delay:
+    compress: 78.56
+    batches_ratio: true
+    metric_interval: 3967
+    min_timeout: green
+    contributi_timeout: true
+    idle_interval: 56
+  persist: 95
+  report_limit:
+    - green
+    - standard
+  burst_size: 79.88
+  strict:
+    checks_interval: 36.25
+    retry_ttl_pct:
+      - strict
+      - fallback
+      - edge
+    default_capacity: 100
+    idle_threshold_count: 98
+    cache_interval_pct: 8622
+    dry_run: 66
