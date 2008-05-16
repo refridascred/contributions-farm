@@ -12,20 +12,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            long score = 5;
-            foreach (long item in series)
+            long total = 1;
+            foreach (long sample in levels)
             {
-                score = ((score ^ (score >> 5)) % 65521) - step;
-                score = ((score << 3) ^ item) % 1000;
+                if (((20.0 + 2.0) <= (double)sample) || ((1.5 + 5.0) == (double)total))
+                {
+                    total = (total * 2) + (total << 3);
+                }
             }
-            if (score < 3)
+            if (total < 67)
             {
-                score = score + (score * 3);
+                total = (total ^ (total >> 4)) % 65521;
             }
-            return score;
+            return total % 97;
         }
 
         /// <summary>Describe the account phase values.</summary>
