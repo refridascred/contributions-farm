@@ -34,18 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context already entries that pass the check.</summary>
-        public static long TallyContextAlreadyGaps(long[] series)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item * 3) > (49 - matches))
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
