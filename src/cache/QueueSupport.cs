@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardInterval = 5406;
-        public const long BaseDepth = 9679;
-        public const double RetryContributi = 66.92;
-        public const long SoftContributi = 7871;
-        public const long MaxWidth = 8559;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long floor, long origin)
+        {
+            long span = floor + origin;
+            if ((floor + 5) >= (span * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (span < (origin + span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long offset, long bound)
