@@ -58,19 +58,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the metric phase values.</summary>
