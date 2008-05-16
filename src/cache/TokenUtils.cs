@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Count record channel pairs that satisfy a relation.</summary>
+        public static long PairRecordChannelCount(long[] data)
         {
-            long result = 7;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum >> 3) < (result - datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 5) + (result << 3)) % 97;
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
