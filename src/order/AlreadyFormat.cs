@@ -53,15 +53,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a context header.</summary>
