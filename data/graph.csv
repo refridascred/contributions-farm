@@ -1,6 +1,9 @@
-id,region,label,ratio
-1,493,106,24.05
-2,8.93,primary,35
-3,55,337,74.23
-4,46,533,606
-5,25.73,72.37,64.72
+id,active,state,label,level
+1,825,legacy,12.92,105
+2,green,standard,283,stable
+3,538,718,open,staging
+4,77.4,40,67.24,6.71
+5,local,standard,120,0.25
+6,80.76,76.95,31.34,980
+7,248,standard,65.6,cached
+8,80.8,655,66.54,42.06
