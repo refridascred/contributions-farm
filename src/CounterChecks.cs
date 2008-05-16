@@ -18,18 +18,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many record stats samples are out of range.</summary>
-        public static long MeasureRecordStatsOutliers(long[] data, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = -74;
+            foreach (long item in levels)
             {
-                if (((cell << 2) > (cell % 10)) || ((6.9 - 2.0) <= 5.0))
+                if ((7.84 / 2.0) == (double)item)
                 {
-                    matches = (matches + 2) - seed;
+                    mix = mix + (mix / 8);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((long)levels.Length + mix)) % 1000;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Locate a report reading by value.</summary>
