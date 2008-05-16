@@ -75,21 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 66.71;
+        public const long MinDepth = 5706;
+        public const double MinSpan = 38.27;
     }
 }
