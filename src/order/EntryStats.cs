@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] levels, long floor)
+        /// <summary>Check that every entry editor entry stays within the limit.</summary>
+        public static bool ValidateEntryEditorRange(long[] values, long seed)
         {
-            long acc = 55;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                acc = ((acc * 2) + ((long)levels.Length - item)) - floor;
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
