@@ -1,8 +1,5 @@
 # support settings
-base_limit_s: strict
-idle_depth_pct: false
-min_limit_ms:
-  - 263
-  - 3
-  - 334
-poll_interval: 38.98
+retry_size: green
+schema_ratio: 78
+retry_delay_ms: eu-west
+entry_retries: false
