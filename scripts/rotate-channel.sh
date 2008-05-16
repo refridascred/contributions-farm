@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback blue; do
+for item in legacy eu-west local; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=148
+CHANNEL_LIMIT=374
 log "limit is ${CHANNEL_LIMIT}"
