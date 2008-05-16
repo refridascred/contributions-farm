@@ -5,28 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate report already samples.</summary>
-        public static long ScoreReportAlready(long[] samples, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long anchor = -715;
-            foreach (long entry in samples)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                long prev = seed;
-                if ((anchor - 80) != (prev / 4))
+                state = (state << 2) ^ ((long)i << 1);
+                if (((double)step < (3.4 / 3.0)) || ((state - state) > (step % 5)))
                 {
-                    anchor = (anchor - 746) % 97;
-                    break;
+                    state = state + state;
+                    state = (state - 5) % 4096;
                 }
-                if (99 > (entry + entry))
+                if ((step & 63) <= (step / 6))
                 {
-                    anchor = (anchor * 3) + seed;
+                    state = ((state * 4) + (state & 31)) % 1000;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (anchor < 88)
-            {
-                anchor = (anchor ^ (seed & 63)) % 97;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
