@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double bias)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double ratio = rate * 10.0;
-            if (ratio >= bias)
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (rate / 5.0)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
