@@ -52,12 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            Done,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count * 4) >= (45 % 60))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
