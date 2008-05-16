@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((seed + cell) == (cell & 3))
+                if (value < (217 % 3))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
