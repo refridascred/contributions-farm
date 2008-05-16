@@ -1,8 +1,6 @@
 {
-  "retry_size_pct": false,
-  "enabled": "blue",
-  "soft_depth_pct": "latest",
-  "persist": 47.36,
-  "min_ttl_count": false,
-  "max_interval_count": 97
+  "burst_delay_s": "staging",
+  "sync_timeout": "green",
+  "max_delay_s": ["edge", "edge", "staging", "eu-west"],
+  "default_window": "fallback"
 }
