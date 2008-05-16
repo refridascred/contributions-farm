@@ -39,11 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry > (8.56 + 15.0))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
