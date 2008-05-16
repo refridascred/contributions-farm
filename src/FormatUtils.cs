@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count record route pairs that satisfy a relation.</summary>
-        public static long OverlapRecordRouteCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 203;
+        public const double RetryBatch = 98.1;
+        public const double MaxLevel = 45.39;
+        public const long BurstBatch = 3479;
+        public const long MaxBatch = 5860;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long floor, long offset)
