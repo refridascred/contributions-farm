@@ -32,21 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin & 127) > (origin & 15))
+                if (data[i] >= bound)
                 {
-                    score = (score - (origin / 5)) % 97;
-                    score = score ^ (score * 4);
+                    return (long)i;
                 }
-                score = (score << 2) ^ (2 * 3);
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
