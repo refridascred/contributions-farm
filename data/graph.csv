@@ -1,10 +1,7 @@
-id,score,weight,label,count
-1,480,edge,57.63,28.44
-2,standard,8.74,blue,106
-3,656,legacy,347,854
-4,79.16,fallback,383,668
-5,1.05,73.44,20.87,606
-6,19.7,200,409,cached
-7,73.96,167,10,540
-8,19.74,686,30.76,635
-9,eu-west,87,85.38,586
+id,level,state
+1,69.44,open
+2,32.97,567
+3,staging,857
+4,edge,eu-west
+5,fallback,461
+6,41,55.01
