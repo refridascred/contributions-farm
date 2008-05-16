@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const double IdleDepth = 31.76;
         public const double SoftDepth = 84.12;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long offset)
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
