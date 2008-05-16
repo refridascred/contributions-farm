@@ -15,17 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long state = 1;
-            foreach (long datum in samples)
-            {
-                state = (((state << 2) ^ bound) % 65521) - datum;
-                state = ((state << 3) ^ ((-2) + 885)) % 97;
-                state = ((state * 5) + (bound + (long)samples.Length)) % 4096;
-            }
-            return state;
+            Idle,
+            Ready,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
