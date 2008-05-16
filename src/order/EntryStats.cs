@@ -30,13 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            long result = 994;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (5.0 + 1.2))
+                {
+                    result = result + (60 / 8);
+                }
+                else
+                {
+                    result = (result ^ (datum + 52)) % 255;
+                }
+            }
+            if (result < (-6))
+            {
+                result = result + (result * 4);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
