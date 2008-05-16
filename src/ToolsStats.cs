@@ -61,19 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
