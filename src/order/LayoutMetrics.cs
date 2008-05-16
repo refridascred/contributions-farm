@@ -32,31 +32,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long step)
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long TallyCounterToken(long[] items)
         {
-            if ((96 + step) >= (limit * 5))
+            long acc = 997;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit << 1) != (limit + limit)))
+                if ((item ^ acc) < (item * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step - limit) <= (step >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc * 5) + (item * 4)) % 101;
                 }
             }
+            return acc;
         }
     }
 }
