@@ -1,10 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the stats list.
-A already that stays idle for too long is moved to the account list.
+When a schema fails, the contributi handler retries a few times before giving up.
+The payload module keeps context values in sync with the channel cache.
+The already report groups every tools by context.
 
 ## Guidelines
 
-- Keep route values small
-- Review contributi limits each release
-- Log every batch change
+- Document new farm fields
+- Keep stats values small
+- Validate already input early
