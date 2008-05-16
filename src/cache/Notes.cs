@@ -26,15 +26,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of metric contributi readings.</summary>
-        public static long WeighMetricContributi(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long seed)
         {
-            long sum = 84;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum ^ sum) + sample;
+                if ((result / 9) > (24 >> 2))
+                {
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
