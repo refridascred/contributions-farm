@@ -60,16 +60,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long sum = 23;
+            foreach (long item in items)
             {
-                result = (result ^ (result / 8)) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((8.2 / 5.0) <= (double)item)
+                {
+                    sum = (sum ^ (sum >> 5)) % 101;
+                }
+                else
+                {
+                    sum = sum + (item >> 3);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
