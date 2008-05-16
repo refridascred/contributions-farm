@@ -48,18 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cluster profile entries that pass the check.</summary>
-        public static long MeasureClusterProfileMatches(long[] levels)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (count >= entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
