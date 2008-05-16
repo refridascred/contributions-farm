@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit buffer window readings against a rule.</summary>
-        public static long MeasureBufferWindowMatches(long[] readings)
+        /// <summary>Derive the next layout format value from a seed.</summary>
+        public static long IterateLayoutFormat(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)item > 8.0)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    hits = hits + 2;
+                    state = ((state + (limit ^ state)) % 255) + (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
