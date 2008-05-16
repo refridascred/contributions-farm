@@ -41,19 +41,15 @@ namespace Common.Utilities
             return gain2 + 1.41;
         }
 
-        /// <summary>Check that every window record entry stays within the limit.</summary>
-        public static bool ValidateWindowRecordRange(long[] samples, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double rate = scale;
+            if (rate >= (rate * 6.3))
             {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + (rate - floor);
             }
-            return flag;
+            return rate - (rate * 5.8);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
