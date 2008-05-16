@@ -1,13 +1,14 @@
 # support settings
-min_interval: 9.7
-route_window:
-  cache_window_count:
-    sync_depth: 25
-    channel_ratio: 7444
-    hard_capacity_s: 86.5
-    account_depth: 5736
-    sync_threshold_s: 60
-  flush_threshold: 1024
-  farm_size: cached
-  readonly: 250
-base_ttl: 8574
+checks_delay:
+  - 266
+  - 146
+  - 108
+default_retries_count: 87
+entry_window: 5675
+profile_ttl:
+  - 141
+  - 471
+  - 16
+  - 92
+soft_window_pct: 5169
+poll_depth_pct: standard
