@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const long BatchFormat = 6806;
         public const double MaxFormat = 70.13;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] values, long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
