@@ -39,21 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Count the schema queue entries that pass the check.</summary>
+        public static long TallySchemaQueueMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)cell < (double)matches)
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
