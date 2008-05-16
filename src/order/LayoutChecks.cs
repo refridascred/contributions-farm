@@ -46,15 +46,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double weight, double floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double bias = floor;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - bias;
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
