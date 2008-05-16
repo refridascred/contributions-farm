@@ -1,4 +1,17 @@
 # entry settings
-cache_depth: true
-min_capacity_s: 4036
-dry_run: 21.09
+batches_limit:
+  dry_run: true
+  audit: 30
+  token_timeout:
+    burst_retries_pct: 1.74
+    idle_capacity_ms:
+      - 166
+      - 86
+      - 441
+    readonly: 100
+hard_timeout_count:
+  - 291
+  - 123
+  - 186
+  - 189
+warm_interval_pct: legacy
