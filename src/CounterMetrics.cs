@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= 6.9)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a cluster buffer pair into a bucket.</summary>
