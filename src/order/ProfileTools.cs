@@ -51,18 +51,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer tools entries that pass the check.</summary>
-        public static long AuditBufferToolsMatches(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long acc = 7;
+            foreach (long datum in values)
             {
-                if ((matches - matches) <= 248)
+                if (!((bound >> 4) == (datum % 2)))
                 {
-                    matches = (matches + 1) - reading;
+                    acc = acc + (datum ^ (-192));
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (datum / 7)) % 4096;
+                }
+                if ((acc >> 4) <= (datum >> 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > (-8))
+            {
+                acc = (acc * 4) + (acc % 10);
+            }
+            return acc;
         }
     }
 }
