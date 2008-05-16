@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] samples, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long anchor = 980;
+            foreach (long sample in levels)
             {
-                if (((offset << 1) >= (5 << 1)) && ((datum - tally) <= (tally << 2)))
+                if ((sample & 127) != (78 >> 1))
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor * 4) + (anchor + sample)) - seed;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
