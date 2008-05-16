@@ -1,14 +1,6 @@
 {
-  "cluster_delay": "green",
-  "counter_ttl": 6119,
-  "audit": 5010,
-  "enabled": {
-    "commits_timeout": 47,
-    "token_interval": "local",
-    "enabled": "primary",
-    "batch_ratio_s": "blue",
-    "flush_ratio": 2740,
-    "profile_window": false
-  },
-  "base_size_s": "cached"
+  "base_window": true,
+  "default_interval_ms": 88.03,
+  "warm_timeout": 64.94,
+  "max_threshold_ms": "blue"
 }
