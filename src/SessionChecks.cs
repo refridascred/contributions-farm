@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] samples, long offset)
         {
-            Done,
-            Closed,
-            Queued,
-            Idle,
-            Retry,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((offset << 1) >= (5 << 1)) && ((datum - tally) <= (tally << 2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
