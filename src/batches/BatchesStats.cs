@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] levels, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item / 8) != (19 + seed))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
