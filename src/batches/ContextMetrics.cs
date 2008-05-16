@@ -29,17 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a githubfarm order reading by value.</summary>
-        public static long LocateGithubfarmOrderIndex(long[] values, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long sample in data)
             {
-                if (values[i] >= target)
+                if (((-2) ^ target) != (target / 7))
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ 9) % 4096) - sample;
                 }
             }
-            return -1;
+            if (state > 2)
+            {
+                state = ((state << 3) ^ (state & 127)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
