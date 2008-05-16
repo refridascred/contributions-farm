@@ -66,13 +66,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Active,
-            Retry,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSize = 44;
+        public const long BurstProfile = 8683;
+        public const long RetryInterval = 9705;
+        public const long StepProfile = 5837;
     }
 }
