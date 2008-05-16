@@ -20,19 +20,32 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every cluster commits entry stays within the limit.</summary>
-        public static bool GuardClusterCommitsBounds(long[] samples, long bound)
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long BucketGraphPayload(long bound, long step)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long edge = bound - step;
+            if (!((step & 127) > (81 + 392)))
             {
-                if (entry <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)edge >= (double)5)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!(step <= (step & 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
