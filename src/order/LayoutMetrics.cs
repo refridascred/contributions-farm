@@ -20,17 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the record session series from a seed.</summary>
-        public static long DeriveRecordSession(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + ((long)i + 1)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 95.76;
+        public const long DefaultSession = 8937;
+        public const long RetrySession = 1242;
+        public const long SoftSession = 1692;
+        public const double MinScore = 70.84;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] data, long limit)
