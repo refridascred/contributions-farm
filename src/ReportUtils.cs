@@ -45,12 +45,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchSpan = "standard-edge";
-        public const string SoftRecord = "local-1";
-        public const double RetryInterval = 28.14;
-        public const long BaseRecord = 2314;
-        public const string StepRecord = "latest-edge";
+        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmQueueLimits(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long RetryDepth = 7405;
