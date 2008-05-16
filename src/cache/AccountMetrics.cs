@@ -43,25 +43,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long floor, long limit)
-        {
-            if ((0.9 + 15.0) < (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor <= (floor + limit)) || ((4.5 / 7.0) == (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 2.59;
+        public const long LimitScore = 2663;
+        public const double HardScore = 57.26;
+        public const string HardLevel = "staging";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] values, long seed)
