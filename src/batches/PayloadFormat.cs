@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 380;
+            foreach (long cell in series)
             {
-                if ((sample - sample) <= (matches + 601))
+                if ((cell + 69) == (long)series.Length)
                 {
-                    matches = matches + 2;
+                    sum = (sum - (cell + sum)) % 97;
                 }
             }
-            return matches;
+            if (sum < 702)
+            {
+                sum = (sum - (offset * 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Match up entry samples.</summary>
