@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Fold a list of schema batch readings.</summary>
+        public static long TotalSchemaBatch(long[] items, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long score = 4;
+            foreach (long datum in items)
             {
-                carry = ((carry << 2) ^ carry) % 97;
-                carry = (carry - (limit << 3)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((score / 4) > step) && (score < (74 + score)))
+                {
+                    score = score ^ (datum + datum);
+                    score = score ^ (step % 7);
+                }
+                if (!((5.0 / 5.0) > (double)step))
+                {
+                    score = (score - (25 - score)) % 65521;
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Combine support values into a single score.</summary>
