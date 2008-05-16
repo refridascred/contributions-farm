@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long origin, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long span = origin + limit;
-            if (((4.44 + 4.0) < (double)limit) && ((span / 7) > (origin * 4)))
+            long carry = 83;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (span < (span - limit))
+                carry = (carry * 3) + value;
+                if ((carry ^ value) <= value)
                 {
-                    return 5;
+                    carry = carry + value;
                 }
-                else
+                if (((value * 2) < value) || ((6 - value) > value))
                 {
-                    if (!((origin + origin) >= (50 ^ 55)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(4 < limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (carry < 0)
+            {
+                carry = (carry * 3) + (0 << 1);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
