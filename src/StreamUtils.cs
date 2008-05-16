@@ -86,19 +86,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long step)
         {
-            double ratio2 = offset - offset;
-            if (ratio2 <= (double)5)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = ratio2 + (ratio - ratio2);
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 - (offset * 3.8);
+            return -1;
         }
     }
 }
