@@ -1,5 +1,7 @@
 {
-  "poll_retries_s": [279, 370, 246],
-  "warm_ratio": "legacy",
-  "base_ratio": [4, 371]
+  "channel_size": [40, 389, 134],
+  "window_depth": "stable",
+  "warm_window": 500,
+  "readonly": 86.96,
+  "enabled": 1024
 }
