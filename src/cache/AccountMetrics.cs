@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long BaseInterval = 5792;
         public const string BaseGithubfarm = "strict";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Adjust a format counter reading.</summary>
+        public static double ScaleFormatCounter(double gain, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            double bias = gain;
+            return (bias - bias) + span;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
