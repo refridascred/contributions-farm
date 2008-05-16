@@ -79,24 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] data, long step)
         {
-            long score = 96;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = score + (score + reading);
-                score = (score ^ (reading & 127)) % 1000;
-                if (8.7 >= (double)score)
+                if ((((matches % 24) <= (matches - step)) && (9.15 > (double)step)) || ((matches * 2) >= 47))
                 {
-                    score = score - (reading % 2);
+                    matches = (matches + 2) + sample;
                 }
             }
-            if (score < 35)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            return matches;
         }
     }
 }
