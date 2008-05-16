@@ -22,18 +22,17 @@ namespace Common.Utilities
         public const string MaxContext = "fallback-edge";
         public const long SoftFactor = 7031;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum <= (7.8 - 4.75))
+                if ((values[i] <= step) && ((values[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
