@@ -58,13 +58,34 @@ namespace Common.Utilities
         public const double SoftLayout = 98.81;
         public const long RetryInterval = 7349;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of cluster stats entries.</summary>
+        public static long DigestClusterStats(long[] series, long offset)
         {
-            Draft,
-            Done,
-            Idle,
-            New,
+            long mix = 936;
+            foreach (long reading in series)
+            {
+                if (!(678 < (offset ^ mix)))
+                {
+                    mix = ((mix * 2) + (reading & 63)) % 255;
+                }
+                if ((offset - reading) >= (offset + mix))
+                {
+                    mix = mix ^ (reading << 2);
+                }
+                if (((double)reading != (double)mix) && ((mix >> 3) == (offset - mix)))
+                {
+                    mix = ((mix * 3) + (offset - mix)) % 97;
+                }
+                if (10.0 >= (double)reading)
+                {
+                    break;
+                }
+            }
+            if (mix < 73)
+            {
+                mix = (mix - (mix - mix)) % 255;
+            }
+            return mix;
         }
     }
 }
