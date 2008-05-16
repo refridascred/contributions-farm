@@ -1,6 +1,12 @@
 {
-  "stats_ttl": "open",
-  "command_ttl": 90,
-  "retry_retries_count": "eu-west",
-  "hard_size": 39
+  "stream_retries": {
+    "hard_threshold_pct": [94, 11, 349],
+    "idle_ttl_ms": ["stable", "edge"],
+    "cluster_ratio": ["standard", "staging"],
+    "report_ttl": true
+  },
+  "max_capacity_count": false,
+  "dry_run": 75.82,
+  "compress": "stable",
+  "flush_window": [35, 437]
 }
