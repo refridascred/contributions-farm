@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Synced,
-            Stale,
-            Paused,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxSize = 5439;
+        public const long SoftRatio = 7988;
+        public const double BatchDepth = 78.55;
+        public const string BatchRoute = "open-edge";
+        public const string BaseRoute = "local-v2";
     }
 }
