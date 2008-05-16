@@ -63,12 +63,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
