@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) <= (mark % 60))
-                {
-                    mark = ((mark * 4) + cell) % 97;
-                }
-            }
-            if (mark > 73)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark % 97;
+            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of counter token readings.</summary>
