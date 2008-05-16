@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long lane = floor ^ bound;
-            if ((double)lane >= (7.1 * 4.52))
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                result = (result + (floor - result)) % 101;
+                result = (result << 3) ^ result;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((3.62 / 8.0) > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor < (bound / 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound & 255) > (989 + (-592)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a filter info.</summary>
