@@ -18,18 +18,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowFactor = 75.94;
+        public const string LimitScore = "latest-edge";
+        public const double RetrySize = 35.26;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 9148;
