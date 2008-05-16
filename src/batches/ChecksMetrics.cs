@@ -50,38 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long seed2)
+        /// <summary>Count the batches already entries that pass the check.</summary>
+        public static long AuditBatchesAlreadyMatches(long[] samples, long step)
         {
-            if ((597 + seed2) == (seed2 & 31))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - 8) >= (-476))
+                if ((double)step >= (6.62 * 9.2))
                 {
-                    return 3;
+                    tally = (tally + 1) + datum;
                 }
                 else
                 {
-                    if ((19.0 / 8.0) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (1.5 >= (double)seed2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
