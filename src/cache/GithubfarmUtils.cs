@@ -45,11 +45,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleScore = 43.83;
-        public const string HardMetrics = "open-edge";
-        public const long IdleDepth = 4225;
-        public const long LimitSize = 7360;
-        public const long CacheMetrics = 6879;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Active,
+            Retry,
+            Pending,
+            Synced,
+        }
     }
 }
