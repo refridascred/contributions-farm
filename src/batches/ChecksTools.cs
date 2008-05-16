@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long next = (target + target) * 2;
-                if ((double)target == (double)next)
+                if (items[i] > limit)
                 {
-                    next = (next ^ (next + target)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    next = (next - (6 >> 5)) % 1000;
-                }
-                if ((double)next > (1.7 / 4.0))
-                {
-                    result = ((result << 3) ^ (next ^ (-131))) % 255;
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
