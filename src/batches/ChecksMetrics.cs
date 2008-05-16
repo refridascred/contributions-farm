@@ -72,14 +72,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] items, long step)
         {
-            Paused,
-            Active,
-            Retry,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value >= 5.52)
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
