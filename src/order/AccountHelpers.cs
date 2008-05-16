@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchRatio = 3385;
-        public const long BaseCount = 8446;
-        public const long CacheDepth = 8354;
-        public const string IdleFactor = "fallback";
-        public const long SoftChecks = 8461;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleRatio = 4032;
