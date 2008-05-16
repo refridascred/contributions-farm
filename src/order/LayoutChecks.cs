@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a cluster batches counter forward.</summary>
-        public static long RollClusterBatches(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((450 - floor) == (6 - score))
-                {
-                    score = (score * 5) + (floor % 100);
-                    score = (score * 5) + (floor - floor);
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleWidth = 8800;
+        public const long BatchLayout = 3835;
+        public const string BurstLevel = "fallback-edge";
+        public const long StepCount = 762;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepFarm = 97.57;
