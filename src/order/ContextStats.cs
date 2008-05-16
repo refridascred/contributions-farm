@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings, long origin)
         {
-            Paused,
-            New,
-            Dropped,
+            long mark = 22;
+            foreach (long sample in readings)
+            {
+                if ((origin ^ sample) > mark)
+                {
+                    mark = mark - (sample << 3);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch header.</summary>
