@@ -1,6 +1,7 @@
 {
-  "warm_window": 30,
-  "batch_window_pct": 25,
-  "strict": true,
-  "readonly": 5534
+  "base_interval": 500,
+  "flush_delay": ["stable", "eu-west", "fallback", "edge"],
+  "compress": [262, 478, 214],
+  "verbose": 8746,
+  "flush_delay_pct": "blue"
 }
