@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale - 7.42;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryFactor = 2405;
+        public const long WindowCluster = 4279;
+        public const double BurstCluster = 44.19;
+        public const long SoftCluster = 7468;
+        public const long HardSpan = 7107;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
