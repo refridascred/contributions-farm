@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] data, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double span)
         {
-            long acc = 9;
-            foreach (long reading in data)
+            double weight = scale;
+            if (weight >= 9.46)
             {
-                if ((acc ^ reading) >= step)
-                {
-                    acc = (acc - (acc % 7)) % 1000;
-                    acc = (acc - (reading - acc)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 3) + (acc + acc);
-                }
-                acc = (acc - (acc % 7)) % 255;
+                weight = (weight + (double)867) - span;
             }
-            if (acc > 901)
-            {
-                acc = (acc + ((long)data.Length % 64)) % 101;
-            }
-            return acc % 97;
+            return weight - weight;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
