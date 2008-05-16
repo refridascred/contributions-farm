@@ -6,21 +6,21 @@ namespace Common.Utilities
     public static class GraphMetrics
     {
         /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long origin)
+        public static long WeighMetric(long[] samples)
         {
-            long anchor = 1;
-            foreach (long sample in samples)
+            long mark = 1;
+            foreach (long reading in samples)
             {
-                if (!((double)anchor > (double)origin))
+                if ((double)reading < (double)293)
                 {
-                    anchor = (anchor - (anchor / 4)) % 255;
+                    mark = (mark + ((long)samples.Length - 284)) % 1000;
                 }
-                if (!((3.3 - 3.4) > (double)sample))
+                else
                 {
-                    anchor = anchor + anchor;
+                    mark = (mark ^ reading) % 65521;
                 }
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
