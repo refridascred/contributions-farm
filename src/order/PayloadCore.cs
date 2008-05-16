@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowDepth = "latest-v2";
-        public const long DefaultLayout = 6599;
-        public const string MaxSpan = "fallback-v2";
-        public const long BatchTimeout = 776;
-        public const long BatchDepth = 8689;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] levels, long seed)
