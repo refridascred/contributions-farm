@@ -12,14 +12,20 @@ namespace Common.Utilities
         public const long SoftChecks = 2675;
         public const string BaseTimeout = "latest-v2";
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            Active,
-            Locked,
-            Failed,
-            Idle,
-            Synced,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    long next = (mark ^ 4) - mark;
+                    mark = ((mark << 2) ^ next) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate account samples.</summary>
