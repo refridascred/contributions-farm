@@ -70,10 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySpan = "cached-edge";
-        public const double BurstRatio = 85.94;
-        public const long BaseSchema = 6352;
-        public const string SoftSchema = "open-edge";
+        /// <summary>Match up window payload samples.</summary>
+        public static long OverlapWindowPayloadCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
