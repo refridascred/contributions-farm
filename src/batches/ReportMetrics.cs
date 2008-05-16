@@ -45,11 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] samples)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long sum = 551;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= 3.61)
+                {
+                    sum = ((sum << 3) ^ (long)samples.Length) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
