@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a token snapshot.</summary>
