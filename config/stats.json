@@ -1,24 +1,5 @@
 {
-  "verbose": [381, 38, 131, 496],
-  "persist": "edge",
-  "order_limit": "latest",
-  "strict": {
-    "flush_ratio": "fallback",
-    "enabled": ["edge", "legacy", "green", "local"],
-    "base_limit_pct": {
-      "base_size_pct": "primary",
-      "strict": true,
-      "counter_retries": "primary"
-    },
-    "burst_size_pct": "edge",
-    "route_window": {
-      "max_depth_count": 48.61,
-      "batch_timeout": true,
-      "tools_timeout": "staging",
-      "sync_retries": 78,
-      "default_window": 37.24
-    }
-  },
-  "cache_delay": true,
-  "notes_size": true
+  "batch_window_count": 90,
+  "enabled": "staging",
+  "cache_ttl_count": 100
 }
