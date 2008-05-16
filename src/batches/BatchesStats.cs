@@ -16,12 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 8867;
-        public const long LimitSize = 97;
-        public const string DefaultTools = "alpha-1";
-        public const long HardTools = 3333;
-        public const long LimitTimeout = 9593;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstDepth = 5131;
+        public const long CacheLevel = 7687;
+        public const long BatchInterval = 4513;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheProfile = 5223;
