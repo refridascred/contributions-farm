@@ -40,22 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 7625;
+        public const double BurstScore = 45.3;
+        public const double SoftSession = 0.16;
+        public const string HardFactor = "primary-v2";
+        public const string HardSession = "standard-1";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
