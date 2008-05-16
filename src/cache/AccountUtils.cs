@@ -24,16 +24,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum << 3) ^ ((long)i * 5);
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
