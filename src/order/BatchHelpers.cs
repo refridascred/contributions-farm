@@ -21,15 +21,11 @@ namespace Common.Utilities
             return ratio + (span + ratio);
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
