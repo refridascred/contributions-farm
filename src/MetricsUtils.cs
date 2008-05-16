@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] series, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 3) < (seed * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Define window limits and defaults.</summary>
