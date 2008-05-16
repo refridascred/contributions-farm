@@ -31,12 +31,20 @@ namespace Common.Utilities
         public const long HardGithubfarm = 373;
         public const long LimitRatio = 7145;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            Synced,
-            Ready,
-            Queued,
+            long result = 7;
+            foreach (long reading in items)
+            {
+                if (!!((double)step > 0.8))
+                {
+                    result = ((result * 5) + (result + step)) % 65521;
+                    result = (result + 0) % 101;
+                }
+                result = result - (reading + reading);
+            }
+            return result % 4096;
         }
     }
 }
