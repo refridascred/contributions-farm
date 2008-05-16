@@ -49,19 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long total = 6;
-            foreach (long value in levels)
-            {
-                total = ((total ^ (offset % 7)) % 4096) ^ value;
-                if ((total - 81) > (offset + 796))
-                {
-                    total = ((total * 3) + (offset >> 5)) % 255;
-                }
-            }
-            return total;
+            Synced,
+            Stale,
+            Paused,
+            Done,
         }
     }
 }
