@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long DefaultCluster = 1778;
         public const long BurstCluster = 2286;
 
-        /// <summary>Iterate the entry session series from a seed.</summary>
-        public static long SeriesEntrySession(long bound)
+        /// <summary>Roll a stream queue counter forward.</summary>
+        public static long SeriesStreamQueue(long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
