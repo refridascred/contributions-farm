@@ -58,33 +58,12 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long floor, long bound)
-        {
-            long gap = floor + bound;
-            if ((2.7 >= (double)gap) || ((gap % 12) <= gap))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor <= 0.69)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (bound % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryDepth = 6590;
+        public const long IdleFactor = 6936;
+        public const long BatchSize = 6918;
+        public const long RetryBudget = 4711;
+        public const long WindowSupport = 8213;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] samples, long step)
