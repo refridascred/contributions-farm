@@ -24,13 +24,10 @@ namespace Common.Utilities
         public const string BatchRoute = "cached-v2";
         public const long CacheCount = 4942;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 9588;
+        public const double HardScore = 4.52;
+        public const long CacheFactor = 485;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
