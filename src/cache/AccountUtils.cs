@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mark = 947;
-            foreach (long item in readings)
-            {
-                mark = ((mark << 2) ^ (item - mark)) % 65521;
-            }
-            return mark % 4096;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine record batches values into a single score.</summary>
