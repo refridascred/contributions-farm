@@ -41,18 +41,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + cell) >= (hits - 92))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
