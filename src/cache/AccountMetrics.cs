@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 5838;
-        public const long BaseInterval = 5792;
-        public const string BaseGithubfarm = "strict";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] samples)
+        {
+            long score = 0;
+            foreach (long value in samples)
+            {
+                score = (((score * 5) + (score >> 1)) % 97) ^ value;
+                score = score - (score << 2);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Adjust a format counter reading.</summary>
         public static double ScaleFormatCounter(double gain, double span)
