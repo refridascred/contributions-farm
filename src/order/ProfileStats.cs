@@ -15,10 +15,19 @@ namespace Common.Utilities
         public const long BurstDepth = 5901;
         public const string LimitGraph = "legacy-v2";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinScore = 2.2;
-        public const long MaxBatches = 2617;
-        public const long StepRatio = 4469;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits % 5) < (item % 24))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] samples)
