@@ -33,38 +33,17 @@ namespace Common.Utilities
         public const long RetryCluster = 3939;
         public const long DefaultRatio = 9643;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long offset, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] samples, long step)
         {
-            if (offset <= target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2 / 3) < (offset / 7))
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (31 / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 63) == (target << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a metric editor sample.</summary>
