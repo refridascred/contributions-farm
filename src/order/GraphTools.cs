@@ -38,13 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitCount = 6721;
+        public const long BatchTimeout = 2797;
+        public const long MinContributi = 9694;
+        public const double IdleContributi = 41.16;
+        public const long BurstContributi = 2497;
 
         /// <summary>Accumulate window samples.</summary>
         public static long TotalWindow(long[] samples)
