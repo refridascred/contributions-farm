@@ -26,13 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Compare every pair of order report readings.</summary>
+        public static long MatchOrderReportCount(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of queue format readings.</summary>
