@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel checks reading by value.</summary>
-        public static long FindChannelChecksIndex(long[] items, long offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] == offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
