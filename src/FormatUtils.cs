@@ -45,23 +45,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long offset)
-        {
-            long mix = 760;
-            foreach (long value in items)
-            {
-                if (((double)offset <= (9.9 + 6.5)) || ((value >> 5) == (mix ^ mix)))
-                {
-                    mix = (mix * 2) + (8 << 1);
-                }
-            }
-            if (mix > 8)
-            {
-                mix = ((mix * 4) + 193) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 55.57;
+        public const long BaseWindow = 7915;
+        public const string RetryScore = "stable-edge";
+        public const double MaxWindow = 64.63;
+        public const long HardWindow = 9202;
 
         /// <summary>Compare every pair of contributi account readings.</summary>
         public static long CompareContributiAccountCount(long[] series)
