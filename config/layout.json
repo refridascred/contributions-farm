@@ -1,7 +1,19 @@
 {
-  "contributi_threshold": 4,
-  "default_window_s": 35.37,
-  "verbose": [483, 389, 41],
-  "metric_capacity": ["edge", "latest", "cached", "latest"],
-  "channel_interval": 30
+  "min_limit_s": "green",
+  "retry_threshold": "staging",
+  "batch_ttl": 5276,
+  "sync_delay": {
+    "poll_window": 86.76,
+    "verbose": 9131,
+    "readonly": {
+      "counter_delay": 60.34,
+      "session_limit": 42.01,
+      "report_delay": false,
+      "persist": true,
+      "default_limit": 22.13
+    },
+    "default_size_pct": "open",
+    "burst_capacity": 90,
+    "sync_threshold_ms": "stable"
+  }
 }
