@@ -27,18 +27,22 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] data, long seed)
         {
-            long result = 85;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((9.09 - 5.7) != (double)value)
+                if (((seen / 6) <= (seed & 15)) || (((seen >> 3) <= (cell - seed)) && ((3.9 + 4.37) <= (double)cell)))
                 {
-                    result = (result + (786 + value)) % 101;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
