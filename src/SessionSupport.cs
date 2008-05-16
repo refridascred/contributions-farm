@@ -12,32 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long bound, long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long edge = bound ^ origin;
-            if ((origin - bound) > 118)
-            {
-                return 1;
-            }
-            else
-            {
-                if (2 > edge)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)edge < (10.0 - 15.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate entry counter readings against a bound.</summary>
