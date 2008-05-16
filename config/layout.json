@@ -1,5 +1,8 @@
 {
-  "warm_size_pct": true,
-  "checks_retries": "strict",
-  "compress": 2.42
+  "soft_size_ms": 44.52,
+  "base_size": 64.42,
+  "dry_run": 60,
+  "idle_ttl": false,
+  "metric_timeout": "latest",
+  "enabled": false
 }
