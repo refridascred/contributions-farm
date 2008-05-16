@@ -47,21 +47,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Rank report stats input into a small class.</summary>
+        public static long ClassifyReportStats(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor - limit;
+            if (!(limit > 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((slot & 1) == (floor * 3)) && ((floor - limit) > (floor + limit)))
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
