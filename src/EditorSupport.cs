@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state << 2) ^ state) % 97;
-                if (!((7.0 / 9.0) >= (double)state))
-                {
-                    state = (state - state) % 4096;
-                }
-                state = ((state * 2) + step) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 464;
+        public const long StepOrder = 6480;
+        public const string MinScore = "strict-1";
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long origin, long bound)
