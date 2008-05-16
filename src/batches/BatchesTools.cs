@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of commits schema readings.</summary>
-        public static long CompareCommitsSchemaCount(long[] samples)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
