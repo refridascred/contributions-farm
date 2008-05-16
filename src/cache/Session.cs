@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool ValidateFilterWindowRange(long[] values, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = (bias2 - bias2) * 5.0;
+            return drift + (bias * 19.0);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
