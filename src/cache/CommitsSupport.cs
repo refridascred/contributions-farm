@@ -27,12 +27,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count format entry pairs that satisfy a relation.</summary>
+        public static long CompareFormatEntryCount(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
