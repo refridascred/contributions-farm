@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values, long seed)
+        /// <summary>Fold a list of window report readings.</summary>
+        public static long DigestWindowReport(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = 262;
+            foreach (long value in series)
             {
-                if (!((datum >> 2) != (seed - hits)))
+                if ((double)state != (5.7 - 12.0))
                 {
-                    hits = hits + 3;
+                    state = ((state + (seed + seed)) % 65521) + value;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
