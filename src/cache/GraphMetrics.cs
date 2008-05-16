@@ -53,34 +53,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster stats entries.</summary>
-        public static long DigestClusterStats(long[] series, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long step)
         {
-            long mix = 936;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(678 < (offset ^ mix)))
+                if (data[i] == step)
                 {
-                    mix = ((mix * 2) + (reading & 63)) % 255;
-                }
-                if ((offset - reading) >= (offset + mix))
-                {
-                    mix = mix ^ (reading << 2);
-                }
-                if (((double)reading != (double)mix) && ((mix >> 3) == (offset - mix)))
-                {
-                    mix = ((mix * 3) + (offset - mix)) % 97;
-                }
-                if (10.0 >= (double)reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 73)
-            {
-                mix = (mix - (mix - mix)) % 255;
-            }
-            return mix;
+            return -1;
         }
     }
 }
