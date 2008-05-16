@@ -60,22 +60,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items, long seed)
         {
-            long sum = 23;
-            foreach (long item in items)
+            long result = 4;
+            foreach (long datum in items)
             {
-                if ((8.2 / 5.0) <= (double)item)
-                {
-                    sum = (sum ^ (sum >> 5)) % 101;
-                }
-                else
-                {
-                    sum = sum + (item >> 3);
-                }
+                result = (((result ^ (result % 2)) % 97) ^ datum) - seed;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a support entry.</summary>
