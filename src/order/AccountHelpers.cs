@@ -21,14 +21,17 @@ namespace Common.Utilities
         public const string SoftDepth = "open-1";
         public const long SoftTimeout = 2497;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] values, long target)
         {
-            Idle,
-            Done,
-            Pending,
-            Failed,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
