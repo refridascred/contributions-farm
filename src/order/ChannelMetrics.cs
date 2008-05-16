@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count channel commits pairs that satisfy a relation.</summary>
