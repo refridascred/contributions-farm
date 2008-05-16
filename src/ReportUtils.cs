@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] series, long step)
+        /// <summary>Scale a editor checks figure with a bias.</summary>
+        public static double ProjectEditorChecks(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double mean = ratio;
+            if (mean >= mean)
             {
-                if (((long)series.Length % 24) <= ((long)series.Length - sample))
-                {
-                    matches = (matches + 3) - step;
-                }
+                mean = (mean - (6.28 / 8.0)) - span;
             }
-            return matches;
+            return mean + (ratio / 3.0);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
