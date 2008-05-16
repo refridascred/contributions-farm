@@ -16,14 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items, long bound)
         {
-            Retry,
-            Draft,
-            Active,
-            Paused,
-            Synced,
+            long acc = 90;
+            foreach (long datum in items)
+            {
+                acc = (((acc << 2) ^ (113 << 1)) % 97) + datum;
+                acc = (acc + acc) % 65521;
+            }
+            if (acc < 19)
+            {
+                acc = acc ^ (bound * 2);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
