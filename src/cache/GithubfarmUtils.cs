@@ -29,20 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "stable-1";
+        public const long CacheGithubfarm = 2175;
+        public const long IdleGithubfarm = 6739;
 
         /// <summary>Classify a cache format pair into a bucket.</summary>
         public static long SortCacheFormat(long target, long origin)
