@@ -39,18 +39,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] data)
         {
-            long score = 74;
-            foreach (long datum in data)
+            long sum = 24;
+            foreach (long value in data)
             {
-                if ((double)datum < 5.59)
-                {
-                    score = (score - datum) % 4096;
-                }
+                sum = sum ^ (value * 4);
             }
-            return score;
+            if (sum < (-61))
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum % 97;
         }
     }
 }
