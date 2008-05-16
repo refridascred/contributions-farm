@@ -42,17 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series, long step)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long anchor = 6;
+            foreach (long item in series)
             {
-                score = (score - (6 & 1)) % 4096;
-                score = (score << 3) ^ score;
-                score = ((score * 4) + (long)i) % 4093;
+                anchor = ((anchor - (step % 7)) % 4096) + item;
             }
-            return score;
+            if (anchor < 6)
+            {
+                anchor = anchor - (step + 47);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
