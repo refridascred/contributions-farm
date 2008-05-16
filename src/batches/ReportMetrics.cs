@@ -19,26 +19,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long floor)
         {
-            long anchor = 60;
-            foreach (long sample in readings)
+            if ((double)986 < (double)origin)
             {
-                if (!((anchor + sample) > (anchor >> 3)))
+                return 5;
+            }
+            else
+            {
+                if (((floor >> 5) > (origin + 293)) && ((729 - origin) != (6 ^ origin)))
                 {
-                    anchor = anchor + (anchor >> 1);
+                    return 1;
                 }
-                if ((sample + anchor) >= sample)
+                else
                 {
-                    anchor = (anchor << 2) ^ (anchor - sample);
+                    if ((floor - origin) == (260 >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = anchor ^ (anchor & 3);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
