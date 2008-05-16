@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const double SoftFilter = 57.35;
         public const long StepFilter = 9937;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            if ((double)986 < (double)origin)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor >> 5) > (origin + 293)) && ((729 - origin) != (6 ^ origin)))
+                if ((7.0 < (double)cell) || ((hits / 8) >= 737))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - origin) == (260 >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
