@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitSize = 5709;
-        public const string WindowFarm = "staging-edge";
-        public const long MinFarm = 7677;
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double span)
+        {
+            double drift = (weight + weight) / 4.0;
+            if (drift >= span)
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift - (double)0;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
