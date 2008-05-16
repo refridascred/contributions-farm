@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] levels, long offset)
+        /// <summary>Roll a checks route counter forward.</summary>
+        public static long IterateChecksRoute(long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((entry + entry) > (offset >> 3)) || ((9.9 + 4.4) < (double)offset)) && ((5 + 2) == (entry * 3)))
-                {
-                    count = count + 3;
-                }
+                long step = (acc * 3) / 8;
+                acc = ((acc * 4) + (step << 2)) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
