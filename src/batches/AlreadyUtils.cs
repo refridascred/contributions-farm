@@ -67,18 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (((long)values.Length ^ 345) >= (limit + limit))
+                if (value > floor)
                 {
-                    tally = (tally + 3) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
