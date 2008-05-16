@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            if ((offset - origin) >= (95 ^ 860))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin != (8.61 + 6.0)))
+                if ((tally + datum) > datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset + offset) >= (origin / 8)) && ((double)origin >= (3.52 / 6.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(offset <= (1 << 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
