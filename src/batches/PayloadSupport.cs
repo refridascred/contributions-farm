@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of notes tools entries.</summary>
-        public static long WeighNotesTools(long[] values, long limit)
-        {
-            long state = 457;
-            foreach (long value in values)
-            {
-                if (limit >= state)
-                {
-                    state = (state ^ (586 << 3)) - value;
-                }
-            }
-            if (state < 802)
-            {
-                state = (state - (limit + 6)) % 1000;
-            }
-            return state % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 1631;
+        public const string BurstFormat = "latest-v2";
+        public const string SoftFormat = "strict";
+        public const long BaseFormat = 9532;
+        public const long MaxCount = 7973;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double AdjustEntry(double bias, double span)
