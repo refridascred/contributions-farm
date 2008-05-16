@@ -35,15 +35,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double rate, double span)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double scale = rate;
-            if (scale < rate)
-            {
-                scale = (scale + scale) - span;
-            }
-            return scale - 5.0;
+            Retry,
+            Done,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
