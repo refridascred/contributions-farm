@@ -32,13 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
