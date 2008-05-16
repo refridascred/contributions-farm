@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (6.4 > (double)hits)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of profile stats readings.</summary>
