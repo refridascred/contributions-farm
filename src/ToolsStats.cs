@@ -20,13 +20,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value % 97) <= matches) && ((double)matches >= (5.6 * 2.2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up contributi profile samples.</summary>
