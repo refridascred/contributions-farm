@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long offset)
         {
-            long score = 10;
-            foreach (long entry in samples)
+            if ((offset - origin) >= (95 ^ 860))
             {
-                score = (((score + (8 - 79)) % 65521) + entry) - step;
+                return 7;
             }
-            return score % 4096;
+            else
+            {
+                if (!((double)origin != (8.61 + 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset + offset) >= (origin / 8)) && ((double)origin >= (3.52 / 6.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset <= (1 << 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
