@@ -1,12 +1,12 @@
 {
-  "idle_limit_s": ["legacy", "strict", "open", "green"],
-  "warm_size": {
-    "metric_delay": true,
-    "hard_threshold_count": "fallback",
-    "verbose": false,
-    "entry_ttl": true,
-    "metric_size": "fallback"
+  "strict": {
+    "cache_threshold_count": 89,
+    "soft_interval": 20.82,
+    "filter_size": true,
+    "poll_interval_s": 30
   },
-  "audit": 6575,
-  "retry_retries_ms": 4.54
+  "route_timeout": "primary",
+  "verbose": "latest",
+  "max_depth_s": false,
+  "tools_delay": 18.55
 }
