@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxScore = 907;
-        public const double SoftScore = 1.66;
-        public const double MinGraph = 85.92;
-        public const long MaxGraph = 6627;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 2634;
+        public const string RetryToken = "local-v2";
+        public const string MaxLevel = "standard";
+        public const long LimitToken = 6024;
+        public const long DefaultInterval = 5748;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 7537;
