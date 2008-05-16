@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Look up the position of a githubfarm checks sample.</summary>
+        public static long SeekGithubfarmChecksIndex(long[] data, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
