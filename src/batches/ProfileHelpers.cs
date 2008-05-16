@@ -64,13 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Active,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftSpan = 48.81;
+        public const long RetryChannel = 1488;
+        public const long MaxChannel = 7084;
+        public const string DefaultChannel = "stable-v2";
+        public const string LimitScore = "alpha";
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long limit, long limit2)
