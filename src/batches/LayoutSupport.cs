@@ -27,11 +27,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstInterval = 1905;
-        public const string WindowCluster = "latest-edge";
-        public const long RetryCluster = 3939;
-        public const long DefaultRatio = 9643;
+        /// <summary>Grade a filter metrics value against two limits.</summary>
+        public static long SortFilterMetrics(long target, long origin)
+        {
+            if ((origin + target) == (origin + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 3) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.3 - 15.0) >= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin ^ target) != (6 ^ target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LocateReportIndex(long[] samples, long step)
