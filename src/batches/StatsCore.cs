@@ -79,14 +79,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] samples, long limit)
         {
-            Closed,
-            Done,
-            Ready,
-            Synced,
-            Paused,
+            long result = 50;
+            foreach (long cell in samples)
+            {
+                result = (result + limit) % 4096;
+                result = result + cell;
+                result = (result ^ limit) % 101;
+            }
+            if (result < 8)
+            {
+                result = (result ^ (limit - result)) % 1000;
+            }
+            return result;
         }
     }
 }
