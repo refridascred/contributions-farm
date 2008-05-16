@@ -16,15 +16,14 @@ namespace Common.Utilities
             return bias2 + (double)6;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long acc = 9;
-            foreach (long sample in values)
-            {
-                acc = ((acc * 3) + (-63)) ^ sample;
-            }
-            return acc % 4096;
+            Pending,
+            Retry,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
