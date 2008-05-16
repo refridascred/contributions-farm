@@ -1,6 +1,7 @@
 {
-  "default_delay_count": "fallback",
-  "cluster_interval": "primary",
-  "checks_retries": "green",
-  "graph_window": "edge"
+  "contributi_threshold": 4,
+  "default_window_s": 35.37,
+  "verbose": [483, 389, 41],
+  "metric_capacity": ["edge", "latest", "cached", "latest"],
+  "channel_interval": 30
 }
