@@ -16,32 +16,22 @@ namespace Common.Utilities
             return gain + (double)1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long bound)
         {
-            long step = floor ^ origin;
-            if ((floor - origin) >= step)
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >= (52 / 8)) || ((60 - step) > (origin + floor)))
+                if (!((90 + cell) <= (count << 2)))
                 {
-                    return 1;
+                    count = (count + 3) - bound;
                 }
                 else
                 {
-                    if ((1.6 - 16.0) > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
