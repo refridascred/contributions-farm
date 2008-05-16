@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardBudget = 5335;
+        public const long BatchScore = 8487;
+        public const double BaseFactor = 42.14;
+        public const double IdleEditor = 63.74;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
