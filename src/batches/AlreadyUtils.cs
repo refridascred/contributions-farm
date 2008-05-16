@@ -28,19 +28,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] values, long limit)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a tools snapshot.</summary>
