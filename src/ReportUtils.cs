@@ -54,19 +54,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] data, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            bool found = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item <= floor)
+                if ((double)hits >= (16.0 * 10.0))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a tools record.</summary>
