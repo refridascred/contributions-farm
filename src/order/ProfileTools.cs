@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftTimeout = 7385;
+        public const long RetryWidth = 4746;
+        public const long BaseSize = 8883;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryToken = 8037;
