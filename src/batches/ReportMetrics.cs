@@ -43,22 +43,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sample >> 1) >= (sample - sample))
-                {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result * 4) + result;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
     }
 }
