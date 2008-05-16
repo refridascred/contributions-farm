@@ -22,22 +22,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Measure how many counter window samples are out of range.</summary>
+        public static long CountCounterWindowOutliers(long[] values)
         {
-            long state = 852;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((16.0 + 7.8) > (double)state)
+                if (reading < (88 - reading))
                 {
-                    state = ((state - (state >> 3)) % 65521) - sample;
-                }
-                else
-                {
-                    state = ((state * 3) + state) % 65521;
+                    hits = hits + 3;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
