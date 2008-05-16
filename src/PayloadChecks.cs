@@ -14,16 +14,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (seed + seed)) % 1000;
-                total = ((total * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a channel reading.</summary>
