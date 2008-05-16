@@ -58,13 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the cluster profile entries that pass the check.</summary>
+        public static long MeasureClusterProfileMatches(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count >= entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
