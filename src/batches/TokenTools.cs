@@ -43,19 +43,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream batch values into a single score.</summary>
-        public static long DigestStreamBatch(long[] readings, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] samples, long limit)
         {
-            long result = 42;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = (((result << 3) ^ (result + 911)) % 65521) + reading;
+                if ((limit + count) > (count & 31))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result < 15)
-            {
-                result = ((result * 3) + (bound >> 4)) % 1000;
-            }
-            return result;
+            return count;
         }
     }
 }
