@@ -63,11 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the buffer tools entries that pass the check.</summary>
+        public static long AuditBufferToolsMatches(long[] series)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches - matches) <= 248)
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
