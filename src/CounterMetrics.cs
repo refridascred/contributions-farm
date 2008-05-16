@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool GuardPayloadLayoutLimits(long[] samples, long seed)
+        /// <summary>Classify a cluster buffer pair into a bucket.</summary>
+        public static long GradeClusterBuffer(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if (7 < (7 - offset))
             {
-                if (item >= seed)
+                return 0;
+            }
+            else
+            {
+                if (((double)seed >= (3.0 / 6.0)) || ((offset - seed) == (5 & 63)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the command status values.</summary>
