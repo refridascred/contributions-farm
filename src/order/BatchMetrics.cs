@@ -59,19 +59,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples, long offset)
         {
-            long result = 573;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                result = result ^ result;
-                if (((long)series.Length - reading) < 911)
+                if ((offset <= (0 ^ 353)) || ((offset & 63) > (matches * 2)))
                 {
-                    result = result + (-561);
+                    matches = (matches + 3) - cell;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
