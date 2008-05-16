@@ -14,25 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long sum = 769;
+            foreach (long value in items)
             {
-                if (((mark % 24) >= (mark >> 2)) && ((double)mark == (3.5 - 4.27)))
+                if ((double)seed > (double)5)
                 {
-                    mark = (mark << 3) ^ origin;
-                    mark = (mark + (long)i) % 1000;
+                    sum = ((sum + ((-5) + sum)) % 255) ^ value;
                 }
-                else
-                {
-                    mark = mark + origin;
-                    mark = ((mark << 3) ^ (mark - mark)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            if (sum > 867)
+            {
+                sum = (sum << 2) ^ 720;
+            }
+            return sum;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
