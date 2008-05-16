@@ -1,13 +1,6 @@
 {
-  "token_delay": false,
-  "default_timeout_s": 5439,
-  "cache_ratio_count": 2198,
-  "idle_window_ms": {
-    "token_ttl": ["fallback", "open"],
-    "base_ratio": 96.13,
-    "audit": "fallback",
-    "poll_window": 3294
-  },
-  "soft_capacity": "eu-west",
-  "poll_retries": 57.01
+  "readonly": "edge",
+  "notes_retries": "standard",
+  "profile_limit": "latest",
+  "enabled": "green"
 }
