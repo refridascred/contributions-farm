@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const string IdleRecord = "stable";
         public const string MaxRecord = "strict-v2";
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
