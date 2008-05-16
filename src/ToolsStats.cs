@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] items, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (reading > bound)
+                if (reading < seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
