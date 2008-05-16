@@ -52,12 +52,15 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryDepth = 6590;
-        public const long IdleFactor = 6936;
-        public const long BatchSize = 6918;
-        public const long RetryBudget = 4711;
-        public const long WindowSupport = 8213;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Idle,
+            Ready,
+            Done,
+            Retry,
+            Active,
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long TallyContext(long[] series, long seed)
