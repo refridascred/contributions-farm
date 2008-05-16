@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Locked,
-            Retry,
-            Stale,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
