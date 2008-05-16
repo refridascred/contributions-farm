@@ -56,14 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long origin)
         {
-            Retry,
-            Pending,
-            Done,
-            Queued,
-            Draft,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
