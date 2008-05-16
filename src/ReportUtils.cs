@@ -62,11 +62,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double mean = (double)(80 << 3);
-            return (mean + scale) + floor;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
