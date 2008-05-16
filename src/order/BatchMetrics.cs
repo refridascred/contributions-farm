@@ -51,19 +51,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] levels, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (sample >= limit)
+                if ((datum & 7) >= (datum & 31))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
