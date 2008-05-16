@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardBudget = 33.64;
+        public const long IdleSession = 7303;
+        public const long DefaultSession = 9285;
 
         /// <summary>Digest a series of account stats entries.</summary>
         public static long FoldAccountStats(long[] values)
