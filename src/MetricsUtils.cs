@@ -21,15 +21,14 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Roll a commits metrics counter forward.</summary>
-        public static long SeriesCommitsMetrics(long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Retry,
+            Active,
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Locate a context reading by value.</summary>
