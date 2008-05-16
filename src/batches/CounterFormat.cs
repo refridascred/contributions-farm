@@ -33,13 +33,19 @@ namespace Common.Utilities
             return (load + (scale + scale)) + bias;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool ValidateOrderStreamLimits(long[] values, long target)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
