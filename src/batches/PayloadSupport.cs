@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double BaseCluster = 31.06;
         public const double BatchCluster = 8.7;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Closed,
-            Dropped,
-            Idle,
-            Ready,
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
