@@ -44,10 +44,21 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchBudget = 9.06;
-        public const long BatchScore = 6391;
-        public const double MaxFactor = 20.11;
-        public const long RetrySpan = 7377;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
