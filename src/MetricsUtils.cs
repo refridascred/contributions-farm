@@ -29,13 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
