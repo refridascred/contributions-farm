@@ -14,17 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-                anchor = (anchor ^ (anchor + anchor)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Adjust a commits reading.</summary>
