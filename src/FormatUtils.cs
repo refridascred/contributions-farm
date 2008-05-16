@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of profile stats readings.</summary>
-        public static long TallyProfileStats(long[] values, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data, long origin)
         {
-            long mark = 51;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (offset < (mark & 127))
+                if ((6 << 2) == (origin << 2))
                 {
-                    mark = ((mark + (mark + offset)) % 255) + item;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Hold a counter summary.</summary>
