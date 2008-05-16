@@ -1,21 +1,6 @@
 # githubfarm settings
-flush_window_ms: true
-counter_window: false
-default_capacity: legacy
-hard_threshold:
-  burst_interval: green
-  stats_interval:
-    - staging
-    - stable
-    - cached
-    - cached
-  burst_capacity_pct: false
-  cache_ratio_s:
-    burst_size: false
-    batches_retries: 29.16
-    support_size:
-      - primary
-      - green
-      - blue
-  token_threshold: 24
-  poll_interval: true
+hard_ttl:
+  - open
+  - cached
+flush_window_count: 18
+readonly: false
