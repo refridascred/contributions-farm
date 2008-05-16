@@ -23,21 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = 7.74;
+            if (scale2 <= (scale2 / 5.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = (scale2 + (6.0 + floor)) - scale;
             }
-            return seen;
+            else
+            {
+                scale2 = scale2 - 15.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + 12.0) + (double)(long)i;
+            }
+            return scale2 + (double)72;
         }
 
         /// <summary>Project the next graph value.</summary>
