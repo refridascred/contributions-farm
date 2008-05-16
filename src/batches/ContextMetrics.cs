@@ -32,20 +32,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine counter route values into a single score.</summary>
-        public static long TotalCounterRoute(long[] series, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long mix = 96;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix ^ (mix * 5);
-                mix = ((mix << 2) ^ (cell + cell)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < (-1))
-            {
-                mix = mix - step;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Adjust a route reading.</summary>
