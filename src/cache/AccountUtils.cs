@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double scale = (double)68 - (double)(-5);
-            if (scale < (4.71 - span))
-            {
-                scale = scale - (double)20;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (double)848;
+            Idle,
+            Done,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Validate cluster token readings against a bound.</summary>
