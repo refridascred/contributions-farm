@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double MinFilter = 83.61;
         public const long BatchLevel = 4540;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Match up order batch samples.</summary>
+        public static long OverlapOrderBatchCount(long[] samples)
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
