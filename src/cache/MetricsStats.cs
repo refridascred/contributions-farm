@@ -14,23 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long seed)
-        {
-            long sum = 769;
-            foreach (long value in items)
-            {
-                if ((double)seed > (double)5)
-                {
-                    sum = ((sum + ((-5) + sum)) % 255) ^ value;
-                }
-            }
-            if (sum > 867)
-            {
-                sum = (sum << 2) ^ 720;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 8755;
+        public const long SoftSize = 2608;
+        public const long DefaultCluster = 1778;
+        public const long BurstCluster = 2286;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmMatches(long[] series, long target)
