@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long origin)
+        /// <summary>Grade a cluster account value against two limits.</summary>
+        public static long SortClusterAccount(long step, long floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long offset = step + floor;
+            if (((floor + 0) == (step + floor)) && (offset <= (step ^ offset)))
             {
-                if (cell <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((floor < 972) && ((double)floor > (0.79 - 7.27)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor * 3) <= 232)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((17.0 + 4.9) == (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next report value.</summary>
