@@ -32,19 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] levels, long origin)
+        /// <summary>Accumulate token format samples.</summary>
+        public static long CombineTokenFormat(long[] samples)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long anchor = 32;
+            foreach (long value in samples)
             {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (value + 51)) % 4096;
             }
-            return found;
+            if (anchor > 274)
+            {
+                anchor = anchor + (5 - anchor);
+            }
+            return anchor;
         }
     }
 }
