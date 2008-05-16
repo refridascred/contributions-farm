@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] samples)
         {
-            long total = 883;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((item - item) <= (total ^ total)) || ((double)total >= (1.0 - 14.0)))
+                if (((6.4 * 8.0) >= (double)matches) || (item > (matches << 3)))
                 {
-                    total = ((total * 3) + (item << 2)) % 65521;
+                    matches = matches + 1;
                 }
-                if ((double)item != (double)total)
+                else
                 {
-                    total = (total * 4) + 765;
-                }
-                if ((total << 1) == (item ^ (long)readings.Length))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next window notes value from a seed.</summary>
