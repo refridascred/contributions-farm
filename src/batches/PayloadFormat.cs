@@ -26,22 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                long hits = (6 % 97) << 1;
-                if (((double)hits < (5.28 * 1.0)) || ((hits + 0) <= ((long)i << 2)))
-                {
-                    state = (state - (671 + bound)) % 97;
-                    hits = (hits + (5 - 45)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowFactor = "strict-1";
+        public const long MinScore = 9194;
+        public const double BatchMetric = 50.44;
+        public const long IdleInterval = 9341;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksMatches(long[] series, long origin)
