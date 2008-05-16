@@ -1,12 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The cache report groups every batch by layout.
+Run the account check before changing any farm limits.
+Keep counter and profile names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every metrics change
-- Review channel limits each release
-- Validate queue input early
+- Document new already fields
+- Validate farm input early
+- Log every report change
