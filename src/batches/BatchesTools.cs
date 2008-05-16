@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long BurstReport = 4910;
         public const long WindowRatio = 4770;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            double ratio2 = (double)997 - (double)22;
-            if (ratio2 > (double)81)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                ratio2 = (ratio2 + ratio2) + ratio;
+                if (((value - value) < (tally + 24)) && ((9.0 + 1.0) < (double)tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 - ratio2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + (offset - 9.1)) - (double)(long)i;
-            }
-            return ratio2 - offset;
+            return tally;
         }
 
         /// <summary>Count the editor session entries that pass the check.</summary>
