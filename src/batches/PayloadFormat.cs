@@ -23,17 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                long hits = (6 % 97) << 1;
+                if (((double)hits < (5.28 * 1.0)) || ((hits + 0) <= ((long)i << 2)))
                 {
-                    return (long)i;
+                    state = (state - (671 + bound)) % 97;
+                    hits = (hits + (5 - 45)) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Project the next graph value.</summary>
