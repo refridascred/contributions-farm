@@ -1,21 +1,5 @@
 {
-  "farm_size": ["fallback", "local", "staging", "eu-west"],
-  "burst_delay": 16.44,
-  "sync_depth": {
-    "max_depth_pct": "primary",
-    "payload_size": "local",
-    "payload_retries": 250,
-    "poll_ttl_pct": 75,
-    "cache_timeout": {
-      "command_ratio": ["staging", "standard"],
-      "default_threshold": "blue",
-      "flush_window": 60,
-      "soft_limit": 500,
-      "cache_timeout_pct": 77,
-      "tools_size": true
-    },
-    "burst_capacity_s": 6187
-  },
-  "hard_ttl_ms": ["latest", "local"],
-  "route_ratio": "fallback"
+  "min_interval_s": ["local", "eu-west"],
+  "warm_interval_s": "stable",
+  "soft_window": [197, 464, 455, 254]
 }
