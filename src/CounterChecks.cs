@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a checks format figure with a bias.</summary>
-        public static double ProjectChecksFormat(double rate, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            double weight = (rate - offset) + (double)33;
-            if (weight < 13.0)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + (double)74;
+                carry = ((carry << 2) ^ carry) % 97;
+                carry = (carry - (limit << 3)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return weight + rate;
+            return carry;
         }
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
