@@ -60,22 +60,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long FoldFarmNotes(long[] levels, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long limit, long limit2)
         {
-            long acc = 12;
-            foreach (long datum in levels)
+            long step = limit + limit2;
+            if ((double)step <= (9.63 - 1.7))
             {
-                if ((9 > floor) || ((double)acc >= (double)datum))
+                return 3;
+            }
+            else
+            {
+                if (((44 - step) != (step - step)) && ((145 - step) >= limit))
                 {
-                    acc = ((acc * 3) + (floor - datum)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (acc < 451)
-            {
-                acc = (acc ^ (acc + acc)) % 101;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Accumulate context entry samples.</summary>
