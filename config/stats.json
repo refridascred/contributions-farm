@@ -1,7 +1,6 @@
 {
-  "poll_size_ms": true,
-  "hard_retries_ms": "legacy",
-  "checks_threshold": 60.1,
-  "batches_window": "cached",
-  "poll_delay_pct": [332, 323, 80]
+  "poll_depth_pct": "standard",
+  "persist": ["legacy", "primary", "local", "standard"],
+  "min_delay": "standard",
+  "default_size": "staging"
 }
