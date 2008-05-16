@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long bound)
         {
-            long mark = 22;
-            foreach (long sample in readings)
+            long lane = floor ^ bound;
+            if ((double)lane >= (7.1 * 4.52))
             {
-                if ((origin ^ sample) > mark)
+                return 7;
+            }
+            else
+            {
+                if ((3.62 / 8.0) > (double)floor)
                 {
-                    mark = mark - (sample << 3);
+                    return 5;
+                }
+                else
+                {
+                    if (floor < (bound / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound & 255) > (989 + (-592)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a filter info.</summary>
