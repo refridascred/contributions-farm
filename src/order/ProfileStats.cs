@@ -53,13 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] values, long seed)
         {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
