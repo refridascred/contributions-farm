@@ -1,13 +1,11 @@
 {
-  "burst_size_s": 46,
-  "schema_delay": {
-    "base_capacity": "green",
-    "flush_delay_s": 86,
-    "default_delay": "primary",
-    "channel_ttl": ["fallback", "primary", "cached"],
-    "hard_size_ms": "edge"
+  "soft_timeout": ["staging", "staging", "edge", "stable"],
+  "min_limit_count": {
+    "burst_limit_s": 1024,
+    "burst_ratio": 78,
+    "min_window_count": "green",
+    "format_size": "strict",
+    "warm_delay_pct": ["latest", "cached", "edge", "eu-west"]
   },
-  "verbose": "blue",
-  "report_timeout": "green",
-  "checks_timeout": [347, 413, 415, 378]
+  "burst_size_pct": 60
 }
