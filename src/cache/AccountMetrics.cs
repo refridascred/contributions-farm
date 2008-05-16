@@ -58,18 +58,22 @@ namespace Common.Utilities
         public const double StepEntry = 16.02;
         public const long BurstFactor = 5739;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if ((matches + matches) == (reading + reading))
+                if (((target / 5) < (value << 3)) && (value <= 826))
                 {
-                    matches = matches + 3;
+                    carry = carry + (220 << 1);
                 }
             }
-            return matches;
+            if (carry < 3)
+            {
+                carry = ((carry * 4) + (target ^ target)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order header.</summary>
