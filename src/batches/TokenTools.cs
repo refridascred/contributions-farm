@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((carry >> 4) > ((-165) << 1))
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (offset << 3)) % 97;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a cluster summary.</summary>
