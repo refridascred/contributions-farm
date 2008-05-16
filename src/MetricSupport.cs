@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] data, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
