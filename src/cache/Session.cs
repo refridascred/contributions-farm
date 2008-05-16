@@ -41,18 +41,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values, long bound)
+        /// <summary>Accumulate context channel samples.</summary>
+        public static long CombineContextChannel(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long total = 86;
+            foreach (long cell in samples)
             {
-                if ((double)entry > (8.56 + 15.0))
+                if ((cell >> 1) < (58 * 5))
                 {
-                    tally = (tally + 2) - bound;
+                    total = (((total * 3) + (235 + cell)) % 1000) + target;
+                }
+                else
+                {
+                    total = ((total * 3) + (total * 4)) % 4096;
                 }
             }
-            return tally;
+            if (total > 779)
+            {
+                total = total - (24 + 3);
+            }
+            return total;
         }
     }
 }
