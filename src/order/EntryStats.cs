@@ -30,19 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many stream cache samples are out of range.</summary>
