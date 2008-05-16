@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell >> 3) < (cell << 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every payload layout entry stays within the limit.</summary>
