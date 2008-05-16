@@ -19,28 +19,35 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long offset, long seed)
         {
-            if ((offset + offset) >= (offset + origin))
+            if (offset > (seed + offset))
             {
                 return 7;
             }
             else
             {
-                if ((double)origin != (double)offset)
+                if ((seed + 8) >= seed)
                 {
                     return 2;
                 }
                 else
                 {
-                    if (21 <= origin)
+                    if ((seed / 9) >= offset)
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 8;
+                        if ((seed - seed) > (seed + offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
