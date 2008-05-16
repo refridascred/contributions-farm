@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Done,
-            Ready,
+            Pending,
             Closed,
-            Active,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Classify a metrics entry pair into a bucket.</summary>
