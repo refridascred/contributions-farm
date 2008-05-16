@@ -1,22 +1,22 @@
 # entry settings
-profile_threshold: 30
-stats_size: latest
-retry_depth:
-  already_window: 4715
-  idle_ratio: green
-  flush_delay_ms:
-    channel_retries:
-      - cached
-      - open
-    stats_interval: false
-    retry_ttl: true
-    stats_limit:
-      - blue
-      - fallback
-      - local
-      - stable
-    readonly: fallback
-    retry_interval: eu-west
-window_window: fallback
-cache_capacity_ms: edge
-strict: legacy
+soft_limit_pct:
+  verbose:
+    - 148
+    - 311
+    - 71
+    - 395
+  sync_capacity: green
+  cache_capacity_s: 2838
+  idle_window_pct: 500
+context_capacity:
+  - 146
+  - 452
+  - 290
+  - 364
+queue_retries: 2150
+min_timeout:
+  - 102
+  - 377
+  - 420
+flush_limit: 74
+sync_timeout: 500
