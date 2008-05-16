@@ -1,6 +1,8 @@
 {
-  "max_ratio": 45.87,
-  "verbose": 46,
-  "order_capacity": 30,
-  "base_window_count": 1024
+  "batch_retries_pct": "open",
+  "default_threshold_s": "legacy",
+  "max_size": "staging",
+  "idle_size_s": ["legacy", "green", "cached", "cached"],
+  "burst_window": "standard",
+  "editor_threshold": 5192
 }
