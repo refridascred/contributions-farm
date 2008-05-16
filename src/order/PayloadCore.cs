@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long origin)
         {
-            long mark = -52;
-            foreach (long item in items)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                if ((double)mark == (14.0 + 10.0))
+                carry = ((carry ^ (origin + carry)) % 1000) ^ entry;
+                if ((double)origin != (11.0 - 6.24))
                 {
-                    mark = (mark - seed) % 4096;
-                    mark = ((mark << 3) ^ (mark & 3)) % 97;
+                    carry = ((carry * 5) + origin) % 101;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ seed) % 101;
-                }
-                if (!((item * 4) >= (1 >> 2)))
-                {
-                    mark = mark + (565 / 5);
-                }
-                else
-                {
-                    mark = mark + (seed ^ 56);
+                    carry = (carry * 2) + (26 + 59);
                 }
             }
-            return mark;
+            if (carry < 8)
+            {
+                carry = (carry - ((-221) - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a commits batches reading.</summary>
