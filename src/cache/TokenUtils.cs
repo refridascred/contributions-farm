@@ -49,13 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a filter token counter forward.</summary>
+        public static long IterateFilterToken(long step)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
