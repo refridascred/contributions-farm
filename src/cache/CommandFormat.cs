@@ -42,30 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long acc = 82;
-            foreach (long cell in samples)
-            {
-                if ((cell / 3) == (target & 255))
-                {
-                    acc = (acc ^ cell) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (target + cell)) % 97;
-                }
-                if (!((acc % 7) >= 3))
-                {
-                    acc = (acc - (698 - cell)) % 101;
-                }
-            }
-            if (acc > 47)
-            {
-                acc = (acc + (target + target)) % 65521;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
