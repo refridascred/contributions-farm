@@ -55,10 +55,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "local-edge";
-        public const long CacheQueue = 2990;
-        public const long CacheTimeout = 7545;
-        public const long LimitRatio = 23;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels)
+        {
+            long result = 984;
+            foreach (long item in levels)
+            {
+                if ((item - item) >= (result << 1))
+                {
+                    result = result ^ (557 >> 5);
+                }
+                else
+                {
+                    result = ((result << 2) ^ item) % 97;
+                }
+            }
+            if (result < 67)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
+        }
     }
 }
