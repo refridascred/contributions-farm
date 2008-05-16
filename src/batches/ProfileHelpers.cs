@@ -64,13 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
