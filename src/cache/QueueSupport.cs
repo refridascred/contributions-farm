@@ -53,39 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long offset, long target)
+        /// <summary>Check that every account profile entry stays within the limit.</summary>
+        public static bool GuardAccountProfileLimits(long[] values, long seed)
         {
-            long lane = offset + target;
-            if (lane < (lane * 2))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)offset != (5.2 + 0.1)))
+                if (value < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane ^ offset) < (target ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target <= (double)4)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
