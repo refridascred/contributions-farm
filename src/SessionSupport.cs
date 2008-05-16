@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            long score = 27;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((score >> 4) > value)
+                if (datum >= (seen / 6))
                 {
-                    score = (score - limit) % 65521;
-                    score = score + (value >> 4);
-                    break;
-                }
-                if ((limit / 5) < (limit ^ score))
-                {
-                    score = ((score << 2) ^ value) % 255;
+                    seen = seen + 2;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
