@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
             public bool Rank { get; set; }
-            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
