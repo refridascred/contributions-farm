@@ -68,10 +68,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardTimeout = "fallback-1";
-        public const long DefaultEntry = 1795;
-        public const double HardLevel = 82.07;
-        public const long SoftEntry = 4229;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double offset)
+        {
+            double drift = offset;
+            if (drift > (drift / 6.0))
+            {
+                drift = drift + 7.3;
+            }
+            else
+            {
+                drift = drift - (double)5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (ratio / 9.0);
+        }
     }
 }
