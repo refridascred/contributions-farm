@@ -38,18 +38,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes filter samples are out of range.</summary>
-        public static long TallyNotesFilterOutliers(long[] levels)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long limit, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long lane = limit - floor;
+            if (((4.2 + 1.0) == (double)floor) && ((4.0 + 8.12) >= (double)lane))
             {
-                if ((count >> 4) >= (sample >> 4))
+                return 8;
+            }
+            else
+            {
+                if ((42 - limit) != (limit - floor))
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
