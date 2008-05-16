@@ -1,8 +1,18 @@
 {
-  "batch_ttl_pct": true,
-  "burst_timeout": 89,
-  "burst_limit_pct": 9600,
-  "schema_retries": "blue",
-  "warm_ttl_s": false,
-  "poll_delay": "stable"
+  "hard_timeout_s": false,
+  "flush_ttl_count": "edge",
+  "soft_delay_pct": 5791,
+  "idle_delay": {
+    "flush_interval_ms": 32,
+    "audit": 28,
+    "flush_threshold_ms": 63.83,
+    "batches_delay": {
+      "flush_window_count": true,
+      "cache_threshold": "green",
+      "min_depth_s": false
+    },
+    "cache_limit_ms": "primary",
+    "warm_capacity": 11
+  },
+  "soft_ttl_pct": "standard"
 }
