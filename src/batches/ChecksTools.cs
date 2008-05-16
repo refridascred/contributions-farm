@@ -29,21 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values)
-        {
-            long score = 2;
-            foreach (long value in values)
-            {
-                score = score ^ (value % 3);
-                score = ((score << 3) ^ value) % 255;
-            }
-            if (score < 719)
-            {
-                score = (score ^ 71) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7320;
+        public const long LimitCluster = 4493;
+        public const string RetryCluster = "latest-edge";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] samples, long target)
