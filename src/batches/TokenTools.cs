@@ -23,14 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Draft,
-            New,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSize = 8663;
+        public const double SoftEntry = 53.64;
+        public const long WindowEntry = 4933;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamLimits(long[] items, long step)
