@@ -1,18 +1,13 @@
 {
-  "order_window": {
-    "profile_ttl": {
-      "sync_delay_count": ["fallback", "staging"],
-      "compress": 100,
-      "flush_limit_ms": [6, 223, 253, 93],
-      "verbose": ["blue", "local", "stable"]
-    },
-    "counter_timeout": 91,
-    "default_retries_pct": "local",
-    "compress": "latest"
+  "audit": "edge",
+  "idle_depth_count": {
+    "flush_depth": 30,
+    "report_timeout": "strict",
+    "buffer_capacity": 54.15,
+    "max_delay_count": 58.45,
+    "burst_window_pct": ["cached", "blue"],
+    "min_timeout": "edge"
   },
-  "dry_run": 71.75,
-  "contributi_timeout": false,
-  "stats_ttl": 72.05,
-  "readonly": 9265,
-  "verbose": "fallback"
+  "checks_interval": ["stable", "standard"],
+  "report_retries": 100
 }
