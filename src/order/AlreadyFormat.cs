@@ -53,12 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate format entry samples.</summary>
+        public static long CombineFormatEntry(long[] data)
         {
-            New,
-            Pending,
-            Failed,
+            long mix = 70;
+            foreach (long value in data)
+            {
+                mix = ((mix ^ mix) % 65521) ^ value;
+            }
+            return mix;
         }
 
         /// <summary>Hold a context header.</summary>
