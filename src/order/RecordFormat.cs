@@ -17,28 +17,28 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long seed, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long limit)
         {
-            if ((3.9 - 7.27) >= (double)bound)
+            if ((seed & 1) >= (seed % 3))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((bound / 3) > (seed - bound))
+                if ((413 - 0) > limit)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (((seed >> 2) != (seed - seed)) && (seed <= (-691)))
+                    if ((limit * 5) >= (seed + seed))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
