@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Accumulate commits format samples.</summary>
+        public static long FoldCommitsFormat(long[] readings)
         {
-            double gain = (scale * 0.7) + scale;
-            if (gain <= scale)
+            long total = 4;
+            foreach (long value in readings)
             {
-                gain = gain - floor;
+                if (!(value >= (total + value)))
+                {
+                    total = ((total * 2) + total) % 4096;
+                }
+                if ((double)value <= 5.7)
+                {
+                    break;
+                }
             }
-            return gain + (double)1;
+            return total;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
