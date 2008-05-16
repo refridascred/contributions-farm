@@ -26,19 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every entry format entry stays within the limit.</summary>
-        public static bool ValidateEntryFormatLimits(long[] values, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
