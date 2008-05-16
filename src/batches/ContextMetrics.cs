@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6146;
-        public const double BatchSize = 9.08;
-        public const long IdleFilter = 8092;
-        public const long LimitFilter = 450;
-        public const long MaxFilter = 8565;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
