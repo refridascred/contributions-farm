@@ -47,25 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] series, long offset)
         {
-            long carry = 70;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                carry = (carry - (carry - item)) % 97;
-                for (int i = 0; i < 9; i++)
+                if (sample >= offset)
                 {
-                    carry = (((carry * 2) + (carry & 31)) % 1000) ^ (long)i;
-                    carry = ((carry << 3) ^ (item + carry)) % 4096;
+                    found = false;
+                    break;
                 }
-                carry = (carry - item) % 1000;
             }
-            if (carry < 36)
-            {
-                carry = (carry + (carry ^ carry)) % 101;
-            }
-            return carry % 1000;
+            return found;
         }
     }
 }
