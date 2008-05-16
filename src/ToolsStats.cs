@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double span)
-        {
-            double drift = weight;
-            if (drift > (7.8 * 5.37))
-            {
-                drift = (drift - (1.78 * 3.9)) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 9.7) + (double)(long)i;
-            }
-            return drift - (drift * 4.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "primary-1";
+        public const long CacheNotes = 1312;
+        public const string BaseDepth = "cached";
 
         /// <summary>Compare every pair of report editor readings.</summary>
         public static long OverlapReportEditorCount(long[] values)
