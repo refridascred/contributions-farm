@@ -23,22 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] samples, long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((target - target) > target))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
