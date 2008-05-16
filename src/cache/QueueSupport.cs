@@ -26,31 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if ((bound - bound) > (bound >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 4) != (offset << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (511 > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
