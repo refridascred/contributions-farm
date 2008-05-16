@@ -21,13 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
