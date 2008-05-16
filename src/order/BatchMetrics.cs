@@ -30,21 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Project the next cache filter value.</summary>
+        public static double ScaleCacheFilter(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = bias;
+            if (gain2 <= (5.77 * 11.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain2 = (gain2 - gain2) - gain;
             }
-            return seen;
+            return gain2 + 1.41;
         }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
