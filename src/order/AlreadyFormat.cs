@@ -20,11 +20,21 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Match up report context samples.</summary>
+        public static long MatchReportContextCount(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
