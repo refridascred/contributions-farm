@@ -25,38 +25,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long offset, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if (offset > (seed + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + 8) >= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 9) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > (seed + offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Done,
+            Closed,
+            Pending,
         }
     }
 }
