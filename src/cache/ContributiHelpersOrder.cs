@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] items, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Validate checks entry readings against a bound.</summary>
