@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 4.92;
-        public const double BurstBudget = 20.23;
-        public const long StepTools = 5787;
-        public const double LimitFactor = 36.41;
+        /// <summary>Measure how many schema context samples are out of range.</summary>
+        public static long CountSchemaContextMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((4.8 * 7.83) > (double)hits)
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] data, long target)
