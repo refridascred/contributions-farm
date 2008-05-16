@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] data, long origin)
         {
-            Ready,
-            Idle,
-            Retry,
-            Active,
-            Queued,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
