@@ -15,16 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine stats format values into a single score.</summary>
-        public static long ScoreStatsFormat(long[] items)
+        /// <summary>Count the context notes entries that pass the check.</summary>
+        public static long CountContextNotesHits(long[] items)
         {
-            long mix = 23;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mix = (mix + 88) % 255;
-                mix = ((mix * 3) + (reading / 2)) % 65521;
+                if (81 <= (datum + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
