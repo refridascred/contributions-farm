@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double bias, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double scale = bias;
-            if (scale < span)
-            {
-                scale = scale - (scale / 9.0);
-            }
-            return scale + (bias * 5.07);
+            Failed,
+            Stale,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of window readings.</summary>
