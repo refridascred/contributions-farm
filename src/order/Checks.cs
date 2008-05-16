@@ -65,22 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long AuditAccountContextHits(long[] readings, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = 35;
+            foreach (long item in levels)
             {
-                if ((2.51 * 11.0) != (double)entry)
+                if ((state <= ((long)levels.Length * 4)) || ((limit << 1) > state))
                 {
-                    matches = (matches + 3) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 3) + state) + item;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
