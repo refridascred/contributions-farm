@@ -1,13 +1,8 @@
 {
-  "warm_limit_s": false,
-  "min_interval_pct": 18.21,
-  "batch_ttl_s": {
-    "support_size": "cached",
-    "base_size": 0.68,
-    "profile_delay": 250,
-    "sync_ratio_count": 95,
-    "cluster_threshold": "legacy"
-  },
-  "max_capacity_s": 74,
-  "idle_threshold_count": [89, 33, 250, 441]
+  "max_capacity_ms": 60,
+  "cache_size_pct": 24.51,
+  "audit": "standard",
+  "context_limit": false,
+  "idle_threshold": 93,
+  "retry_threshold_count": 3113
 }
