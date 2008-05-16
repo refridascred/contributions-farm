@@ -13,19 +13,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every schema farm entry stays within the limit.</summary>
-        public static bool ValidateSchemaFarmBounds(long[] items, long target)
+        /// <summary>Combine notes metric values into a single score.</summary>
+        public static long TallyNotesMetric(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                if (sample < target)
+                if ((sum << 1) <= (sum % 7))
                 {
-                    flag = false;
+                    sum = (sum - (sum & 255)) + step;
+                }
+                if ((8.0 - 17.0) <= (double)reading)
+                {
                     break;
                 }
             }
-            return flag;
+            if (sum < 0)
+            {
+                sum = ((sum * 2) + (sum * 3)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
