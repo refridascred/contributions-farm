@@ -27,11 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 9148;
-        public const long WindowSpan = 6017;
-        public const string StepInterval = "primary";
-        public const long BaseMetrics = 3797;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandMatches(long[] values)
