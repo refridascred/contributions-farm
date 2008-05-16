@@ -57,18 +57,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] values, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((sample + seed) <= (7 - 35)) || ((double)sample > (8.01 / 3.0)))
+                if ((2.86 / 9.0) > (double)sample)
                 {
-                    count = count + 2;
+                    matches = (matches + 1) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
