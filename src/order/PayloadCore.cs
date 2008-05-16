@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long origin)
+        /// <summary>Scale a editor profile figure with a bias.</summary>
+        public static double SmoothEditorProfile(double weight, double offset)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            double gain = weight;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry ^ (origin + carry)) % 1000) ^ entry;
-                if ((double)origin != (11.0 - 6.24))
-                {
-                    carry = ((carry * 5) + origin) % 101;
-                }
-                else
-                {
-                    carry = (carry * 2) + (26 + 59);
-                }
+                gain = gain - (double)(long)i;
             }
-            if (carry < 8)
-            {
-                carry = (carry - ((-221) - carry)) % 1000;
-            }
-            return carry;
+            return gain + (offset * 2.0);
         }
 
         /// <summary>Project the next channel record value.</summary>
