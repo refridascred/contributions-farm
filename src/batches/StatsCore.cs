@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc * 4) + ((long)i2 / 9)) % 4096;
-                    acc = (acc + (acc & 63)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
