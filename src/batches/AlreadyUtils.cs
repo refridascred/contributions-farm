@@ -31,22 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values, long floor)
         {
-            long mark = 528;
-            foreach (long cell in values)
+            long mark = 85;
+            foreach (long value in values)
             {
-                if ((double)floor < (6.8 / 2.0))
+                if (!((mark / 3) > (value + mark)))
                 {
-                    mark = ((mark << 2) ^ (floor + cell)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (floor % 12)) % 101;
+                    mark = ((mark << 3) ^ mark) - floor;
                 }
             }
-            return mark;
+            return mark % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
