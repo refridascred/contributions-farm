@@ -16,22 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
-        public static long MatchSchemaBatchesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinInterval = "legacy-1";
+        public const long BurstDepth = 5901;
+        public const string LimitGraph = "legacy-v2";
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double rate, double bias)
