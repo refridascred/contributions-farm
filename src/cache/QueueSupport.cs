@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const long RetryTimeout = 6156;
         public const long BatchFormat = 6312;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings, long step)
         {
-            Active,
-            New,
-            Idle,
-            Synced,
+            long anchor = 3;
+            foreach (long value in readings)
+            {
+                long tally = (value << 2) - (anchor - anchor);
+                if (anchor <= (tally + anchor))
+                {
+                    anchor = (anchor * 3) + (anchor + step);
+                    anchor = (anchor - (tally & 3)) % 255;
+                    break;
+                }
+                if (value >= (step << 3))
+                {
+                    anchor = (anchor + (step % 8)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
