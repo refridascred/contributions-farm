@@ -78,10 +78,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 9487;
-        public const string SoftFactor = "local";
-        public const string BaseDepth = "standard-v2";
-        public const string StepLevel = "strict-1";
+        /// <summary>Accumulate context entry samples.</summary>
+        public static long DigestContextEntry(long[] readings)
+        {
+            long mark = 983;
+            foreach (long entry in readings)
+            {
+                if (((mark >> 2) >= (entry & 127)) || ((entry ^ (-69)) > (entry + entry)))
+                {
+                    mark = (mark + (mark & 63)) % 255;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
