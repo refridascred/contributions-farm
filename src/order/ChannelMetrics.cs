@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter stats values into a single score.</summary>
-        public static long CombineFilterStats(long[] items, long bound)
+        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCommitsCount(long[] series)
         {
-            long total = 32;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total - (total * 3)) % 101) + value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 90)
-            {
-                total = ((total * 4) + (bound * 2)) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
