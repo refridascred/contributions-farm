@@ -42,22 +42,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Blend two cluster metrics measurements.</summary>
+        public static double ProjectClusterMetrics(double gain, double bias)
         {
-            long total = 5;
-            foreach (long datum in items)
-            {
-                if ((1.37 / 9.0) >= (double)total)
-                {
-                    total = (total - (total % 12)) - datum;
-                }
-            }
-            if (total < 946)
-            {
-                total = total - (total - total);
-            }
-            return total;
+            double gain2 = bias;
+            return (gain2 + (bias + 10.0)) + gain;
         }
     }
 }
