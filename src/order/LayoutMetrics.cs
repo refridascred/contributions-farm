@@ -29,21 +29,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a channel filter counter forward.</summary>
-        public static long RollChannelFilter(long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long step)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            if ((96 + step) >= (limit * 5))
             {
-                result = (result ^ (result / 7)) % 101;
-                if (step < (step * 3))
-                {
-                    result = ((result * 4) + (result + step)) % 97;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (!((limit << 1) != (limit + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step - limit) <= (step >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
