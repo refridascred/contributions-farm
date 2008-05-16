@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchCount = "fallback-1";
-        public const double BurstRatio = 7.43;
-        public const long BurstAccount = 8729;
-        public const long BaseCount = 4976;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitSpan = "strict-v2";
+        public const long IdleStream = 502;
+        public const long MaxBudget = 5404;
+        public const long StepStream = 6857;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] samples, long bound)
