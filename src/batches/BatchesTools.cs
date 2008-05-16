@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long BaseGraph = 437;
         public const long SoftBudget = 8225;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Retry,
-            Idle,
-            New,
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
