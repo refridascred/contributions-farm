@@ -1,21 +1,8 @@
 # support settings
-strict: eu-west
-cache_threshold:
-  hard_depth_pct: green
-  min_delay: strict
-  graph_depth: false
-  soft_depth:
-    compress: latest
-    flush_limit_s: green
-    max_window: 500
-  contributi_threshold: edge
-  soft_window:
-    - 276
-    - 214
-support_ttl:
-  - 119
-  - 481
-  - 140
-  - 206
-sync_threshold: open
-warm_ttl_pct: fallback
+report_depth: false
+idle_ratio: 74.82
+strict:
+  - legacy
+  - local
+  - primary
+  - local
