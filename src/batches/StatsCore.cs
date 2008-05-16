@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((matches > (6 + item)) || ((double)item >= (4.0 + 8.13))) || ((matches % 3) > (item % 5)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit contributi support readings against a rule.</summary>
