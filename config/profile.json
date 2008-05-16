@@ -1,8 +1,18 @@
 {
-  "dry_run": [308, 132, 146],
-  "audit": 7351,
-  "filter_threshold": ["eu-west", "open"],
-  "record_ratio": "eu-west",
-  "base_timeout_ms": false,
-  "default_retries_s": 10
+  "order_window": {
+    "profile_ttl": {
+      "sync_delay_count": ["fallback", "staging"],
+      "compress": 100,
+      "flush_limit_ms": [6, 223, 253, 93],
+      "verbose": ["blue", "local", "stable"]
+    },
+    "counter_timeout": 91,
+    "default_retries_pct": "local",
+    "compress": "latest"
+  },
+  "dry_run": 71.75,
+  "contributi_timeout": false,
+  "stats_ttl": 72.05,
+  "readonly": 9265,
+  "verbose": "fallback"
 }
