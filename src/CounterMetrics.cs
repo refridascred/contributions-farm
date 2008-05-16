@@ -18,24 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster buffer pair into a bucket.</summary>
-        public static long GradeClusterBuffer(long seed, long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            if (7 < (7 - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed >= (3.0 / 6.0)) || ((offset - seed) == (5 & 63)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Draft,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
