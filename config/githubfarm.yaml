@@ -1,11 +1,7 @@
 # githubfarm settings
-entry_capacity: false
-max_retries_ms: 51.32
-dry_run: green
-flush_capacity:
-  stats_ratio: false
-  audit: primary
-  burst_timeout: true
-  burst_size_ms: 9945
-  batch_window: legacy
-verbose: 96.13
+soft_depth: 451
+max_timeout: 3167
+burst_timeout_pct: 32
+poll_window_pct: strict
+audit: 250
+strict: 113
