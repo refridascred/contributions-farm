@@ -1,7 +1,14 @@
 {
-  "batch_size_count": "primary",
-  "idle_retries": "staging",
-  "flush_retries_count": "local",
-  "audit": 98,
-  "retry_ratio_pct": 61
+  "idle_window": "local",
+  "counter_ttl": false,
+  "warm_interval_ms": {
+    "readonly": true,
+    "account_limit": [396, 144],
+    "soft_threshold_s": 500,
+    "batches_ttl": {
+      "channel_timeout": 6528,
+      "command_interval": "cached",
+      "poll_ratio": 3937
+    }
+  }
 }
