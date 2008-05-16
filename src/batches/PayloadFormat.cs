@@ -28,19 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream editor readings against a bound.</summary>
-        public static bool CheckStreamEditorRange(long[] samples, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
