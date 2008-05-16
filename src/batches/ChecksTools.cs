@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long LimitCluster = 4493;
         public const string RetryCluster = "latest-edge";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long carry = 17;
-            foreach (long sample in samples)
-            {
-                if ((double)carry > (double)96)
-                {
-                    carry = (carry ^ (sample >> 1)) % 255;
-                }
-            }
-            return carry;
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
