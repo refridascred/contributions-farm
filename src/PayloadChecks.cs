@@ -58,13 +58,19 @@ namespace Common.Utilities
         public const string HardWindow = "fallback";
         public const double HardInterval = 77.34;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long offset)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a stats entry sample.</summary>
