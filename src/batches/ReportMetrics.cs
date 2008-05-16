@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double RetryCount = 89.3;
         public const long BaseCluster = 849;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
