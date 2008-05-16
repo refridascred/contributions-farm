@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine queue batch values into a single score.</summary>
-        public static long TallyQueueBatch(long[] data, long target)
+        /// <summary>Adjust a layout entry reading.</summary>
+        public static double ScaleLayoutEntry(double scale, double bias)
         {
-            long result = -910;
-            foreach (long value in data)
-            {
-                if (((result + target) >= 914) && ((result + target) == (long)data.Length))
-                {
-                    result = ((result * 3) + (target - value)) % 65521;
-                }
-            }
-            if (result > (-2))
-            {
-                result = result ^ (target + target);
-            }
-            return result;
+            double weight = (scale * 4.7) / 9.0;
+            return (weight - (double)272) + bias;
         }
 
         /// <summary>Hold a record stats.</summary>
