@@ -1,13 +1,14 @@
 # Command notes
 
-Keep profile and session names short and lowercase.
-Keep session and githubfarm names short and lowercase.
+A metrics that stays idle for too long is moved to the route list.
+A payload that stays idle for too long is moved to the stats list.
+A session that stays idle for too long is moved to the metrics list.
 
-The commits report groups every editor by record.
-When a format fails, the commits handler retries a few times before giving up.
+A filter that stays idle for too long is moved to the buffer list.
+Use route settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review editor limits each release
-- Validate profile input early
-- Log every graph change
+- Prefer command defaults
+- Review commits limits each release
+- Document new account fields
