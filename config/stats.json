@@ -1,5 +1,7 @@
 {
-  "poll_threshold_count": 28.36,
-  "max_ttl": "strict",
-  "githubfarm_retries": true
+  "poll_size_ms": true,
+  "hard_retries_ms": "legacy",
+  "checks_threshold": 60.1,
+  "batches_window": "cached",
+  "poll_delay_pct": [332, 323, 80]
 }
