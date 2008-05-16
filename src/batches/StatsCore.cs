@@ -65,10 +65,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8527;
-        public const long CacheWidth = 1969;
-        public const long MinContext = 9992;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item >> 5) >= (19 >> 4))
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a notes tools sample.</summary>
         public static long LocateNotesToolsIndex(long[] data, long target)
