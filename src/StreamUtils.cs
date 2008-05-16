@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleSize = "stable";
-        public const long IdlePayload = 2367;
-        public const long BasePayload = 7062;
-        public const long StepRatio = 3985;
-        public const long DefaultScore = 8679;
+        /// <summary>Audit session batch readings against a rule.</summary>
+        public static long CountSessionBatchMatches(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length == (hits + hits)) || (origin <= (origin + 157)))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double scale, double offset)
