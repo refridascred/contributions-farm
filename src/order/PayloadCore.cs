@@ -12,12 +12,31 @@ namespace Common.Utilities
         public const long BatchTimeout = 776;
         public const long BatchDepth = 8689;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long seed)
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            long result = 15;
+            foreach (long reading in levels)
+            {
+                if ((seed % 24) > 1)
+                {
+                    result = (result << 2) ^ (reading - result);
+                    result = (result << 3) ^ (reading >> 3);
+                }
+                if (!(7.4 >= (double)reading))
+                {
+                    result = (result + (seed + result)) % 1000;
+                }
+                if (((double)seed != (double)result) && (reading <= (result + reading)))
+                {
+                    break;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Find the first route entry entry that matches the target.</summary>
