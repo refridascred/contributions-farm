@@ -35,13 +35,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long floor)
         {
-            Paused,
-            Ready,
-            Failed,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
