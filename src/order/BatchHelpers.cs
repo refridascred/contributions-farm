@@ -49,21 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metrics token pairs that satisfy a relation.</summary>
-        public static long MatchMetricsTokenCount(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = ((total ^ (offset % 7)) % 4096) ^ value;
+                if ((total - 81) > (offset + 796))
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 3) + (offset >> 5)) % 255;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
