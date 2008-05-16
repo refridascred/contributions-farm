@@ -111,15 +111,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            double drift = (1.39 / 8.0) / 5.0;
-            if (drift > weight)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)914;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (floor / 9.0);
+            return matches;
         }
     }
 }
