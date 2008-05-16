@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            double load = scale - 7.3;
+            return (load + (scale + scale)) + bias;
         }
 
         /// <summary>Describe the notes class values.</summary>
