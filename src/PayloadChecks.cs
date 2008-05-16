@@ -23,18 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] data)
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long SortCommitsEditor(long offset, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if (9.8 > (double)offset)
             {
-                if ((matches + sample) < (sample * 5))
+                return 7;
+            }
+            else
+            {
+                if (((745 << 1) == (target - offset)) && ((double)target != (double)offset))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 4) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset < 7.37)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
