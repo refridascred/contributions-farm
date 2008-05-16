@@ -21,19 +21,10 @@ namespace Common.Utilities
         public const string SoftDepth = "open-1";
         public const long SoftTimeout = 2497;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches ^ 4) == (entry + 68))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 95.34;
+        public const long RetryCommits = 2776;
+        public const long BatchCommits = 9425;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string WindowScore = "strict-1";
