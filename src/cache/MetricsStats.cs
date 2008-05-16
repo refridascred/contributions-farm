@@ -20,18 +20,15 @@ namespace Common.Utilities
         public const long DefaultCluster = 1778;
         public const long BurstCluster = 2286;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] series, long target)
+        /// <summary>Iterate the entry session series from a seed.</summary>
+        public static long SeriesEntrySession(long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((-561) * 2) > (reading - 1))
-                {
-                    hits = (hits + 2) - target;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
