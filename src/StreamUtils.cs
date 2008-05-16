@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] series, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] series, long target)
         {
-            long result = 449;
+            bool ok = true;
             foreach (long value in series)
             {
-                result = (((result ^ (295 & 1)) % 4096) ^ value) - target;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Project the next report value.</summary>
