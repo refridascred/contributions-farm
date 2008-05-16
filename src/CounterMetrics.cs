@@ -42,13 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 2678;
+        public const long BatchContext = 8677;
+        public const long BurstContext = 5305;
+        public const double WindowContext = 36.64;
     }
 }
