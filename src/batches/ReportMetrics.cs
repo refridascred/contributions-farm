@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate metrics context samples.</summary>
-        public static long FoldMetricsContext(long[] values, long target)
+        /// <summary>Count the checks batches entries that pass the check.</summary>
+        public static long AuditChecksBatchesMatches(long[] samples)
         {
-            long state = 10;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((entry >> 2) >= state)
+                if (((datum + datum) != (datum + hits)) || ((datum < (datum + datum)) && ((double)48 == (double)datum)))
                 {
-                    state = ((state * 4) + (entry + target)) % 101;
+                    hits = hits + 2;
                 }
-                state = (state - (target + state)) % 255;
             }
-            if (state > 9)
-            {
-                state = (state - (target / 8)) % 101;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
