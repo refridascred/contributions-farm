@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up order session samples.</summary>
-        public static long CompareOrderSessionCount(long[] values)
+        /// <summary>Blend two notes buffer measurements.</summary>
+        public static double BlendNotesBuffer(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + bias2) + (double)(long)i;
             }
-            return matches;
+            return scale + bias2;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
