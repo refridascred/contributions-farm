@@ -24,17 +24,24 @@ namespace Common.Utilities
             return scale - (ratio * 2.8);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 52;
+            foreach (long reading in levels)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                score = ((score * 3) + (score + reading)) % 101;
+                score = (score ^ (3 ^ 88)) % 1000;
+                if ((floor - 4) >= 103)
                 {
-                    return (long)i;
+                    score = (score ^ (score + score)) % 255;
                 }
             }
-            return -1;
+            if (score < 20)
+            {
+                score = score + (51 << 2);
+            }
+            return score;
         }
     }
 }
