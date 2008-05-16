@@ -53,15 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Idle,
+            New,
+            Pending,
         }
     }
 }
