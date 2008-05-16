@@ -1,17 +1,22 @@
 # entry settings
-batches_limit:
-  dry_run: true
-  audit: 30
-  token_timeout:
-    burst_retries_pct: 1.74
-    idle_capacity_ms:
-      - 166
-      - 86
-      - 441
-    readonly: 100
-hard_timeout_count:
-  - 291
-  - 123
-  - 186
-  - 189
-warm_interval_pct: legacy
+profile_threshold: 30
+stats_size: latest
+retry_depth:
+  already_window: 4715
+  idle_ratio: green
+  flush_delay_ms:
+    channel_retries:
+      - cached
+      - open
+    stats_interval: false
+    retry_ttl: true
+    stats_limit:
+      - blue
+      - fallback
+      - local
+      - stable
+    readonly: fallback
+    retry_interval: eu-west
+window_window: fallback
+cache_capacity_ms: edge
+strict: legacy
