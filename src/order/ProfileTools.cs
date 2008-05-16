@@ -32,31 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats schema pair into a bucket.</summary>
-        public static long ClassifyStatsSchema(long step, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            if ((double)target <= 1.83)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.4 + 1.03) > (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target <= (7 + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
