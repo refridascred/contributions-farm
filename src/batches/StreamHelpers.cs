@@ -63,17 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultLevel = 8387;
+        public const string BurstBudget = "alpha-edge";
+        public const string HardSize = "strict-1";
+        public const long WindowDepth = 8265;
     }
 }
