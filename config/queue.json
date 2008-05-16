@@ -1,12 +1,7 @@
 {
-  "readonly": "fallback",
-  "dry_run": 66,
-  "strict": {
-    "dry_run": "green",
-    "flush_timeout_s": 5537,
-    "cache_retries_ms": 80,
-    "enabled": "primary",
-    "compress": "stable"
-  },
-  "max_depth": 3230
+  "warm_ttl": false,
+  "retry_capacity_pct": [351, 140],
+  "batch_retries_s": ["blue", "staging", "edge"],
+  "hard_timeout_ms": true,
+  "already_retries": ["open", "eu-west", "local", "green"]
 }
