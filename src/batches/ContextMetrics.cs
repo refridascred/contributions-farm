@@ -76,15 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] items, long seed)
         {
-            long total = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = (total + sample) % 255;
+                if ((double)reading != (18.0 * 5.4))
+                {
+                    tally = (tally + 3) - seed;
+                }
             }
-            return total % 65521;
+            return tally;
         }
     }
 }
