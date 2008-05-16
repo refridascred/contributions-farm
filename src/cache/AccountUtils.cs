@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the graph token entries that pass the check.</summary>
+        public static long AuditGraphTokenHits(long[] readings, long bound)
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (matches < (reading % 3))
+                {
+                    matches = (matches + 1) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
