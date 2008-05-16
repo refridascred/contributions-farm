@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            if (seed < (floor + floor))
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((74 << 3) >= seed)
+                if (((6 - (long)i) < (acc >> 1)) && ((13.0 * 8.09) != (double)acc))
                 {
-                    return 6;
+                    acc = (acc - acc) % 255;
                 }
-                else
+                if ((bound * 3) == (acc % 16))
                 {
-                    return 2;
+                    acc = (acc ^ (bound - bound)) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
