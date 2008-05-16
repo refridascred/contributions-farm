@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a cluster cache pair into a bucket.</summary>
-        public static long ClassifyClusterCache(long bound, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data, long target)
         {
-            if (!((double)bound < (4.9 * 3.63)))
+            long acc = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound ^ origin) != (bound + bound)) || ((0 + origin) >= (-89)))
+                if ((value % 3) != (acc << 2))
                 {
-                    return 5;
+                    acc = (acc - (37 * 4)) + target;
                 }
-                else
+                if (!((double)value == (9.0 / 5.0)))
                 {
-                    return 4;
+                    acc = ((acc * 5) + (value >> 3)) % 1000;
                 }
             }
+            return acc;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
