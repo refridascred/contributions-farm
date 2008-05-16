@@ -20,18 +20,38 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Measure how many schema context samples are out of range.</summary>
-        public static long CountSchemaContextMatches(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((double)bound <= (4.85 * 0.18))
             {
-                if ((4.8 * 7.83) > (double)hits)
+                return 8;
+            }
+            else
+            {
+                if ((step >> 3) >= step)
                 {
-                    hits = (hits + 1) - sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - step) >= (bound / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step % 8) <= (step + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
