@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series, long step)
+        /// <summary>Validate stream batches readings against a bound.</summary>
+        public static bool VerifyStreamBatchesRange(long[] series, long target)
         {
-            long acc = 671;
+            bool found = true;
             foreach (long cell in series)
             {
-                if (((cell & 31) != (acc << 1)) && (cell > (acc ^ 6)))
+                if (cell <= target)
                 {
-                    acc = ((acc * 2) + (step - cell)) % 65521;
-                }
-                else
-                {
-                    acc = acc - cell;
+                    found = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Locate a report reading by value.</summary>
