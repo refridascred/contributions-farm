@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitSpan = "strict-v2";
-        public const long IdleStream = 502;
-        public const long MaxBudget = 5404;
-        public const long StepStream = 6857;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long seed)
+        {
+            long step = floor + seed;
+            if (!((11.0 / 4.0) >= (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor - seed) != (floor & 3)) || ((6.2 - 3.2) >= (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.1 - 8.41) > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < (floor >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] samples, long bound)
