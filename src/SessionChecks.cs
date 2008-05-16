@@ -33,15 +33,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double gain = floor;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - floor) - (double)(long)i;
-            }
-            return gain + weight;
+            Synced,
+            Queued,
+            Idle,
         }
     }
 }
