@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a context layout reading.</summary>
-        public static double ProjectContextLayout(double weight, double bias)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            double rate = bias;
-            if (rate >= 4.5)
+            double drift = scale;
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate + (bias - rate);
+                drift = ((drift + (drift + scale)) + (double)(long)i) + span;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (rate / 4.0)) + (double)(long)i;
-            }
-            return rate - weight;
+            return drift - drift;
         }
 
         /// <summary>Match up already samples.</summary>
