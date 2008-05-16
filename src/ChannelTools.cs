@@ -16,22 +16,30 @@ namespace Common.Utilities
             return gain + (double)1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            if ((7.75 - 0.5) > (double)floor)
+            long step = floor ^ origin;
+            if ((floor - origin) >= step)
             {
                 return 4;
             }
             else
             {
-                if ((4.95 * 9.97) < (double)origin)
+                if ((floor >= (52 / 8)) || ((60 - step) > (origin + floor)))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((1.6 - 16.0) > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
