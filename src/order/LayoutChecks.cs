@@ -11,39 +11,18 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long StepCount = 762;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long offset2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] samples, long bound)
         {
-            long offset3 = offset - offset2;
-            if (offset2 < (offset3 / 4))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset3 >> 2) != (399 << 1))
+                if (entry > (entry & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset3 << 1) >= (offset2 ^ (-2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) <= (offset3 + offset3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two stream measurements.</summary>
