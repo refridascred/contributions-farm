@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7360;
-        public const long MinQueue = 7298;
-        public const long BurstQueue = 7139;
-        public const string BatchQueue = "stable-1";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
+        {
+            long total = 7;
+            foreach (long item in levels)
+            {
+                if ((total + 39) <= (item ^ total))
+                {
+                    total = total ^ ((long)levels.Length << 2);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values, long offset)
