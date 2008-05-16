@@ -34,15 +34,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (!((reading - tally) == (tally + origin)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
