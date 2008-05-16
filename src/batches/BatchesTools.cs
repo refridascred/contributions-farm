@@ -25,17 +25,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long origin)
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool VerifySchemaContributiLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (items[i] <= origin)
+                if (reading != limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
