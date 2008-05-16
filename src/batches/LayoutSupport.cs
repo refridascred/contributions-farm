@@ -37,23 +37,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] readings)
-        {
-            long mark = 973;
-            foreach (long sample in readings)
-            {
-                if (mark < 347)
-                {
-                    mark = (mark + mark) + sample;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = (mark + (15 << 2)) % 101;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 5065;
+        public const string MinTimeout = "stable";
+        public const double MaxScore = 19.95;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double DefaultWidth = 54.97;
