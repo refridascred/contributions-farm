@@ -1,8 +1,24 @@
 # support settings
-githubfarm_threshold:
-  - 123
-  - 484
-  - 479
-  - 39
-flush_limit_count: edge
-sync_retries_ms: true
+stats_capacity:
+  checks_depth: 63.85
+  verbose: 84.08
+  record_size: false
+  batch_timeout: stable
+idle_interval_pct:
+  hard_delay_s: 4023
+  dry_run:
+    buffer_window: legacy
+    default_ratio_s: false
+    warm_ratio: 21.84
+    soft_window_pct: true
+    hard_depth: open
+    cache_ttl: 52.18
+  warm_threshold_count:
+    max_limit: 81
+    stream_timeout: 82
+    payload_limit: 2374
+  verbose: false
+  compress: true
+  idle_size_pct: 34.59
+readonly: primary
+compress: 67.11
