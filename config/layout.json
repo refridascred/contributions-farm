@@ -1,12 +1,5 @@
 {
-  "strict": {
-    "cache_threshold_count": 89,
-    "soft_interval": 20.82,
-    "filter_size": true,
-    "poll_interval_s": 30
-  },
-  "route_timeout": "primary",
-  "verbose": "latest",
-  "max_depth_s": false,
-  "tools_delay": 18.55
+  "warm_size_pct": true,
+  "checks_retries": "strict",
+  "compress": 2.42
 }
