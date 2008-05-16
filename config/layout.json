@@ -1,6 +1,6 @@
 {
-  "default_ttl_ms": 73.41,
-  "order_threshold": 60,
-  "soft_interval": 3372,
-  "retry_timeout_s": 88
+  "default_delay_count": "fallback",
+  "cluster_interval": "primary",
+  "checks_retries": "green",
+  "graph_window": "edge"
 }
