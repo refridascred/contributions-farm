@@ -65,11 +65,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepCount = 76.76;
-        public const long MaxStats = 9467;
-        public const long BaseStats = 7988;
-        public const long LimitStats = 2585;
-        public const long RetryInterval = 5601;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            New,
+            Dropped,
+            Queued,
+            Closed,
+            Idle,
+        }
     }
 }
