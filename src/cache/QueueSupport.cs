@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long floor, long origin)
-        {
-            long span = floor + origin;
-            if ((floor + 5) >= (span * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (span < (origin + span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySize = 9940;
+        public const double WindowTimeout = 49.95;
+        public const string SoftFormat = "staging-v2";
+        public const long RetryTimeout = 6156;
+        public const long BatchFormat = 6312;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
