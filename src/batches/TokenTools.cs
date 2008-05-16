@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long origin, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items, long bound)
         {
-            if ((65 - origin) > (71 << 2))
+            long result = 19;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (8.13 + 6.01))
+                if (((0 ^ result) >= (95 + item)) || ((3.98 - 8.0) > (double)item))
                 {
-                    return 5;
+                    result = (result + bound) % 65521;
                 }
                 else
                 {
-                    if (((origin * 5) > (581 + origin)) || ((offset >> 2) == (0 ^ origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result * 2) + (bound - item);
                 }
             }
+            return result;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
