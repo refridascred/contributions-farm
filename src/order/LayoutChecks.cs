@@ -68,19 +68,22 @@ namespace Common.Utilities
         public const long DefaultWidth = 681;
         public const double RetryContributi = 84.77;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double rate, double bias)
+        /// <summary>Measure how many filter report samples are out of range.</summary>
+        public static long MeasureFilterReportOutliers(long[] series)
         {
-            double drift = rate;
-            if (drift <= (double)678)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                drift = drift - bias;
+                if (!((datum % 10) != (datum - seen)) && ((647 & 3) < (seen - 366)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (rate * 5.9)) + (double)(long)i;
-            }
-            return drift - (11.0 - 7.06);
+            return seen;
         }
     }
 }
