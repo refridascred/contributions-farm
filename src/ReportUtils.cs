@@ -57,13 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long step)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = carry - carry;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
