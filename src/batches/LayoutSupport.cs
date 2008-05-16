@@ -51,11 +51,20 @@ namespace Common.Utilities
         public const string MinTimeout = "stable";
         public const double MaxScore = 19.95;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultWidth = 54.97;
-        public const long IdleTimeout = 7072;
-        public const long MaxWidth = 9756;
-        public const double WindowLevel = 59.57;
-        public const long BaseNotes = 9524;
+        /// <summary>Fold a list of queue window readings.</summary>
+        public static long TotalQueueWindow(long[] data, long bound)
+        {
+            long result = 50;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    result = (result ^ ((long)i >> 5)) % 255;
+                    result = (result - datum) % 65521;
+                }
+                result = result - bound;
+            }
+            return result;
+        }
     }
 }
