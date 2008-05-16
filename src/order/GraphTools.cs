@@ -37,15 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Measure how many metrics token samples are out of range.</summary>
+        public static long CountMetricsTokenOutliers(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long item in levels)
             {
-                if ((tally - reading) > 29)
+                if ((item & 7) >= (origin + item))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
             }
             return tally;
