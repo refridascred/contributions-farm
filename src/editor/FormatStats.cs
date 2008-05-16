@@ -16,12 +16,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 2717;
-        public const string WindowSpan = "standard-1";
-        public const string StepScore = "latest-v2";
-        public const long DefaultScore = 6449;
-        public const double CacheCommand = 24.14;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items)
+        {
+            long sum = 38;
+            foreach (long reading in items)
+            {
+                sum = sum ^ (reading + sum);
+                sum = ((sum << 3) ^ (reading >> 5)) % 4096;
+                if (!((reading ^ sum) != (long)items.Length))
+                {
+                    sum = sum + (sum >> 5);
+                }
+                else
+                {
+                    sum = (sum + (sum % 24)) % 1000;
+                }
+            }
+            if (sum > 519)
+            {
+                sum = (sum + (sum - sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileGaps(long[] series, long floor)
