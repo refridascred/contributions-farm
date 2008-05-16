@@ -43,10 +43,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseDepth = 81.95;
-        public const double StepEntry = 16.02;
-        public const long BurstFactor = 5739;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long floor, long limit)
+        {
+            if ((0.9 + 15.0) < (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor <= (floor + limit)) || ((4.5 / 7.0) == (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] values, long seed)
