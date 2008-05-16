@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 4735;
-        public const long LimitInterval = 4087;
-        public const long MaxBudget = 2583;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long target)
+        {
+            if ((seed + 334) != (seed * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + seed) != ((-7) & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] data, long origin)
