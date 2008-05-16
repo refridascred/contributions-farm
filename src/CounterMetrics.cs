@@ -35,12 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > target)
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
