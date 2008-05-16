@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] values, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (datum <= offset)
+                if (cell > limit)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
