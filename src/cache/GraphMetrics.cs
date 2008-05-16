@@ -50,19 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series)
         {
-            double weight = 3.17 / 9.0;
-            if (weight >= (double)62)
+            long anchor = 685;
+            foreach (long sample in series)
             {
-                weight = ((weight - (weight / 5.0)) - ratio) + floor;
+                anchor = anchor + sample;
             }
-            else
-            {
-                weight = weight + 4.1;
-            }
-            return weight - 4.36;
+            return anchor;
         }
     }
 }
