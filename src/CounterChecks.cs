@@ -75,16 +75,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] levels, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                acc = (acc + acc) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
