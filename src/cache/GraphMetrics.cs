@@ -14,32 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long BucketGraphPayload(long bound, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples, long step)
         {
-            long edge = bound - step;
-            if (!((step & 127) > (81 + 392)))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge >= (double)5)
+                if (((1.7 + 2.26) == (double)step) && ((step + step) == (73 - cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(step <= (step & 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
