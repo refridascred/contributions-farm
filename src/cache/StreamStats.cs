@@ -22,12 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            if (((limit + limit) <= (limit / 6)) || (limit < (limit - offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - limit) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + limit) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset % 16) != (offset % 2)) && ((offset + 186) < (offset - (-58))))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
