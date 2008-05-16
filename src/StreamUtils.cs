@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 9557;
+        public const long BaseProfile = 2105;
+        public const double SoftWidth = 40.24;
+        public const long WindowWidth = 7062;
+        public const double StepWidth = 5.39;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double scale, double offset)
