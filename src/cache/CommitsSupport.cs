@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmStatsBounds(long[] values, long bound)
+        /// <summary>Validate farm metric readings against a bound.</summary>
+        public static bool GuardFarmMetricRange(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (entry >= bound)
+                if (datum != floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
