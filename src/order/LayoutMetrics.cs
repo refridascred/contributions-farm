@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long DefaultCount = 6506;
         public const double DefaultRatio = 53.71;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] readings, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] readings)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((origin - 98) < (4 - origin))
+                if ((matches ^ (-82)) == (matches >> 4))
                 {
-                    anchor = (anchor ^ ((-370) ^ reading)) % 255;
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine metrics graph values into a single score.</summary>
