@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 2307;
-        public const long BurstContributi = 2135;
-        public const long IdleBudget = 8103;
-        public const long BaseContributi = 378;
-        public const long BatchContributi = 2718;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Audit graph schema readings against a rule.</summary>
         public static long CountGraphSchemaMatches(long[] levels)
