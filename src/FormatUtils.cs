@@ -37,15 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi profile readings against a rule.</summary>
-        public static long AuditContributiProfileHits(long[] items, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long value in levels)
             {
-                if ((matches >> 5) <= (bound >> 5))
+                if (!(value >= (value ^ value)) || (((double)value == (3.1 + 3.1)) || ((matches << 3) <= (value - matches))))
                 {
-                    matches = (matches + 3) - sample;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
