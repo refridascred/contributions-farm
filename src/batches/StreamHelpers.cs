@@ -75,11 +75,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double scale = (double)3 / 9.0;
-            return ((scale + (double)752) + gain) + floor;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the token kind values.</summary>
