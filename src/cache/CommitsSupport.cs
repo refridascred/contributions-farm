@@ -74,19 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] data, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            New,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate session buffer readings against a bound.</summary>
