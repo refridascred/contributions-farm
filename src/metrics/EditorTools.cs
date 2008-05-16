@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepTimeout = 807;
-        public const long HardContext = 3201;
-        public const string BurstContext = "legacy-edge";
-        public const string MinContext = "latest-edge";
-        public const string BaseLevel = "legacy";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Paused,
+            Draft,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] items, long target)
