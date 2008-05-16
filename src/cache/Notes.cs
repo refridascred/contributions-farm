@@ -53,19 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen <= (seen * 3))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardFactor = 62.07;
+        public const double RetryNotes = 81.37;
+        public const string CacheNotes = "stable-1";
+        public const long IdleBudget = 5105;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long floor)
