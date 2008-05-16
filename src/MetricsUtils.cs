@@ -41,21 +41,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of window filter readings.</summary>
-        public static long CompareWindowFilterCount(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound ^ 9) < (221 % 8))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((floor << 3) <= 54) && ((7.64 * 2.8) > (double)floor))
                 {
-                    if ((samples[i] ^ samples[j]) != 20)
+                    return 8;
+                }
+                else
+                {
+                    if ((bound >> 5) < (floor ^ bound))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)6)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
