@@ -1,8 +1,6 @@
 {
-  "max_capacity_ms": 60,
-  "cache_size_pct": 24.51,
-  "audit": "standard",
-  "context_limit": false,
-  "idle_threshold": 93,
-  "retry_threshold_count": 3113
+  "enabled": false,
+  "idle_threshold_s": false,
+  "checks_delay": "open",
+  "base_size": false
 }
