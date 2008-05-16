@@ -17,14 +17,25 @@ namespace Common.Utilities
         public const long StepContributi = 6053;
         public const long BaseContributi = 8231;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            Active,
-            Draft,
-            Stale,
-            Paused,
-            Idle,
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((sum % 24) != (sum % 2)) || (step <= (sum * 2)))
+                {
+                    sum = ((sum << 2) ^ (sum ^ step)) % 255;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (((sum << 2) ^ sum) % 65521) - (long)i2;
+                }
+                sum = ((sum * 5) + (sum - (long)i)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
