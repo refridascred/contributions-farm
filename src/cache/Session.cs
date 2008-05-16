@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster schema samples.</summary>
-        public static long OverlapClusterSchemaCount(long[] samples)
+        /// <summary>Validate filter window readings against a bound.</summary>
+        public static bool ValidateFilterWindowRange(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
