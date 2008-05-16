@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Queued,
-            Locked,
+            Closed,
             Ready,
+            Locked,
         }
 
         /// <summary>Hold a stats summary.</summary>
