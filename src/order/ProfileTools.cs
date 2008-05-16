@@ -93,11 +93,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchBudget = "staging-v2";
-        public const long DefaultRatio = 1902;
-        public const long StepLevel = 3630;
-        public const long MinLevel = 9128;
+        /// <summary>Iterate the queue command series from a seed.</summary>
+        public static long SeriesQueueCommand(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] items, long step)
