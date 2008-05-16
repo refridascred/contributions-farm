@@ -16,14 +16,18 @@ namespace Common.Utilities
             return bias2 + (double)6;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            Pending,
-            Retry,
-            Idle,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (tally > (entry + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
