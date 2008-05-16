@@ -38,22 +38,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] items, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)count >= (6.3 / 5.0)) && ((double)count < (15.0 / 8.0))) && ((value ^ 230) == ((-67) >> 1)))
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
