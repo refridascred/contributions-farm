@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long anchor = 980;
-            foreach (long sample in levels)
-            {
-                if ((sample & 127) != (78 >> 1))
-                {
-                    anchor = ((anchor * 4) + (anchor + sample)) - seed;
-                }
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
