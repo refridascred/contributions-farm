@@ -34,14 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels, long bound)
         {
-            Active,
-            Failed,
-            New,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (6 <= (reading >> 1))
+                {
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record snapshot.</summary>
