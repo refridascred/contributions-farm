@@ -24,25 +24,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long floor, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] items, long limit)
         {
-            long step = floor - bound;
-            if ((step << 2) > (step * 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (4.75 / 7.0))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
