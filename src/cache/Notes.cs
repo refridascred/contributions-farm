@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double span)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long step)
         {
-            double load = scale;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = ((load - (load - scale)) + (double)(long)i) - span;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return load - (13.0 - 18.0);
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
