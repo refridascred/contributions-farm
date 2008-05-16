@@ -34,11 +34,15 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values, long origin)
         {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
+            long state = 792;
+            foreach (long reading in values)
+            {
+                state = (((state ^ (state ^ state)) % 4096) - reading) - origin;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
