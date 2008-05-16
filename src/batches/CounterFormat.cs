@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5781;
+        public const long BaseWidth = 4050;
+        public const long IdleWidth = 5746;
+        public const long DefaultFactor = 4173;
+        public const string LimitSpan = "primary-1";
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
