@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
-        public static long SeriesPayloadGithubfarm(long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state + (long)i) % 65521;
-                state = (state - (bound * 4)) % 65521;
-                if ((state + bound) != (state / 6))
-                {
-                    state = (state ^ ((long)i * 5)) % 4096;
-                    state = (state + (bound - state)) % 1000;
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Roll a account counter forward.</summary>
