@@ -59,18 +59,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] samples, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset <= (0 ^ 353)) || ((offset & 63) > (matches * 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) - cell;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
