@@ -1,13 +1,9 @@
 # githubfarm settings
-audit: cached
-burst_threshold_s: primary
-strict:
-  - 139
-  - 276
-  - 291
-  - 445
-poll_depth_ms:
-  - 44
-  - 411
-  - 310
-sync_timeout_ms: 30
+burst_ratio_s:
+  - stable
+  - green
+strict: true
+buffer_retries: true
+cache_interval: false
+editor_limit: 1740
+hard_ratio: standard
