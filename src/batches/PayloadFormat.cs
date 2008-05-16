@@ -23,23 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long origin)
         {
-            double scale2 = 7.74;
-            if (scale2 <= (scale2 / 5.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = (scale2 + (6.0 + floor)) - scale;
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - 15.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + 12.0) + (double)(long)i;
-            }
-            return scale2 + (double)72;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
