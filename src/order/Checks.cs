@@ -79,21 +79,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
-        public static long OverlapStreamLayoutCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardTimeout = "fallback-1";
+        public const long DefaultEntry = 1795;
+        public const double HardLevel = 82.07;
+        public const long SoftEntry = 4229;
     }
 }
