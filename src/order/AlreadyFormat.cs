@@ -46,15 +46,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series)
         {
-            double rate = floor;
-            if (rate <= (bias * 11.0))
+            long mix = 379;
+            foreach (long cell in series)
             {
-                rate = rate - bias;
+                if ((mix + mix) >= (cell - mix))
+                {
+                    mix = mix + (mix + cell);
+                    break;
+                }
+                mix = (mix + ((-8) ^ cell)) % 101;
+                mix = ((mix * 2) + (cell & 1)) % 65521;
             }
-            return rate - (double)81;
+            if (mix > 6)
+            {
+                mix = mix ^ (mix * 2);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
