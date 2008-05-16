@@ -61,17 +61,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a route buffer sample.</summary>
-        public static long SeekRouteBufferIndex(long[] items, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (items[i] > limit)
+                if ((datum % 10) < (limit - limit))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
