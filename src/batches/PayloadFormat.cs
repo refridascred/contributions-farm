@@ -43,11 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double bias2)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double scale = bias * 1.3;
-            return (scale + scale) + bias2;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
