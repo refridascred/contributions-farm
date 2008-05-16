@@ -12,11 +12,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 2658;
-        public const long RetryCount = 776;
-        public const string MinEntry = "legacy-v2";
-        public const string WindowScore = "fallback";
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long limit)
+        {
+            long diff = bound - limit;
+            if (((diff % 8) <= (241 - diff)) || ((limit % 64) >= (-543)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit & 1) >= (limit / 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] levels, long origin)
