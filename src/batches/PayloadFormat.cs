@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long origin2)
         {
-            long sum = 380;
-            foreach (long cell in series)
+            long delta = origin ^ origin2;
+            if ((898 / 5) < (origin + origin))
             {
-                if ((cell + 69) == (long)series.Length)
+                return 3;
+            }
+            else
+            {
+                if ((delta + origin) > ((-8) + 0))
                 {
-                    sum = (sum - (cell + sum)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (sum < 702)
-            {
-                sum = (sum - (offset * 2)) % 4096;
-            }
-            return sum;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
