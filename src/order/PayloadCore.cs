@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = 695;
-            foreach (long entry in levels)
-            {
-                if (228 <= (entry / 9))
-                {
-                    state = (state - state) % 97;
-                }
-            }
-            return state;
+            Retry,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the format status values.</summary>
