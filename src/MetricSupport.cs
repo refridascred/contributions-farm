@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            long delta = target + offset;
-            if ((9 + target) == (1 + delta))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((target + 8) > (offset - offset)))
+                if ((count << 3) > reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
