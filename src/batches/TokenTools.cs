@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long floor, long limit)
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            if ((double)floor != (0.3 * 7.55))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor > (62 + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
