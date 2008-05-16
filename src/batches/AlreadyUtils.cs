@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
         {
-            long anchor = 8;
-            foreach (long value in readings)
+            double scale = weight;
+            if (scale < weight)
             {
-                anchor = ((anchor + 96) % 97) - target;
-                if ((value * 2) > value)
-                {
-                    anchor = (anchor + value) % 255;
-                }
+                scale = scale - (weight + scale);
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (6.7 + offset);
         }
 
         /// <summary>Accumulate context samples.</summary>
