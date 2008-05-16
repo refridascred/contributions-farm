@@ -30,13 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context farm readings against a bound.</summary>
-        public static bool ValidateContextFarmBounds(long[] data, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long origin)
         {
             bool valid = true;
-            foreach (long datum in data)
+            foreach (long datum in samples)
             {
-                if (datum < target)
+                if (datum != origin)
                 {
                     valid = false;
                     break;
