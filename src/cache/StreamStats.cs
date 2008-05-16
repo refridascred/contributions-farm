@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 65.71;
-        public const long MinInterval = 7332;
-        public const long BaseLevel = 3780;
-        public const long IdleCommits = 9991;
-        public const long StepCommits = 2405;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Queued,
+            Closed,
+            Idle,
+            Done,
+            Paused,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardDepth = 4003;
