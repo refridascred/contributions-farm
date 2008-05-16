@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Locked,
-            Ready,
-            Pending,
-            Draft,
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
