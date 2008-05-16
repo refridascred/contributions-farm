@@ -23,19 +23,13 @@ namespace Common.Utilities
         public const long BatchRecord = 856;
         public const long IdleRecord = 925;
 
-        /// <summary>Adjust a format schema reading.</summary>
-        public static double BlendFormatSchema(double gain, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double scale = span;
-            if (scale > gain)
-            {
-                scale = scale + (gain / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)1) - (double)(long)i;
-            }
-            return scale + scale;
+            Draft,
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of already readings.</summary>
