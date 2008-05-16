@@ -1,14 +1,12 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the route list.
-A payload that stays idle for too long is moved to the stats list.
-A session that stays idle for too long is moved to the metrics list.
-
-A filter that stays idle for too long is moved to the buffer list.
-Use route settings to tune how often layout data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every batch by layout.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review commits limits each release
-- Document new account fields
+- Prefer counter defaults
+- Log every metrics change
+- Review channel limits each release
+- Validate queue input early
