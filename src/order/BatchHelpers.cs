@@ -22,31 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            if ((33 % 3) != (floor + floor))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)8 != (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target >= (12.0 + 4.07))
+                    if ((series[i] + series[j]) == 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi class values.</summary>
