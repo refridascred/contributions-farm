@@ -28,19 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != offset)
+                if (series[i] >= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
