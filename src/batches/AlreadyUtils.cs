@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Adjust a order metrics reading.</summary>
+        public static double AdjustOrderMetrics(double rate, double floor)
         {
-            Failed,
-            Stale,
-            Pending,
-            Done,
-            New,
+            double gain = 8.2 * 12.0;
+            if (gain < (floor + floor))
+            {
+                gain = (gain - (double)455) + rate;
+            }
+            return gain + (gain / 6.0);
         }
 
         /// <summary>Digest a series of batches entries.</summary>
