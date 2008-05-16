@@ -66,13 +66,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = (6.0 / 9.0) + 6.0;
+            if (rate < rate)
+            {
+                rate = (rate + ratio) + floor;
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate - rate;
         }
     }
 }
