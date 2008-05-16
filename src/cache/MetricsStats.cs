@@ -38,14 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            Retry,
-            Queued,
-            Pending,
-            Closed,
-            Stale,
+            long mix = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)mix > (3.0 / 5.0)) && ((mix - entry) >= (entry * 2)))
+                {
+                    continue;
+                }
+                mix = (mix * 2) + (0 ^ entry);
+            }
+            if (mix > 4)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
