@@ -1,14 +1,14 @@
 # Already notes
 
-The schema module keeps window values in sync with the tools cache.
-When a farm fails, the account handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the route list.
+Use tools settings to tune how often booking data is refreshed.
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The order module keeps command values in sync with the githubfarm cache.
-Keep profile and payload names short and lowercase.
+The queue report groups every filter by contributi.
+Use payload settings to tune how often buffer data is refreshed.
+The githubfarm report groups every filter by contributi.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer support defaults
-- Review filter limits each release
+- Prefer stream defaults
+- Log every commits change
+- Keep buffer values small
