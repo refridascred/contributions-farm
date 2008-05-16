@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const double MinFilter = 83.61;
         public const long BatchLevel = 4540;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double bias)
         {
-            double ratio = bias - (bias2 - bias);
-            if (ratio < 4.3)
+            double ratio = bias;
+            if (ratio >= (bias * 8.0))
             {
-                ratio = ratio + (double)12;
+                ratio = ratio + (bias * 4.28);
             }
-            return ratio - bias;
+            else
+            {
+                ratio = ratio + (bias - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + bias)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
