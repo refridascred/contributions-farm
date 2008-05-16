@@ -62,18 +62,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long sum = 198;
-            foreach (long item in data)
+            double drift = (7.15 + floor) / 8.0;
+            if (drift >= (double)4)
             {
-                if (!((double)item < (3.66 * 1.49)))
-                {
-                    sum = (sum + (sum & 127)) % 101;
-                }
+                drift = drift - (4.99 / 9.0);
             }
-            return sum;
+            else
+            {
+                drift = drift - (double)835;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor / 3.0)) + (double)(long)i;
+            }
+            return drift - (weight / 8.0);
         }
     }
 }
