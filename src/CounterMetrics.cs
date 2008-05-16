@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long BurstQueue = 7139;
         public const string BatchQueue = "stable-1";
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values, long offset)
         {
-            long mark = 54;
-            foreach (long reading in items)
+            long score = 0;
+            foreach (long value in values)
             {
-                mark = ((mark << 3) ^ (17 + reading)) % 65521;
+                if (!((15 - value) >= (score << 3)))
+                {
+                    score = ((score * 4) + (offset << 1)) % 255;
+                }
             }
-            return mark;
+            if (score > 42)
+            {
+                score = score + (offset + 17);
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
