@@ -1,6 +1,8 @@
 {
-  "base_window": true,
-  "default_interval_ms": 88.03,
-  "warm_timeout": 64.94,
-  "max_threshold_ms": "blue"
+  "retry_capacity": "fallback",
+  "poll_threshold": "green",
+  "flush_interval_count": 87,
+  "record_threshold": "cached",
+  "compress": 83.9,
+  "persist": 16.34
 }
