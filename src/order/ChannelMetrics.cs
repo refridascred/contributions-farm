@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((seed <= (seed + seed)) && (((long)i + (long)i) <= (seed & 3))))
-                {
-                    state = (state + ((long)i / 2)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a farm account figure with a bias.</summary>
