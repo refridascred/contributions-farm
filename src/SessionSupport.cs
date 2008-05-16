@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate already readings against a bound.</summary>
