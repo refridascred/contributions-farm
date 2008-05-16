@@ -36,22 +36,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = 977;
+            foreach (long entry in values)
             {
-                if (!((45 % 16) == (count >> 3)))
-                {
-                    count = ((count + 3) ^ sample) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry ^ (entry % 8)) % 1000) - limit;
             }
-            return count;
+            if (carry < 3)
+            {
+                carry = ((carry << 3) ^ carry) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
