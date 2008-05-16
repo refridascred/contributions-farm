@@ -39,14 +39,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long bound)
         {
-            Dropped,
-            Stale,
-            Retry,
-            New,
-            Idle,
+            long bound2 = origin + bound;
+            if (bound <= (origin - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.4 + 6.0) <= (double)bound2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 - bound2) < (bound % 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
