@@ -32,23 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)mix > (3.0 / 5.0)) && ((mix - entry) >= (entry * 2)))
-                {
-                    continue;
-                }
-                mix = (mix * 2) + (0 ^ entry);
-            }
-            if (mix > 4)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
