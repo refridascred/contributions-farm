@@ -64,13 +64,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (total >> 3)) % 65521;
+                total = ((total << 2) ^ (limit / 3)) % 97;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
