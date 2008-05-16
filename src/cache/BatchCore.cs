@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const string StepInterval = "primary";
         public const long BaseMetrics = 3797;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long total = 0;
-            foreach (long reading in values)
+            long state = 930;
+            foreach (long cell in samples)
             {
-                if (((7.96 + 7.6) < (double)total) && ((total + origin) != (reading - origin)))
+                if ((state >> 4) == (state & 1))
                 {
-                    total = (total - (reading - total)) % 97;
+                    state = (state - (cell + cell)) % 4096;
                 }
             }
-            return total;
+            return state % 4096;
         }
     }
 }
