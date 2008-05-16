@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            Idle,
-            Retry,
-            Locked,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (count <= ((long)samples.Length << 3))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
