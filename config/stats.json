@@ -1,19 +1,5 @@
 {
-  "batch_size_ms": {
-    "session_capacity": 78.36,
-    "retry_threshold_s": "open",
-    "route_interval": {
-      "default_ttl_pct": ["stable", "standard", "eu-west", "standard"],
-      "flush_depth_pct": ["eu-west", "open", "blue"],
-      "max_threshold_pct": true
-    },
-    "poll_threshold_count": {
-      "warm_timeout_pct": 3304,
-      "default_size": 70.02,
-      "enabled": "latest",
-      "flush_threshold": 16
-    }
-  },
-  "max_threshold_pct": true,
-  "readonly": 45
+  "warm_interval": "standard",
+  "batch_capacity_s": 60,
+  "account_depth": false
 }
