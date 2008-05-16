@@ -1,10 +1,10 @@
 {
-  "audit": "staging",
-  "tools_ratio": "latest",
-  "warm_threshold": 57.78,
-  "poll_ttl": {
-    "idle_threshold_count": ["strict", "edge"],
-    "retry_threshold_s": 5880,
-    "burst_size_s": ["legacy", "latest", "latest"]
-  }
+  "hard_timeout_pct": 8231,
+  "batch_timeout_s": {
+    "channel_limit": "fallback",
+    "base_window_s": 30,
+    "audit": 5888
+  },
+  "batch_ttl": ["strict", "latest", "standard", "standard"],
+  "batch_depth": "staging"
 }
