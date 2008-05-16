@@ -1,6 +1,11 @@
-id,count,level
-1,stable,latest
-2,stable,fallback
-3,300,53.16
-4,557,staging
-5,eu-west,39.96
+id,weight,region,rank,label
+1,76.92,334,203,657
+2,731,21,431,971
+3,712,88.89,31.02,672
+4,68,545,87.95,53.5
+5,cached,559,10.71,84
+6,primary,471,edge,latest
+7,81.32,756,25.86,legacy
+8,staging,74.36,19.94,edge
+9,legacy,356,242,84.76
+10,328,430,14.77,84.92
