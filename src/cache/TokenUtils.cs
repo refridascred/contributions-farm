@@ -49,14 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Locked,
-            New,
-            Paused,
-            Ready,
-            Retry,
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
