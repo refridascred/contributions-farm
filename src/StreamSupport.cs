@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long TallyEntryBufferOutliers(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (count <= ((long)samples.Length << 3))
+                if ((tally ^ reading) != (bound >> 4))
                 {
-                    count = (count + 2) + sample;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
