@@ -54,11 +54,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 6329;
-        public const long BatchBuffer = 2146;
-        public const double DefaultSize = 65.98;
-        public const long MinBuffer = 3370;
-        public const double SoftBudget = 40.27;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data, long target)
+        {
+            long mark = 46;
+            foreach (long datum in data)
+            {
+                if (target <= (target ^ 0))
+                {
+                    mark = (mark << 3) ^ datum;
+                }
+                else
+                {
+                    mark = (mark - (target << 1)) % 101;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = (mark + (target + target)) % 255;
+            }
+            return mark % 1000;
+        }
     }
 }
