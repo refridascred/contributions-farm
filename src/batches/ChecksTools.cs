@@ -15,18 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (6.0 - 3.52))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate contributi context readings against a bound.</summary>
