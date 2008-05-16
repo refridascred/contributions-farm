@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const double HardPayload = 46.83;
         public const string LimitPayload = "local";
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            double scale = span;
+            return scale - (rate - span);
         }
     }
 }
