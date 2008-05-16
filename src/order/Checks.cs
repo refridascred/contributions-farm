@@ -100,20 +100,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long sum = 503;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 3) + (sum + 502)) + entry;
-                sum = ((sum * 4) + (sum << 2)) % 101;
-            }
-            if (sum < 5)
-            {
-                sum = (sum ^ (sum % 97)) % 1000;
-            }
-            return sum;
+            Queued,
+            Dropped,
+            Ready,
+            Pending,
+            Retry,
         }
     }
 }
