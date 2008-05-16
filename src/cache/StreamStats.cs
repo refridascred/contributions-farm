@@ -22,12 +22,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "standard";
-        public const string WindowGraph = "fallback";
-        public const long RetryLevel = 595;
-        public const long StepGraph = 2352;
-        public const double CacheSize = 25.76;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 7201;
+        public const double MinDepth = 37.33;
+        public const long CacheSpan = 7261;
+        public const long HardBudget = 2458;
+        public const long StepFilter = 2156;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
