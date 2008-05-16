@@ -69,16 +69,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Compare every pair of contributi account readings.</summary>
+        public static long CompareContributiAccountCount(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 2) ^ (origin / 4)) % 101;
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
