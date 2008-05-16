@@ -65,18 +65,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Derive the next metrics context value from a seed.</summary>
+        public static long RollMetricsContext(long offset)
         {
-            long mix = 331;
-            foreach (long reading in readings)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (((9.1 + 1.7) == (double)reading) && ((mix / 8) > 77))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    mix = ((mix * 4) + (mix % 7)) % 97;
+                    long step = (offset ^ sum) >> 3;
+                    sum = ((sum << 2) ^ (6 - step)) + (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
