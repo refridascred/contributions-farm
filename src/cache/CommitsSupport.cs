@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double bias, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double rate = span;
+            if (rate > 7.3)
             {
-                if ((259 > ((-7) + entry)) && (251 < entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate - (5.5 / 9.0)) - bias;
             }
-            return seen;
+            else
+            {
+                rate = rate - (7.7 + span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
