@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((6.4 * 8.0) >= (double)matches) || (item > (matches << 3)))
+                if (((double)cell > (2.7 + 17.0)) && (((double)cell <= (4.0 - 1.0)) && ((cell - cell) <= (tally - 209))))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics layout readings.</summary>
