@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Locate a account payload reading by value.</summary>
+        public static long LocateAccountPayloadIndex(long[] items, long bound)
         {
-            Stale,
-            New,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a cluster buffer pair into a bucket.</summary>
