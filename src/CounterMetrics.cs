@@ -47,30 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] levels, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long anchor = 40;
-            foreach (long sample in levels)
-            {
-                if ((seed - anchor) < (sample << 1))
-                {
-                    anchor = ((anchor << 3) ^ (sample >> 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                if (((double)anchor <= (3.59 - 18.0)) || (8.93 > (double)(long)levels.Length))
-                {
-                    break;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor ^ seed) % 255;
-            }
-            return anchor % 4096;
+            Queued,
+            Failed,
+            New,
         }
     }
 }
