@@ -28,19 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double ratio, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            double ratio2 = span;
-            if (ratio2 < span)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                ratio2 = (ratio2 - (double)78) - ratio;
+                state = (state - (state - seed)) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (state ^ (seed ^ (long)i)) % 65521;
+                    state = (state + (60 + (long)i2)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + ratio2) - (double)(long)i;
-            }
-            return ratio2 + (double)2;
+            return state;
         }
     }
 }
