@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long offset, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long target)
         {
-            if ((offset + 7) >= 325)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset >> 3) > (step ^ offset))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 0;
+                    score = ((score << 2) ^ (score & 63)) - (long)i2;
                 }
-                else
-                {
-                    if (!((offset - offset) == (724 & 127)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Iterate the record session series from a seed.</summary>
