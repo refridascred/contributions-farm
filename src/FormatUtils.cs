@@ -37,22 +37,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = 89;
+            foreach (long entry in levels)
             {
-                if (!(value >= (value ^ value)) || (((double)value == (3.1 + 3.1)) || ((matches << 3) <= (value - matches))))
+                long bound = sum;
+                if ((double)sum == (double)bound)
                 {
-                    matches = matches + 2;
+                    sum = sum - (sum + entry);
+                    bound = (bound + (entry >> 3)) % 65521;
+                }
+                if ((sum & 7) < (entry % 97))
+                {
+                    sum = sum + ((-384) - entry);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = ((sum << 2) ^ sum) % 4096;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
