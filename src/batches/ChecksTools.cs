@@ -41,11 +41,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            Paused,
+            Ready,
+            Failed,
+            Dropped,
         }
     }
 }
