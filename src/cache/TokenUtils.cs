@@ -38,19 +38,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            long sum = 247;
-            foreach (long sample in items)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum ^ sum) - sample) - limit;
-                if ((sum - 350) >= (27 + sum))
-                {
-                    break;
-                }
+                mark = mark - ((long)i - (long)i);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return mark;
         }
     }
 }
