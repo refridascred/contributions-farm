@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] readings, long seed)
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long WeighCacheContext(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long reading in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
+                if ((60 & 15) != (reading ^ reading))
                 {
-                    return (long)i;
+                    result = (result * 3) + (result - reading);
                 }
             }
-            return -1;
+            if (result < 2)
+            {
+                result = ((result * 2) + (step * 3)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
