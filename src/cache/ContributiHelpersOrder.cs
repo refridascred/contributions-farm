@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate stream metrics samples.</summary>
+        public static long CombineStreamMetrics(long[] samples)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long acc = 461;
+            foreach (long sample in samples)
+            {
+                acc = (((acc << 3) ^ (acc << 2)) % 1000) ^ sample;
+            }
+            if (acc > 6)
+            {
+                acc = acc ^ 39;
+            }
+            return acc;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
