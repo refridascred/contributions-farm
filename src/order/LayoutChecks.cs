@@ -17,18 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] samples, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = -74;
+            foreach (long item in data)
             {
-                if (entry > (entry & 31))
+                if ((double)bound < (7.4 - 6.1))
                 {
-                    hits = (hits + 2) + bound;
+                    acc = (acc - (acc - acc)) ^ item;
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
