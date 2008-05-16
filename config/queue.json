@@ -1,18 +1,5 @@
 {
-  "payload_limit": false,
-  "contributi_capacity": "edge",
-  "persist": [80, 197, 485, 205],
-  "cache_interval": {
-    "min_timeout_count": {
-      "max_limit_pct": 58.82,
-      "compress": 25,
-      "sync_interval_s": [388, 189],
-      "cache_ttl": true,
-      "context_interval": 500
-    },
-    "profile_interval": 100,
-    "soft_threshold_count": false
-  },
-  "min_size_ms": "strict",
-  "flush_window": "blue"
+  "order_ratio": ["staging", "edge"],
+  "batch_threshold": "standard",
+  "audit": 1.81
 }
