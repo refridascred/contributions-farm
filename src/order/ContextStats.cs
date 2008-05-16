@@ -45,10 +45,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 7846;
-        public const long BurstFactor = 2431;
-        public const long WindowBudget = 9238;
-        public const long LimitTimeout = 7132;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryDepth = 7269;
+        public const long IdleAccount = 7680;
+        public const long LimitTimeout = 395;
+        public const long LimitAccount = 2843;
     }
 }
