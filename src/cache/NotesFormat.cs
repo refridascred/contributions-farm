@@ -24,13 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Pending,
-            Stale,
-            New,
-            Draft,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
