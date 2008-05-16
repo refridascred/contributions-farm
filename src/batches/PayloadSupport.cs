@@ -45,12 +45,17 @@ namespace Common.Utilities
         public const string DefaultChecks = "open";
         public const double CacheChecks = 70.62;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
