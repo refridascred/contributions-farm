@@ -47,26 +47,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
-        {
-            long state = 18;
-            foreach (long reading in samples)
-            {
-                if (state <= (275 * 2))
-                {
-                    state = state + (state << 3);
-                }
-                if ((1 + (long)samples.Length) < reading)
-                {
-                    state = state + state;
-                }
-                else
-                {
-                    state = (state - (state - reading)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 4875;
+        public const double LimitFactor = 24.51;
+        public const long BaseContext = 4658;
+        public const long LimitContext = 4446;
+        public const string DefaultContext = "fallback-edge";
     }
 }
