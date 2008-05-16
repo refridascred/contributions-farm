@@ -19,13 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
