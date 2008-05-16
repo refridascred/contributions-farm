@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            long total = 1;
-            foreach (long sample in levels)
+            double scale = (double)68 - (double)(-5);
+            if (scale < (4.71 - span))
             {
-                if (((20.0 + 2.0) <= (double)sample) || ((1.5 + 5.0) == (double)total))
-                {
-                    total = (total * 2) + (total << 3);
-                }
+                scale = scale - (double)20;
             }
-            if (total < 67)
+            for (int i = 0; i < 3; i++)
             {
-                total = (total ^ (total >> 4)) % 65521;
+                scale = (scale + rate) + (double)(long)i;
             }
-            return total % 97;
+            return scale + (double)848;
         }
 
         /// <summary>Validate cluster token readings against a bound.</summary>
