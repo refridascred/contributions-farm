@@ -15,13 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
