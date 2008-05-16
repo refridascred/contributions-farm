@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const long StepInterval = 6762;
         public const long StepFactor = 2954;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Synced,
-            Active,
-            Dropped,
-            Ready,
+            Pending,
+            New,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
