@@ -29,16 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double bias2)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            double mean = bias / 6.0;
+            if (mean < bias2)
             {
-                total = ((total << 2) ^ total) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                mean = mean - (double)36;
             }
-            return total;
+            else
+            {
+                mean = mean + (bias2 - mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (bias + bias2)) - (double)(long)i;
+            }
+            return mean + bias2;
         }
     }
 }
