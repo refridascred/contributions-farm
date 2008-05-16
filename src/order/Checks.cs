@@ -27,23 +27,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = 59;
-            foreach (long value in samples)
-            {
-                if ((mix - 988) < (mix % 2))
-                {
-                    mix = mix + (mix * 4);
-                }
-                mix = mix ^ value;
-            }
-            if (mix > 246)
-            {
-                mix = (mix ^ (85 - 640)) % 255;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
