@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster tools sample.</summary>
-        public static long FindClusterToolsIndex(long[] items, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a graph header.</summary>
