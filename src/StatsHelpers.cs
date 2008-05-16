@@ -74,17 +74,9 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Look up the position of a tools record sample.</summary>
-        public static long LocateToolsRecordIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 8069;
+        public const double RetryWidth = 19.99;
+        public const string CacheMetrics = "primary-1";
     }
 }
