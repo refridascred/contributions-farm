@@ -29,11 +29,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Roll a channel filter counter forward.</summary>
+        public static long RollChannelFilter(long step)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result ^ (result / 7)) % 101;
+                if (step < (step * 3))
+                {
+                    result = ((result * 4) + (result + step)) % 97;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
