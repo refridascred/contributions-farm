@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the filter contributi series from a seed.</summary>
-        public static long StepFilterContributi(long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((4.51 + 1.6) == (double)target)
-                {
-                    sum = ((sum * 4) + (target + target)) % 97;
-                }
-                sum = (sum ^ ((long)i ^ sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
