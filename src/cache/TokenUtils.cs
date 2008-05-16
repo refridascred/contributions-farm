@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 2307;
+        public const long BurstContributi = 2135;
+        public const long IdleBudget = 8103;
+        public const long BaseContributi = 378;
+        public const long BatchContributi = 2718;
 
         /// <summary>Audit graph schema readings against a rule.</summary>
         public static long CountGraphSchemaMatches(long[] levels)
