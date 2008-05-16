@@ -36,15 +36,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long TallyLayoutChecksGaps(long[] items, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((value - value) == (count / 6))
+                {
+                    count = (count + 1) - offset;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
