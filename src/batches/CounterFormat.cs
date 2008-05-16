@@ -23,14 +23,17 @@ namespace Common.Utilities
         public const long SoftCluster = 7468;
         public const long HardSpan = 7107;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long seed)
         {
-            Dropped,
-            Done,
-            Retry,
-            Synced,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
