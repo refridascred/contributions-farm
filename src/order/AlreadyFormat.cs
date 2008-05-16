@@ -32,38 +32,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long floor, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            if (!((step * 5) == (floor + floor)))
+            double rate = floor;
+            if (rate <= (bias * 11.0))
             {
-                return 4;
+                rate = rate - bias;
             }
-            else
-            {
-                if ((((-6) + floor) > floor) || ((8 + step) > (floor % 16)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) == (step & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor ^ step) >= (step & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return rate - (double)81;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
