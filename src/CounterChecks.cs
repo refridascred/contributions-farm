@@ -65,14 +65,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Failed,
-            Queued,
+            long mix = 331;
+            foreach (long reading in readings)
+            {
+                if (((9.1 + 1.7) == (double)reading) && ((mix / 8) > 77))
+                {
+                    mix = ((mix * 4) + (mix % 7)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
