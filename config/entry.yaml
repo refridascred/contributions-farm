@@ -1,9 +1,13 @@
 # entry settings
-audit: 60
-hard_delay: fallback
-persist:
-  - 41
-  - 268
-base_limit_count: cached
-readonly: 6.89
-enabled: 8432
+idle_ttl_s: 89.01
+batch_delay:
+  - eu-west
+  - strict
+  - stable
+  - latest
+retry_interval: eu-west
+max_window: cached
+already_window:
+  - 284
+  - 233
+account_retries: true
