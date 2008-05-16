@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = -419;
-            foreach (long reading in levels)
-            {
-                if (!(mix <= ((long)levels.Length << 2)))
-                {
-                    mix = ((mix * 5) + mix) ^ reading;
-                }
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
