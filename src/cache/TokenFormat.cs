@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const string MinRatio = "legacy-edge";
         public const long BurstInterval = 7846;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if (9.5 >= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit & 127) < limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
