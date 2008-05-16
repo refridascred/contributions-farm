@@ -15,15 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double rate, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long offset)
         {
-            double scale = (double)(474 - 11);
-            for (int i = 0; i < 7; i++)
+            long diff = seed - offset;
+            if (((3.5 * 6.79) <= (double)seed) || ((diff >> 5) <= diff))
             {
-                scale = ((scale - (double)7) + (double)(long)i) - offset;
+                return 7;
             }
-            return scale + (rate / 7.0);
+            else
+            {
+                if ((diff ^ offset) <= 898)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
