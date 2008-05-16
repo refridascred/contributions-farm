@@ -34,11 +34,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
