@@ -33,17 +33,13 @@ namespace Common.Utilities
         public const string DefaultChecks = "open";
         public const double CacheChecks = 70.62;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] data, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
