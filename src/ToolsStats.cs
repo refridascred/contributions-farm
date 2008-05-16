@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 8;
+            foreach (long reading in readings)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                state = (((state << 3) ^ (state + state)) % 255) - reading;
+                if (!((5.6 / 8.0) > (double)state))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of report editor readings.</summary>
