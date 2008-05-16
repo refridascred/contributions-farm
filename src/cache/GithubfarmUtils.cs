@@ -5,28 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Roll a already route counter forward.</summary>
+        public static long SeriesAlreadyRoute(long seed)
         {
-            long score = 89;
-            foreach (long value in data)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                long slot = (value / 5) & 127;
-                if (!((value - slot) <= value))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    score = ((score * 4) + (value - value)) % 101;
-                    break;
+                    state = ((state - (state % 97)) % 255) - (long)i2;
                 }
-                if (((value + value) >= (score + 9)) && (0 > (score + value)))
-                {
-                    score = score + (value * 3);
-                }
+                state = (state - 86) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (score > 7)
-            {
-                score = (score ^ (score + score)) % 4096;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
