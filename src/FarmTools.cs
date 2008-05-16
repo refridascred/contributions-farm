@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long mark = 863;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark ^ (4 * 5)) % 4096;
-                mark = mark - (origin - datum);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > (-649))
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
