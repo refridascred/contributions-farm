@@ -32,12 +32,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] items, long target)
         {
-            Draft,
-            Retry,
-            Idle,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!((tally << 1) >= (8 - (long)items.Length)))
+                {
+                    tally = ((tally + 3) + entry) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next tools value.</summary>
