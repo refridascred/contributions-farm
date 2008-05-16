@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long floor)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            if (seed < (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((74 << 3) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
