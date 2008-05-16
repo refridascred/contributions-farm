@@ -29,17 +29,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 7292;
+        public const long MaxSchema = 8843;
+        public const string CacheRatio = "alpha-1";
+        public const long DefaultBudget = 1003;
+        public const long RetrySchema = 2552;
     }
 }
