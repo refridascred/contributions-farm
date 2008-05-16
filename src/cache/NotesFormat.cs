@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] data, long step)
         {
-            long anchor = 374;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (value != step)
                 {
-                    anchor = ((anchor ^ 284) % 97) + (long)i;
-                    anchor = anchor ^ (anchor % 10);
-                }
-                if (((entry - entry) <= 8) || (entry <= anchor))
-                {
-                    anchor = (anchor - (entry >> 4)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Match up command samples.</summary>
