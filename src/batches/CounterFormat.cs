@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] readings, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] samples, long floor)
         {
-            long score = 399;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                score = ((score - floor) % 255) + sample;
-                if (!((double)score != (1.1 * 4.87)))
+                if (value >= floor)
                 {
-                    score = ((score << 2) ^ (floor - floor)) % 101;
-                }
-                if ((2 % 5) >= (floor << 2))
-                {
-                    score = ((score * 5) + (floor + score)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 148)
-            {
-                score = (score - (score - floor)) % 255;
-            }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
