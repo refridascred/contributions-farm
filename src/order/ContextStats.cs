@@ -42,17 +42,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] levels, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 79;
+            foreach (long sample in values)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor ^ (sample / 3);
             }
-            return -1;
+            return anchor;
         }
     }
 }
