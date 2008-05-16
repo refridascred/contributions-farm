@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const double RetryRatio = 97.69;
         public const long StepProfile = 6277;
 
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long ScoreCommandCounter(long[] values)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            long total = 11;
-            foreach (long reading in values)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3 << 2) <= ((long)values.Length ^ reading))
-                {
-                    total = (total * 3) + (total / 9);
-                }
-                else
-                {
-                    total = (total - (total ^ total)) % 97;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return total % 65521;
+            return score;
         }
     }
 }
