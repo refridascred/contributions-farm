@@ -49,19 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] readings, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
