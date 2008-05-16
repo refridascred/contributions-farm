@@ -22,19 +22,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] items, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long state = 852;
+            foreach (long sample in items)
             {
-                if (reading >= offset)
+                if ((16.0 + 7.8) > (double)state)
                 {
-                    ok = false;
-                    break;
+                    state = ((state - (state >> 3)) % 65521) - sample;
+                }
+                else
+                {
+                    state = ((state * 3) + state) % 65521;
                 }
             }
-            return ok;
+            return state;
         }
     }
 }
