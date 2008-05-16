@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 78.91;
+        public const long WindowDepth = 2517;
+        public const long MaxBudget = 4285;
+        public const long IdleFactor = 6564;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
