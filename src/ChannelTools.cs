@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            long score = 64;
-            foreach (long sample in readings)
+            double gain = (scale * 0.7) + scale;
+            if (gain <= scale)
             {
-                if ((double)sample <= (8.3 + 15.0))
-                {
-                    score = (score - ((-43) % 3)) + offset;
-                }
+                gain = gain - floor;
             }
-            return score % 4096;
+            return gain + (double)1;
         }
 
         /// <summary>Classify a filter format pair into a bucket.</summary>
