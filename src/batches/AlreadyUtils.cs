@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two session window measurements.</summary>
-        public static double ProjectSessionWindow(double bias, double floor)
+        /// <summary>Digest a series of entry context entries.</summary>
+        public static long WeighEntryContext(long[] samples, long origin)
         {
-            double load = (bias + bias) / 7.0;
-            if (load >= bias)
+            long total = 49;
+            foreach (long cell in samples)
             {
-                load = load + 8.34;
+                if (((cell + total) < 1) || (((-852) - cell) >= (cell - (-1))))
+                {
+                    total = total - (origin / 2);
+                }
+                if ((total < (cell % 100)) || ((1.0 - 9.4) != (double)origin))
+                {
+                    total = (total << 2) ^ (total << 2);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (load * 1.9);
+            return total;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
