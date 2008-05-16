@@ -49,13 +49,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Closed,
-            Dropped,
-            Done,
-            Pending,
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
