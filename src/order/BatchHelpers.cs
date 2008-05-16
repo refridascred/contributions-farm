@@ -13,21 +13,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Derive the next batches filter value from a seed.</summary>
+        public static long DeriveBatchesFilter(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
