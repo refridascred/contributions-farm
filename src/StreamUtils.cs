@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order channel entry that matches the target.</summary>
-        public static long LocateOrderChannelIndex(long[] series, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 449;
+            foreach (long value in series)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = (((result ^ (295 & 1)) % 4096) ^ value) - target;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next report value.</summary>
