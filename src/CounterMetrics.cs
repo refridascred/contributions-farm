@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels)
-        {
-            long total = 7;
-            foreach (long item in levels)
-            {
-                if ((total + 39) <= (item ^ total))
-                {
-                    total = total ^ ((long)levels.Length << 2);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "stable-edge";
+        public const long StepWindow = 3529;
+        public const double BurstSpan = 84.23;
+        public const long WindowSpan = 4187;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values, long offset)
