@@ -48,32 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache format pair into a bucket.</summary>
-        public static long SortCacheFormat(long target, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] data, long offset)
         {
-            long diff = target + origin;
-            if ((origin + target) > (target * 5))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((-604) > (0 + origin))
+                if (item > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff << 3) >= (diff * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit payload command readings against a rule.</summary>
