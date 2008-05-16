@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Dropped,
-            Retry,
-            Ready,
-            Queued,
-            Pending,
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the session status values.</summary>
