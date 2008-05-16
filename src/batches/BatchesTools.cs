@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardScore = 2463;
+        public const double LimitSpan = 90.16;
+        public const long RetryBudget = 9373;
+        public const long BaseGraph = 437;
+        public const long SoftBudget = 8225;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
