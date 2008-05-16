@@ -1,7 +1,6 @@
-id,count,ratio
-1,open,primary
-2,primary,cached
-3,standard,cached
-4,758,438
-5,431,edge
-6,88.23,fallback
+id,count,rank,region
+1,435,12.73,820
+2,41.7,405,681
+3,820,826,89
+4,51,64.54,92
+5,208,985,6.77
