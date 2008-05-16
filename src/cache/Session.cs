@@ -29,13 +29,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 5687;
+        public const long RetryTimeout = 2567;
+        public const long SoftStats = 4326;
+        public const double BatchStats = 86.46;
     }
 }
