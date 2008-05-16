@@ -53,12 +53,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((origin / 5) <= (datum / 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
