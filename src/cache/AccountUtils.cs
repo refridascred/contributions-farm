@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long target, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            if ((double)offset != (9.0 / 3.0))
+            long mark = 867;
+            foreach (long cell in items)
             {
-                return 0;
+                mark = ((mark + ((-516) ^ 0)) % 1000) + cell;
             }
-            else
-            {
-                if (7 >= (target + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ offset) < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
