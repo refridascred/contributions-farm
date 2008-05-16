@@ -38,39 +38,12 @@ namespace Common.Utilities
         public const long SoftWindow = 7757;
         public const long MaxWindow = 310;
 
-        /// <summary>Grade a batches cache value against two limits.</summary>
-        public static long BucketBatchesCache(long bound, long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long diff = bound - seed;
-            if (!((double)diff > (0.3 / 3.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + bound) > (bound ^ bound)) || ((38 >> 2) < (bound & 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed < (5.0 * 4.29))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((diff * 2) <= (69 + seed)) || ((double)bound > (10.0 * 6.1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a window record.</summary>
