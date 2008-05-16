@@ -38,21 +38,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count cache tools pairs that satisfy a relation.</summary>
-        public static long MatchCacheToolsCount(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)75 - (bias - 7.5);
+            if (weight > (weight + weight))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + (bias / 3.0)) - span;
             }
-            return hits;
+            return weight - (double)94;
         }
     }
 }
