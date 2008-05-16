@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Rank entry checks input into a small class.</summary>
