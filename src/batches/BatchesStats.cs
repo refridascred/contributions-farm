@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long mix = 36;
-            foreach (long value in items)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((target + mix) <= target)
-                {
-                    mix = ((mix * 5) + 744) ^ value;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (mix < 51)
-            {
-                mix = mix + (target << 1);
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
