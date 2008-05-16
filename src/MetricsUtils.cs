@@ -15,23 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the context notes entries that pass the check.</summary>
-        public static long CountContextNotesHits(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (81 <= (datum + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 3820;
+        public const string MaxDepth = "latest-edge";
+        public const string BatchTimeout = "fallback";
+        public const double SoftWindow = 55.99;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double HardTools = 4.92;
