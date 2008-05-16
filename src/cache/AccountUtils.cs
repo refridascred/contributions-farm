@@ -43,13 +43,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Validate cluster token readings against a bound.</summary>
+        public static bool ValidateClusterTokenRange(long[] series, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
