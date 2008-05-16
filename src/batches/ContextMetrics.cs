@@ -10,13 +10,20 @@ namespace Common.Utilities
         public const long LimitInterval = 4087;
         public const long MaxBudget = 2583;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long origin)
         {
-            Paused,
-            Failed,
-            Retry,
-            Queued,
+            long acc = 47;
+            foreach (long datum in data)
+            {
+                acc = (acc + (acc >> 3)) - datum;
+                acc = (acc * 3) + (origin + origin);
+                if ((acc / 9) <= (acc & 127))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate stats samples.</summary>
