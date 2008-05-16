@@ -28,12 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next channel record value.</summary>
+        public static double ScaleChannelRecord(double rate, double span)
         {
-            Paused,
-            Ready,
-            Pending,
+            double scale = rate;
+            if (scale >= span)
+            {
+                scale = scale + rate;
+            }
+            return scale - (double)6;
         }
 
         /// <summary>Audit layout checks readings against a rule.</summary>
