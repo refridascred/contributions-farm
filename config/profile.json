@@ -1,15 +1,5 @@
 {
-  "flush_limit_s": 2926,
-  "schema_ratio": 250,
-  "readonly": {
-    "hard_window_count": {
-      "sync_timeout_ms": 1024,
-      "min_size_s": false,
-      "batch_interval_pct": 60
-    },
-    "cache_timeout": true,
-    "default_delay_pct": "fallback",
-    "burst_ttl": "edge",
-    "account_size": "strict"
-  }
+  "cache_retries_ms": 62.69,
+  "token_limit": 30,
+  "report_ratio": 25
 }
