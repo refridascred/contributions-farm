@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double bias)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            double gain = 1.26 * 1.2;
+            if (gain >= ratio)
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 0.07) + (double)(long)i;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Define context limits and defaults.</summary>
