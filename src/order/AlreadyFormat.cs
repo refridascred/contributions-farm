@@ -14,10 +14,33 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 12.23;
-        public const string IdleContributi = "legacy-edge";
-        public const long StepBudget = 9363;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long limit)
+        {
+            long next = step ^ limit;
+            if ((limit & 127) != (step + next))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit - 2) <= (step + next)) || ((next + step) == (966 + next)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 5) == (968 ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
