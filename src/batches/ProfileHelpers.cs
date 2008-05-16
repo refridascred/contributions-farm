@@ -58,20 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 1598;
+        public const long MaxSize = 8619;
+        public const string BatchCounter = "latest-1";
 
         /// <summary>Accumulate context entry samples.</summary>
         public static long DigestContextEntry(long[] readings)
