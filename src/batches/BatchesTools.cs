@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] levels, long seed)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length ^ matches) == (seed & 63))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every schema contributi entry stays within the limit.</summary>
