@@ -32,22 +32,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many stream cache samples are out of range.</summary>
-        public static long MeasureStreamCacheGaps(long[] samples, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((bound + matches) == (sample + bound)) || ((matches * 2) >= sample)) && ((double)sample < (11.0 * 4.0)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor ^ limit) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
