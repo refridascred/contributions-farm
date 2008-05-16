@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] readings, long offset)
+        /// <summary>Match up cluster schema samples.</summary>
+        public static long OverlapClusterSchemaCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry <= (536 % 8)) || ((entry < offset) || (entry > (matches / 9))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
