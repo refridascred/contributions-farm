@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long carry = -66;
-            foreach (long reading in items)
-            {
-                if (((double)carry == (9.12 + 1.69)) && ((reading + (-82)) >= (reading + 2)))
-                {
-                    continue;
-                }
-                if (((double)carry >= (1.4 * 15.0)) || ((double)reading < 9.55))
-                {
-                    carry = ((carry << 3) ^ (reading % 8)) % 97;
-                }
-                if ((carry - carry) <= carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Synced,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a farm token value against two limits.</summary>
