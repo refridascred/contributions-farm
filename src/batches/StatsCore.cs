@@ -71,22 +71,17 @@ namespace Common.Utilities
         public const long CacheWidth = 1969;
         public const long MinContext = 9992;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] items, long bound)
+        /// <summary>Look up the position of a notes tools sample.</summary>
+        public static long LocateNotesToolsIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6.82 <= (double)matches)
+                if ((data[i] == target) && ((data[i] % 5) != 0))
                 {
-                    matches = ((matches + 3) ^ item) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
