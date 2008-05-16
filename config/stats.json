@@ -1,22 +1,13 @@
 {
-  "persist": false,
-  "burst_depth_ms": {
-    "profile_retries": "standard",
-    "batch_retries_s": 3695,
-    "cache_ttl_count": {
-      "channel_retries": "staging",
-      "flush_capacity": 1.45,
-      "min_ttl": 62
-    },
-    "readonly": {
-      "persist": "standard",
-      "dry_run": false,
-      "checks_threshold": 50.0,
-      "poll_size_s": 60,
-      "stream_retries": 1
-    },
-    "retry_retries": false,
-    "cache_window": 41
-  },
-  "idle_size_s": ["standard", "stable", "cached", "edge"]
+  "min_retries_count": "standard",
+  "retry_size": true,
+  "compress": false,
+  "base_ttl": false,
+  "poll_ratio_count": 28.48,
+  "githubfarm_ratio": {
+    "command_size": true,
+    "default_limit": 250,
+    "cache_depth_pct": 80,
+    "max_threshold": "local"
+  }
 }
