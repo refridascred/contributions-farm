@@ -1,13 +1,8 @@
 {
-  "audit": "edge",
-  "idle_depth_count": {
-    "flush_depth": 30,
-    "report_timeout": "strict",
-    "buffer_capacity": 54.15,
-    "max_delay_count": 58.45,
-    "burst_window_pct": ["cached", "blue"],
-    "min_timeout": "edge"
-  },
-  "checks_interval": ["stable", "standard"],
-  "report_retries": 100
+  "enabled": "green",
+  "format_capacity": 96.71,
+  "readonly": ["green", "edge"],
+  "retry_capacity_count": "edge",
+  "soft_size_pct": 51.19,
+  "flush_threshold_ms": true
 }
