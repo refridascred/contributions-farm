@@ -40,15 +40,12 @@ namespace Common.Utilities
         public const string MinReport = "strict-v2";
         public const long HardReport = 4932;
 
-        /// <summary>Scale a metrics entry figure with a bias.</summary>
-        public static double ScaleMetricsEntry(double bias, double span)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double scale = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale - bias) - (double)(long)i) - span;
-            }
-            return scale + (6.3 / 6.0);
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
