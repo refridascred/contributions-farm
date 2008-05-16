@@ -26,10 +26,20 @@ namespace Common.Utilities
         public const long RetryCommits = 2776;
         public const long BatchCommits = 9425;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowScore = "strict-1";
-        public const double BaseWidth = 51.0;
-        public const long LimitWidth = 4462;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleTimeout = 0.6;
