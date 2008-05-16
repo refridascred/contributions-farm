@@ -1,6 +1,7 @@
 {
-  "idle_capacity": 7453,
-  "retry_threshold_count": "blue",
-  "default_delay_ms": "open",
-  "dry_run": 70.01
+  "batch_size_count": "primary",
+  "idle_retries": "staging",
+  "flush_retries_count": "local",
+  "audit": 98,
+  "retry_ratio_pct": 61
 }
