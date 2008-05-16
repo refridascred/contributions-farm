@@ -35,15 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double weight, double bias)
+        /// <summary>Adjust a counter channel reading.</summary>
+        public static double SmoothCounterChannel(double bias, double floor)
         {
-            double load = (bias / 4.0) / 5.0;
-            if (load < (0.5 * 17.0))
+            double bias2 = (floor + 8.5) + bias;
+            if (bias2 <= (floor * 7.0))
             {
-                load = load + (load * 6.33);
+                bias2 = bias2 - (double)8;
             }
-            return load - (weight - weight);
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 * 20.0)) - (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
