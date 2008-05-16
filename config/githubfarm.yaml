@@ -1,7 +1,7 @@
 # githubfarm settings
-soft_depth: 451
-max_timeout: 3167
-burst_timeout_pct: 32
-poll_window_pct: strict
-audit: 250
-strict: 113
+poll_timeout: 29.84
+cache_limit: eu-west
+audit:
+  - 356
+  - 274
+sync_ttl_count: stable
