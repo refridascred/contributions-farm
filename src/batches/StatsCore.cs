@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstDepth = 11.43;
-        public const long MinGithubfarm = 6304;
-        public const long MinWidth = 8910;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc * 4) + ((long)i2 / 9)) % 4096;
+                    acc = (acc + (acc & 63)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a metrics entry pair into a bucket.</summary>
         public static long RankMetricsEntry(long offset, long target)
