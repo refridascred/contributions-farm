@@ -23,12 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheTimeout = 2821;
-        public const double DefaultFactor = 73.83;
-        public const long MaxBuffer = 8302;
-        public const double BurstRatio = 16.9;
-        public const long SoftFactor = 2786;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
