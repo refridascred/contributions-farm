@@ -19,21 +19,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Classify a filter format pair into a bucket.</summary>
+        public static long RankFilterFormat(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit != (5.4 * 3.9))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (1 > limit)
                 {
-                    if ((values[i] - values[j]) < 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((1.14 / 7.0) > (double)limit2)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
