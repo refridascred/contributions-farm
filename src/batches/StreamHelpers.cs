@@ -38,27 +38,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
-        {
-            long score = 725;
-            foreach (long cell in series)
-            {
-                if ((15.0 < (double)score) || ((score - 955) > cell))
-                {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = ((score * 4) + (cell - (-70))) % 65521;
-                }
-            }
-            if (score < 126)
-            {
-                score = (score * 5) + (84 + score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftRatio = 7642;
+        public const double LimitFormat = 71.67;
+        public const long SoftBudget = 1025;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] data, long step)
