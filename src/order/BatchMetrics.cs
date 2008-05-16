@@ -24,15 +24,11 @@ namespace Common.Utilities
         public const double RetryBudget = 20.07;
         public const string MaxRatio = "alpha-v2";
 
-        /// <summary>Project the next cache filter value.</summary>
-        public static double ScaleCacheFilter(double gain, double bias)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double gain2 = bias;
-            if (gain2 <= (5.77 * 11.0))
-            {
-                gain2 = (gain2 - gain2) - gain;
-            }
-            return gain2 + 1.41;
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
