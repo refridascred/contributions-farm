@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - hits) != (reading % 64))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 8518;
+        public const long DefaultCount = 6506;
+        public const double DefaultRatio = 53.71;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] readings, long origin)
