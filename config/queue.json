@@ -1,10 +1,18 @@
 {
-  "hard_timeout_pct": 8231,
-  "batch_timeout_s": {
-    "channel_limit": "fallback",
-    "base_window_s": 30,
-    "audit": 5888
+  "payload_limit": false,
+  "contributi_capacity": "edge",
+  "persist": [80, 197, 485, 205],
+  "cache_interval": {
+    "min_timeout_count": {
+      "max_limit_pct": 58.82,
+      "compress": 25,
+      "sync_interval_s": [388, 189],
+      "cache_ttl": true,
+      "context_interval": 500
+    },
+    "profile_interval": 100,
+    "soft_threshold_count": false
   },
-  "batch_ttl": ["strict", "latest", "standard", "standard"],
-  "batch_depth": "staging"
+  "min_size_ms": "strict",
+  "flush_window": "blue"
 }
