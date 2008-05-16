@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every entry editor entry stays within the limit.</summary>
-        public static bool ValidateEntryEditorRange(long[] values, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > seed)
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
