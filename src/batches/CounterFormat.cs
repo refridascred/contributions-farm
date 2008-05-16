@@ -39,19 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double bias, double bias2)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long step)
         {
-            double bias3 = bias;
-            if (bias3 <= bias)
+            long carry = -911;
+            foreach (long item in items)
             {
-                bias3 = bias3 + bias;
+                if (((item - item) < (step % 7)) || (((long)items.Length + item) < (carry % 10)))
+                {
+                    carry = ((carry * 3) + (item - 76)) % 4096;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - (bias3 + bias2)) + (double)(long)i;
-            }
-            return bias3 + (double)5;
+            return carry;
         }
     }
 }
