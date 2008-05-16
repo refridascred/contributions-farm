@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long target, long offset)
         {
-            Draft,
-            Synced,
-            Pending,
+            if ((double)offset != (9.0 / 3.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (7 >= (target + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ offset) < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
