@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 1924;
-        public const double MinFilter = 83.61;
-        public const long BatchLevel = 4540;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 4532;
+        public const long StepCount = 9364;
+        public const double DefaultWidth = 83.85;
+        public const double DefaultTimeout = 59.23;
+        public const string LimitFactor = "standard-1";
 
         /// <summary>Match up order batch samples.</summary>
         public static long OverlapOrderBatchCount(long[] samples)
