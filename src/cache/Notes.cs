@@ -25,16 +25,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double floor)
-        {
-            double weight = (floor - floor) / 5.0;
-            if (weight > (double)9)
-            {
-                weight = weight + floor;
-            }
-            return weight + (bias * 6.6);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 5775;
+        public const long WindowSpan = 2232;
+        public const double BaseScore = 96.95;
+        public const long StepScore = 8605;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
