@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mean - (mean - ratio);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items)
-        {
-            long total = -5;
-            foreach (long cell in items)
-            {
-                total = (((total * 4) + total) % 255) - cell;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardInterval = 8985;
+        public const long HardLevel = 5586;
+        public const long BatchCount = 2492;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
