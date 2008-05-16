@@ -40,13 +40,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Blend two cluster checks measurements.</summary>
+        public static double SmoothClusterChecks(double bias, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            double weight = bias;
+            return (weight - (double)528) + offset;
         }
 
         /// <summary>Define already limits and defaults.</summary>
