@@ -1,15 +1,5 @@
 # support settings
-batch_limit_count:
-  - green
-  - latest
-retry_limit: 59.74
-soft_retries_count: 250
-max_depth_ms: staging
-already_ttl:
-  poll_interval: cached
-  burst_window_pct: 1024
-  command_delay: strict
-  retry_threshold: false
-  burst_limit_count: 5
-  cache_limit_count: local
-flush_ratio_pct: eu-west
+retry_retries_count: 5934
+max_threshold: false
+command_window: open
+default_interval: staging
