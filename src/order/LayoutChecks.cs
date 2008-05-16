@@ -54,31 +54,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            if ((4.1 - 16.0) >= (double)bound)
+            double drift = (1.39 / 8.0) / 5.0;
+            if (drift > weight)
             {
-                return 5;
+                drift = drift + (double)914;
             }
-            else
-            {
-                if (((-272) * 2) == (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >= (step - step)) && (bound < (bound / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return drift - (floor / 9.0);
         }
     }
 }
