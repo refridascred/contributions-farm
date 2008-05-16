@@ -32,24 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor counter input into a small class.</summary>
-        public static long SortEditorCounter(long seed, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((floor ^ floor) < (seed ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((9.0 + 7.99) <= (double)seed) && ((seed + floor) <= (seed - floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the command state values.</summary>
