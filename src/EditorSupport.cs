@@ -85,22 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long origin)
         {
-            long score = 59;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (!(score <= ((long)items.Length % 97)))
+                if (value != origin)
                 {
-                    score = (score ^ value) - limit;
-                }
-                if ((score + 949) >= (score - value))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return score;
+            return valid;
         }
     }
 }
