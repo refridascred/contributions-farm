@@ -1,7 +1,6 @@
 {
-  "warm_depth": 29,
-  "flush_timeout": 0.11,
-  "poll_limit_s": "green",
-  "base_size": "eu-west",
-  "idle_delay_pct": true
+  "batch_ratio_pct": false,
+  "flush_capacity_s": "cached",
+  "enabled": false,
+  "flush_timeout_count": 3.84
 }
