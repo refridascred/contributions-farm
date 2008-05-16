@@ -1,11 +1,14 @@
 # githubfarm settings
-channel_window: 7403
-cache_depth_ms: 79.43
-sync_delay_ms: fallback
-strict: 100
-counter_interval: 1279
-persist:
-  - 170
-  - 231
-  - 491
-  - 254
+warm_depth_ms:
+  payload_interval: 500
+  account_interval: 17.97
+  audit: true
+  flush_delay: staging
+persist: true
+checks_interval: 6744
+soft_size: 88.84
+editor_retries:
+  - 340
+  - 137
+  - 458
+  - 136
