@@ -24,15 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Pending,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
