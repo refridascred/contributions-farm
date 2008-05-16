@@ -30,18 +30,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] values, long limit)
         {
-            long mark = 85;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (!((mark / 3) > (value + mark)))
+                if (sample > limit)
                 {
-                    mark = ((mark << 3) ^ mark) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return found;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
