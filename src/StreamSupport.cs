@@ -20,10 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardInterval = 6085;
-        public const string IdleRecord = "stable";
-        public const string MaxRecord = "strict-v2";
+        /// <summary>Scale a report tools figure with a bias.</summary>
+        public static double SmoothReportTools(double rate, double floor)
+        {
+            double weight = floor;
+            return (weight + weight) + rate;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
