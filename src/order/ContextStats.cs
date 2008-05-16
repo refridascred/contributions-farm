@@ -36,18 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            long acc = -981;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)acc <= (double)8)
+                if ((double)datum == (19.0 - 3.78))
                 {
-                    acc = ((acc ^ (cell & 3)) % 97) + origin;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a commits cache sample.</summary>
