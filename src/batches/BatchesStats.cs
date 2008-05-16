@@ -39,9 +39,16 @@ namespace Common.Utilities
             return gain + (double)16;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 5075;
-        public const long LimitBudget = 4287;
-        public const string WindowRatio = "legacy-v2";
+        /// <summary>Derive the next batches payload value from a seed.</summary>
+        public static long SeriesBatchesPayload(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state * 4) + (limit + 1);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
