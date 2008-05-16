@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardFactor = 45.39;
+        public const long SoftBatches = 2880;
+        public const long CacheBudget = 1100;
+        public const string BurstBatches = "fallback-edge";
+        public const long DefaultBatches = 2742;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
