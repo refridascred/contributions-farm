@@ -34,16 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] data, long target)
-        {
-            long carry = 548;
-            foreach (long item in data)
-            {
-                carry = (((carry << 2) ^ (6 >> 4)) ^ item) - target;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "primary";
+        public const long RetryBudget = 4258;
+        public const double BurstNotes = 33.37;
+        public const long HardWidth = 9965;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long bound, long limit)
