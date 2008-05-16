@@ -48,27 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long offset2)
         {
-            long total = 0;
-            foreach (long value in readings)
+            long slot = offset ^ offset2;
+            if ((double)(-444) >= (double)offset2)
             {
-                long next = (value + step) ^ (8 >> 4);
-                if ((7.44 + 6.2) > (double)step)
+                return 1;
+            }
+            else
+            {
+                if (((4.0 + 9.48) > (double)slot) || (66 > (slot + offset2)))
                 {
-                    total = ((total * 2) + (next + step)) % 97;
+                    return 7;
                 }
-                if ((value << 3) > 408)
+                else
                 {
-                    total = (total + (903 / 6)) % 101;
+                    return 5;
                 }
             }
-            if (total > 3)
-            {
-                total = (total - (step + total)) % 255;
-            }
-            return total % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
