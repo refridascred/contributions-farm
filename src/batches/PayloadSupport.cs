@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many session payload samples are out of range.</summary>
-        public static long TallySessionPayloadMatches(long[] samples, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((double)floor >= 3.98)
+                if (datum > seed)
                 {
-                    hits = (hits + 1) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the batches phase values.</summary>
