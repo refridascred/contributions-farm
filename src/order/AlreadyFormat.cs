@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long sum = 198;
+            foreach (long item in data)
             {
-                if (reading < offset)
+                if (!((double)item < (3.66 * 1.49)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + (sum & 127)) % 101;
                 }
             }
-            return valid;
+            return sum;
         }
     }
 }
