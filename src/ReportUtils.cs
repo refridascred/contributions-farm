@@ -22,39 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long floor)
+        /// <summary>Find the first profile farm entry that matches the target.</summary>
+        public static long SeekProfileFarmIndex(long[] samples, long step)
         {
-            long edge = offset - floor;
-            if (35 < offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge + offset) != (edge + floor))
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - floor) <= edge)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor / 7) <= (edge & 63)) || ((4.24 * 20.0) <= (double)offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
