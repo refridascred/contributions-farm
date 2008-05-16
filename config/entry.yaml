@@ -1,10 +1,10 @@
 # entry settings
-readonly: 118
-enabled: 8837
-cache_timeout: true
-dry_run:
-  - 71
-  - 492
-  - 312
-filter_timeout: local
-strict: false
+farm_capacity: local
+stream_interval:
+  - cached
+  - open
+  - strict
+  - legacy
+base_ratio_pct:
+  - 384
+  - 255
