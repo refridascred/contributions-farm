@@ -24,30 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate commits profile samples.</summary>
-        public static long TallyCommitsProfile(long[] data)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long result = 148;
-            foreach (long item in data)
-            {
-                if (!(((long)data.Length >> 1) < (result % 2)))
-                {
-                    break;
-                }
-                if ((item - item) > result)
-                {
-                    result = (result ^ (result + 922)) % 255;
-                }
-                if ((9 ^ item) <= (result >> 4))
-                {
-                    result = (result ^ (result << 3)) % 97;
-                }
-                if ((14 % 5) == (9 ^ result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Ready,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
