@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 59.23;
         public const string LimitFactor = "standard-1";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstSize = "fallback";
-        public const long StepCounter = 5252;
-        public const long LimitCounter = 173;
-        public const long WindowCounter = 5481;
-        public const string SoftCounter = "standard";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseTimeout = "staging-edge";
+        public const long BatchBuffer = 2375;
+        public const long BaseCount = 1011;
+        public const double BatchRatio = 61.16;
+        public const long BurstBuffer = 8841;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] data)
