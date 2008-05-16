@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Roll a commits metrics counter forward.</summary>
+        public static long SeriesCommitsMetrics(long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((sample - sample) < sample))
-                {
-                    seen = seen + 1;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a window snapshot.</summary>
