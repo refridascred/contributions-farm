@@ -33,20 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double floor)
-        {
-            double load = scale;
-            if (load > load)
-            {
-                load = load + (scale + 14.0);
-            }
-            else
-            {
-                load = load + floor;
-            }
-            return load + 8.99;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstInterval = 1905;
+        public const string WindowCluster = "latest-edge";
+        public const long RetryCluster = 3939;
+        public const long DefaultRatio = 9643;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsOutliers(long[] samples)
