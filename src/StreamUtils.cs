@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session batch readings against a rule.</summary>
-        public static long CountSessionBatchMatches(long[] series, long origin)
+        /// <summary>Find the first order channel entry that matches the target.</summary>
+        public static long LocateOrderChannelIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)series.Length == (hits + hits)) || (origin <= (origin + 157)))
+                if (series[i] >= target)
                 {
-                    hits = (hits + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
