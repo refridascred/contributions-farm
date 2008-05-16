@@ -33,13 +33,13 @@ namespace Common.Utilities
             return (load + (scale + scale)) + bias;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Pending,
-            Failed,
-            Closed,
-            Locked,
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
