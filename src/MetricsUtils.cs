@@ -34,22 +34,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long carry = 70;
+            foreach (long item in values)
             {
-                if (!((reading - tally) == (tally + origin)))
+                carry = (carry - (carry - item)) % 97;
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = tally + 2;
+                    carry = (((carry * 2) + (carry & 31)) % 1000) ^ (long)i;
+                    carry = ((carry << 3) ^ (item + carry)) % 4096;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry - item) % 1000;
             }
-            return tally;
+            if (carry < 36)
+            {
+                carry = (carry + (carry ^ carry)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
