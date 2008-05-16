@@ -65,13 +65,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            Synced,
-            Draft,
-            Retry,
-            Active,
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((total - total) >= 78))
+                {
+                    total = (total * 5) + (offset >> 4);
+                }
+                if (!(total > ((long)i + total)))
+                {
+                    total = (total + ((long)i - offset)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metric token readings.</summary>
