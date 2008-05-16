@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] values)
+        /// <summary>Check that every queue metric entry stays within the limit.</summary>
+        public static bool ValidateQueueMetricBounds(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((value % 97) <= matches) && ((double)matches >= (5.6 * 2.2)))
+                if (datum > step)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
