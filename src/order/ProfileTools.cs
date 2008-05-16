@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftTimeout = 7385;
-        public const long RetryWidth = 4746;
-        public const long BaseSize = 8883;
+        /// <summary>Count the cluster stream entries that pass the check.</summary>
+        public static long AuditClusterStreamMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally > cell) || ((cell + (-173)) == (tally / 8)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long RankBatch(long origin, long limit)
