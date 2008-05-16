@@ -53,10 +53,11 @@ namespace Common.Utilities
         public const double MaxCounter = 0.53;
         public const long LimitInterval = 549;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinWidth = 49.89;
-        public const long MaxLevel = 8655;
-        public const long LimitRatio = 9051;
-        public const long IdleInterval = 852;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+        }
     }
 }
