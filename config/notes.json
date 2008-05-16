@@ -1,17 +1,8 @@
 {
-  "session_size": ["staging", "fallback"],
-  "already_interval": true,
-  "checks_ratio": {
-    "profile_interval": ["eu-west", "legacy", "strict", "open"],
-    "stream_capacity": {
-      "flush_ratio": 76,
-      "idle_retries_count": "eu-west",
-      "default_delay_ms": 1.51
-    },
-    "default_window": 827,
-    "commits_ratio": 86.95,
-    "strict": false,
-    "already_ttl": ["local", "green"]
-  },
-  "readonly": 30
+  "batch_ttl_pct": true,
+  "burst_timeout": 89,
+  "burst_limit_pct": 9600,
+  "schema_retries": "blue",
+  "warm_ttl_s": false,
+  "poll_delay": "stable"
 }
