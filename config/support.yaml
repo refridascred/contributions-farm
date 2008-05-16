@@ -1,14 +1,8 @@
 # support settings
-min_size_ms:
-  payload_threshold: 30
-  retry_size:
-    - 386
-    - 107
-    - 228
-    - 282
-  max_ttl: stable
-  default_limit_ms: 60
-  cache_ttl: stable
-report_interval: true
-cache_window: false
-checks_capacity: legacy
+base_limit_s: strict
+idle_depth_pct: false
+min_limit_ms:
+  - 263
+  - 3
+  - 334
+poll_interval: 38.98
