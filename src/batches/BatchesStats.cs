@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 8867;
+        public const long LimitSize = 97;
+        public const string DefaultTools = "alpha-1";
+        public const long HardTools = 3333;
+        public const long LimitTimeout = 9593;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheProfile = 5223;
