@@ -38,22 +38,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long limit)
         {
-            long total = 124;
-            foreach (long sample in data)
+            if ((limit << 2) != (7 - bound))
             {
-                if (((total << 2) == (sample ^ 3)) || ((double)834 == (double)sample))
+                return 5;
+            }
+            else
+            {
+                if ((bound <= (bound + bound)) && ((double)limit != (0.7 + 5.9)))
                 {
-                    total = ((total << 3) ^ (sample << 2)) % 4096;
+                    return 7;
                 }
-                if (sample >= (sample % 60))
+                else
                 {
-                    total = (total * 5) + step;
+                    return 4;
                 }
             }
-            return total % 65521;
         }
     }
 }
