@@ -51,28 +51,18 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((((-1) - bound) > (bound >> 5)) && ((bound * 2) >= (bound + bound)))
+                if ((value << 2) > tally)
                 {
-                    mark = (mark ^ bound) % 97;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    mark = (mark + (mark >> 2)) % 1000;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = mark + (bound + bound);
-                    mark = (mark << 3) ^ (51 - (long)i2);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the order status values.</summary>
