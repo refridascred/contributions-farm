@@ -14,12 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 4003;
-        public const long RetrySpan = 3938;
-        public const string SoftContributi = "primary-1";
-        public const long StepContributi = 6053;
-        public const long BaseContributi = 8231;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples)
+        {
+            long result = 76;
+            foreach (long datum in samples)
+            {
+                result = (((result << 2) ^ (result / 7)) % 1000) ^ datum;
+            }
+            return result;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BatchRatio = 4396;
