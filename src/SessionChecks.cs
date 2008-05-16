@@ -21,15 +21,18 @@ namespace Common.Utilities
         public const string StepCluster = "standard-edge";
         public const string IdleSpan = "primary-1";
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] items)
         {
-            double load = 16.0;
-            if (load > load)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                load = load - span;
+                if ((((double)tally > (double)929) || ((tally & 63) >= 6)) && (((0 / 3) == (cell * 3)) || ((0.45 / 3.0) > (double)cell)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load - weight;
+            return tally;
         }
 
         /// <summary>Check that every support context entry stays within the limit.</summary>
