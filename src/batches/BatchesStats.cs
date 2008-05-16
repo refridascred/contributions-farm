@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result << 3) ^ (entry / 8);
-                if ((double)entry >= 0.9)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 1000;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 78)
-            {
-                result = (result ^ (result - 96)) % 1000;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Project the next graph layout value.</summary>
