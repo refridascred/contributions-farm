@@ -43,10 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2678;
-        public const long BatchContext = 8677;
-        public const long BurstContext = 5305;
-        public const double WindowContext = 36.64;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Retry,
+            Pending,
+            Done,
+            Queued,
+            Draft,
+        }
     }
 }
