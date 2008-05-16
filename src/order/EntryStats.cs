@@ -25,18 +25,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout account samples.</summary>
-        public static long CombineLayoutAccount(long[] series, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long state = 23;
-            foreach (long entry in series)
-            {
-                if ((389 << 2) > seed)
-                {
-                    state = ((state << 3) ^ (seed >> 2)) ^ entry;
-                }
-            }
-            return state;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
