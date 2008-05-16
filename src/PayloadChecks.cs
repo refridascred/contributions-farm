@@ -71,12 +71,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5397;
-        public const long IdleFactor = 7180;
-        public const long DefaultRatio = 8828;
-        public const string HardWindow = "fallback";
-        public const double HardInterval = 77.34;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Dropped,
+            New,
+            Idle,
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenBounds(long[] readings, long offset)
