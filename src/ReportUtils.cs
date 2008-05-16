@@ -54,22 +54,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits >= (16.0 * 10.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a tools record.</summary>
