@@ -53,11 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] readings)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) <= (entry - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
