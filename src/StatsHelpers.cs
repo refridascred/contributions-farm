@@ -19,13 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count window queue pairs that satisfy a relation.</summary>
+        public static long MatchWindowQueueCount(long[] values)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already entry.</summary>
