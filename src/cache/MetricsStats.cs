@@ -14,28 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long TallyAccountContextHits(long[] items, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((long)i > step)
+                if ((cell * 2) < bound)
                 {
-                    anchor = (anchor << 3) ^ (step - step);
+                    count = count + 1;
                 }
-                if ((step * 2) < anchor)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor + 69)) % 255;
-                }
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
