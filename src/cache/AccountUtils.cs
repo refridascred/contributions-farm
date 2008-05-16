@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine record batches values into a single score.</summary>
-        public static long TotalRecordBatches(long[] series, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] items, long origin)
         {
-            long acc = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                acc = (((acc << 2) ^ (sample + (-8))) % 4096) + origin;
+                if (!(0.6 < (double)entry))
+                {
+                    count = (count + 2) + origin;
+                }
             }
-            if (acc > 397)
-            {
-                acc = ((acc * 3) + (acc ^ acc)) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank account input into a small class.</summary>
