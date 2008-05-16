@@ -26,20 +26,18 @@ namespace Common.Utilities
             return drift + (bias * 19.0);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Measure how many window profile samples are out of range.</summary>
+        public static long TallyWindowProfileOutliers(long[] series)
         {
-            long acc = 381;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                acc = (acc ^ (acc & 15)) ^ item;
-                acc = ((acc << 3) ^ (167 % 64)) % 65521;
+                if ((double)cell > (4.0 + 4.33))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc + (83 + 23)) % 1000;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
