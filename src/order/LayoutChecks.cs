@@ -74,21 +74,17 @@ namespace Common.Utilities
         public const long DefaultWidth = 681;
         public const double RetryContributi = 84.77;
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
