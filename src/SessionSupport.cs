@@ -27,10 +27,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstRatio = 1945;
-        public const long BaseChannel = 541;
-        public const long WindowLevel = 1496;
-        public const long CacheInterval = 9505;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Dropped,
+            Stale,
+            Retry,
+            New,
+            Idle,
+        }
     }
 }
