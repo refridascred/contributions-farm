@@ -31,24 +31,22 @@ namespace Common.Utilities
             return rate - (double)(-354);
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items, long origin)
         {
-            if ((1.4 * 5.0) > (double)limit)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1 + floor) > limit)
+                if ((entry - 1) <= hits)
                 {
-                    return 1;
+                    hits = (hits + 1) + origin;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
