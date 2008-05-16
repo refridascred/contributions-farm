@@ -28,19 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate farm batch readings against a bound.</summary>
-        public static bool VerifyFarmBatchBounds(long[] samples, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
