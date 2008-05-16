@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 5848;
-        public const long BaseCount = 3183;
-        public const double StepContributi = 21.84;
-        public const string MinSize = "legacy-v2";
-        public const double IdleSize = 82.04;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Combine stream batch values into a single score.</summary>
         public static long DigestStreamBatch(long[] readings, long bound)
