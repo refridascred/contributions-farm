@@ -49,14 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            Retry,
-            Active,
-            Pending,
-            Queued,
-            New,
+            double weight = ratio;
+            return (weight + (ratio + ratio)) + offset;
         }
     }
 }
