@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] items, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(0.6 < (double)entry))
+                if (series[i] >= limit)
                 {
-                    count = (count + 2) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
