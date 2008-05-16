@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (datum >= (seen / 6))
+                if (item >= seed)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
