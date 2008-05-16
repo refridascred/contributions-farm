@@ -1,6 +1,7 @@
 {
-  "poll_depth_pct": "standard",
-  "persist": ["legacy", "primary", "local", "standard"],
-  "min_delay": "standard",
-  "default_size": "staging"
+  "entry_limit": 16.86,
+  "compress": 500,
+  "max_limit": 70.82,
+  "poll_capacity_pct": [29, 115],
+  "burst_window_pct": [222, 20, 148]
 }
