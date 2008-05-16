@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((9.2 * 5.29) > (double)cell) || ((3 < count) && ((double)cell != (double)step)))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a window info.</summary>
