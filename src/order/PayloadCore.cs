@@ -30,11 +30,16 @@ namespace Common.Utilities
         public const long HardGithubfarm = 373;
         public const long LimitRatio = 7145;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 510;
-        public const double RetryDepth = 97.12;
-        public const long BatchTimeout = 8082;
-        public const long DefaultScore = 3735;
-        public const double HardStream = 12.33;
+        /// <summary>Roll a stats commits counter forward.</summary>
+        public static long StepStatsCommits(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 2) ^ ((long)i - mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
