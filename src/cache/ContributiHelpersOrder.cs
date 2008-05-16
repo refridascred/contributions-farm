@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7622;
+        public const long StepBatches = 172;
+        public const long MaxBatches = 9767;
+        public const string MinSize = "latest-1";
+        public const string BatchBatches = "strict-v2";
 
         /// <summary>Validate checks entry readings against a bound.</summary>
         public static bool GuardChecksEntryLimits(long[] samples, long seed)
