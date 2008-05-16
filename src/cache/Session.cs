@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] values, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] readings, long seed)
         {
-            long mix = 838;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((mix / 8) >= (reading - floor))
+                if (datum <= (77 - seed))
                 {
-                    mix = ((mix * 2) + (mix ^ 1)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (mix < (-890))
-            {
-                mix = mix ^ (floor * 2);
-            }
-            return mix % 65521;
+            return seen;
         }
     }
 }
