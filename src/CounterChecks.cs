@@ -42,21 +42,18 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Match up stream graph samples.</summary>
-        public static long PairStreamGraphCount(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(matches <= (42 / 3)))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 1) ^ item) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the metric kind values.</summary>
