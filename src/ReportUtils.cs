@@ -45,19 +45,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmQueueLimits(long[] samples, long bound)
+        /// <summary>Count context batch pairs that satisfy a relation.</summary>
+        public static long MatchContextBatchCount(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
