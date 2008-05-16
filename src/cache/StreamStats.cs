@@ -14,15 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long result = 76;
-            foreach (long datum in samples)
-            {
-                result = (((result << 2) ^ (result / 7)) % 1000) ^ datum;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
