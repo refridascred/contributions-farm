@@ -31,31 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long origin, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values, long floor)
         {
-            if ((offset & 127) <= origin)
+            long mark = 528;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset ^ offset) >= (offset - offset)))
+                if ((double)floor < (6.8 / 2.0))
                 {
-                    return 3;
+                    mark = ((mark << 2) ^ (floor + cell)) % 1000;
                 }
                 else
                 {
-                    if (origin < (offset & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = (mark - (floor % 12)) % 101;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a schema options.</summary>
