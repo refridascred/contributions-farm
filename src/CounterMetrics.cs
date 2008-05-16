@@ -34,11 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 78.8;
-        public const long IdleRatio = 1842;
-        public const long MaxNotes = 9581;
-        public const string HardLevel = "primary-v2";
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Locked,
+            Paused,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] levels, long seed)
