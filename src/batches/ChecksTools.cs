@@ -68,15 +68,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double ratio, double floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] values, long seed)
         {
-            double rate = (double)426 / 2.0;
-            if (rate >= 6.98)
+            long count = 0;
+            foreach (long sample in values)
             {
-                rate = (rate - 10.0) - ratio;
+                if (((sample + seed) <= (7 - 35)) || ((double)sample > (8.01 / 3.0)))
+                {
+                    count = count + 2;
+                }
             }
-            return rate + (floor + rate);
+            return count;
         }
     }
 }
