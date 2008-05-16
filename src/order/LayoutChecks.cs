@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const long StepInterval = 6762;
         public const long StepFactor = 2954;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long CountCommitsBatchHits(long[] values)
         {
-            Pending,
-            New,
-            Closed,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches & 1) > (456 >> 4))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter phase values.</summary>
