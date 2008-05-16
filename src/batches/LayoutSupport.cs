@@ -65,15 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double span)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double ratio = scale + (scale * 8.0);
-            if (ratio >= 13.0)
-            {
-                ratio = ratio - span;
-            }
-            return ratio + scale;
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
