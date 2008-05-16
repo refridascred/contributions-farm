@@ -1,5 +1,6 @@
 {
-  "record_interval": "fallback",
-  "idle_depth_s": false,
-  "min_limit_s": 98.36
+  "persist": "cached",
+  "batch_depth_count": "legacy",
+  "poll_depth_count": 83.9,
+  "profile_ttl": "standard"
 }
