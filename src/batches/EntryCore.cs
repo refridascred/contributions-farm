@@ -37,11 +37,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two cluster checks measurements.</summary>
-        public static double SmoothClusterChecks(double bias, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            double weight = bias;
-            return (weight - (double)528) + offset;
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((double)item >= (19.0 - 2.88)) || ((double)count >= (double)item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
