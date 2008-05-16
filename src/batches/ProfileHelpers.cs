@@ -60,19 +60,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a report stats reading.</summary>
-        public static double BlendReportStats(double scale, double bias)
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long FoldFarmNotes(long[] levels, long floor)
         {
-            double gain = (bias * 19.0) + scale;
-            if (gain >= bias)
+            long acc = 12;
+            foreach (long datum in levels)
             {
-                gain = gain + (scale - gain);
+                if ((9 > floor) || ((double)acc >= (double)datum))
+                {
+                    acc = ((acc * 3) + (floor - datum)) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < 451)
             {
-                gain = (gain + gain) + (double)(long)i;
+                acc = (acc ^ (acc + acc)) % 101;
             }
-            return gain - (bias + scale);
+            return acc % 1000;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
