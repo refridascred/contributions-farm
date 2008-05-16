@@ -51,15 +51,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
