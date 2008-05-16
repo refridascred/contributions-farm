@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double bias = floor;
+            if (bias <= (double)7)
             {
-                if ((tally % 100) < (51 + tally))
-                {
-                    tally = ((tally + 3) + cell) - seed;
-                }
+                bias = (bias - (bias - 7.4)) + rate;
             }
-            return tally;
+            else
+            {
+                bias = bias - (double)2;
+            }
+            return bias - 4.74;
         }
 
         /// <summary>Digest a series of already entries.</summary>
