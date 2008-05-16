@@ -14,14 +14,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series)
         {
-            Ready,
-            Idle,
-            Active,
-            Paused,
-            Queued,
+            long carry = 92;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) < carry)
+                {
+                    carry = carry ^ reading;
+                }
+            }
+            if (carry < 78)
+            {
+                carry = (carry - (carry ^ carry)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
