@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] values, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((entry >= (entry - matches)) && (seed > 338)) || ((matches <= seed) || ((6 << 1) < (seed * 3))))
                 {
-                    sum = ((sum + offset) % 97) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the stats kind values.</summary>
