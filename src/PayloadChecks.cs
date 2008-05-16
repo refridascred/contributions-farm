@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] values, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double load = 2.0;
+            if (load >= (load - load))
             {
-                if ((6.57 + 4.78) > (double)value)
-                {
-                    seen = (seen + 3) + limit;
-                }
+                load = (load - (double)(-15)) - bias;
             }
-            return seen;
+            return load - (scale / 3.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
