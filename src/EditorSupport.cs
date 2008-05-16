@@ -73,18 +73,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel stats samples are out of range.</summary>
-        public static long TallyChannelStatsMatches(long[] values)
+        /// <summary>Audit schema already readings against a rule.</summary>
+        public static long CountSchemaAlreadyGaps(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((item ^ 7) > (9 << 1)) && ((521 + item) < (9 & 255)))
+                if ((floor << 1) > (seen ^ 2))
                 {
-                    count = count + 2;
+                    seen = (seen + 3) - entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
