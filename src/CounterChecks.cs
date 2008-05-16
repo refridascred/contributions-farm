@@ -68,10 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 7778;
-        public const double SoftCounter = 6.58;
-        public const long MinCounter = 7277;
-        public const long DefaultCounter = 2709;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "cached-edge";
+        public const long BatchContext = 9244;
+        public const long DefaultContext = 1604;
+        public const string BurstDepth = "standard-1";
+        public const long BatchScore = 8320;
     }
 }
