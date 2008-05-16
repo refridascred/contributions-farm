@@ -42,18 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] values, long origin)
+        /// <summary>Adjust a layout token reading.</summary>
+        public static double SmoothLayoutToken(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double rate2 = (double)(0 - 785);
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading % 5) == (402 >> 5))
-                {
-                    seen = (seen + 3) - origin;
-                }
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
-            return seen;
+            return rate2 + floor;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
