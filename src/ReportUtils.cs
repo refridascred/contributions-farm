@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                double bias = (double)((long)i << 2);
+                if ((double)277 < bias)
                 {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    long edge = (seed << 3) % 12;
+                    bias = bias + (double)edge;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
