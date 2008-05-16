@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "fallback-v2";
-        public const string LimitGraph = "strict-1";
-        public const string RetryLevel = "legacy";
-        public const string MinSpan = "standard";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardInterval = 7526;
+        public const long HardMetric = 1048;
+        public const long CacheSize = 8774;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
