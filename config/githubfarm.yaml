@@ -1,9 +1,4 @@
 # githubfarm settings
-enabled: standard
-burst_retries_ms:
-  - 188
-  - 417
-cluster_ttl: 7324
-sync_timeout_count: strict
-flush_timeout_ms: false
-filter_capacity: false
+min_size_ms: legacy
+retry_depth_s: standard
+burst_retries: 25
