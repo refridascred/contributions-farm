@@ -47,38 +47,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long offset, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            if (((offset - offset) <= (offset % 100)) || ((offset << 1) <= (offset - target)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ 7) != (offset + target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((99 << 1) > (target >> 5)) && (9.45 <= (double)target))
+                    if ((data[i] - data[j]) < 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.9 / 3.0) == (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
