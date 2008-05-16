@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the checks batches entries that pass the check.</summary>
-        public static long AuditChecksBatchesMatches(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((datum + datum) != (datum + hits)) || ((datum < (datum + datum)) && ((double)48 == (double)datum)))
+                if (((long)i != (87 * 5)) || ((floor & 127) > ((long)i + floor)))
                 {
-                    hits = hits + 2;
+                    state = (state + (long)i) % 101;
                 }
+                state = (state - (state >> 3)) % 97;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
