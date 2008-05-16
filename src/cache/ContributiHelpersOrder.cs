@@ -40,11 +40,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "legacy-1";
-        public const long MaxFarm = 1553;
-        public const long MaxScore = 3450;
-        public const long DefaultFactor = 7902;
-        public const string MaxDepth = "legacy";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
