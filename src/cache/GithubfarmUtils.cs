@@ -51,15 +51,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit payload command readings against a rule.</summary>
-        public static long MeasurePayloadCommandHits(long[] values, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long entry in data)
             {
-                if ((offset + hits) >= value)
+                if (!(entry < hits))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
