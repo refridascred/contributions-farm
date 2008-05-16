@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double gain, double span)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double bias, double bias2)
         {
-            double scale = (double)(927 & 7);
-            if (scale >= 2.3)
+            double bias3 = (bias2 - bias) - (bias2 - bias2);
+            if (bias3 >= 7.4)
             {
-                scale = scale + gain;
+                bias3 = bias3 + (bias * 8.0);
             }
-            return scale - (span + 3.0);
+            else
+            {
+                bias3 = bias3 + (double)1;
+            }
+            return bias3 - (1.0 - bias2);
         }
 
         /// <summary>Hold a notes stats.</summary>
