@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 730;
+            foreach (long datum in values)
             {
-                if ((tally + datum) > datum)
-                {
-                    tally = tally + 3;
-                }
+                score = ((score + (score - step)) % 97) - datum;
             }
-            return tally;
+            if (score < 7)
+            {
+                score = (score + step) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first graph batches entry that matches the target.</summary>
