@@ -20,11 +20,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every cluster commits entry stays within the limit.</summary>
+        public static bool GuardClusterCommitsBounds(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
