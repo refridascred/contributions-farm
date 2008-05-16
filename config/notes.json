@@ -1,12 +1,8 @@
 {
-  "burst_interval_pct": 9005,
-  "record_limit": 56.86,
-  "audit": {
-    "idle_ratio": true,
-    "cache_retries": "edge",
-    "cluster_timeout": "latest",
-    "poll_window_s": "primary"
-  },
-  "persist": 30,
-  "base_delay_s": "legacy"
+  "enabled": "strict",
+  "flush_size_count": 36,
+  "batch_ratio_s": true,
+  "verbose": [207, 311],
+  "cache_capacity_pct": "local",
+  "account_threshold": 65
 }
