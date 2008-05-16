@@ -67,17 +67,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long floor, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = floor + bound;
+            if ((2.7 >= (double)gap) || ((gap % 12) <= gap))
             {
-                if (series[i] <= target)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor <= 0.69)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (bound % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
