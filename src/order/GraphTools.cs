@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            Ready,
-            Stale,
-            New,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= 5.57)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many context batch samples are out of range.</summary>
