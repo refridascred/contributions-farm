@@ -15,18 +15,16 @@ namespace Common.Utilities
         public const long BurstDepth = 5901;
         public const string LimitGraph = "legacy-v2";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] items, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits % 5) < (item % 24))
-                {
-                    hits = (hits + 2) - offset;
-                }
+                result = ((result * 2) + (limit % 2)) % 97;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
