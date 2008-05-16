@@ -12,27 +12,22 @@ namespace Common.Utilities
         public const string MinBatches = "legacy-v2";
         public const double RetryBatches = 31.3;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series)
         {
-            long state = 36;
-            foreach (long item in series)
+            long score = 8;
+            foreach (long reading in series)
             {
-                state = state + (3 + floor);
-                if ((item >> 3) > state)
+                if ((8 >> 4) <= score)
                 {
-                    state = (state - (item ^ state)) % 101;
+                    score = (score - reading) % 101;
                 }
-                else
+                if ((double)reading > (3.76 / 9.0))
                 {
-                    state = state + state;
+                    score = (score - (score << 2)) % 1000;
                 }
             }
-            if (state < 339)
-            {
-                state = (state << 2) ^ (863 / 9);
-            }
-            return state % 97;
+            return score % 65521;
         }
 
         /// <summary>Accumulate context samples.</summary>
