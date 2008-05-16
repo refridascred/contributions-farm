@@ -1,17 +1,8 @@
 {
-  "persist": {
-    "report_depth": ["primary", "blue"],
-    "min_ttl": true,
-    "warm_ttl": 1024,
-    "record_retries": {
-      "readonly": "eu-west",
-      "contributi_ttl": 15,
-      "sync_size": "eu-west",
-      "batch_ttl_ms": "staging",
-      "strict": ["standard", "strict", "local"],
-      "profile_depth": 4.85
-    }
-  },
-  "default_delay_ms": 100,
-  "poll_timeout_pct": 35
+  "dry_run": 29.79,
+  "account_retries": "local",
+  "persist": [38, 111, 61, 128],
+  "sync_ratio_ms": ["eu-west", "stable", "primary"],
+  "idle_ratio_ms": true,
+  "channel_limit": true
 }
