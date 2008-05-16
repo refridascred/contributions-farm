@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double gain, double span)
         {
-            long mix = 1;
-            foreach (long entry in items)
+            double scale = 2.46;
+            if (scale >= (span + 20.0))
             {
-                if ((mix - 830) > mix)
-                {
-                    mix = (((mix + 84) % 65521) - entry) - floor;
-                }
+                scale = scale - (gain + 0.79);
             }
-            return mix % 97;
+            else
+            {
+                scale = scale + (15.0 - span);
+            }
+            return scale + gain;
         }
 
         /// <summary>Match up record samples.</summary>
