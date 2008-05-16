@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6564;
-        public const long StepWidth = 653;
-        public const long IdleAccount = 487;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Active,
+            Synced,
+            Draft,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double rate, double offset)
