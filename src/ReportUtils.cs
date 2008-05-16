@@ -75,19 +75,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] items, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = (double)(80 << 3);
+            return (mean + scale) + floor;
         }
     }
 }
