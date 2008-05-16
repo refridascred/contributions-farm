@@ -26,16 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                result = (result * 4) + result;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((40 & 63) > (count - entry))
+                {
+                    count = (count + 1) - origin;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
