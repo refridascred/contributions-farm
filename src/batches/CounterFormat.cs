@@ -16,13 +16,15 @@ namespace Common.Utilities
             return scale - 7.42;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double floor)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            double ratio = (double)(1 / 6);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + (gain * 9.04)) + (double)(long)i) + floor;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Blend two order measurements.</summary>
