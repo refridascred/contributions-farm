@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long CountGraphSchemaMatches(long[] levels)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((3.4 - 5.0) != (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a filter token counter forward.</summary>
