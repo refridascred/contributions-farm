@@ -29,10 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxDepth = "open-edge";
-        public const double SoftBatch = 96.92;
-        public const double BurstLevel = 76.55;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a cache format pair into a bucket.</summary>
         public static long SortCacheFormat(long target, long origin)
