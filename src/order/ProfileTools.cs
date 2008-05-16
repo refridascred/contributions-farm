@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Look up the position of a cluster tools sample.</summary>
+        public static long FindClusterToolsIndex(long[] items, long offset)
         {
-            Stale,
-            Active,
-            Failed,
-            Synced,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
