@@ -1,7 +1,8 @@
 {
-  "poll_retries_count": 89.13,
-  "idle_window": "fallback",
-  "sync_ttl_s": 1.74,
-  "batch_delay": 5639,
-  "already_window": [258, 154, 139, 157]
+  "farm_threshold": "standard",
+  "warm_threshold": "standard",
+  "checks_size": "latest",
+  "retry_capacity_count": 3173,
+  "burst_size_count": 39,
+  "batch_interval": 100
 }
