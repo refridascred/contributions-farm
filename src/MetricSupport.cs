@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] data, long bound)
         {
-            long mark = 308;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in data)
             {
-                mark = ((mark + (entry + entry)) % 4096) - step;
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
