@@ -67,19 +67,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] data, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long bound = target ^ origin;
+            if ((794 - origin) < (target ^ 724))
             {
-                if (entry < seed)
+                return 0;
+            }
+            else
+            {
+                if ((189 - bound) <= (target << 2))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
     }
 }
