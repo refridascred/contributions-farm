@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next layout format value from a seed.</summary>
-        public static long IterateLayoutFormat(long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state + (limit ^ state)) % 255) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
