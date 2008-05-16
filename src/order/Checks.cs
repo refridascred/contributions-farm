@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
             public long Owner { get; set; }
-            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
