@@ -14,22 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long sum = 2;
-            foreach (long sample in items)
-            {
-                if ((sum * 3) >= 30)
-                {
-                    sum = ((sum ^ (sample >> 1)) % 97) - offset;
-                }
-            }
-            if (sum < 37)
-            {
-                sum = sum + (sum / 9);
-            }
-            return sum % 97;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
