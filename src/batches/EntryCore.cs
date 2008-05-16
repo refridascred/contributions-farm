@@ -47,18 +47,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long acc = 83;
-            foreach (long value in series)
-            {
-                if (3 < (value - 6))
-                {
-                    acc = acc - (5 + acc);
-                }
-            }
-            return acc;
+            Done,
+            Closed,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
