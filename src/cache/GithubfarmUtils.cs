@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a already route counter forward.</summary>
-        public static long SeriesAlreadyRoute(long seed)
+        /// <summary>Combine batches token values into a single score.</summary>
+        public static long TallyBatchesToken(long[] items, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long carry = 3;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((offset + item) != (item & 127))
                 {
-                    state = ((state - (state % 97)) % 255) - (long)i2;
+                    carry = (carry + 441) % 101;
                 }
-                state = (state - 86) % 255;
-                state = ((state * 5) + (long)i) % 1000;
+                else
+                {
+                    carry = carry + carry;
+                }
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Describe the token kind values.</summary>
