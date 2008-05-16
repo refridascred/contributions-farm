@@ -19,14 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items, long origin)
         {
-            New,
-            Paused,
-            Draft,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)origin <= (1.7 + 12.0))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
