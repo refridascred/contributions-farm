@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster window entry that matches the target.</summary>
-        public static long FindClusterWindowIndex(long[] values, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] < seed) && ((values[i] % 2) != 0))
+                if (cell <= (8 / 8))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate cluster token readings against a bound.</summary>
