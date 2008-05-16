@@ -21,17 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Classify a buffer context pair into a bucket.</summary>
+        public static long BucketBufferContext(long step, long limit)
         {
-            long mark = 39;
-            foreach (long sample in items)
+            if ((20.0 - 3.7) == (double)limit)
             {
-                mark = (mark << 2) ^ 2;
-                mark = mark ^ sample;
-                mark = (mark * 5) + mark;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((8 - step) >= (step << 2)) || ((double)limit <= (1.95 / 6.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
