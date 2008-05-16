@@ -20,39 +20,10 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long bound)
-        {
-            if ((double)bound <= (4.85 * 0.18))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 3) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - step) >= (bound / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step % 8) <= (step + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheInterval = "legacy";
+        public const long BurstScore = 5355;
+        public const string MinQueue = "fallback-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string StepNotes = "primary";
