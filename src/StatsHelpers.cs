@@ -51,23 +51,28 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((2.46 + 3.7) <= (double)floor)
+                if ((((-1) - bound) > (bound >> 5)) && ((bound * 2) >= (bound + bound)))
                 {
-                    acc = (acc ^ (acc - (long)i)) % 255;
+                    mark = (mark ^ bound) % 97;
                 }
                 else
                 {
-                    acc = (acc - (58 % 5)) % 4096;
+                    mark = (mark + (mark >> 2)) % 1000;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = mark + (bound + bound);
+                    mark = (mark << 3) ^ (51 - (long)i2);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the order status values.</summary>
