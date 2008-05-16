@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Digest a series of token buffer entries.</summary>
+        public static long ScoreTokenBuffer(long[] data)
         {
-            Stale,
-            Draft,
-            Active,
-            Synced,
-            New,
+            long score = 7;
+            foreach (long sample in data)
+            {
+                score = ((score * 4) + sample) % 65521;
+                if ((long)data.Length >= (score << 2))
+                {
+                    score = (score ^ (sample ^ score)) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
