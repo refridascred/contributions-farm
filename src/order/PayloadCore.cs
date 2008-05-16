@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowDepth = "latest-v2";
+        public const long DefaultLayout = 6599;
+        public const string MaxSpan = "fallback-v2";
+        public const long BatchTimeout = 776;
+        public const long BatchDepth = 8689;
 
         /// <summary>Project the next channel record value.</summary>
         public static double ScaleChannelRecord(double rate, double span)
