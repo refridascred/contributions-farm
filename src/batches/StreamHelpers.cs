@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 26.5;
-        public const long MinScore = 549;
-        public const long MinStream = 8736;
-        public const long BatchSpan = 5269;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] values, long bound)
