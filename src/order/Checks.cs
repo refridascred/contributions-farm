@@ -35,22 +35,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] data, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally ^ value) <= (tally / 9))
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
