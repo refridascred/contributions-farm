@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                state = (state << 2) ^ ((long)i << 1);
-                if (((double)step < (3.4 / 3.0)) || ((state - state) > (step % 5)))
+                if (((item <= (-2)) && (hits > (hits + hits))) && (hits >= (item * 2)))
                 {
-                    state = state + state;
-                    state = (state - 5) % 4096;
+                    hits = hits + 3;
                 }
-                if ((step & 63) <= (step / 6))
-                {
-                    state = ((state * 4) + (state & 31)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
