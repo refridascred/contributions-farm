@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long CountFilterContextHits(long[] readings, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = 55;
+            foreach (long item in levels)
             {
-                if (step >= (419 - 67))
-                {
-                    count = (count + 3) - sample;
-                }
+                acc = ((acc * 2) + ((long)levels.Length - item)) - floor;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a batch stats.</summary>
