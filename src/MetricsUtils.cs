@@ -33,13 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Pending,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 4.92;
+        public const double BurstBudget = 20.23;
+        public const long StepTools = 5787;
+        public const double LimitFactor = 36.41;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] data, long target)
