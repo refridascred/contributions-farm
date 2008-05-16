@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings, long floor)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mark = 797;
-            foreach (long item in readings)
-            {
-                mark = ((mark << 2) ^ (item >> 4)) + floor;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
