@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const string WindowFarm = "staging-edge";
         public const long MinFarm = 7677;
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] == bound)
                 {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
