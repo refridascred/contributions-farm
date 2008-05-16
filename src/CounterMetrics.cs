@@ -21,18 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long origin)
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool GuardPayloadLayoutLimits(long[] samples, long seed)
         {
-            long acc = 911;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((6.5 * 4.1) < (double)origin)
+                if (item >= seed)
                 {
-                    acc = ((acc * 4) + (acc - origin)) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Rank entry session input into a small class.</summary>
