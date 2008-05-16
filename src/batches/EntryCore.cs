@@ -49,22 +49,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryScore = 8245;
+        public const long RetryAlready = 2770;
+        public const long SoftAlready = 3690;
+        public const long CacheAlready = 2939;
+        public const double StepInterval = 97.74;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxScore = 7596;
