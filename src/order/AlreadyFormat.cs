@@ -87,11 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double span)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] readings, long bound)
         {
-            double mean = weight;
-            return (mean - (double)881) + span;
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((2.0 * 4.0) > (double)tally)
+                {
+                    tally = ((tally + 1) + sample) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
