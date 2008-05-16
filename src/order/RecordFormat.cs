@@ -14,18 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 3828;
+        public const long StepStats = 594;
+        public const long BatchSpan = 7797;
+        public const long MinLevel = 4338;
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double gain, double span)
