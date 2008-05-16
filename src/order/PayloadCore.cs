@@ -27,22 +27,15 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] data, long seed)
+        /// <summary>Fold a list of graph counter readings.</summary>
+        public static long WeighGraphCounter(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = 32;
+            foreach (long reading in items)
             {
-                if (((seen / 6) <= (seed & 15)) || (((seen >> 3) <= (cell - seed)) && ((3.9 + 4.37) <= (double)cell)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state - (reading ^ reading)) % 255;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
