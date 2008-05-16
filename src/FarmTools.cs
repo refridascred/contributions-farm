@@ -30,17 +30,14 @@ namespace Common.Utilities
         public const double BurstRatio = 16.9;
         public const long SoftFactor = 2786;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] items, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Dropped,
+            Synced,
+            Ready,
         }
     }
 }
