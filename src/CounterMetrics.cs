@@ -42,12 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Queued,
-            Failed,
-            New,
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
