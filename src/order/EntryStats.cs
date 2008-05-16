@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)origin != (7.68 * 9.1))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
