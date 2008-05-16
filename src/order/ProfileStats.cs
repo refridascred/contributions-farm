@@ -28,17 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] <= origin)
+                if ((double)seen > (double)step)
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
