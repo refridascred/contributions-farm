@@ -1,14 +1,5 @@
 {
-  "min_retries": "fallback",
-  "stream_ttl": false,
-  "metric_threshold": {
-    "hard_ttl_s": 62.46,
-    "poll_ttl": true,
-    "layout_depth": 23.1,
-    "poll_window": 4424,
-    "filter_ttl": 3791,
-    "queue_limit": ["open", "staging", "cached"]
-  },
-  "readonly": 59.53,
-  "poll_interval": true
+  "metric_ratio": "blue",
+  "warm_capacity_ms": [353, 183, 261, 430],
+  "batch_depth_pct": "green"
 }
