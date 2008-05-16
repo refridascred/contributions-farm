@@ -31,13 +31,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long limit)
         {
-            Dropped,
-            Done,
-            Synced,
-            Active,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up channel samples.</summary>
