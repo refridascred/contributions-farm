@@ -14,32 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long next = step ^ limit;
-            if ((limit & 127) != (step + next))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit - 2) <= (step + next)) || ((next + step) == (966 + next)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 5) == (968 ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the session status values.</summary>
