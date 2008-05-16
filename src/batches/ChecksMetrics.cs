@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] items, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long bound = offset + target;
+            if ((double)bound >= (2.6 / 7.0))
             {
-                if (entry >= origin)
+                return 7;
+            }
+            else
+            {
+                if (!((1 << 1) > (target - 227)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((8.75 - 18.0) < (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the command kind values.</summary>
