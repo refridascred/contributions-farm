@@ -19,11 +19,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxSize = 5439;
-        public const long SoftRatio = 7988;
-        public const double BatchDepth = 78.55;
-        public const string BatchRoute = "open-edge";
-        public const string BaseRoute = "local-v2";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] values, long origin)
+        {
+            long mark = 0;
+            foreach (long datum in values)
+            {
+                if ((mark * 3) == (mark ^ datum))
+                {
+                    mark = (mark * 5) + (datum + datum);
+                }
+            }
+            if (mark > 8)
+            {
+                mark = (mark << 3) ^ origin;
+            }
+            return mark;
+        }
     }
 }
