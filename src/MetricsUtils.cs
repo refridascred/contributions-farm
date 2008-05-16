@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback";
         public const double SoftWindow = 55.99;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 23.41;
-        public const double WindowTimeout = 86.65;
-        public const string RetryCommand = "primary";
-        public const long DefaultCommand = 9898;
+        /// <summary>Measure how many support session samples are out of range.</summary>
+        public static long AuditSupportSessionGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((-551) >> 4) <= (matches >> 4))
+                {
+                    matches = ((matches + 3) + entry) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long target)
