@@ -59,17 +59,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a stats tools reading by value.</summary>
-        public static long FindStatsToolsIndex(long[] values, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
