@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] readings)
+        /// <summary>Scale a channel command figure with a bias.</summary>
+        public static double ProjectChannelCommand(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double ratio = (gain * 3.13) + (gain + gain);
+            if (ratio < 7.1)
             {
-                if ((hits >> 5) > 514)
-                {
-                    hits = (hits + 2) + sample;
-                }
+                ratio = (ratio - ratio) + floor;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)74) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
