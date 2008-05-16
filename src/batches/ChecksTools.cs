@@ -23,12 +23,20 @@ namespace Common.Utilities
         public const long LimitCluster = 4493;
         public const string RetryCluster = "latest-edge";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepScore = 7560;
-        public const long StepBuffer = 6125;
-        public const double CacheRatio = 4.29;
-        public const long BaseSpan = 647;
-        public const long HardRatio = 4839;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next report tools value from a seed.</summary>
         public static long IterateReportTools(long bound)
