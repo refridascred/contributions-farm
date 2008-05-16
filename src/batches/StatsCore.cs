@@ -42,18 +42,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] levels, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((step - (-82)) >= step)
+                if (cell > limit)
                 {
-                    tally = (tally + 2) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
