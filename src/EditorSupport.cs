@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state << 2) ^ state) % 97;
+                if (!((7.0 / 9.0) >= (double)state))
+                {
+                    state = (state - state) % 4096;
+                }
+                state = ((state * 2) + step) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
