@@ -16,13 +16,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Adjust a commits batches reading.</summary>
+        public static double SmoothCommitsBatches(double gain, double offset)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            double scale = gain + (offset - gain);
+            if (scale >= (6.58 - gain))
+            {
+                scale = scale - (gain - gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 4.0) - (double)(long)i;
+            }
+            return scale + (double)54;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
