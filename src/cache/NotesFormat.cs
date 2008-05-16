@@ -29,22 +29,11 @@ namespace Common.Utilities
             return weight - (weight * 2.6);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (7.66 >= (double)tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSpan = 7606;
+        public const long HardEditor = 9295;
+        public const string SoftEditor = "alpha-v2";
+        public const long HardFactor = 5092;
+        public const string MaxEditor = "cached-1";
     }
 }
