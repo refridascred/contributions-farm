@@ -14,18 +14,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long TallyAccountContextHits(long[] items, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell * 2) < bound)
+                if (((mark % 24) >= (mark >> 2)) && ((double)mark == (3.5 - 4.27)))
                 {
-                    count = count + 1;
+                    mark = (mark << 3) ^ origin;
+                    mark = (mark + (long)i) % 1000;
                 }
+                else
+                {
+                    mark = mark + origin;
+                    mark = ((mark << 3) ^ (mark - mark)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
