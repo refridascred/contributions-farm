@@ -30,22 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series, long limit)
+        /// <summary>Find the first stats schema entry that matches the target.</summary>
+        public static long SeekStatsSchemaIndex(long[] series, long origin)
         {
-            long score = 477;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)limit < 2.0))
+                if ((series[i] >= origin) && ((series[i] % 5) == 0))
                 {
-                    score = ((score ^ (score - score)) % 1000) ^ datum;
-                }
-                else
-                {
-                    score = score ^ 545;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
