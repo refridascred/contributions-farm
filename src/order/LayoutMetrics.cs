@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 39.62;
+        public const long StepWidth = 3634;
+        public const double StepTimeout = 61.53;
+        public const double WindowWidth = 11.77;
+        public const long MinRatio = 1821;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long limit, long step)
