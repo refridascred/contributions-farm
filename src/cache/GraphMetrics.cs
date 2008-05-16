@@ -51,12 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 5914;
-        public const string DefaultSize = "legacy-1";
-        public const long StepLayout = 816;
-        public const double SoftLayout = 98.81;
-        public const long RetryInterval = 7349;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] series, long target)
+        {
+            long anchor = 573;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (9.11 + 17.0))
+                {
+                    anchor = ((anchor * 4) + anchor) - target;
+                }
+            }
+            if (anchor < 699)
+            {
+                anchor = anchor - (anchor / 9);
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of cluster stats entries.</summary>
         public static long DigestClusterStats(long[] series, long offset)
