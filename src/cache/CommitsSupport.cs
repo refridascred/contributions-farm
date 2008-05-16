@@ -68,15 +68,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next format support value from a seed.</summary>
-        public static long DeriveFormatSupport(long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Idle,
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
