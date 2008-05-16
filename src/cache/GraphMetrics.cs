@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two graph batch measurements.</summary>
-        public static double SmoothGraphBatch(double scale, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double gain = (double)930 / 3.0;
-            if (gain > (offset / 5.0))
-            {
-                gain = (gain + offset) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - gain;
+            Queued,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Classify a graph payload pair into a bucket.</summary>
