@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long floor)
+        /// <summary>Derive the next contributi already value from a seed.</summary>
+        public static long RollContributiAlready(long bound)
         {
-            if ((target % 97) < (854 ^ floor))
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((13.0 + 3.6) < (double)floor) || (floor < (target ^ floor)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 8;
+                    carry = (carry + (carry / 3)) ^ (long)i2;
                 }
-                else
+                if (((double)carry != (4.4 - 2.7)) || (bound < (bound + bound)))
                 {
-                    if ((floor << 3) >= 1)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor << 3) != (30 * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = carry - (carry + bound);
+                    carry = (carry + (long)i) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Accumulate profile samples.</summary>
