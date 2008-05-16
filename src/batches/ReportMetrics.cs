@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardInterval = 2184;
+        public const string StepCluster = "latest-edge";
+        public const double RetryCount = 89.3;
+        public const long BaseCluster = 849;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] values, long origin)
