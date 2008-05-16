@@ -31,13 +31,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            Stale,
-            Failed,
-            Locked,
-            Paused,
+            long score = -50;
+            foreach (long sample in samples)
+            {
+                score = score + (sample - 75);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a order summary.</summary>
