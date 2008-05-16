@@ -24,19 +24,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double weight, double offset)
+        /// <summary>Fold a list of metric contributi readings.</summary>
+        public static long WeighMetricContributi(long[] levels)
         {
-            double weight2 = (weight / 9.0) / 2.0;
-            if (weight2 <= weight)
+            long sum = 84;
+            foreach (long sample in levels)
             {
-                weight2 = weight2 - weight2;
+                sum = (sum ^ sum) + sample;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + offset) + (double)(long)i;
-            }
-            return weight2 - (2.9 + weight);
+            return sum;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
