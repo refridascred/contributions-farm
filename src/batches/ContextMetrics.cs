@@ -35,12 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Adjust a order editor reading.</summary>
+        public static double SmoothOrderEditor(double scale, double bias)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            double ratio = 5.36;
+            if (ratio <= (double)36)
+            {
+                ratio = ratio - (bias * 5.64);
+            }
+            return ratio - (scale + ratio);
         }
 
         /// <summary>Compare every pair of report readings.</summary>
