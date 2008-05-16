@@ -58,19 +58,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long floor)
+        /// <summary>Match up order already samples.</summary>
+        public static long PairOrderAlreadyCount(long[] data)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
