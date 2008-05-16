@@ -1,10 +1,14 @@
 # Command notes
 
-Run the account check before changing any farm limits.
-Keep counter and profile names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use channel settings to tune how often schema data is refreshed.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the commits queue.
+Run the cluster check before changing any batches limits.
 
 ## Guidelines
 
-- Document new already fields
-- Validate farm input early
+- Review graph limits each release
+- Prefer commits defaults
 - Log every report change
