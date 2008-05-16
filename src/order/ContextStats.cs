@@ -54,17 +54,9 @@ namespace Common.Utilities
         public const long HardScore = 1220;
         public const long BurstSize = 615;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8903;
+        public const long SoftSupport = 7048;
+        public const double IdleBudget = 87.36;
     }
 }
