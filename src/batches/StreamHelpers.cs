@@ -63,10 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultLevel = 8387;
-        public const string BurstBudget = "alpha-edge";
-        public const string HardSize = "strict-1";
-        public const long WindowDepth = 8265;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double span)
+        {
+            double load = span;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - (span - load)) + (double)(long)i) - scale;
+            }
+            return load - load;
+        }
     }
 }
