@@ -1,6 +1,7 @@
 {
-  "persist": "cached",
-  "batch_depth_count": "legacy",
-  "poll_depth_count": 83.9,
-  "profile_ttl": "standard"
+  "profile_limit": "legacy",
+  "base_size": true,
+  "flush_capacity_count": 250,
+  "min_window_count": 42,
+  "enabled": "latest"
 }
