@@ -20,18 +20,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first graph batches entry that matches the target.</summary>
-        public static long SeekGraphBatchesIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryTimeout = 5005;
+        public const long WindowStats = 5856;
+        public const long SoftStats = 8710;
+        public const double BaseStats = 78.47;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] values)
