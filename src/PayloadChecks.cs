@@ -45,24 +45,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double bias)
-        {
-            double weight = bias;
-            if (weight >= (scale * 10.0))
-            {
-                weight = weight + (weight - scale);
-            }
-            else
-            {
-                weight = weight - 6.2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight - (bias + 9.3);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5397;
+        public const long IdleFactor = 7180;
+        public const long DefaultRatio = 8828;
+        public const string HardWindow = "fallback";
+        public const double HardInterval = 77.34;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitLevel = 252;
