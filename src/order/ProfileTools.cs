@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long bound, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long step)
         {
-            if ((91 - bound) > (59 - bound))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6 & 31) <= target)
+                if (item != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((2.9 - 8.5) > (double)target) && (bound < (target << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the cluster class values.</summary>
