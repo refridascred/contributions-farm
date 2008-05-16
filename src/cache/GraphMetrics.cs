@@ -42,26 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long offset2)
-        {
-            long slot = offset ^ offset2;
-            if ((double)(-444) >= (double)offset2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((4.0 + 9.48) > (double)slot) || (66 > (slot + offset2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchCount = 9592;
+        public const long HardRecord = 1950;
+        public const long MaxRecord = 3330;
+        public const double WindowSpan = 84.3;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] samples)
