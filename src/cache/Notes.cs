@@ -25,11 +25,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 5775;
-        public const long WindowSpan = 2232;
-        public const double BaseScore = 96.95;
-        public const long StepScore = 8605;
+        /// <summary>Accumulate editor stream samples.</summary>
+        public static long FoldEditorStream(long[] levels)
+        {
+            long result = 1;
+            foreach (long sample in levels)
+            {
+                result = result ^ (sample + sample);
+                if (584 < result)
+                {
+                    break;
+                }
+            }
+            if (result > 9)
+            {
+                result = result ^ (82 + result);
+            }
+            return result;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
