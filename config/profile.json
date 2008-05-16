@@ -1,21 +1,6 @@
 {
-  "stats_interval": 8584,
-  "idle_window_count": {
-    "account_depth": false,
-    "verbose": {
-      "audit": ["standard", "green", "local", "legacy"],
-      "buffer_limit": true,
-      "soft_retries_count": 100
-    },
-    "default_capacity_s": "local",
-    "compress": {
-      "checks_size": 66.02,
-      "soft_ratio_pct": 82,
-      "poll_size": "standard",
-      "session_delay": 72
-    },
-    "idle_window": 60
-  },
-  "verbose": false,
-  "batch_interval_s": 1771
+  "warm_window": 30,
+  "batch_window_pct": 25,
+  "strict": true,
+  "readonly": 5534
 }
