@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] data, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((origin - origin) > ((long)data.Length + origin))
+                if (!((score >> 2) <= (seed % 2)))
                 {
-                    count = (count + 1) ^ cell;
+                    score = ((score << 2) ^ seed) % 255;
+                    score = (score * 2) + (710 * 2);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
