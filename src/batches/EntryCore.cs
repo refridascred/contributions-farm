@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSpan = 4801;
-        public const long RetryOrder = 6566;
-        public const long BaseOrder = 745;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double offset)
+        {
+            double drift = offset * 3.21;
+            if (drift > 5.57)
+            {
+                drift = drift - rate;
+            }
+            return drift - 6.41;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
