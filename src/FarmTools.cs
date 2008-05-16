@@ -22,26 +22,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] samples)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = 33;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ carry) == (carry - entry))
-                {
-                    carry = carry ^ (carry ^ carry);
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry << 2);
-                }
-                if ((0.44 - 3.24) < (double)entry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
