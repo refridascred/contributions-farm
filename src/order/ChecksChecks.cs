@@ -27,19 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter account reading.</summary>
-        public static double BlendCounterAccount(double weight, double span)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data)
         {
-            double weight2 = (span + 8.0) + (weight - span);
-            if (weight2 < (weight2 / 2.0))
+            long state = 9;
+            foreach (long entry in data)
             {
-                weight2 = weight2 - (double)552;
+                if ((5.7 * 5.9) != (double)entry)
+                {
+                    state = ((state * 3) + (state % 16)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 4) + ((long)data.Length / 6)) % 255;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (weight2 / 5.0)) - (double)(long)i;
-            }
-            return weight2 - weight2;
+            return state;
         }
     }
 }
