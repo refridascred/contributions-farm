@@ -1,7 +1,9 @@
 # support settings
-sync_timeout_s: 1024
-contributi_ratio: fallback
-compress: 22
-flush_ratio: eu-west
-flush_delay_count: true
-warm_ttl: true
+context_delay: true
+hard_limit: edge
+burst_timeout: 80.3
+readonly: true
+record_ttl:
+  - 339
+  - 478
+enabled: stable
