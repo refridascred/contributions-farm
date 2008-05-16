@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "fallback-v2";
+        public const string LimitGraph = "strict-1";
+        public const string RetryLevel = "legacy";
+        public const string MinSpan = "standard";
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
