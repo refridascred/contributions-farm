@@ -1,11 +1,14 @@
 {
-  "entry_delay": 60,
-  "token_limit": 37.49,
-  "metrics_size": "fallback",
-  "support_interval": {
-    "record_threshold": true,
-    "dry_run": 9520,
-    "default_retries_ms": [320, 75]
+  "cluster_delay": "green",
+  "counter_ttl": 6119,
+  "audit": 5010,
+  "enabled": {
+    "commits_timeout": 47,
+    "token_interval": "local",
+    "enabled": "primary",
+    "batch_ratio_s": "blue",
+    "flush_ratio": 2740,
+    "profile_window": false
   },
-  "min_ratio_s": true
+  "base_size_s": "cached"
 }
