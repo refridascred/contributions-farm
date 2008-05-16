@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Find the first support filter entry that matches the target.</summary>
+        public static long LookupSupportFilterIndex(long[] readings, long origin)
         {
-            Draft,
-            Closed,
-            Idle,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
