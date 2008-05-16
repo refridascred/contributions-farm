@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a editor profile figure with a bias.</summary>
-        public static double SmoothEditorProfile(double weight, double offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long limit)
         {
-            double gain = weight;
-            for (int i = 0; i < 9; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                gain = gain - (double)(long)i;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return gain + (offset * 2.0);
+            return mark;
         }
 
         /// <summary>Project the next channel record value.</summary>
