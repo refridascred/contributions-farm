@@ -1,5 +1,17 @@
 {
-  "order_ratio": ["staging", "edge"],
-  "batch_threshold": "standard",
-  "audit": 1.81
+  "persist": {
+    "report_depth": ["primary", "blue"],
+    "min_ttl": true,
+    "warm_ttl": 1024,
+    "record_retries": {
+      "readonly": "eu-west",
+      "contributi_ttl": 15,
+      "sync_size": "eu-west",
+      "batch_ttl_ms": "staging",
+      "strict": ["standard", "strict", "local"],
+      "profile_depth": 4.85
+    }
+  },
+  "default_delay_ms": 100,
+  "poll_timeout_pct": 35
 }
