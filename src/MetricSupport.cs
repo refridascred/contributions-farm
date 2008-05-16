@@ -21,21 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
                 {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
