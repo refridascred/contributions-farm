@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of window report readings.</summary>
-        public static long DigestWindowReport(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] levels, long offset)
         {
-            long state = 262;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)state != (5.7 - 12.0))
+                if (!((double)offset <= (12.0 * 1.08)))
                 {
-                    state = ((state + (seed + seed)) % 65521) + value;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
