@@ -19,14 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values)
         {
-            Synced,
-            Closed,
-            Draft,
-            New,
-            Locked,
+            long sum = 40;
+            foreach (long reading in values)
+            {
+                sum = sum - (sum << 2);
+                sum = ((sum * 4) + 832) % 65521;
+                if (!((reading * 2) < (reading << 2)))
+                {
+                    sum = ((sum * 5) + (reading * 5)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (sum ^ reading)) % 65521;
+                }
+            }
+            if (sum < (-49))
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a token reading by value.</summary>
