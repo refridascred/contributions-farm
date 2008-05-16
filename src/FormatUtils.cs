@@ -66,21 +66,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Compare every pair of contributi account readings.</summary>
