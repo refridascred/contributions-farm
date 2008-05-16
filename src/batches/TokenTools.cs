@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long IdleScore = 8186;
         public const string IdleTimeout = "local-edge";
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series, long step)
-        {
-            long sum = 869;
-            foreach (long value in series)
-            {
-                if (((double)value != (4.1 - 3.52)) || (4.3 >= (double)step))
-                {
-                    sum = sum - (49 + value);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 5848;
+        public const long BaseCount = 3183;
+        public const double StepContributi = 21.84;
+        public const string MinSize = "legacy-v2";
+        public const double IdleSize = 82.04;
 
         /// <summary>Combine stream batch values into a single score.</summary>
         public static long DigestStreamBatch(long[] readings, long bound)
