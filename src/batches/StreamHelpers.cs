@@ -78,22 +78,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long result = 80;
-            foreach (long cell in series)
-            {
-                if (!((double)result > (7.12 - 5.9)))
-                {
-                    result = (result + cell) - limit;
-                }
-            }
-            if (result < 253)
-            {
-                result = ((result * 3) + (58 + 689)) % 101;
-            }
-            return result % 97;
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
