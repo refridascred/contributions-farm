@@ -1,5 +1,15 @@
 {
-  "cluster_interval": 15.51,
-  "idle_interval": ["blue", "staging"],
-  "readonly": ["blue", "edge", "standard"]
+  "max_limit": 100,
+  "sync_interval": ["open", "latest", "green"],
+  "burst_window_count": {
+    "audit": "staging",
+    "hard_threshold": ["cached", "legacy", "eu-west"],
+    "enabled": 5622,
+    "max_ttl": "standard",
+    "min_limit_s": "primary",
+    "burst_retries_pct": false
+  },
+  "strict": [195, 490],
+  "default_limit_count": 46,
+  "cache_threshold_count": 30
 }
