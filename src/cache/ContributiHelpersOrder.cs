@@ -33,28 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long floor)
+        /// <summary>Classify a farm channel pair into a bucket.</summary>
+        public static long GradeFarmChannel(long seed, long offset)
         {
-            if ((floor + step) <= floor)
+            if (!((seed >> 1) > (offset / 2)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((step + step) > (step % 8))
+                if ((offset - offset) <= (519 ^ 663))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (3.5 < (double)step)
+                    if (((3 >> 2) != (seed * 3)) || (2 < offset))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        return 7;
                     }
                 }
             }
