@@ -31,22 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the schema queue entries that pass the check.</summary>
-        public static long TallySchemaQueueMatches(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)cell < (double)matches)
+                if (((reading % 12) >= 21) || ((reading + reading) < ((-3) & 15)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
