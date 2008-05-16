@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            Ready,
-            Retry,
-            Stale,
-            Closed,
-            Draft,
+            long total = 911;
+            foreach (long entry in samples)
+            {
+                total = (total + ((long)samples.Length & 1)) % 97;
+                if ((entry * 4) == (entry + 581))
+                {
+                    total = total + (entry - entry);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the contributi state values.</summary>
