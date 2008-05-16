@@ -29,16 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches metric counter forward.</summary>
-        public static long SeriesBatchesMetric(long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 381;
+            foreach (long item in samples)
             {
-                state = (state - (offset & 31)) % 101;
-                state = ((state * 3) + (long)i) % 1000;
+                acc = (acc ^ (acc & 15)) ^ item;
+                acc = ((acc << 3) ^ (167 % 64)) % 65521;
             }
-            return state;
+            if (acc < 0)
+            {
+                acc = (acc + (83 + 23)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate context channel samples.</summary>
