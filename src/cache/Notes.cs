@@ -60,21 +60,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = (double)5 * 4.0;
+            return (mean - (span - mean)) + gain;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
