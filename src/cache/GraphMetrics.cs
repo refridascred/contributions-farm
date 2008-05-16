@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardFactor = 45.39;
-        public const long SoftBatches = 2880;
-        public const long CacheBudget = 1100;
-        public const string BurstBatches = "fallback-edge";
-        public const long DefaultBatches = 2742;
+        /// <summary>Blend two graph batch measurements.</summary>
+        public static double SmoothGraphBatch(double scale, double offset)
+        {
+            double gain = (double)930 / 3.0;
+            if (gain > (offset / 5.0))
+            {
+                gain = (gain + offset) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
