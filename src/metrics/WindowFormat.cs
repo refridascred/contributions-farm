@@ -30,19 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double offset)
+        /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
+        public static bool CheckBatchesGithubfarmLimits(long[] samples, long limit)
         {
-            double mean = weight;
-            if (mean >= weight)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                mean = (mean + (double)0) + offset;
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - 8.7;
-            }
-            return mean + (weight - 9.0);
+            return ok;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
