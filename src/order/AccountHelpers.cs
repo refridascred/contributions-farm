@@ -80,21 +80,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches channel samples.</summary>
-        public static long PairBatchesChannelCount(long[] samples)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = score + ((long)i ^ 76);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
