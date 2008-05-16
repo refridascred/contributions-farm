@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowFactor = "strict-1";
-        public const long MinScore = 9194;
-        public const double BatchMetric = 50.44;
-        public const long IdleInterval = 9341;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((double)seen >= (9.0 / 4.0)) && ((seen ^ seen) == (seen + reading)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksMatches(long[] series, long origin)
