@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two notes buffer measurements.</summary>
-        public static double BlendNotesBuffer(double bias, double bias2)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long target)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                scale = (scale + bias2) + (double)(long)i;
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + bias2;
+            return flag;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
