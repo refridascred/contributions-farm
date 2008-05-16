@@ -78,21 +78,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 80;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)result > (7.12 - 5.9)))
                 {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + cell) - limit;
                 }
             }
-            return tally;
+            if (result < 253)
+            {
+                result = ((result * 3) + (58 + 689)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
