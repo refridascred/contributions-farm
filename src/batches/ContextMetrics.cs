@@ -29,18 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen ^ seen) < (seen << 3))
-                {
-                    seen = ((seen + 1) ^ datum) + target;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
