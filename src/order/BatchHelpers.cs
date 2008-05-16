@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches filter value from a seed.</summary>
-        public static long DeriveBatchesFilter(long step)
+        /// <summary>Check that every schema farm entry stays within the limit.</summary>
+        public static bool ValidateSchemaFarmBounds(long[] items, long target)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
