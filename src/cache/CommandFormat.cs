@@ -19,19 +19,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] levels, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a order summary.</summary>
