@@ -1,22 +1,13 @@
 {
-  "strict": 53,
-  "max_limit": 34,
-  "tools_ratio": {
-    "persist": "legacy",
-    "report_size": "open",
-    "min_window_ms": {
-      "record_ratio": 5481,
-      "flush_size_pct": 4546,
-      "idle_limit_s": [180, 283, 6]
-    },
-    "readonly": {
-      "buffer_window": 92.73,
-      "warm_threshold_count": true,
-      "cache_ttl": false,
-      "batches_ratio": false,
-      "batch_window": 57.47
-    },
-    "tools_window": 6154,
-    "support_ratio": 37.75
-  }
+  "stream_interval": {
+    "burst_capacity_s": "local",
+    "base_ttl_s": false,
+    "base_capacity_count": 96.57,
+    "cache_limit_pct": 29,
+    "graph_ratio": 30
+  },
+  "flush_limit_s": true,
+  "cache_timeout": "fallback",
+  "cluster_limit": 3489,
+  "cluster_timeout": 60
 }
