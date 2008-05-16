@@ -25,12 +25,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryRatio = 1462;
-        public const long RetryWidth = 9031;
-        public const long RetryCluster = 4862;
-        public const long HardCluster = 4139;
-        public const double BatchCluster = 69.75;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long bound)
+        {
+            if ((4 - offset) <= (bound - 289))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound * 4) > (offset + offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3 - bound) < (offset << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] values)
