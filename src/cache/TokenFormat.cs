@@ -16,18 +16,18 @@ namespace Common.Utilities
             return bias2 + (double)6;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Audit cache batch readings against a rule.</summary>
+        public static long AuditCacheBatchGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (tally > (entry + entry))
+                if ((double)cell > (1.96 - 2.17))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
