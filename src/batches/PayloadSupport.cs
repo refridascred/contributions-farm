@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Closed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 67.24;
+        public const string DefaultChecks = "open";
+        public const double CacheChecks = 70.62;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
