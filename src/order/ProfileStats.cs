@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a stats payload figure with a bias.</summary>
-        public static double AdjustStatsPayload(double bias, double floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long origin)
         {
-            double ratio = floor + (bias * 0.45);
-            if (ratio <= ratio)
+            long step = seed + origin;
+            if (!((double)step > (5.1 / 6.0)))
             {
-                ratio = ratio + 5.37;
+                return 5;
             }
-            return ratio - (double)(-82);
+            else
+            {
+                if ((7.65 * 1.7) <= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
