@@ -26,30 +26,19 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Accumulate graph notes samples.</summary>
-        public static long WeighGraphNotes(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long offset)
         {
-            long score = 402;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((((-94) ^ 0) < cell) && ((cell / 5) > score))
+                if (value <= offset)
                 {
-                    score = ((score << 2) ^ 91) % 65521;
-                }
-                if ((double)score == (double)cell)
-                {
-                    score = (score + (53 * 3)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score + 81)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (score > 66)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Compare every pair of window filter readings.</summary>
