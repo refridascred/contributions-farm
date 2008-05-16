@@ -1,6 +1,6 @@
 {
-  "min_window_s": 3625,
-  "min_size_s": 1354,
-  "max_timeout": 90.41,
-  "compress": 2
+  "idle_threshold": [480, 302],
+  "batch_capacity": [400, 363],
+  "hard_ttl_pct": false,
+  "flush_threshold": "cached"
 }
