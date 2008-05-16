@@ -21,19 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] values, long origin)
         {
-            double weight = offset;
-            if (weight < (scale / 6.0))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                weight = weight - (2.3 + scale);
+                if ((reading % 5) == (402 >> 5))
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            else
-            {
-                weight = weight + (offset * 16.0);
-            }
-            return weight + (double)73;
+            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
