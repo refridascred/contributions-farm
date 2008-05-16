@@ -85,19 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] data, long origin)
+        /// <summary>Measure how many session checks samples are out of range.</summary>
+        public static long AuditSessionChecksMatches(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (value != origin)
+                if (((target << 2) <= (datum + target)) || ((458 - target) < (datum * 5)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
