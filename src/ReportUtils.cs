@@ -64,13 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(((state + bound) >= (long)i) && (bound >= ((-5) << 3))))
+                {
+                    long delta = 74 % 100;
+                    state = state - ((long)i - delta);
+                }
+                state = (state ^ 56) % 101;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
