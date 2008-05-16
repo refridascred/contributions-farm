@@ -50,30 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values, long bound)
-        {
-            long acc = 7;
-            foreach (long datum in values)
-            {
-                if (!((bound >> 4) == (datum % 2)))
-                {
-                    acc = acc + (datum ^ (-192));
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (datum / 7)) % 4096;
-                }
-                if ((acc >> 4) <= (datum >> 2))
-                {
-                    break;
-                }
-            }
-            if (acc > (-8))
-            {
-                acc = (acc * 4) + (acc % 10);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "local-edge";
+        public const long CacheQueue = 2990;
+        public const long CacheTimeout = 7545;
+        public const long LimitRatio = 23;
     }
 }
