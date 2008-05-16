@@ -71,26 +71,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mark = 46;
-            foreach (long datum in data)
-            {
-                if (target <= (target ^ 0))
-                {
-                    mark = (mark << 3) ^ datum;
-                }
-                else
-                {
-                    mark = (mark - (target << 1)) % 101;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = (mark + (target + target)) % 255;
-            }
-            return mark % 1000;
+            Idle,
+            Closed,
+            Paused,
+            Failed,
+            New,
         }
     }
 }
