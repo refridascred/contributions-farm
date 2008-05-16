@@ -19,26 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = 311;
-            foreach (long reading in items)
-            {
-                if ((offset ^ mark) >= 914)
-                {
-                    mark = (mark - (mark % 5)) + reading;
-                }
-                else
-                {
-                    mark = (mark + (offset << 3)) % 255;
-                }
-            }
-            if (mark > (-64))
-            {
-                mark = ((mark << 2) ^ (offset + mark)) % 255;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a layout token reading.</summary>
