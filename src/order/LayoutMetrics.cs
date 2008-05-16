@@ -20,12 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 95.76;
-        public const long DefaultSession = 8937;
-        public const long RetrySession = 1242;
-        public const long SoftSession = 1692;
-        public const double MinScore = 70.84;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] data, long limit)
