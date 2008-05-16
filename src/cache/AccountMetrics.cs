@@ -40,11 +40,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 2.59;
-        public const long LimitScore = 2663;
-        public const double HardScore = 57.26;
-        public const string HardLevel = "staging";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 5778;
+        public const long HardFilter = 6210;
+        public const string BurstFilter = "legacy-v2";
+        public const string RetryInterval = "local-1";
+        public const string IdleFilter = "fallback-1";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string RetryCount = "open-v2";
