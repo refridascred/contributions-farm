@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool CheckContextPayloadLimits(long[] series, long bound)
+        /// <summary>Count the batch farm entries that pass the check.</summary>
+        public static long CountBatchFarmGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (value != bound)
+                if (!((matches & 1) < (sample + sample)) || (((double)sample != (3.0 / 6.0)) && (3.3 <= (double)matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the stats class values.</summary>
