@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long anchor = 27;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                anchor = (anchor << 2) ^ (entry << 3);
+                if ((double)9 >= (double)anchor)
+                {
+                    break;
+                }
+                anchor = (anchor << 2) ^ (bound / 3);
             }
             return anchor;
         }
