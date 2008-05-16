@@ -19,23 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((2.37 - 2.0) <= (double)value)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheLevel = "legacy";
+        public const string StepCluster = "standard-edge";
+        public const string IdleSpan = "primary-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string SoftWidth = "local-v2";
