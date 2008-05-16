@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a farm account figure with a bias.</summary>
-        public static double AdjustFarmAccount(double rate, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long offset)
         {
-            double gain = (rate - floor) + rate;
-            if (gain <= 0.7)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - gain;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - 9.0;
+            return -1;
         }
     }
 }
