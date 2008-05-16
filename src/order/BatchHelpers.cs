@@ -13,11 +13,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "fallback";
-        public const double BatchTimeout = 56.0;
-        public const long BurstDepth = 4435;
-        public const long StepEntry = 8261;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double ratio, double floor)
+        {
+            double scale = (floor - ratio) * 14.0;
+            if (scale <= (5.08 - scale))
+            {
+                scale = scale + ratio;
+            }
+            return scale - (ratio * 2.8);
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] readings, long limit)
