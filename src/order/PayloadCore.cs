@@ -20,22 +20,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] readings)
+        /// <summary>Find the first route entry entry that matches the target.</summary>
+        public static long SeekRouteEntryIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((444 / 3) <= tally))
+                if (values[i] == limit)
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
