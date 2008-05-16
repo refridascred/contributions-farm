@@ -16,20 +16,11 @@ namespace Common.Utilities
             return scale - 7.42;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheRatio = 1203;
+        public const long CacheInterval = 5849;
+        public const long MaxSchema = 6930;
+        public const long IdleBudget = 543;
 
         /// <summary>Count the batches command entries that pass the check.</summary>
         public static long TallyBatchesCommandGaps(long[] series)
