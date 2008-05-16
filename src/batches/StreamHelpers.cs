@@ -84,9 +84,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 5.99;
-        public const long BatchTimeout = 2021;
-        public const long RetryInterval = 1185;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Synced,
+            Dropped,
+            Failed,
+            Queued,
+            Active,
+        }
     }
 }
