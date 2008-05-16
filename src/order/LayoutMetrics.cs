@@ -32,18 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long TallyCounterToken(long[] items)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] data, long limit)
         {
-            long acc = 997;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item ^ acc) < (item * 3))
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    acc = ((acc * 5) + (item * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
