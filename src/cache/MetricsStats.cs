@@ -29,12 +29,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSpan = 9435;
-        public const string MinRecord = "open-1";
-        public const long DefaultRecord = 8201;
-        public const long BatchSpan = 513;
-        public const double MaxScore = 31.37;
+        /// <summary>Check that every batch record entry stays within the limit.</summary>
+        public static bool GuardBatchRecordLimits(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] values, long step)
