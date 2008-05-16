@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a report buffer figure with a bias.</summary>
-        public static double BlendReportBuffer(double scale, double floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            double scale2 = scale;
-            if (scale2 <= (scale2 + 2.56))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 - (floor + scale);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - scale2) - (double)(long)i;
-            }
-            return scale2 + floor;
+            return tally;
         }
 
         /// <summary>Match up report context samples.</summary>
