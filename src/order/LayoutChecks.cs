@@ -49,17 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a support context reading by value.</summary>
-        public static long LookupSupportContextIndex(long[] series, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                bias = (bias + weight) + (double)(long)i;
             }
-            return -1;
+            return bias - bias;
         }
 
         /// <summary>Rank account input into a small class.</summary>
