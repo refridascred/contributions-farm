@@ -21,19 +21,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] series, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long seed)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if ((seed >> 2) != (seed / 3))
             {
-                if (cell <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((2.6 - 0.6) == (double)seed)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((-3) >= seed) && ((6 >> 5) == (seed / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate already commits samples.</summary>
