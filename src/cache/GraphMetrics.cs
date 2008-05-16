@@ -69,23 +69,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            double weight2 = weight;
-            if (weight2 > (weight2 + weight2))
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                weight2 = weight2 - (double)526;
+                if (state < (step & 31))
+                {
+                    state = ((state << 2) ^ (step / 2)) % 97;
+                }
+                else
+                {
+                    state = (state ^ ((long)i + step)) % 97;
+                }
+                if ((double)step < (13.0 - 3.67))
+                {
+                    state = (state ^ state) % 255;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                weight2 = weight2 + (weight2 + weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - span) + (double)(long)i;
-            }
-            return weight2 - span;
+            return state;
         }
     }
 }
