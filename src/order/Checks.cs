@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values, long step)
-        {
-            long score = 730;
-            foreach (long datum in values)
-            {
-                score = ((score + (score - step)) % 97) - datum;
-            }
-            if (score < 7)
-            {
-                score = (score + step) % 4096;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 31.49;
+        public const long CacheInterval = 2400;
+        public const long MinSpan = 3904;
+        public const double LimitPayload = 31.18;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryTimeout = 5005;
