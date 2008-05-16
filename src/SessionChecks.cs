@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a checks route counter forward.</summary>
-        public static long IterateChecksRoute(long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                long step = (acc * 3) / 8;
-                acc = ((acc * 4) + (step << 2)) % 101;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Closed,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
