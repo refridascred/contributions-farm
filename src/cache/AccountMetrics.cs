@@ -58,22 +58,19 @@ namespace Common.Utilities
         public const double StepEntry = 16.02;
         public const long BurstFactor = 5739;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long seed)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (((target / 5) < (value << 3)) && (value <= 826))
+                if (item <= seed)
                 {
-                    carry = carry + (220 << 1);
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 3)
-            {
-                carry = ((carry * 4) + (target ^ target)) % 101;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Hold a order header.</summary>
