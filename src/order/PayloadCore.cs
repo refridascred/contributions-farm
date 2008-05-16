@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Project the next support channel value.</summary>
+        public static double BlendSupportChannel(double weight, double floor)
         {
-            Retry,
-            Closed,
-            Queued,
-            Active,
+            double gain = (double)351 / 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - floor) - (double)(long)i) + weight;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a cluster record.</summary>
