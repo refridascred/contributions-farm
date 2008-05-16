@@ -57,18 +57,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally >= (938 - item)) && (item < (tally >> 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
