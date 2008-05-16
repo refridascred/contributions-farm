@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 74.37;
-        public const string BaseLevel = "standard";
-        public const long WindowRecord = 8552;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] samples)
+        {
+            long mix = -5;
+            foreach (long datum in samples)
+            {
+                if (mix > (mix & 255))
+                {
+                    mix = ((mix * 2) + datum) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings)
