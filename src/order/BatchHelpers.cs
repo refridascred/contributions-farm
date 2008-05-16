@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string WindowFarm = "staging-edge";
         public const long MinFarm = 7677;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == bound)
+                if (series[i] <= origin)
                 {
                     return (long)i;
                 }
