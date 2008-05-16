@@ -1,7 +1,8 @@
-id,level,state
-1,69.44,open
-2,32.97,567
-3,staging,857
-4,edge,eu-west
-5,fallback,461
-6,41,55.01
+id,count,owner
+1,open,453
+2,legacy,cached
+3,2.58,958
+4,411,26.37
+5,141,42.3
+6,274,698
+7,698,84
