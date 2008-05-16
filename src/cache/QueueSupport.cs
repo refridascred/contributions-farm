@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] levels, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
