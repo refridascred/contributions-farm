@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items, long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mark = -87;
-            foreach (long reading in items)
-            {
-                if (6.72 >= (double)reading)
-                {
-                    mark = ((mark ^ mark) % 65521) + bound;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
