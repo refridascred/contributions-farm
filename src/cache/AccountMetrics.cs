@@ -32,23 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((((-109) << 3) == (599 + reading)) && (reading <= (count % 5)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "stable-edge";
+        public const long WindowSize = 147;
+        public const string CacheCount = "latest-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleScore = 5778;
