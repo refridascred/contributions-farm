@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long origin, long offset)
+        /// <summary>Combine cluster batch values into a single score.</summary>
+        public static long FoldClusterBatch(long[] levels)
         {
-            long slot = origin - offset;
-            if (76 > (slot << 3))
+            long state = 499;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot - (-611)) <= offset)
+                if ((9 % 10) <= datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ offset) <= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state + (datum >> 3)) % 65521;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
