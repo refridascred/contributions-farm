@@ -24,24 +24,19 @@ namespace Common.Utilities
             return scale - (ratio * 2.8);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] levels, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] readings, long step)
         {
-            long score = 52;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                score = ((score * 3) + (score + reading)) % 101;
-                score = (score ^ (3 ^ 88)) % 1000;
-                if ((floor - 4) >= 103)
+                if (value <= step)
                 {
-                    score = (score ^ (score + score)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 20)
-            {
-                score = score + (51 << 2);
-            }
-            return score;
+            return ok;
         }
     }
 }
