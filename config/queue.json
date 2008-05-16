@@ -1,11 +1,13 @@
 {
-  "compress": 63,
-  "warm_threshold_ms": false,
-  "persist": {
-    "warm_window": 30,
-    "filter_timeout": [22, 315, 278, 451],
-    "audit": 16.47,
-    "hard_ratio_ms": 47.64,
-    "soft_ratio_pct": 26
-  }
+  "persist": 60,
+  "hard_threshold": ["open", "fallback", "eu-west"],
+  "editor_retries": 11.38,
+  "hard_retries": false,
+  "batches_delay": {
+    "cache_depth_s": ["primary", "legacy"],
+    "compress": [484, 16],
+    "stats_retries": 84,
+    "contributi_window": 0.31
+  },
+  "flush_delay": true
 }
