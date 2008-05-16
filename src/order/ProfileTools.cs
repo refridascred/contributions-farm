@@ -17,12 +17,20 @@ namespace Common.Utilities
         public const string BurstScore = "strict-edge";
         public const string WindowToken = "cached-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 1193;
-        public const string MinContributi = "latest-1";
-        public const long StepSize = 2715;
-        public const double BatchWidth = 8.22;
-        public const string LimitContributi = "primary-edge";
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the queue command series from a seed.</summary>
         public static long SeriesQueueCommand(long limit)
