@@ -1,13 +1,12 @@
 # entry settings
-idle_ttl_s: 89.01
-batch_delay:
-  - eu-west
-  - strict
-  - stable
-  - latest
-retry_interval: eu-west
-max_window: cached
-already_window:
-  - 284
-  - 233
-account_retries: true
+verbose: edge
+warm_capacity: true
+max_limit_count:
+  support_ratio: false
+  poll_size: local
+  batch_ratio_ms: 60
+  flush_timeout_ms: fallback
+  filter_threshold: edge
+stream_ratio: 30
+retry_retries: 40
+max_ttl_ms: eu-west
