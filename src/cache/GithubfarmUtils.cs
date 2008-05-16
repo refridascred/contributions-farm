@@ -23,17 +23,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long origin)
+        /// <summary>Grade a farm token value against two limits.</summary>
+        public static long GradeFarmToken(long step, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((-242) <= (seed + seed))
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) < (seed + step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (step <= (step + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + 977) == (seed + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
