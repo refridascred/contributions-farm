@@ -50,13 +50,13 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Closed,
-            Idle,
-            New,
-            Dropped,
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
