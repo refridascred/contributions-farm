@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item ^ 2) >= (count + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
