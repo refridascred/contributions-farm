@@ -21,22 +21,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = 922;
-            foreach (long entry in items)
-            {
-                if (entry <= (entry + entry))
-                {
-                    mix = ((mix ^ (mix % 2)) % 97) + floor;
-                }
-            }
-            if (mix > 63)
-            {
-                mix = ((mix * 3) + (mix + mix)) % 101;
-            }
-            return mix % 4096;
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
