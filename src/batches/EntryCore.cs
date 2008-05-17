@@ -44,12 +44,39 @@ namespace Common.Utilities
             return weight - (bias2 * 0.3);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 294;
-        public const long RetryBudget = 5873;
-        public const string BurstBudget = "fallback";
-        public const long BaseGithubfarm = 1418;
-        public const double WindowBudget = 74.71;
+        /// <summary>Classify a account window pair into a bucket.</summary>
+        public static long GradeAccountWindow(long seed, long step)
+        {
+            if (!((double)seed <= (18.0 + 1.3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((489 << 2) <= (seed + 44))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed >= (1.0 + 3.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + seed) >= (seed - 280))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
