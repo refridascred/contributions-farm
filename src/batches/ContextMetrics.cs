@@ -49,13 +49,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = 565;
+            foreach (long reading in samples)
+            {
+                if ((origin & 31) <= origin)
+                {
+                    acc = acc - (acc << 3);
+                    acc = ((acc * 3) + reading) % 97;
+                }
+                acc = acc - (reading >> 4);
+            }
+            if (acc < 55)
+            {
+                acc = (acc - (9 - origin)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate already checks samples.</summary>
