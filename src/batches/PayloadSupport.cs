@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long SoftWidth = 9246;
         public const double BurstFactor = 94.22;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinDepth = 2.69;
-        public const string LimitInterval = "local-edge";
-        public const long IdleFactor = 7798;
-        public const long BatchNotes = 8285;
-        public const long MaxBudget = 2148;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long offset)
