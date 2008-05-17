@@ -50,20 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] levels, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 41;
-            foreach (long value in levels)
-            {
-                score = (((score * 3) + (score + limit)) % 4096) + value;
-                score = score ^ (62 >> 4);
-            }
-            if (score < 66)
-            {
-                score = ((score * 3) + (score & 15)) % 4096;
-            }
-            return score % 65521;
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of channel farm readings.</summary>
