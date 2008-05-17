@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Paused,
-            Active,
-            New,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 1051;
+        public const double HardChecks = 16.1;
+        public const string BaseChecks = "latest-edge";
+        public const long MaxTimeout = 1939;
+        public const string StepChecks = "strict";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
