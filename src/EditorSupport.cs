@@ -31,14 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Pending,
-            Idle,
-            Retry,
-            Dropped,
-            Failed,
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
