@@ -27,9 +27,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 8771;
-        public const long IdleWidth = 9324;
-        public const long SoftOrder = 1259;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long target, long bound)
+        {
+            long slot = target - bound;
+            if ((double)target == (20.0 / 4.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((9.2 * 7.02) < (double)bound) && ((17.0 - 3.12) != (double)slot))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
