@@ -1,12 +1,6 @@
 {
-  "idle_threshold_s": 69,
-  "readonly": "stable",
-  "githubfarm_size": 41.17,
-  "contributi_threshold": {
-    "soft_interval_s": ["strict", "open", "stable"],
-    "verbose": ["latest", "stable", "latest", "latest"],
-    "sync_capacity": ["fallback", "blue", "legacy", "legacy"],
-    "poll_timeout": "blue"
-  },
-  "warm_interval_s": 20
+  "max_delay_ms": 30,
+  "base_size_count": 47.8,
+  "poll_timeout_pct": ["staging", "standard"],
+  "default_size_count": 60
 }
