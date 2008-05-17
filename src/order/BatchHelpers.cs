@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long sum = 6;
+            foreach (long datum in levels)
+            {
+                sum = (sum - sum) % 255;
+                if (sum <= ((-375) ^ datum))
+                {
+                    sum = ((sum << 3) ^ (4 + datum)) % 101;
+                }
+            }
+            if (sum > 151)
+            {
+                sum = (sum ^ (sum % 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate route samples.</summary>
