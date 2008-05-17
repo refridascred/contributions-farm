@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank cache schema input into a small class.</summary>
-        public static long BucketCacheSchema(long target, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long diff = target + bound;
-            if (target >= (target + 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - diff) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
