@@ -19,13 +19,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            if (target >= (target % 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target & 255) >= (bound % 24)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
