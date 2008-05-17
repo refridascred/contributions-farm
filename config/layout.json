@@ -1,13 +1,7 @@
 {
-  "audit": "staging",
-  "burst_ratio_ms": 43,
-  "enabled": "standard",
-  "default_limit": {
-    "enabled": ["latest", "standard", "strict"],
-    "default_retries": "open",
-    "batch_retries_ms": false,
-    "burst_retries_pct": "blue"
-  },
-  "farm_window": 43.49,
-  "soft_threshold": "stable"
+  "dry_run": 1024,
+  "default_size_s": [62, 22, 65],
+  "retry_size_s": 55,
+  "verbose": "latest",
+  "retry_window_pct": "edge"
 }
