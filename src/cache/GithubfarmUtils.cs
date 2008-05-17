@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSize = 9688;
-        public const long LimitWidth = 581;
-        public const long MaxCount = 3999;
-        public const long BurstEntry = 7147;
-        public const long HardEntry = 7997;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seen >= (7.3 + 16.0))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a buffer tools reading by value.</summary>
         public static long FindBufferToolsIndex(long[] values, long step)
