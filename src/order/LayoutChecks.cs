@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
