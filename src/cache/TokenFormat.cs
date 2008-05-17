@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of account support readings.</summary>
-        public static long MatchAccountSupportCount(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (4.4 + 11.0) + (8.2 * 9.9);
+            if (load >= (double)3)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - scale;
             }
-            return seen;
+            return load - offset;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
