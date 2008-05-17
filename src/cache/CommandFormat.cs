@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 5460;
-        public const long MinChecks = 5602;
-        public const long SoftCount = 1150;
-        public const long BaseInterval = 1068;
-        public const long MaxInterval = 4324;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 1573;
+        public const double RetrySize = 86.07;
+        public const long DefaultGraph = 9880;
+        public const string WindowGraph = "primary-1";
+        public const long BurstGraph = 9170;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "primary-1";
