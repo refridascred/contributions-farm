@@ -17,22 +17,12 @@ namespace Common.Utilities
         public const string DefaultWindow = "legacy";
         public const string MaxWindow = "staging-1";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = -90;
-            foreach (long datum in samples)
-            {
-                if (6.12 < (double)(long)samples.Length)
-                {
-                    carry = (carry + (carry / 6)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (8 - datum)) % 1000;
-                }
-            }
-            return carry % 1000;
+            Done,
+            Locked,
+            Active,
         }
     }
 }
