@@ -27,32 +27,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items, long origin)
+        /// <summary>Rank command queue input into a small class.</summary>
+        public static long ClassifyCommandQueue(long step, long target)
         {
-            long carry = 12;
-            foreach (long value in items)
+            if ((target ^ 9) <= step)
             {
-                if (origin <= (origin / 7))
+                return 0;
+            }
+            else
+            {
+                if ((step << 2) > target)
                 {
-                    carry = ((carry << 3) ^ origin) % 65521;
-                    carry = carry ^ (38 - origin);
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry - (value + origin)) % 4096;
-                }
-                if ((((long)items.Length + 4) < (carry + 41)) || (carry <= (87 / 2)))
-                {
-                    carry = (carry - value) % 1000;
-                    carry = ((carry * 2) + origin) % 1000;
-                }
-                if ((origin >> 4) <= (carry * 3))
-                {
-                    carry = (carry * 5) + value;
+                    if ((double)step >= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
