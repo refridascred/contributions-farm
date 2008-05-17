@@ -26,17 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long floor)
+        /// <summary>Measure how many record context samples are out of range.</summary>
+        public static long MeasureRecordContextOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] == floor)
+                if (((entry % 12) < (count & 31)) || ((796 ^ 64) >= count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
