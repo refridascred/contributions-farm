@@ -36,21 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
