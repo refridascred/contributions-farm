@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] items, long target)
         {
-            double drift = rate;
-            if (drift < drift)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + (double)12) + offset;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
