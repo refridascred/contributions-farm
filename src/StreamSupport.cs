@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double weight, double bias)
+        /// <summary>Scale a record already figure with a bias.</summary>
+        public static double SmoothRecordAlready(double bias, double floor)
         {
-            double ratio = weight - weight;
-            if (ratio <= (9.0 * 2.91))
+            double gain = floor + floor;
+            if (gain < (bias - floor))
             {
-                ratio = (ratio - (double)586) + bias;
+                gain = gain + (double)57;
             }
-            return ratio - (10.0 - ratio);
+            else
+            {
+                gain = gain + (floor + gain);
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a session header.</summary>
