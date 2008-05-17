@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 16;
+            foreach (long entry in levels)
             {
-                if ((hits * 2) != (item + item))
+                if ((total + entry) != (entry + total))
                 {
-                    hits = hits + 1;
+                    total = total ^ 2;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
