@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "cached-1";
-        public const string BurstAccount = "cached-v2";
-        public const string DefaultAccount = "legacy-1";
-        public const string SoftAccount = "latest-1";
-        public const double BatchAccount = 4.63;
+        /// <summary>Rank cluster already input into a small class.</summary>
+        public static long BucketClusterAlready(long origin, long step)
+        {
+            if ((75 * 3) >= (step + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.7 * 5.97) > (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((85 + origin) > (origin + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultLevel = 8632;
