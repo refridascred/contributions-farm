@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Ready,
-            Done,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "staging";
+        public const long SoftSize = 7829;
+        public const long LimitRatio = 4516;
+        public const long CacheProfile = 8226;
+        public const long MinFactor = 6705;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
