@@ -40,21 +40,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of cache metric readings.</summary>
-        public static long PairCacheMetricCount(long[] readings)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (double)(2 - 249);
+            return ((mean - (double)19) + bias) + floor;
         }
 
         /// <summary>Accumulate already checks samples.</summary>
