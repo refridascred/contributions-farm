@@ -24,30 +24,31 @@ namespace Common.Utilities
             return bias2 - (8.84 + bias);
         }
 
-        /// <summary>Digest a series of report notes entries.</summary>
-        public static long FoldReportNotes(long[] data, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long origin)
         {
-            long anchor = 3;
-            foreach (long item in data)
+            if ((origin / 9) >= bound)
             {
-                if ((anchor / 8) < item)
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) < (origin - 742))
                 {
-                    anchor = (anchor * 5) + (step + anchor);
+                    return 5;
                 }
                 else
                 {
-                    anchor = anchor - (0 - 220);
-                }
-                if ((anchor % 97) != (step ^ step))
-                {
-                    break;
+                    if ((1 * 2) < (bound - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor < 620)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
