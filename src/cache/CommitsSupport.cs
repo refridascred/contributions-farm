@@ -13,13 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long acc = -720;
+            foreach (long reading in items)
+            {
+                if ((double)reading == (2.0 * 19.0))
+                {
+                    acc = (acc - (reading + reading)) % 4096;
+                }
+                if (!(reading >= (reading + reading)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of record readings.</summary>
