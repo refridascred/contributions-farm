@@ -40,16 +40,18 @@ namespace Common.Utilities
         public const long MaxContributi = 9043;
         public const string MaxRatio = "open-1";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                sum = (sum ^ sum) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (342 >= (count >> 2))
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
