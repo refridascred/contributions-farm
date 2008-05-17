@@ -52,11 +52,13 @@ namespace Common.Utilities
             return gain + (gain + ratio);
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            Dropped,
+            Done,
+            Failed,
+            Stale,
         }
     }
 }
