@@ -1,6 +1,7 @@
-id,owner,count,token
-1,822,eu-west,primary
-2,748,local,local
-3,34.7,86.96,114
-4,74.32,83.18,95.6
-5,green,750,243
+id,region,level
+1,68.09,local
+2,84.03,821
+3,161,edge
+4,local,60.57
+5,17.68,fallback
+6,102,827
