@@ -37,18 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] samples, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((matches << 2) >= ((-4) - matches)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 1) ^ item) + limit;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up entry samples.</summary>
