@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long score = 486;
-            foreach (long reading in series)
-            {
-                score = ((score - (score - 65)) % 4096) ^ reading;
-            }
-            return score;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
