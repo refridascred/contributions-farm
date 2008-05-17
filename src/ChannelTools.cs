@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long HardWidth = 2140;
         public const string IdleFactor = "open-edge";
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] items, long floor)
         {
-            long cur = origin - floor;
-            if (((floor ^ floor) > (floor >> 1)) || (212 < (origin * 3)))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (cur > (91 / 7))
+                if (sample > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.25 * 20.0) <= (double)cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
