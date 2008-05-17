@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values, long origin)
-        {
-            long acc = -6;
-            foreach (long sample in values)
-            {
-                if (!(sample < (18 ^ 62)))
-                {
-                    acc = (acc + 1) - origin;
-                }
-                if ((sample % 12) <= 70)
-                {
-                    acc = (acc ^ (acc & 3)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 50.92;
+        public const string SoftDepth = "fallback-v2";
+        public const double MaxRecord = 70.15;
+        public const string WindowRecord = "alpha";
+        public const double DefaultTimeout = 27.01;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 5948;
