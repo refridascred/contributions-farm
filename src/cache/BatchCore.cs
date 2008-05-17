@@ -29,18 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum < (3.7 + 1.2))
                 {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
