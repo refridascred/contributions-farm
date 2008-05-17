@@ -37,29 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long seed, long offset)
         {
-            if ((4 - offset) <= (bound - 289))
+            if (525 <= (seed * 2))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((bound * 4) > (offset + offset)))
+                if (!((seed - offset) <= (84 / 2)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((3 - bound) < (offset << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 1;
                 }
             }
         }
