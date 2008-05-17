@@ -68,13 +68,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long offset)
         {
-            Queued,
-            Locked,
-            New,
-            Pending,
+            long sum = -1;
+            foreach (long value in readings)
+            {
+                if ((offset - offset) > offset)
+                {
+                    sum = (sum - (value + sum)) % 1000;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
