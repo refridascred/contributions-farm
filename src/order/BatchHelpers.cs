@@ -24,22 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Digest a series of batch counter entries.</summary>
+        public static long FoldBatchCounter(long[] series, long origin)
         {
-            long total = 8;
-            foreach (long value in items)
+            long carry = 501;
+            foreach (long value in series)
             {
-                if (((0 ^ total) != (total % 2)) && (total <= (value - value)))
+                if (carry >= value)
                 {
-                    total = ((total << 2) ^ (363 % 10)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (value - 198)) % 65521;
+                    carry = (carry ^ (origin & 15)) % 255;
                 }
             }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
