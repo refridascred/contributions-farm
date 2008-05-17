@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] samples, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((long)samples.Length > (limit + limit)) || ((double)(long)samples.Length >= (4.5 - 18.0))) && (((item - item) > (hits + limit)) && ((7.94 + 0.1) == (double)(long)samples.Length)))
+                if (((double)anchor == (9.8 * 3.0)) && ((bound & 63) <= (anchor >> 3)))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor - anchor) % 1000;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
