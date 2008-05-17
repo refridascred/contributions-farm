@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSize = 7085;
-        public const double WindowLevel = 28.84;
-        public const long SoftInterval = 3174;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Active,
+            Synced,
+            New,
+            Done,
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
