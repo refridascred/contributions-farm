@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                if (!((count + limit) > count))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a session header.</summary>
