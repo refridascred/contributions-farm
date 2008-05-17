@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const long RetryOrder = 9876;
         public const long IdleBudget = 5064;
 
-        /// <summary>Roll a counter commits counter forward.</summary>
-        public static long IterateCounterCommits(long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            Closed,
+            Retry,
+            Stale,
         }
     }
 }
