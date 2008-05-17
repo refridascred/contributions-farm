@@ -21,13 +21,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long seed)
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long offset2 = offset - seed;
+            if (seed >= (22 - offset2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset2 + seed) >= (offset << 2)) && ((offset2 ^ 81) > seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
