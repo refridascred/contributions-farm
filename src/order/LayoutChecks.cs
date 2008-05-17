@@ -61,22 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long carry = 498;
+            foreach (long value in levels)
             {
-                if ((-95) >= (tally & 15))
+                if ((carry * 2) < value)
                 {
-                    tally = ((tally + 2) - sample) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry ^ carry) % 97;
                 }
             }
-            return tally;
+            if (carry < 319)
+            {
+                carry = (carry ^ (carry * 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a counter options.</summary>
