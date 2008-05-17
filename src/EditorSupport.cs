@@ -49,10 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "open-1";
-        public const long RetryCount = 4369;
-        public const string SoftTimeout = "open-v2";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (bound <= (7 ^ bound))
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
