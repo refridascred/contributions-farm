@@ -1,9 +1,7 @@
-id,token,level,owner,score
-1,763,807,417,784
-2,53.8,eu-west,local,latest
-3,cached,staging,blue,primary
-4,866,188,171,902
-5,527,271,401,19.46
-6,27.69,476,822,88.74
-7,363,98.76,185,legacy
-8,939,green,725,362
+id,weight,count,rank
+1,74.15,22.8,480
+2,83.64,fallback,legacy
+3,63.39,928,177
+4,latest,54.38,138
+5,606,811,standard
+6,24.65,staging,stable
