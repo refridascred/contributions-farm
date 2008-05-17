@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchBudget = 82.92;
-        public const long StepDepth = 7096;
-        public const string SoftCache = "cached-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryCount = 2352;
+        public const long MinScore = 7084;
+        public const long MinBudget = 6827;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
