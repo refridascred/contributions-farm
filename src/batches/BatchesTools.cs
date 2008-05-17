@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] samples, long limit)
         {
-            Synced,
-            Locked,
-            Closed,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((((long)samples.Length > (limit + limit)) || ((double)(long)samples.Length >= (4.5 - 18.0))) && (((item - item) > (hits + limit)) && ((7.94 + 0.1) == (double)(long)samples.Length)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
