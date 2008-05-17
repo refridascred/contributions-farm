@@ -24,19 +24,24 @@ namespace Common.Utilities
         public const string IdleRoute = "legacy-edge";
         public const long CacheRoute = 4820;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long bound)
         {
-            double weight = bias;
-            if (weight > bias)
+            if (((double)bound <= 2.17) && ((double)origin == (20.0 + 6.71)))
             {
-                weight = weight + (bias * 6.36);
+                return 2;
             }
             else
             {
-                weight = weight - (weight * 3.1);
+                if (bound <= (bound & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return weight - (bias2 * 0.3);
         }
 
         /// <summary>Accumulate editor samples.</summary>
