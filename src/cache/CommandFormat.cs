@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] series, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (((tally & 127) < (long)series.Length) || ((tally * 2) > (tally & 1)))
+                if (reading < target)
                 {
-                    tally = ((tally + 3) + item) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Adjust a batch reading.</summary>
