@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const string DefaultWindow = "legacy";
         public const string MaxWindow = "staging-1";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long carry = -90;
+            foreach (long datum in samples)
             {
-                if (value >= step)
+                if (6.12 < (double)(long)samples.Length)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry + (carry / 6)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (8 - datum)) % 1000;
                 }
             }
-            return valid;
+            return carry % 1000;
         }
     }
 }
