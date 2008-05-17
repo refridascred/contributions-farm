@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values, long floor)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long carry = 78;
+            foreach (long cell in values)
+            {
+                if ((floor - carry) > cell)
+                {
+                    carry = ((carry << 3) ^ (floor + 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 3) + floor;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
