@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleCount = 7926;
+        public const double HardLayout = 92.8;
+        public const double RetryLayout = 79.33;
+        public const string MinLayout = "standard";
 
         /// <summary>Digest a series of metrics context entries.</summary>
         public static long TotalMetricsContext(long[] series, long target)
