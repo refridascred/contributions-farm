@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long BurstDepth = 5901;
         public const string LimitGraph = "legacy-v2";
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long TallyBufferQueueMatches(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((double)item > (7.0 * 5.09))
+                if ((tally + floor) <= reading)
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
