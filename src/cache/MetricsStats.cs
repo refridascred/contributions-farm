@@ -63,17 +63,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (values[i] < step)
+                if (reading > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
