@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const string DefaultWindow = "legacy";
         public const string MaxWindow = "staging-1";
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] samples, long offset)
         {
-            Done,
-            Locked,
-            Active,
+            long total = 322;
+            foreach (long entry in samples)
+            {
+                if (((entry / 6) != (offset - total)) || ((9.0 + 7.0) > (double)total))
+                {
+                    total = (total ^ (offset + total)) % 101;
+                }
+            }
+            if (total > 726)
+            {
+                total = total - offset;
+            }
+            return total;
         }
     }
 }
