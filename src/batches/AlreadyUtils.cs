@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long SoftRoute = 1227;
         public const long BaseDepth = 5234;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            double load = bias;
+            if (load <= (double)30)
+            {
+                load = load + (bias + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 7.0) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Describe the contributi class values.</summary>
