@@ -21,22 +21,19 @@ namespace Common.Utilities
         public const long BatchLevel = 7851;
         public const string DefaultDepth = "standard";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] samples, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] readings, long offset)
         {
-            long total = 322;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((entry / 6) != (offset - total)) || ((9.0 + 7.0) > (double)total))
+                if (item <= offset)
                 {
-                    total = (total ^ (offset + total)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 726)
-            {
-                total = total - offset;
-            }
-            return total;
+            return valid;
         }
     }
 }
