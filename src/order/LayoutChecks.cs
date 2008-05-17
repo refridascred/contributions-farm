@@ -17,18 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] data, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = -74;
-            foreach (long item in data)
-            {
-                if ((double)bound < (7.4 - 6.1))
-                {
-                    acc = (acc - (acc - acc)) ^ item;
-                }
-            }
-            return acc % 97;
+            Idle,
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
