@@ -28,12 +28,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long step)
         {
-            Paused,
-            Done,
-            Active,
+            if ((bound + step) > (77 + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (19.0 >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
