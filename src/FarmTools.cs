@@ -37,31 +37,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] readings, long bound)
         {
-            if (((limit & 1) < origin) && (6 <= (origin - limit)))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < 92)
+                if (((seen < (cell - 563)) || ((cell + seen) > (cell / 7))) && (((cell - seen) < (seen - seen)) && ((3.99 / 8.0) > (double)cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + limit) < (5 * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
+            return seen;
         }
     }
 }
