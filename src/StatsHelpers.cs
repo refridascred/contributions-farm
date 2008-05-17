@@ -85,18 +85,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches >> 2) != (35 << 1))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
