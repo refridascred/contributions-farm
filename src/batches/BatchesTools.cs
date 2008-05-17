@@ -16,23 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            double mean = 14.0 * 18.0;
-            if (mean <= scale)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (double)3) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + 8.86;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean + mean)) - (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
