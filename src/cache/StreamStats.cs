@@ -25,11 +25,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 25.28;
-        public const long BatchInterval = 3245;
-        public const long MinScore = 2118;
-        public const long IdleRatio = 4104;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitLevel = 1796;
+        public const double DefaultContext = 89.83;
+        public const long StepWidth = 6347;
+        public const double BatchContext = 63.44;
+        public const long RetryContext = 4675;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long floor, long limit)
