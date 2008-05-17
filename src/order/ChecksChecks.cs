@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 30.37;
-        public const long MaxFactor = 8219;
-        public const long BurstFormat = 4145;
-        public const long RetryFormat = 2587;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryTimeout = "legacy-v2";
+        public const long RetryChecks = 6423;
+        public const long StepBudget = 7409;
+        public const long LimitTimeout = 1026;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BatchAlready = "legacy-1";
