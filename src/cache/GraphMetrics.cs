@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a payload cluster counter forward.</summary>
-        public static long RollPayloadCluster(long bound)
+        /// <summary>Measure how many checks profile samples are out of range.</summary>
+        public static long TallyChecksProfileOutliers(long[] values, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = (state - (bound + bound)) % 65521;
-                state = ((state * 3) + 973) % 65521;
-                if (bound < state)
+                if ((sample * 2) > 46)
                 {
-                    state = state ^ (7 * 3);
+                    matches = (matches + 2) - origin;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Project the next checks githubfarm value.</summary>
