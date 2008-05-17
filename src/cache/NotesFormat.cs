@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 93.21;
-        public const long DefaultFactor = 4094;
-        public const long IdleSpan = 3995;
-        public const long BurstTimeout = 700;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7194;
+        public const long BatchContributi = 5877;
+        public const long SoftContributi = 1540;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
