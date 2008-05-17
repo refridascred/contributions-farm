@@ -71,18 +71,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] items, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = -319;
+            foreach (long sample in readings)
             {
-                if (!((double)target != (1.0 / 6.0)))
+                if ((9.0 * 7.0) < (3.69 + 15.0))
                 {
-                    matches = (matches + 2) ^ sample;
+                    sum = ((sum ^ sum) % 101) + sample;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
