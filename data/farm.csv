@@ -1,6 +1,6 @@
-id,ratio,rank,weight,region
-1,475,511,0.87,752
-2,6.89,41.45,964,733
-3,13,61,75.44,43.3
-4,302,66.39,staging,blue
-5,799,24.91,staging,open
+id,label,owner
+1,622,706
+2,21.28,795
+3,legacy,edge
+4,open,green
+5,open,legacy
