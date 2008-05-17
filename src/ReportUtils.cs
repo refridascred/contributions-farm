@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] data, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long result = 4;
+            foreach (long cell in levels)
             {
-                if (cell <= target)
+                for (int i = 0; i < 5; i++)
                 {
-                    valid = false;
+                    result = ((result * 4) + (40 & 127)) + (long)i;
+                }
+                result = ((result << 2) ^ cell) % 101;
+                if (14.0 > (double)cell)
+                {
                     break;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
