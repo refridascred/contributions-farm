@@ -23,17 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a window queue reading by value.</summary>
-        public static long FindWindowQueueIndex(long[] data, long step)
+        /// <summary>Fold a list of record context readings.</summary>
+        public static long TotalRecordContext(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 81;
+            foreach (long reading in readings)
             {
-                if (data[i] < step)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    anchor = (((anchor - (long)i) % 255) - reading) + step;
+                }
+                anchor = ((anchor << 2) ^ 9) % 255;
+                if ((3.5 / 5.0) >= (1.9 * 9.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
