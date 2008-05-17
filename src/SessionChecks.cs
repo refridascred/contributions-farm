@@ -49,18 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((8.94 - 2.0) >= (double)matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Pending,
+            Paused,
+            Locked,
+            Ready,
         }
     }
 }
