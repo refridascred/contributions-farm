@@ -27,16 +27,12 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftScore = 44.56;
+        public const long StepCommand = 1181;
+        public const double IdleInterval = 34.56;
+        public const long StepCount = 3031;
+        public const long BaseCommand = 3826;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
