@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((46 ^ matches) >= matches)
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
             return matches;
