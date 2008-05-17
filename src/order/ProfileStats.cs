@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 3768;
-        public const long SoftCount = 2272;
-        public const double HardScore = 58.97;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Dropped,
+            Locked,
+            Failed,
+            New,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MinInterval = "legacy-1";
