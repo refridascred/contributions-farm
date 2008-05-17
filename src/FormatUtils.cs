@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] data, long step)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a metric entry.</summary>
