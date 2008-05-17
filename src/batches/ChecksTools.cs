@@ -41,10 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 6015;
-        public const string WindowMetrics = "open";
-        public const double BaseTimeout = 22.86;
-        public const long MinSpan = 1711;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Active,
+            Queued,
+            Ready,
+            Closed,
+            Failed,
+        }
     }
 }
