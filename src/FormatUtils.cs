@@ -27,19 +27,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] data, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
