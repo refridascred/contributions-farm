@@ -40,16 +40,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long anchor = 30;
+            foreach (long datum in items)
             {
-                carry = carry - carry;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((anchor ^ datum) == (anchor - 488))
+                {
+                    anchor = (anchor * 3) + (anchor ^ anchor);
+                    anchor = ((anchor * 4) + (datum % 24)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (datum - 9);
+                }
+                if (((datum / 2) <= (anchor - datum)) || ((anchor - 4) >= 276))
+                {
+                    anchor = (anchor + (51 + datum)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum + datum);
+                }
             }
-            return carry;
+            if (anchor < 5)
+            {
+                anchor = (anchor * 5) + (anchor / 5);
+            }
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
