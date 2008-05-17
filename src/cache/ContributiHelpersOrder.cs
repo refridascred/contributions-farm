@@ -47,31 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm channel pair into a bucket.</summary>
-        public static long GradeFarmChannel(long seed, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            if (!((seed >> 1) > (offset / 2)))
+            double rate = 14.0;
+            if (rate > (rate * 2.4))
             {
-                return 0;
+                rate = (rate + 3.7) - floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset - offset) <= (519 ^ 663))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((3 >> 2) != (seed * 3)) || (2 < offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                rate = (rate - bias) + (double)(long)i;
             }
+            return rate + (9.0 - rate);
         }
     }
 }
