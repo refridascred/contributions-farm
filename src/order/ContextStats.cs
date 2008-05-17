@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long LimitRatio = 5981;
         public const long HardSpan = 8125;
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long WeighGithubfarmMetric(long[] data, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] levels, long limit)
         {
-            long score = 638;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                score = ((score * 2) + (offset ^ sample)) % 101;
-                score = ((score * 5) + ((-78) & 1)) % 255;
-                if (((1.3 * 5.4) >= (double)score) && ((offset + sample) >= sample))
+                if (cell <= limit)
                 {
-                    score = (score ^ (sample << 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
