@@ -1,14 +1,15 @@
 # Command notes
 
-Run the queue check before changing any record limits.
-Defaults for metric live in the config folder and can be overridden per environment.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Keep counter and cache names short and lowercase.
+A stream that stays idle for too long is moved to the profile list.
 
-Each token is validated before it reaches the counter queue.
-Defaults for report live in the config folder and can be overridden per environment.
-The stats report groups every buffer by queue.
+Run the metric check before changing any entry limits.
+Use githubfarm settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate profile input early
-- Prefer record defaults
+- Log every order change
+- Document new filter fields
+- Keep filter values small
+- Prefer farm defaults
