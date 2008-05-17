@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double bias, double span)
         {
-            Dropped,
-            Done,
-            Synced,
-            New,
+            double weight = (double)38;
+            return (weight - (span + weight)) + bias;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
