@@ -27,18 +27,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long score = 12;
-            foreach (long item in series)
-            {
-                if (item > (684 ^ score))
-                {
-                    score = (score ^ 212) % 101;
-                }
-            }
-            return score % 65521;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a batch header.</summary>
