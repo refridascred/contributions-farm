@@ -38,24 +38,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long bound, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            if (((71 * 3) > (floor & 127)) && ((double)floor <= (9.59 / 2.0)))
+            double mean = (double)(2 / 3);
+            if (mean <= (offset * 4.47))
             {
-                return 2;
+                mean = mean + offset;
             }
             else
             {
-                if ((floor + 56) < floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                mean = mean - (mean - 2.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (scale * 7.3);
         }
     }
 }
