@@ -27,13 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
