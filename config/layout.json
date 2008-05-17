@@ -1,6 +1,5 @@
 {
-  "burst_capacity_s": 4744,
-  "retry_timeout": [399, 48, 140],
-  "dry_run": "fallback",
-  "metrics_delay": "local"
+  "cache_limit_count": [243, 222, 238, 237],
+  "readonly": "fallback",
+  "retry_threshold_count": 4281
 }
