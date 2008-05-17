@@ -29,11 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next profile graph value.</summary>
-        public static double BlendProfileGraph(double gain, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long bound)
         {
-            double load = (gain - gain) - (gain / 2.0);
-            return (load - gain) + span;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
