@@ -26,10 +26,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "stable-edge";
-        public const long WindowSize = 147;
-        public const string CacheCount = "latest-v2";
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
