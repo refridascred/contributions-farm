@@ -73,17 +73,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats entry sample.</summary>
-        public static long SeekStatsEntryIndex(long[] samples, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound / 6) > 29)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((7 - 71) == (target - target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound <= (2.9 + 8.1)) && ((40 + target) >= (target ^ target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target <= (242 - target)) && ((bound ^ 545) > bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
