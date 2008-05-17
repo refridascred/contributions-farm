@@ -31,20 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series)
-        {
-            long anchor = 72;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor * 5) + reading) % 4096;
-                if ((anchor * 3) != (reading + 832))
-                {
-                    anchor = anchor ^ (anchor ^ reading);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 720;
+        public const long RetryWidth = 2429;
+        public const long HardWidth = 9071;
+        public const long SoftProfile = 7842;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
