@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item - hits) > hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias = offset;
+            return (bias + offset) + rate;
         }
 
         /// <summary>Describe the batches state values.</summary>
