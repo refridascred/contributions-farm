@@ -48,25 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long limit, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            long lane = limit - floor;
-            if (((4.2 + 1.0) == (double)floor) && ((4.0 + 8.12) >= (double)lane))
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((42 - limit) != (limit - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
     }
 }
