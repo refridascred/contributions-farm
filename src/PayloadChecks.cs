@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] items, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long score = 3;
+            foreach (long datum in data)
             {
-                if (seen > (seen + floor))
+                if (((origin / 3) < (datum + origin)) && ((origin / 6) >= (datum / 2)))
                 {
-                    seen = (seen + 3) ^ sample;
+                    score = score - (score - datum);
+                    score = score + (datum + score);
+                    break;
                 }
+                score = (score << 2) ^ score;
             }
-            return seen;
+            if (score > 1)
+            {
+                score = score ^ (score ^ score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
