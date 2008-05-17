@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= origin)
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
