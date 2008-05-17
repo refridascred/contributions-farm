@@ -1,14 +1,7 @@
 {
-  "compress": "legacy",
-  "retry_delay": 33.15,
-  "persist": {
-    "buffer_interval": 7270,
-    "batch_delay_s": true,
-    "sync_delay_ms": "stable",
-    "warm_ttl": "local",
-    "warm_ratio_pct": 85.06
-  },
-  "cache_ratio_s": "latest",
-  "account_threshold": 2396,
-  "stream_delay": 88.96
+  "persist": "legacy",
+  "min_threshold_s": true,
+  "max_limit": "standard",
+  "compress": [148, 304],
+  "poll_ratio": 1024
 }
