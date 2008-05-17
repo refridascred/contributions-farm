@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3595;
-        public const double BurstSupport = 7.83;
-        public const long LimitFactor = 7298;
-        public const long HardSupport = 1768;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultInterval = 5174;
+        public const string StepCount = "staging-v2";
+        public const string WindowSpan = "alpha";
+        public const long BurstLevel = 3130;
+        public const long DefaultRatio = 8123;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteGaps(long[] series)
