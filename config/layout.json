@@ -1,8 +1,8 @@
 {
-  "burst_limit_count": false,
-  "verbose": 95.47,
-  "burst_threshold": 2243,
-  "batch_capacity_s": 100,
-  "persist": false,
-  "sync_ttl": ["legacy", "strict", "standard", "latest"]
+  "context_threshold": 64.94,
+  "hard_interval": "green",
+  "enabled": true,
+  "buffer_timeout": 30,
+  "commits_delay": "staging",
+  "burst_limit_ms": 41.78
 }
