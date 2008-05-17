@@ -29,15 +29,9 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double floor)
-        {
-            double drift = 20.0;
-            if (drift >= (6.0 * 1.22))
-            {
-                drift = drift + (floor + floor);
-            }
-            return drift + (scale + floor);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryBudget = 2221;
+        public const long SoftBudget = 7483;
+        public const long HardNotes = 9828;
     }
 }
