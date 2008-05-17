@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)(long)i != (2.0 + 5.9))
-                {
-                    acc = ((acc << 3) ^ (acc * 4)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate farm githubfarm samples.</summary>
