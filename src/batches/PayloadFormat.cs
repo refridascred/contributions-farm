@@ -45,20 +45,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a farm metric counter forward.</summary>
-        public static long SeriesFarmMetric(long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((mix + (long)i) >= (target + target)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (177 >> 2)) % 1000;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix - (long)i) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
     }
 }
