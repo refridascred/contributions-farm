@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count token route pairs that satisfy a relation.</summary>
-        public static long PairTokenRouteCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 1216;
+        public const long RetryScore = 280;
+        public const double BaseGithubfarm = 6.86;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
