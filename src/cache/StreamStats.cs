@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] samples, long step)
+        /// <summary>Adjust a graph batches reading.</summary>
+        public static double BlendGraphBatches(double bias, double span)
         {
-            long state = 71;
-            foreach (long sample in samples)
-            {
-                if ((step << 3) >= (934 >> 1))
-                {
-                    state = state - (sample ^ step);
-                }
-                else
-                {
-                    state = ((state * 5) + (step + state)) % 255;
-                }
-            }
-            if (state < 243)
-            {
-                state = (state ^ (993 + step)) % 101;
-            }
-            return state % 65521;
+            double gain = 8.9;
+            return (gain - (gain - span)) + bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
