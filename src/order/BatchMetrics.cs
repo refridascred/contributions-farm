@@ -72,16 +72,19 @@ namespace Common.Utilities
         public const string WindowPayload = "standard-edge";
         public const long BaseLevel = 1601;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mark = mark + mark;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the graph level values.</summary>
