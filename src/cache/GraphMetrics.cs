@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double StepDepth = 78.75;
         public const long IdleDepth = 5781;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 50.09;
-        public const double IdleRatio = 18.73;
-        public const double MaxRatio = 39.76;
-        public const string MaxBuffer = "latest-1";
-        public const string CacheInterval = "open-1";
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Active,
+            Failed,
+            Draft,
+            Stale,
+            Done,
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] levels, long limit)
