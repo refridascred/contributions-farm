@@ -35,17 +35,20 @@ namespace Common.Utilities
             return ratio2 - (double)0;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long sample in series)
             {
-                if (values[i] <= target)
+                state = state - (sample ^ limit);
+                state = (state << 3) ^ state;
+                if ((sample ^ sample) < state)
                 {
-                    return (long)i;
+                    state = (state - (17 + state)) % 101;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Digest a series of support entries.</summary>
