@@ -28,12 +28,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit batches batch readings against a rule.</summary>
+        public static long AuditBatchesBatchOutliers(long[] levels)
         {
-            Idle,
-            Ready,
-            Pending,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry == (4.0 * 4.2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route state values.</summary>
