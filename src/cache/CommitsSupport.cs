@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double bias, double span)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double rate = span;
-            if (rate > 7.3)
-            {
-                rate = (rate - (5.5 / 9.0)) - bias;
-            }
-            else
-            {
-                rate = rate - (7.7 + span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + rate;
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
