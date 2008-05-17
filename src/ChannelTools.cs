@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long origin)
-        {
-            if (((origin + seed) < origin) || ((0.09 / 9.0) > (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed <= (double)(-37)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.0 - 6.4) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxCount = 8151;
+        public const double IdleTimeout = 28.32;
+        public const long SoftTimeout = 749;
+        public const long RetryScore = 6038;
+        public const long StepAccount = 7916;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
