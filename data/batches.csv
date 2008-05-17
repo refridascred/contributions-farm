@@ -1,7 +1,6 @@
-id,active,weight,ratio,level
-1,staging,96.39,217,2.91
-2,cached,84.65,485,850
-3,1.2,latest,53.74,cached
-4,583,519,850,6.71
-5,41.59,eu-west,821,304
-6,legacy,809,555,strict
+id,weight,rank,score,ratio
+1,0.37,439,standard,standard
+2,34.3,local,12.73,blue
+3,868,18.27,14.54,primary
+4,161,blue,406,664
+5,13.25,702,659,eu-west
