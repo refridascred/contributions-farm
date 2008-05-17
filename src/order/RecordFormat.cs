@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardFactor = 5065;
+        public const string DefaultTimeout = "fallback-1";
+        public const long IdleRecord = 227;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 7090;
