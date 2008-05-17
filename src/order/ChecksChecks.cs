@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long WindowAlready = 41;
         public const string BaseScore = "primary-1";
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] items, long bound)
         {
-            Ready,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((1 % 5) >= (bound + datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
