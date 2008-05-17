@@ -73,31 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels, long bound)
         {
-            if ((offset - bound) < (bound - bound))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= (double)offset)
+                if (((long)levels.Length + bound) != (count + bound))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset << 1) == (bound << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
+            return count;
         }
     }
 }
