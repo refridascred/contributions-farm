@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Scale a account farm figure with a bias.</summary>
+        public static double AdjustAccountFarm(double rate, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            double ratio = bias;
+            if (ratio <= (rate / 2.0))
             {
-                sum = sum - 54;
-                sum = ((sum * 2) + (long)i) % 101;
+                ratio = ratio - bias;
             }
-            return sum;
+            return ratio + (20.0 * 0.01);
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
