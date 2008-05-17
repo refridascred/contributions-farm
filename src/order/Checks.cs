@@ -56,10 +56,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 19.84;
-        public const double BurstBudget = 27.58;
-        public const long BatchStream = 5218;
-        public const string StepStream = "staging";
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long seed, long bound)
+        {
+            long bound2 = seed - bound;
+            if ((double)bound2 <= 8.84)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + bound2) == (6 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
