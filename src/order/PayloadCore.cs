@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] series, long origin)
         {
-            Pending,
-            Closed,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((611 * 2) <= (605 + cell))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
