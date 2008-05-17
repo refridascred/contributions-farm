@@ -18,11 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long TallySessionBatchOutliers(long[] samples)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches >> 5) <= (matches >> 1))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
