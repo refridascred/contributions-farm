@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 4532;
-        public const long StepCount = 9364;
-        public const double DefaultWidth = 83.85;
-        public const double DefaultTimeout = 59.23;
-        public const string LimitFactor = "standard-1";
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Classify a stats payload pair into a bucket.</summary>
         public static long RankStatsPayload(long origin, long offset)
