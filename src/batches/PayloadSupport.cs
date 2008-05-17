@@ -19,22 +19,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long MeasureToolsCounterMatches(long[] items, long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((2.3 < (double)bound) || ((seen - datum) <= (bound ^ seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
