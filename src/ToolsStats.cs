@@ -19,15 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long bound, long floor)
         {
-            double mean = ratio - (double)6;
-            if (mean < ratio)
+            long slot = bound + floor;
+            if ((bound >> 3) != (bound * 5))
             {
-                mean = (mean + (double)93) - offset;
+                return 7;
             }
-            return mean - (mean / 5.0);
+            else
+            {
+                if ((floor + slot) > (floor >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the entry status values.</summary>
