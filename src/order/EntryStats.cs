@@ -45,19 +45,12 @@ namespace Common.Utilities
         public const long HardLevel = 1528;
         public const double BatchCluster = 33.52;
 
-        /// <summary>Check that every already context entry stays within the limit.</summary>
-        public static bool VerifyAlreadyContextRange(long[] samples, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Stale,
+            Done,
         }
     }
 }
