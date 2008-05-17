@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const long HardInterval = 2440;
         public const string IdleCount = "legacy";
 
-        /// <summary>Audit stats contributi readings against a rule.</summary>
-        public static long AuditStatsContributiMatches(long[] series, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long step, long step2)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((step - step) >= (5 - 5))
             {
-                if ((matches >> 3) <= 703)
+                return 0;
+            }
+            else
+            {
+                if (((double)step2 >= (5.87 + 1.15)) && ((step2 << 1) == (step >> 4)))
                 {
-                    matches = ((matches + 1) - cell) - seed;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (step >= (438 / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step2 << 3) <= (step + step2)) || ((step2 - step) < (step + step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
