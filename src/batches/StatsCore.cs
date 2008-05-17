@@ -55,15 +55,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            long state = 3;
-            foreach (long cell in levels)
+            double bias = (double)(8 >> 3);
+            for (int i = 0; i < 2; i++)
             {
-                state = (state + (cell ^ state)) % 1000;
+                bias = (bias - (bias - gain)) + (double)(long)i;
             }
-            return state % 97;
+            return bias - (span + span);
         }
 
         /// <summary>Describe the record state values.</summary>
