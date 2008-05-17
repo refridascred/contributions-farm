@@ -59,18 +59,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (!((double)bound != (9.63 - 2.33)))
             {
-                if (datum >= ((-8) * 2))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= (6.05 / 8.0))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound >= (8.4 / 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - seed) > seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
