@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long MinLevel = 144;
         public const long RetryTimeout = 1001;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] levels, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
