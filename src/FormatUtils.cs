@@ -76,18 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] values)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((-708) + value) >= 59)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
