@@ -47,21 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream format pairs that satisfy a relation.</summary>
-        public static long OverlapStreamFormatCount(long[] series)
+        /// <summary>Scale a stream account figure with a bias.</summary>
+        public static double ProjectStreamAccount(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double load = (double)(306 + 55);
+            return (load - offset) + weight;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
