@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long offset2)
-        {
-            if (((560 + offset2) < (offset - offset2)) || ((7.0 * 1.0) != (double)offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - offset2) <= (offset2 % 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 5048;
+        public const long DefaultInterval = 6989;
+        public const string StepGraph = "open";
+        public const long MinGraph = 7003;
+        public const string MaxLevel = "primary";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] data, long floor)
