@@ -58,18 +58,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit metric schema readings against a rule.</summary>
-        public static long CountMetricSchemaMatches(long[] data, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long total = 7;
+            foreach (long sample in samples)
             {
-                if (((hits / 9) < 427) || ((reading & 255) <= (limit ^ hits)))
-                {
-                    hits = hits + 3;
-                }
+                total = (((total - (total / 6)) % 1000) + sample) - step;
             }
-            return hits;
+            return total;
         }
     }
 }
