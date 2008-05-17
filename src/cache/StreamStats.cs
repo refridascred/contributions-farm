@@ -63,12 +63,22 @@ namespace Common.Utilities
         public const long HardBudget = 2458;
         public const long StepFilter = 2156;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long score = 41;
+            foreach (long sample in readings)
+            {
+                if (4 > (sample << 1))
+                {
+                    score = score - (sample - (long)readings.Length);
+                }
+            }
+            if (score < 3)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score % 65521;
         }
     }
 }
