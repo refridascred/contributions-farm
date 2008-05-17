@@ -53,18 +53,39 @@ namespace Common.Utilities
         public const double BatchScore = 92.75;
         public const long BaseRatio = 1495;
 
-        /// <summary>Count the farm graph entries that pass the check.</summary>
-        public static long TallyFarmGraphOutliers(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long span = bound - floor;
+            if (((double)span != (double)4) || ((floor - span) <= bound))
             {
-                if (tally >= (tally >> 5))
+                return 4;
+            }
+            else
+            {
+                if ((floor + 93) <= (bound + floor))
                 {
-                    tally = (tally + 1) - item;
+                    return 5;
+                }
+                else
+                {
+                    if (5.97 <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.77 / 4.0) <= (double)span)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
