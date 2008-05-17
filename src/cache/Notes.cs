@@ -28,15 +28,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double bias2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data, long offset)
         {
-            double rate = bias;
-            if (rate > (double)96)
+            long total = 0;
+            foreach (long sample in data)
             {
-                rate = rate - bias;
+                total = ((total << 3) ^ (total & 7)) ^ sample;
+                total = (total + ((-690) - total)) % 255;
             }
-            return rate + bias2;
+            if (total > 81)
+            {
+                total = (total ^ (offset & 1)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
