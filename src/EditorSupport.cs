@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark << 2) ^ target;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
