@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west staging legacy edge; do
+for item in green cached; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=244
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
