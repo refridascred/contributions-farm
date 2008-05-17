@@ -23,22 +23,18 @@ namespace Common.Utilities
             return gain - (bias * 8.2);
         }
 
-        /// <summary>Digest a series of batch window entries.</summary>
-        public static long DigestBatchWindow(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] items, long limit)
         {
-            long result = 1;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((9.1 * 10.0) > (double)result)
+                if ((5.29 + 4.31) <= (double)sample)
                 {
-                    result = result + (reading % 97);
-                }
-                else
-                {
-                    result = ((result * 4) + (result >> 5)) % 97;
+                    count = (count + 1) + limit;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the contributi layout entries that pass the check.</summary>
