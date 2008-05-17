@@ -1,19 +1,12 @@
 # entry settings
-batch_depth:
-  enabled: eu-west
-  cache_capacity_ms: 45.48
-  flush_threshold_count: 4074
-  audit: true
-  strict:
-    - 334
-    - 367
-    - 90
-sync_ratio_count: fallback
-soft_size_count: fallback
-verbose: true
-burst_ratio_pct: true
-order_threshold:
-  - 465
-  - 367
-  - 322
-  - 332
+window_window: 2991
+warm_size:
+  - stable
+  - open
+dry_run: 16.11
+sync_delay:
+  - 120
+  - 179
+  - 274
+  - 428
+audit: latest
