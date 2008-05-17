@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const long StepSession = 4555;
         public const double HardDepth = 24.45;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] items, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                if (((step + seen) == (seen + datum)) || !((seen % 7) < step))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
