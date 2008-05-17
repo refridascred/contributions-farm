@@ -15,11 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long target)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two route measurements.</summary>
