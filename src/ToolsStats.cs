@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] items, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
