@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const double WindowCommand = 31.36;
         public const string RetryInterval = "standard-1";
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)848;
+            if (bias2 < (double)23)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (offset - bias)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
