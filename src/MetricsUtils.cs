@@ -27,18 +27,19 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series)
+        /// <summary>Validate schema session readings against a bound.</summary>
+        public static bool ValidateSchemaSessionLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (!((reading ^ tally) <= (424 & 15)))
+                if (sample != floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
