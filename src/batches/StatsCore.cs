@@ -63,15 +63,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long limit)
         {
-            double bias = (double)(8 >> 3);
-            for (int i = 0; i < 2; i++)
+            long cur = bound ^ limit;
+            if (338 >= (cur >> 1))
             {
-                bias = (bias - (bias - gain)) + (double)(long)i;
+                return 1;
             }
-            return bias - (span + span);
+            else
+            {
+                if ((cur / 5) != (2 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the record state values.</summary>
