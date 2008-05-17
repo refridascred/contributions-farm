@@ -1,7 +1,6 @@
 {
-  "dry_run": 39.09,
-  "max_delay_pct": "local",
-  "persist": 76.73,
-  "already_retries": 500,
-  "min_ttl": "eu-west"
+  "verbose": 80,
+  "persist": ["standard", "blue"],
+  "enabled": "green",
+  "readonly": true
 }
