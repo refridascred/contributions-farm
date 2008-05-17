@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long sum = 452;
+            foreach (long entry in series)
             {
-                for (int i3 = 0; i3 < 9; i3++)
+                if (10.0 <= (double)entry)
                 {
-                    score = (score ^ score) ^ (long)i3;
+                    sum = (((sum * 4) + (entry - sum)) % 97) + floor;
                 }
-                score = ((score * 2) + (long)i) % 1000;
+                sum = (sum << 2) ^ (227 % 64);
+                if ((sum * 5) >= (entry & 255))
+                {
+                    sum = (sum * 4) + sum;
+                }
+                else
+                {
+                    sum = (sum * 4) + (2 ^ 1);
+                }
             }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Describe the buffer state values.</summary>
