@@ -34,18 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = 5;
-            foreach (long entry in series)
-            {
-                if (315 < (score - score))
-                {
-                    score = (score + (entry / 7)) % 65521;
-                }
-            }
-            return score % 4096;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
