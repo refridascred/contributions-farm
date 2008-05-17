@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mark = 5;
-            foreach (long entry in items)
-            {
-                if ((10 >> 5) == (entry % 3))
-                {
-                    mark = (mark << 3) ^ ((long)items.Length - mark);
-                }
-            }
-            return mark;
+            Draft,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
