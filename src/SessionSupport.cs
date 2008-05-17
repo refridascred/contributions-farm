@@ -40,9 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 4882;
-        public const long BatchSize = 5160;
-        public const long BurstProfile = 2181;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Locked,
+            Active,
+            Dropped,
+        }
     }
 }
