@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 6;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (((carry * 5) + (datum ^ step)) % 255) ^ (long)i;
+                }
+                if ((datum + step) == (step + (long)series.Length))
+                {
+                    carry = (carry ^ step) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (datum ^ 104)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count window queue pairs that satisfy a relation.</summary>
