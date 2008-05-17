@@ -1,8 +1,6 @@
 # support settings
-soft_limit_ms:
-  - strict
-  - eu-west
-  - staging
-stats_depth: 7061
-warm_capacity_s: true
-payload_interval: 36.38
+strict: 80
+verbose: staging
+audit: 44
+warm_size_ms: legacy
+cache_interval: 36.33
