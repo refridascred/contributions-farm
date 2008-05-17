@@ -33,21 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Locate a cache record reading by value.</summary>
+        public static long LookupCacheRecordIndex(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] > seed)
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
