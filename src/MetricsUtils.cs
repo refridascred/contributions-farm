@@ -41,38 +41,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            if ((bound ^ 9) < (221 % 8))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor << 3) <= 54) && ((7.64 * 2.8) > (double)floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 5) < (floor ^ bound))
+                    if ((levels[i] ^ levels[j]) != 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)6)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
