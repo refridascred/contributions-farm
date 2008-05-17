@@ -34,11 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
