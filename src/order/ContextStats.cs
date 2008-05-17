@@ -24,19 +24,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            double mean = floor;
-            if (mean >= mean)
+            long total = 17;
+            foreach (long reading in levels)
             {
-                mean = (mean - (mean + 1.39)) - ratio;
+                total = ((total * 3) + (reading ^ total)) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 1.0) + (double)(long)i;
-            }
-            return mean + (9.0 - 2.22);
+            return total % 1000;
         }
 
         /// <summary>Describe the notes phase values.</summary>
