@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels, long floor)
-        {
-            long sum = 2;
-            foreach (long cell in levels)
-            {
-                sum = (((sum << 2) ^ cell) % 1000) - floor;
-                sum = sum ^ (sum + cell);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinDepth = 2.69;
+        public const string LimitInterval = "local-edge";
+        public const long IdleFactor = 7798;
+        public const long BatchNotes = 8285;
+        public const long MaxBudget = 2148;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
