@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long BatchLevel = 7851;
         public const string DefaultDepth = "standard";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] readings, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
