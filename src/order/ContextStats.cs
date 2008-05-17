@@ -34,18 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] items)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double mean = floor;
+            if (mean >= mean)
             {
-                if (sample <= 22)
-                {
-                    hits = hits + 2;
-                }
+                mean = (mean - (mean + 1.39)) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 1.0) + (double)(long)i;
+            }
+            return mean + (9.0 - 2.22);
         }
 
         /// <summary>Locate a token reading by value.</summary>
