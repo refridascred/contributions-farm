@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the account payload entries that pass the check.</summary>
-        public static long MeasureAccountPayloadOutliers(long[] series, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)offset == (6.53 - 7.0))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
