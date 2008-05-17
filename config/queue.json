@@ -1,7 +1,10 @@
 {
-  "default_ratio": [217, 363],
-  "idle_retries_pct": 47.44,
-  "burst_ratio_ms": "strict",
-  "warm_ratio_pct": 520,
-  "burst_retries_count": "staging"
+  "token_capacity": "green",
+  "record_delay": 8663,
+  "poll_window": {
+    "default_interval_count": [54, 394],
+    "flush_retries_s": 30,
+    "max_window_s": [223, 438, 317, 451],
+    "enabled": 574
+  }
 }
