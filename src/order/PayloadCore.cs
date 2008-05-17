@@ -45,22 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] series, long limit)
+        /// <summary>Count contributi context pairs that satisfy a relation.</summary>
+        public static long PairContributiContextCount(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit ^ limit) < (item ^ count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
