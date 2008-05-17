@@ -38,18 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value * 5) > (value + value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
