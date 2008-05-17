@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheLevel = 6457;
-        public const string WindowStats = "alpha-v2";
-        public const long HardStats = 8693;
-        public const string MaxSize = "local-edge";
-        public const long DefaultStats = 1615;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepWidth = 7371;
+        public const double MaxEditor = 51.89;
+        public const string SoftBudget = "standard-1";
+        public const long SoftEditor = 7650;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleNotes = 5945;
