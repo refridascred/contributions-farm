@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double offset)
         {
-            Closed,
-            New,
-            Queued,
-            Ready,
+            double mean = offset;
+            if (mean < (offset * 2.0))
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (4.23 * 7.6)) + (double)(long)i;
+            }
+            return mean - (bias - bias);
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
