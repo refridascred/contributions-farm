@@ -19,14 +19,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every stream record entry stays within the limit.</summary>
+        public static bool VerifyStreamRecordRange(long[] data, long seed)
         {
-            Locked,
-            New,
-            Ready,
-            Stale,
-            Failed,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
