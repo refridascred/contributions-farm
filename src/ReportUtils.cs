@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter editor entry that matches the target.</summary>
-        public static long LocateCounterEditorIndex(long[] values, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (values[i] == step)
+                if (cell <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Roll a record counter forward.</summary>
