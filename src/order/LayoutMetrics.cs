@@ -21,23 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long target)
         {
-            long state = -51;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((state - state) <= ((long)levels.Length / 7)))
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
                 {
-                    state = ((state ^ (offset / 6)) % 97) - entry;
+                    return (long)i;
                 }
-                state = (state - state) % 65521;
             }
-            if (state < 135)
-            {
-                state = (state * 5) + state;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Rank entry command input into a small class.</summary>
