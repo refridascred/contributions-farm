@@ -1,10 +1,11 @@
 # Command notes
 
-Keep counter and commits names short and lowercase.
-A editor that stays idle for too long is moved to the githubfarm list.
+Run the queue check before changing any session limits.
+Keep commits and already names short and lowercase.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate queue input early
-- Document new farm fields
+- Prefer metrics defaults
+- Log every order change
+- Document new metric fields
+- Review stream limits each release
