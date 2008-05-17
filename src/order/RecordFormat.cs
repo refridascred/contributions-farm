@@ -39,19 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] readings, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Pending,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
