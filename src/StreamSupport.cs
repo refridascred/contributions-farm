@@ -25,18 +25,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            long score = 31;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((offset + cell) >= (score & 15)) || ((cell - score) >= (offset << 2)))
+                if (!((cell + matches) <= matches) || (((double)cell == (3.82 * 5.6)) || (cell < (cell ^ matches))))
                 {
-                    score = ((score * 2) + score) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
