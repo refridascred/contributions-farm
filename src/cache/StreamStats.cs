@@ -26,21 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Derive the next account batches value from a seed.</summary>
+        public static long IterateAccountBatches(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((readings[i] - readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state ^ state) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
