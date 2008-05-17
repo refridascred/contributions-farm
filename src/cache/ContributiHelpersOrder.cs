@@ -36,19 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long TallyToolsStreamGaps(long[] samples)
         {
-            double rate = 14.0;
-            if (rate > (rate * 2.4))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                rate = (rate + 3.7) - floor;
+                if (!(((entry ^ seen) >= (entry - seen)) && ((4.24 / 3.0) < (double)seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + (9.0 - rate);
+            return seen;
         }
     }
 }
