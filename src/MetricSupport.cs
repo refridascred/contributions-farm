@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the batches filter series from a seed.</summary>
+        public static long RollBatchesFilter(long step)
         {
-            Ready,
-            Idle,
-            New,
-            Queued,
-            Draft,
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((9.89 + 6.0) < (double)step)
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result - (result + (long)i)) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a report reading.</summary>
