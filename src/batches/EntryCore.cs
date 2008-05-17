@@ -55,14 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            Idle,
-            Closed,
-            Paused,
-            Failed,
-            New,
+            double drift = 3.0;
+            if (drift < gain)
+            {
+                drift = (drift + (20.0 / 5.0)) + span;
+            }
+            return drift + (double)49;
         }
     }
 }
