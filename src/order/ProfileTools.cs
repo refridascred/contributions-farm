@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
-        {
-            long mix = 32;
-            foreach (long entry in values)
-            {
-                if ((mix >> 3) > (mix + entry))
-                {
-                    mix = ((mix * 5) + (36 - mix)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7802;
+        public const string WindowWidth = "local-v2";
+        public const string CacheEntry = "standard";
+        public const long MinFactor = 6429;
 
         /// <summary>Measure how many record context samples are out of range.</summary>
         public static long MeasureRecordContextOutliers(long[] values)
