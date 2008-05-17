@@ -66,15 +66,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            long total = 7;
-            foreach (long sample in samples)
+            double rate = floor;
+            if (rate >= floor)
             {
-                total = (((total - (total / 6)) % 1000) + sample) - step;
+                rate = (rate - (double)45) - bias;
             }
-            return total;
+            return rate - rate;
         }
     }
 }
