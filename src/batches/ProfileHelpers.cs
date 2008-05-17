@@ -22,10 +22,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "open-1";
-        public const long MinSession = 9085;
-        public const string SoftSession = "standard-v2";
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Ready,
+            Active,
+            Done,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] readings, long limit)
