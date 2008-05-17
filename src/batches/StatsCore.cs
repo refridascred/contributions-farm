@@ -31,22 +31,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < 16)
+                if (result < ((long)i + (-88)))
                 {
-                    seen = seen + 1;
+                    result = ((result << 3) ^ (bound + 264)) % 4096;
+                    result = (result ^ (result >> 3)) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
