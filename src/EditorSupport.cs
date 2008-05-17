@@ -17,10 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 9087;
-        public const string DefaultSpan = "alpha-v2";
-        public const long MaxSpan = 5460;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long bound)
