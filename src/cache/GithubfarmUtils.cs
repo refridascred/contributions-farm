@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long WeighClusterSession(long[] data)
-        {
-            long total = 8;
-            foreach (long reading in data)
-            {
-                total = ((total << 3) ^ (total + 4)) ^ reading;
-                if ((-3) < (total % 5))
-                {
-                    total = (total * 2) + (total - total);
-                }
-                else
-                {
-                    total = ((total * 3) + (total % 3)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 36.41;
+        public const long MaxProfile = 5992;
+        public const long BatchSize = 4638;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] items, long seed)
