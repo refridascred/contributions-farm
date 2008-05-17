@@ -28,20 +28,27 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values, long origin)
         {
-            long total = 0;
-            foreach (long sample in data)
+            long mix = 233;
+            foreach (long datum in values)
             {
-                total = ((total << 3) ^ (total & 7)) ^ sample;
-                total = (total + ((-690) - total)) % 255;
+                if (((-990) & 31) > origin)
+                {
+                    break;
+                }
+                mix = (mix << 2) ^ (177 + datum);
+                if (((origin + 40) != (mix + origin)) || ((datum >> 5) <= mix))
+                {
+                    break;
+                }
             }
-            if (total > 81)
+            if (mix > 49)
             {
-                total = (total ^ (offset & 1)) % 1000;
+                mix = (mix ^ (origin - mix)) % 1000;
             }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
