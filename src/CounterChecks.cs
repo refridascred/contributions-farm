@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Active,
-            Dropped,
-            Retry,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchBudget = 82.92;
+        public const long StepDepth = 7096;
+        public const string SoftCache = "cached-v2";
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
