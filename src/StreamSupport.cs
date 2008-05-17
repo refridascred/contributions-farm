@@ -19,22 +19,17 @@ namespace Common.Utilities
             return (weight + weight) + rate;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((9 > entry) && (hits < entry)) && (((double)hits >= 15.0) && ((entry ^ hits) < entry)))
+                if (samples[i] >= floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
