@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] levels, long origin)
+        /// <summary>Match up commits session samples.</summary>
+        public static long OverlapCommitsSessionCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((0.8 * 13.0) < (double)origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + cell;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
