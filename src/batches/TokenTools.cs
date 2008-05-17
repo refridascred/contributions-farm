@@ -20,12 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
