@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long mark = 393;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - (item - item)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark > 370)
-            {
-                mark = ((mark << 2) ^ (97 / 7)) % 1000;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
