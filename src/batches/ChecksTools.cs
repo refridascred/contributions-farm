@@ -14,18 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cache report samples are out of range.</summary>
-        public static long AuditCacheReportMatches(long[] data)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)matches >= (17.0 / 3.0))
-                {
-                    matches = (matches + 1) - item;
-                }
+                mix = ((mix * 4) + target) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
