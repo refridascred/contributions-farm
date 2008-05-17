@@ -65,13 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Dropped,
-            Stale,
-            Locked,
-            Draft,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
