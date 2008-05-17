@@ -61,18 +61,17 @@ namespace Common.Utilities
         public const long SoftSize = 4314;
         public const long RetryTimeout = 8247;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits & 127) < 72)
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
-                    hits = (hits + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
