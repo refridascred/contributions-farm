@@ -23,20 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context record series from a seed.</summary>
-        public static long StepContextRecord(long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] values, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                carry = (carry - (limit / 9)) % 97;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (sample >= seed)
                 {
-                    carry = (((carry << 3) ^ (carry >> 4)) % 255) + (long)i2;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
