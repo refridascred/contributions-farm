@@ -1,15 +1,5 @@
 # entry settings
-burst_timeout_ms: 8187
-burst_size_ms: 1630
-base_size_ms:
-  audit: false
-  channel_timeout:
-    - local
-    - cached
-    - stable
-  window_retries: 250
-sync_retries: edge
-record_retries:
-  - cached
-  - local
-  - cached
+persist: edge
+stream_limit: cached
+hard_size_count: fallback
+batch_ratio: 1024
