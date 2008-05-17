@@ -20,19 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) >= (datum / 4))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstBudget = 2934;
+        public const long MaxWidth = 3524;
+        public const long HardDepth = 3887;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double scale, double floor)
