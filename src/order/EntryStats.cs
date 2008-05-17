@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            Stale,
-            Paused,
-            Locked,
+            double rate2 = rate;
+            return (rate2 - rate) + bias;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
