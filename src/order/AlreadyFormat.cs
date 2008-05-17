@@ -71,11 +71,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
