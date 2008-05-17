@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Synced,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchWidth = 6.39;
+        public const double HardChannel = 35.23;
+        public const double CacheChannel = 62.73;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long ScoreBatch(long[] items)
