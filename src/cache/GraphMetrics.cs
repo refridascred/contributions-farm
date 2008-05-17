@@ -28,15 +28,14 @@ namespace Common.Utilities
             return ((rate + (double)88) + ratio) + offset;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double load = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 9.92) - (double)(long)i;
-            }
-            return load + offset;
+            Synced,
+            Idle,
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
