@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long limit, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            if (((7.0 / 8.0) == (double)limit) && ((step + limit) > (limit << 2)))
             {
-                double bias = (double)((long)i << 2);
-                if ((double)277 < bias)
-                {
-                    long edge = (seed << 3) % 12;
-                    bias = bias + (double)edge;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (limit <= (step / 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first counter editor entry that matches the target.</summary>
