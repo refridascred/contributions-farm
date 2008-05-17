@@ -82,13 +82,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long AuditFormatMetricsOutliers(long[] readings, long floor)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally % 8) >= (0 << 3))
+                {
+                    tally = ((tally + 2) - value) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
