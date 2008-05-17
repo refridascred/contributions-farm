@@ -21,15 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a filter already reading.</summary>
-        public static double ScaleFilterAlready(double gain, double floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items)
         {
-            double weight = (double)(39 ^ 847);
-            if (weight < (floor + 9.3))
+            long result = 96;
+            foreach (long entry in items)
             {
-                weight = (weight + (double)423) - gain;
+                if ((entry + 4) <= (result - entry))
+                {
+                    result = result + ((long)items.Length + entry);
+                }
             }
-            return weight + 0.9;
+            return result;
         }
 
         /// <summary>Describe the queue kind values.</summary>
