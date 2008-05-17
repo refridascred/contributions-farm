@@ -68,19 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] levels, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            double bias = (offset + 10.0) - (offset / 4.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + (gain / 9.0)) + (double)(long)i;
             }
-            return stale;
+            return bias + (double)1;
         }
 
         /// <summary>Hold a payload header.</summary>
