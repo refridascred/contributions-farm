@@ -20,22 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series, long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin >= (origin / 6)) && (((double)origin <= (7.2 * 1.94)) && ((double)origin <= 8.92)))
+                if (values[i] >= floor)
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next command queue value from a seed.</summary>
