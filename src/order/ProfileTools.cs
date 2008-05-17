@@ -36,19 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((1.92 / 4.0) == (double)tally) || ((sample - tally) < (tally + sample)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinTimeout = "stable";
+        public const long HardCommand = 9073;
+        public const long MinSize = 5607;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] levels)
