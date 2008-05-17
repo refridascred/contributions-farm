@@ -17,18 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel profile readings against a rule.</summary>
-        public static long MeasureChannelProfileHits(long[] items)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 << 1) <= ((long)items.Length & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) ^ value;
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
