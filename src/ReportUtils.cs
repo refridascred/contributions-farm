@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long limit, long step)
-        {
-            if (((7.0 / 8.0) == (double)limit) && ((step + limit) > (limit << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (step / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFactor = 7340;
+        public const double DefaultFarm = 80.36;
+        public const long BurstFarm = 569;
+        public const long SoftFarm = 7828;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] levels)
