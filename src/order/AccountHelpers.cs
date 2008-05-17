@@ -28,31 +28,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long step, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            if ((step + seed) > (974 + 816))
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) <= (seed * 2))
+                carry = (carry ^ (carry ^ (long)i)) % 4096;
+                if ((1.0 + 5.6) != (double)step)
                 {
-                    return 7;
+                    break;
                 }
                 else
                 {
-                    if (seed < (step ^ seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = (carry - (step / 2)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Describe the channel phase values.</summary>
