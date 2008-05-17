@@ -1,7 +1,13 @@
 {
-  "cache_size_s": 3183,
-  "hard_timeout": 1024,
-  "graph_capacity": "open",
-  "batches_retries": true,
-  "editor_ratio": 60
+  "idle_window": ["local", "fallback"],
+  "readonly": {
+    "default_timeout_pct": "open",
+    "editor_limit": "eu-west",
+    "compress": 60,
+    "base_interval": 31.77,
+    "burst_ttl": "primary"
+  },
+  "retry_retries_ms": true,
+  "poll_threshold_count": 60.15,
+  "hard_delay_count": 2466
 }
