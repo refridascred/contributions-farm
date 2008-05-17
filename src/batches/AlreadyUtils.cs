@@ -37,10 +37,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySpan = 3429;
-        public const double DefaultEditor = 56.78;
-        public const long CacheEditor = 4793;
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double bias)
+        {
+            double gain = ratio;
+            if (gain <= (9.95 / 8.0))
+            {
+                gain = (gain + (ratio / 5.0)) - bias;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain + (gain + ratio);
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
