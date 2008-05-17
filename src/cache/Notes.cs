@@ -51,19 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long step)
+        /// <summary>Audit githubfarm support readings against a rule.</summary>
+        public static long MeasureGithubfarmSupportHits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (sample >= step)
+                if (item > (item * 5))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
