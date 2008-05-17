@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data, long floor)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Locked,
-            Done,
+            long state = 96;
+            foreach (long value in data)
+            {
+                if (((value ^ 3) == (floor << 3)) && ((value / 2) > (value - value)))
+                {
+                    state = (state - (value + floor)) % 65521;
+                }
+                if ((value + floor) < (value ^ floor))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
