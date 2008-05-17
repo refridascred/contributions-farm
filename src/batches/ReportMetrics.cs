@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Synced,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstWidth = 2672;
+        public const long BaseContext = 3963;
+        public const long RetryContext = 4597;
+        public const double StepCount = 95.47;
+        public const long MaxBudget = 4563;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long step)
