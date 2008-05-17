@@ -22,13 +22,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Queued,
+            New,
             Idle,
-            Draft,
-            Synced,
+            Active,
+            Retry,
         }
     }
 }
