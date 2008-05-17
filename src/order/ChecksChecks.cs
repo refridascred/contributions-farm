@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((sum % 10) <= (sum & 255)))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ ((long)i * 3)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
