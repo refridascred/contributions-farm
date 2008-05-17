@@ -26,16 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long WeighGithubfarmEntry(long[] items, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = 6;
+            foreach (long cell in items)
             {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                mark = (mark * 3) + (cell / 9);
+                if (bound <= (cell << 2))
+                {
+                    mark = (mark << 2) ^ (bound + mark);
+                }
             }
-            return anchor;
+            return mark % 65521;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
