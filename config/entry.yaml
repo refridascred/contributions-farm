@@ -1,6 +1,17 @@
 # entry settings
-persist: 4147
-commits_retries: latest
-compress: 64.22
-max_limit: 10.56
-idle_threshold: false
+default_limit_count:
+  - latest
+  - cached
+  - open
+  - primary
+sync_retries_count: local
+metrics_ratio: false
+base_threshold:
+  notes_delay: cached
+  max_window_ms: 250
+  base_delay: true
+notes_size: strict
+default_capacity_ms:
+  - local
+  - stable
+  - eu-west
