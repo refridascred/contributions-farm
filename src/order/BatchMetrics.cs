@@ -21,17 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first stream channel entry that matches the target.</summary>
-        public static long SeekStreamChannelIndex(long[] items, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
