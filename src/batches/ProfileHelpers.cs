@@ -20,18 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long anchor = 76;
-            foreach (long item in series)
-            {
-                if (!((1.12 * 6.2) > (double)anchor))
-                {
-                    anchor = ((anchor + offset) % 4096) ^ item;
-                }
-            }
-            return anchor % 4096;
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
