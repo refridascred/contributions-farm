@@ -26,19 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double span)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            double bias = scale;
-            if (bias >= 1.87)
+            double weight = span;
+            if (weight < weight)
             {
-                bias = bias + span;
+                weight = weight - rate;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias + (double)(-50)) - (double)(long)i;
+                weight = weight + weight;
             }
-            return bias + bias;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight * 7.0)) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Hold a format info.</summary>
