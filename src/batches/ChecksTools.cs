@@ -40,15 +40,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a channel cache figure with a bias.</summary>
-        public static double AdjustChannelCache(double bias, double span)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double rate = (bias + bias) * 2.52;
-            if (rate < (bias - rate))
-            {
-                rate = rate + rate;
-            }
-            return rate + span;
+            Done,
+            Locked,
+            Dropped,
+            Idle,
+            Synced,
         }
     }
 }
