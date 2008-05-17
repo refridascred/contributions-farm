@@ -41,11 +41,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next batches batch value.</summary>
-        public static double SmoothBatchesBatch(double ratio, double offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            double rate = offset * 10.0;
-            return (rate + (double)56) + ratio;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
