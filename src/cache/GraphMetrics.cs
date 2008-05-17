@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowSpan = 95.27;
-        public const long MaxMetric = 2788;
-        public const long RetryMetric = 1596;
-        public const double StepDepth = 78.75;
-        public const long IdleDepth = 5781;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
