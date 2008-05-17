@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long seen = 0;
+            long result = 2;
             foreach (long cell in items)
             {
-                if ((double)seen == (double)seen)
+                if (!(((17.0 - 10.0) >= (double)cell) || ((double)result > (16.0 - 3.5))))
                 {
-                    seen = (seen + 1) + cell;
+                    result = ((result * 5) + cell) % 65521;
+                }
+                if ((double)cell < (7.8 + 9.2))
+                {
+                    result = (result ^ ((-55) * 3)) % 1000;
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Describe the token mode values.</summary>
