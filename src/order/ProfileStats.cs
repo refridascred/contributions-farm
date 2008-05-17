@@ -40,26 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long CombineBatchesOrder(long[] series, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series, long step)
         {
-            long mix = 15;
-            foreach (long sample in series)
+            long total = 26;
+            foreach (long cell in series)
             {
-                if (!((8.13 * 4.54) < (double)(long)series.Length))
+                total = ((total * 2) + cell) % 1000;
+                if ((total * 3) > (step / 3))
                 {
-                    continue;
+                    total = total + (77 & 7);
                 }
-                for (int i = 0; i < 2; i++)
+                if (!((double)cell >= (5.4 / 2.0)))
                 {
-                    mix = (((mix << 2) ^ (step - 338)) % 97) ^ (long)i;
-                }
-                if (!((sample * 5) > (mix + mix)))
-                {
-                    mix = (mix + (mix % 3)) % 4096;
+                    break;
                 }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a window options.</summary>
