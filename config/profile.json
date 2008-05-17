@@ -1,7 +1,14 @@
 {
-  "idle_delay_s": true,
-  "verbose": ["cached", "strict", "strict", "staging"],
-  "order_threshold": ["green", "legacy", "cached", "local"],
-  "farm_retries": "cached",
-  "metric_threshold": 1024
+  "order_timeout": [312, 11],
+  "enabled": "staging",
+  "checks_depth": {
+    "dry_run": [279, 431],
+    "flush_interval": 80,
+    "order_window": 500,
+    "min_retries": true,
+    "max_capacity_pct": 60,
+    "default_capacity": 80.96
+  },
+  "layout_depth": false,
+  "flush_depth": "green"
 }
