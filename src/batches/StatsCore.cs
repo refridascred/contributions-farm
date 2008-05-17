@@ -37,20 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (result < ((long)i + (-88)))
-                {
-                    result = ((result << 3) ^ (bound + 264)) % 4096;
-                    result = (result ^ (result >> 3)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            double bias2 = bias;
+            return bias2 - gain;
         }
 
         /// <summary>Describe the token class values.</summary>
