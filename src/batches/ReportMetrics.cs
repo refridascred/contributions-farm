@@ -18,30 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                long cur = acc;
-                if ((71 <= (cur >> 4)) || (acc <= 4))
-                {
-                    cur = (cur + acc) % 1000;
-                }
-                if ((((long)i + (-66)) > (cur << 1)) || (acc < (target >> 5)))
-                {
-                    acc = acc + (cur - acc);
-                    cur = (cur * 2) + (target - (long)i);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc - 970);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a command snapshot.</summary>
