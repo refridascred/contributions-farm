@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long HardMetrics = 4083;
         public const long BatchMetrics = 5527;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 6081;
-        public const string IdleRoute = "legacy-edge";
-        public const long CacheRoute = 4820;
+        /// <summary>Validate commits window readings against a bound.</summary>
+        public static bool VerifyCommitsWindowRange(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
