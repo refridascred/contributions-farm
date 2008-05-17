@@ -1,12 +1,6 @@
 {
-  "audit": 18.98,
-  "stream_delay": {
-    "readonly": "staging",
-    "retry_size_count": "open",
-    "sync_timeout_count": 100,
-    "audit": 250,
-    "stream_threshold": "fallback"
-  },
-  "max_timeout_ms": 7250,
-  "dry_run": false
+  "batch_ratio_s": 500,
+  "max_ratio_count": 5405,
+  "sync_window_pct": 76.33,
+  "sync_capacity": ["eu-west", "latest", "edge", "local"]
 }
