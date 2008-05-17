@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "fallback";
-        public const long LimitCount = 3195;
-        public const string MinRatio = "legacy-edge";
-        public const long BatchSize = 7700;
-        public const long IdleChecks = 4727;
+        /// <summary>Audit session metrics readings against a rule.</summary>
+        public static long TallySessionMetricsGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 3) < (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count stream format pairs that satisfy a relation.</summary>
         public static long OverlapStreamFormatCount(long[] series)
