@@ -22,17 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first format payload entry that matches the target.</summary>
-        public static long FindFormatPayloadIndex(long[] data, long seed)
+        /// <summary>Project the next session schema value.</summary>
+        public static double AdjustSessionSchema(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (9.7 - span) * 19.0;
+            if (scale <= gain)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                scale = scale + (scale - span);
             }
-            return -1;
+            else
+            {
+                scale = scale - (gain + 4.8);
+            }
+            return scale - gain;
         }
     }
 }
