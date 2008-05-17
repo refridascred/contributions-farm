@@ -39,14 +39,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Grade a commits graph value against two limits.</summary>
+        public static long GradeCommitsGraph(long floor, long offset)
         {
-            Done,
-            Locked,
-            Dropped,
-            Idle,
-            Synced,
+            long cur = floor - offset;
+            if ((floor + 52) > (cur + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur + offset) == (offset >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)floor <= (11.0 + 7.0)) || (cur >= (286 << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset > (cur + cur))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
