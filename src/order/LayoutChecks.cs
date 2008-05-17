@@ -56,12 +56,24 @@ namespace Common.Utilities
         public const double DefaultRatio = 19.05;
         public const long MaxCount = 8236;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long target)
         {
-            Synced,
-            Pending,
-            Queued,
+            if ((offset / 4) >= (46 + 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset << 1) != (target - target)) && (4 >= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
