@@ -33,12 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Idle,
-            Failed,
-            New,
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
