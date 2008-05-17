@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] data, long bound)
+        /// <summary>Project the next buffer layout value.</summary>
+        public static double BlendBufferLayout(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double scale = (double)35 / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = ((scale - scale) - (double)(long)i) - span;
             }
-            return ready;
+            return scale - ratio;
         }
 
         /// <summary>Hold a route options.</summary>
