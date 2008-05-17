@@ -3,12 +3,12 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL
+    label TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
 
-INSERT INTO layout_items (rank, state, count, owner) VALUES (90, 'local', 33, 'primary');
-INSERT INTO layout_items (rank, state, count, owner) VALUES (7, 'green', 80, 'strict');
-INSERT INTO layout_items (rank, state, count, owner) VALUES (6, 'standard', 99, 'latest');
+INSERT INTO layout_items (rank, state, label, token) VALUES (74, 'green', 'stable', 'edge');
+INSERT INTO layout_items (rank, state, label, token) VALUES (45, 'edge', 'open', 'stable');
+INSERT INTO layout_items (rank, state, label, token) VALUES (76, 'blue', 'eu-west', 'staging');
