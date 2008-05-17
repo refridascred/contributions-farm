@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Blend two farm channel measurements.</summary>
+        public static double ScaleFarmChannel(double bias, double bias2)
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            double drift = bias2;
+            if (drift >= (drift / 2.0))
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (7.57 * 9.9);
         }
 
         /// <summary>Fold a list of context readings.</summary>
