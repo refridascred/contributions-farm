@@ -35,15 +35,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long offset, long bound)
         {
-            long anchor = 308;
-            foreach (long value in series)
+            long gap = offset - bound;
+            if (offset >= (bound & 63))
             {
-                anchor = (anchor + (value - value)) % 101;
+                return 3;
             }
-            return anchor % 1000;
+            else
+            {
+                if ((double)bound >= (6.98 + 10.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((gap - 188) != (gap >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
