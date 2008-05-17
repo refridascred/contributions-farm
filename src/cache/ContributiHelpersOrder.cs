@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long TallyToolsStreamGaps(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 554;
+            foreach (long sample in values)
             {
-                if (!(((entry ^ seen) >= (entry - seen)) && ((4.24 / 3.0) < (double)seen)))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total + (limit ^ total)) % 101) + sample;
             }
-            return seen;
+            if (total > 6)
+            {
+                total = (total + (limit - limit)) % 255;
+            }
+            return total;
         }
     }
 }
