@@ -35,17 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] levels, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] == seed)
+                if ((double)step >= (double)result)
                 {
-                    return (long)i;
+                    result = result + 55;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a record record.</summary>
