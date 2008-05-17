@@ -56,38 +56,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long limit2)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if ((0.23 + 12.0) < (double)limit2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit == (10.0 + 16.0)) || ((double)limit2 <= (18.0 * 3.3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit2 + limit2) > (17 ^ limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(limit >= (limit + limit2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            New,
+            Pending,
         }
     }
 }
