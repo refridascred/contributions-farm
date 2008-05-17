@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] levels, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((long)i - 729) > (result & 15))
+                if (target > (target + 28))
                 {
-                    result = result ^ (61 * 4);
+                    matches = (matches + 1) ^ value;
                 }
                 else
                 {
-                    result = (result * 2) + (limit >> 5);
+                    matches = matches - 1;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the already phase values.</summary>
