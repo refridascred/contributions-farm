@@ -1,17 +1,4 @@
 # entry settings
-idle_ratio_ms:
-  min_timeout_count: false
-  tools_timeout: 38.45
-  dry_run:
-    editor_delay: false
-    soft_threshold: 16.27
-    compress: true
-    queue_window: local
-githubfarm_interval: false
-buffer_delay:
-  - 418
-  - 301
-  - 304
-batch_window_count: edge
-already_capacity: fallback
-filter_ratio: strict
+min_threshold_count: 65
+stream_window: 38.46
+channel_interval: 74.67
