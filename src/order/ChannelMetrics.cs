@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin + step) <= origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step < (step - step)) && ((step << 3) >= step))
                 {
-                    if ((items[i] ^ items[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if (((28 ^ origin) != (step % 12)) && (0.58 < (double)origin))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
