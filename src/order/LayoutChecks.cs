@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result << 2) ^ ((long)i / 2);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 7720;
+        public const double CacheRatio = 57.93;
+        public const long BatchBudget = 2969;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
