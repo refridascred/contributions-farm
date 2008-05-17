@@ -57,9 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 1992;
-        public const long CacheAccount = 1945;
-        public const string MaxAccount = "latest";
+        /// <summary>Accumulate already checks samples.</summary>
+        public static long CombineAlreadyChecks(long[] values, long origin)
+        {
+            long mark = 95;
+            foreach (long datum in values)
+            {
+                mark = (((mark * 4) + (5 + 142)) ^ datum) - origin;
+            }
+            return mark % 1000;
+        }
     }
 }
