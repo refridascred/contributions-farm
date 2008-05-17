@@ -47,25 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long AuditChecksFilterHits(long[] readings, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!!(((long)i << 3) < offset))
+                if ((8.17 * 11.0) <= (double)count)
                 {
-                    result = (result << 3) ^ (result + 833);
-                    result = result - (result ^ result);
+                    count = ((count + 1) + entry) + origin;
                 }
-                if ((8 - result) == ((long)i << 3))
-                {
-                    break;
-                }
-                result = (result - result) % 65521;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the session level values.</summary>
