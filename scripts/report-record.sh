@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge eu-west primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-latest}"
+RECORD_LIMIT=110
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=170
-log "limit is ${RECORD_LIMIT}"
