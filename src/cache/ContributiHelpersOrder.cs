@@ -20,26 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stats githubfarm value against two limits.</summary>
-        public static long GradeStatsGithubfarm(long seed, long origin)
-        {
-            long offset = seed - origin;
-            if ((5 / 2) >= (origin - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset < (763 % 3)) || ((double)seed >= 1.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 9214;
+        public const double HardTimeout = 24.29;
+        public const double MinPayload = 98.34;
+        public const long BaseDepth = 2348;
+        public const long BurstScore = 2898;
 
         /// <summary>Project the next batches value.</summary>
         public static double BlendBatches(double bias, double floor)
