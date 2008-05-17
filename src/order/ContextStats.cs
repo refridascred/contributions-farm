@@ -15,10 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 2559;
-        public const string LimitDepth = "strict";
-        public const double DefaultLayout = 3.26;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] levels)
