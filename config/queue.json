@@ -1,7 +1,18 @@
 {
+  "burst_interval": {
+    "stats_interval": [199, 472, 335],
+    "persist": true,
+    "poll_retries_ms": 500
+  },
   "readonly": "cached",
-  "payload_interval": 2297,
-  "base_capacity_s": "latest",
-  "sync_depth_pct": 250,
-  "schema_depth": "green"
+  "verbose": {
+    "flush_depth": 8915,
+    "warm_ttl_s": "latest",
+    "persist": {
+      "schema_delay": 30,
+      "burst_size_s": ["standard", "standard", "strict", "staging"],
+      "flush_size_pct": 4.07,
+      "burst_retries_pct": false
+    }
+  }
 }
