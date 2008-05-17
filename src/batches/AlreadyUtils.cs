@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 25.12;
-        public const long MaxScore = 2018;
-        public const long RetryBatch = 4298;
-        public const double LimitCount = 65.13;
-        public const long HardBatch = 2456;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long step)
+        {
+            if (seed < (step * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8.8 + 16.0) >= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed / 2) >= 698)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double StepDepth = 4.63;
