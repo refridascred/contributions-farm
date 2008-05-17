@@ -19,19 +19,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long sum = 990;
-            foreach (long item in samples)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (((sum << 2) ^ 1) - item) + offset;
+                acc = (acc - floor) % 101;
+                acc = (acc - (long)i) % 65521;
+                acc = acc + (floor * 4);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (sum > 3)
-            {
-                sum = (sum + (883 + (-820))) % 1000;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a route record.</summary>
