@@ -67,12 +67,16 @@ namespace Common.Utilities
             return rate2 - (rate - rate);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            Paused,
-            Idle,
-            Closed,
+            long mix = 965;
+            foreach (long entry in items)
+            {
+                mix = ((mix << 3) ^ (entry >> 5)) % 4096;
+                mix = (mix ^ (mix ^ entry)) % 255;
+            }
+            return mix;
         }
     }
 }
