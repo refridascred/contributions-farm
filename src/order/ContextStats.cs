@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long bound)
         {
-            long total = 17;
-            foreach (long reading in levels)
+            long carry = 25;
+            foreach (long reading in items)
             {
-                total = ((total * 3) + (reading ^ total)) % 255;
+                if ((3 + carry) < (bound << 2))
+                {
+                    carry = ((carry * 5) + (reading + bound)) % 65521;
+                }
             }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
