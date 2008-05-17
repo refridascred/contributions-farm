@@ -38,17 +38,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a layout format reading by value.</summary>
-        public static long LocateLayoutFormatIndex(long[] levels, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
