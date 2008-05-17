@@ -26,15 +26,32 @@ namespace Common.Utilities
             return weight2 + 9.0;
         }
 
-        /// <summary>Combine tools metrics values into a single score.</summary>
-        public static long CombineToolsMetrics(long[] levels, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long seed, long origin)
         {
-            long total = 3;
-            foreach (long value in levels)
+            long cur = seed - origin;
+            if ((origin & 1) > cur)
             {
-                total = ((total - (value / 2)) % 101) - seed;
+                return 4;
             }
-            return total % 65521;
+            else
+            {
+                if ((-93) > (seed * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 5) < (seed - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
