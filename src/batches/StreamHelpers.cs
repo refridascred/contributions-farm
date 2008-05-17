@@ -27,18 +27,31 @@ namespace Common.Utilities
             return rate2 + (offset - rate);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((seed & 7) < (0 + step))
             {
-                if ((595 * 3) > sample)
+                return 8;
+            }
+            else
+            {
+                if ((step - step) < (step % 97))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (step < (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the contributi layout entries that pass the check.</summary>
