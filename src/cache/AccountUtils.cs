@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const double WindowChecks = 13.66;
         public const long MaxFactor = 7526;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Compare every pair of farm batches readings.</summary>
+        public static long PairFarmBatchesCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 20)
+                    if ((samples[i] - samples[j]) > 7)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
