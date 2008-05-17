@@ -19,27 +19,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long acc = 807;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum <= (2.2 * 9.4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc - ((-832) << 2)) % 4096;
-                    continue;
-                }
-                if (!((datum ^ datum) > (32 + datum)))
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-                if ((98 >> 2) > acc)
-                {
-                    break;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Hold a route record.</summary>
