@@ -81,19 +81,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate session buffer readings against a bound.</summary>
-        public static bool ValidateSessionBufferBounds(long[] items, long target)
+        /// <summary>Count the payload profile entries that pass the check.</summary>
+        public static long CountPayloadProfileGaps(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (sample <= target)
+                if ((entry > (entry >> 4)) || (((entry - entry) >= offset) || ((entry + entry) > offset)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
