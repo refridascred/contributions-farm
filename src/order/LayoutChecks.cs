@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 7720;
-        public const double CacheRatio = 57.93;
-        public const long BatchBudget = 2969;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
