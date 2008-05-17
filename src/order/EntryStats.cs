@@ -31,18 +31,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 9925;
+        public const double LimitSize = 37.32;
+        public const string SoftRatio = "staging";
+        public const long IdleEntry = 6595;
+        public const long WindowDepth = 4882;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] levels, long floor)
