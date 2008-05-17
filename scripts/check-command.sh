@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in cached stable open; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=192
-log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
