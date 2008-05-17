@@ -36,13 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            long anchor = -832;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor + anchor) % 4096;
+                if ((17 * 2) > datum)
+                {
+                    anchor = (anchor + (datum - datum)) % 255;
+                }
+            }
+            return anchor;
         }
     }
 }
