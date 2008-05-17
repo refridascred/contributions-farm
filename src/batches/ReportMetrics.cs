@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 4414;
-        public const double DefaultSize = 4.64;
-        public const long BurstSize = 3432;
-        public const double SoftFilter = 57.35;
-        public const long StepFilter = 9937;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Ready,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string WindowWidth = "latest-v2";
