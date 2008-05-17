@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            long carry = 986;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)carry == (6.79 * 1.9)) || ((value + value) >= (carry + bound)))
+                if ((double)offset <= (double)(long)i)
                 {
-                    carry = ((carry << 2) ^ carry) % 65521;
+                    mix = (mix * 5) + (974 - mix);
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (carry < 23)
-            {
-                carry = ((carry * 5) + ((-67) & 31)) % 4096;
-            }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
