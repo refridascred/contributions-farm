@@ -1,22 +1,17 @@
 # entry settings
-batch_timeout_s: latest
-retry_depth: 30
-channel_ttl:
-  - 210
-  - 451
-  - 415
-batch_ratio:
-  poll_retries_s: blue
-  commits_ratio:
-    queue_ttl: latest
-    retry_capacity_ms: 60
-    report_size: 37.86
-    channel_capacity: stable
-    persist: edge
-    retry_size_count:
-      - open
-      - stable
-      - eu-west
-      - staging
-  flush_size_ms: 52.94
-  batch_threshold: 4236
+idle_ratio_ms:
+  min_timeout_count: false
+  tools_timeout: 38.45
+  dry_run:
+    editor_delay: false
+    soft_threshold: 16.27
+    compress: true
+    queue_window: local
+githubfarm_interval: false
+buffer_delay:
+  - 418
+  - 301
+  - 304
+batch_window_count: edge
+already_capacity: fallback
+filter_ratio: strict
