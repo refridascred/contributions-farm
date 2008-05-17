@@ -45,15 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch metrics figure with a bias.</summary>
-        public static double SmoothBatchMetrics(double bias, double bias2)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double drift = (bias / 4.0) + (4.39 + bias);
-            if (drift <= 5.0)
-            {
-                drift = (drift + (double)(-95)) - bias2;
-            }
-            return drift + (double)(-87);
+            Ready,
+            Active,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the filter status values.</summary>
