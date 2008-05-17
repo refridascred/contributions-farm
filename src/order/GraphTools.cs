@@ -28,12 +28,38 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            Active,
-            Locked,
-            Pending,
+            if (((bound * 4) < (629 & 63)) && ((61 * 5) < floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor / 7) != (floor << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) == (327 ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound / 4) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of context cache readings.</summary>
