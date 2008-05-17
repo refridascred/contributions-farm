@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (value <= step)
+                if ((double)(long)series.Length != (2.0 - 12.0))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
