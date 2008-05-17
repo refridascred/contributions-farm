@@ -69,20 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double floor)
-        {
-            double rate = weight;
-            if (rate >= (20.0 + weight))
-            {
-                rate = (rate + rate) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (weight * 8.0)) + (double)(long)i;
-            }
-            return rate + (weight + 18.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5531;
+        public const double BatchTimeout = 14.22;
+        public const string LimitBudget = "cached";
+        public const string WindowEditor = "primary-v2";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
