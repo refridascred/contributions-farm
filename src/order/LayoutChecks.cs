@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] samples)
         {
-            long state = 282;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = (state - (1 / 2)) % 101;
-                if (sample >= (864 << 1))
+                if (!((count / 2) <= (count + count)))
                 {
-                    state = ((state * 3) + limit) % 65521;
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > 3)
-            {
-                state = (state + (limit << 3)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of contributi cache readings.</summary>
