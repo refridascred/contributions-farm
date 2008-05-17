@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] readings, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 93;
-            foreach (long item in readings)
-            {
-                mark = (((mark << 2) ^ 353) % 97) + bound;
-                if ((double)(-4) >= (double)item)
-                {
-                    mark = mark ^ (229 / 8);
-                }
-            }
-            return mark;
+            Active,
+            Dropped,
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the window phase values.</summary>
