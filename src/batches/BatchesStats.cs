@@ -30,13 +30,19 @@ namespace Common.Utilities
             return bias - (span / 7.0);
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double span)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            double bias = scale;
+            if (bias >= 1.87)
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)(-50)) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Locate a command reading by value.</summary>
