@@ -75,22 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] series, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((bound / 6) == (3 >> 1))
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
