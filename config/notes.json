@@ -1,14 +1,12 @@
 {
-  "min_capacity_ms": "blue",
-  "schema_retries": false,
-  "soft_depth": 3947,
-  "burst_window_pct": false,
-  "idle_window_pct": {
-    "enabled": 60,
-    "base_threshold_pct": true,
-    "flush_interval_count": "staging",
-    "retry_timeout_ms": 100,
-    "route_ttl": false,
-    "flush_timeout_s": true
-  }
+  "idle_threshold_s": 69,
+  "readonly": "stable",
+  "githubfarm_size": 41.17,
+  "contributi_threshold": {
+    "soft_interval_s": ["strict", "open", "stable"],
+    "verbose": ["latest", "stable", "latest", "latest"],
+    "sync_capacity": ["fallback", "blue", "legacy", "legacy"],
+    "poll_timeout": "blue"
+  },
+  "warm_interval_s": 20
 }
