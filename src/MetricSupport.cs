@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double span)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long target, long bound)
         {
-            double scale = (1.0 - 8.26) / 6.0;
-            if (scale >= (9.9 - span))
+            long prev = target ^ bound;
+            if (!(target <= (bound >> 2)))
             {
-                scale = (scale + (scale + span)) + bias;
+                return 7;
             }
-            return scale + scale;
+            else
+            {
+                if (!((bound << 2) >= (bound >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)prev >= (7.97 + 1.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batches filter series from a seed.</summary>
