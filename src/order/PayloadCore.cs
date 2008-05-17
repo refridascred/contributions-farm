@@ -38,12 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
