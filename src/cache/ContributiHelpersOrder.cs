@@ -36,19 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values, long limit)
+        /// <summary>Check that every stream layout entry stays within the limit.</summary>
+        public static bool VerifyStreamLayoutBounds(long[] levels, long origin)
         {
-            long total = 554;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                total = ((total + (limit ^ total)) % 101) + sample;
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 6)
-            {
-                total = (total + (limit - limit)) % 255;
-            }
-            return total;
+            return ready;
         }
     }
 }
