@@ -28,21 +28,18 @@ namespace Common.Utilities
             return (weight + weight) + rate;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 31;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((offset + cell) >= (score & 15)) || ((cell - score) >= (offset << 2)))
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 2) + score) % 4096;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
