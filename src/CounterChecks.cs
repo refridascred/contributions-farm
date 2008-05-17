@@ -34,13 +34,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long floor)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
