@@ -20,15 +20,11 @@ namespace Common.Utilities
             return mean - (mean - ratio);
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double scale, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double gain = scale;
-            if (gain <= gain)
-            {
-                gain = (gain - (gain * 2.8)) + floor;
-            }
-            return gain + gain;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
