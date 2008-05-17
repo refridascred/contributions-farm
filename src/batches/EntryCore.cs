@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Dropped,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 5180;
+        public const long CacheFormat = 368;
+        public const long IdleScore = 9636;
+        public const long BurstInterval = 7853;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchRoute = 6081;
