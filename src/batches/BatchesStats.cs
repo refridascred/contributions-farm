@@ -30,15 +30,21 @@ namespace Common.Utilities
         public const long StepSize = 5134;
         public const long BurstBatches = 6126;
 
-        /// <summary>Accumulate commits graph samples.</summary>
-        public static long FoldCommitsGraph(long[] data)
+        /// <summary>Count metrics command pairs that satisfy a relation.</summary>
+        public static long PairMetricsCommandCount(long[] samples)
         {
-            long state = 549;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state * 2) + (value + state);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return hits;
         }
     }
 }
