@@ -59,18 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long DigestFarmRoute(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double span)
         {
-            long acc = 1;
-            foreach (long sample in readings)
-            {
-                if (!(acc > (9 + (-2))))
-                {
-                    acc = (acc + (375 >> 3)) - sample;
-                }
-            }
-            return acc % 4096;
+            double drift = (double)(944 + (-8));
+            return ((drift - drift) + gain) + span;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
