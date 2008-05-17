@@ -63,12 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series, long seed)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
+            long sum = 30;
+            foreach (long cell in series)
+            {
+                sum = (((sum << 3) ^ (cell + 159)) % 65521) - seed;
+                if ((double)sum > (6.65 / 2.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 732)
+            {
+                sum = (sum + 6) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context options.</summary>
