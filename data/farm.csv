@@ -1,7 +1,9 @@
-id,active,level,ratio,state
-1,90.27,eu-west,672,167
-2,96.84,75.41,59.16,578
-3,edge,91.37,825,60.36
-4,484,63.94,local,stable
-5,67.9,2,209,open
-6,674,34.29,107,47.82
+id,token,state
+1,270,248
+2,57,standard
+3,local,910
+4,eu-west,95.41
+5,733,cached
+6,32.23,32.4
+7,19.32,eu-west
+8,green,39.37
