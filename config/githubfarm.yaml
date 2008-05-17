@@ -1,15 +1,11 @@
 # githubfarm settings
-batch_ttl: 9293
-sync_depth_pct: stable
-notes_timeout: 91.19
-record_retries: 5413
-poll_interval_count:
-  metric_retries: 14.29
-  burst_ttl_pct:
-    - 273
-    - 178
-  stream_interval: 44
-  burst_depth: blue
-  sync_depth_ms: 100
-  notes_delay: false
-dry_run: latest
+max_capacity_ms:
+  - primary
+  - open
+farm_limit: false
+stats_ratio:
+  strict: cached
+  sync_ratio_count: 4071
+  max_threshold_count: 250
+  batch_capacity_ms: stable
+dry_run: blue
