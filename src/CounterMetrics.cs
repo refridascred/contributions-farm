@@ -26,19 +26,22 @@ namespace Common.Utilities
             return weight2 + 9.0;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] items, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (value >= origin)
+                if ((double)count > (1.0 * 9.9))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 2) ^ entry) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a entry header.</summary>
