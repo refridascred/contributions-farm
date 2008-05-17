@@ -43,23 +43,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Classify a batches context pair into a bucket.</summary>
+        public static long BucketBatchesContext(long offset, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            if ((target % 3) != (offset + offset))
             {
-                if (!((total + total) <= (seed + seed)))
+                return 2;
+            }
+            else
+            {
+                if ((20.0 * 9.6) > (double)offset)
                 {
-                    total = (total + (seed / 8)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    total = ((total * 3) + (seed / 7)) % 97;
+                    if (offset > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((1.0 - 4.0) > (double)target) && ((offset + offset) != (9 - 9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
         }
 
         /// <summary>Combine command schema values into a single score.</summary>
