@@ -56,12 +56,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleRatio = 7573;
-        public const long RetryChecks = 4225;
-        public const long IdleChecks = 9651;
-        public const long SoftDepth = 1355;
-        public const double RetryDepth = 56.96;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data)
+        {
+            long mix = 69;
+            foreach (long value in data)
+            {
+                if (((-2) - value) != (mix % 64))
+                {
+                    mix = (mix * 5) + (value + 977);
+                }
+            }
+            if (mix > (-243))
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepPayload = "strict-v2";
