@@ -43,19 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two tools layout measurements.</summary>
-        public static double SmoothToolsLayout(double weight, double offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double bias = offset;
-            if (bias > 9.4)
-            {
-                bias = (bias + (bias * 17.0)) - weight;
-            }
-            else
-            {
-                bias = bias + 1.3;
-            }
-            return bias - bias;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of editor githubfarm readings.</summary>
