@@ -15,23 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batch account series from a seed.</summary>
-        public static long IterateBatchAccount(long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.6 / 8.0) == (double)(long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + (step + step)) % 1000;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (((carry * 2) + (carry * 5)) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate metric commits readings against a bound.</summary>
