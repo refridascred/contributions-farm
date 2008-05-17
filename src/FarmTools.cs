@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double HardChannel = 35.23;
         public const double CacheChannel = 62.73;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] readings, long bound)
         {
-            long mark = -4;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (sample <= (mark / 2))
+                if ((1.5 + 4.06) <= (double)datum)
                 {
-                    mark = ((mark << 2) ^ mark) % 255;
-                }
-                if ((sample - sample) > mark)
-                {
-                    break;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
