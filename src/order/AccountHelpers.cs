@@ -28,12 +28,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long step, long seed)
         {
-            Ready,
-            Idle,
-            Active,
+            if ((step + seed) > (974 + 816))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + step) <= (seed * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (step ^ seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel phase values.</summary>
