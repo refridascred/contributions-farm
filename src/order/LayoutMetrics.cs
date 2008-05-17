@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            double bias = rate;
-            return (bias - (double)6) + offset;
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((long)i >= ((long)i / 7)))
+                {
+                    long prev = (floor >> 4) - (total ^ floor);
+                    total = (total << 3) ^ prev;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
