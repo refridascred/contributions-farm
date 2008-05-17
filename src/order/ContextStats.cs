@@ -15,21 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
