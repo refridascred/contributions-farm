@@ -16,32 +16,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a buffer metric pair into a bucket.</summary>
-        public static long GradeBufferMetric(long limit, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long span = limit + seed;
-            if (!((0 + 221) <= (limit << 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((383 << 1) > span) && ((span << 1) <= limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit <= (seed ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
