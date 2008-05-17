@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine stream account values into a single score.</summary>
