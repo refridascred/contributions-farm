@@ -35,19 +35,23 @@ namespace Common.Utilities
         public const long StepSpan = 3667;
         public const string WindowGithubfarm = "cached-edge";
 
-        /// <summary>Check that every batch record entry stays within the limit.</summary>
-        public static bool GuardBatchRecordLimits(long[] levels, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mark = 146;
+            foreach (long item in samples)
             {
-                if (entry <= offset)
+                mark = ((mark * 5) + (579 + bound)) % 97;
+                if ((double)item < (2.0 * 3.0))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (mark < 8)
+            {
+                mark = (mark << 3) ^ (mark & 63);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
