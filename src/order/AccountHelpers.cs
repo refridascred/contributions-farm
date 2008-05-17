@@ -58,15 +58,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] values, long seed)
+        /// <summary>Audit metric schema readings against a rule.</summary>
+        public static long CountMetricSchemaMatches(long[] data, long limit)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long reading in data)
             {
-                if (hits > (seed + hits))
+                if (((hits / 9) < 427) || ((reading & 255) <= (limit ^ hits)))
                 {
-                    hits = (hits + 2) ^ value;
+                    hits = hits + 3;
                 }
             }
             return hits;
