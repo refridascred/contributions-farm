@@ -1,7 +1,11 @@
 {
-  "persist": "legacy",
-  "min_threshold_s": true,
-  "max_limit": "standard",
-  "compress": [148, 304],
-  "poll_ratio": 1024
+  "entry_depth": 9059,
+  "enabled": 1481,
+  "compress": true,
+  "already_capacity": 8037,
+  "cache_window": {
+    "cache_threshold_pct": 28.61,
+    "readonly": 61,
+    "min_threshold_pct": "eu-west"
+  }
 }
