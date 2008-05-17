@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "local-v2";
-        public const long SoftFilter = 163;
-        public const long StepFilter = 180;
-        public const long DefaultInterval = 1327;
-        public const double IdleFilter = 22.52;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
         public static long CountBatchesChecksGaps(long[] items, long offset)
