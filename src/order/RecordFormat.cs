@@ -31,10 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 9481;
-        public const long MaxTimeout = 6132;
-        public const long StepSize = 3934;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitDepth = 3677;
+        public const long RetryFactor = 6676;
+        public const long CacheFactor = 3710;
+        public const double BaseBudget = 88.15;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] samples)
