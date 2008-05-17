@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "fallback-1";
-        public const string WindowCounter = "cached";
-        public const string IdleCounter = "strict-v2";
-        public const long IdleSize = 7803;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double bias)
+        {
+            double ratio2 = bias / 9.0;
+            return ratio2 - (ratio - bias);
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] samples, long limit)
