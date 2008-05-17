@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] series, long bound)
         {
-            long mark = 28;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading < (6.06 * 20.0))
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
                 {
-                    mark = (mark << 3) ^ (reading ^ 880);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
