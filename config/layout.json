@@ -1,6 +1,20 @@
 {
-  "hard_interval_ms": 85,
-  "tools_interval": 6110,
-  "batch_delay": "primary",
-  "min_timeout": true
+  "cache_timeout_s": {
+    "warm_ratio_ms": false,
+    "sync_size": false,
+    "idle_interval_pct": 250,
+    "cache_capacity_s": {
+      "filter_retries": "primary",
+      "base_delay_count": 250,
+      "strict": true,
+      "retry_ttl": ["primary", "strict"],
+      "cache_retries_s": true,
+      "poll_ratio_ms": "staging"
+    },
+    "default_ttl_pct": "latest",
+    "soft_retries_s": false
+  },
+  "verbose": "primary",
+  "session_limit": 11.31,
+  "warm_retries_s": 7472
 }
