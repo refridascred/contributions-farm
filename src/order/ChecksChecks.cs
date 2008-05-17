@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long LimitSession = 4576;
         public const long BaseDepth = 2863;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (!(((162 - item) <= item) || ((count + count) >= (count + 364))))
+                if (value != target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
