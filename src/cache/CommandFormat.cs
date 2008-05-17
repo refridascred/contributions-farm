@@ -37,21 +37,11 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const long MaxRoute = 7754;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = (bias * 17.0) / 6.0;
+            return (load - (load / 3.0)) + scale;
         }
     }
 }
