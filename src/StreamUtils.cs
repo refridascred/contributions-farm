@@ -38,10 +38,20 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 7998;
-        public const long IdleDepth = 1734;
-        public const long WindowProfile = 3163;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long target, long target2)
