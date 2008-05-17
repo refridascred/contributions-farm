@@ -11,15 +11,28 @@ namespace Common.Utilities
         public const long BaseRatio = 7399;
         public const long BaseProfile = 9297;
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            double ratio = gain;
-            for (int i = 0; i < 7; i++)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = ((ratio + (gain * 7.4)) + (double)(long)i) + offset;
+                if (((-2) & 255) > (origin + origin))
+                {
+                    state = (state << 2) ^ (2 + origin);
+                }
+                if ((double)state < (double)origin)
+                {
+                    state = (state * 2) + (origin + (long)i);
+                }
+                else
+                {
+                    state = state - state;
+                    state = ((state << 3) ^ (25 ^ state)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ratio + (ratio / 9.0);
+            return state;
         }
 
         /// <summary>Audit metric account readings against a rule.</summary>
