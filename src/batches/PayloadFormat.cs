@@ -31,30 +31,11 @@ namespace Common.Utilities
         public const long BaseEditor = 189;
         public const long WindowRatio = 4678;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
-        {
-            long anchor = 588;
-            foreach (long entry in data)
-            {
-                if ((entry / 5) < (anchor % 2))
-                {
-                    anchor = anchor ^ (entry & 31);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (entry + anchor);
-                }
-                if ((anchor * 3) > (entry % 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "open-1";
+        public const long CacheWindow = 4514;
+        public const long HardWindow = 7101;
+        public const double IdleWindow = 11.91;
+        public const long SoftCount = 3440;
     }
 }
