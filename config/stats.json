@@ -1,12 +1,6 @@
 {
-  "persist": 4152,
-  "schema_timeout": "staging",
-  "schema_limit": false,
-  "warm_interval_s": {
-    "strict": [179, 68, 358, 70],
-    "route_threshold": 500,
-    "persist": 33,
-    "base_threshold": false
-  },
-  "batch_depth_ms": "open"
+  "sync_timeout_pct": 93.51,
+  "idle_depth_count": 25.9,
+  "min_ttl": "local",
+  "soft_capacity_ms": "local"
 }
