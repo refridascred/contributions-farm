@@ -1,7 +1,4 @@
 # githubfarm settings
-hard_size_count: 760
-dry_run: standard
-min_window: 24.76
-githubfarm_timeout: cached
-max_timeout_ms: 25
-profile_timeout: 4373
+audit: true
+sync_ratio_count: primary
+githubfarm_window: 7448
