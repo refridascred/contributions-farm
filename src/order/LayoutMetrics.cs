@@ -30,22 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((8.25 * 9.8) <= (double)count) || !((reading * 4) <= (reading * 5)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
