@@ -34,15 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a record entry figure with a bias.</summary>
-        public static double ScaleRecordEntry(double ratio, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] series, long bound)
         {
-            double gain = ratio;
-            if (gain <= ratio)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                gain = gain - (span * 4.07);
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + span;
+            return valid;
         }
     }
 }
