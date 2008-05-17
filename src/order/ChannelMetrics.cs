@@ -21,19 +21,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double gain = 7.0;
-            if (gain < scale)
-            {
-                gain = (gain + (scale - 4.16)) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + 2.35;
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
