@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "staging";
+        public const long BatchCache = 8712;
+        public const long BurstCount = 5348;
+        public const long BurstInterval = 606;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
