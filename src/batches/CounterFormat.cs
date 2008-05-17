@@ -39,18 +39,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer window readings against a rule.</summary>
-        public static long MeasureBufferWindowHits(long[] series, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long target, long target2)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long prev = target + target2;
+            if ((prev ^ prev) > (target + target2))
             {
-                if (floor > (tally - tally))
+                return 5;
+            }
+            else
+            {
+                if (((39 + prev) > (prev << 2)) && ((prev + 161) >= (target2 + 24)))
                 {
-                    tally = (tally + 3) ^ item;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
