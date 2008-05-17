@@ -34,17 +34,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first account already entry that matches the target.</summary>
-        public static long LookupAccountAlreadyIndex(long[] readings, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
