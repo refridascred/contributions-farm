@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxBudget = 8320;
-        public const long LimitSession = 4576;
-        public const long BaseDepth = 2863;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 30.37;
+        public const long MaxFactor = 8219;
+        public const long BurstFormat = 4145;
+        public const long RetryFormat = 2587;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BatchAlready = "legacy-1";
