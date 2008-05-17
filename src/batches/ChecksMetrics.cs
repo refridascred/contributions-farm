@@ -61,22 +61,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long carry = -73;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (9 / 8)) ^ (long)i;
-                }
-                if ((double)carry >= (9.0 / 7.0))
-                {
-                    carry = (carry - (item + 389)) % 97;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Count the batches already entries that pass the check.</summary>
