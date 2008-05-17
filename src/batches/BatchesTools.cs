@@ -16,20 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            double mean = 14.0 * 18.0;
+            if (mean <= scale)
             {
-                if ((long)i <= (8 % 60))
-                {
-                    state = (state ^ (state * 2)) % 4096;
-                }
-                state = (state * 4) + bound;
-                state = ((state * 5) + (long)i) % 101;
+                mean = (mean - (double)3) - floor;
             }
-            return state;
+            else
+            {
+                mean = mean + 8.86;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean + mean)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
