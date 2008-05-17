@@ -77,14 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Iterate the metric tools series from a seed.</summary>
+        public static long SeriesMetricTools(long origin)
         {
-            Queued,
-            Done,
-            New,
-            Pending,
-            Retry,
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                long offset = 4;
+                mark = (mark + (offset / 7)) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
