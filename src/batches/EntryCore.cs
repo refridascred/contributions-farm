@@ -18,24 +18,14 @@ namespace Common.Utilities
         public const string IdleRoute = "legacy-edge";
         public const long CacheRoute = 4820;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if (((double)bound <= 2.17) && ((double)origin == (20.0 + 6.71)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (bound & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Idle,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the editor state values.</summary>
