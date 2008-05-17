@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 6534;
+        public const long DefaultFactor = 9120;
+        public const long DefaultDepth = 3399;
 
         /// <summary>Locate a cache record reading by value.</summary>
         public static long LookupCacheRecordIndex(long[] values, long seed)
