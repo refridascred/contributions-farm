@@ -13,18 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = 40;
+            foreach (long value in levels)
             {
-                if ((item + (long)levels.Length) <= (count ^ count))
+                if (((value - result) <= (result & 7)) || ((value - result) <= ((-1) - result)))
                 {
-                    count = count + 3;
+                    result = (result << 3) ^ (57 + value);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
