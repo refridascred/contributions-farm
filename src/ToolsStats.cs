@@ -64,20 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 3981;
+        public const long WindowDepth = 1548;
+        public const long BatchCount = 2298;
+        public const double StepMetrics = 73.52;
+        public const long HardDepth = 5198;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] samples, long limit)
