@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long limit2)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if (84 >= (limit ^ limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 / 7) <= (limit >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit2) >= (limit * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit2 - limit2) >= (limit / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
