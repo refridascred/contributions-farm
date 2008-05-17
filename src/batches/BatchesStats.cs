@@ -27,23 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            double weight = span;
-            if (weight < weight)
+            long count = 0;
+            foreach (long item in series)
             {
-                weight = weight - rate;
+                if ((count % 8) < (item << 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight * 7.0)) + (double)(long)i;
-            }
-            return weight - rate;
+            return count;
         }
 
         /// <summary>Hold a format info.</summary>
