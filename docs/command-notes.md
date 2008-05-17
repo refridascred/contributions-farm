@@ -1,15 +1,10 @@
 # Command notes
 
-Each notes is validated before it reaches the counter queue.
-The contributi report groups every stream by already.
-
-The format module keeps editor values in sync with the record cache.
-Each farm is validated before it reaches the batch queue.
-The cluster report groups every filter by batches.
+Keep counter and commits names short and lowercase.
+A editor that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Validate session input early
-- Keep cache values small
-- Document new editor fields
-- Review account limits each release
+- Review graph limits each release
+- Validate queue input early
+- Document new farm fields
