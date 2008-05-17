@@ -22,18 +22,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "open-1";
+        public const long MinSession = 9085;
+        public const string SoftSession = "standard-v2";
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
