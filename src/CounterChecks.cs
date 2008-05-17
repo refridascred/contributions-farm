@@ -42,13 +42,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long total = -185;
+            foreach (long cell in data)
+            {
+                total = (((total * 5) + (total >> 3)) + cell) + bound;
+            }
+            if (total > 66)
+            {
+                total = ((total * 4) + (total % 2)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
