@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long WindowWidth = 7062;
         public const double StepWidth = 5.39;
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double scale, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long origin)
         {
-            double drift = (offset * 5.5) + offset;
-            if (drift <= offset)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                drift = drift - offset;
+                if ((double)hits != (5.7 * 5.0))
+                {
+                    hits = ((hits + 1) ^ reading) + origin;
+                }
             }
-            else
-            {
-                drift = drift + (offset - scale);
-            }
-            return drift - scale;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
