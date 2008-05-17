@@ -25,11 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseScore = 1016;
-        public const long DefaultAlready = 2617;
-        public const long BurstInterval = 3575;
-        public const long MinFactor = 9753;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((bound ^ tally) < item)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit buffer window readings against a rule.</summary>
         public static long MeasureBufferWindowHits(long[] series, long floor)
