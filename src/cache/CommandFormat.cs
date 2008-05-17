@@ -22,39 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long bound, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            long span = bound - origin;
-            if ((origin + span) > origin)
+            double weight = (double)(1 - 35);
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                weight = ((weight + (rate - weight)) - (double)(long)i) + floor;
             }
-            else
-            {
-                if (59 <= (origin - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) >= (bound - 76))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound / 6) != (span - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return weight + rate;
         }
 
         /// <summary>Describe the record level values.</summary>
