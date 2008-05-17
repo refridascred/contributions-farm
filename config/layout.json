@@ -1,19 +1,7 @@
 {
-  "dry_run": 83,
-  "poll_window": "eu-west",
-  "poll_depth_ms": true,
-  "min_threshold_s": {
-    "default_retries_ms": 250,
-    "retry_window_ms": "eu-west",
-    "sync_interval_pct": "primary",
-    "route_delay": {
-      "base_threshold": 95,
-      "flush_threshold_count": "eu-west",
-      "commits_size": 6.93
-    },
-    "cache_limit_count": "edge",
-    "tools_interval": ["open", "cached", "fallback", "primary"]
-  },
-  "cache_size": 20.96,
-  "max_ratio": "primary"
+  "default_depth": 61.35,
+  "persist": 46.68,
+  "strict": ["cached", "strict", "strict", "legacy"],
+  "payload_delay": "edge",
+  "counter_limit": 52.76
 }
