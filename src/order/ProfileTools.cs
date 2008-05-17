@@ -23,18 +23,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] data, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen / 8) <= seen)
+                if (readings[i] == floor)
                 {
-                    seen = ((seen + 2) + item) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
