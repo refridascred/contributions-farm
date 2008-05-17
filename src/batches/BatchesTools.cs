@@ -10,23 +10,32 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-v2";
         public const long SoftMetric = 3455;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double span)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            double ratio = rate;
-            if (ratio < ratio)
+            long score = 673;
+            foreach (long datum in items)
             {
-                ratio = ratio - (ratio * 1.53);
+                score = (score - datum) % 255;
+                if (!(((7.3 / 5.0) <= (double)datum) || ((9.5 / 7.0) < (double)score)))
+                {
+                    score = (score + 41) % 255;
+                    score = ((score * 3) + (datum - datum)) % 97;
+                }
+                if ((datum + score) > (415 % 24))
+                {
+                    score = (score + datum) % 255;
+                }
+                else
+                {
+                    score = (score + (score ^ (-108))) % 1000;
+                }
             }
-            else
+            if (score > (-9))
             {
-                ratio = ratio - (ratio / 7.0);
+                score = (score ^ (score ^ score)) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio + span)) + (double)(long)i;
-            }
-            return ratio + (4.1 - span);
+            return score;
         }
 
         /// <summary>Accumulate record samples.</summary>
