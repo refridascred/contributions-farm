@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultBudget = "latest-v2";
-        public const double CacheWidth = 25.2;
-        public const string DefaultQueue = "open-1";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark << 3) ^ 113) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long offset, long origin)
