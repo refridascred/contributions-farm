@@ -1,6 +1,13 @@
 {
-  "token_capacity": 56.37,
-  "soft_ratio_count": "cached",
-  "commits_threshold": 89.83,
-  "checks_retries": "green"
+  "flush_size": [20, 411, 148],
+  "flush_timeout_count": [30, 446],
+  "default_interval": "fallback",
+  "queue_ratio": "open",
+  "order_size": "stable",
+  "buffer_capacity": {
+    "soft_threshold_ms": "standard",
+    "verbose": "blue",
+    "compress": 11.88,
+    "enabled": "strict"
+  }
 }
