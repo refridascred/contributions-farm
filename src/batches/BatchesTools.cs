@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const string WindowRecord = "alpha";
         public const double DefaultTimeout = 27.01;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5948;
-        public const long RetryInterval = 4909;
-        public const string StepBuffer = "legacy-v2";
-        public const long HardFactor = 9811;
-        public const string DefaultBuffer = "latest-1";
+        /// <summary>Scale a record entry figure with a bias.</summary>
+        public static double ScaleRecordEntry(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain <= ratio)
+            {
+                gain = gain - (span * 4.07);
+            }
+            return gain + span;
+        }
     }
 }
