@@ -21,19 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm window entries that pass the check.</summary>
-        public static long AuditFarmWindowGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((8.45 / 2.0) < (double)limit)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepDepth = 4.63;
+        public const long SoftRoute = 1227;
+        public const long BaseDepth = 5234;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
