@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3595;
+        public const double BurstSupport = 7.83;
+        public const long LimitFactor = 7298;
+        public const long HardSupport = 1768;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
