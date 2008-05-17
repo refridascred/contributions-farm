@@ -29,22 +29,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double weight = offset - (double)58;
+            if (weight > (offset * 15.0))
             {
-                if ((double)(long)series.Length != (2.0 - 12.0))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + bias;
             }
-            return matches;
+            else
+            {
+                weight = weight + (double)6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - bias) - (double)(long)i;
+            }
+            return weight + (offset / 8.0);
         }
     }
 }
