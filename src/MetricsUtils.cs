@@ -27,15 +27,10 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Locked,
-            Dropped,
-            Pending,
-            Active,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 5443;
+        public const long BatchContributi = 7941;
+        public const long RetryContributi = 964;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
