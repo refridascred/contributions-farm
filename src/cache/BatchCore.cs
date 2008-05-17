@@ -29,13 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Stale,
             Done,
-            Idle,
             Locked,
+            New,
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
