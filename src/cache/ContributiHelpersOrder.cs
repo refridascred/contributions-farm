@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const long RetryOrder = 9876;
         public const long IdleBudget = 5064;
 
-        /// <summary>Check that every stream layout entry stays within the limit.</summary>
-        public static bool VerifyStreamLayoutBounds(long[] levels, long origin)
+        /// <summary>Roll a counter commits counter forward.</summary>
+        public static long IterateCounterCommits(long offset)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
     }
 }
