@@ -47,16 +47,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] samples, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                mark = ((mark << 3) ^ step) % 97;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
