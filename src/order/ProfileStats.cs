@@ -56,19 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (!((limit & 63) != (result / 7)))
+                if (item > step)
                 {
-                    result = (result + (limit / 5)) % 4096;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
