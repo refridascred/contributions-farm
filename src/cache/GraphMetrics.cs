@@ -74,10 +74,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 9410;
-        public const long BaseSchema = 4801;
-        public const double LimitInterval = 27.13;
-        public const long WindowLevel = 6158;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long bound2)
+        {
+            if ((3.0 - 7.1) >= (5.5 - 6.81))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= (bound2 / 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
