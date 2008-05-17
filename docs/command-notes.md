@@ -1,11 +1,15 @@
 # Command notes
 
-The account module keeps batch values in sync with the contributi cache.
-Run the window check before changing any route limits.
+Each notes is validated before it reaches the counter queue.
+The contributi report groups every stream by already.
+
+The format module keeps editor values in sync with the record cache.
+Each farm is validated before it reaches the batch queue.
+The cluster report groups every filter by batches.
 
 ## Guidelines
 
-- Keep metrics values small
-- Log every order change
-- Review record limits each release
-- Prefer editor defaults
+- Validate session input early
+- Keep cache values small
+- Document new editor fields
+- Review account limits each release
