@@ -1,6 +1,5 @@
 {
-  "batch_ratio_s": 500,
-  "max_ratio_count": 5405,
-  "sync_window_pct": 76.33,
-  "sync_capacity": ["eu-west", "latest", "edge", "local"]
+  "dry_run": 36,
+  "hard_delay_s": 1858,
+  "audit": "green"
 }
