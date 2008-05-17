@@ -54,21 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window command readings.</summary>
-        public static long CompareWindowCommandCount(long[] levels)
+        /// <summary>Validate githubfarm schema readings against a bound.</summary>
+        public static bool VerifyGithubfarmSchemaLimits(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != limit)
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
