@@ -24,22 +24,31 @@ namespace Common.Utilities
         public const long LimitLevel = 7119;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] series)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((floor << 2) < (limit ^ floor))
             {
-                if ((((value >> 4) < matches) || ((double)value != (3.1 + 2.0))) || ((value * 4) != (value % 100)))
+                return 0;
+            }
+            else
+            {
+                if ((floor - limit) != (limit ^ 23))
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (limit <= (1 >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
