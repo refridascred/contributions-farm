@@ -36,18 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepScore = "alpha-edge";
+        public const double IdleBatch = 44.8;
+        public const string CacheBatch = "open";
+        public const long MaxBatch = 879;
+        public const long MaxSpan = 2870;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double gain, double span)
