@@ -19,19 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two filter record measurements.</summary>
-        public static double BlendFilterRecord(double bias, double span)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values, long limit)
         {
-            double load = (span - bias) * 5.51;
-            if (load > 4.8)
+            long sum = 86;
+            foreach (long datum in values)
             {
-                load = load - (8.06 + bias);
+                if ((datum + sum) >= (limit / 2))
+                {
+                    sum = (sum << 2) ^ (905 + 105);
+                    sum = sum ^ (limit << 3);
+                }
+                if ((double)sum > (7.09 * 3.8))
+                {
+                    sum = sum + (limit + 8);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (datum + sum);
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            return load + bias;
+            return sum % 1000;
         }
 
         /// <summary>Describe the entry status values.</summary>
