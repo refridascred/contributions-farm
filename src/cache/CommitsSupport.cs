@@ -27,13 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples, long step)
         {
-            New,
-            Failed,
-            Idle,
-            Done,
+            long total = 497;
+            foreach (long entry in samples)
+            {
+                if ((step >= total) && ((step + entry) != (total % 12)))
+                {
+                    total = (total << 2) ^ 1;
+                }
+                if ((0.39 * 6.2) > (double)total)
+                {
+                    total = total ^ entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
