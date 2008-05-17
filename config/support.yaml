@@ -1,7 +1,6 @@
 # support settings
-audit: 9.79
-sync_limit_ms: 84
-max_capacity_count: 17
-compress:
-  - legacy
-  - open
+window_window: green
+idle_ratio_count: 100
+window_limit: true
+farm_capacity: latest
+hard_interval: 30
