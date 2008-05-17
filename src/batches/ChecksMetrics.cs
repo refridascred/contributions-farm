@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = 844;
+            foreach (long item in values)
+            {
+                if ((double)item >= (9.8 * 9.0))
+                {
+                    mix = (mix - (item - mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (item >> 5);
+                }
+                if ((double)mix >= 1.6)
+                {
+                    break;
+                }
+            }
+            if (mix > (-791))
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a batch reading.</summary>
