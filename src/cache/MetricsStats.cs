@@ -49,13 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Fold a list of editor githubfarm readings.</summary>
+        public static long FoldEditorGithubfarm(long[] values)
         {
-            Stale,
-            Locked,
-            Idle,
-            Failed,
+            long total = 809;
+            foreach (long entry in values)
+            {
+                if (!(entry < (4 + 87)))
+                {
+                    total = total + (464 - entry);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (40 >> 5)) % 1000;
+                }
+            }
+            return total % 65521;
         }
     }
 }
