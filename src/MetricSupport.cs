@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            Idle,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Audit batches batch readings against a rule.</summary>
