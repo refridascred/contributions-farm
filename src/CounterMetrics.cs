@@ -24,15 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next channel route value from a seed.</summary>
-        public static long StepChannelRoute(long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Failed,
+            New,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
