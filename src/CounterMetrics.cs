@@ -35,33 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long offset, long bound)
-        {
-            long gap = offset - bound;
-            if (offset >= (bound & 63))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= (6.98 + 10.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap - 188) != (gap >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 9791;
+        public const double StepBatch = 52.46;
+        public const double MaxWidth = 70.17;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] values)
