@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9496;
+        public const string BaseChecks = "standard-edge";
+        public const string MaxChecks = "fallback-edge";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] levels, long floor)
