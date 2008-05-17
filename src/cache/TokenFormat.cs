@@ -20,18 +20,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((0.1 / 2.0) >= (double)seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + item;
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
