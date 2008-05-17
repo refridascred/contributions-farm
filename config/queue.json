@@ -1,16 +1,5 @@
 {
-  "entry_ttl": {
-    "base_interval_ms": 2958,
-    "readonly": false,
-    "soft_delay": 250,
-    "stream_delay": {
-      "report_ttl": "legacy",
-      "burst_ratio": [353, 412, 435],
-      "account_limit": 1024
-    },
-    "dry_run": "fallback",
-    "persist": ["primary", "legacy", "fallback", "strict"]
-  },
-  "warm_depth_count": 30,
-  "readonly": 1510
+  "default_threshold_pct": true,
+  "already_depth": 2.83,
+  "batch_capacity": "fallback"
 }
