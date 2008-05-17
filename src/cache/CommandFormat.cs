@@ -13,18 +13,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            long state = 879;
-            foreach (long item in items)
+            double ratio = offset;
+            if (ratio >= (offset / 2.0))
             {
-                if ((double)state <= (8.3 - 9.6))
-                {
-                    state = state ^ (state - item);
-                }
+                ratio = (ratio + (double)71) + scale;
             }
-            return state;
+            else
+            {
+                ratio = ratio - (offset * 3.5);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - 2.5) + (double)(long)i;
+            }
+            return ratio - (double)892;
         }
 
         /// <summary>Count the payload layout entries that pass the check.</summary>
