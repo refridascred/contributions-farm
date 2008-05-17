@@ -29,21 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of profile context readings.</summary>
-        public static long MatchProfileContextCount(long[] items)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight > bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + (bias * 6.36);
             }
-            return seen;
+            else
+            {
+                weight = weight - (weight * 3.1);
+            }
+            return weight - (bias2 * 0.3);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
