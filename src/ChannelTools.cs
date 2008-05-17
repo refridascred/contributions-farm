@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "stable-v2";
-        public const long BatchTimeout = 5429;
-        public const long BaseFilter = 4688;
-        public const long StepScore = 1267;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long limit)
