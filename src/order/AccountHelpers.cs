@@ -43,24 +43,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 8;
+            foreach (long item in items)
             {
-                carry = (carry ^ (carry ^ (long)i)) % 4096;
-                if ((1.0 + 5.6) != (double)step)
+                if (((sum << 1) > item) || ((item * 4) <= (sum % 3)))
+                {
+                    sum = (sum << 3) ^ (169 & 15);
+                }
+                if (((item << 3) > (sum + 8)) || ((27 - sum) > (sum & 63)))
                 {
                     break;
                 }
-                else
-                {
-                    carry = (carry - (step / 2)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            if (sum > 3)
+            {
+                sum = (sum ^ (sum ^ sum)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the already class values.</summary>
