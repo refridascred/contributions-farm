@@ -81,19 +81,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long sum = 64;
+            foreach (long item in data)
             {
-                if (datum < offset)
+                sum = (sum << 2) ^ (67 * 2);
+                if ((sum ^ item) <= (item >> 3))
                 {
-                    valid = false;
-                    break;
+                    sum = sum - (sum & 3);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum + item)) % 101;
                 }
             }
-            return valid;
+            if (sum > 6)
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
