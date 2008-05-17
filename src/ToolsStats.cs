@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "primary-1";
-        public const long CacheNotes = 1312;
-        public const string BaseDepth = "cached";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + 4) >= (matches >> 3))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] data)
