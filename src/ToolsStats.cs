@@ -42,21 +42,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -8;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(bound > (974 << 3)))
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (bound << 3)) % 4096;
+                }
+                if ((anchor + item) > bound)
+                {
+                    anchor = anchor - (item + item);
+                }
+                else
+                {
+                    anchor = anchor ^ item;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a notes info.</summary>
