@@ -83,25 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long origin, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] items, long target)
         {
-            long edge = origin + bound;
-            if (bound <= (origin / 2))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound / 6) <= (edge - edge)) || ((bound >> 4) > (origin + origin)))
+                if (cell <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
