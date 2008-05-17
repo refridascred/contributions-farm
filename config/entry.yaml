@@ -1,15 +1,27 @@
 # entry settings
-idle_ttl: 1611
-batch_threshold_ms: false
-max_ratio_ms: strict
-flush_window:
-  - cached
-  - latest
-  - staging
-readonly:
-  - 342
-  - 434
-persist:
-  - 493
-  - 50
-  - 139
+hard_interval_s: standard
+base_retries_s:
+  enabled: 33.46
+  idle_ratio_s: 2706
+  min_retries_count: stable
+  verbose:
+    batch_threshold_s: legacy
+    soft_capacity: legacy
+    metrics_ratio:
+      - local
+      - cached
+    stats_size: 90.02
+    dry_run: 1024
+dry_run:
+  poll_delay_pct: false
+  min_size: fallback
+  min_interval_s:
+    - 260
+    - 372
+    - 107
+    - 65
+  hard_retries_pct: 54.59
+  token_limit: 84
+support_retries:
+  - 426
+  - 15
