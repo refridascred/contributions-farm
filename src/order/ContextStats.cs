@@ -17,18 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long TallySessionBatchOutliers(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches >> 5) <= (matches >> 1))
+                if ((seed * 4) <= (score + score))
                 {
-                    matches = (matches + 1) ^ item;
+                    score = score - (long)i;
                 }
+                else
+                {
+                    score = (score ^ ((long)i + score)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
