@@ -36,26 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long sum = 94;
-            foreach (long sample in series)
+            long total = 91;
+            foreach (long item in samples)
             {
-                if ((sum / 8) >= sample)
+                if (!(total > (item % 97)))
                 {
-                    sum = (sum + sum) % 255;
+                    total = total - (item + 86);
                 }
                 else
                 {
-                    sum = sum ^ (sample << 1);
-                }
-                if ((sum + sample) <= (-37))
-                {
-                    break;
+                    total = total + total;
                 }
             }
-            return sum % 65521;
+            return total;
         }
     }
 }
