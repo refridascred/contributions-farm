@@ -33,12 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 7201;
-        public const double MinDepth = 37.33;
-        public const long CacheSpan = 7261;
-        public const long HardBudget = 2458;
-        public const long StepFilter = 2156;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Done,
+            Locked,
+            New,
+            Queued,
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsMatches(long[] series)
