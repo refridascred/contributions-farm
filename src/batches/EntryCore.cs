@@ -36,14 +36,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long limit)
         {
-            Active,
-            Idle,
-            Closed,
-            Dropped,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a window cluster sample.</summary>
