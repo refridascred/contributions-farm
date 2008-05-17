@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultBudget = "latest-v2";
+        public const double CacheWidth = 25.2;
+        public const string DefaultQueue = "open-1";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long step, long limit)
