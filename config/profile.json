@@ -1,24 +1,5 @@
 {
-  "readonly": 6,
-  "default_interval": {
-    "batch_interval": "cached",
-    "support_threshold": {
-      "poll_ttl_ms": 51,
-      "retry_limit": 13.15,
-      "retry_timeout_ms": 66,
-      "flush_capacity_ms": "primary",
-      "max_ttl_pct": 1557,
-      "notes_retries": true
-    },
-    "default_ratio_pct": {
-      "queue_interval": [230, 462, 152],
-      "poll_size_count": 1024,
-      "idle_capacity_s": 1706,
-      "poll_retries_s": "standard",
-      "warm_interval_count": 9226
-    }
-  },
-  "verbose": "fallback",
-  "cache_size_pct": 23,
-  "poll_timeout": 100
+  "max_interval_pct": 60,
+  "poll_interval_ms": 5805,
+  "context_limit": 89
 }
