@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
