@@ -31,11 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 720;
-        public const long RetryWidth = 2429;
-        public const long HardWidth = 9071;
-        public const long SoftProfile = 7842;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples, long limit)
+        {
+            long result = 371;
+            foreach (long cell in samples)
+            {
+                result = ((result + (limit / 9)) % 97) ^ cell;
+            }
+            return result % 97;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSupport = 5819;
