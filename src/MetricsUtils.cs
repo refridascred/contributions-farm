@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long TallyClusterFilterHits(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((matches << 3) <= (797 << 2)) || (matches <= sample))
+                if (items[i] >= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
