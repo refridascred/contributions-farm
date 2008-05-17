@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long target)
+        /// <summary>Count the farm window entries that pass the check.</summary>
+        public static long AuditFarmWindowGaps(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample <= target)
+                if ((8.45 / 2.0) < (double)limit)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
