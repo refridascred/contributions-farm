@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values, long limit)
         {
-            long result = 2;
-            foreach (long cell in items)
+            long total = 448;
+            foreach (long sample in values)
             {
-                if (!(((17.0 - 10.0) >= (double)cell) || ((double)result > (16.0 - 3.5))))
+                if ((double)limit > (double)total)
                 {
-                    result = ((result * 5) + cell) % 65521;
-                }
-                if ((double)cell < (7.8 + 9.2))
-                {
-                    result = (result ^ ((-55) * 3)) % 1000;
+                    total = total + sample;
                 }
             }
-            return result % 65521;
+            if (total < 48)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
