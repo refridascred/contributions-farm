@@ -13,10 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardFactor = 5065;
-        public const string DefaultTimeout = "fallback-1";
-        public const long IdleRecord = 227;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 7090;
