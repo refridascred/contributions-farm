@@ -20,10 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstBudget = 2934;
-        public const long MaxWidth = 3524;
-        public const long HardDepth = 3887;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 73.62;
+        public const string BurstBudget = "cached-1";
+        public const long BaseWidth = 2774;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double scale, double floor)
