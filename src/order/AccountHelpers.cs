@@ -69,15 +69,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long bound)
         {
-            double rate = floor;
-            if (rate >= floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)45) - bias;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
     }
 }
