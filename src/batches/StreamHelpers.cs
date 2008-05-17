@@ -28,32 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue notes value against two limits.</summary>
-        public static long BucketQueueNotes(long offset, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            long prev = offset + origin;
-            if ((prev + prev) >= (origin ^ prev))
+            double drift = (double)((-541) - 540);
+            if (drift >= (span + rate))
             {
-                return 6;
+                drift = drift + (double)4;
             }
-            else
-            {
-                if (((double)prev == (8.0 * 2.7)) || ((double)prev < (9.0 + 11.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (prev < (1 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift + rate;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
