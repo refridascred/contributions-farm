@@ -1,6 +1,7 @@
 {
-  "hard_depth": "fallback",
-  "enabled": "cached",
-  "default_limit_pct": false,
-  "default_size_pct": 4.23
+  "warm_ttl_s": false,
+  "batch_retries_count": "staging",
+  "poll_ratio_pct": 4344,
+  "cache_capacity_s": 100,
+  "burst_size_count": false
 }
