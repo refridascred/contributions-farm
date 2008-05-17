@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (127 > (step + 2))
                 {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm stats readings.</summary>
