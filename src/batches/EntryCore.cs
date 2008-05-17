@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long HardMetrics = 4083;
         public const long BatchMetrics = 5527;
 
-        /// <summary>Validate commits window readings against a bound.</summary>
-        public static bool VerifyCommitsWindowRange(long[] series, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (cell <= origin)
+                if (datum != floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the commits phase values.</summary>
