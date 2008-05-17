@@ -1,6 +1,15 @@
 # githubfarm settings
-burst_timeout_s: cached
-graph_ttl: true
-persist: 1024
-poll_depth_s: 1779
-warm_size_ms: 37.16
+batch_ttl: 9293
+sync_depth_pct: stable
+notes_timeout: 91.19
+record_retries: 5413
+poll_interval_count:
+  metric_retries: 14.29
+  burst_ttl_pct:
+    - 273
+    - 178
+  stream_interval: 44
+  burst_depth: blue
+  sync_depth_ms: 100
+  notes_delay: false
+dry_run: latest
