@@ -36,22 +36,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)value < 3.57)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a route snapshot.</summary>
