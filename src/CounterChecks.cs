@@ -68,20 +68,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Rank window notes input into a small class.</summary>
+        public static long BucketWindowNotes(long step, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            if ((37 % 10) <= seed)
             {
-                mix = (mix - ((long)i - mix)) % 1000;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (((mix << 3) ^ (mix + mix)) % 255) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)step >= (1.28 - 15.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(step > (seed >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel phase values.</summary>
