@@ -15,15 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next context session value.</summary>
-        public static double ProjectContextSession(double weight, double span)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double rate, double span)
         {
-            double weight2 = weight + (span - span);
-            for (int i = 0; i < 6; i++)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                weight2 = (weight2 - (double)46) - (double)(long)i;
+                ratio = ratio + (6.95 - rate);
             }
-            return weight2 + 9.0;
+            else
+            {
+                ratio = ratio + (double)24;
+            }
+            return ratio - (double)776;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
