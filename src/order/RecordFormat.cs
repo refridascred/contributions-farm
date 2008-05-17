@@ -13,22 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm batches readings against a rule.</summary>
-        public static long AuditGithubfarmBatchesOutliers(long[] readings, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches / 8) > (matches & 31)) && ((entry + (long)readings.Length) > (351 + (-175))))
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
