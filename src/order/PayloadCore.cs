@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 58.54;
-        public const string LimitTimeout = "cached";
-        public const long BaseRatio = 7399;
-        public const long BaseProfile = 9297;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data, long step)
+        {
+            long sum = 855;
+            foreach (long value in data)
+            {
+                sum = ((sum * 2) + ((-54) >> 1)) - value;
+                if (!((sum ^ sum) > (step ^ 0)))
+                {
+                    break;
+                }
+            }
+            if (sum < 70)
+            {
+                sum = sum - sum;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] levels)
