@@ -1,4 +1,17 @@
 # support settings
-batches_retries: open
-tools_retries: false
-cache_retries_pct: 500
+hard_ttl: false
+flush_ttl:
+  - staging
+  - staging
+  - standard
+  - green
+min_size_pct:
+  - 226
+  - 363
+  - 162
+hard_timeout_ms:
+  channel_limit: 83.67
+  batch_timeout: 58.27
+  hard_delay_pct: 37.15
+persist: 1135
+cache_retries_count: primary
