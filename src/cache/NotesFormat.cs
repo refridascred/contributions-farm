@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long BatchContributi = 5877;
         public const long SoftContributi = 1540;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            long anchor = 10;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((sample + sample) > (step & 31))
+                if (entry > seen)
                 {
-                    anchor = (anchor << 2) ^ 9;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = anchor + (step + 81);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
