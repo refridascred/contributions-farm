@@ -36,10 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowBudget = 329;
-        public const long BurstSpan = 2447;
-        public const long SoftCounter = 7523;
+        /// <summary>Check that every route account entry stays within the limit.</summary>
+        public static bool GuardRouteAccountLimits(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
         public static bool GuardBatchRecordLimits(long[] levels, long offset)
