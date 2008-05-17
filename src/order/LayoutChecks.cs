@@ -38,14 +38,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            Ready,
-            Failed,
-            Pending,
-            Queued,
-            Closed,
+            long sum = 91;
+            foreach (long value in readings)
+            {
+                if (((sum - value) > (72 ^ 4)) || ((value - sum) != ((-560) << 1)))
+                {
+                    sum = sum ^ value;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine record values into a single score.</summary>
