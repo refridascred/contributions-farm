@@ -29,28 +29,22 @@ namespace Common.Utilities
             return (drift - (ratio + ratio)) + offset;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples, long offset)
         {
-            long carry = 322;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                carry = carry ^ (66 - entry);
-                carry = (carry * 5) + (entry / 3);
-                if (((long)readings.Length ^ carry) < (carry - carry))
+                if ((hits & 7) == (long)samples.Length)
                 {
-                    carry = (carry + (entry >> 4)) % 65521;
+                    hits = ((hits + 1) + item) + offset;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ 336) % 255;
+                    hits = hits - 1;
                 }
             }
-            if (carry > 649)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Locate a metrics batches reading by value.</summary>
