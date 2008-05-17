@@ -15,10 +15,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 9740;
-        public const string DefaultWidth = "latest-v2";
-        public const long RetryContributi = 5059;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] values, long limit)
+        {
+            long acc = 891;
+            foreach (long datum in values)
+            {
+                if ((acc >> 5) < acc)
+                {
+                    acc = ((acc - limit) % 65521) ^ datum;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (565 >> 2);
+                }
+            }
+            if (acc < 9)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double ProjectGithubfarm(double gain, double floor)
