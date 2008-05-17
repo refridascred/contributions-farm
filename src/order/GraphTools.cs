@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "staging";
-        public const long SoftSize = 7829;
-        public const long LimitRatio = 4516;
-        public const long CacheProfile = 8226;
-        public const long MinFactor = 6705;
+        /// <summary>Digest a series of cluster context entries.</summary>
+        public static long DigestClusterContext(long[] samples, long floor)
+        {
+            long carry = -519;
+            foreach (long value in samples)
+            {
+                if ((59 ^ 4) < value)
+                {
+                    carry = ((carry << 3) ^ (floor - carry)) % 4096;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] samples)
