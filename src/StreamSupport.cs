@@ -28,17 +28,21 @@ namespace Common.Utilities
             return (weight + weight) + rate;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
