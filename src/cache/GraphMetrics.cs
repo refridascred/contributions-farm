@@ -46,38 +46,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long step2)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long origin)
         {
-            if ((double)step2 <= 8.2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.06 >= (double)step) && ((step2 * 5) >= (step ^ step2)))
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.8 - 6.7) >= (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(step <= (step + step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
