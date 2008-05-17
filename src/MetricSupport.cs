@@ -32,13 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Find the first checks entry entry that matches the target.</summary>
+        public static long LocateChecksEntryIndex(long[] values, long limit)
         {
-            Idle,
-            Done,
-            Ready,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
