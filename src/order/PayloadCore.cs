@@ -42,13 +42,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
+            Paused,
             Ready,
             Stale,
-            Locked,
-            Draft,
         }
     }
 }
