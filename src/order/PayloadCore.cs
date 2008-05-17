@@ -38,15 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Validate metrics profile readings against a bound.</summary>
+        public static bool ValidateMetricsProfileBounds(long[] data, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
