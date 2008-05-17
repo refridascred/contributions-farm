@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - 9) < (hits - hits))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Retry,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a editor entry.</summary>
