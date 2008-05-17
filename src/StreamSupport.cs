@@ -24,23 +24,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double offset)
-        {
-            double weight = offset - (double)58;
-            if (weight > (offset * 15.0))
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight + (double)6;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight + (offset / 8.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSpan = 7991;
+        public const double BurstFormat = 9.02;
+        public const long BaseFormat = 5819;
+        public const long IdleScore = 4093;
     }
 }
