@@ -57,19 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long ScoreAccountProfile(long[] data, long limit)
         {
-            long total = 239;
-            foreach (long entry in series)
+            long mark = 929;
+            foreach (long sample in data)
             {
-                total = (((total * 5) + 3) % 255) + entry;
+                mark = ((mark * 3) + (sample + mark)) + limit;
             }
-            if (total > 12)
-            {
-                total = (total ^ (total / 7)) % 101;
-            }
-            return total % 65521;
+            return mark;
         }
     }
 }
