@@ -17,17 +17,12 @@ namespace Common.Utilities
         public const long BatchSize = 7700;
         public const long IdleChecks = 4727;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a notes session counter forward.</summary>
