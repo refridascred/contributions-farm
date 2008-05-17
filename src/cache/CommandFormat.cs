@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 1573;
-        public const double RetrySize = 86.07;
-        public const long DefaultGraph = 9880;
-        public const string WindowGraph = "primary-1";
-        public const long BurstGraph = 9170;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
+        {
+            long state = 879;
+            foreach (long item in items)
+            {
+                if ((double)state <= (8.3 - 9.6))
+                {
+                    state = state ^ (state - item);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the payload layout entries that pass the check.</summary>
         public static long CountPayloadLayoutHits(long[] values)
