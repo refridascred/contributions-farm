@@ -13,18 +13,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] data, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long limit)
         {
-            long carry = 10;
-            foreach (long datum in data)
+            long span = origin - limit;
+            if (!(limit > (origin - origin)))
             {
-                if (((origin & 63) < (7 ^ datum)) || ((carry & 255) > (19 >> 2)))
+                return 1;
+            }
+            else
+            {
+                if ((limit * 2) != (span & 255))
                 {
-                    carry = ((carry << 3) ^ carry) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (!((0 - span) < (limit % 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Hold a notes record.</summary>
