@@ -47,19 +47,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 4823;
+        public const long BatchSpan = 8184;
+        public const long BatchToken = 5979;
+        public const long MaxRatio = 910;
+        public const long SoftDepth = 6673;
     }
 }
