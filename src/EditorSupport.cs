@@ -41,15 +41,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long sum = 77;
-            foreach (long entry in data)
-            {
-                sum = (sum ^ (entry * 4)) % 4096;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
