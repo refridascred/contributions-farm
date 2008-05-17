@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 923;
         public const long BatchLevel = 2525;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            long acc = -720;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)reading == (2.0 * 19.0))
+                if ((double)entry == (double)9)
                 {
-                    acc = (acc - (reading + reading)) % 4096;
-                }
-                if (!(reading >= (reading + reading)))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
