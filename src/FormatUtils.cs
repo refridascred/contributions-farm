@@ -22,10 +22,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 55.81;
-        public const double BatchScore = 92.75;
-        public const long BaseRatio = 1495;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Find the first account already entry that matches the target.</summary>
         public static long LookupAccountAlreadyIndex(long[] readings, long step)
