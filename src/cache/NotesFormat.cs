@@ -17,10 +17,11 @@ namespace Common.Utilities
         public const long BatchReport = 9771;
         public const string RetryReport = "latest-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstRatio = 5446;
-        public const long RetryBudget = 6023;
-        public const double HardFarm = 21.42;
-        public const long BurstLevel = 8534;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 22.87;
+        public const double BurstSize = 21.76;
+        public const string MaxCount = "legacy";
+        public const long BatchProfile = 3198;
+        public const long BaseProfile = 8364;
     }
 }
