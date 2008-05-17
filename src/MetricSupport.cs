@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long bound, long offset)
+        /// <summary>Audit queue buffer readings against a rule.</summary>
+        public static long TallyQueueBufferMatches(long[] data)
         {
-            if ((offset % 3) <= (bound + offset))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ offset) != (3 >> 4))
+                if (count < (420 + count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < 7.43)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit batches batch readings against a rule.</summary>
