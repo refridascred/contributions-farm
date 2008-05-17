@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank cluster already input into a small class.</summary>
-        public static long BucketClusterAlready(long origin, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings)
         {
-            if ((75 * 3) >= (step + origin))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.7 * 5.97) > (double)origin)
+                if (!!((tally + datum) == (datum & 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((85 + origin) > (origin + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
