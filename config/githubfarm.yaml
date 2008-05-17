@@ -1,11 +1,4 @@
 # githubfarm settings
-max_capacity_ms:
-  - primary
-  - open
-farm_limit: false
-stats_ratio:
-  strict: cached
-  sync_ratio_count: 4071
-  max_threshold_count: 250
-  batch_capacity_ms: stable
+cache_threshold_count: false
+cache_retries_count: true
 dry_run: blue
