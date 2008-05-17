@@ -20,11 +20,28 @@ namespace Common.Utilities
             return ratio + (double)343;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryFactor = 36.0;
-        public const long BatchStats = 3633;
-        public const long HardStats = 9043;
-        public const double BurstInterval = 59.35;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
+        {
+            long state = 74;
+            foreach (long cell in samples)
+            {
+                if ((state ^ cell) < state)
+                {
+                    state = (state + ((long)samples.Length + cell)) % 101;
+                    state = (state + (cell >> 4)) % 1000;
+                }
+                if (state >= cell)
+                {
+                    state = ((state << 3) ^ 60) % 4096;
+                }
+            }
+            if (state < 240)
+            {
+                state = state - state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstScore = "legacy-v2";
