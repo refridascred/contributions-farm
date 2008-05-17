@@ -16,15 +16,19 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Grade a session cluster value against two limits.</summary>
