@@ -97,19 +97,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long target)
         {
-            long carry = 47;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry * 3) + (carry ^ floor)) % 65521) + sample;
-                if ((carry & 127) > (floor + floor))
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
                 {
-                    carry = carry + (long)values.Length;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
     }
 }
