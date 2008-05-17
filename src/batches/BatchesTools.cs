@@ -37,14 +37,15 @@ namespace Common.Utilities
             return ratio + (4.1 - span);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long target)
         {
-            Ready,
-            Pending,
-            Closed,
-            Failed,
-            Queued,
+            long result = 435;
+            foreach (long item in readings)
+            {
+                result = ((result + (item ^ item)) % 97) + target;
+            }
+            return result % 1000;
         }
     }
 }
