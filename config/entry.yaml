@@ -1,7 +1,28 @@
 # entry settings
-batches_retries: 66
-poll_retries: 51.45
-cache_size_count: legacy
-strict: cached
-persist: 100
-burst_size_count: 2385
+min_delay_s: cached
+flush_ratio_ms:
+  persist: 72
+  default_ratio_s:
+    poll_capacity_s: latest
+    verbose:
+      - 52
+      - 224
+      - 65
+      - 395
+    dry_run: true
+  max_delay:
+    burst_limit_ms: 100
+    warm_ttl_pct: eu-west
+    layout_retries: 51
+    readonly: green
+    already_ttl: 7965
+  batch_ratio_count: 1542
+  poll_capacity: latest
+burst_window_count: open
+support_capacity: open
+base_limit_s: true
+hard_capacity_s:
+  poll_ttl: 100
+  batch_size: 9608
+  persist: eu-west
+  verbose: legacy
