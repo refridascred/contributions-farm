@@ -37,19 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel report samples.</summary>
-        public static long WeighChannelReport(long[] values, long offset)
-        {
-            long result = 3;
-            foreach (long item in values)
-            {
-                result = (result ^ (offset ^ item)) % 255;
-                if ((result - offset) < offset)
-                {
-                    result = (result - (offset - item)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 5948;
+        public const long RetryInterval = 4909;
+        public const string StepBuffer = "legacy-v2";
+        public const long HardFactor = 9811;
+        public const string DefaultBuffer = "latest-1";
     }
 }
