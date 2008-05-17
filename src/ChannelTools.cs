@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] values, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if (((origin + seed) < origin) || ((0.09 / 9.0) > (double)seed))
             {
-                if (item >= limit)
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed <= (double)(-37)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 - 6.4) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a checks options.</summary>
