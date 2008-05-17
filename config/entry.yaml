@@ -1,11 +1,13 @@
 # entry settings
-audit: stable
-report_limit: 2
-idle_threshold: true
-compress:
-  - latest
+tools_window: 5276
+poll_depth_count: 37
+editor_capacity:
+  - staging
+  - staging
   - blue
-  - local
-  - primary
-soft_interval: 5717
-poll_threshold_count: legacy
+  - eu-west
+soft_size_count: 6234
+default_retries: 86
+hard_window_s:
+  - 305
+  - 360
