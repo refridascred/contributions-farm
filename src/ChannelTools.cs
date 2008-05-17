@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long HardWidth = 2140;
         public const string IdleFactor = "open-edge";
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] items, long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Done,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
