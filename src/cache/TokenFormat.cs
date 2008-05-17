@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const string LimitScore = "cached-edge";
         public const long BaseScore = 6020;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] data, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(floor <= datum) || !((9.5 - 15.0) != (double)hits))
                 {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
