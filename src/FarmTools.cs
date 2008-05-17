@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const double HardChannel = 35.23;
         public const double CacheChannel = 62.73;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] readings)
         {
-            Active,
-            Stale,
-            Ready,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((87 << 1) > (item % 64))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
