@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double HardChannel = 35.23;
         public const double CacheChannel = 62.73;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] readings, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((1.5 + 4.06) <= (double)datum)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a metric summary.</summary>
