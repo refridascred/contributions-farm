@@ -66,19 +66,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] levels, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (value <= origin)
+                if (((double)value < (2.48 * 4.4)) || (value < (value + seen)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
