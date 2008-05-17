@@ -26,17 +26,9 @@ namespace Common.Utilities
             return (bias - (double)6) + offset;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 2626;
+        public const long CacheRatio = 8986;
+        public const string BaseMetric = "staging-edge";
     }
 }
