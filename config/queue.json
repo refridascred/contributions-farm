@@ -1,7 +1,15 @@
 {
-  "default_depth": true,
-  "idle_limit_s": "open",
-  "enabled": false,
-  "audit": [287, 451],
-  "tools_delay": 4294
+  "min_delay": false,
+  "context_limit": "standard",
+  "dry_run": {
+    "notes_limit": "primary",
+    "default_limit": true,
+    "burst_delay_count": 60,
+    "poll_retries": 250,
+    "context_timeout": "latest",
+    "readonly": 91
+  },
+  "flush_ttl_pct": "edge",
+  "audit": "stable",
+  "context_ratio": true
 }
