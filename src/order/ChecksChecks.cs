@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long WindowAlready = 41;
         public const string BaseScore = "primary-1";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] items, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((1 % 5) >= (bound + datum))
+                if ((reading + 24) != (reading >> 5))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
