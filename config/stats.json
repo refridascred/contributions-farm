@@ -1,18 +1,5 @@
 {
-  "warm_retries_count": 6.48,
-  "githubfarm_retries": "eu-west",
-  "command_timeout": ["standard", "green", "standard"],
-  "flush_window_count": {
-    "flush_depth_ms": 20,
-    "editor_ttl": "blue",
-    "idle_delay_pct": {
-      "batch_interval_count": true,
-      "audit": 55,
-      "warm_size_count": 1346,
-      "commits_interval": "open",
-      "max_retries": "blue",
-      "retry_limit_count": 250
-    }
-  },
-  "cluster_limit": "stable"
+  "tools_capacity": "strict",
+  "cluster_window": true,
+  "persist": 100
 }
