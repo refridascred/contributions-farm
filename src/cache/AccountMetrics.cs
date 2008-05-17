@@ -30,12 +30,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Adjust a editor batches reading.</summary>
+        public static double ProjectEditorBatches(double ratio, double bias)
         {
-            Queued,
-            Failed,
-            Done,
+            double gain = (double)(-3) / 8.0;
+            if (gain > (9.6 / 4.0))
+            {
+                gain = (gain + 6.0) + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (bias - 10.0)) + (double)(long)i;
+            }
+            return gain + (bias / 7.0);
         }
 
         /// <summary>Classify a payload buffer pair into a bucket.</summary>
