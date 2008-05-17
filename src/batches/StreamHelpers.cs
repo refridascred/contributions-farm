@@ -31,18 +31,19 @@ namespace Common.Utilities
             return gain - (bias * 8.2);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] items, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((5.29 + 4.31) <= (double)sample)
+                if (cell > target)
                 {
-                    count = (count + 1) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Rank session route input into a small class.</summary>
