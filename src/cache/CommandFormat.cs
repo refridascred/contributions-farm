@@ -33,13 +33,17 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Locate a layout counter reading by value.</summary>
+        public static long FindLayoutCounterIndex(long[] items, long seed)
         {
-            Idle,
-            Ready,
-            New,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
