@@ -15,19 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double rate, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] data)
         {
-            double ratio = span;
-            if (ratio > ratio)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio + (6.95 - rate);
+                if ((seen % 97) < seen)
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)24;
-            }
-            return ratio - (double)776;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
