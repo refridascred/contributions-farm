@@ -15,10 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinLevel = "open-v2";
-        public const long IdleInterval = 9904;
-        public const long WindowSupport = 8221;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ProjectBuffer(double gain, double floor)
