@@ -26,22 +26,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + reading) < (count * 2))
-                {
-                    count = (count + 1) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 6729;
+        public const long MinOrder = 5452;
+        public const long MaxLevel = 5645;
     }
 }
