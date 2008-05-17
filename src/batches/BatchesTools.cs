@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if (!((target - 0) > (offset + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target ^ offset) == (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + target) >= (target / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
