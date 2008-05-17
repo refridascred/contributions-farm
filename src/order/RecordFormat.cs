@@ -31,11 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitDepth = 3677;
-        public const long RetryFactor = 6676;
-        public const long CacheFactor = 3710;
-        public const double BaseBudget = 88.15;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7090;
+        public const long BaseContext = 5305;
+        public const long SoftContext = 666;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] samples)
