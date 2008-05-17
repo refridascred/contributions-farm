@@ -39,13 +39,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] series, long step)
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)73 <= (double)step) && ((9.9 + 2.44) >= (double)cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
