@@ -41,14 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Queued,
-            Retry,
-            New,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1057;
+        public const double BurstBudget = 71.83;
+        public const long MinProfile = 9371;
+        public const string BaseDepth = "local-v2";
+        public const string BurstScore = "open";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] levels, long limit)
