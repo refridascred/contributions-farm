@@ -54,19 +54,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Locked,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Blend two notes measurements.</summary>
