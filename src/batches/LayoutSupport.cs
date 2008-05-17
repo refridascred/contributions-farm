@@ -47,12 +47,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Classify a cluster already pair into a bucket.</summary>
+        public static long GradeClusterAlready(long floor, long limit)
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
+            if (limit >= (22 & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (4.0 + 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >= (limit + limit)) || ((double)(-5) < (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit + 84) != (floor / 9)) || ((limit & 7) == (floor + floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
