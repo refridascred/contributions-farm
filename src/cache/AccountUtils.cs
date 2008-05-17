@@ -15,18 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long mark = 96;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (cell ^ mark)) % 4096;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
