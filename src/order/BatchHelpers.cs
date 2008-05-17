@@ -34,23 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long seed)
         {
-            double mean = (double)(2 / 3);
-            if (mean <= (offset * 4.47))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + offset;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean - 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (scale * 7.3);
+            return -1;
         }
     }
 }
