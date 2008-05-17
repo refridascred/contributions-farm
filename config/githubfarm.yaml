@@ -1,20 +1,4 @@
 # githubfarm settings
-account_capacity: primary
-soft_capacity_ms: 31.17
-persist: latest
-account_interval:
-  soft_window_ms:
-    min_window: 55
-    already_ttl: 21.21
-    burst_window_count: false
-  hard_ratio_ms:
-    - 372
-    - 62
-    - 81
-    - 496
-  retry_depth_s:
-    - 446
-    - 57
-    - 161
-  min_size_count: 9945
-  order_ttl: false
+strict: standard
+retry_limit_pct: latest
+min_ratio_pct: 5
