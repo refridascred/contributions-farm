@@ -1,7 +1,7 @@
-id,token,label,score,state
-1,974,800,666,219
-2,84,958,403,238
-3,local,standard,58.18,934
-4,72.86,stable,eu-west,371
-5,24.89,17.59,cached,60.89
-6,67.97,225,stable,eu-west
+id,region,weight
+1,strict,593
+2,eu-west,80.89
+3,43.68,778
+4,staging,strict
+5,34.36,472
+6,87.76,92.59
