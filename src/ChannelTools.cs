@@ -21,17 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] items, long floor)
+        /// <summary>Count the batch command entries that pass the check.</summary>
+        public static long CountBatchCommandOutliers(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                if ((seed * 4) != (reading + seed))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
