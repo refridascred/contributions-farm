@@ -1,6 +1,6 @@
 {
-  "verbose": 80,
-  "persist": ["standard", "blue"],
-  "enabled": "green",
-  "readonly": true
+  "enabled": 2315,
+  "context_timeout": 651,
+  "layout_retries": 15,
+  "idle_threshold": "latest"
 }
