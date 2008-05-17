@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] values, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double mean = ratio - (double)6;
+            if (mean < ratio)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (double)93) - offset;
             }
-            return flag;
+            return mean - (mean / 5.0);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
