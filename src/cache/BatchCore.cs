@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] samples, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (sample > offset)
+                if (value != seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
