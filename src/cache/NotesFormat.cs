@@ -20,10 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 73.62;
-        public const string BurstBudget = "cached-1";
-        public const long BaseWidth = 2774;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double scale, double floor)
