@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Ready,
-            Pending,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinTimeout = 3192;
+        public const string BatchDepth = "primary-v2";
+        public const long IdleWidth = 3690;
+        public const long WindowBudget = 8267;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] samples)
