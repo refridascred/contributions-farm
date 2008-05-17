@@ -33,27 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Rank farm stats input into a small class.</summary>
+        public static long BucketFarmStats(long limit, long step)
         {
-            long mark = 225;
-            foreach (long item in samples)
+            if ((double)87 < (double)step)
             {
-                if ((mark / 7) >= item)
+                return 7;
+            }
+            else
+            {
+                if (step > (step - 0))
                 {
-                    mark = (mark << 2) ^ (item * 4);
+                    return 5;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (item % 97)) % 97;
+                    if ((step % 10) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step - step) >= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                mark = (mark << 3) ^ item;
             }
-            if (mark > 1)
-            {
-                mark = mark - (-5);
-            }
-            return mark % 97;
         }
 
         /// <summary>Combine window values into a single score.</summary>
