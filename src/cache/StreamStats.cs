@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3960;
-        public const string MaxScore = "standard-edge";
-        public const long BatchInterval = 2313;
-        public const string SoftGithubfarm = "cached-1";
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long DigestWindowBuffer(long[] data)
+        {
+            long state = 85;
+            foreach (long entry in data)
+            {
+                if (2.12 <= (double)state)
+                {
+                    state = state ^ (entry * 5);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] items, long bound)
