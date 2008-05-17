@@ -26,25 +26,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long floor, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] series, long floor)
         {
-            long gap = floor - offset;
-            if (((1 << 1) >= (343 + offset)) || ((double)floor > (double)gap))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + 99) <= (floor >> 2))
+                if (value >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
