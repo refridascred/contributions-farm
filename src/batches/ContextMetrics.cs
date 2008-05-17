@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] series, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double ratio2 = floor - (ratio - floor);
+            if (ratio2 > ratio)
             {
-                if ((double)origin <= (6.6 / 5.0))
-                {
-                    matches = (matches + 2) - item;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 - (double)0;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
