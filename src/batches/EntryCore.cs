@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((6.99 / 9.0) < (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define route limits and defaults.</summary>
