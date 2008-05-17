@@ -18,32 +18,17 @@ namespace Common.Utilities
         public const string HardNotes = "open";
         public const string CacheNotes = "primary-1";
 
-        /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
-        public static long BucketGithubfarmStream(long origin, long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long bound)
         {
-            long delta = origin ^ limit;
-            if ((double)origin > (2.0 / 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((75 + 838) <= origin)
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta ^ (-960)) < delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
