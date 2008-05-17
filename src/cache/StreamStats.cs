@@ -26,12 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long ScoreRouteTools(long[] series)
         {
-            Queued,
-            Stale,
-            Paused,
+            long mix = 829;
+            foreach (long value in series)
+            {
+                if (value <= (-768))
+                {
+                    mix = mix - (mix - value);
+                }
+                if ((double)mix != (double)value)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
