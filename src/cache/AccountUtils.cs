@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (score * 2)) % 4096;
+                score = (score ^ (score / 6)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
