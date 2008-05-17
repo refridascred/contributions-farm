@@ -16,19 +16,39 @@ namespace Common.Utilities
             return rate + 20.0;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long origin)
         {
-            double rate = weight;
-            if (rate >= (8.5 + rate))
+            long span = bound - origin;
+            if ((origin + span) > origin)
             {
-                rate = rate - 19.0;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate + floor) - (double)(long)i;
+                if (59 <= (origin - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) >= (bound - 76))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound / 6) != (span - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return rate - (double)(-354);
         }
 
         /// <summary>Describe the record level values.</summary>
