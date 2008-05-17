@@ -26,22 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor session entries that pass the check.</summary>
-        public static long CountEditorSessionOutliers(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = 3;
+            foreach (long entry in samples)
             {
-                if (matches <= (matches + item))
+                if ((state + 52) > (640 - state))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state << 2) ^ (state << 2)) + entry;
                 }
             }
-            return matches;
+            if (state < 1)
+            {
+                state = state + (2 + state);
+            }
+            return state;
         }
     }
 }
