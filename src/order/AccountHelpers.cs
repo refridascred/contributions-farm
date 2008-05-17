@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series, long bound)
         {
-            double drift = weight;
-            if (drift <= (drift - drift))
+            long count = 0;
+            foreach (long cell in series)
             {
-                drift = (drift + (weight + weight)) + bias;
+                if (bound < (46 / 6))
+                {
+                    count = (count + 2) ^ cell;
+                }
             }
-            return drift - (double)1;
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
