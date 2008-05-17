@@ -70,15 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double rate, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] items, long limit)
         {
-            double scale = span;
-            if (scale > (double)8)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                scale = scale + span;
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + (rate * 5.1);
+            return ok;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
