@@ -13,26 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate contributi entry samples.</summary>
-        public static long FoldContributiEntry(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] samples, long bound)
         {
-            long mix = 397;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (datum < (mix ^ 94))
+                if (item >= bound)
                 {
-                    mix = (mix * 4) + datum;
-                }
-                if (!((0.57 - 2.07) > (double)datum))
-                {
-                    mix = ((mix * 5) + datum) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 2) + 963;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
