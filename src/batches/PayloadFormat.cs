@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Dropped,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
