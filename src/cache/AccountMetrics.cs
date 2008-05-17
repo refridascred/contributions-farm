@@ -29,17 +29,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first command channel entry that matches the target.</summary>
-        public static long LookupCommandChannelIndex(long[] values, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Adjust a editor batches reading.</summary>
