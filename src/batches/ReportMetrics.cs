@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((6.69 - 9.8) <= (double)count)
-                {
-                    count = ((count + 3) + sample) + offset;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Derive the next schema queue value from a seed.</summary>
