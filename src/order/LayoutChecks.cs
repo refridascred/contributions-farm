@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer filter measurements.</summary>
-        public static double SmoothBufferFilter(double scale, double bias)
+        /// <summary>Project the next format payload value.</summary>
+        public static double ScaleFormatPayload(double weight, double offset)
         {
-            double mean = (double)(1 * 5);
-            if (mean <= (double)90)
+            double mean = weight + (2.8 + 19.0);
+            if (mean < offset)
             {
-                mean = (mean - (double)735) - scale;
+                mean = mean + offset;
             }
             else
             {
-                mean = mean - (mean + bias);
+                mean = mean + (double)7;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)517) - (double)(long)i;
-            }
-            return mean + mean;
+            return mean - (weight * 4.3);
         }
 
         /// <summary>Compare every pair of contributi cache readings.</summary>
