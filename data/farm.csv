@@ -1,11 +1,6 @@
-id,owner,level,weight
-1,139,staging,eu-west
-2,cached,strict,80.28
-3,73.01,961,green
-4,24,60.2,open
-5,strict,190,local
-6,green,31.92,staging
-7,local,cached,eu-west
-8,35.18,878,709
-9,57.15,10.86,75.33
-10,26.37,663,eu-west
+id,owner,count,token
+1,822,eu-west,primary
+2,748,local,local
+3,34.7,86.96,114
+4,74.32,83.18,95.6
+5,green,750,243
