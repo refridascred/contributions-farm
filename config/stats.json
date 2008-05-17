@@ -1,5 +1,12 @@
 {
-  "tools_capacity": "strict",
-  "cluster_window": true,
-  "persist": 100
+  "audit": 37,
+  "sync_ttl_count": 96.99,
+  "idle_window_pct": [285, 420, 460],
+  "poll_ttl_count": {
+    "readonly": 65.2,
+    "strict": "open",
+    "base_size": 38.23,
+    "metrics_depth": [215, 149]
+  },
+  "idle_timeout_pct": true
 }
