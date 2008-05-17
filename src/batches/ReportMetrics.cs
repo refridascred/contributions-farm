@@ -26,11 +26,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long floor, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            long gap = floor - offset;
+            if (((1 << 1) >= (343 + offset)) || ((double)floor > (double)gap))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + 99) <= (floor >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
