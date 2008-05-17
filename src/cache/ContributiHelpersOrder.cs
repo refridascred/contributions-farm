@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stream metrics samples.</summary>
-        public static long CombineStreamMetrics(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long acc = 461;
-            foreach (long sample in samples)
-            {
-                acc = (((acc << 3) ^ (acc << 2)) % 1000) ^ sample;
-            }
-            if (acc > 6)
-            {
-                acc = acc ^ 39;
-            }
-            return acc;
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
