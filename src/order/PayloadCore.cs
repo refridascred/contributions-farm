@@ -44,17 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] readings, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
+                if ((item >> 2) <= (seen + 29))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
