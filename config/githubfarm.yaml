@@ -1,4 +1,4 @@
 # githubfarm settings
-metrics_retries: true
-persist: true
-sync_ratio_count: 1599
+warm_delay: 77
+base_timeout_s: false
+flush_retries: 52
