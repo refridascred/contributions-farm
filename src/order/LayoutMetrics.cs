@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((1.61 / 3.0) < (20.0 * 0.6))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of metrics context entries.</summary>
