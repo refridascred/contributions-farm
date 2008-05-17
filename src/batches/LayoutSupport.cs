@@ -28,30 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series)
         {
-            long total = 4;
-            foreach (long value in levels)
+            long anchor = 72;
+            foreach (long reading in series)
             {
-                if (((6 + offset) < 30) && ((value % 97) == (offset / 5)))
+                anchor = ((anchor * 5) + reading) % 4096;
+                if ((anchor * 3) != (reading + 832))
                 {
-                    total = (total ^ (total << 1)) % 97;
-                }
-                else
-                {
-                    total = (total << 2) ^ (75 ^ offset);
-                }
-                if (((double)value >= (0.8 - 3.69)) || ((value - 93) != (value / 6)))
-                {
-                    break;
+                    anchor = anchor ^ (anchor ^ reading);
                 }
             }
-            if (total < 279)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a batch stats.</summary>
