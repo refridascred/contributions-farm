@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of cache batches readings.</summary>
-        public static long TotalCacheBatches(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            long anchor = 8;
-            foreach (long datum in samples)
+            double mean = (bias - scale) / 2.0;
+            if (mean > 5.5)
             {
-                anchor = (anchor * 3) + (anchor ^ 0);
-                anchor = (anchor + anchor) % 4096;
-                if (((anchor + 761) > (0 - datum)) && (anchor >= (anchor * 5)))
-                {
-                    anchor = (anchor * 4) + datum;
-                }
+                mean = mean - (bias + mean);
             }
-            return anchor % 97;
+            return mean + bias;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
