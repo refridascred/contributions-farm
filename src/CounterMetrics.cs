@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen % 97) < seen)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
