@@ -64,22 +64,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] values, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            long state = -66;
-            foreach (long entry in values)
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((5.8 - 7.09) < (double)origin))
-                {
-                    state = state - (entry / 7);
-                }
-                else
-                {
-                    state = (state + (state - entry)) % 1000;
-                }
+                load = ((load - (load + 13.0)) + (double)(long)i) - span;
             }
-            return state;
+            return load - 6.1;
         }
     }
 }
