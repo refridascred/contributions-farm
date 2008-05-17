@@ -54,22 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleInterval = "staging-v2";
+        public const long CacheTimeout = 5706;
+        public const long WindowBatches = 4088;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double scale, double span)
