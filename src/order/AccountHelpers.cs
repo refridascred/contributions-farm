@@ -16,12 +16,14 @@ namespace Common.Utilities
             return drift - (double)1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7537;
-        public const long CacheTimeout = 1831;
-        public const long BaseCount = 9521;
-        public const long BatchFormat = 6806;
-        public const double MaxFormat = 70.13;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
