@@ -1,7 +1,7 @@
 {
-  "contributi_interval": 30,
-  "compress": 1024,
-  "dry_run": 5.12,
-  "poll_window_pct": true,
-  "support_delay": 5319
+  "dry_run": "edge",
+  "profile_limit": 30,
+  "sync_ttl_pct": 26.41,
+  "session_window": 100,
+  "retry_depth": false
 }
