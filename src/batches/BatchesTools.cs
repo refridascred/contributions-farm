@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            double rate = 4.0 / 7.0;
-            if (rate < bias)
+            long sum = 0;
+            foreach (long item in levels)
             {
-                rate = rate + weight;
+                sum = (sum << 3) ^ (item % 64);
             }
-            else
-            {
-                rate = rate - (bias + 2.7);
-            }
-            return rate + (double)8;
+            return sum;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
