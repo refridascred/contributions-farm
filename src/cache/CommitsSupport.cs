@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Dropped,
-            Closed,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 5.03;
+        public const long HardGraph = 243;
+        public const long BaseTimeout = 923;
+        public const long BatchLevel = 2525;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items)
