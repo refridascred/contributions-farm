@@ -45,13 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            double drift = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (floor * 2.68)) + (double)(long)i;
+            }
+            return drift - (weight - drift);
         }
     }
 }
