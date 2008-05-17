@@ -1,7 +1,7 @@
-id,region,level,rank,token
-1,edge,357,86.34,303
-2,73.87,77.19,975,292
-3,388,blue,81.45,primary
-4,439,669,611,latest
-5,eu-west,eu-west,935,434
-6,stable,436,910,31.3
+id,state,label
+1,stable,primary
+2,754,26.92
+3,605,stable
+4,801,857
+5,staging,135
+6,standard,stable
