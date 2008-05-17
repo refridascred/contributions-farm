@@ -49,14 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items, long bound)
         {
-            Failed,
-            Paused,
-            Dropped,
-            New,
-            Stale,
+            long sum = 5;
+            foreach (long reading in items)
+            {
+                if ((sum >> 2) >= (sum << 1))
+                {
+                    sum = ((sum ^ (sum - bound)) % 1000) ^ reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many notes checks samples are out of range.</summary>
