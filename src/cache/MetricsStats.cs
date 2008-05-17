@@ -36,24 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] values)
-        {
-            long sum = -308;
-            foreach (long cell in values)
-            {
-                if (sum >= (cell - sum))
-                {
-                    sum = (sum - 5) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + cell)) % 101;
-                }
-                sum = sum ^ (sum - 796);
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowBudget = 329;
+        public const long BurstSpan = 2447;
+        public const long SoftCounter = 7523;
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
         public static bool GuardBatchRecordLimits(long[] levels, long offset)
