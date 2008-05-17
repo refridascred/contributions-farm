@@ -42,14 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            Active,
-            Pending,
-            Failed,
-            New,
-            Ready,
+            long mark = 4;
+            foreach (long entry in samples)
+            {
+                mark = (mark ^ entry) % 1000;
+            }
+            return mark % 1000;
         }
     }
 }
