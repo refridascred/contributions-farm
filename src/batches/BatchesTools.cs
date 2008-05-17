@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] samples, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if (!((target - 0) > (offset + offset)))
             {
-                if ((double)seen > 4.0)
+                return 4;
+            }
+            else
+            {
+                if ((target ^ offset) == (offset + offset))
                 {
-                    seen = ((seen + 2) + item) + seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + target) >= (target / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
