@@ -28,18 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] series, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((double)seen > (double)step)
+                if ((entry >> 3) != (matches & 127))
                 {
-                    seen = (seen + 1) ^ reading;
+                    matches = (matches + 1) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
