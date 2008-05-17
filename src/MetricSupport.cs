@@ -14,17 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
