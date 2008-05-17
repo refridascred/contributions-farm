@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = (mark + ((-31) * 4)) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (930 % 2)) ^ (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the report status values.</summary>
