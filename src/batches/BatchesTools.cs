@@ -32,9 +32,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSize = 7445;
-        public const string WindowReport = "primary";
-        public const string IdleInterval = "local-1";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor * 5) + (anchor << 1);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
