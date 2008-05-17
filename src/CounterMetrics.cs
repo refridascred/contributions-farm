@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long anchor = 308;
+            foreach (long value in series)
             {
-                if ((double)step >= (double)result)
-                {
-                    result = result + 55;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                anchor = (anchor + (value - value)) % 101;
             }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a record record.</summary>
