@@ -1,14 +1,11 @@
 {
-  "compress": {
-    "base_size_s": "blue",
-    "soft_ttl_s": ["stable", "primary"],
-    "burst_ratio_pct": 6938,
-    "poll_retries_pct": true,
-    "poll_ratio": 3556
-  },
-  "base_interval": 54.24,
-  "cache_ttl_count": [74, 436, 145, 423],
-  "readonly": 3196,
-  "burst_capacity_ms": 48.85,
-  "counter_threshold": "stable"
+  "default_size": "staging",
+  "default_delay": true,
+  "batch_threshold": [34, 156, 104],
+  "base_ratio_s": {
+    "max_delay": "blue",
+    "dry_run": true,
+    "cluster_threshold": 82.07,
+    "poll_capacity_s": "strict"
+  }
 }
