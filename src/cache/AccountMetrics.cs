@@ -57,38 +57,19 @@ namespace Common.Utilities
             return gain + (bias / 7.0);
         }
 
-        /// <summary>Classify a payload buffer pair into a bucket.</summary>
-        public static long BucketPayloadBuffer(long limit, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] samples, long seed)
         {
-            if ((limit & 255) >= limit)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + step) != (step + limit))
+                if (reading <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - limit) < (limit ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((6.82 - 8.95) == (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
