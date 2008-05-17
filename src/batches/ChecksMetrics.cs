@@ -97,9 +97,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSize = 4746;
-        public const long HardPayload = 1949;
-        public const double RetryBudget = 88.01;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (origin > 322)
+                {
+                    carry = carry + (2 % 64);
+                    carry = carry ^ origin;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
