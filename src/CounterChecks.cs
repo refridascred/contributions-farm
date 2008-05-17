@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const long BatchSize = 7700;
         public const long IdleChecks = 4727;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Count stream format pairs that satisfy a relation.</summary>
+        public static long OverlapStreamFormatCount(long[] series)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a notes session counter forward.</summary>
