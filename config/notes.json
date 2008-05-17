@@ -1,5 +1,7 @@
 {
-  "notes_size": 4.92,
-  "max_ttl_pct": 6.27,
-  "soft_threshold": 250
+  "warm_ttl": "staging",
+  "soft_timeout_count": ["blue", "green", "legacy"],
+  "batch_interval": "standard",
+  "verbose": "standard",
+  "soft_limit_pct": 82.43
 }
