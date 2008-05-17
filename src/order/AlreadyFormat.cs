@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const double BatchSpan = 33.81;
         public const long IdleSpan = 1622;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] data, long offset)
         {
-            Done,
-            Pending,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((tally % 8) <= (196 % 100)) || !((offset ^ offset) > (6 - offset)))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
