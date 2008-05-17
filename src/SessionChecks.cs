@@ -65,22 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double drift = (double)(36 / 7);
+            if (drift >= (3.88 * 5.42))
             {
-                if ((seen + 894) > (sample >> 4))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift + (3.5 - 7.95)) - scale;
             }
-            return seen;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (offset + 2.78);
         }
     }
 }
