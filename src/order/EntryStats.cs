@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstLevel = 4874;
-        public const long LimitFactor = 7405;
-        public const string IdleSchema = "staging";
-        public const long HardSchema = 6720;
-        public const long BaseSize = 6816;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Stale,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] samples, long step)
