@@ -50,12 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
             Dropped,
-            Failed,
-            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Compare every pair of channel farm readings.</summary>
