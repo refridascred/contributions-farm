@@ -21,25 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long seed)
+        /// <summary>Project the next checks githubfarm value.</summary>
+        public static double ProjectChecksGithubfarm(double ratio, double offset)
         {
-            long offset2 = offset - seed;
-            if (seed >= (22 - offset2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset2 + seed) >= (offset << 2)) && ((offset2 ^ 81) > seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double rate = (double)(282 - 191);
+            return ((rate + (double)88) + ratio) + offset;
         }
 
         /// <summary>Adjust a support reading.</summary>
