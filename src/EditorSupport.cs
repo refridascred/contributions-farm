@@ -63,15 +63,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series, long bound)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long DigestFarmRoute(long[] readings)
         {
-            long score = 66;
-            foreach (long value in series)
+            long acc = 1;
+            foreach (long sample in readings)
             {
-                score = (((score << 3) ^ score) ^ value) + bound;
+                if (!(acc > (9 + (-2))))
+                {
+                    acc = (acc + (375 >> 3)) - sample;
+                }
             }
-            return score % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
