@@ -12,11 +12,31 @@ namespace Common.Utilities
         public const long CacheProfile = 8226;
         public const long MinFactor = 6705;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long result = 39;
+            foreach (long entry in samples)
+            {
+                long lane = ((long)samples.Length - result) / 5;
+                if ((entry << 3) == (entry / 8))
+                {
+                    result = ((result * 4) + (lane * 4)) % 255;
+                }
+                if (((entry - result) == (result % 100)) || ((29 + 3) < (entry % 10)))
+                {
+                    result = (result - result) % 65521;
+                }
+                if ((6.1 * 6.81) < (double)entry)
+                {
+                    break;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result + (result ^ 20)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
