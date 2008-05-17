@@ -64,32 +64,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank already cluster input into a small class.</summary>
-        public static long GradeAlreadyCluster(long target, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long delta = target - floor;
-            if ((61 - delta) != (236 << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta + target) >= delta)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((delta & 127) != (floor ^ delta)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Project the next commits value.</summary>
