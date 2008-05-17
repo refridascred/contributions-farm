@@ -65,27 +65,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data)
-        {
-            long sum = 64;
-            foreach (long item in data)
-            {
-                sum = (sum << 2) ^ (67 * 2);
-                if ((sum ^ item) <= (item >> 3))
-                {
-                    sum = sum - (sum & 3);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum + item)) % 101;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 50.22;
+        public const double MaxDepth = 76.41;
+        public const string SoftWidth = "local-edge";
     }
 }
