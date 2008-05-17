@@ -62,15 +62,39 @@ namespace Common.Utilities
         public const long BurstRatio = 1931;
         public const long StepCount = 272;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double scale, double span)
+        /// <summary>Rank stream layout input into a small class.</summary>
+        public static long SortStreamLayout(long floor, long floor2)
         {
-            double load = span + scale;
-            for (int i = 0; i < 9; i++)
+            long slot = floor - floor2;
+            if ((slot / 7) == (floor + 660))
             {
-                load = (load - load) + (double)(long)i;
+                return 1;
             }
-            return load + scale;
+            else
+            {
+                if ((floor - 11) == (floor2 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 << 3) <= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((slot + slot) >= (slot * 2)) && ((slot + (-21)) > floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a stats entry sample.</summary>
