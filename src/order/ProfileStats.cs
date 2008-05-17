@@ -63,18 +63,10 @@ namespace Common.Utilities
         public const long SoftDepth = 1355;
         public const double RetryDepth = 56.96;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)73 <= (double)step) && ((9.9 + 2.44) >= (double)cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "strict-v2";
+        public const long WindowPayload = 7850;
+        public const long DefaultRatio = 2235;
+        public const string MaxPayload = "fallback";
     }
 }
