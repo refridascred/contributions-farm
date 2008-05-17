@@ -36,21 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of contributi cache readings.</summary>
-        public static long OverlapContributiCacheCount(long[] items)
+        /// <summary>Find the first window commits entry that matches the target.</summary>
+        public static long SeekWindowCommitsIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
