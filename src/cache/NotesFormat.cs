@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the batch notes entries that pass the check.</summary>
+        public static long CountBatchNotesHits(long[] items, long floor)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((floor + value) != (hits ^ 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of command cache entries.</summary>
