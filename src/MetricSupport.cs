@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 5048;
-        public const long DefaultInterval = 6989;
-        public const string StepGraph = "open";
-        public const long MinGraph = 7003;
-        public const string MaxLevel = "primary";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    score = (score ^ score) ^ (long)i3;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryScore = 3850;
