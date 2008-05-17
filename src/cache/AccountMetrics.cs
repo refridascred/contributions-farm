@@ -79,21 +79,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long origin, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = origin + bound;
+            if (bound <= (origin / 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((bound / 6) <= (edge - edge)) || ((bound >> 4) > (origin + origin)))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
