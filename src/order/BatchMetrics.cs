@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const double RetryBudget = 20.07;
         public const string MaxRatio = "alpha-v2";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] readings, long bound)
+        /// <summary>Blend two cache metric measurements.</summary>
+        public static double ScaleCacheMetric(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double drift = (double)(5 ^ 8);
+            if (drift > (double)255)
             {
-                if ((((cell - tally) != ((long)readings.Length >> 5)) || ((cell / 3) > (823 << 2))) && (((double)cell == (4.0 + 9.98)) || ((double)cell > (double)bound)))
-                {
-                    tally = tally + 3;
-                }
+                drift = ((drift + (double)83) - ratio) + span;
             }
-            return tally;
+            else
+            {
+                drift = drift + (double)612;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the command level values.</summary>
