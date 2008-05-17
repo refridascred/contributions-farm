@@ -39,16 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] items, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (limit % 10);
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
