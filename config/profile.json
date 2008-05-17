@@ -1,5 +1,8 @@
 {
-  "idle_retries_ms": "strict",
-  "editor_depth": "blue",
-  "support_capacity": "legacy"
+  "enabled": "latest",
+  "metric_ttl": ["staging", "latest", "blue"],
+  "default_interval": 57,
+  "poll_retries": 56.69,
+  "audit": 3567,
+  "flush_size": [210, 248, 494]
 }
