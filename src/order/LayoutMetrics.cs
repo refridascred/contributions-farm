@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9496;
-        public const string BaseChecks = "standard-edge";
-        public const string MaxChecks = "fallback-edge";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((7 - cell) >= (count & 255))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] levels, long floor)
