@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the metrics report series from a seed.</summary>
-        public static long SeriesMetricsReport(long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mark = ((mark * 4) + 43) % 97;
-                mark = ((mark << 2) ^ (48 + limit)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((12.0 + 1.85) >= (double)entry)
+                {
+                    hits = (hits + 2) + step;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a filter entry.</summary>
