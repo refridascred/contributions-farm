@@ -1,16 +1,9 @@
 # support settings
-contributi_timeout: 16
-base_limit:
-  base_capacity_count: primary
-  flush_threshold_s:
-    batch_delay_count: false
-    max_depth_ms: 7848
-    farm_interval: 75
-    compress: 6787
-  retry_size_pct: 250
-  sync_delay_count: local
-min_window:
-  - latest
-  - legacy
-  - legacy
-  - blue
+readonly: false
+support_ratio:
+  - fallback
+  - staging
+  - open
+  - standard
+max_depth_pct: true
+verbose: 3385
