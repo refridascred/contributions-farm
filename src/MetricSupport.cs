@@ -29,17 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support token sample.</summary>
-        public static long LookupSupportTokenIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchWidth = 2040;
+        public const long RetryGraph = 9426;
+        public const long HardGraph = 2648;
+        public const double BatchGraph = 90.33;
+        public const string MinDepth = "stable";
     }
 }
