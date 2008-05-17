@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double SoftFilter = 57.35;
         public const long StepFilter = 9937;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double load = bias - scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.0 < (double)cell) || ((hits / 8) >= 737))
-                {
-                    hits = hits + 1;
-                }
+                load = (load + (2.6 * 19.0)) + (double)(long)i;
             }
-            return hits;
+            return load - (double)(-4);
         }
 
         /// <summary>Accumulate session samples.</summary>
