@@ -12,38 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a stats payload pair into a bucket.</summary>
-        public static long RankStatsPayload(long origin, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if ((8 > origin) && ((origin >> 4) != (origin / 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (double)97)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.0 - 9.36) > (4.33 + 11.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((6 >> 2) < offset) && (offset < (origin + 617)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Match up contributi samples.</summary>
