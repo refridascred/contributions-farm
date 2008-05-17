@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Ready,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryBudget = 3403;
+        public const long MinTimeout = 8372;
+        public const long IdleRatio = 4635;
+        public const double BurstDepth = 42.66;
+        public const long MaxTimeout = 2069;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string WindowWidth = "latest-v2";
