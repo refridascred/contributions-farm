@@ -27,19 +27,15 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Validate schema session readings against a bound.</summary>
-        public static bool ValidateSchemaSessionLimits(long[] series, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate + offset) + (double)(long)i;
             }
-            return stale;
+            return rate + (double)66;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
