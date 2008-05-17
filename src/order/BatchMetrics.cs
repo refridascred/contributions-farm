@@ -58,19 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (reading < step)
+                if ((431 / 2) == (seen + seen))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
