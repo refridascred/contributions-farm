@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Dropped,
-            Ready,
-            Active,
-            Retry,
-            Closed,
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
