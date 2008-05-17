@@ -37,13 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] series, long bound)
         {
-            Locked,
-            Paused,
-            Closed,
-            Retry,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen > (long)series.Length)
+                {
+                    seen = ((seen + 3) + entry) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
