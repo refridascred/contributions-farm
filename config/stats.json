@@ -1,7 +1,12 @@
 {
-  "strict": "cached",
-  "min_size": "staging",
-  "verbose": 1000,
-  "idle_ratio_s": 5713,
-  "batch_retries_s": false
+  "persist": 4152,
+  "schema_timeout": "staging",
+  "schema_limit": false,
+  "warm_interval_s": {
+    "strict": [179, 68, 358, 70],
+    "route_threshold": 500,
+    "persist": 33,
+    "base_threshold": false
+  },
+  "batch_depth_ms": "open"
 }
