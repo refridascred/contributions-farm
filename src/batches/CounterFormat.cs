@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double IdleWidth = 21.39;
         public const long SoftFactor = 4206;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] samples, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the session status values.</summary>
