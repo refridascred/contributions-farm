@@ -1,18 +1,5 @@
 {
-  "min_ratio": {
-    "batch_ttl": {
-      "entry_limit": "standard",
-      "readonly": "eu-west",
-      "audit": true
-    },
-    "default_ratio": false,
-    "default_size": 65,
-    "metric_delay": "local",
-    "base_threshold": 93.18,
-    "batch_delay_s": 48.65
-  },
-  "token_ttl": ["standard", "blue", "edge", "latest"],
-  "sync_ttl": 4534,
-  "session_capacity": 27,
-  "stats_interval": ["legacy", "fallback", "green", "blue"]
+  "min_retries": "latest",
+  "idle_threshold_s": [155, 172, 56],
+  "tools_retries": 16.36
 }
