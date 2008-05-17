@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Paused,
-            Retry,
-            Closed,
-            Pending,
-            Dropped,
+            Active,
+            Draft,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Project the next context session value.</summary>
