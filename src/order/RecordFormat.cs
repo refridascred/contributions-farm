@@ -26,21 +26,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)limit == (double)total)
-                {
-                    total = ((total << 3) ^ 31) % 1000;
-                }
-                total = ((total << 2) ^ (total / 4)) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 9481;
+        public const long MaxTimeout = 6132;
+        public const long StepSize = 3934;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] samples)
