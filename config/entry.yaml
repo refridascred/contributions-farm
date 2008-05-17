@@ -1,13 +1,19 @@
 # entry settings
-tools_window: 5276
-poll_depth_count: 37
-editor_capacity:
-  - staging
-  - staging
-  - blue
-  - eu-west
-soft_size_count: 6234
-default_retries: 86
-hard_window_s:
-  - 305
-  - 360
+batch_depth:
+  enabled: eu-west
+  cache_capacity_ms: 45.48
+  flush_threshold_count: 4074
+  audit: true
+  strict:
+    - 334
+    - 367
+    - 90
+sync_ratio_count: fallback
+soft_size_count: fallback
+verbose: true
+burst_ratio_pct: true
+order_threshold:
+  - 465
+  - 367
+  - 322
+  - 332
