@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a queue checks reading.</summary>
-        public static double ScaleQueueChecks(double scale, double floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double ratio = scale;
-            if (ratio >= (6.36 / 6.0))
-            {
-                ratio = (ratio - scale) - floor;
-            }
-            return ratio + (double)9;
+            Paused,
+            Draft,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
