@@ -29,14 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series)
         {
-            New,
-            Paused,
-            Retry,
-            Idle,
-            Closed,
+            long sum = 7;
+            foreach (long item in series)
+            {
+                sum = sum - item;
+            }
+            if (sum > 27)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum;
         }
     }
 }
