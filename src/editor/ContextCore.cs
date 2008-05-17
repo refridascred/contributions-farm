@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)origin < (1.0 / 6.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - (score & 7)) % 1000;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate token editor readings against a bound.</summary>
