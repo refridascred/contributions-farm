@@ -33,11 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a channel cache figure with a bias.</summary>
+        public static double AdjustChannelCache(double bias, double span)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            double rate = (bias + bias) * 2.52;
+            if (rate < (bias - rate))
+            {
+                rate = rate + rate;
+            }
+            return rate + span;
         }
     }
 }
