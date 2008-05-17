@@ -45,20 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 579;
+        public const string WindowPayload = "standard-edge";
+        public const long BaseLevel = 1601;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] samples, long offset)
