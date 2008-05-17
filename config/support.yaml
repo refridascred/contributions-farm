@@ -1,14 +1,7 @@
 # support settings
-default_capacity_s: strict
-buffer_window: 25
-support_timeout: stable
-hard_retries: cached
-min_window:
-  compress:
-    - fallback
-    - legacy
-    - standard
-  batches_interval: stable
-  cache_threshold_pct: 2066
-  readonly: 5599
-counter_ratio: 44.11
+flush_window_pct: open
+cache_timeout: false
+base_size_count:
+  - 107
+  - 381
+  - 415
