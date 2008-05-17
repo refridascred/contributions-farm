@@ -48,18 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long total = 16;
-            foreach (long entry in levels)
-            {
-                if ((total + entry) != (entry + total))
-                {
-                    total = total ^ 2;
-                }
-            }
-            return total;
+            Ready,
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
