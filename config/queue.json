@@ -1,15 +1,5 @@
 {
-  "hard_timeout": "standard",
-  "context_delay": [456, 215],
-  "batch_limit": [166, 2, 398],
-  "flush_threshold": false,
-  "sync_depth": {
-    "hard_timeout_count": {
-      "record_ttl": 77.23,
-      "cache_delay_count": 3604,
-      "default_ttl": "eu-west"
-    },
-    "audit": 3808,
-    "base_ttl_ms": 500
-  }
+  "sync_delay_s": "staging",
+  "poll_ttl_ms": 7974,
+  "burst_threshold": "fallback"
 }
