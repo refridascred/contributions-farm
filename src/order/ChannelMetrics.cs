@@ -30,15 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema payload entries.</summary>
-        public static long CombineSchemaPayload(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long anchor = 52;
-            foreach (long entry in samples)
+            long score = 65;
+            foreach (long value in samples)
             {
-                anchor = ((anchor + anchor) % 255) + entry;
+                score = (score + (-336)) ^ value;
             }
-            return anchor;
+            return score % 4096;
         }
     }
 }
