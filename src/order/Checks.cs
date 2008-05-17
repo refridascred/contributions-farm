@@ -80,17 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric tools series from a seed.</summary>
-        public static long SeriesMetricTools(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] levels, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                long offset = 4;
-                mark = (mark + (offset / 7)) % 1000;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((77 - 6) < (count + 4))
+                {
+                    count = ((count + 3) ^ entry) + bound;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
