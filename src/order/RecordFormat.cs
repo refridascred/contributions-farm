@@ -36,13 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum % 8) == (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
