@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double bias)
         {
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            double bias2 = bias * 18.0;
+            if (bias2 >= (double)656)
+            {
+                bias2 = bias2 - (bias / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + weight;
         }
 
         /// <summary>Describe the window status values.</summary>
