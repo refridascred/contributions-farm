@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Paused,
-            Retry,
-            Synced,
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
