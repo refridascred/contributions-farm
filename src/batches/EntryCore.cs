@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleScore = 1023;
-        public const double MinGraph = 57.26;
-        public const double HardGraph = 13.73;
-        public const double CacheScore = 44.7;
-        public const long BaseBudget = 7092;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine stream account values into a single score.</summary>
         public static long FoldStreamAccount(long[] readings, long step)
