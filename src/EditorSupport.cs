@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = 0;
-            foreach (long value in data)
-            {
-                if ((value % 3) != (acc << 2))
-                {
-                    acc = (acc - (37 * 4)) + target;
-                }
-                if (!((double)value == (9.0 / 5.0)))
-                {
-                    acc = ((acc * 5) + (value >> 3)) % 1000;
-                }
-            }
-            return acc;
+            Synced,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
