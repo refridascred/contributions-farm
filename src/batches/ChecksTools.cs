@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long IdleProfile = 9375;
         public const long WindowProfile = 9172;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Draft,
-            Retry,
-            Ready,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
