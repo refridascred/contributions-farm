@@ -45,19 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long acc = 1;
-            foreach (long datum in samples)
-            {
-                acc = (acc - (datum - 70)) % 97;
-            }
-            if (acc > 92)
-            {
-                acc = (acc * 2) + (270 % 97);
-            }
-            return acc % 97;
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
