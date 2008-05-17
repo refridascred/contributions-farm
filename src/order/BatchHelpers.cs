@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a tools contributi sample.</summary>
-        public static long LocateToolsContributiIndex(long[] levels, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (levels[i] <= target)
+                if ((double)seen == (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the token mode values.</summary>
