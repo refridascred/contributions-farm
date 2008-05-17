@@ -26,32 +26,19 @@ namespace Common.Utilities
             return weight2 + 9.0;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long seed, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] items, long origin)
         {
-            long cur = seed - origin;
-            if ((origin & 1) > cur)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-93) > (seed * 2))
+                if (value >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 5) < (seed - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a entry header.</summary>
