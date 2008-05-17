@@ -1,13 +1,17 @@
 # support settings
-warm_ratio_pct:
-  compress:
-    batch_size: fallback
-    audit: 93.3
-    command_threshold: latest
-    max_retries_ms: 74.45
-    compress: 100
-  persist: primary
-  verbose: true
-record_ratio: cached
-warm_ratio_s: 1024
-strict: 88
+verbose: 100
+compress:
+  metric_interval: 27.46
+  cache_threshold: fallback
+  cache_interval_pct: strict
+  base_depth_count: 2426
+  counter_size: 30
+  warm_ttl: false
+enabled: 58.14
+burst_depth_ms: true
+batch_capacity:
+  contributi_limit: 3906
+  min_capacity: fallback
+  payload_capacity: edge
+  default_retries_pct: true
+poll_limit_ms: 63.85
