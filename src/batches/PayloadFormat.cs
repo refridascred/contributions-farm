@@ -26,10 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7899;
-        public const long BaseEditor = 189;
-        public const long WindowRatio = 4678;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitTimeout = 5644;
+        public const long LimitSupport = 2612;
+        public const long BurstSupport = 6370;
+        public const string BaseSupport = "strict-v2";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string MinWindow = "open-1";
