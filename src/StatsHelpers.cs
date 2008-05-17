@@ -51,24 +51,18 @@ namespace Common.Utilities
             return gain - 19.0;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            if ((seed / 9) >= 31)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin > (4.2 * 0.3)))
+                if ((matches >> 2) != (35 << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) + entry;
                 }
             }
+            return matches;
         }
     }
 }
