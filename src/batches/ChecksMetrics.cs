@@ -78,22 +78,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches already entries that pass the check.</summary>
-        public static long AuditBatchesAlreadyMatches(long[] samples, long step)
+        /// <summary>Accumulate checks commits samples.</summary>
+        public static long DigestChecksCommits(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long acc = 57;
+            foreach (long datum in levels)
             {
-                if ((double)step >= (6.62 * 9.2))
+                if ((datum > acc) && (19.0 <= (double)acc))
                 {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc * 4) + (datum / 8)) % 97;
                 }
             }
-            return tally;
+            if (acc > 47)
+            {
+                acc = (acc - (400 % 7)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
