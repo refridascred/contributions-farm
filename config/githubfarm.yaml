@@ -1,7 +1,7 @@
 # githubfarm settings
-cache_limit_ms: blue
-sync_window_count: false
-readonly: 30
-persist: eu-west
-dry_run: eu-west
-max_threshold_ms: stable
+burst_capacity_pct: latest
+min_size: 250
+idle_threshold: strict
+compress: 82
+default_timeout: false
+idle_window: 37.41
