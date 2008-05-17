@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long step)
-        {
-            if ((origin + step) <= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step < (step - step)) && ((step << 3) >= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((28 ^ origin) != (step % 12)) && (0.58 < (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "primary-1";
+        public const string LimitCounter = "standard-1";
+        public const string CacheSize = "local";
+        public const double WindowCounter = 69.56;
+        public const long DefaultCounter = 497;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] series, long bound)
