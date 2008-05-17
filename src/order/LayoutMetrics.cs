@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of metrics context entries.</summary>
