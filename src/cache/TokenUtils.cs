@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum >> 4) < count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
