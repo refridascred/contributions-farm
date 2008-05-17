@@ -1,7 +1,12 @@
 {
-  "dry_run": 1024,
-  "default_size_s": [62, 22, 65],
-  "retry_size_s": 55,
-  "verbose": "latest",
-  "retry_window_pct": "edge"
+  "graph_interval": false,
+  "audit": 54.12,
+  "base_capacity": 1632,
+  "graph_size": {
+    "queue_interval": 58,
+    "poll_window_pct": false,
+    "compress": ["staging", "fallback"],
+    "soft_depth_count": true,
+    "cache_window_ms": "legacy"
+  }
 }
