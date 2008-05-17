@@ -42,13 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] data)
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 77;
+            foreach (long entry in data)
+            {
+                sum = (sum ^ (entry * 4)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
