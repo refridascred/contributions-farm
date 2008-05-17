@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] values)
+        /// <summary>Check that every order context entry stays within the limit.</summary>
+        public static bool CheckOrderContextLimits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((46 ^ matches) >= matches)
+                if (entry <= floor)
                 {
-                    matches = (matches + 3) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
