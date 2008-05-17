@@ -23,14 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            Failed,
-            New,
-            Paused,
-            Dropped,
-            Active,
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total << 2) ^ (floor * 3);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
