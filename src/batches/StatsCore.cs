@@ -31,18 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] samples, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((seed + (-220)) > hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
