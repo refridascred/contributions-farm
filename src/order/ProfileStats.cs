@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] values, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long carry = 74;
+            foreach (long sample in values)
             {
-                if ((tally + floor) <= reading)
-                {
-                    tally = tally + 2;
-                }
+                carry = ((carry << 3) ^ (carry * 3)) + sample;
             }
-            return tally;
+            if (carry > 4)
+            {
+                carry = (carry + (carry + bound)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of support metric readings.</summary>
