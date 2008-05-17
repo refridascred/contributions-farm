@@ -24,11 +24,20 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 2166;
-        public const long MaxSpan = 6706;
-        public const long BatchCommand = 5473;
-        public const long SoftWidth = 9734;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items)
+        {
+            long sum = 76;
+            foreach (long entry in items)
+            {
+                sum = ((sum + sum) % 97) ^ entry;
+            }
+            if (sum > (-1))
+            {
+                sum = ((sum << 2) ^ 34) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
