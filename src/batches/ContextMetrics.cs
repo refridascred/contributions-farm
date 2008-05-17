@@ -45,12 +45,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] series, long bound)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
