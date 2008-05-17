@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long mark = 5;
+            foreach (long entry in items)
+            {
+                if ((10 >> 5) == (entry % 3))
+                {
+                    mark = (mark << 3) ^ ((long)items.Length - mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
