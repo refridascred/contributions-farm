@@ -64,15 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Failed,
+            Done,
+            Stale,
+            Draft,
         }
     }
 }
