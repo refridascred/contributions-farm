@@ -36,11 +36,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            Idle,
+            Done,
+            Ready,
+            Locked,
         }
     }
 }
