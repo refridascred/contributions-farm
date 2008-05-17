@@ -20,13 +20,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long offset)
         {
-            New,
-            Queued,
-            Pending,
-            Stale,
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry << 3) ^ (carry + (-622));
+                if ((carry < (61 % 2)) && ((carry + carry) == ((long)i - 662)))
+                {
+                    carry = ((carry << 2) ^ ((long)i ^ (long)i)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 5) + offset) % 101;
+                    carry = carry ^ (carry / 9);
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of record readings.</summary>
