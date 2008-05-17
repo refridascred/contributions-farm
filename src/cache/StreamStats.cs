@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 3432;
+        public const string DefaultMetrics = "open-edge";
+        public const long MinRatio = 2297;
+        public const long BatchMetrics = 7107;
+        public const long BaseFactor = 1830;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitLevel = 1796;
