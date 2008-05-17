@@ -63,12 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 3981;
-        public const long WindowDepth = 1548;
-        public const long BatchCount = 2298;
-        public const double StepMetrics = 73.52;
-        public const long HardDepth = 5198;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double span)
+        {
+            double rate2 = rate;
+            if (rate2 > rate2)
+            {
+                rate2 = rate2 - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (span + 4.0)) + (double)(long)i;
+            }
+            return rate2 - 9.18;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double AdjustFilter(double rate, double span)
