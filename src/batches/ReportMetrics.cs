@@ -26,19 +26,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] series, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (value >= floor)
+                if (floor < (floor % 10))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
