@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = 26;
+            foreach (long cell in values)
             {
-                if ((double)seen >= (7.3 + 16.0))
+                result = ((result << 2) ^ result) + origin;
+                if ((double)result <= (double)cell)
                 {
-                    seen = (seen + 2) + sample;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Locate a buffer tools reading by value.</summary>
