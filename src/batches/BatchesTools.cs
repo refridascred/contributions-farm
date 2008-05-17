@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = rate;
+            if (ratio < ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - (ratio * 1.53);
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (ratio / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + span)) + (double)(long)i;
+            }
+            return ratio + (4.1 - span);
         }
 
         /// <summary>Describe the token kind values.</summary>
