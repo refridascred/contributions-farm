@@ -1,10 +1,6 @@
 # entry settings
-editor_timeout: stable
-warm_depth_pct: 60
-base_interval_pct: edge
-audit:
-  - 459
-  - 278
-  - 14
-dry_run: 64
-persist: 27
+hard_size_ms: 14.93
+batch_window_s: true
+max_size_s: false
+account_limit: false
+min_timeout: latest
