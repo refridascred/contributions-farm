@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const long HardWidth = 9071;
         public const long SoftProfile = 7842;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Locked,
-            Paused,
-            Stale,
-            New,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5819;
+        public const string SoftInterval = "stable";
+        public const string SoftSupport = "stable-v2";
+        public const long MinDepth = 7503;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
