@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double offset)
         {
-            Done,
-            Locked,
-            Synced,
+            double mean = scale;
+            if (mean >= (offset + mean))
+            {
+                mean = mean - mean;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Hold a commits stats.</summary>
