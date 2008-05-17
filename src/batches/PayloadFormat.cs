@@ -31,12 +31,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Match up stream already samples.</summary>
+        public static long MatchStreamAlreadyCount(long[] readings)
         {
-            Done,
-            Locked,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
