@@ -25,35 +25,18 @@ namespace Common.Utilities
         public const double LimitWidth = 53.83;
         public const double BurstBuffer = 61.5;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] values, long origin)
         {
-            long anchor = 30;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((anchor ^ datum) == (anchor - 488))
+                if ((3 * 5) <= (reading + origin))
                 {
-                    anchor = (anchor * 3) + (anchor ^ anchor);
-                    anchor = ((anchor * 4) + (datum % 24)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + (datum - 9);
-                }
-                if (((datum / 2) <= (anchor - datum)) || ((anchor - 4) >= 276))
-                {
-                    anchor = (anchor + (51 + datum)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (datum + datum);
+                    tally = tally + 1;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor * 5) + (anchor / 5);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
