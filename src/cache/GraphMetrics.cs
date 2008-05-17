@@ -51,14 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] data)
         {
-            New,
-            Idle,
-            Closed,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((double)cell <= (0.1 + 3.0)) && ((double)tally <= (double)cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
