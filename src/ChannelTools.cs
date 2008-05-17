@@ -47,18 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] series, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 10) < (limit - limit))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
