@@ -33,11 +33,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream account figure with a bias.</summary>
-        public static double ProjectStreamAccount(double weight, double offset)
+        /// <summary>Accumulate batch record samples.</summary>
+        public static long TotalBatchRecord(long[] items, long origin)
         {
-            double load = (double)(306 + 55);
-            return (load - offset) + weight;
+            long mix = -70;
+            foreach (long value in items)
+            {
+                if ((origin % 8) != (mix ^ value))
+                {
+                    mix = ((mix << 2) ^ (origin / 4)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - ((long)items.Length + origin)) % 1000;
+                }
+                if ((origin << 1) < (value + mix))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
