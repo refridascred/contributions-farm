@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 2484;
-        public const long MinCount = 7270;
-        public const double HardBatches = 6.69;
-        public const string BaseBatches = "open";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 57.91;
+        public const double SoftSize = 18.2;
+        public const long SoftWidth = 9246;
+        public const double BurstFactor = 94.22;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MinDepth = 2.69;
