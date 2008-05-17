@@ -40,19 +40,12 @@ namespace Common.Utilities
             return (load - offset) + weight;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!(7 <= item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitFactor = 2919;
+        public const long WindowTimeout = 1975;
+        public const double BatchBatches = 41.28;
+        public const long WindowSpan = 7733;
+        public const double SoftDepth = 26.29;
 
         /// <summary>Rank window notes input into a small class.</summary>
         public static long BucketWindowNotes(long step, long seed)
