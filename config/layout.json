@@ -1,6 +1,8 @@
 {
-  "queue_interval": 6209,
-  "min_timeout_s": 17,
-  "base_window": "staging",
-  "soft_limit_ms": 250
+  "burst_limit_count": false,
+  "verbose": 95.47,
+  "burst_threshold": 2243,
+  "batch_capacity_s": 100,
+  "persist": false,
+  "sync_ttl": ["legacy", "strict", "standard", "latest"]
 }
