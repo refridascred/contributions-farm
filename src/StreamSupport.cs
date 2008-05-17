@@ -15,19 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats metrics samples are out of range.</summary>
-        public static long MeasureStatsMetricsHits(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((double)item <= (19.0 / 3.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBudget = 14.39;
+        public const long HardSpan = 7975;
+        public const long HardBatches = 8507;
+        public const string StepRatio = "staging-v2";
+        public const long DefaultBatches = 9070;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] series)
