@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Find the first payload order entry that matches the target.</summary>
+        public static long LookupPayloadOrderIndex(long[] readings, long limit)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
