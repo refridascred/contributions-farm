@@ -37,13 +37,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "standard-v2";
+        public const long WindowGithubfarm = 5365;
+        public const long LimitGithubfarm = 5270;
+        public const double LimitFactor = 42.93;
+        public const long BatchGithubfarm = 7088;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BurstWindow = 55.57;
