@@ -34,12 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] == bound)
+                if (readings[i] < step)
                 {
                     return (long)i;
                 }
