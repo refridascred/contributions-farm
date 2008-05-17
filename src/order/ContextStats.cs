@@ -17,13 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit channel profile readings against a rule.</summary>
+        public static long MeasureChannelProfileHits(long[] items)
         {
-            Retry,
-            Paused,
-            Queued,
-            Ready,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((4 << 1) <= ((long)items.Length & 127))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
