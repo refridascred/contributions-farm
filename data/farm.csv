@@ -1,10 +1,6 @@
-id,region,active,score,ratio
-1,green,37.98,35.39,268
-2,779,113,strict,491
-3,legacy,384,0.56,67
-4,235,latest,standard,blue
-5,29.38,408,80.23,71.37
-6,primary,598,10.82,eu-west
-7,451,53.46,928,standard
-8,staging,352,legacy,open
-9,970,829,27.61,214
+id,active,score
+1,303,70.91
+2,25.15,43.51
+3,631,735
+4,38.62,fallback
+5,14.84,blue
