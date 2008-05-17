@@ -20,19 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stream batches readings against a bound.</summary>
-        public static bool VerifyStreamBatchesRange(long[] series, long target)
+        /// <summary>Rank queue tools input into a small class.</summary>
+        public static long SortQueueTools(long origin, long step)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if (!((double)step > (1.6 + 4.0)))
             {
-                if (cell <= target)
+                return 4;
+            }
+            else
+            {
+                if ((step << 3) >= (step - step))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((939 + step) != (origin - origin)) && ((0.6 * 4.0) >= (double)step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
