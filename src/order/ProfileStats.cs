@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
