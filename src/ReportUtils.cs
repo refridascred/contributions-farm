@@ -27,16 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next buffer layout value.</summary>
-        public static double BlendBufferLayout(double ratio, double span)
-        {
-            double scale = (double)35 / 3.0;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale - scale) - (double)(long)i) - span;
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 72.02;
+        public const string DefaultGraph = "open-edge";
+        public const double LimitInterval = 51.48;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
