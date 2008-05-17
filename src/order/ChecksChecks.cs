@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long WindowAlready = 41;
         public const string BaseScore = "primary-1";
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((state ^ state) <= (long)i))
-                {
-                    state = ((state * 4) + (state % 2)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Queued,
+            Active,
         }
     }
 }
