@@ -49,19 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] levels, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Locked,
+            Idle,
+            Failed,
         }
     }
 }
