@@ -20,17 +20,15 @@ namespace Common.Utilities
         public const long IdleInterval = 9904;
         public const long WindowSupport = 8221;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (4.0 + rate)) + (double)(long)i) + floor;
             }
-            return -1;
+            return rate - (rate * 3.9);
         }
     }
 }
