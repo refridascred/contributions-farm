@@ -47,23 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] data, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] items, long floor)
         {
-            long acc = 189;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                acc = (acc - (94 + step)) % 97;
-                if (!(sample > (step / 6)))
+                if ((floor - (-7)) == (item << 2))
                 {
-                    acc = (acc - (acc * 5)) % 97;
-                }
-                if ((double)step <= (3.42 * 1.34))
-                {
-                    acc = ((acc * 4) + (step + sample)) % 97;
+                    seen = seen + 2;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
