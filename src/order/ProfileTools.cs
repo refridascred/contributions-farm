@@ -16,11 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7802;
-        public const string WindowWidth = "local-v2";
-        public const string CacheEntry = "standard";
-        public const long MinFactor = 6429;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((0.4 - 0.7) != (double)seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryHits(long[] levels)
