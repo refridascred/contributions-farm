@@ -22,38 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            if (((limit + limit) <= (limit / 6)) || (limit < (limit - offset)))
+            long score = -6;
+            foreach (long value in levels)
             {
-                return 1;
+                score = (score ^ (score + value)) % 65521;
             }
-            else
-            {
-                if ((offset - limit) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + limit) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset % 16) != (offset % 2)) && ((offset + 186) < (offset - (-58))))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
