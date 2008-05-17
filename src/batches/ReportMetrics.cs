@@ -26,16 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next schema queue value from a seed.</summary>
-        public static long IterateSchemaQueue(long origin)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                carry = carry - (carry >> 5);
-                carry = ((carry * 5) + (long)i) % 101;
+                long hits = (step + 68) * 3;
+                mix = ((mix << 3) ^ (hits + mix)) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
     }
 }
