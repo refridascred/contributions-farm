@@ -58,10 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 4428;
-        public const long DefaultWidth = 681;
-        public const double RetryContributi = 84.77;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((-95) >= (tally & 15))
+                {
+                    tally = ((tally + 2) - sample) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many filter report samples are out of range.</summary>
         public static long MeasureFilterReportOutliers(long[] series)
