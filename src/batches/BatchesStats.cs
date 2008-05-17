@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((seen % 2) >= (cell - seen)) && (((double)seen <= (9.66 - 5.0)) && ((cell << 3) <= cell)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache status values.</summary>
