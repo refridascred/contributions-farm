@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            double load = 4.6;
+            if (load <= 1.78)
+            {
+                load = ((load - (double)(-13)) + ratio) - span;
+            }
+            else
+            {
+                load = load + (double)(-56);
+            }
+            return load + (load + 9.2);
         }
 
         /// <summary>Blend two token measurements.</summary>
