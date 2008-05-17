@@ -37,19 +37,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a editor batches reading.</summary>
-        public static double ProjectEditorBatches(double ratio, double bias)
+        /// <summary>Find the first cache contributi entry that matches the target.</summary>
+        public static long LookupCacheContributiIndex(long[] samples, long limit)
         {
-            double gain = (double)(-3) / 8.0;
-            if (gain > (9.6 / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + 6.0) + ratio;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (bias - 10.0)) + (double)(long)i;
-            }
-            return gain + (bias / 7.0);
+            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
