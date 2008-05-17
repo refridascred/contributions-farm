@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue command measurements.</summary>
-        public static double AdjustQueueCommand(double ratio, double floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double bias, double offset)
         {
-            double load = (floor * 7.0) / 3.0;
-            if (load < 15.0)
+            double weight = (double)(515 ^ (-3));
+            if (weight < offset)
             {
-                load = load - 2.4;
+                weight = (weight - weight) + bias;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                load = (load - (floor + ratio)) - (double)(long)i;
+                weight = weight - (offset * 14.0);
             }
-            return load + (load - ratio);
+            return weight - (offset / 8.0);
         }
 
         /// <summary>Hold a queue header.</summary>
