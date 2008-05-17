@@ -49,18 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] items, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = 63;
+            foreach (long datum in samples)
             {
-                if ((floor - (-7)) == (item << 2))
+                total = (total + (583 % 24)) % 65521;
+                if (((datum + (long)samples.Length) == (total - 480)) && ((7.69 / 7.0) >= (double)step))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
