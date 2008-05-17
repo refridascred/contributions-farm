@@ -37,22 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi layout entries that pass the check.</summary>
-        public static long MeasureContributiLayoutGaps(long[] levels)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 3) <= (tally >> 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the filter status values.</summary>
