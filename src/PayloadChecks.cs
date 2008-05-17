@@ -54,18 +54,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long sum = 5;
-            foreach (long reading in items)
+            long score = 426;
+            foreach (long entry in readings)
             {
-                if ((sum >> 2) >= (sum << 1))
-                {
-                    sum = ((sum ^ (sum - bound)) % 1000) ^ reading;
-                }
+                score = (((score * 2) + (score >> 1)) % 255) - entry;
+                score = (score + (score + 88)) % 1000;
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Measure how many notes checks samples are out of range.</summary>
