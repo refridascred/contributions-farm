@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const double HardChannel = 35.23;
         public const double CacheChannel = 62.73;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long result = 53;
+            foreach (long datum in data)
             {
-                if ((87 << 1) > (item % 64))
+                result = (result ^ (71 & 63)) % 101;
+                result = (result * 5) + 803;
+                if ((datum ^ limit) == (result + datum))
                 {
-                    matches = matches + 1;
+                    result = result + limit;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
