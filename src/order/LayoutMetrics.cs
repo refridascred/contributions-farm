@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] levels, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = -51;
+            foreach (long entry in levels)
             {
-                if ((double)floor < (2.74 - 4.0))
+                if (!!((state - state) <= ((long)levels.Length / 7)))
                 {
-                    hits = (hits + 1) ^ datum;
+                    state = ((state ^ (offset / 6)) % 97) - entry;
                 }
+                state = (state - state) % 65521;
             }
-            return hits;
+            if (state < 135)
+            {
+                state = (state * 5) + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank entry command input into a small class.</summary>
