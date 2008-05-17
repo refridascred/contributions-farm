@@ -19,12 +19,11 @@ namespace Common.Utilities
         public const long RetryMetric = 7534;
         public const double BaseMetric = 19.25;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 25.28;
+        public const long BatchInterval = 3245;
+        public const long MinScore = 2118;
+        public const long IdleRatio = 4104;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long floor, long limit)
