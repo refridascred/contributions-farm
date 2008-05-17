@@ -59,13 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool CheckCommitsAlreadyLimits(long[] samples, long step)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate order samples.</summary>
