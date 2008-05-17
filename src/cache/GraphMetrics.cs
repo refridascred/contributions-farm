@@ -28,14 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two entry commits measurements.</summary>
+        public static double SmoothEntryCommits(double scale, double offset)
         {
-            Synced,
-            Idle,
-            Stale,
-            Active,
-            Done,
+            double bias = offset / 7.0;
+            if (bias <= 3.9)
+            {
+                bias = (bias + 3.2) - scale;
+            }
+            else
+            {
+                bias = bias + (bias * 6.9);
+            }
+            return bias + (bias * 0.75);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
