@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a buffer header.</summary>
