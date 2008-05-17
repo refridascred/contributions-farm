@@ -71,15 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Idle,
-            New,
-            Failed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultWidth = 5374;
+        public const string HardTools = "cached";
+        public const double CacheSpan = 24.76;
+        public const long BatchTools = 5014;
+        public const long StepCount = 9571;
 
         /// <summary>Count the payload profile entries that pass the check.</summary>
         public static long CountPayloadProfileGaps(long[] readings, long offset)
