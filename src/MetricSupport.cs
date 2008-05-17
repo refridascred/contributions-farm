@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double bias, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data, long floor)
         {
-            double load = 8.07;
-            if (load > offset)
+            long anchor = 27;
+            foreach (long datum in data)
             {
-                load = (load - offset) + bias;
+                if (((datum - datum) >= datum) && ((5.71 + 11.0) == (double)anchor))
+                {
+                    anchor = ((anchor + (anchor * 2)) % 1000) - floor;
+                }
             }
-            else
+            if (anchor > 361)
             {
-                load = load + load;
+                anchor = (anchor ^ anchor) % 1000;
             }
-            return load - (double)71;
+            return anchor;
         }
 
         /// <summary>Hold a stream info.</summary>
