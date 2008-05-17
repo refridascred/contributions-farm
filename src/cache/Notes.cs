@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long MaxInterval = 2198;
         public const long RetryFactor = 2119;
 
-        /// <summary>Digest a series of checks buffer entries.</summary>
-        public static long TotalChecksBuffer(long[] values)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long origin)
         {
-            long score = 5;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (686 <= (sample ^ score))
+                if (levels[i] <= origin)
                 {
-                    score = (score << 2) ^ score;
+                    return (long)i;
                 }
             }
-            if (score > 330)
-            {
-                score = (score + (6 >> 3)) % 65521;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
