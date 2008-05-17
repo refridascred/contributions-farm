@@ -52,11 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double drift = bias;
-            return (drift - (bias / 5.0)) + scale;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
