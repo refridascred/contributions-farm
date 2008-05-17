@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
