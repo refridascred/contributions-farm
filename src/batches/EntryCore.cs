@@ -50,19 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Paused,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the batch status values.</summary>
