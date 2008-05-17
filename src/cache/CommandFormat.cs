@@ -33,9 +33,32 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const long MaxRoute = 7754;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowFactor = "standard";
-        public const string IdleLevel = "open";
-        public const string BatchBudget = "staging-edge";
+        /// <summary>Grade a support entry value against two limits.</summary>
+        public static long BucketSupportEntry(long offset, long step)
+        {
+            long span = offset - step;
+            if ((offset ^ offset) <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ step) <= (span + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((span + span) < 197)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
