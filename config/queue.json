@@ -1,14 +1,6 @@
 {
-  "persist": 30,
-  "hard_depth_count": {
-    "strict": 44.07,
-    "batch_delay_count": 75,
-    "retry_ttl": 60.3,
-    "flush_depth_s": ["strict", "fallback"],
-    "soft_ratio_ms": "legacy",
-    "flush_threshold_s": 30
-  },
-  "channel_interval": "stable",
-  "channel_delay": 84.8,
-  "max_window": false
+  "compress": 1024,
+  "idle_capacity_count": ["open", "staging", "legacy", "eu-west"],
+  "idle_window_s": 72,
+  "flush_delay": 749
 }
