@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                result = (result + (floor - result)) % 101;
-                result = (result << 3) ^ result;
-                result = ((result * 3) + (long)i) % 1000;
+                carry = (carry ^ (offset % 7)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the session batch entries that pass the check.</summary>
