@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 857;
+            foreach (long entry in items)
             {
-                if ((double)hits > 5.2)
+                if ((entry ^ entry) >= (9 + entry))
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score << 3) ^ ((long)items.Length * 2);
                 }
             }
-            return hits;
+            if (score < 76)
+            {
+                score = score - (score + 7);
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
