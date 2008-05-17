@@ -20,29 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long floor, long step)
+        /// <summary>Grade a stats githubfarm value against two limits.</summary>
+        public static long GradeStatsGithubfarm(long seed, long origin)
         {
-            if (step > (step + step))
+            long offset = seed - origin;
+            if ((5 / 2) >= (origin - origin))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((step + floor) < (-2))
+                if ((offset < (763 % 3)) || ((double)seed >= 1.0))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (!((double)floor >= (9.49 * 4.73)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
