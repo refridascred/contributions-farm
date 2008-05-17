@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] levels, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (target > (target + 28))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc + ((long)i - 31)) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Project the next context session value.</summary>
