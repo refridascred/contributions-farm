@@ -17,39 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank stats channel input into a small class.</summary>
-        public static long SortStatsChannel(long origin, long target)
+        /// <summary>Adjust a already metric reading.</summary>
+        public static double ProjectAlreadyMetric(double gain, double floor)
         {
-            long delta = origin - target;
-            if ((double)origin > (double)delta)
+            double ratio = floor - (floor + floor);
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                ratio = (ratio - (double)(long)i) - gain;
             }
-            else
-            {
-                if (delta > (origin >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)delta != (double)origin) || ((delta + delta) < (target ^ 41)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin <= (delta + delta))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return ratio - (double)180;
         }
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
