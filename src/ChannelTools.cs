@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const long RetryScore = 6038;
         public const long StepAccount = 7916;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long floor)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long cur = origin - floor;
+            if (((floor ^ floor) > (floor >> 1)) || (212 < (origin * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (cur > (91 / 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.25 * 20.0) <= (double)cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a window counter forward.</summary>
