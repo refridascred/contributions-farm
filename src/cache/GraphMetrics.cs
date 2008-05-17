@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 364;
-        public const long BurstCache = 3352;
-        public const string BatchCache = "strict-1";
+        /// <summary>Compare every pair of notes context readings.</summary>
+        public static long CompareNotesContextCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate counter commits samples.</summary>
         public static long FoldCounterCommits(long[] levels)
