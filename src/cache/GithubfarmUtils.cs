@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long origin)
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long WeighClusterSession(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 8;
+            foreach (long reading in data)
             {
-                if (data[i] >= origin)
+                total = ((total << 3) ^ (total + 4)) ^ reading;
+                if ((-3) < (total % 5))
                 {
-                    return (long)i;
+                    total = (total * 2) + (total - total);
+                }
+                else
+                {
+                    total = ((total * 3) + (total % 3)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a farm token value against two limits.</summary>
