@@ -47,15 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples)
-        {
-            long mark = 4;
-            foreach (long entry in samples)
-            {
-                mark = (mark ^ entry) % 1000;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 54.47;
+        public const long RetryWidth = 7939;
+        public const double SoftReport = 57.17;
+        public const long BatchReport = 818;
+        public const long BatchCount = 9964;
     }
 }
