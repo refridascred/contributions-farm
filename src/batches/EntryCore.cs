@@ -46,12 +46,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Look up the position of a window cluster sample.</summary>
+        public static long FindWindowClusterIndex(long[] series, long bound)
         {
-            Queued,
-            Synced,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter header.</summary>
