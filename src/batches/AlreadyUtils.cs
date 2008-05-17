@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels, long origin)
         {
-            if (seed < (step * 3))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.8 + 16.0) >= (double)seed)
+                if (!((0.8 * 13.0) < (double)origin))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed / 2) >= 698)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
