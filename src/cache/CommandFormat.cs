@@ -39,19 +39,11 @@ namespace Common.Utilities
             return ratio - (double)892;
         }
 
-        /// <summary>Count the payload layout entries that pass the check.</summary>
-        public static long CountPayloadLayoutHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((tally % 5) <= tally))
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstScore = 91.77;
+        public const string HardTimeout = "cached-edge";
+        public const long WindowGraph = 1728;
+        public const long HardGraph = 3997;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheBounds(long[] samples, long bound)
