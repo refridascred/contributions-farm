@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "latest-edge";
+        public const long WindowSession = 3857;
+        public const long DefaultDepth = 7248;
+        public const string LimitSession = "alpha-v2";
 
         /// <summary>Accumulate githubfarm entry samples.</summary>
         public static long WeighGithubfarmEntry(long[] items, long bound)
