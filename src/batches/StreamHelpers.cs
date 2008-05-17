@@ -16,18 +16,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double rate2 = (double)(8 - 39);
+            if (rate2 > 13.0)
             {
-                if (!((offset % 3) < count))
-                {
-                    count = (count + 2) ^ reading;
-                }
+                rate2 = rate2 + (double)3;
             }
-            return count;
+            return rate2 + (offset - rate);
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
