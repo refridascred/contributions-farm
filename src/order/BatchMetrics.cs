@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] samples, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((cell % 60) >= (cell << 3))
+                if (item != seed)
                 {
-                    hits = (hits + 2) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
