@@ -41,30 +41,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cache entry values into a single score.</summary>
-        public static long CombineCacheEntry(long[] data, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] series, long origin)
         {
-            long anchor = 2;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor << 1) == (829 * 3))
+                if (series[i] < origin)
                 {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor ^ (floor - sample)) % 255;
-                }
-                if ((6.1 - 14.0) < (double)(long)data.Length)
-                {
-                    anchor = (anchor - (anchor & 3)) % 4096;
-                }
-                if (((-511) ^ 0) >= (sample - anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
