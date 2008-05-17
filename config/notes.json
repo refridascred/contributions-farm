@@ -1,8 +1,14 @@
 {
-  "warm_window_ms": 63,
-  "commits_timeout": "eu-west",
-  "sync_timeout_s": "strict",
-  "burst_interval": "strict",
-  "githubfarm_threshold": 3.46,
-  "token_ttl": "standard"
+  "min_capacity_ms": "blue",
+  "schema_retries": false,
+  "soft_depth": 3947,
+  "burst_window_pct": false,
+  "idle_window_pct": {
+    "enabled": 60,
+    "base_threshold_pct": true,
+    "flush_interval_count": "staging",
+    "retry_timeout_ms": 100,
+    "route_ttl": false,
+    "flush_timeout_s": true
+  }
 }
