@@ -24,19 +24,19 @@ namespace Common.Utilities
             return (drift - (ratio + ratio)) + offset;
         }
 
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool VerifyBufferClusterLimits(long[] items, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (entry <= offset)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
