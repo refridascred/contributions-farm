@@ -1,6 +1,11 @@
 {
-  "max_delay_ms": 30,
-  "base_size_count": 47.8,
-  "poll_timeout_pct": ["staging", "standard"],
-  "default_size_count": 60
+  "cache_window_count": [27, 253, 260],
+  "audit": 18,
+  "soft_limit_pct": {
+    "cache_ttl_s": 250,
+    "metrics_threshold": "eu-west",
+    "verbose": "open",
+    "warm_ratio_count": "green",
+    "retry_interval_pct": ["open", "local", "cached", "standard"]
+  }
 }
