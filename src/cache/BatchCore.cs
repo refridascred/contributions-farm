@@ -24,10 +24,20 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 1925;
-        public const string MinSize = "standard-edge";
-        public const long IdleReport = 4917;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleRatio = 6957;
