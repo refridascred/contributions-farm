@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Ready,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
