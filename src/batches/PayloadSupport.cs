@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long SoftWidth = 9246;
         public const double BurstFactor = 94.22;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double bias = rate - (rate / 4.0);
-            if (bias < bias)
-            {
-                bias = (bias + 8.0) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + rate;
+            Paused,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit tools counter readings against a rule.</summary>
