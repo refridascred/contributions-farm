@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long origin2)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long seed)
         {
-            long delta = origin ^ origin2;
-            if ((898 / 5) < (origin + origin))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((delta + origin) > ((-8) + 0))
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm entry samples.</summary>
