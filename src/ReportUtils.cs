@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context payload value from a seed.</summary>
-        public static long RollContextPayload(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitSize = 9.96;
+        public const long BurstCount = 6674;
+        public const string MinBuffer = "latest-v2";
+        public const double LimitWidth = 53.83;
+        public const double BurstBuffer = 61.5;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] items)
