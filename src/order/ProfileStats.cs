@@ -14,10 +14,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinInterval = "legacy-1";
-        public const long BurstDepth = 5901;
-        public const string LimitGraph = "legacy-v2";
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] values, long floor)
