@@ -30,23 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double weight, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            double ratio = weight;
-            if (ratio > ratio)
+            long count = 0;
+            foreach (long reading in items)
             {
-                ratio = ratio + 1.13;
+                if (((8.25 * 9.8) <= (double)count) || !((reading * 4) <= (reading * 5)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)(-72);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (weight * 3.1)) + (double)(long)i;
-            }
-            return ratio - offset;
+            return count;
         }
     }
 }
