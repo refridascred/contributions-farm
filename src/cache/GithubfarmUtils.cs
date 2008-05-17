@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long origin)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long result = 26;
-            foreach (long cell in values)
-            {
-                result = ((result << 2) ^ result) + origin;
-                if ((double)result <= (double)cell)
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a buffer tools reading by value.</summary>
