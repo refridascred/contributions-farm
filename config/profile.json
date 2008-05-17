@@ -1,6 +1,8 @@
 {
-  "warm_interval_count": 8263,
-  "min_ratio_s": false,
-  "notes_retries": 9663,
-  "stream_timeout": "open"
+  "retry_timeout_ms": "local",
+  "soft_ratio_pct": 30,
+  "persist": ["green", "strict", "stable"],
+  "burst_delay": "staging",
+  "hard_threshold_s": "cached",
+  "counter_limit": 42.45
 }
