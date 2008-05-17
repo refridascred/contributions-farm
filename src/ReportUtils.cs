@@ -38,12 +38,15 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate farm samples.</summary>
