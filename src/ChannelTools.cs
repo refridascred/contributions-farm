@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long TallyGithubfarmCounter(long[] values, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long origin2)
         {
-            long score = 8;
-            foreach (long datum in values)
+            long next = origin + origin2;
+            if ((origin & 127) >= (next % 2))
             {
-                score = ((score + (bound + score)) % 1000) - datum;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((next - origin) > (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin2 != (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
