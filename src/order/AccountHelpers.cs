@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score ^ 539) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
