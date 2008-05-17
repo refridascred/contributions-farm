@@ -17,12 +17,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long offset, long origin)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            if (((5.0 + 9.1) > (double)offset) || (origin < (origin >> 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset * 4) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metrics editor samples.</summary>
