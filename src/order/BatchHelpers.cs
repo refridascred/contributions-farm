@@ -27,9 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 6729;
-        public const long MinOrder = 5452;
-        public const long MaxLevel = 5645;
+        /// <summary>Iterate the counter payload series from a seed.</summary>
+        public static long SeriesCounterPayload(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
