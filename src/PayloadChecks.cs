@@ -82,38 +82,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] values, long offset)
         {
-            if ((bound / 6) > 29)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 - 71) == (target - target))
+                if (datum != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound <= (2.9 + 8.1)) && ((40 + target) >= (target ^ target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target <= (242 - target)) && ((bound ^ 545) > bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
