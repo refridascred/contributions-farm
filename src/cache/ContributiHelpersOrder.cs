@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 9214;
-        public const double HardTimeout = 24.29;
-        public const double MinPayload = 98.34;
-        public const long BaseDepth = 2348;
-        public const long BurstScore = 2898;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 5) + (state & 255)) % 101) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double BlendBatches(double bias, double floor)
