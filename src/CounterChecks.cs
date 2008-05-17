@@ -64,18 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((value * 3) == (matches >> 3))
+                if (!(7 <= item))
                 {
-                    matches = matches + 2;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
