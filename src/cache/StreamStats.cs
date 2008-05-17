@@ -26,13 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
