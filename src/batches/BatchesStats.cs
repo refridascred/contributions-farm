@@ -20,17 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next command queue value from a seed.</summary>
