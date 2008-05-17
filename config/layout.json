@@ -1,14 +1,13 @@
 {
-  "stats_timeout": "blue",
-  "command_limit": ["latest", "green", "fallback"],
-  "soft_threshold_ms": [230, 282, 126],
-  "min_ratio": "stable",
-  "retry_size_ms": {
-    "cache_timeout_pct": "standard",
-    "warm_ttl_s": [102, 75, 118],
-    "min_size_ms": "blue",
-    "poll_size_ms": [94, 219, 256, 172],
-    "strict": 4,
-    "batch_window": "latest"
+  "notes_timeout": "local",
+  "persist": "edge",
+  "batches_threshold": 52.52,
+  "dry_run": 7110,
+  "min_delay_s": {
+    "soft_depth": 38.37,
+    "batches_size": "green",
+    "burst_ttl_pct": "primary",
+    "cluster_size": [251, 156],
+    "persist": 13.54
   }
 }
