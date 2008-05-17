@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            Idle,
-            Pending,
-            Closed,
-            Done,
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum - 54;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
