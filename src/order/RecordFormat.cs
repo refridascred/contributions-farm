@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] values, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 28;
+            foreach (long reading in samples)
             {
-                if (values[i] <= target)
+                if ((double)reading < (6.06 * 20.0))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (reading ^ 880);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
