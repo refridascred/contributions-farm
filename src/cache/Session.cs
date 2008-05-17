@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            long carry = 78;
-            foreach (long cell in values)
+            double rate = bias2;
+            if (rate < (bias2 * 7.82))
             {
-                if ((floor - carry) > cell)
-                {
-                    carry = ((carry << 3) ^ (floor + 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 3) + floor;
-                }
+                rate = (rate - 7.58) + bias;
             }
-            return carry;
+            return rate - (double)814;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
