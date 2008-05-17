@@ -1,13 +1,6 @@
 {
-  "notes_timeout": "local",
-  "persist": "edge",
-  "batches_threshold": 52.52,
-  "dry_run": 7110,
-  "min_delay_s": {
-    "soft_depth": 38.37,
-    "batches_size": "green",
-    "burst_ttl_pct": "primary",
-    "cluster_size": [251, 156],
-    "persist": 13.54
-  }
+  "dry_run": 3999,
+  "sync_threshold": 95.21,
+  "checks_retries": ["local", "stable", "stable"],
+  "poll_delay": "legacy"
 }
