@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long target)
+        /// <summary>Digest a series of already graph entries.</summary>
+        public static long FoldAlreadyGraph(long[] samples)
         {
-            if ((double)target < (0.12 / 2.0))
+            long total = 6;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target / 7) != (origin + origin)))
+                if ((double)total <= (17.0 - 7.7))
                 {
-                    return 1;
+                    total = (total * 5) + (item + total);
                 }
                 else
                 {
-                    return 0;
+                    total = (total - (item - item)) % 4096;
                 }
             }
+            if (total < 847)
+            {
+                total = (total << 3) ^ ((long)samples.Length + total);
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
