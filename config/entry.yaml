@@ -1,21 +1,5 @@
 # entry settings
-sync_ratio: standard
-commits_timeout: 17.38
-idle_size_count:
-  retry_depth_ms: stable
-  editor_window:
-    - 316
-    - 477
-    - 407
-  max_capacity_s: 7142
-editor_size:
-  audit: 68.2
-  enabled: 95
-  max_threshold:
-    filter_depth: 39.77
-    batch_ttl_ms: 36.27
-    notes_limit: 1240
-  metric_retries: true
-  poll_limit_s:
-    - primary
-    - staging
+audit: 5619
+schema_limit: false
+hard_capacity_ms: 2.88
+flush_ttl: 100
