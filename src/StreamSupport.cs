@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long CountBatchChannelGaps(long[] data)
         {
-            Ready,
-            Dropped,
-            Closed,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count <= (count + datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stats metrics samples are out of range.</summary>
