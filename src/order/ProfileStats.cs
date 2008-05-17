@@ -33,10 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinTimeout = 4868;
-        public const long HardAlready = 2494;
-        public const double IdleDepth = 27.08;
-        public const long CacheSize = 8009;
+        /// <summary>Compare every pair of support metric readings.</summary>
+        public static long MatchSupportMetricCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
