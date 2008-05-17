@@ -60,13 +60,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Dropped,
-            Done,
-            Failed,
-            Stale,
+            Draft,
+            Closed,
+            Idle,
+            Ready,
+            Retry,
         }
     }
 }
