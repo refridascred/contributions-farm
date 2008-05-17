@@ -34,19 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values)
-        {
-            long carry = 62;
-            foreach (long item in values)
-            {
-                if ((4 + item) >= item)
-                {
-                    carry = (carry ^ (663 >> 2)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultWidth = 68.82;
+        public const double StepCount = 7.99;
+        public const long MaxContributi = 9043;
+        public const string MaxRatio = "open-1";
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long RollToken(long target)
