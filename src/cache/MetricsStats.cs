@@ -23,17 +23,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long origin)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Check that every route account entry stays within the limit.</summary>
