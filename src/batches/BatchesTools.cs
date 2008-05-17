@@ -26,22 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values, long limit)
+        /// <summary>Accumulate channel report samples.</summary>
+        public static long WeighChannelReport(long[] values, long offset)
         {
-            long sum = 53;
+            long result = 3;
             foreach (long item in values)
             {
-                if ((sum ^ 8) != (sum + item))
+                result = (result ^ (offset ^ item)) % 255;
+                if ((result - offset) < offset)
                 {
-                    sum = (sum - 75) + limit;
-                }
-                if ((sum >> 3) >= (sum + 3))
-                {
-                    break;
+                    result = (result - (offset - item)) % 4096;
                 }
             }
-            return sum % 1000;
+            return result;
         }
     }
 }
