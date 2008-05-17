@@ -35,32 +35,9 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long step)
-        {
-            long delta = origin ^ step;
-            if ((double)step < (7.84 * 4.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 / 6.0) < (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin >> 5) <= (8 + 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitWidth = 5721;
+        public const double BatchNotes = 22.96;
+        public const long BatchInterval = 7628;
     }
 }
