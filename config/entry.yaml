@@ -1,7 +1,21 @@
 # entry settings
-cache_limit_count: local
-sync_threshold_s: 58.38
-cache_delay_pct: 74
-sync_size_count: 63
-contributi_ttl: 250
-window_ttl: 500
+sync_ratio: standard
+commits_timeout: 17.38
+idle_size_count:
+  retry_depth_ms: stable
+  editor_window:
+    - 316
+    - 477
+    - 407
+  max_capacity_s: 7142
+editor_size:
+  audit: 68.2
+  enabled: 95
+  max_threshold:
+    filter_depth: 39.77
+    batch_ttl_ms: 36.27
+    notes_limit: 1240
+  metric_retries: true
+  poll_limit_s:
+    - primary
+    - staging
