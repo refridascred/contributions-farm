@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] series, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many cache report samples are out of range.</summary>
