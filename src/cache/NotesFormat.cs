@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7194;
-        public const long BatchContributi = 5877;
-        public const long SoftContributi = 1540;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Synced,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] items)
