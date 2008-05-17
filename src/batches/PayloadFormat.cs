@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "latest-edge";
-        public const long WindowSession = 3857;
-        public const long DefaultDepth = 7248;
-        public const string LimitSession = "alpha-v2";
+        /// <summary>Iterate the stream editor series from a seed.</summary>
+        public static long StepStreamEditor(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate githubfarm entry samples.</summary>
         public static long WeighGithubfarmEntry(long[] items, long bound)
