@@ -1,6 +1,14 @@
 {
-  "entry_timeout": 100,
-  "format_window": "primary",
-  "min_size_ms": [290, 126, 15, 427],
-  "warm_timeout": ["edge", "open", "stable", "legacy"]
+  "idle_delay_s": true,
+  "notes_ttl": true,
+  "githubfarm_interval": 34,
+  "default_ratio_ms": true,
+  "cache_retries": {
+    "dry_run": [144, 493],
+    "strict": "stable",
+    "persist": false,
+    "flush_ratio_s": 42.42,
+    "enabled": true
+  },
+  "persist": ["stable", "fallback"]
 }
