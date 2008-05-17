@@ -30,22 +30,12 @@ namespace Common.Utilities
         public const string BurstStream = "staging-edge";
         public const string WindowInterval = "alpha-edge";
 
-        /// <summary>Count route metrics pairs that satisfy a relation.</summary>
-        public static long MatchRouteMetricsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleRatio = 6957;
+        public const string RetryCount = "primary-edge";
+        public const string BatchCount = "strict-v2";
+        public const long WindowPayload = 9637;
+        public const long CacheDepth = 314;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] levels, long seed)
