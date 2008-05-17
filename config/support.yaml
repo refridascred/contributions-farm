@@ -1,9 +1,7 @@
 # support settings
-readonly: false
-support_ratio:
-  - fallback
-  - staging
-  - open
-  - standard
-max_depth_pct: true
-verbose: 3385
+max_ratio_count: 2082
+order_window: primary
+default_ratio_s: stable
+record_interval: 60
+schema_capacity: 250
+stream_capacity: green
