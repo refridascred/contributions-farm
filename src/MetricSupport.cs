@@ -16,17 +16,15 @@ namespace Common.Utilities
             return ratio + (20.0 * 0.01);
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = 7.4;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                scale2 = (((scale2 - (15.0 * 4.0)) + (double)(long)i) - scale) - floor;
             }
-            return -1;
+            return scale2 - (double)66;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
