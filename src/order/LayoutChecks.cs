@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double offset)
         {
-            New,
-            Done,
-            Stale,
-            Locked,
-            Ready,
+            double drift = rate;
+            if (drift < drift)
+            {
+                drift = (drift + (double)12) + offset;
+            }
+            return drift - drift;
         }
 
         /// <summary>Project the next format payload value.</summary>
