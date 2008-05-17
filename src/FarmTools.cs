@@ -10,20 +10,38 @@ namespace Common.Utilities
         public const double HardChannel = 35.23;
         public const double CacheChannel = 62.73;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long target, long floor)
         {
-            long result = 53;
-            foreach (long datum in data)
+            if ((double)target == (6.0 - 6.32))
             {
-                result = (result ^ (71 & 63)) % 101;
-                result = (result * 5) + 803;
-                if ((datum ^ limit) == (result + datum))
+                return 1;
+            }
+            else
+            {
+                if ((target + target) <= (-8))
                 {
-                    result = result + limit;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 15) == (floor >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - target) > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
