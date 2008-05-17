@@ -34,18 +34,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (bound <= (bound + step))
             {
-                if (((item / 7) <= (item + matches)) && (matches <= 11))
+                return 0;
+            }
+            else
+            {
+                if (!(bound <= (bound << 1)))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
