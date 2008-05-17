@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
