@@ -1,4 +1,19 @@
 # githubfarm settings
-warm_delay: 77
-base_timeout_s: false
-flush_retries: 52
+strict: strict
+verbose: cached
+retry_capacity_pct:
+  verbose: standard
+  batch_delay_s: 36.74
+  hard_capacity_count: 5413
+  cache_size_s: 1.63
+  poll_depth_count: staging
+  layout_ttl: false
+burst_ratio:
+  - 483
+  - 17
+warm_window:
+  - 365
+  - 189
+  - 216
+  - 406
+idle_size_ms: 98.71
