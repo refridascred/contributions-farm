@@ -39,12 +39,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryScore = 428;
+        public const long SoftTools = 6639;
+        public const long BurstWidth = 3556;
+        public const double BatchInterval = 28.22;
+        public const double MaxSpan = 44.78;
     }
 }
