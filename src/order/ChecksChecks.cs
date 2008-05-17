@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const double DefaultTimeout = 59.23;
         public const string LimitFactor = "standard-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 9603;
-        public const double WindowSpan = 91.49;
-        public const long MinCache = 3987;
-        public const long BaseCache = 6426;
+        /// <summary>Classify a counter farm pair into a bucket.</summary>
+        public static long ClassifyCounterFarm(long floor, long origin)
+        {
+            if (!((origin ^ floor) == ((-1) - floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (93 > (origin >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (2.57 - 6.1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long floor)
