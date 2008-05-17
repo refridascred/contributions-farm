@@ -18,18 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch metrics samples are out of range.</summary>
-        public static long CountBatchMetricsHits(long[] levels, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((hits + 1) >= (hits * 5))
+                long cur = acc;
+                if ((71 <= (cur >> 4)) || (acc <= 4))
                 {
-                    hits = ((hits + 2) + item) + seed;
+                    cur = (cur + acc) % 1000;
                 }
+                if ((((long)i + (-66)) > (cur << 1)) || (acc < (target >> 5)))
+                {
+                    acc = acc + (cur - acc);
+                    cur = (cur * 2) + (target - (long)i);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc - 970);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a command snapshot.</summary>
