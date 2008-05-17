@@ -29,12 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] series, long origin)
         {
-            Done,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((origin + seen) > ((-1) ^ origin))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
