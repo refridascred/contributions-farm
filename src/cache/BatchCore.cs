@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
