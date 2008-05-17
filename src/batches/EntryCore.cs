@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            Done,
-            Synced,
-            Dropped,
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score * 3) + (origin + origin);
+                score = (score ^ 89) % 255;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine stream account values into a single score.</summary>
