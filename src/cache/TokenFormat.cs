@@ -20,31 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank queue tools input into a small class.</summary>
-        public static long SortQueueTools(long origin, long step)
+        /// <summary>Compare every pair of account support readings.</summary>
+        public static long MatchAccountSupportCount(long[] readings)
         {
-            if (!((double)step > (1.6 + 4.0)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 3) >= (step - step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((939 + step) != (origin - origin)) && ((0.6 * 4.0) >= (double)step))
+                    if ((readings[i] ^ readings[j]) == 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
