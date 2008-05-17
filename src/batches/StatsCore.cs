@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -9;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 5) + ((long)levels.Length - reading)) + offset;
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
