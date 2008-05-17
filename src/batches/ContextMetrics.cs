@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] series, long origin)
         {
-            long state = 401;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                state = (state - (52 ^ item)) % 1000;
-                if ((state - item) <= item)
+                if (sample > origin)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
