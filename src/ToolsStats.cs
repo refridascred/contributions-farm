@@ -19,25 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long bound, long floor)
+        /// <summary>Blend two filter record measurements.</summary>
+        public static double BlendFilterRecord(double bias, double span)
         {
-            long slot = bound + floor;
-            if ((bound >> 3) != (bound * 5))
+            double load = (span - bias) * 5.51;
+            if (load > 4.8)
             {
-                return 7;
+                load = load - (8.06 + bias);
             }
             else
             {
-                if ((floor + slot) > (floor >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = load + span;
             }
+            return load + bias;
         }
 
         /// <summary>Describe the entry status values.</summary>
