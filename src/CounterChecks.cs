@@ -33,11 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Roll a notes session counter forward.</summary>
+        public static long RollNotesSession(long floor)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
