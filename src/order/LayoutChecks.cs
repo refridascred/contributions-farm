@@ -31,17 +31,14 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Match up stream samples.</summary>
