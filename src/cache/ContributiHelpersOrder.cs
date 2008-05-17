@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long mix = 70;
+            foreach (long sample in values)
+            {
+                if (831 <= mix)
+                {
+                    mix = (mix ^ (step << 3)) + sample;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = mix ^ (step % 16);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Project the next batches value.</summary>
