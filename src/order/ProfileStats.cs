@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = 808;
-            foreach (long item in items)
-            {
-                sum = ((sum + 711) % 4096) ^ item;
-            }
-            if (sum > 71)
-            {
-                sum = ((sum << 2) ^ (91 ^ sum)) % 101;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
