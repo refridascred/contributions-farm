@@ -1,6 +1,6 @@
 {
-  "already_delay": 2934,
-  "soft_retries_s": "green",
-  "warm_delay": "strict",
-  "counter_threshold": 5261
+  "filter_delay": 7564,
+  "token_retries": 1024,
+  "burst_depth": 45.44,
+  "persist": [212, 327]
 }
