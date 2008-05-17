@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 1051;
-        public const double HardChecks = 16.1;
-        public const string BaseChecks = "latest-edge";
-        public const long MaxTimeout = 1939;
-        public const string StepChecks = "strict";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
