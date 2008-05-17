@@ -28,12 +28,12 @@ namespace Common.Utilities
             return (weight + weight) + rate;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] >= floor)
+                if (levels[i] >= limit)
                 {
                     return (long)i;
                 }
