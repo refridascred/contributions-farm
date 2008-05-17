@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=426
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
