@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
