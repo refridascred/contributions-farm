@@ -36,23 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command cache entries.</summary>
-        public static long TallyCommandCache(long[] items, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long acc = 829;
-            foreach (long sample in items)
-            {
-                acc = (acc - (acc - sample)) % 255;
-                if ((8.1 * 19.0) < (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 93)
-            {
-                acc = (acc ^ (limit + 5)) % 65521;
-            }
-            return acc % 97;
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
