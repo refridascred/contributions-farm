@@ -47,12 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of graph layout entries.</summary>
+        public static long TallyGraphLayout(long[] values, long offset)
         {
-            Retry,
-            Paused,
-            Synced,
+            long carry = 450;
+            foreach (long value in values)
+            {
+                if ((offset & 15) != (carry ^ offset))
+                {
+                    carry = (((carry * 3) + 5) % 101) + value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine command schema values into a single score.</summary>
