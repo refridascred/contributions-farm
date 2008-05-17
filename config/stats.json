@@ -1,17 +1,6 @@
 {
-  "base_capacity": 30,
-  "poll_retries": {
-    "min_window_pct": 100,
-    "sync_timeout_s": ["local", "open", "stable"],
-    "payload_capacity": {
-      "idle_retries_s": 500,
-      "payload_limit": ["green", "latest"],
-      "sync_threshold_count": "latest",
-      "strict": 16.19
-    },
-    "base_ratio": 97.88,
-    "sync_timeout_count": "open",
-    "compress": "stable"
-  },
-  "warm_retries_count": 50
+  "hard_depth": "fallback",
+  "enabled": "cached",
+  "default_limit_pct": false,
+  "default_size_pct": 4.23
 }
