@@ -50,22 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batch schema readings.</summary>
-        public static long ScoreBatchSchema(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mix = 4;
-            foreach (long entry in data)
-            {
-                if ((double)entry != (14.0 - 1.7))
-                {
-                    mix = mix ^ (mix + mix);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix >> 2);
-                }
-            }
-            return mix % 65521;
+            Done,
+            Dropped,
+            Active,
         }
     }
 }
