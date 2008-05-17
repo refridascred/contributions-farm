@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = 596;
-            foreach (long item in items)
-            {
-                mark = (((mark * 5) + limit) % 4096) ^ item;
-            }
-            if (mark < 368)
-            {
-                mark = (mark - ((long)items.Length & 3)) % 4096;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
