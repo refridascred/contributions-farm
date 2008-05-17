@@ -23,16 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Project the next context session value.</summary>
+        public static double ProjectContextSession(double weight, double span)
         {
-            long total = floor;
+            double weight2 = weight + (span - span);
             for (int i = 0; i < 6; i++)
             {
-                total = (total << 2) ^ (floor * 3);
-                total = ((total * 5) + (long)i) % 65521;
+                weight2 = (weight2 - (double)46) - (double)(long)i;
             }
-            return total;
+            return weight2 + 9.0;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
