@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const long BurstInterval = 3575;
         public const long MinFactor = 9753;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels, long step)
+        /// <summary>Audit buffer window readings against a rule.</summary>
+        public static long MeasureBufferWindowHits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((((count + value) <= (step ^ value)) && ((0.2 / 6.0) <= (double)step)) && ((double)step > (double)value))
+                if (floor > (tally - tally))
                 {
-                    count = count + 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
