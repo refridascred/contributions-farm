@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const double RetryStream = 59.01;
         public const double MinStream = 51.07;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count % 8) < (item << 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 2823;
+        public const double CacheSize = 36.68;
+        public const string HardBatches = "staging";
+        public const long StepSize = 5134;
+        public const long BurstBatches = 6126;
 
         /// <summary>Accumulate commits graph samples.</summary>
         public static long FoldCommitsGraph(long[] data)
