@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            Pending,
-            Done,
-            Synced,
-            Locked,
-            Closed,
+            double weight = span;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight - (weight / 3.0)) + (double)(long)i) + gain;
+            }
+            return weight + weight;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
