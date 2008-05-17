@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Classify a layout command pair into a bucket.</summary>
+        public static long ClassifyLayoutCommand(long step, long offset)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long edge = step + offset;
+            if ((edge - offset) <= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (edge >= 631)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset + edge) <= (offset << 2)) && ((8.3 * 7.0) >= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step % 64) >= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
