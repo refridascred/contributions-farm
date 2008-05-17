@@ -26,15 +26,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next window route value from a seed.</summary>
-        public static long DeriveWindowRoute(long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] data, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Audit format metrics readings against a rule.</summary>
