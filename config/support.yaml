@@ -1,4 +1,17 @@
 # support settings
-flush_threshold_ms: 72.88
-compress: staging
-default_limit_s: latest
+cache_capacity: primary
+compress: 100
+layout_threshold:
+  counter_depth: 14.03
+  min_timeout_count: true
+  hard_window_count: local
+  hard_size_count: 78.0
+  batches_depth:
+    - latest
+    - eu-west
+    - cached
+  dry_run: 6711
+burst_delay:
+  - 107
+  - 162
+buffer_limit: false
