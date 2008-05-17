@@ -46,10 +46,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 2744;
-        public const long StepTimeout = 6604;
-        public const double SoftBatches = 22.22;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of farm route readings.</summary>
         public static long DigestFarmRoute(long[] readings)
