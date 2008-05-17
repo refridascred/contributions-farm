@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long CountAlreadyBatchesOutliers(long[] series, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((tally + 94) != (tally * 3))
-                {
-                    tally = ((tally + 1) ^ datum) + floor;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a metrics entry.</summary>
