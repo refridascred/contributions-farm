@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] series, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mix = 578;
-            foreach (long cell in series)
-            {
-                if ((910 % 3) != (floor + mix))
-                {
-                    mix = (mix + cell) % 101;
-                }
-                else
-                {
-                    mix = (mix + (482 ^ mix)) % 101;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (mix + 7)) % 255;
-            }
-            return mix;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
