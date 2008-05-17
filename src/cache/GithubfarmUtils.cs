@@ -31,12 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count + count) <= (datum - 266))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
