@@ -1,4 +1,12 @@
 # githubfarm settings
-verbose: standard
-enabled: 250
-soft_capacity_pct: staging
+idle_depth: green
+sync_size:
+  - 216
+  - 74
+compress:
+  idle_timeout_ms: local
+  min_depth:
+    - green
+    - latest
+  dry_run: 37.46
+  enabled: eu-west
