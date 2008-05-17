@@ -19,28 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry githubfarm values into a single score.</summary>
-        public static long CombineEntryGithubfarm(long[] data, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            long result = 85;
-            foreach (long value in data)
+            if ((limit + limit) >= floor)
             {
-                result = (result * 5) + (result % 97);
-                result = result + value;
-                if (!((result % 8) == (value % 60)))
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 5) >= (limit % 60))
                 {
-                    result = (result + offset) % 4096;
+                    return 7;
                 }
-                if ((offset - offset) >= result)
+                else
                 {
-                    break;
+                    if ((3.74 - 1.83) >= (11.0 + 8.3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (result < 0)
-            {
-                result = result ^ (offset & 1);
-            }
-            return result % 4096;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
