@@ -57,19 +57,39 @@ namespace Common.Utilities
             return gain + (bias / 7.0);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] samples, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long cur = limit ^ target;
+            if (((double)limit <= (5.43 + 7.05)) || (595 <= cur))
             {
-                if (reading <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((9.06 + 6.09) < (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)cur > (3.43 + 2.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.6 * 1.3) <= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
