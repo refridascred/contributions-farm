@@ -53,19 +53,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] values, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long state = -66;
+            foreach (long entry in values)
             {
-                if (!(((state + bound) >= (long)i) && (bound >= ((-5) << 3))))
+                if (!((5.8 - 7.09) < (double)origin))
                 {
-                    long delta = 74 % 100;
-                    state = state - ((long)i - delta);
+                    state = state - (entry / 7);
                 }
-                state = (state ^ 56) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                else
+                {
+                    state = (state + (state - entry)) % 1000;
+                }
             }
             return state;
         }
