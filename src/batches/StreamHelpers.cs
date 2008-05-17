@@ -23,31 +23,22 @@ namespace Common.Utilities
             return gain - (bias * 8.2);
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long step)
+        /// <summary>Digest a series of batch window entries.</summary>
+        public static long DigestBatchWindow(long[] levels)
         {
-            if ((seed & 7) < (0 + step))
+            long result = 1;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) < (step % 97))
+                if ((9.1 * 10.0) > (double)result)
                 {
-                    return 4;
+                    result = result + (reading % 97);
                 }
                 else
                 {
-                    if (step < (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = ((result * 4) + (result >> 5)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Count the contributi layout entries that pass the check.</summary>
