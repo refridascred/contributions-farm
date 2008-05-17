@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (levels[i] >= limit)
+                if (value < (value ^ matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next editor value.</summary>
