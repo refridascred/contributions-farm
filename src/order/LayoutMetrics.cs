@@ -16,24 +16,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of metrics context entries.</summary>
-        public static long TotalMetricsContext(long[] series, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] levels, long floor)
         {
-            long carry = 82;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                carry = (carry + (entry - target)) % 101;
-                carry = ((carry * 4) + carry) % 1000;
-                if (((carry << 2) <= carry) && ((target / 4) <= (entry << 2)))
+                if ((double)floor < (2.74 - 4.0))
                 {
-                    carry = (carry * 3) + (7 << 3);
-                }
-                if (carry < (carry / 8))
-                {
-                    break;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank entry command input into a small class.</summary>
