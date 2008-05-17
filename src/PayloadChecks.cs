@@ -23,38 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long SortCommitsEditor(long offset, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] values, long bound)
         {
-            if (9.8 > (double)offset)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((745 << 1) == (target - offset)) && ((double)target != (double)offset))
+                if (bound < (sample * 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset < 7.37)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
