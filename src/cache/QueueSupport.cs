@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long cur = floor - limit;
+            if (floor <= (floor + limit))
             {
-                if ((double)seen < (double)item)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor != (double)cur)
                 {
-                    seen = seen + 2;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)cur <= (2.0 / 4.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
