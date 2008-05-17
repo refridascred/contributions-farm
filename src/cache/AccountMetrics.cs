@@ -46,10 +46,39 @@ namespace Common.Utilities
             return load + (floor * 15.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "open-v2";
-        public const double MinGithubfarm = 68.26;
-        public const double DefaultGithubfarm = 45.54;
+        /// <summary>Classify a payload buffer pair into a bucket.</summary>
+        public static long BucketPayloadBuffer(long limit, long step)
+        {
+            if ((limit & 255) >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + step) != (step + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - limit) < (limit ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((6.82 - 8.95) == (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
         public static long TallyStreamPayloadHits(long[] values, long bound)
