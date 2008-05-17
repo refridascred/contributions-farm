@@ -26,20 +26,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((6.05 / 9.0) == (double)seed)
+                if ((seen / 8) <= seen)
                 {
-                    sum = (sum * 5) + 494;
+                    seen = ((seen + 2) + item) - floor;
                 }
-                sum = (sum + ((long)i + 1)) % 4096;
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
