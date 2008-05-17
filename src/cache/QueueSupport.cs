@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Closed,
-            Dropped,
-            Locked,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "cached-v2";
+        public const long LimitSize = 6518;
+        public const double DefaultChecks = 47.76;
+        public const long DefaultWidth = 9967;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] values, long limit)
