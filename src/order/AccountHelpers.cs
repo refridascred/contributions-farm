@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstWidth = 8981;
-        public const long BatchSession = 3478;
-        public const long LimitBudget = 1482;
-        public const long MinSession = 1594;
-        public const string HardScore = "open-edge";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((60 >> 3) == (matches * 4))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
