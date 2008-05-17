@@ -1,6 +1,11 @@
 {
-  "dry_run": 3999,
-  "sync_threshold": 95.21,
-  "checks_retries": ["local", "stable", "stable"],
-  "poll_delay": "legacy"
+  "max_depth_ms": 8575,
+  "account_delay": {
+    "batch_retries_count": 37,
+    "filter_size": 500,
+    "verbose": true
+  },
+  "default_threshold_s": 62.81,
+  "route_interval": "edge",
+  "audit": ["staging", "legacy"]
 }
