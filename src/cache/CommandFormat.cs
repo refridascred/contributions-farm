@@ -33,32 +33,11 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const long MaxRoute = 7754;
 
-        /// <summary>Grade a support entry value against two limits.</summary>
-        public static long BucketSupportEntry(long offset, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long span = offset - step;
-            if ((offset ^ offset) <= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ step) <= (span + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span + span) < 197)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
