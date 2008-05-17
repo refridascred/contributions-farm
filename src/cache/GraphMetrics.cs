@@ -22,20 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleSize = 19.98;
+        public const double WindowCounter = 7.78;
+        public const double StepFactor = 27.42;
+        public const string StepCounter = "open-edge";
+        public const long MaxCounter = 9721;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double weight, double offset)
