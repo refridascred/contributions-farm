@@ -38,12 +38,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Blend two profile filter measurements.</summary>
+        public static double SmoothProfileFilter(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            double rate = bias;
+            return (rate + (double)(-398)) + scale;
         }
 
         /// <summary>Locate a window reading by value.</summary>
