@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long BaseRatio = 7399;
         public const long BaseProfile = 9297;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] series, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double ratio = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if ((611 * 2) <= (605 + cell))
-                {
-                    tally = (tally + 1) - origin;
-                }
+                ratio = ((ratio + (gain * 7.4)) + (double)(long)i) + offset;
             }
-            return tally;
+            return ratio + (ratio / 9.0);
         }
 
         /// <summary>Audit metric account readings against a rule.</summary>
