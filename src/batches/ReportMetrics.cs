@@ -27,13 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a stream format reading.</summary>
+        public static double BlendStreamFormat(double bias, double floor)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Locked,
+            double ratio = bias;
+            if (ratio > (double)55)
+            {
+                ratio = ratio + (floor - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + 1.4) - (double)(long)i;
+            }
+            return ratio - (bias * 1.7);
         }
     }
 }
