@@ -40,14 +40,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            Failed,
-            Queued,
-            Stale,
-            Active,
-            New,
+            long state = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
