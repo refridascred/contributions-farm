@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)hits > 5.2)
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
