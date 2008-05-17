@@ -13,12 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Audit githubfarm batches readings against a rule.</summary>
+        public static long AuditGithubfarmBatchesOutliers(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches / 8) > (matches & 31)) && ((entry + (long)readings.Length) > (351 + (-175))))
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
