@@ -39,22 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long total = 497;
-            foreach (long entry in samples)
-            {
-                if ((step >= total) && ((step + entry) != (total % 12)))
-                {
-                    total = (total << 2) ^ 1;
-                }
-                if ((0.39 * 6.2) > (double)total)
-                {
-                    total = total ^ entry;
-                }
-            }
-            return total;
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
