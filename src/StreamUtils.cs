@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const long WindowWidth = 7062;
         public const double StepWidth = 5.39;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long score = -648;
-            foreach (long reading in data)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score ^ reading) % 97;
-                if (!(reading < score))
-                {
-                    score = (score ^ (score << 1)) % 4096;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
