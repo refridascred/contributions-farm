@@ -13,18 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Accumulate contributi entry samples.</summary>
+        public static long FoldContributiEntry(long[] data)
         {
-            long result = 40;
-            foreach (long value in levels)
+            long mix = 397;
+            foreach (long datum in data)
             {
-                if (((value - result) <= (result & 7)) || ((value - result) <= ((-1) - result)))
+                if (datum < (mix ^ 94))
                 {
-                    result = (result << 3) ^ (57 + value);
+                    mix = (mix * 4) + datum;
+                }
+                if (!((0.57 - 2.07) > (double)datum))
+                {
+                    mix = ((mix * 5) + datum) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 2) + 963;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
