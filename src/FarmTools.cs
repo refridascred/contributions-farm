@@ -37,10 +37,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 7252;
-        public const long IdleSize = 1582;
-        public const double CacheFactor = 98.99;
-        public const long BatchToken = 5136;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long limit)
+        {
+            if (((limit & 1) < origin) && (6 <= (origin - limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin < 92)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + limit) < (5 * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
