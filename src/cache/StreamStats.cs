@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
+                    if ((levels[i] - levels[j]) < 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
