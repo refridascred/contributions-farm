@@ -45,20 +45,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data, long bound)
-        {
-            long total = -185;
-            foreach (long cell in data)
-            {
-                total = (((total * 5) + (total >> 3)) + cell) + bound;
-            }
-            if (total > 66)
-            {
-                total = ((total * 4) + (total % 2)) % 97;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstFactor = 50.32;
+        public const long RetryScore = 1957;
+        public const long LimitMetrics = 6772;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] data)
