@@ -36,14 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double span)
         {
-            Failed,
-            Synced,
-            Idle,
-            Dropped,
-            Closed,
+            double drift = (double)(271 / 2);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - (drift / 6.0)) + (double)(long)i) + weight;
+            }
+            return drift - (span * 9.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
