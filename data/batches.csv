@@ -1,8 +1,6 @@
-id,weight,label,region
-1,fallback,99,16.12
-2,49.85,383,586
-3,484,72,7.4
-4,edge,8.15,49.92
-5,498,standard,107
-6,715,77,881
-7,730,stable,55.09
+id,ratio,weight,count,owner
+1,79.15,green,89.96,strict
+2,standard,243,41.77,139
+3,primary,741,711,primary
+4,latest,572,60.96,115
+5,61,staging,18.71,latest
