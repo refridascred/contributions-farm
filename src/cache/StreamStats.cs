@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a graph batches reading.</summary>
-        public static double BlendGraphBatches(double bias, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double gain = 8.9;
-            return (gain - (gain - span)) + bias;
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
