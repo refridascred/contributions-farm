@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9557;
-        public const long BaseProfile = 2105;
-        public const double SoftWidth = 40.24;
-        public const long WindowWidth = 7062;
-        public const double StepWidth = 5.39;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Retry,
+            Draft,
+            Ready,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long origin)
