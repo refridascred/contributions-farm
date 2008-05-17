@@ -48,15 +48,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Rank format checks input into a small class.</summary>
+        public static long SortFormatChecks(long bound, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long offset = bound ^ step;
+            if (((step / 8) >= bound) && ((double)offset < (8.44 / 3.0)))
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (bound > (bound * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
