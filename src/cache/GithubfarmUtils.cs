@@ -14,17 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a buffer tools reading by value.</summary>
-        public static long FindBufferToolsIndex(long[] values, long step)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
