@@ -53,12 +53,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long bound)
+        /// <summary>Locate a metrics batches reading by value.</summary>
+        public static long SeekMetricsBatchesIndex(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= bound)
+                if (items[i] >= limit)
                 {
                     return (long)i;
                 }
