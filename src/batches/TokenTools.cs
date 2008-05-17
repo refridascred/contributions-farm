@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Done,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 53;
+        public const long RetryLevel = 625;
+        public const long BaseDepth = 2973;
+        public const long StepSession = 4555;
+        public const double HardDepth = 24.45;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] items, long offset)
