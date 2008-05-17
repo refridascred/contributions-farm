@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] samples)
         {
-            long acc = 715;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc + (acc - 267)) ^ datum;
+                if (!(sample >= (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (acc < (-769))
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
