@@ -1,6 +1,7 @@
 {
-  "soft_capacity": 8835,
-  "stream_ttl": 3113,
-  "warm_ratio_count": "stable",
-  "enabled": ["open", "latest"]
+  "retry_capacity_s": 80.45,
+  "dry_run": "local",
+  "readonly": "edge",
+  "min_ratio_count": 35.18,
+  "report_capacity": true
 }
