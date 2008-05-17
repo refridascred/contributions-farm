@@ -1,6 +1,10 @@
 {
-  "tools_delay": 60,
-  "burst_interval_pct": 95,
-  "base_capacity_s": true,
-  "entry_interval": ["fallback", "fallback", "edge", "open"]
+  "order_threshold": {
+    "warm_depth_s": 7645,
+    "poll_capacity_pct": false,
+    "tools_timeout": "primary"
+  },
+  "soft_delay": "green",
+  "cache_interval_pct": 7049,
+  "burst_threshold_ms": 49.05
 }
