@@ -47,13 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine command schema values into a single score.</summary>
