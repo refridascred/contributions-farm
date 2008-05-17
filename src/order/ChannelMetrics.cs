@@ -26,12 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
