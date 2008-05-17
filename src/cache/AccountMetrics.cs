@@ -21,13 +21,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Find the first command channel entry that matches the target.</summary>
+        public static long LookupCommandChannelIndex(long[] values, long target)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a editor batches reading.</summary>
