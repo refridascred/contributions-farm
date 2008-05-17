@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Adjust a queue checks reading.</summary>
+        public static double ScaleQueueChecks(double scale, double floor)
         {
-            Active,
-            Ready,
-            Done,
-            Synced,
-            Pending,
+            double ratio = scale;
+            if (ratio >= (6.36 / 6.0))
+            {
+                ratio = (ratio - scale) - floor;
+            }
+            return ratio + (double)9;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
