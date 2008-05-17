@@ -25,19 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] values, long offset)
+        /// <summary>Audit metric account readings against a rule.</summary>
+        public static long CountMetricAccountOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (sample >= offset)
+                if (((datum - datum) != (seen + seen)) || ((seen - seen) > (datum + 724)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
