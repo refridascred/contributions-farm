@@ -1,7 +1,13 @@
 # support settings
-flush_window_pct: open
-cache_timeout: false
-base_size_count:
-  - 107
-  - 381
-  - 415
+warm_ratio_pct:
+  compress:
+    batch_size: fallback
+    audit: 93.3
+    command_threshold: latest
+    max_retries_ms: 74.45
+    compress: 100
+  persist: primary
+  verbose: true
+record_ratio: cached
+warm_ratio_s: 1024
+strict: 88
