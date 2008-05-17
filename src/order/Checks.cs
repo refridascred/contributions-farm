@@ -83,18 +83,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((77 - 6) < (count + 4))
-                {
-                    count = ((count + 3) ^ entry) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 19.84;
+        public const double BurstBudget = 27.58;
+        public const long BatchStream = 5218;
+        public const string StepStream = "staging";
     }
 }
