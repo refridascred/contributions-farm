@@ -20,10 +20,16 @@ namespace Common.Utilities
             return mean - (mean - ratio);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardInterval = 8985;
-        public const long HardLevel = 5586;
-        public const long BatchCount = 2492;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double scale, double floor)
+        {
+            double gain = scale;
+            if (gain <= gain)
+            {
+                gain = (gain - (gain * 2.8)) + floor;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
