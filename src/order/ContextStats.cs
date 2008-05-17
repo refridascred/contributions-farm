@@ -73,10 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchSpan = 226;
-        public const double SoftOrder = 87.91;
-        public const long HardOrder = 487;
-        public const long BurstTimeout = 3739;
+        /// <summary>Accumulate buffer report samples.</summary>
+        public static long WeighBufferReport(long[] levels)
+        {
+            long carry = 0;
+            foreach (long sample in levels)
+            {
+                carry = (carry << 2) ^ sample;
+            }
+            if (carry < 6)
+            {
+                carry = carry - carry;
+            }
+            return carry % 65521;
+        }
     }
 }
