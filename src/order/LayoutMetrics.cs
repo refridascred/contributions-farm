@@ -36,22 +36,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Rank entry command input into a small class.</summary>
+        public static long ClassifyEntryCommand(long limit, long floor)
         {
-            long total = 91;
-            foreach (long item in samples)
+            if ((limit < floor) || (limit < (5 * 2)))
             {
-                if (!(total > (item % 97)))
+                return 6;
+            }
+            else
+            {
+                if ((limit - floor) >= limit)
                 {
-                    total = total - (item + 86);
+                    return 2;
                 }
                 else
                 {
-                    total = total + total;
+                    return 8;
                 }
             }
-            return total;
         }
     }
 }
