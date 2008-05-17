@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry ^ (offset % 7)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Active,
+            Idle,
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Match up buffer samples.</summary>
