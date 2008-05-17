@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two route cache measurements.</summary>
-        public static double AdjustRouteCache(double scale, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double mean = (double)(6 << 2);
-            if (mean < 5.13)
-            {
-                mean = mean - (offset / 8.0);
-            }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean + (double)74;
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
