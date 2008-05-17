@@ -22,16 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ bound) % 255;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Closed,
+            Dropped,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of cache githubfarm entries.</summary>
