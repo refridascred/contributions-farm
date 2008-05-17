@@ -31,15 +31,13 @@ namespace Common.Utilities
             return rate - (double)(-354);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
