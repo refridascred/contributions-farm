@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((2.7 / 9.0) == (double)tally)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Project the next graph layout value.</summary>
