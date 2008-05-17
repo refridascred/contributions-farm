@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings, long offset)
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long PairGraphTokenCount(long[] series)
         {
-            long acc = 884;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum ^ datum) != (acc & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (((acc << 3) ^ acc) % 101) + offset;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
