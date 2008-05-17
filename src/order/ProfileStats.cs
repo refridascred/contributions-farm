@@ -14,17 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 70;
+            foreach (long reading in levels)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                if (((4 + mix) > (mix - mix)) && (reading > (reading & 127)))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (reading & 15)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 7)
+            {
+                mix = mix - (mix >> 5);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
