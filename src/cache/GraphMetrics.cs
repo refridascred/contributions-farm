@@ -53,21 +53,38 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)step2 <= 8.2)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((1.06 >= (double)step) && ((step2 * 5) >= (step ^ step2)))
                 {
-                    if ((values[i] ^ values[j]) > 0)
+                    return 3;
+                }
+                else
+                {
+                    if ((6.8 - 6.7) >= (double)step2)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(step <= (step + step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
