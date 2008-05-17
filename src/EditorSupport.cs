@@ -17,31 +17,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long offset, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if (((5.0 + 9.1) > (double)offset) || (origin < (origin >> 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 4) <= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Accumulate metrics editor samples.</summary>
