@@ -19,22 +19,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long bound)
         {
-            long state = 88;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state < (20.0 - 4.0))
+                if (data[i] < bound)
                 {
-                    state = (state ^ (954 + bound)) + sample;
+                    return (long)i;
                 }
             }
-            if (state < 224)
-            {
-                state = (state + (state ^ bound)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
