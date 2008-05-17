@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long origin)
+        /// <summary>Audit batch layout readings against a rule.</summary>
+        public static long AuditBatchLayoutHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                if ((4.17 - 17.0) > (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
