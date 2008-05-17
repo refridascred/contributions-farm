@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 3417;
-        public const long SoftInterval = 8950;
-        public const string BaseLevel = "staging-v2";
-        public const string WindowProfile = "legacy-1";
-        public const double SoftProfile = 39.44;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheDepth = 1716;
+        public const string BatchEditor = "latest-edge";
+        public const long HardWidth = 2140;
+        public const string IdleFactor = "open-edge";
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long origin, long floor)
