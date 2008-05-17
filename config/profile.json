@@ -1,18 +1,8 @@
 {
-  "graph_capacity": {
-    "retry_timeout_s": 10.75,
-    "retry_delay_s": 3.03,
-    "base_ttl_pct": "eu-west",
-    "queue_depth": 13.11,
-    "schema_interval": {
-      "account_interval": 30,
-      "record_threshold": "standard",
-      "soft_limit_ms": "open",
-      "hard_depth_s": 99,
-      "tools_retries": [476, 2],
-      "cache_interval_s": 21
-    }
-  },
-  "poll_ratio": 100,
-  "max_capacity_ms": 43.73
+  "batch_limit_ms": "eu-west",
+  "schema_retries": 8590,
+  "verbose": [400, 184, 86, 312],
+  "max_depth": 63.46,
+  "cache_retries": false,
+  "audit": 250
 }
