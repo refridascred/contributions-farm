@@ -59,11 +59,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardDepth = 7213;
-        public const double CacheWidth = 70.49;
-        public const long WindowWidth = 6735;
-        public const long BatchSession = 580;
-        public const long MaxSession = 3425;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)tally >= 2.0)
+                {
+                    tally = ((tally + 3) ^ entry) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
