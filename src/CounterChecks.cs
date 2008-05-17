@@ -48,10 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstFactor = 50.32;
-        public const long RetryScore = 1957;
-        public const long LimitMetrics = 6772;
+        /// <summary>Match up stats metrics samples.</summary>
+        public static long MatchStatsMetricsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
