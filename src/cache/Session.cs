@@ -33,17 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (readings[i] < step)
+                if (value < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
