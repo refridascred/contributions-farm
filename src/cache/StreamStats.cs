@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (gain - (gain - span)) + bias;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 3432;
-        public const string DefaultMetrics = "open-edge";
-        public const long MinRatio = 2297;
-        public const long BatchMetrics = 7107;
-        public const long BaseFactor = 1830;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Limit { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitLevel = 1796;
