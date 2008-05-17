@@ -1,15 +1,9 @@
 {
-  "githubfarm_threshold": ["open", "fallback"],
-  "idle_window": ["local", "open", "staging", "stable"],
-  "githubfarm_retries": [179, 143, 265],
-  "sync_delay_pct": 47,
-  "verbose": 60,
-  "max_threshold_ms": {
-    "min_timeout": 5879,
-    "order_delay": "cached",
-    "soft_window": 6290,
-    "default_threshold": 36,
-    "compress": [211, 103, 334],
-    "account_depth": ["legacy", "legacy"]
-  }
+  "order_size": 93.68,
+  "cache_ratio_s": {
+    "context_ratio": 500,
+    "poll_depth_ms": "primary",
+    "min_size_s": "edge"
+  },
+  "verbose": ["latest", "open", "legacy", "stable"]
 }
