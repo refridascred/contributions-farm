@@ -36,18 +36,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long target, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((6.3 * 18.0) > (double)target)
             {
-                if (entry > (tally / 3))
+                return 3;
+            }
+            else
+            {
+                if ((((-8) / 6) != (step + target)) && ((step / 7) != (30 + step)))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
