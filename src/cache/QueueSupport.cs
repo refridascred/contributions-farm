@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long cur = floor - limit;
-            if (floor <= (floor + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor != (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur <= (2.0 / 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
