@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7524;
-        public const string DefaultTimeout = "cached-v2";
-        public const long SoftMetric = 3455;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double bias)
+        {
+            double rate = 4.0 / 7.0;
+            if (rate < bias)
+            {
+                rate = rate + weight;
+            }
+            else
+            {
+                rate = rate - (bias + 2.7);
+            }
+            return rate + (double)8;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] items)
