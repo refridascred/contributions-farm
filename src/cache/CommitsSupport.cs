@@ -47,24 +47,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            if (limit > (target + target))
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(target >= (target % 8)))
+                if (!!(((long)i << 3) < offset))
                 {
-                    return 3;
+                    result = (result << 3) ^ (result + 833);
+                    result = result - (result ^ result);
                 }
-                else
+                if ((8 - result) == ((long)i << 3))
                 {
-                    return 1;
+                    break;
                 }
+                result = (result - result) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
