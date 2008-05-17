@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] samples, long step)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
