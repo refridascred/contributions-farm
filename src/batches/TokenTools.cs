@@ -23,17 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
