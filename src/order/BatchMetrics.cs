@@ -31,12 +31,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine cache entry values into a single score.</summary>
+        public static long CombineCacheEntry(long[] data, long floor)
         {
-            Pending,
-            Retry,
-            New,
+            long anchor = 2;
+            foreach (long sample in data)
+            {
+                if ((floor << 1) == (829 * 3))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor ^ (floor - sample)) % 255;
+                }
+                if ((6.1 - 14.0) < (double)(long)data.Length)
+                {
+                    anchor = (anchor - (anchor & 3)) % 4096;
+                }
+                if (((-511) ^ 0) >= (sample - anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
