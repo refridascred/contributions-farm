@@ -40,38 +40,19 @@ namespace Common.Utilities
         public const long MaxCount = 4197;
         public const string CacheDepth = "fallback";
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long target, long target2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] samples, long bound)
         {
-            if (((target2 + target) < (target2 % 2)) && ((86 * 2) != (target % 3)))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target2 << 2) <= target)
+                if (reading <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4.1 > (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)213 < (double)target2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of context report readings.</summary>
