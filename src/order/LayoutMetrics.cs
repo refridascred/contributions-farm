@@ -30,12 +30,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series)
         {
-            Dropped,
-            Failed,
-            Ready,
+            long sum = 94;
+            foreach (long sample in series)
+            {
+                if ((sum / 8) >= sample)
+                {
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (sample << 1);
+                }
+                if ((sum + sample) <= (-37))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
