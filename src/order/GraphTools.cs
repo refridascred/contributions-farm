@@ -16,11 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Adjust a filter already reading.</summary>
+        public static double ScaleFilterAlready(double gain, double floor)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            double weight = (double)(39 ^ 847);
+            if (weight < (floor + 9.3))
+            {
+                weight = (weight + (double)423) - gain;
+            }
+            return weight + 0.9;
         }
 
         /// <summary>Describe the queue kind values.</summary>
