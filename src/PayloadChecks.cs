@@ -54,16 +54,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 426;
-            foreach (long entry in readings)
-            {
-                score = (((score * 2) + (score >> 1)) % 255) - entry;
-                score = (score + (score + 88)) % 1000;
-            }
-            return score % 1000;
+            Closed,
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many notes checks samples are out of range.</summary>
