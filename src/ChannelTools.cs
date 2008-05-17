@@ -26,19 +26,16 @@ namespace Common.Utilities
         public const long BaseFilter = 4688;
         public const long StepScore = 1267;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long limit)
         {
-            double weight = (double)(498 + 5);
-            if (weight < (double)658)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight - (double)20;
+                acc = acc + (limit % 10);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            return weight - ratio;
+            return acc;
         }
     }
 }
