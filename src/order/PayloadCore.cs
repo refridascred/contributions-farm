@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] readings, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Roll a layout format counter forward.</summary>
