@@ -63,23 +63,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double bias, double offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] series)
         {
-            double gain = (double)((-2) & 7);
-            if (gain >= 5.0)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + 3.0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (bias / 6.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
