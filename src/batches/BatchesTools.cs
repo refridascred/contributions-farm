@@ -15,12 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 50.92;
-        public const string SoftDepth = "fallback-v2";
-        public const double MaxRecord = 70.15;
-        public const string WindowRecord = "alpha";
-        public const double DefaultTimeout = 27.01;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Scale a record entry figure with a bias.</summary>
         public static double ScaleRecordEntry(double ratio, double span)
