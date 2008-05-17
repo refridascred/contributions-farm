@@ -1,7 +1,8 @@
-id,region,level
-1,68.09,local
-2,84.03,821
-3,161,edge
-4,local,60.57
-5,17.68,fallback
-6,102,827
+id,owner,label,weight,level
+1,legacy,fallback,680,65.18
+2,79.56,355,210,edge
+3,55.86,502,primary,stable
+4,green,392,7.81,778
+5,981,192,650,strict
+6,315,816,818,17
+7,96.58,44.97,stable,edge
