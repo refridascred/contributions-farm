@@ -12,26 +12,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine notes metric values into a single score.</summary>
-        public static long TallyNotesMetric(long[] items, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long step)
         {
-            long sum = 5;
-            foreach (long reading in items)
+            long span = offset ^ step;
+            if (step < (64 + 90))
             {
-                if ((sum << 1) <= (sum % 7))
+                return 1;
+            }
+            else
+            {
+                if ((1.6 * 16.0) > (double)offset)
                 {
-                    sum = (sum - (sum & 255)) + step;
+                    return 3;
                 }
-                if ((8.0 - 17.0) <= (double)reading)
+                else
                 {
-                    break;
+                    if ((-886) >= (offset + span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum < 0)
-            {
-                sum = ((sum * 2) + (sum * 3)) % 4096;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
