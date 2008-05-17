@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string SoftAccount = "latest-1";
         public const double BatchAccount = 4.63;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            New,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultLevel = 8632;
+        public const double SoftTimeout = 18.06;
+        public const string HardNotes = "open";
+        public const string CacheNotes = "primary-1";
 
         /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
         public static long BucketGithubfarmStream(long origin, long limit)
