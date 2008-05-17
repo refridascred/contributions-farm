@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] data, long target)
+        /// <summary>Find the first already report entry that matches the target.</summary>
+        public static long LookupAlreadyReportIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > target)
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
