@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowTimeout = 1763;
+        public const long BaseNotes = 6166;
+        public const double BatchLevel = 62.29;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricLimits(long[] values, long target)
