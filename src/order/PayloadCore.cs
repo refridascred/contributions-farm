@@ -48,11 +48,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 94.5;
-        public const string WindowSpan = "staging-1";
-        public const long LimitDepth = 6076;
-        public const double BurstQueue = 93.43;
-        public const long BatchQueue = 5783;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Failed,
+            Queued,
+            Stale,
+            Active,
+            New,
+        }
     }
 }
