@@ -24,21 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metric githubfarm readings.</summary>
-        public static long MatchMetricGithubfarmCount(long[] series)
+        /// <summary>Find the first format payload entry that matches the target.</summary>
+        public static long FindFormatPayloadIndex(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] == seed)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
