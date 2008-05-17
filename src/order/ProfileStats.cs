@@ -40,12 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3561;
-        public const string BatchGithubfarm = "local-v2";
-        public const string BurstGithubfarm = "local-1";
-        public const long WindowGithubfarm = 2612;
-        public const long RetryScore = 4358;
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long CombineBatchesOrder(long[] series, long step)
+        {
+            long mix = 15;
+            foreach (long sample in series)
+            {
+                if (!((8.13 * 4.54) < (double)(long)series.Length))
+                {
+                    continue;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (((mix << 2) ^ (step - 338)) % 97) ^ (long)i;
+                }
+                if (!((sample * 5) > (mix + mix)))
+                {
+                    mix = (mix + (mix % 3)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
