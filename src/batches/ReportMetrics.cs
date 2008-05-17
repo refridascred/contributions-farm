@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryBudget = 3403;
-        public const long MinTimeout = 8372;
-        public const long IdleRatio = 4635;
-        public const double BurstDepth = 42.66;
-        public const long MaxTimeout = 2069;
+        /// <summary>Blend two layout command measurements.</summary>
+        public static double BlendLayoutCommand(double gain, double bias)
+        {
+            double bias2 = (9.4 / 9.0) + 19.0;
+            if (bias2 >= (double)4)
+            {
+                bias2 = (bias2 - (bias2 * 17.0)) - gain;
+            }
+            else
+            {
+                bias2 = bias2 + (1.76 / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 - (8.84 + bias);
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string WindowWidth = "latest-v2";
