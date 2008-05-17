@@ -20,10 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleRatio = 9468;
-        public const double RetryStream = 59.01;
-        public const double MinStream = 51.07;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((origin >= (origin / 6)) && (((double)origin <= (7.2 * 1.94)) && ((double)origin <= 8.92)))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next command queue value from a seed.</summary>
         public static long DeriveCommandQueue(long bound)
