@@ -12,13 +12,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Blend two buffer filter measurements.</summary>
+        public static double SmoothBufferFilter(double scale, double bias)
         {
-            Idle,
-            Done,
-            Paused,
-            Dropped,
+            double mean = (double)(1 * 5);
+            if (mean <= (double)90)
+            {
+                mean = (mean - (double)735) - scale;
+            }
+            else
+            {
+                mean = mean - (mean + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)517) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
