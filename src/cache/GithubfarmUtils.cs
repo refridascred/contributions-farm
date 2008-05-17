@@ -32,18 +32,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] series)
+        /// <summary>Blend two graph command measurements.</summary>
+        public static double SmoothGraphCommand(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double gain = bias;
+            if (gain >= floor)
             {
-                if ((count + count) <= (datum - 266))
-                {
-                    count = count + 3;
-                }
+                gain = gain - gain;
             }
-            return count;
+            else
+            {
+                gain = gain - (floor * 18.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (0.65 / 8.0)) - (double)(long)i;
+            }
+            return gain + (double)(-74);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
