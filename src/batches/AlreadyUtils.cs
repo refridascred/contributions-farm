@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 25.12;
+        public const long MaxScore = 2018;
+        public const long RetryBatch = 4298;
+        public const double LimitCount = 65.13;
+        public const long HardBatch = 2456;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double StepDepth = 4.63;
