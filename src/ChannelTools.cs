@@ -21,18 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch command entries that pass the check.</summary>
-        public static long CountBatchCommandOutliers(long[] series, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((seed * 4) != (reading + seed))
+                if (value != limit)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
