@@ -34,19 +34,13 @@ namespace Common.Utilities
         public const long MaxCount = 4197;
         public const string CacheDepth = "fallback";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] samples, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
