@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches != (5.0 / 2.0))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowSpan = 95.27;
+        public const long MaxMetric = 2788;
+        public const long RetryMetric = 1596;
+        public const double StepDepth = 78.75;
+        public const long IdleDepth = 5781;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
