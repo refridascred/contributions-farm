@@ -28,13 +28,12 @@ namespace Common.Utilities
             return bias2 + weight;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Done,
-            Active,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleRatio = 7573;
+        public const long RetryChecks = 4225;
+        public const long IdleChecks = 9651;
+        public const long SoftDepth = 1355;
+        public const double RetryDepth = 56.96;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountMatches(long[] series, long step)
