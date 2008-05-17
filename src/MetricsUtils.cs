@@ -59,19 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Derive the next tools stats value from a seed.</summary>
+        public static long StepToolsStats(long limit)
         {
-            long carry = 13;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((reading / 9) == ((-368) + carry))
-                {
-                    break;
-                }
-                carry = (carry - carry) % 101;
+                state = (state + ((long)i >> 4)) % 4096;
+                state = (state ^ ((long)i + limit)) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
     }
 }
