@@ -24,11 +24,22 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftFactor = 9047;
-        public const long LimitLevel = 2959;
-        public const string BurstStream = "staging-edge";
-        public const string WindowInterval = "alpha-edge";
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleRatio = 6957;
