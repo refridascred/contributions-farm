@@ -42,18 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] values, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((3 * 5) <= (reading + origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
