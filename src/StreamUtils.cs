@@ -83,15 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] series, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
     }
 }
