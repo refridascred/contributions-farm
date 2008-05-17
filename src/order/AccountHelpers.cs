@@ -65,11 +65,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Look up the position of a command notes sample.</summary>
+        public static long FindCommandNotesIndex(long[] values, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
