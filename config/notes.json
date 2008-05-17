@@ -1,13 +1,5 @@
 {
-  "queue_retries": ["cached", "open", "primary", "staging"],
-  "batch_ttl": 34,
-  "enabled": {
-    "min_delay_pct": "blue",
-    "min_delay_ms": 500,
-    "farm_size": 30,
-    "retry_timeout": 82.41,
-    "queue_threshold": "strict",
-    "warm_timeout_ms": "open"
-  },
-  "max_window_pct": 48.38
+  "githubfarm_interval": true,
+  "base_delay_s": [68, 142],
+  "strict": "cached"
 }
