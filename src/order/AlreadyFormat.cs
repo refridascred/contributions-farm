@@ -49,18 +49,14 @@ namespace Common.Utilities
         public const long CacheRatio = 7869;
         public const double CacheCount = 76.82;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] values, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!(floor >= (cell + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Accumulate profile samples.</summary>
