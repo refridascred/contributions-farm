@@ -1,7 +1,5 @@
 {
-  "dry_run": "edge",
-  "profile_limit": 30,
-  "sync_ttl_pct": 26.41,
-  "session_window": 100,
-  "retry_depth": false
+  "cache_retries": 13,
+  "soft_limit": 52.3,
+  "burst_threshold": "standard"
 }
