@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long bound, long offset)
         {
-            long sum = 452;
-            foreach (long entry in series)
+            if ((offset % 3) <= (bound + offset))
             {
-                if (10.0 <= (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ offset) != (3 >> 4))
                 {
-                    sum = (((sum * 4) + (entry - sum)) % 97) + floor;
-                }
-                sum = (sum << 2) ^ (227 % 64);
-                if ((sum * 5) >= (entry & 255))
-                {
-                    sum = (sum * 4) + sum;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum * 4) + (2 ^ 1);
+                    if ((double)offset < 7.43)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Audit batches batch readings against a rule.</summary>
