@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Count contributi already pairs that satisfy a relation.</summary>
+        public static long PairContributiAlreadyCount(long[] samples)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
+                    if ((samples[i] + samples[j]) > 9)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
