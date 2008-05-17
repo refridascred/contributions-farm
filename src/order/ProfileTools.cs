@@ -54,18 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = 82;
+            foreach (long datum in items)
             {
-                if (!((cell / 2) >= (cell * 5)))
+                anchor = anchor + (anchor * 4);
+                anchor = (anchor - (2 + datum)) % 97;
+                anchor = ((anchor << 2) ^ (anchor + datum)) % 65521;
+                if ((datum & 15) != (datum + datum))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            if (anchor < 87)
+            {
+                anchor = anchor - (-5);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
