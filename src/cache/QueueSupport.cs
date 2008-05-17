@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "cached-v2";
-        public const long LimitSize = 6518;
-        public const double DefaultChecks = 47.76;
-        public const long DefaultWidth = 9967;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 67.76;
+        public const double WindowGithubfarm = 49.56;
+        public const long MaxGithubfarm = 8847;
+        public const long HardGithubfarm = 4159;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] values, long limit)
