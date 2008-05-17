@@ -41,12 +41,40 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 55.57;
-        public const long BaseWindow = 7915;
-        public const string RetryScore = "stable-edge";
-        public const double MaxWindow = 64.63;
-        public const long HardWindow = 9202;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long origin)
+        {
+            long delta = step - origin;
+            if ((step % 7) <= (35 * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)step == (4.51 / 5.0)) && ((194 - 62) < (delta + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-249) <= (origin - step)) || ((48 / 3) > (origin + delta)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin < (9.73 + 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] values)
