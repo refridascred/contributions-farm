@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 1327;
         public const double IdleFilter = 22.52;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long CountBatchesChecksGaps(long[] items, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((offset >> 1) == (offset - offset))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the filter githubfarm series from a seed.</summary>
