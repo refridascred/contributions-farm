@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const double BatchScore = 92.75;
         public const long BaseRatio = 1495;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the farm graph entries that pass the check.</summary>
+        public static long TallyFarmGraphOutliers(long[] series)
         {
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (tally >= (tally >> 5))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
