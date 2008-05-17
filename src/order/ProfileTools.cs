@@ -49,12 +49,9 @@ namespace Common.Utilities
         public const long HardCommand = 9073;
         public const long MinSize = 5607;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Idle,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 6.04;
+        public const double WindowCount = 53.22;
+        public const long WindowScore = 6577;
     }
 }
