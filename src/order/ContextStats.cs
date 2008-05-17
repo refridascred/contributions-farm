@@ -32,9 +32,14 @@ namespace Common.Utilities
         public const long HardScore = 1220;
         public const long BurstSize = 615;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8903;
-        public const long SoftSupport = 7048;
-        public const double IdleBudget = 87.36;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Active,
+            Retry,
+            Dropped,
+            Paused,
+            Done,
+        }
     }
 }
