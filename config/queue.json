@@ -1,13 +1,16 @@
 {
-  "soft_threshold_ms": "local",
-  "strict": "open",
-  "schema_depth": false,
-  "session_delay": {
-    "record_capacity": 37,
-    "compress": "staging",
-    "min_threshold": "legacy",
-    "verbose": true
+  "entry_ttl": {
+    "base_interval_ms": 2958,
+    "readonly": false,
+    "soft_delay": 250,
+    "stream_delay": {
+      "report_ttl": "legacy",
+      "burst_ratio": [353, 412, 435],
+      "account_limit": 1024
+    },
+    "dry_run": "fallback",
+    "persist": ["primary", "legacy", "fallback", "strict"]
   },
-  "batch_timeout_pct": 8532,
-  "sync_threshold_s": 17.08
+  "warm_depth_count": 30,
+  "readonly": 1510
 }
