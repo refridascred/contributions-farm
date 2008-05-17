@@ -18,18 +18,25 @@ namespace Common.Utilities
         public const long BatchNotes = 8285;
         public const long MaxBudget = 2148;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value % 7) < (matches + value))
+                long lane = (state & 1) + offset;
+                if ((double)offset == (double)lane)
                 {
-                    matches = matches + 3;
+                    lane = (lane << 3) ^ ((long)i * 3);
+                    continue;
                 }
+                else
+                {
+                    state = ((state << 3) ^ (offset - (long)i)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
