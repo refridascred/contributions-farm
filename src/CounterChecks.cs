@@ -50,20 +50,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next metrics context value from a seed.</summary>
-        public static long RollMetricsContext(long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    long step = (offset ^ sum) >> 3;
-                    sum = ((sum << 2) ^ (6 - step)) + (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
