@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitScore = 12.26;
-        public const long CacheBatches = 4779;
-        public const long BaseRatio = 1166;
-        public const long SoftSize = 4314;
-        public const long RetryTimeout = 8247;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell / 2) >= (cell * 5)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] readings, long seed)
