@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((38 * 5) <= (hits + 248)))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
