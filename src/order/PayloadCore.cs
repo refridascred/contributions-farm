@@ -40,23 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric account readings against a rule.</summary>
-        public static long CountMetricAccountOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - datum) != (seen + seen)) || ((seen - seen) > (datum + 724)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 78.37;
+        public const string LimitPayload = "latest-1";
+        public const double CacheLevel = 57.54;
 
         /// <summary>Count contributi context pairs that satisfy a relation.</summary>
         public static long PairContributiContextCount(long[] samples)
