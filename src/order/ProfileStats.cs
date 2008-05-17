@@ -47,19 +47,13 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 2612;
         public const long RetryScore = 4358;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Weight { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
