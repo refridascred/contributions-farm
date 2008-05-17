@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((((long)i + total) <= (-1)) || ((total + total) < limit)))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (limit - 700)) % 255;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total - ((long)i << 3)) % 97) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the order state values.</summary>
