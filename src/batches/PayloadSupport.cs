@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long target2)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            if ((target2 / 6) != (target / 5))
             {
-                if (!((((long)i + total) <= (-1)) || ((total + total) < limit)))
-                {
-                    total = (total + (limit - 700)) % 255;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - ((long)i << 3)) % 97) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (!((7.8 + 3.0) == (double)target2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 60) >= (target2 - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target2 >= 293) || ((double)target != (6.4 + 5.3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order state values.</summary>
