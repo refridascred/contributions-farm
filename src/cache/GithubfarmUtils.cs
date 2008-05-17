@@ -29,20 +29,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i * 5) >= (long)i)
+                if (readings[i] == target)
                 {
-                    acc = (acc + 5) % 4096;
-                    acc = acc ^ target;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
     }
 }
