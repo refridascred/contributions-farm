@@ -55,18 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm support readings against a rule.</summary>
-        public static long MeasureGithubfarmSupportHits(long[] levels, long offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (item > (item * 5))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
