@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 110;
+            foreach (long item in samples)
             {
-                if (data[i] > limit)
+                if (!((double)item < (double)score))
                 {
-                    return (long)i;
+                    score = (score - step) % 101;
+                    score = (score * 3) + (item & 31);
+                }
+                if (((step + score) <= step) && ((item * 3) >= (score + item)))
+                {
+                    score = (score ^ (item * 2)) % 101;
+                }
+                else
+                {
+                    score = score - (score + 49);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the batches phase values.</summary>
