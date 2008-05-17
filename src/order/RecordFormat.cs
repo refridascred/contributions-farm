@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] items)
         {
-            Pending,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((((sample ^ sample) > 11) || ((double)tally > (11.0 / 2.0))) && ((tally - sample) < ((-4) & 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch phase values.</summary>
