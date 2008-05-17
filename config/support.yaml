@@ -1,23 +1,20 @@
 # support settings
-batch_interval: blue
-entry_ttl: 18.44
-audit:
+base_retries:
+  cache_ttl: 1291
+  min_size_ms: 4134
   compress:
-    githubfarm_capacity: 4282
-    cache_ratio_count: true
-    already_delay: 56
-  dry_run: 25
-  flush_limit:
-    hard_ttl_pct: 3357
-    min_ratio_count: 2002
-    min_ratio: 250
-    min_delay_ms: 30
-    dry_run: 44
-  sync_delay_count:
-    verbose: blue
-    burst_timeout_pct: 13
-    max_timeout_count: true
-    warm_capacity: latest
-  base_delay_pct: fallback
-sync_limit: true
-tools_window: 49.35
+    min_ttl_pct: green
+    readonly: latest
+    idle_limit_ms: 7120
+max_capacity_s: false
+idle_threshold_count: 64.47
+retry_capacity_pct:
+  cluster_depth: eu-west
+  batch_capacity_ms:
+    - green
+    - edge
+    - legacy
+    - stable
+  compress: 7637
+idle_interval: 1753
+batch_threshold_s: false
