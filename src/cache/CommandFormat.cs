@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const string WindowGraph = "primary-1";
         public const long BurstGraph = 9170;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "primary-1";
-        public const string RetryRoute = "strict-1";
-        public const long StepScore = 5239;
-        public const long MaxRoute = 7754;
+        /// <summary>Count the payload layout entries that pass the check.</summary>
+        public static long CountPayloadLayoutHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((tally % 5) <= tally))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
