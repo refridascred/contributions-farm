@@ -14,23 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] items, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] series, long origin)
         {
-            long total = 3;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                total = (total - (datum + datum)) % 97;
-                if ((double)floor != (14.0 / 7.0))
+                if (((datum & 15) < (datum + hits)) && (origin > (6 >> 2)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (total > 195)
-            {
-                total = ((total << 2) ^ (233 % 2)) % 97;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
