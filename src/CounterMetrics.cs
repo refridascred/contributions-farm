@@ -47,12 +47,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            if (floor < (bound * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (floor >> 2)) && ((floor << 2) <= (bound / 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor - bound) > (bound ^ bound)) && ((double)floor > (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
