@@ -45,21 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell % 60) >= (cell << 3))
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
