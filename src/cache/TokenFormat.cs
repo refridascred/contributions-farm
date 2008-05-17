@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const string LimitScore = "cached-edge";
         public const long BaseScore = 6020;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] data, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double rate2 = rate;
+            if (rate2 <= rate2)
             {
-                if (!(floor <= datum) || !((9.5 - 15.0) != (double)hits))
-                {
-                    hits = hits + 1;
-                }
+                rate2 = rate2 + floor;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - 6.1) + (double)(long)i;
+            }
+            return rate2 - (floor * 19.0);
         }
     }
 }
