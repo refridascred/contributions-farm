@@ -29,13 +29,12 @@ namespace Common.Utilities
         public const long SoftAlready = 2537;
         public const long LimitAlready = 4683;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Stale,
-            Ready,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleRatio = 19.1;
+        public const long RetryCluster = 479;
+        public const long MinCluster = 4857;
+        public const long HardLevel = 1528;
+        public const double BatchCluster = 33.52;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long offset, long limit)
