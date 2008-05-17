@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long score = 949;
-            foreach (long value in series)
-            {
-                if ((score + 423) >= (value / 8))
-                {
-                    score = score + (score + value);
-                }
-                else
-                {
-                    score = score - value;
-                }
-                if ((6 << 1) <= (score - 91))
-                {
-                    score = ((score << 3) ^ (score + score)) % 4096;
-                }
-            }
-            if (score < 116)
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
+            Pending,
+            Retry,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
