@@ -49,13 +49,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit checks schema readings against a rule.</summary>
+        public static long CountChecksSchemaOutliers(long[] data)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!(datum > (matches % 24)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
