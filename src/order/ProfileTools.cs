@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Active,
+            Done,
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
