@@ -1,4 +1,10 @@
 # entry settings
-min_threshold_count: 65
-stream_window: 38.46
-channel_interval: 74.67
+base_delay_ms: 2368
+stream_timeout:
+  - standard
+  - fallback
+  - eu-west
+  - legacy
+min_interval: 73.89
+base_size_ms: stable
+soft_depth_count: 1
