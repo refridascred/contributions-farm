@@ -28,10 +28,17 @@ namespace Common.Utilities
             return weight2 + 9.0;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 9791;
-        public const double StepBatch = 52.46;
-        public const double MaxWidth = 70.17;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum - (sum + sum)) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] values)
