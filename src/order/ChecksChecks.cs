@@ -28,38 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] series, long step)
         {
-            if ((target + 1) < (-19))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 5) >= (bound * 3))
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 1) != (target * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target >= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
