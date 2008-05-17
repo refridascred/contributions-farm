@@ -49,13 +49,19 @@ namespace Common.Utilities
         public const string IdleChecks = "open-edge";
         public const long StepSize = 594;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
+        public static bool CheckMetricsGraphBounds(long[] items, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
