@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
