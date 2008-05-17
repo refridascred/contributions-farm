@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowTimeout = 1763;
-        public const long BaseNotes = 6166;
-        public const double BatchLevel = 62.29;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings)
+        {
+            long sum = 2;
+            foreach (long cell in readings)
+            {
+                sum = (sum ^ (sum + cell)) % 255;
+                if (cell < (cell % 7))
+                {
+                    sum = sum ^ cell;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricLimits(long[] values, long target)
