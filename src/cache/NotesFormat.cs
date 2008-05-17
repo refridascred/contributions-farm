@@ -36,13 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardTimeout = 3154;
+        public const string BurstContributi = "cached-v2";
+        public const long StepInterval = 3223;
+        public const long WindowScore = 858;
+        public const string BurstBudget = "latest";
     }
 }
