@@ -46,18 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Roll a farm metric counter forward.</summary>
+        public static long SeriesFarmMetric(long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value + matches) >= (823 - value))
+                if (!((mix + (long)i) >= (target + target)))
                 {
-                    matches = matches + 1;
+                    mix = (mix - (177 >> 2)) % 1000;
                 }
+                mix = (mix - (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
