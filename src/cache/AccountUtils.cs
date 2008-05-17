@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] items)
-        {
-            long total = 164;
-            foreach (long entry in items)
-            {
-                total = (total ^ (entry + entry)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 9555;
+        public const double WindowChecks = 13.66;
+        public const long MaxFactor = 7526;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] levels)
