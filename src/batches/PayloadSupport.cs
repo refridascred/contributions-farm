@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long CountBatchesChecksGaps(long[] items, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 2;
+            foreach (long cell in levels)
             {
-                if ((offset >> 1) == (offset - offset))
-                {
-                    seen = (seen + 2) - item;
-                }
+                sum = (((sum << 2) ^ cell) % 1000) - floor;
+                sum = sum ^ (sum + cell);
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Iterate the filter githubfarm series from a seed.</summary>
