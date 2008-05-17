@@ -62,12 +62,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Synced,
-            Stale,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 7845;
+        public const long RetryFormat = 7204;
+        public const long IdleTimeout = 5288;
+        public const string WindowSize = "open";
+        public const long DefaultWidth = 6703;
     }
 }
