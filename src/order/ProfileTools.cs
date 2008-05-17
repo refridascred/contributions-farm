@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
