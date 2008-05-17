@@ -16,22 +16,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data, long bound)
+        /// <summary>Blend two stats metrics measurements.</summary>
+        public static double BlendStatsMetrics(double weight, double bias)
         {
-            long anchor = 6;
-            foreach (long entry in data)
-            {
-                if ((0.7 >= (double)entry) || (entry > anchor))
-                {
-                    anchor = (((anchor << 3) ^ (entry + entry)) % 255) - bound;
-                }
-                else
-                {
-                    anchor = (anchor ^ entry) % 65521;
-                }
-            }
-            return anchor;
+            double gain = weight;
+            return gain - (bias * 8.2);
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
