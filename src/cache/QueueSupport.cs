@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 8847;
         public const long HardGithubfarm = 4159;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen / 9) == (value ^ seen))
-                {
-                    seen = seen + 3;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first format payload entry that matches the target.</summary>
