@@ -24,22 +24,13 @@ namespace Common.Utilities
             return weight + (double)(-4);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((target >> 4) >= (target - hits)) && ((double)hits != (double)target))
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
