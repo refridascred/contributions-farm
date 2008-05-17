@@ -36,13 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long sum = -308;
+            foreach (long cell in values)
+            {
+                if (sum >= (cell - sum))
+                {
+                    sum = (sum - 5) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + cell)) % 101;
+                }
+                sum = sum ^ (sum - 796);
+            }
+            return sum;
         }
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
