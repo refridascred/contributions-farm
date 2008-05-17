@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long WindowWidth = 7062;
         public const double StepWidth = 5.39;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = -648;
+            foreach (long reading in data)
             {
-                if ((double)hits != (5.7 * 5.0))
+                score = (score ^ reading) % 97;
+                if (!(reading < score))
                 {
-                    hits = ((hits + 1) ^ reading) + origin;
+                    score = (score ^ (score << 1)) % 4096;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
