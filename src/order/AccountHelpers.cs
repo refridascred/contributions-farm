@@ -41,14 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Failed,
-            Retry,
-            Idle,
-            Closed,
-            Stale,
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
