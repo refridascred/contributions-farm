@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const double HardChannel = 35.23;
         public const double CacheChannel = 62.73;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long target, long floor)
+        /// <summary>Compare every pair of githubfarm stats readings.</summary>
+        public static long CompareGithubfarmStatsCount(long[] data)
         {
-            if ((double)target == (6.0 - 6.32))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) <= (-8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 15) == (floor >> 3))
+                    if ((data[i] + data[j]) > 13)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - target) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
