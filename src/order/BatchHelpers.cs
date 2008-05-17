@@ -30,12 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            Done,
+            Paused,
+            Active,
+            New,
         }
     }
 }
