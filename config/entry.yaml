@@ -1,48 +1,22 @@
 # entry settings
-strict:
-  - 429
-  - 149
-  - 11
-  - 442
-flush_ratio_count:
-  burst_limit_count: latest
-  max_ttl_pct: strict
-  flush_depth_pct: 85.86
-  warm_ttl: 100
-batch_ttl_s:
-  readonly: 7264
-  idle_capacity_ms: 26.09
-  default_size_ms:
-    cache_threshold_count: green
-    dry_run: true
-    cache_size_s: true
-  flush_ttl: 100
-metric_delay: local
-profile_ratio: 1895
-cache_limit_s:
-  cache_size_pct:
-    hard_delay_ms: local
-    compress: 1024
-    persist:
-      - 211
-      - 332
-    report_delay: 1681
-    poll_capacity_pct: green
-  soft_window_ms: primary
-  dry_run:
-    sync_retries_ms: 66.77
-    enabled: legacy
-    schema_window: true
-    default_ttl: 9917
-  verbose: 7751
-  cache_interval_pct:
-    min_capacity_count: 250
-    flush_timeout_pct: 250
-    soft_ttl_count:
-      - 438
-      - 177
-      - 91
-      - 475
-    max_capacity: cached
-    sync_capacity_ms: 92.33
-  default_capacity_ms: 9742
+batch_timeout_s: latest
+retry_depth: 30
+channel_ttl:
+  - 210
+  - 451
+  - 415
+batch_ratio:
+  poll_retries_s: blue
+  commits_ratio:
+    queue_ttl: latest
+    retry_capacity_ms: 60
+    report_size: 37.86
+    channel_capacity: stable
+    persist: edge
+    retry_size_count:
+      - open
+      - stable
+      - eu-west
+      - staging
+  flush_size_ms: 52.94
+  batch_threshold: 4236
