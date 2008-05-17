@@ -27,19 +27,13 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
