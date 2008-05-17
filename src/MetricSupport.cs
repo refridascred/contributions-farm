@@ -30,11 +30,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchWidth = 2040;
-        public const long RetryGraph = 9426;
-        public const long HardGraph = 2648;
-        public const double BatchGraph = 90.33;
-        public const string MinDepth = "stable";
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double offset)
+        {
+            double rate2 = offset;
+            if (rate2 < rate2)
+            {
+                rate2 = rate2 - (rate * 9.6);
+            }
+            return rate2 + (offset + rate2);
+        }
     }
 }
