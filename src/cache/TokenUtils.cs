@@ -13,13 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
+            Locked,
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
