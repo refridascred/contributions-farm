@@ -1,15 +1,18 @@
 {
-  "default_interval_count": {
-    "default_size": "blue",
-    "verbose": [410, 159],
-    "cache_ratio": [417, 408, 4],
-    "sync_ttl": "cached"
+  "warm_retries_count": 6.48,
+  "githubfarm_retries": "eu-west",
+  "command_timeout": ["standard", "green", "standard"],
+  "flush_window_count": {
+    "flush_depth_ms": 20,
+    "editor_ttl": "blue",
+    "idle_delay_pct": {
+      "batch_interval_count": true,
+      "audit": 55,
+      "warm_size_count": 1346,
+      "commits_interval": "open",
+      "max_retries": "blue",
+      "retry_limit_count": 250
+    }
   },
-  "min_capacity": {
-    "hard_ratio_count": "latest",
-    "batch_window_s": false,
-    "batch_size": false,
-    "schema_retries": false
-  },
-  "strict": "open"
+  "cluster_limit": "stable"
 }
