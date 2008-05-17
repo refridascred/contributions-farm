@@ -30,11 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 22.87;
-        public const double BurstSize = 21.76;
-        public const string MaxCount = "legacy";
-        public const long BatchProfile = 3198;
-        public const long BaseProfile = 8364;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double floor)
+        {
+            double rate = (double)901 + (double)933;
+            if (rate <= floor)
+            {
+                rate = rate + (ratio * 11.0);
+            }
+            else
+            {
+                rate = rate - (ratio * 9.28);
+            }
+            return rate + 2.0;
+        }
     }
 }
