@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheDepth = 1.51;
-        public const double StepCache = 93.09;
-        public const long MinBudget = 6921;
-        public const double IdleWidth = 21.39;
-        public const long SoftFactor = 4206;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "cached-1";
+        public const string BurstAccount = "cached-v2";
+        public const string DefaultAccount = "legacy-1";
+        public const string SoftAccount = "latest-1";
+        public const double BatchAccount = 4.63;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
