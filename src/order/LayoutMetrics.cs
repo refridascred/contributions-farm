@@ -30,17 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] > floor)
+                if ((origin ^ (long)i) > ((long)i - acc))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (origin - origin);
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
