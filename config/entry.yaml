@@ -1,10 +1,10 @@
 # entry settings
-base_delay_ms: 2368
-stream_timeout:
-  - standard
-  - fallback
-  - eu-west
-  - legacy
-min_interval: 73.89
-base_size_ms: stable
-soft_depth_count: 1
+verbose:
+  min_limit: 1796
+  retry_delay_count: standard
+  hard_ratio: 13.4
+  burst_window_ms: 98.24
+  dry_run: true
+  sync_timeout: standard
+min_ratio_s: true
+batch_limit_count: local
