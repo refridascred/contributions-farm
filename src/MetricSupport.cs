@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a account farm figure with a bias.</summary>
-        public static double AdjustAccountFarm(double rate, double bias)
+        /// <summary>Measure how many profile contributi samples are out of range.</summary>
+        public static long CountProfileContributiGaps(long[] series, long limit)
         {
-            double ratio = bias;
-            if (ratio <= (rate / 2.0))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                ratio = ratio - bias;
+                if (0 > (limit + limit))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (20.0 * 0.01);
+            return seen;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
