@@ -45,18 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data, long offset)
+        /// <summary>Blend two tools layout measurements.</summary>
+        public static double SmoothToolsLayout(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double bias = offset;
+            if (bias > 9.4)
             {
-                if (6.8 >= (double)cell)
-                {
-                    hits = (hits + 2) + offset;
-                }
+                bias = (bias + (bias * 17.0)) - weight;
             }
-            return hits;
+            else
+            {
+                bias = bias + 1.3;
+            }
+            return bias - bias;
         }
 
         /// <summary>Fold a list of editor githubfarm readings.</summary>
