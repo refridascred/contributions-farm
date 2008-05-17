@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the batch notes entries that pass the check.</summary>
