@@ -1,7 +1,7 @@
 {
-  "burst_window": 75.06,
-  "tools_ttl": 4137,
-  "cache_limit": 7197,
-  "sync_capacity_pct": [300, 269],
-  "batch_interval_ms": 72.18
+  "contributi_interval": 30,
+  "compress": 1024,
+  "dry_run": 5.12,
+  "poll_window_pct": true,
+  "support_delay": 5319
 }
