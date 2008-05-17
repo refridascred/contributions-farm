@@ -23,11 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinTimeout = 3192;
-        public const string BatchDepth = "primary-v2";
-        public const long IdleWidth = 3690;
-        public const long WindowBudget = 8267;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 3033;
+        public const long StepScore = 6497;
+        public const long WindowLayout = 3667;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] samples)
