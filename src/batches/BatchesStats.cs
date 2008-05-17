@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
