@@ -22,16 +22,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2910;
+        public const double WindowToken = 41.14;
+        public const long SoftDepth = 8703;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstBudget = 34.17;
