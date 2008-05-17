@@ -1,19 +1,10 @@
 # support settings
-cache_delay_s: true
-tools_ratio: 500
-warm_capacity_pct: 54
-flush_threshold_count:
-  compress:
-    poll_depth_count: true
-    entry_capacity: blue
-    min_delay: edge
-    schema_delay: false
-  hard_depth_pct:
-    - 29
-    - 413
-    - 185
-    - 24
-  cluster_depth: 100
-  max_interval: stable
-  base_ratio_pct: 57.93
-persist: 500
+readonly: blue
+editor_retries: true
+default_size: stable
+sync_retries:
+  - cached
+  - staging
+  - open
+hard_window_count: 250
+payload_window: 60
