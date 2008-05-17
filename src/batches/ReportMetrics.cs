@@ -21,21 +21,16 @@ namespace Common.Utilities
         public const long BatchLevel = 7851;
         public const string DefaultDepth = "standard";
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Derive the next schema queue value from a seed.</summary>
+        public static long IterateSchemaQueue(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = carry - (carry >> 5);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
