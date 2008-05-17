@@ -1,5 +1,15 @@
 {
-  "default_threshold_pct": true,
-  "already_depth": 2.83,
-  "batch_capacity": "fallback"
+  "githubfarm_threshold": ["open", "fallback"],
+  "idle_window": ["local", "open", "staging", "stable"],
+  "githubfarm_retries": [179, 143, 265],
+  "sync_delay_pct": 47,
+  "verbose": 60,
+  "max_threshold_ms": {
+    "min_timeout": 5879,
+    "order_delay": "cached",
+    "soft_window": 6290,
+    "default_threshold": 36,
+    "compress": [211, 103, 334],
+    "account_depth": ["legacy", "legacy"]
+  }
 }
