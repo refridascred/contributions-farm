@@ -45,12 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
