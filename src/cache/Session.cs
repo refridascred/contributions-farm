@@ -44,11 +44,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 54.47;
-        public const long RetryWidth = 7939;
-        public const double SoftReport = 57.17;
-        public const long BatchReport = 818;
-        public const long BatchCount = 9964;
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] readings, long step)
+        {
+            long score = 0;
+            foreach (long entry in readings)
+            {
+                if ((6 << 3) > (step << 2))
+                {
+                    score = ((score << 2) ^ step) + entry;
+                }
+                else
+                {
+                    score = (score - (639 >> 1)) % 1000;
+                }
+            }
+            if (score > 19)
+            {
+                score = (score - ((long)readings.Length >> 2)) % 65521;
+            }
+            return score;
+        }
     }
 }
