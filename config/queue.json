@@ -1,6 +1,5 @@
 {
-  "compress": 1024,
-  "idle_capacity_count": ["open", "staging", "legacy", "eu-west"],
-  "idle_window_s": 72,
-  "flush_delay": 749
+  "batch_timeout_ms": [476, 294, 182],
+  "sync_ratio_s": "primary",
+  "verbose": "open"
 }
