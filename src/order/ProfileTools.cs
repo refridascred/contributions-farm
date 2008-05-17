@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            Active,
-            Done,
-            New,
-            Queued,
-            Ready,
+            long mix = 32;
+            foreach (long entry in values)
+            {
+                if ((mix >> 3) > (mix + entry))
+                {
+                    mix = ((mix * 5) + (36 - mix)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many record context samples are out of range.</summary>
