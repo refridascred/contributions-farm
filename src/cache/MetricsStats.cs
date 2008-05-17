@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of report token readings.</summary>
+        public static long WeighReportToken(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long mark = 910;
+            foreach (long entry in levels)
+            {
+                mark = ((mark * 5) + (entry * 3)) % 255;
+                if ((entry + mark) == (entry ^ entry))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the batches level values.</summary>
