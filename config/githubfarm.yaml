@@ -1,4 +1,7 @@
 # githubfarm settings
-channel_threshold: eu-west
-entry_threshold: true
+cache_limit_ms: blue
+sync_window_count: false
+readonly: 30
+persist: eu-west
 dry_run: eu-west
+max_threshold_ms: stable
