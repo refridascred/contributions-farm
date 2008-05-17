@@ -83,18 +83,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long TallyOrderTokenMatches(long[] values, long target)
+        /// <summary>Measure how many channel contributi samples are out of range.</summary>
+        public static long TallyChannelContributiOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((((long)values.Length - tally) > target) && (cell <= tally)) || ((double)tally == (5.02 + 2.59)))
+                if (sample < (count - sample))
                 {
-                    tally = tally + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
