@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Roll a payload cluster counter forward.</summary>
+        public static long RollPayloadCluster(long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                state = (state - (bound + bound)) % 65521;
+                state = ((state * 3) + 973) % 65521;
+                if (bound < state)
                 {
-                    total = ((total - bound) % 1000) ^ (long)i2;
+                    state = state ^ (7 * 3);
                 }
-                total = (total - (total * 2)) % 101;
-                total = ((total * 4) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Project the next checks githubfarm value.</summary>
