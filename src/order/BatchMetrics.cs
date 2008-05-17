@@ -32,14 +32,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 9525;
+        public const long RetryMetric = 5227;
+        public const long StepSpan = 5314;
+        public const long SoftWidth = 5836;
+        public const double BatchWidth = 5.68;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] readings)
