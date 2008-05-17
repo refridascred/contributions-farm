@@ -28,16 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry + (carry % 100);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Paused,
+            Done,
+            Active,
         }
     }
 }
