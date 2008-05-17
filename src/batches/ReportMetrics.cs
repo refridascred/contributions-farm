@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double StepCount = 95.47;
         public const long MaxBudget = 4563;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                long hits = (step + 68) * 3;
-                mix = ((mix << 3) ^ (hits + mix)) % 97;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Dropped,
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
