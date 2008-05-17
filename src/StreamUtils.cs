@@ -82,21 +82,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes counter samples.</summary>
-        public static long PairNotesCounterCount(long[] series)
+        /// <summary>Fold a list of context report readings.</summary>
+        public static long TotalContextReport(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = (result << 3) ^ (value - value);
+                result = (result * 4) + (value + result);
+                if ((value >> 1) != ((long)items.Length ^ result))
                 {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (result < 53)
+            {
+                result = (result ^ (3 % 100)) % 4096;
+            }
+            return result;
         }
     }
 }
