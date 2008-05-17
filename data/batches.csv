@@ -1,7 +1,8 @@
-id,state,label
-1,stable,primary
-2,754,26.92
-3,605,stable
-4,801,857
-5,staging,135
-6,standard,stable
+id,region,level,rank
+1,736,edge,64.9
+2,996,479,blue
+3,48.79,460,378
+4,17.7,local,629
+5,266,728,585
+6,263,240,72.85
+7,737,179,598
