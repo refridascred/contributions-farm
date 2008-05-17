@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Audit cluster filter readings against a rule.</summary>
+        public static long TallyClusterFilterHits(long[] samples)
         {
-            double load = offset;
-            return (load + (offset * 7.66)) + ratio;
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((matches << 3) <= (797 << 2)) || (matches <= sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
