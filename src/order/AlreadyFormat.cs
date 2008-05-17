@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate tools graph samples.</summary>
-        public static long WeighToolsGraph(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long sum = 43;
-            foreach (long reading in values)
+            long result = 391;
+            foreach (long cell in values)
             {
-                if ((sum / 5) < (711 ^ (-1)))
+                if ((160 * 5) != (cell + result))
                 {
-                    sum = (sum + (sum & 1)) - reading;
+                    result = (result << 2) ^ (result & 255);
+                    result = (result - ((-239) - result)) % 97;
                 }
+                result = (result * 3) + (cell % 5);
             }
-            return sum % 1000;
+            if (result > 71)
+            {
+                result = (result + (result * 2)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
