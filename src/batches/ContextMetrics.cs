@@ -15,19 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double ratio, double floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double ratio2 = floor - (ratio - floor);
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 - (double)0;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
