@@ -60,11 +60,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7845;
-        public const long RetryFormat = 7204;
-        public const long IdleTimeout = 5288;
-        public const string WindowSize = "open";
-        public const long DefaultWidth = 6703;
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double offset)
+        {
+            double rate2 = offset;
+            if (rate2 >= (offset + offset))
+            {
+                rate2 = (rate2 - rate2) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + (offset * 5.5);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate2) + (double)(long)i;
+            }
+            return rate2 - (rate2 * 12.0);
+        }
     }
 }
