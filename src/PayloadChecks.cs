@@ -44,12 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 94.64;
-        public const long HardSize = 5214;
-        public const string DefaultSpan = "cached-1";
-        public const long BurstRatio = 1931;
-        public const long StepCount = 272;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Failed,
+            Paused,
+            Dropped,
+            New,
+            Stale,
+        }
 
         /// <summary>Rank stream layout input into a small class.</summary>
         public static long SortStreamLayout(long floor, long floor2)
