@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const long BatchTools = 5014;
         public const long StepCount = 9571;
 
-        /// <summary>Count the payload profile entries that pass the check.</summary>
-        public static long CountPayloadProfileGaps(long[] readings, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry > (entry >> 4)) || (((entry - entry) >= offset) || ((entry + entry) > offset)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
