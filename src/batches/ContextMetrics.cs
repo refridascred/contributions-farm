@@ -30,20 +30,19 @@ namespace Common.Utilities
             return ratio2 - (double)0;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long floor)
         {
-            long state = 7;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                state = state - (sample ^ limit);
-                state = (state << 3) ^ state;
-                if ((sample ^ sample) < state)
+                if (datum < floor)
                 {
-                    state = (state - (17 + state)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Digest a series of support entries.</summary>
