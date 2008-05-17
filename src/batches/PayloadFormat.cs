@@ -29,21 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream already samples.</summary>
-        public static long MatchStreamAlreadyCount(long[] readings)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
+                    if ((values[i] - values[j]) > 14)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a farm metric counter forward.</summary>
