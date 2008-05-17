@@ -18,11 +18,23 @@ namespace Common.Utilities
         public const long MinCache = 3987;
         public const long BaseCache = 6426;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxTimeout = 475;
-        public const long CacheRatio = 3222;
-        public const string HardBuffer = "fallback";
-        public const string LimitBuffer = "cached-v2";
-        public const long BurstSize = 2989;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((sum % 10) <= (sum & 255)))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ ((long)i * 3)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
