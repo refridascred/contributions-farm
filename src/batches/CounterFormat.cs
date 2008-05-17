@@ -39,16 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph farm value from a seed.</summary>
-        public static long RollGraphFarm(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryFactor = 36.0;
+        public const long BatchStats = 3633;
+        public const long HardStats = 9043;
+        public const double BurstInterval = 59.35;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] data)
