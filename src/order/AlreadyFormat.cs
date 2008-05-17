@@ -32,31 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            if ((3.0 / 6.0) <= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (8.0 / 2.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < (target % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Derive the next window route value from a seed.</summary>
