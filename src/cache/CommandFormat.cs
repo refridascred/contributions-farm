@@ -41,11 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long bound)
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
