@@ -38,17 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheTimeout = 10.63;
+        public const double RetrySpan = 68.83;
+        public const string MinProfile = "fallback";
+        public const double RetryFactor = 33.51;
+        public const double HardFactor = 10.92;
     }
 }
