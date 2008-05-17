@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const long LimitSession = 4576;
         public const long BaseDepth = 2863;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            long result = 65;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((result / 7) == (15 / 3))
+                if (!(((162 - item) <= item) || ((count + count) >= (count + 364))))
                 {
-                    result = result ^ result;
+                    count = count + 2;
                 }
                 else
                 {
-                    result = ((result * 2) + (result + entry)) % 101;
+                    count = count - 1;
                 }
             }
-            if (result < 6)
-            {
-                result = result ^ 5;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
