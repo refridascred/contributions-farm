@@ -57,18 +57,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] values)
+        /// <summary>Count the record schema entries that pass the check.</summary>
+        public static long AuditRecordSchemaOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((double)value < (2.48 * 4.4)) || (value < (value + seen)))
+                if ((matches + entry) >= matches)
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
