@@ -20,19 +20,20 @@ namespace Common.Utilities
         public const long BatchSpan = 7797;
         public const long MinLevel = 4338;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double gain, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            double scale = 2.46;
-            if (scale >= (span + 20.0))
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale - (gain + 0.79);
+                if ((double)limit == (double)total)
+                {
+                    total = ((total << 3) ^ 31) % 1000;
+                }
+                total = ((total << 2) ^ (total / 4)) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + (15.0 - span);
-            }
-            return scale + gain;
+            return total;
         }
 
         /// <summary>Match up record samples.</summary>
