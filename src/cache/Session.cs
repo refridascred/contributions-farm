@@ -31,11 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultWidth = 68.82;
-        public const double StepCount = 7.99;
-        public const long MaxContributi = 9043;
-        public const string MaxRatio = "open-1";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Done,
+            Pending,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
