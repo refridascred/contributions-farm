@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a order metric pair into a bucket.</summary>
-        public static long BucketOrderMetric(long floor, long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if ((double)floor >= (2.9 + 2.7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2 - limit) != ((-28) + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit <= (limit / 5)) && ((limit / 8) >= ((-365) + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)limit > (7.38 - 5.16)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
