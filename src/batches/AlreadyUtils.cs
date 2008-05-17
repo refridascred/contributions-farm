@@ -35,13 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
