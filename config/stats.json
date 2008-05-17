@@ -1,11 +1,9 @@
 {
-  "default_size": "staging",
-  "default_delay": true,
-  "batch_threshold": [34, 156, 104],
-  "base_ratio_s": {
-    "max_delay": "blue",
-    "dry_run": true,
-    "cluster_threshold": 82.07,
-    "poll_capacity_s": "strict"
+  "idle_interval_pct": 250,
+  "payload_ratio": 58,
+  "readonly": {
+    "warm_depth_count": "stable",
+    "idle_window_s": true,
+    "retry_size_s": 47
   }
 }
