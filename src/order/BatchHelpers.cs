@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] readings, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Failed,
+            Pending,
+            Locked,
         }
     }
 }
