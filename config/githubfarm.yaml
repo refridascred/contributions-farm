@@ -1,14 +1,14 @@
 # githubfarm settings
-batch_limit_pct: true
-dry_run: 1024
-stats_retries: 3123
-hard_ttl_count:
-  - 450
-  - 443
-  - 231
-  - 97
-soft_timeout_pct:
-  - local
-  - cached
-  - blue
-cache_timeout_s: eu-west
+flush_ttl: false
+burst_depth_ms: 18.66
+min_ratio:
+  poll_depth:
+    - 115
+    - 181
+    - 367
+    - 484
+  default_interval_count: staging
+  burst_window_s: strict
+  context_size: latest
+githubfarm_timeout: staging
+account_window: 4
