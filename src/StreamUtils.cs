@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            Done,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
