@@ -13,19 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long mark = 96;
+            foreach (long cell in data)
             {
-                if (sample < floor)
+                if (cell > mark)
                 {
-                    found = false;
-                    break;
+                    mark = (mark + (cell ^ mark)) % 4096;
                 }
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of token readings.</summary>
