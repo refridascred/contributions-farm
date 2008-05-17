@@ -1,10 +1,12 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The commits module keeps order values in sync with the stats cache.
+Run the metric check before changing any profile limits.
+The command module keeps contributi values in sync with the account cache.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate report input early
-- Keep filter values small
-- Review stats limits each release
+- Log every commits change
+- Prefer batches defaults
+- Review payload limits each release
+- Validate support input early
