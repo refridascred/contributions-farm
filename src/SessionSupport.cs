@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token cluster entries that pass the check.</summary>
-        public static long TallyTokenClusterHits(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (entry > (hits ^ 608))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
