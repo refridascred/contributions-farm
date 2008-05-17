@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two layout command measurements.</summary>
-        public static double BlendLayoutCommand(double gain, double bias)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double bias)
         {
-            double bias2 = (9.4 / 9.0) + 19.0;
-            if (bias2 >= (double)4)
+            double scale = bias;
+            if (scale < scale)
             {
-                bias2 = (bias2 - (bias2 * 17.0)) - gain;
+                scale = (scale + (double)429) - gain;
             }
-            else
-            {
-                bias2 = bias2 + (1.76 / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - (8.84 + bias);
+            return scale + (3.83 / 7.0);
         }
 
         /// <summary>Rank route input into a small class.</summary>
