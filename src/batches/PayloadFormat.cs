@@ -26,18 +26,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 7899;
+        public const long BaseEditor = 189;
+        public const long WindowRatio = 4678;
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
         public static long CountSchemaChecksHits(long[] data, long step)
