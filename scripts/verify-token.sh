@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-TOKEN_LIMIT=457
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+TOKEN_LIMIT=82
 log "limit is ${TOKEN_LIMIT}"
 
-for item in legacy latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
