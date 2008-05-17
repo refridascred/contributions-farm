@@ -12,28 +12,35 @@ namespace Common.Utilities
         public const double DefaultTimeout = 59.23;
         public const string LimitFactor = "standard-1";
 
-        /// <summary>Classify a counter farm pair into a bucket.</summary>
-        public static long ClassifyCounterFarm(long floor, long origin)
+        /// <summary>Classify a stats payload pair into a bucket.</summary>
+        public static long RankStatsPayload(long origin, long offset)
         {
-            if (!((origin ^ floor) == ((-1) - floor)))
+            if ((8 > origin) && ((origin >> 4) != (origin / 4)))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (93 > (origin >> 4))
+                if ((double)offset >= (double)97)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)origin > (2.57 - 6.1))
+                    if ((6.0 - 9.36) > (4.33 + 11.0))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        if (((6 >> 2) < offset) && (offset < (origin + 617)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
