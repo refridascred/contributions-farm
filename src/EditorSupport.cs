@@ -5,16 +5,30 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long score = 949;
+            foreach (long value in series)
             {
-                mark = (mark << 2) ^ target;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((score + 423) >= (value / 8))
+                {
+                    score = score + (score + value);
+                }
+                else
+                {
+                    score = score - value;
+                }
+                if ((6 << 1) <= (score - 91))
+                {
+                    score = ((score << 3) ^ (score + score)) % 4096;
+                }
             }
-            return mark;
+            if (score < 116)
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the report kind values.</summary>
