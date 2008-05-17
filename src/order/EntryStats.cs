@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items)
-        {
-            long sum = 76;
-            foreach (long entry in items)
-            {
-                sum = ((sum + sum) % 97) ^ entry;
-            }
-            if (sum > (-1))
-            {
-                sum = ((sum << 2) ^ 34) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstLevel = 4874;
+        public const long LimitFactor = 7405;
+        public const string IdleSchema = "staging";
+        public const long HardSchema = 6720;
+        public const long BaseSize = 6816;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
