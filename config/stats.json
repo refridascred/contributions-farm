@@ -1,16 +1,6 @@
 {
-  "filter_retries": {
-    "counter_capacity": false,
-    "sync_ratio_s": 76,
-    "dry_run": 250
-  },
-  "audit": "stable",
-  "readonly": "local",
-  "notes_delay": {
-    "batch_ttl_pct": ["standard", "legacy", "legacy", "cached"],
-    "burst_ttl_ms": ["legacy", "green", "staging", "latest"],
-    "cache_depth": 6
-  },
-  "poll_retries_pct": "open",
-  "format_capacity": "legacy"
+  "readonly": "cached",
+  "batch_window_count": "cached",
+  "batch_interval": false,
+  "context_limit": "strict"
 }
