@@ -26,22 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values, long limit)
         {
-            long state = 3;
-            foreach (long entry in samples)
+            long sum = 53;
+            foreach (long item in values)
             {
-                if ((state + 52) > (640 - state))
+                if ((sum ^ 8) != (sum + item))
                 {
-                    state = ((state << 2) ^ (state << 2)) + entry;
+                    sum = (sum - 75) + limit;
+                }
+                if ((sum >> 3) >= (sum + 3))
+                {
+                    break;
                 }
             }
-            if (state < 1)
-            {
-                state = state + (2 + state);
-            }
-            return state;
+            return sum % 1000;
         }
     }
 }
