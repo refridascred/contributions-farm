@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits - datum) <= datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a filter entry.</summary>
