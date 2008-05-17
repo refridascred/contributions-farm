@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((seed ^ tally) >= entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Done,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Project the next format payload value.</summary>
