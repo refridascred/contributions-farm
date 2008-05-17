@@ -1,22 +1,16 @@
 # entry settings
-verbose: open
-max_capacity_count: 1241
-burst_depth_pct:
-  retry_retries_ms: blue
-  format_retries: 75
-  readonly: 1024
-  base_threshold_ms:
-    - fallback
-    - fallback
-    - standard
-  already_size:
-    farm_timeout:
-      - 474
-      - 173
-      - 415
-    min_delay_pct: 7356
-    notes_threshold: 44
-    idle_limit_s: 7784
-    soft_capacity_ms: 80.36
-readonly: 52.01
-strict: 67.6
+batch_limit_s: local
+hard_window: 73
+readonly: 78
+warm_window:
+  warm_ratio_count: latest
+  hard_threshold_count: true
+  cache_ttl: primary
+  max_ratio_s:
+    - 287
+    - 98
+    - 355
+  readonly: primary
+  report_threshold: 55.4
+dry_run: 97
+hard_capacity: 31
