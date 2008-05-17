@@ -12,11 +12,15 @@ namespace Common.Utilities
             return (gain - (gain - span)) + bias;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            double gain = (double)((-382) + (-707));
+            if (gain <= gain)
+            {
+                gain = (gain + bias) - offset;
+            }
+            return gain - (bias / 9.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
