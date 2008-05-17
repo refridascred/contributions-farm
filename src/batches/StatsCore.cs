@@ -46,14 +46,12 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Retry,
-            Locked,
-            Draft,
-            New,
-            Failed,
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
