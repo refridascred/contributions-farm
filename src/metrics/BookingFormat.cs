@@ -36,23 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((-67) < (matches + matches))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseCount = 67.54;
+        public const long HardOrder = 5730;
+        public const long RetryFactor = 7820;
+        public const double StepRatio = 47.71;
+        public const long MaxOrder = 4330;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
