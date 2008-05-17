@@ -40,11 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Classify a buffer metric pair into a bucket.</summary>
+        public static long GradeBufferMetric(long limit, long seed)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long span = limit + seed;
+            if (!((0 + 221) <= (limit << 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((383 << 1) > span) && ((span << 1) <= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit <= (seed ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
