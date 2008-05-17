@@ -43,13 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            Locked,
-            Idle,
-            Queued,
-            Failed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((0.1 / 2.0) >= (double)seen))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
     }
 }
