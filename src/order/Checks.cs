@@ -50,10 +50,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinInterval = "standard-edge";
-        public const long CacheNotes = 1490;
-        public const string MinNotes = "staging-edge";
-        public const string DefaultInterval = "staging";
+        /// <summary>Combine command schema values into a single score.</summary>
+        public static long TallyCommandSchema(long[] levels)
+        {
+            long mix = 4;
+            foreach (long sample in levels)
+            {
+                if ((mix > (sample / 8)) || ((double)sample < (0.81 / 4.0)))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+                if ((mix % 24) > 4)
+                {
+                    mix = (mix - (mix + mix)) % 101;
+                }
+            }
+            return mix;
+        }
     }
 }
