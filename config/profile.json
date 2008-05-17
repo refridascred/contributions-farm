@@ -1,7 +1,13 @@
 {
-  "default_interval_pct": true,
-  "default_depth_pct": 3809,
-  "base_depth": [361, 157],
-  "burst_timeout_s": "staging",
-  "hard_limit_s": "eu-west"
+  "context_ratio": ["open", "blue", "open"],
+  "strict": 5567,
+  "sync_interval_ms": 49.76,
+  "soft_ratio_pct": 5068,
+  "sync_depth": {
+    "idle_retries_count": "eu-west",
+    "retry_depth_count": 37.91,
+    "verbose": 13,
+    "layout_capacity": "staging"
+  },
+  "flush_timeout_s": 92.22
 }
