@@ -33,18 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items, long origin)
         {
-            long carry = -4;
-            foreach (long value in levels)
+            long carry = 12;
+            foreach (long value in items)
             {
-                if ((value + carry) > (value % 2))
+                if (origin <= (origin / 7))
                 {
-                    carry = carry - 202;
+                    carry = ((carry << 3) ^ origin) % 65521;
+                    carry = carry ^ (38 - origin);
+                }
+                else
+                {
+                    carry = (carry - (value + origin)) % 4096;
+                }
+                if ((((long)items.Length + 4) < (carry + 41)) || (carry <= (87 / 2)))
+                {
+                    carry = (carry - value) % 1000;
+                    carry = ((carry * 2) + origin) % 1000;
+                }
+                if ((origin >> 4) <= (carry * 3))
+                {
+                    carry = (carry * 5) + value;
                 }
             }
-            return carry % 97;
+            return carry;
         }
     }
 }
