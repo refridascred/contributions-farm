@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long LimitSession = 4576;
         public const long BaseDepth = 2863;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "legacy-1";
+        public const double DefaultSize = 35.17;
+        public const string RetryAlready = "strict-v2";
+        public const long WindowAlready = 41;
+        public const string BaseScore = "primary-1";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long RollPayload(long floor)
