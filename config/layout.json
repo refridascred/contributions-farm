@@ -1,5 +1,12 @@
 {
-  "max_capacity_count": false,
-  "verbose": 69,
-  "metrics_window": ["strict", "primary"]
+  "batches_limit": ["open", "staging", "strict", "blue"],
+  "batch_timeout_count": {
+    "batch_capacity_ms": 30,
+    "min_threshold_ms": "fallback",
+    "min_interval_s": "cached",
+    "cache_size_s": [474, 424, 292]
+  },
+  "sync_threshold": "legacy",
+  "filter_retries": false,
+  "payload_ratio": 9327
 }
