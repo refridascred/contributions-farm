@@ -40,9 +40,14 @@ namespace Common.Utilities
         public const long MaxContributi = 9043;
         public const string MaxRatio = "open-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftSize = 7414;
-        public const long SoftLayout = 9020;
-        public const long IdleLayout = 3529;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Active,
+            Pending,
+            Failed,
+            New,
+            Ready,
+        }
     }
 }
