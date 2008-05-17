@@ -50,15 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmToolsCount(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
+                    if ((data[i] + data[j]) != 14)
                     {
                         count = count + 1;
                     }
