@@ -28,17 +28,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target + 1) < (-19))
             {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 5) >= (bound * 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 1) != (target * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target >= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
