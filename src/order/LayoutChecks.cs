@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series, long seed)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((seed ^ tally) >= entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two buffer filter measurements.</summary>
