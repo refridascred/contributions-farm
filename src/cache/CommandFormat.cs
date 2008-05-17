@@ -37,23 +37,21 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const long MaxRoute = 7754;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target >= (double)score)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + (target * 3)) % 255;
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((score / 6) == (score ^ score))
-                {
-                    score = ((score << 2) ^ (395 + 5)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
     }
 }
