@@ -21,18 +21,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] readings, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((step + seen) == (seen + datum)) || !((seen % 7) < step))
+                if (items[i] > seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
