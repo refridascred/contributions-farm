@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long TallyGithubfarmCounter(long[] values, long bound)
         {
-            long mix = 6;
-            foreach (long item in values)
+            long score = 8;
+            foreach (long datum in values)
             {
-                mix = mix + 579;
-                mix = mix + item;
-                mix = (mix * 5) + (74 * 2);
+                score = ((score + (bound + score)) % 1000) - datum;
             }
-            if (mix < 714)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
