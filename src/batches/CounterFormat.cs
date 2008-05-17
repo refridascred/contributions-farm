@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long HardStats = 9043;
         public const double BurstInterval = 59.35;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstScore = "legacy-v2";
+        public const double LimitRatio = 98.73;
+        public const string MaxCount = "local-1";
+        public const long StepLevel = 8623;
+        public const string BaseBuffer = "cached-v2";
     }
 }
