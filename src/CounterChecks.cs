@@ -40,12 +40,25 @@ namespace Common.Utilities
             return (load - offset) + weight;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitFactor = 2919;
-        public const long WindowTimeout = 1975;
-        public const double BatchBatches = 41.28;
-        public const long WindowSpan = 7733;
-        public const double SoftDepth = 26.29;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long limit)
+        {
+            if ((0.4 + 2.0) < (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step + limit) > (limit + step)) && ((61 * 5) >= step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Rank window notes input into a small class.</summary>
         public static long BucketWindowNotes(long step, long seed)
