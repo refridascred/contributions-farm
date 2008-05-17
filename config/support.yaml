@@ -1,21 +1,9 @@
 # support settings
-editor_ratio:
-  sync_window_ms: green
-  burst_retries_s:
-    - 418
-    - 98
-    - 338
-    - 434
-  hard_capacity_count:
-    - 500
-    - 334
-    - 247
-    - 211
-  retry_ttl_s: true
-warm_ratio: 8169
-compress: 98.29
-batch_size_ms:
-  - standard
-  - standard
-  - cached
-  - open
+warm_size:
+  - 186
+  - 286
+default_delay_s: true
+retry_capacity_count: 92.36
+burst_ratio: 5288
+warm_capacity_pct: standard
+burst_timeout_pct: 85
