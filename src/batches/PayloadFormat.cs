@@ -39,11 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryScore = 428;
-        public const long SoftTools = 6639;
-        public const long BurstWidth = 3556;
-        public const double BatchInterval = 28.22;
-        public const double MaxSpan = 44.78;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value + matches) >= (823 - value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
