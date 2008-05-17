@@ -31,14 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items, long floor)
         {
-            Paused,
-            Failed,
-            Idle,
-            Synced,
-            Ready,
+            long mix = 922;
+            foreach (long entry in items)
+            {
+                if (entry <= (entry + entry))
+                {
+                    mix = ((mix ^ (mix % 2)) % 97) + floor;
+                }
+            }
+            if (mix > 63)
+            {
+                mix = ((mix * 3) + (mix + mix)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a support info.</summary>
