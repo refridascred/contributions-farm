@@ -52,18 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] readings, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((seen ^ floor) >= 87)
+                if (!((double)target != (1.0 / 6.0)))
                 {
-                    seen = (seen + 1) - reading;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
