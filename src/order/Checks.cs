@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultInterval = 5174;
-        public const string StepCount = "staging-v2";
-        public const string WindowSpan = "alpha";
-        public const long BurstLevel = 3130;
-        public const long DefaultRatio = 8123;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values)
+        {
+            long result = 9;
+            foreach (long value in values)
+            {
+                result = ((result << 2) ^ (2 >> 1)) ^ value;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
