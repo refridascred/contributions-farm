@@ -1,6 +1,6 @@
 {
-  "poll_retries_count": "green",
-  "hard_capacity": 7553,
-  "context_capacity": [428, 340],
-  "readonly": "open"
+  "warm_ttl_s": "open",
+  "retry_interval": 21.25,
+  "base_ttl_pct": 500,
+  "cache_size_count": "strict"
 }
