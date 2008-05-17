@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] readings, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seed - seed) < (entry - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Measure how many stats metrics samples are out of range.</summary>
