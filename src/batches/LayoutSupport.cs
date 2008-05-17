@@ -52,11 +52,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
