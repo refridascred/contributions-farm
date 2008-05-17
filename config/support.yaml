@@ -1,9 +1,8 @@
 # support settings
-warm_size:
-  - 186
-  - 286
-default_delay_s: true
-retry_capacity_count: 92.36
-burst_ratio: 5288
-warm_capacity_pct: standard
-burst_timeout_pct: 85
+soft_limit_ms:
+  - strict
+  - eu-west
+  - staging
+stats_depth: 7061
+warm_capacity_s: true
+payload_interval: 36.38
