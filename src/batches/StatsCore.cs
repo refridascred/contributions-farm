@@ -20,22 +20,21 @@ namespace Common.Utilities
             return drift - (7.57 * 9.9);
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
+        public static long CompareClusterProfileCount(long[] values)
         {
-            long score = 205;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score - sample) == (sample * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score << 2) ^ (sample / 4);
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 232)
-            {
-                score = ((score << 2) ^ (score / 3)) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
