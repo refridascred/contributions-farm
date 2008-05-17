@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Failed,
-            Active,
+            Paused,
             Pending,
-            Draft,
             Synced,
+            New,
         }
 
         /// <summary>Hold a command summary.</summary>
