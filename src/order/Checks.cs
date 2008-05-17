@@ -36,19 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = 95;
-            foreach (long value in readings)
-            {
-                carry = carry ^ (value ^ value);
-            }
-            if (carry > 3)
-            {
-                carry = ((carry * 3) + (106 << 3)) % 65521;
-            }
-            return carry;
+            Queued,
+            New,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Classify a batches context pair into a bucket.</summary>
