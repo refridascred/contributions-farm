@@ -33,19 +33,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every route account entry stays within the limit.</summary>
-        public static bool GuardRouteAccountLimits(long[] levels, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
