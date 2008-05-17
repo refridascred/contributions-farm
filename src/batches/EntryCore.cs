@@ -62,12 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Find the first contributi metrics entry that matches the target.</summary>
+        public static long LocateContributiMetricsIndex(long[] series, long bound)
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
