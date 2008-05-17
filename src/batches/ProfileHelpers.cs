@@ -34,17 +34,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
