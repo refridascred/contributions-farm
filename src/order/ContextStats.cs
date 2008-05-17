@@ -36,12 +36,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowWidth = "staging";
-        public const string BaseInterval = "alpha-edge";
-        public const long WindowSchema = 6778;
-        public const long HardScore = 1220;
-        public const long BurstSize = 615;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
