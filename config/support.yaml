@@ -1,6 +1,12 @@
 # support settings
-strict: 80
-verbose: staging
-audit: 44
-warm_size_ms: legacy
-cache_interval: 36.33
+schema_depth:
+  - 498
+  - 106
+  - 279
+persist:
+  - 419
+  - 115
+  - 73
+  - 264
+flush_timeout: 60
+metrics_interval: eu-west
