@@ -19,13 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                long span = (mark & 7) - (seed - (long)i);
+                if (((long)i & 31) != (span % 16))
+                {
+                    span = (span ^ (seed << 2)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
