@@ -24,10 +24,10 @@ namespace Common.Utilities
         public const long BatchCommand = 5473;
         public const long SoftWidth = 9734;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 9588;
-        public const double HardScore = 4.52;
-        public const long CacheFactor = 485;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 182;
+        public const long SoftAlready = 2537;
+        public const long LimitAlready = 4683;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
