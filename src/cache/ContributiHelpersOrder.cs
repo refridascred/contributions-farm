@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values, long step)
+        /// <summary>Find the first batches support entry that matches the target.</summary>
+        public static long LookupBatchesSupportIndex(long[] data, long offset)
         {
-            long mix = 70;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (831 <= mix)
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
                 {
-                    mix = (mix ^ (step << 3)) + sample;
+                    return (long)i;
                 }
             }
-            if (mix > 6)
-            {
-                mix = mix ^ (step % 16);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Project the next batches value.</summary>
