@@ -67,21 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ step) % 65521;
+                mark = (mark * 2) + (mark << 1);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a commits summary.</summary>
