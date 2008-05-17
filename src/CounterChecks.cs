@@ -102,13 +102,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Closed,
-            Stale,
-            Retry,
-            Failed,
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
