@@ -64,14 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            Paused,
-            Failed,
-            Done,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (datum >= ((-8) * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
