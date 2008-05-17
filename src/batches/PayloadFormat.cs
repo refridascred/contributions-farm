@@ -41,18 +41,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long carry = 117;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (carry < (datum & 127))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry ^ (carry >> 3);
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next batches batch value.</summary>
