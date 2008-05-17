@@ -54,11 +54,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
