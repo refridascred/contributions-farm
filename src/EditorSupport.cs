@@ -46,22 +46,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up cluster batches samples.</summary>
-        public static long OverlapClusterBatchesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 2744;
+        public const long StepTimeout = 6604;
+        public const double SoftBatches = 22.22;
 
         /// <summary>Fold a list of farm route readings.</summary>
         public static long DigestFarmRoute(long[] readings)
