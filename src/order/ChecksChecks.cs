@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((8.7 + 9.0) != (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits mode values.</summary>
