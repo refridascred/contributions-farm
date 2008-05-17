@@ -29,10 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSpan = 7991;
-        public const double BurstFormat = 9.02;
-        public const long BaseFormat = 5819;
-        public const long IdleScore = 4093;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
