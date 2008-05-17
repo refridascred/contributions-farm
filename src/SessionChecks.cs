@@ -50,15 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Digest a series of cache githubfarm entries.</summary>
+        public static long TallyCacheGithubfarm(long[] samples)
         {
-            double gain = bias;
-            if (gain >= (8.3 + bias))
+            long mark = -27;
+            foreach (long reading in samples)
             {
-                gain = (gain + (double)8) + floor;
+                mark = (mark + ((-39) % 60)) % 1000;
+                if ((reading ^ reading) == (reading + mark))
+                {
+                    break;
+                }
             }
-            return gain - (bias / 6.0);
+            return mark;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
