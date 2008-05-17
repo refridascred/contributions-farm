@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Retry,
-            Draft,
-            Idle,
-            Failed,
+            Closed,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
