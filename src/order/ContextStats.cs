@@ -45,14 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Active,
-            Retry,
-            Dropped,
-            Paused,
-            Done,
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
