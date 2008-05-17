@@ -42,12 +42,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Closed,
+            New,
             Active,
-            Ready,
+            Dropped,
+            Stale,
+            Synced,
         }
 
         /// <summary>Rank format checks input into a small class.</summary>
