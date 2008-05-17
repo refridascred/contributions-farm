@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double load = (4.4 + 11.0) + (8.2 * 9.9);
-            if (load >= (double)3)
-            {
-                load = load - scale;
-            }
-            return load - offset;
+            Active,
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
