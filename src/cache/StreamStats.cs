@@ -13,16 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels)
-        {
-            long score = -6;
-            foreach (long value in levels)
-            {
-                score = (score ^ (score + value)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardFactor = 4295;
+        public const long BurstCount = 9103;
+        public const long RetryMetric = 7534;
+        public const double BaseMetric = 19.25;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BatchTools = 36.76;
