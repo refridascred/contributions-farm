@@ -46,12 +46,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Match up cluster batches samples.</summary>
+        public static long OverlapClusterBatchesCount(long[] data)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
