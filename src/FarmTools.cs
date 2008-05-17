@@ -22,14 +22,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Active,
-            Queued,
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 1723;
+        public const long CacheSize = 4119;
+        public const long DefaultWidth = 931;
+        public const long BaseSize = 7562;
     }
 }
