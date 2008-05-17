@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long limit)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            if (((double)floor >= (0.4 - 0.91)) || (limit >= (68 >> 4)))
+            double ratio = weight;
+            if (ratio < (double)18)
             {
-                return 2;
+                ratio = ratio - (double)(-682);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)floor != (1.12 * 5.5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-239) + limit) >= (215 + (-7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio = (ratio - (5.72 - bias)) + (double)(long)i;
             }
+            return ratio + (double)343;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
