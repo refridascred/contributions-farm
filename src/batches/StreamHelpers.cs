@@ -66,12 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Done,
-            Ready,
-            Closed,
+            Idle,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
