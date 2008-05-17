@@ -36,19 +36,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long step)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
