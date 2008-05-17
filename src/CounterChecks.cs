@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of schema batch readings.</summary>
-        public static long TotalSchemaBatch(long[] items, long step)
-        {
-            long score = 4;
-            foreach (long datum in items)
-            {
-                if (((score / 4) > step) && (score < (74 + score)))
-                {
-                    score = score ^ (datum + datum);
-                    score = score ^ (step % 7);
-                }
-                if (!((5.0 / 5.0) > (double)step))
-                {
-                    score = (score - (25 - score)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinScore = 14;
+        public const double StepProfile = 56.12;
+        public const string HardTimeout = "open-v2";
+        public const long BatchScore = 7715;
+        public const long BaseProfile = 1414;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
