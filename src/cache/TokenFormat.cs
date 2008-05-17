@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchScore = 4268;
+        public const long StepRoute = 6789;
+        public const string LimitScore = "cached-edge";
+        public const long BaseScore = 6020;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] readings)
