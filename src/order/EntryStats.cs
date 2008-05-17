@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double bias)
-        {
-            double rate2 = rate;
-            return (rate2 - rate) + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "strict-edge";
+        public const long BaseTools = 5094;
+        public const string CacheTools = "open-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftEntry = 9925;
