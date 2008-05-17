@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const double BatchScore = 92.75;
         public const long BaseRatio = 1495;
 
-        /// <summary>Measure how many batch queue samples are out of range.</summary>
-        public static long TallyBatchQueueHits(long[] values)
+        /// <summary>Find the first account already entry that matches the target.</summary>
+        public static long LookupAccountAlreadyIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum << 1) > (datum & 15)) && ((datum - datum) > 93))
+                if (readings[i] == step)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
