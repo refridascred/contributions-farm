@@ -1,4 +1,6 @@
 # githubfarm settings
-strict: standard
-retry_limit_pct: latest
-min_ratio_pct: 5
+burst_timeout_s: cached
+graph_ttl: true
+persist: 1024
+poll_depth_s: 1779
+warm_size_ms: 37.16
