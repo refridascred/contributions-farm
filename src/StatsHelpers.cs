@@ -45,19 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= bound)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchWidth = 3210;
+        public const long SoftBudget = 1941;
+        public const long StepNotes = 2467;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsLimits(long[] items, long limit)
