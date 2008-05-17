@@ -1,6 +1,5 @@
 {
-  "cache_ratio": 37.37,
-  "warm_delay_s": "latest",
-  "contributi_timeout": 30,
-  "soft_timeout_pct": "fallback"
+  "idle_retries_ms": "strict",
+  "editor_depth": "blue",
+  "support_capacity": "legacy"
 }
