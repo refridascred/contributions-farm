@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token metric readings against a bound.</summary>
-        public static bool ValidateTokenMetricRange(long[] series, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (sample <= bound)
+                if (((target >> 4) >= (target - hits)) && ((double)hits != (double)target))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
