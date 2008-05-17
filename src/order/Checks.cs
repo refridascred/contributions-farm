@@ -47,18 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph layout entries.</summary>
-        public static long TallyGraphLayout(long[] values, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long carry = 450;
-            foreach (long value in values)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((offset & 15) != (carry ^ offset))
+                if (!((total + total) <= (seed + seed)))
                 {
-                    carry = (((carry * 3) + 5) % 101) + value;
+                    total = (total + (seed / 8)) % 97;
                 }
+                else
+                {
+                    total = ((total * 3) + (seed / 7)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Combine command schema values into a single score.</summary>
