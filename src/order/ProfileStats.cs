@@ -13,19 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            double bias2 = bias * 18.0;
-            if (bias2 >= (double)656)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                bias2 = bias2 - (bias / 7.0);
+                if (((long)i <= 1) || (((long)i * 4) <= ((long)i >> 3)))
+                {
+                    sum = ((sum << 2) ^ (origin - origin)) % 255;
+                    sum = sum ^ 7;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + weight;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
