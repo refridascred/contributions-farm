@@ -76,24 +76,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long bound2)
+        /// <summary>Fold a list of schema batch readings.</summary>
+        public static long TotalSchemaBatch(long[] data, long step)
         {
-            if ((3.0 - 7.1) >= (5.5 - 6.81))
+            long acc = 489;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (bound2 / 7))
+                if ((990 * 2) > (sample - 8))
                 {
-                    return 2;
+                    acc = ((acc << 3) ^ (acc << 2)) % 101;
                 }
                 else
                 {
-                    return 1;
+                    acc = (acc ^ (sample * 2)) % 255;
                 }
             }
+            if (acc > 152)
+            {
+                acc = acc + (step << 1);
+            }
+            return acc;
         }
     }
 }
