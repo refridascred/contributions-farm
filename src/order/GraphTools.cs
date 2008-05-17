@@ -21,18 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long result = 96;
-            foreach (long entry in items)
-            {
-                if ((entry + 4) <= (result - entry))
-                {
-                    result = result + ((long)items.Length + entry);
-                }
-            }
-            return result;
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
