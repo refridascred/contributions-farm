@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((((sample ^ sample) > 11) || ((double)tally > (11.0 / 2.0))) && ((tally - sample) < ((-4) & 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the batch phase values.</summary>
