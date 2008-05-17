@@ -48,15 +48,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            long result = 435;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                result = ((result + (item ^ item)) % 97) + target;
+                if ((double)hits == (double)sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            return result % 1000;
+            return hits;
         }
     }
 }
