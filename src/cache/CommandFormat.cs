@@ -46,12 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            Synced,
-            Idle,
-            Closed,
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)(long)i > (8.0 / 9.0)) && (score <= (score ^ (long)i)))
+                {
+                    score = (score + (target - target)) % 4096;
+                    score = ((score << 3) ^ (score * 2)) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + 955)) % 4096;
+                }
+                if ((score ^ (long)i) >= score)
+                {
+                    break;
+                }
+                if (((score / 3) <= ((long)i + (-77))) || ((target + score) < score))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
