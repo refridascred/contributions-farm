@@ -1,12 +1,8 @@
 {
-  "batches_limit": ["open", "staging", "strict", "blue"],
-  "batch_timeout_count": {
-    "batch_capacity_ms": 30,
-    "min_threshold_ms": "fallback",
-    "min_interval_s": "cached",
-    "cache_size_s": [474, 424, 292]
-  },
-  "sync_threshold": "legacy",
-  "filter_retries": false,
-  "payload_ratio": 9327
+  "idle_size_s": 96.56,
+  "max_interval_count": 8.18,
+  "filter_delay": 13.95,
+  "context_delay": 42.99,
+  "cache_interval": false,
+  "soft_delay": "legacy"
 }
