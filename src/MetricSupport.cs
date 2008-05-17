@@ -27,17 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry entry that matches the target.</summary>
-        public static long LocateChecksEntryIndex(long[] values, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                state = state - (state * 2);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
