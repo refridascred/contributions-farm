@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultFactor = 5962;
-        public const long SoftLayout = 5126;
-        public const long CacheDepth = 6100;
-        public const long BurstBudget = 1229;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double offset)
+        {
+            double scale = bias;
+            return (scale + 6.0) + offset;
+        }
 
         /// <summary>Match up channel contributi samples.</summary>
         public static long CompareChannelContributiCount(long[] levels)
