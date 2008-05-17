@@ -1,12 +1,5 @@
 {
-  "soft_timeout": 1781,
-  "retry_capacity_count": {
-    "min_ratio_count": 30,
-    "hard_retries_ms": "standard",
-    "compress": 250
-  },
-  "compress": false,
-  "verbose": 8431,
-  "max_interval_s": "staging",
-  "base_timeout": 100
+  "notes_size": 4.92,
+  "max_ttl_pct": 6.27,
+  "soft_threshold": 250
 }
