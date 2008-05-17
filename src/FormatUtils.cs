@@ -29,13 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 55.81;
+        public const double BatchScore = 92.75;
+        public const long BaseRatio = 1495;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
