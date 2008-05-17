@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            if (target >= (origin + target))
+            long result = 189;
+            foreach (long datum in readings)
             {
-                return 5;
+                result = (result + (413 - datum)) % 4096;
             }
-            else
+            if (result < (-871))
             {
-                if (((origin + (-79)) <= (2 * 2)) || (1 < target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - origin) != (205 + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = ((result * 3) + 690) % 97;
             }
+            return result;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
