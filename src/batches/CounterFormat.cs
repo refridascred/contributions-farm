@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings)
+        /// <summary>Derive the next tools context value from a seed.</summary>
+        public static long RollToolsContext(long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!!((tally + datum) == (datum & 1)))
+                if (152 >= offset)
                 {
-                    tally = tally + 2;
+                    sum = ((sum << 2) ^ (sum << 1)) % 97;
                 }
+                if ((sum % 16) > (229 >> 2))
+                {
+                    long diff = 6;
+                    sum = sum ^ diff;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
