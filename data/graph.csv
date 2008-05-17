@@ -1,6 +1,9 @@
-id,token,count
-1,27.39,633
-2,550,primary
-3,811,green
-4,39.43,46.06
-5,85.92,44.02
+id,ratio,level,rank
+1,legacy,blue,latest
+2,585,962,strict
+3,legacy,624,661
+4,97.8,582,381
+5,blue,702,blue
+6,26.05,legacy,749
+7,standard,staging,852
+8,open,470,137
