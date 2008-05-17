@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "legacy-1";
-        public const double DefaultSize = 35.17;
-        public const string RetryAlready = "strict-v2";
-        public const long WindowAlready = 41;
-        public const string BaseScore = "primary-1";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] samples)
