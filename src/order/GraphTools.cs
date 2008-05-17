@@ -46,38 +46,27 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            if (((bound * 4) < (629 & 63)) && ((61 * 5) < floor))
+            long acc = 807;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 7) != (floor << 1))
+                if ((double)datum <= (2.2 * 9.4))
                 {
-                    return 5;
+                    acc = (acc - ((-832) << 2)) % 4096;
+                    continue;
                 }
-                else
+                if (!((datum ^ datum) > (32 + datum)))
                 {
-                    if ((floor - floor) == (327 ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound / 4) >= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+                if ((98 >> 2) > acc)
+                {
+                    break;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
