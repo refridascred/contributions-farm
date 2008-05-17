@@ -40,22 +40,22 @@ namespace Common.Utilities
         public const long HardBudget = 2458;
         public const long StepFilter = 2156;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] series)
         {
-            long score = 41;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (4 > (sample << 1))
+                if ((((value >> 4) < matches) || ((double)value != (3.1 + 2.0))) || ((value * 4) != (value % 100)))
                 {
-                    score = score - (sample - (long)readings.Length);
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (score < 3)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score % 65521;
+            return matches;
         }
     }
 }
