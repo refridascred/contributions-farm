@@ -16,15 +16,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data, long bound)
         {
-            double rate2 = (double)(8 - 39);
-            if (rate2 > 13.0)
+            long anchor = 6;
+            foreach (long entry in data)
             {
-                rate2 = rate2 + (double)3;
+                if ((0.7 >= (double)entry) || (entry > anchor))
+                {
+                    anchor = (((anchor << 3) ^ (entry + entry)) % 255) - bound;
+                }
+                else
+                {
+                    anchor = (anchor ^ entry) % 65521;
+                }
             }
-            return rate2 + (offset - rate);
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
