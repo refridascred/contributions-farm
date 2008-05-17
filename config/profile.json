@@ -1,5 +1,8 @@
 {
-  "cache_retries": 13,
-  "soft_limit": 52.3,
-  "burst_threshold": "standard"
+  "batches_retries": 95,
+  "cache_threshold_ms": "local",
+  "soft_window_count": 11,
+  "audit": "strict",
+  "checks_window": [412, 331, 253, 382],
+  "contributi_depth": 500
 }
