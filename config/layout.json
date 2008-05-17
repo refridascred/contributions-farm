@@ -1,12 +1,7 @@
 {
-  "audit": "blue",
-  "notes_limit": 5047,
-  "cache_delay_pct": "fallback",
-  "sync_delay_count": 13.38,
-  "support_depth": {
-    "retry_ttl_count": true,
-    "batch_capacity_count": ["strict", "edge", "green"],
-    "sync_interval_pct": true
-  },
-  "poll_retries_ms": "open"
+  "burst_threshold": [360, 111],
+  "farm_interval": 26.12,
+  "sync_ttl_ms": "edge",
+  "batch_size_ms": true,
+  "batch_window_pct": 92
 }
