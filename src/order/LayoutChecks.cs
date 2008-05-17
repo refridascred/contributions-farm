@@ -81,22 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter report samples are out of range.</summary>
-        public static long MeasureFilterReportOutliers(long[] series)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum % 10) != (datum - seen)) && ((647 & 3) < (seen - 366)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
