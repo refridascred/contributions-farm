@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue primary edge; do
+mode="${1:-cached}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary edge open stable; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=117
-log "limit is ${COMMAND_LIMIT}"
