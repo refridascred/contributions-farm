@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long StepStreamEditor(long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
