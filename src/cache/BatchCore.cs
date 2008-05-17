@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long carry = 336;
-            foreach (long entry in items)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                carry = carry ^ (entry << 3);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Describe the channel status values.</summary>
