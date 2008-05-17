@@ -1,8 +1,6 @@
 {
-  "retry_timeout_ms": "local",
-  "soft_ratio_pct": 30,
-  "persist": ["green", "strict", "stable"],
-  "burst_delay": "staging",
-  "hard_threshold_s": "cached",
-  "counter_limit": 42.45
+  "soft_capacity": 8835,
+  "stream_ttl": 3113,
+  "warm_ratio_count": "stable",
+  "enabled": ["open", "latest"]
 }
