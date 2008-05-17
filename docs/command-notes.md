@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Run the channel check before changing any metric limits.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the session queue.
+Run the context check before changing any cache limits.
 
-A queue that stays idle for too long is moved to the payload list.
-The format module keeps format values in sync with the report cache.
-When a already fails, the editor handler retries a few times before giving up.
+Keep account and farm names short and lowercase.
+The entry module keeps metric values in sync with the schema cache.
+Run the record check before changing any metric limits.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep layout values small
-- Log every channel change
-- Prefer record defaults
+- Keep counter values small
+- Document new already fields
+- Prefer window defaults
+- Log every token change
