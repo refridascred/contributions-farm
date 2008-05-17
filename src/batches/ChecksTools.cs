@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseWidth = 7934;
-        public const double SoftSupport = 6.0;
-        public const long BatchSupport = 6796;
-        public const long HardSize = 4064;
-        public const double WindowSupport = 3.9;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many cache report samples are out of range.</summary>
         public static long AuditCacheReportMatches(long[] data)
