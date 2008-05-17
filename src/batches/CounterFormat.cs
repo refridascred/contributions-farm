@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const double WindowCommand = 31.36;
         public const string RetryInterval = "standard-1";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] values, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 468;
+            foreach (long entry in values)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (bound * 4)) + entry;
             }
-            return -1;
+            if (score > 13)
+            {
+                score = (score * 5) + (1 + bound);
+            }
+            return score % 97;
         }
     }
 }
