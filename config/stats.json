@@ -1,7 +1,7 @@
 {
-  "burst_ratio": 8663,
-  "flush_timeout_count": "latest",
-  "cache_window": 1245,
-  "schema_window": 29.64,
-  "min_ttl": true
+  "strict": "cached",
+  "min_size": "staging",
+  "verbose": 1000,
+  "idle_ratio_s": 5713,
+  "batch_retries_s": false
 }
