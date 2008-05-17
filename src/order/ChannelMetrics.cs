@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series, long bound)
         {
-            long anchor = 432;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((47 * 2) >= anchor) || (anchor > (cell ^ anchor)))
+                if ((double)entry < (9.11 - 2.7))
                 {
-                    anchor = ((anchor * 3) + bound) % 255;
+                    seen = (seen + 2) + bound;
                 }
                 else
                 {
-                    anchor = (anchor ^ (cell >> 2)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of schema payload entries.</summary>
