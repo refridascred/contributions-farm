@@ -1,15 +1,15 @@
 {
-  "min_delay": false,
-  "context_limit": "standard",
-  "dry_run": {
-    "notes_limit": "primary",
-    "default_limit": true,
-    "burst_delay_count": 60,
-    "poll_retries": 250,
-    "context_timeout": "latest",
-    "readonly": 91
-  },
-  "flush_ttl_pct": "edge",
-  "audit": "stable",
-  "context_ratio": true
+  "hard_timeout": "standard",
+  "context_delay": [456, 215],
+  "batch_limit": [166, 2, 398],
+  "flush_threshold": false,
+  "sync_depth": {
+    "hard_timeout_count": {
+      "record_ttl": 77.23,
+      "cache_delay_count": 3604,
+      "default_ttl": "eu-west"
+    },
+    "audit": 3808,
+    "base_ttl_ms": 500
+  }
 }
