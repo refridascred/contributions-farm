@@ -36,12 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values)
         {
-            Failed,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (tally / 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
