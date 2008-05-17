@@ -27,22 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches queue samples are out of range.</summary>
-        public static long AuditBatchesQueueOutliers(long[] series, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value + tally) < (value - offset))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
