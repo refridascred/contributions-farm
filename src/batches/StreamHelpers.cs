@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "cached-1";
         public const long IdleGithubfarm = 694;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseTimeout = 9839;
-        public const long IdleSpan = 1834;
-        public const double MinScore = 93.11;
-        public const long BurstProfile = 4803;
-        public const double HardWidth = 29.78;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] data, long step)
