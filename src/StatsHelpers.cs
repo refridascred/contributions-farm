@@ -54,18 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((value << 2) > tally)
+                if ((count - floor) > (count + value))
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
