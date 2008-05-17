@@ -42,21 +42,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of channel farm readings.</summary>
-        public static long CompareChannelFarmCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 3915;
+        public const long MaxCluster = 1509;
+        public const long BurstCluster = 9368;
     }
 }
