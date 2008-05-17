@@ -15,11 +15,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "staging";
-        public const long BatchCache = 8712;
-        public const long BurstCount = 5348;
-        public const long BurstInterval = 606;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
+        {
+            long result = -17;
+            foreach (long value in series)
+            {
+                result = ((result + ((-904) << 1)) % 97) + value;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
