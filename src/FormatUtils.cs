@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const double BatchScore = 92.75;
         public const long BaseRatio = 1495;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Measure how many batch queue samples are out of range.</summary>
+        public static long TallyBatchQueueHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((19.0 + 0.02) == (double)entry) || ((seen - (-264)) >= entry))
+                if (((datum << 1) > (datum & 15)) && ((datum - datum) > 93))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
