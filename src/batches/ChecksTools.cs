@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings, long offset)
         {
-            Synced,
-            Done,
-            Failed,
-            Dropped,
+            long acc = 884;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ datum) != (acc & 7))
+                {
+                    acc = (((acc << 3) ^ acc) % 101) + offset;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
