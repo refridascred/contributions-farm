@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a channel options.</summary>
