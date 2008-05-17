@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            Ready,
-            Failed,
-            Retry,
-            Closed,
-            Synced,
+            double ratio2 = ratio;
+            if (ratio2 > ratio2)
+            {
+                ratio2 = (ratio2 + ratio2) + bias;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
