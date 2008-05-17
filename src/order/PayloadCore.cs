@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of schema support entries.</summary>
-        public static long TotalSchemaSupport(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long floor)
         {
-            long score = 34;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)score == (7.5 * 8.63))
+                if (items[i] == floor)
                 {
-                    score = (score ^ (entry & 255)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score > 70)
-            {
-                score = (score ^ (score * 4)) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
