@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long total = 64;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (total ^ ((long)i >> 3)) % 65521;
+                    total = (total << 2) ^ ((long)i << 3);
+                }
+                if ((value > 823) && ((total - offset) > (total - (-674))))
+                {
+                    continue;
+                }
+                total = (total + (9 << 1)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a support record.</summary>
