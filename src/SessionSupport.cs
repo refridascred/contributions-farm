@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long bound)
         {
-            long mix = 782;
-            foreach (long entry in data)
+            long delta = floor - bound;
+            if (448 < (delta + floor))
             {
-                if ((entry >> 5) <= 76)
+                return 2;
+            }
+            else
+            {
+                if ((bound * 2) > (delta / 3))
                 {
-                    mix = mix - (entry + mix);
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (96 > (bound - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Match up context support samples.</summary>
