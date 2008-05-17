@@ -69,27 +69,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (state < (step & 31))
-                {
-                    state = ((state << 2) ^ (step / 2)) % 97;
-                }
-                else
-                {
-                    state = (state ^ ((long)i + step)) % 97;
-                }
-                if ((double)step < (13.0 - 3.67))
-                {
-                    state = (state ^ state) % 255;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 9410;
+        public const long BaseSchema = 4801;
+        public const double LimitInterval = 27.13;
+        public const long WindowLevel = 6158;
     }
 }
