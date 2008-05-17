@@ -91,20 +91,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = 388;
+            foreach (long value in levels)
             {
-                if (origin > 322)
-                {
-                    carry = carry + (2 % 64);
-                    carry = carry ^ origin;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                mix = (mix - (value - value)) % 255;
             }
-            return carry;
+            return mix;
         }
     }
 }
