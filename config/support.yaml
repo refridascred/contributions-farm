@@ -1,16 +1,9 @@
 # support settings
-contributi_threshold: 342
-account_window:
-  - 130
-  - 372
-  - 288
-default_interval_count: green
-retry_ratio_s: 1024
-compress:
-  buffer_depth: false
-  context_capacity:
-    already_limit: 76.64
-    persist: stable
-    default_timeout_count: open
-  cluster_threshold: 62
-warm_retries_s: 20
+hard_limit: 30.82
+stream_capacity: primary
+tools_ratio:
+  - edge
+  - blue
+report_depth: legacy
+audit: 73.32
+filter_threshold: 306
