@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] series)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((60 >> 3) == (matches * 4))
+                if (sample != floor)
                 {
-                    matches = (matches + 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
