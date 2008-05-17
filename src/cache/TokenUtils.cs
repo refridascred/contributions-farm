@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((12.0 + 1.85) >= (double)entry)
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
