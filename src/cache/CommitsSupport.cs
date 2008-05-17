@@ -60,12 +60,19 @@ namespace Common.Utilities
         public const string RetryNotes = "open";
         public const long MinLevel = 8197;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultWidth = 5374;
-        public const string HardTools = "cached";
-        public const double CacheSpan = 24.76;
-        public const long BatchTools = 5014;
-        public const long StepCount = 9571;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally / 7) > (tally + 445))
+                {
+                    tally = ((tally + 3) + sample) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
