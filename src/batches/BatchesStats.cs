@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long anchor = 237;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor << 3) ^ (anchor - (long)items.Length)) - cell;
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor - (anchor >> 5)) % 4096;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
