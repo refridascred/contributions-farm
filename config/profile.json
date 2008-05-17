@@ -1,8 +1,12 @@
 {
-  "batches_retries": 95,
-  "cache_threshold_ms": "local",
-  "soft_window_count": 11,
-  "audit": "strict",
-  "checks_window": [412, 331, 253, 382],
-  "contributi_depth": 500
+  "audit": 18.98,
+  "stream_delay": {
+    "readonly": "staging",
+    "retry_size_count": "open",
+    "sync_timeout_count": 100,
+    "audit": 250,
+    "stream_threshold": "fallback"
+  },
+  "max_timeout_ms": 7250,
+  "dry_run": false
 }
