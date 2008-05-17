@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 67.76;
-        public const double WindowGithubfarm = 49.56;
-        public const long MaxGithubfarm = 8847;
-        public const long HardGithubfarm = 4159;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long offset)
