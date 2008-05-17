@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long BurstInterval = 3575;
         public const long MinFactor = 9753;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels, long step)
         {
-            long score = 468;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 2) + (bound * 4)) + entry;
+                if ((((count + value) <= (step ^ value)) && ((0.2 / 6.0) <= (double)step)) && ((double)step > (double)value))
+                {
+                    count = count + 1;
+                }
             }
-            if (score > 13)
-            {
-                score = (score * 5) + (1 + bound);
-            }
-            return score % 97;
+            return count;
         }
     }
 }
