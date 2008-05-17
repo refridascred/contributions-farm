@@ -16,19 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long WeighGithubfarmEntry(long[] items, long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long offset)
         {
-            long mark = 6;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 3) + (cell / 9);
-                if (bound <= (cell << 2))
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
                 {
-                    mark = (mark << 2) ^ (bound + mark);
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Match up stream already samples.</summary>
