@@ -34,11 +34,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
