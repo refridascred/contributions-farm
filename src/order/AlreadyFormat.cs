@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Draft,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheLevel = 6457;
+        public const string WindowStats = "alpha-v2";
+        public const long HardStats = 8693;
+        public const string MaxSize = "local-edge";
+        public const long DefaultStats = 1615;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double IdleMetric = 23.8;
