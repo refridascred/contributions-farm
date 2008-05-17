@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long TotalAlreadyProfile(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mix = 3;
-            foreach (long item in samples)
-            {
-                mix = (mix * 5) + item;
-            }
-            if (mix > (-4))
-            {
-                mix = (mix - (mix << 2)) % 101;
-            }
-            return mix;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a command snapshot.</summary>
