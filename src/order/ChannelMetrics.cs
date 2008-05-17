@@ -26,21 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next context queue value from a seed.</summary>
-        public static long DeriveContextQueue(long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i < (state & 255)) || (state >= (bound & 31)))
-                {
-                    state = (state + (bound - state)) % 1000;
-                    continue;
-                }
-                state = (state + ((long)i - 293)) % 97;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
