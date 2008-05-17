@@ -36,13 +36,39 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long limit, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long span = limit - offset;
+            if ((749 >= (span + offset)) || (limit >= offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)limit <= 4.2) && ((845 << 3) <= offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > 97)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span / 6) != (span + offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
