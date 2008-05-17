@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 715;
+            foreach (long datum in items)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc - 267)) ^ datum;
             }
-            return -1;
+            if (acc < (-769))
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the notes level values.</summary>
