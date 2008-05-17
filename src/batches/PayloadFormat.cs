@@ -39,18 +39,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((2.0 - 3.0) < (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
