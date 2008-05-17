@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items, long floor)
+        /// <summary>Adjust a farm order reading.</summary>
+        public static double SmoothFarmOrder(double rate, double floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            double gain = rate - floor;
+            if (gain <= (rate * 12.0))
             {
-                if ((count - floor) > (count + value))
-                {
-                    count = count + 1;
-                }
+                gain = gain + (double)(-9);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 7.2) + (double)(long)i;
+            }
+            return gain - 19.0;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
