@@ -72,19 +72,22 @@ namespace Common.Utilities
         public const string WindowPayload = "standard-edge";
         public const long BaseLevel = 1601;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry < floor)
+                if ((double)tally != (double)bound)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
