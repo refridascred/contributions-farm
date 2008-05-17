@@ -59,17 +59,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark ^ step) % 65521;
-                mark = (mark * 2) + (mark << 1);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
