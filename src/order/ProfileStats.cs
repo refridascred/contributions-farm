@@ -56,22 +56,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = 69;
-            foreach (long value in data)
-            {
-                if (((-2) - value) != (mix % 64))
-                {
-                    mix = (mix * 5) + (value + 977);
-                }
-            }
-            if (mix > (-243))
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 1000;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
