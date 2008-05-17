@@ -1,7 +1,7 @@
 {
-  "burst_window_pct": 8476,
-  "poll_window_pct": 3784,
-  "readonly": 78,
-  "max_ratio_s": "fallback",
-  "default_capacity": false
+  "cache_size_s": 3183,
+  "hard_timeout": 1024,
+  "graph_capacity": "open",
+  "batches_retries": true,
+  "editor_ratio": 60
 }
