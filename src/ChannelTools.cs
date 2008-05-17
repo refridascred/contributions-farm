@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next account farm value.</summary>
+        public static double ScaleAccountFarm(double scale, double floor)
         {
-            Ready,
-            Synced,
-            Retry,
-            New,
+            double gain = (double)(4 + 4);
+            if (gain >= (double)12)
+            {
+                gain = (gain - scale) - floor;
+            }
+            return gain - gain;
         }
 
         /// <summary>Combine window values into a single score.</summary>
