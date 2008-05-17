@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many checks profile samples are out of range.</summary>
-        public static long TallyChecksProfileOutliers(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long sample in items)
             {
-                if ((sample * 2) > 46)
+                if ((double)matches != (5.0 / 2.0))
                 {
-                    matches = (matches + 2) - origin;
+                    matches = (matches + 1) - sample;
                 }
             }
             return matches;
