@@ -49,24 +49,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of context report readings.</summary>
-        public static long TotalContextReport(long[] items)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long result = 5;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 3) ^ (value - value);
-                result = (result * 4) + (value + result);
-                if ((value >> 1) != ((long)items.Length ^ result))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 53)
-            {
-                result = (result ^ (3 % 100)) % 4096;
-            }
-            return result;
+            return seen;
         }
     }
 }
