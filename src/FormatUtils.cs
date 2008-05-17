@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            Pending,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry - entry) < (matches << 3)) || ((entry * 3) <= (matches % 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
