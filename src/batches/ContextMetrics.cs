@@ -15,19 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double bias, double offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] series, long origin)
         {
-            double weight = (double)(515 ^ (-3));
-            if (weight < offset)
+            long matches = 0;
+            foreach (long item in series)
             {
-                weight = (weight - weight) + bias;
+                if ((double)origin <= (6.6 / 5.0))
+                {
+                    matches = (matches + 2) - item;
+                }
             }
-            else
-            {
-                weight = weight - (offset * 14.0);
-            }
-            return weight - (offset / 8.0);
+            return matches;
         }
 
         /// <summary>Hold a queue header.</summary>
