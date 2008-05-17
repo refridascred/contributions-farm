@@ -25,14 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            Retry,
-            Dropped,
-            Idle,
-            Failed,
-            New,
+            long carry = 95;
+            foreach (long value in readings)
+            {
+                carry = carry ^ (value ^ value);
+            }
+            if (carry > 3)
+            {
+                carry = ((carry * 3) + (106 << 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a batches context pair into a bucket.</summary>
