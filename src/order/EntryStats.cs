@@ -38,12 +38,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleRatio = 19.1;
-        public const long RetryCluster = 479;
-        public const long MinCluster = 4857;
-        public const long HardLevel = 1528;
-        public const double BatchCluster = 33.52;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
