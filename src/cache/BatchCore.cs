@@ -29,22 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum < (3.7 + 1.2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
