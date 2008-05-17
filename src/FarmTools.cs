@@ -44,11 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowBudget = 591;
-        public const long IdleFactor = 2477;
-        public const long WindowSize = 5193;
-        public const long RetryFarm = 634;
-        public const string BurstSize = "legacy-edge";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry - count) == (3 + (-560))) && (count < (count >> 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
