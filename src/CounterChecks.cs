@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long step2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] items, long floor)
         {
-            long next = step + step2;
-            if ((double)next >= (2.7 * 7.4))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (step2 >= (next - step2))
+                if ((floor ^ matches) != (matches % 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((next << 2) <= (step / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 3) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit session metrics readings against a rule.</summary>
