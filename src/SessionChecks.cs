@@ -49,13 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long limit)
         {
-            Pending,
-            Paused,
-            Locked,
-            Ready,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
