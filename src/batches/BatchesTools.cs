@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftTimeout = 73.88;
-        public const long HardSize = 1855;
-        public const string DefaultWidth = "local-edge";
-        public const long BurstReport = 4910;
-        public const long WindowRatio = 4770;
+        /// <summary>Measure how many batches record samples are out of range.</summary>
+        public static long MeasureBatchesRecordOutliers(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((0 - 7) < (sample >> 1))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesHits(long[] levels)
