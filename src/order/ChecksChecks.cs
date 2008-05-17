@@ -28,17 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] series, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
+                if (!((state ^ state) <= (long)i))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (state % 2)) % 65521;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
