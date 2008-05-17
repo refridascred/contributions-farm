@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            New,
-            Failed,
-            Pending,
-            Locked,
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
