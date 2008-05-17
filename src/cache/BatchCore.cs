@@ -43,19 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter commits readings against a bound.</summary>
-        public static bool CheckFilterCommitsBounds(long[] series, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (entry != offset)
+                if (value > seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
