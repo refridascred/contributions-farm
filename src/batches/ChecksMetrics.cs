@@ -39,17 +39,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a metrics batches reading by value.</summary>
-        public static long SeekMetricsBatchesIndex(long[] items, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -73;
+            foreach (long item in data)
             {
-                if (items[i] >= limit)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (9 / 8)) ^ (long)i;
+                }
+                if ((double)carry >= (9.0 / 7.0))
+                {
+                    carry = (carry - (item + 389)) % 97;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Count the batches already entries that pass the check.</summary>
