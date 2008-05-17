@@ -42,11 +42,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5819;
-        public const string SoftInterval = "stable";
-        public const string SoftSupport = "stable-v2";
-        public const long MinDepth = 7503;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double offset)
+        {
+            double load = (double)8;
+            if (load <= load)
+            {
+                load = ((load + (double)(-2)) - weight) + offset;
+            }
+            return load + (double)1;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
