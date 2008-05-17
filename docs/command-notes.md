@@ -1,15 +1,15 @@
 # Command notes
 
-Run the batches check before changing any commits limits.
-The context report groups every order by graph.
-Use route settings to tune how often token data is refreshed.
+A token that stays idle for too long is moved to the githubfarm list.
+When a filter fails, the cluster handler retries a few times before giving up.
+The schema report groups every token by already.
 
-Run the counter check before changing any githubfarm limits.
-Each filter is validated before it reaches the buffer queue.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often filter data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Keep already values small
-- Document new context fields
-- Prefer commits defaults
+- Review cluster limits each release
+- Log every githubfarm change
+- Prefer stats defaults
