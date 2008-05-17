@@ -41,9 +41,18 @@ namespace Common.Utilities
         public const long HardCommand = 9073;
         public const long MinSize = 5607;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 6.04;
-        public const double WindowCount = 53.22;
-        public const long WindowScore = 6577;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits & 127) < 72)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
+        }
     }
 }
