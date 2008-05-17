@@ -1,7 +1,8 @@
-id,token,count,label
-1,1.6,green,strict
-2,316,strict,82.31
-3,945,465,55
-4,658,265,latest
-5,24.13,966,11.07
-6,legacy,stable,153
+id,weight,label,region
+1,fallback,99,16.12
+2,49.85,383,586
+3,484,72,7.4
+4,edge,8.15,49.92
+5,498,standard,107
+6,715,77,881
+7,730,stable,55.09
