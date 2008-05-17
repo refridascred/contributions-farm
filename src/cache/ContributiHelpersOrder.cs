@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state * 5) + (state & 255)) % 101) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
