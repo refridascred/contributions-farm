@@ -35,13 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long score = target;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score - (target - (long)i)) % 65521;
+                score = (score - (score & 1)) % 97;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
