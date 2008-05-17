@@ -32,15 +32,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            double ratio2 = 5.2 + (ratio * 4.3);
-            for (int i = 0; i < 8; i++)
+            long score = 23;
+            foreach (long value in samples)
             {
-                ratio2 = ((ratio2 + (double)(-783)) + (double)(long)i) - floor;
+                if ((23 >= (score >> 2)) || (score < value))
+                {
+                    score = score - (value ^ score);
+                }
             }
-            return ratio2 + (3.5 / 4.0);
+            if (score < 5)
+            {
+                score = (score + (score * 4)) % 101;
+            }
+            return score % 97;
         }
     }
 }
