@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 8847;
         public const long HardGithubfarm = 4159;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 2) + (target + mark)) % 97;
-                mark = mark + (target >> 4);
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((seen / 9) == (value ^ seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first format payload entry that matches the target.</summary>
