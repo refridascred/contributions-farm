@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=291
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in legacy green primary stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green strict primary fallback; do
+    log "checking ${item}"
+done
