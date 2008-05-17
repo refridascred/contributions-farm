@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Fold a list of cache batches readings.</summary>
+        public static long TotalCacheBatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 8;
+            foreach (long datum in samples)
             {
-                if ((24 / 2) < (tally % 10))
+                anchor = (anchor * 3) + (anchor ^ 0);
+                anchor = (anchor + anchor) % 4096;
+                if (((anchor + 761) > (0 - datum)) && (anchor >= (anchor * 5)))
                 {
-                    tally = (tally + 2) - value;
+                    anchor = (anchor * 4) + datum;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
