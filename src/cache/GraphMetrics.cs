@@ -42,24 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long seed, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double offset)
         {
-            if (525 <= (seed * 2))
+            double load = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                load = (load - 9.92) - (double)(long)i;
             }
-            else
-            {
-                if (!((seed - offset) <= (84 / 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load + offset;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
