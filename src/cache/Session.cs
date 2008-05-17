@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long state = 94;
+            foreach (long sample in samples)
             {
-                if (entry != target)
+                if ((state * 5) > (state >> 2))
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 2) + (state / 7)) - sample;
                 }
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
