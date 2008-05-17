@@ -28,18 +28,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = 4;
+            foreach (long value in levels)
             {
-                if ((tally - tally) < ((-5) * 3))
+                if (((6 + offset) < 30) && ((value % 97) == (offset / 5)))
                 {
-                    tally = (tally + 2) ^ sample;
+                    total = (total ^ (total << 1)) % 97;
+                }
+                else
+                {
+                    total = (total << 2) ^ (75 ^ offset);
+                }
+                if (((double)value >= (0.8 - 3.69)) || ((value - 93) != (value / 6)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 279)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a batch stats.</summary>
