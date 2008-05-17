@@ -30,19 +30,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double weight, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            double ratio = weight;
+            if (ratio > ratio)
             {
-                if ((origin ^ (long)i) > ((long)i - acc))
-                {
-                    acc = (acc << 3) ^ (origin - origin);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                ratio = ratio + 1.13;
             }
-            return acc;
+            else
+            {
+                ratio = ratio - (double)(-72);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (weight * 3.1)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
     }
 }
