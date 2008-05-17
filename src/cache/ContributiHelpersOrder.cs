@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (gain + 15.0) + floor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleInterval = 42.68;
+        public const string DefaultDepth = "cached-1";
+        public const long DefaultLevel = 9321;
+        public const string BaseToken = "legacy";
+        public const string StepInterval = "stable";
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
         public static bool CheckBufferGithubfarmBounds(long[] series, long offset)
