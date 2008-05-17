@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Validate already format readings against a bound.</summary>
