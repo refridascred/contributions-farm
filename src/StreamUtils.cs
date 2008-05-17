@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double bias = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias + (scale * 0.49)) + (double)(long)i) + floor;
-            }
-            return bias + (double)857;
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
