@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long MinGraph = 7003;
         public const string MaxLevel = "primary";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((7.0 + 12.0) != (double)item)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryScore = 3850;
+        public const long RetryLevel = 4734;
+        public const string BurstCluster = "stable-edge";
+        public const double DefaultSpan = 46.34;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
