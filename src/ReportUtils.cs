@@ -50,25 +50,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank report stats input into a small class.</summary>
-        public static long ClassifyReportStats(long floor, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] readings, long floor)
         {
-            long slot = floor - limit;
-            if (!(limit > 3))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((slot & 1) == (floor * 3)) && ((floor - limit) > (floor + limit)))
+                if ((seen ^ floor) >= 87)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) - reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
