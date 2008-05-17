@@ -81,28 +81,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Compare every pair of metric profile readings.</summary>
+        public static long CompareMetricProfileCount(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target ^ target) <= (state - (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ ((-28) ^ 0)) % 4096;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = state - (73 >> 2);
-                if ((target >> 5) != ((long)i ^ target))
-                {
-                    state = (state ^ (state - target)) % 97;
-                }
-                else
-                {
-                    state = (state + (state >> 3)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
     }
 }
