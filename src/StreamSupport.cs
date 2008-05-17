@@ -21,11 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a report tools figure with a bias.</summary>
-        public static double SmoothReportTools(double rate, double floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double weight = floor;
-            return (weight + weight) + rate;
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of already readings.</summary>
