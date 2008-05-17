@@ -83,19 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] series, long step)
+        /// <summary>Match up notes counter samples.</summary>
+        public static long PairNotesCounterCount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
