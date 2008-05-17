@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stream format reading.</summary>
-        public static double BlendStreamFormat(double bias, double floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double ratio = bias;
-            if (ratio > (double)55)
-            {
-                ratio = ratio + (floor - ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 1.4) - (double)(long)i;
-            }
-            return ratio - (bias * 1.7);
+            Idle,
+            Failed,
+            New,
         }
     }
 }
