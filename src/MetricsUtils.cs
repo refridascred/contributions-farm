@@ -27,13 +27,14 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Queued,
-            Paused,
             Locked,
-            Failed,
+            Dropped,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
