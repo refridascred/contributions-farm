@@ -16,20 +16,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Project the next format payload value.</summary>
-        public static double ScaleFormatPayload(double weight, double offset)
-        {
-            double mean = weight + (2.8 + 19.0);
-            if (mean < offset)
-            {
-                mean = mean + offset;
-            }
-            else
-            {
-                mean = mean + (double)7;
-            }
-            return mean - (weight * 4.3);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 3345;
+        public const long BaseBuffer = 5701;
+        public const string WindowLevel = "legacy";
+        public const long RetryBuffer = 2959;
 
         /// <summary>Compare every pair of contributi cache readings.</summary>
         public static long OverlapContributiCacheCount(long[] items)
