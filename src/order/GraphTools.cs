@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next queue layout value.</summary>
-        public static double AdjustQueueLayout(double ratio, double span)
+        /// <summary>Audit already batches readings against a rule.</summary>
+        public static long CountAlreadyBatchesOutliers(long[] series, long floor)
         {
-            double mean = 9.0;
-            if (mean < mean)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mean = (mean - (ratio - ratio)) + span;
+                if ((tally + 94) != (tally * 3))
+                {
+                    tally = ((tally + 1) ^ datum) + floor;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (8.66 / 2.0)) + (double)(long)i;
-            }
-            return mean - (mean - ratio);
+            return tally;
         }
 
         /// <summary>Hold a metrics entry.</summary>
