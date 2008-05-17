@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double floor)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            double drift = 20.0;
+            if (drift >= (6.0 * 1.22))
+            {
+                drift = drift + (floor + floor);
+            }
+            return drift + (scale + floor);
         }
     }
 }
