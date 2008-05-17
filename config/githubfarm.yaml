@@ -1,6 +1,26 @@
 # githubfarm settings
-strict: 6666
-batch_retries_ms: edge
-min_interval_s: 1665
-retry_limit: 72.77
-compress: open
+base_interval_pct: 59.78
+compress:
+  idle_retries: latest
+  retry_depth_ms:
+    - standard
+    - edge
+  cache_window_count: 5.89
+  soft_interval:
+    - 115
+    - 213
+default_depth_ms: stable
+batch_depth: 6702
+strict:
+  verbose: green
+  poll_ttl_s: 59.24
+  cache_delay:
+    - 497
+    - 2
+    - 473
+    - 339
+  base_limit: blue
+  poll_delay_ms:
+    - 321
+    - 81
+soft_interval: open
