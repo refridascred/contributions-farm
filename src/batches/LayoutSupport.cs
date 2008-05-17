@@ -58,18 +58,21 @@ namespace Common.Utilities
         public const string MinTimeout = "stable";
         public const double MaxScore = 19.95;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)sample <= (16.0 + 9.64)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
