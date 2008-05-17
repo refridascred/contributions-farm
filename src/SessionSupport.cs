@@ -15,21 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up context support samples.</summary>
-        public static long CompareContextSupportCount(long[] series)
+        /// <summary>Count the token cluster entries that pass the check.</summary>
+        public static long TallyTokenClusterHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > (hits ^ 608))
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
