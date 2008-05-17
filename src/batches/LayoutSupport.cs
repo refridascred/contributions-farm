@@ -58,9 +58,18 @@ namespace Common.Utilities
         public const string MinTimeout = "stable";
         public const double MaxScore = 19.95;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 6461;
-        public const double MinBuffer = 94.78;
-        public const long StepBuffer = 7263;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample <= (16.0 + 9.64)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
