@@ -14,11 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 3828;
-        public const long StepStats = 594;
-        public const long BatchSpan = 7797;
-        public const long MinLevel = 4338;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            New,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long limit)
