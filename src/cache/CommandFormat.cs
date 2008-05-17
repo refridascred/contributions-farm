@@ -39,11 +39,16 @@ namespace Common.Utilities
             return ratio - (double)892;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstScore = 91.77;
-        public const string HardTimeout = "cached-edge";
-        public const long WindowGraph = 1728;
-        public const long HardGraph = 3997;
+        /// <summary>Project the next githubfarm metric value.</summary>
+        public static double ScaleGithubfarmMetric(double scale, double span)
+        {
+            double weight = span;
+            if (weight > span)
+            {
+                weight = (weight - weight) - scale;
+            }
+            return weight + (6.1 * 4.3);
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheBounds(long[] samples, long bound)
