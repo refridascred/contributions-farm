@@ -73,13 +73,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] readings, long bound)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a context reading by value.</summary>
