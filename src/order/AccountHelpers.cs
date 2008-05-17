@@ -20,19 +20,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long sum = 799;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (sum >= limit)
                 {
-                    score = (score ^ 539) + (long)i2;
+                    sum = (sum ^ (sum << 2)) % 4096;
+                    sum = sum - ((-3) ^ cell);
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
+                if (!((sum & 127) >= sum))
+                {
+                    sum = sum ^ cell;
+                }
+                if (!(1.0 > (double)limit))
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
