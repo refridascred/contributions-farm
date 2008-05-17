@@ -38,25 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long limit2)
+        /// <summary>Project the next profile graph value.</summary>
+        public static double BlendProfileGraph(double gain, double span)
         {
-            long gap = limit - limit2;
-            if ((limit < (limit2 ^ gap)) || ((limit & 255) >= limit2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit < 7)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double load = (gain - gain) - (gain / 2.0);
+            return (load - gain) + span;
         }
 
         /// <summary>Describe the commits status values.</summary>
