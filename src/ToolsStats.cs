@@ -58,17 +58,15 @@ namespace Common.Utilities
         public const double StepMetrics = 73.52;
         public const long HardDepth = 5198;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = rate;
+            if (scale <= rate)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                scale = scale - (double)1;
             }
-            return -1;
+            return scale + (scale + span);
         }
     }
 }
