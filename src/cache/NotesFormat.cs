@@ -28,11 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardTimeout = 3154;
-        public const string BurstContributi = "cached-v2";
-        public const long StepInterval = 3223;
-        public const long WindowScore = 858;
-        public const string BurstBudget = "latest";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches - 893) < (-7))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
     }
 }
