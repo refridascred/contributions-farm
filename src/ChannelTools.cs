@@ -33,38 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm stats input into a small class.</summary>
-        public static long BucketFarmStats(long limit, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((double)87 < (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step > (step - 0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 10) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - step) >= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Combine window values into a single score.</summary>
