@@ -21,18 +21,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long CountCommitsChannelHits(long[] values, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double gain = 7.0;
+            if (gain < scale)
             {
-                if (!(reading < (origin * 4)))
-                {
-                    seen = seen + 1;
-                }
+                gain = (gain + (scale - 4.16)) - bias;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + 2.35;
         }
     }
 }
