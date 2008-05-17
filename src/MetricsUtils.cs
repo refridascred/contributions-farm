@@ -27,15 +27,15 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double bias, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                rate = (rate + offset) + (double)(long)i;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return rate + (double)66;
+            return mix;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
