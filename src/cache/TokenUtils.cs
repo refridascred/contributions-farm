@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Done,
-            New,
-            Pending,
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
