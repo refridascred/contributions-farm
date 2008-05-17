@@ -20,14 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data, long bound)
         {
-            Ready,
-            Dropped,
-            Done,
-            Stale,
-            Retry,
+            long acc = 215;
+            foreach (long cell in data)
+            {
+                acc = (acc ^ cell) + bound;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
