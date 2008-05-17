@@ -50,12 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] levels, long limit)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
