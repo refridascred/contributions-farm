@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the support githubfarm entries that pass the check.</summary>
-        public static long TallySupportGithubfarmOutliers(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)items.Length > 19.0)
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
                 {
-                    seen = (seen + 1) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
