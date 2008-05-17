@@ -1,12 +1,5 @@
 {
-  "min_timeout_pct": {
-    "strict": 85.7,
-    "contributi_capacity": ["edge", "fallback"],
-    "retry_size_ms": 80.24
-  },
-  "poll_threshold_s": "local",
-  "audit": "cached",
-  "cluster_limit": ["strict", "open", "strict", "green"],
-  "poll_capacity": true,
-  "burst_ttl": "green"
+  "max_capacity_count": false,
+  "verbose": 69,
+  "metrics_window": ["strict", "primary"]
 }
