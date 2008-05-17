@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long BatchContributi = 5877;
         public const long SoftContributi = 1540;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Locked,
-            Paused,
-            Done,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstSpan = 27.39;
+        public const long CacheTimeout = 8868;
+        public const long DefaultBudget = 3702;
+        public const long BatchReport = 9771;
+        public const string RetryReport = "latest-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstRatio = 5446;
