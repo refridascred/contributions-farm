@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstCount = 2.31;
-        public const long SoftFactor = 4323;
-        public const string DefaultGithubfarm = "latest-1";
-        public const string DefaultDepth = "cached-1";
-        public const long IdleGithubfarm = 694;
+        /// <summary>Validate already format readings against a bound.</summary>
+        public static bool ValidateAlreadyFormatLimits(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
