@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series, long seed)
         {
-            double gain = (double)((-729) / 7);
-            return (gain - offset) + scale;
+            long mark = 64;
+            foreach (long value in series)
+            {
+                mark = ((mark << 3) ^ (13 + 249)) + value;
+            }
+            if (mark < 7)
+            {
+                mark = ((mark * 5) + (seed ^ mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session summary.</summary>
