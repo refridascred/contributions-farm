@@ -31,12 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first route entry entry that matches the target.</summary>
-        public static long SeekRouteEntryIndex(long[] values, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == limit)
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
