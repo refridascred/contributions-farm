@@ -78,17 +78,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ (bound - 3);
-                anchor = ((anchor * 3) + (bound / 3)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
