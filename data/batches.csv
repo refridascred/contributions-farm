@@ -1,6 +1,6 @@
-id,ratio,weight,count,owner
-1,79.15,green,89.96,strict
-2,standard,243,41.77,139
-3,primary,741,711,primary
-4,latest,572,60.96,115
-5,61,staging,18.71,latest
+id,score,ratio
+1,blue,latest
+2,cached,581
+3,553,10.68
+4,101,39.36
+5,385,63.67
