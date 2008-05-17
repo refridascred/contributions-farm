@@ -45,24 +45,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long origin)
         {
-            long acc = 565;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin & 31) <= origin)
+                if (readings[i] == origin)
                 {
-                    acc = acc - (acc << 3);
-                    acc = ((acc * 3) + reading) % 97;
+                    return (long)i;
                 }
-                acc = acc - (reading >> 4);
             }
-            if (acc < 55)
-            {
-                acc = (acc - (9 - origin)) % 255;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
