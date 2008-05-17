@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two farm channel measurements.</summary>
-        public static double ScaleFarmChannel(double bias, double bias2)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] values, long target)
         {
-            double drift = bias2;
-            if (drift >= (drift / 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - bias;
+                if ((values[i] == target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (7.57 * 9.9);
+            return -1;
         }
 
         /// <summary>Count cluster profile pairs that satisfy a relation.</summary>
