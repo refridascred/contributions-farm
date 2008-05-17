@@ -37,17 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first stats schema entry that matches the target.</summary>
-        public static long SeekStatsSchemaIndex(long[] series, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) == 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
