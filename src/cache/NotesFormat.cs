@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long BatchContributi = 5877;
         public const long SoftContributi = 1540;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstSpan = 27.39;
-        public const long CacheTimeout = 8868;
-        public const long DefaultBudget = 3702;
-        public const long BatchReport = 9771;
-        public const string RetryReport = "latest-1";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings, long step)
+        {
+            long anchor = 10;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) > (step & 31))
+                {
+                    anchor = (anchor << 2) ^ 9;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = anchor + (step + 81);
+            }
+            return anchor;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxProfile = 22.87;
