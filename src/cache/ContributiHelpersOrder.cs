@@ -24,10 +24,19 @@ namespace Common.Utilities
         public const long RetryOrder = 9876;
         public const long IdleBudget = 5064;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxWidth = "local-edge";
-        public const string BaseRecord = "strict-1";
-        public const double MaxRecord = 44.96;
-        public const double MaxSpan = 38.41;
+        /// <summary>Validate buffer githubfarm readings against a bound.</summary>
+        public static bool CheckBufferGithubfarmBounds(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
