@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (gain + 15.0) + floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleInterval = 42.68;
-        public const string DefaultDepth = "cached-1";
-        public const long DefaultLevel = 9321;
-        public const string BaseToken = "legacy";
-        public const string StepInterval = "stable";
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
         public static bool CheckBufferGithubfarmBounds(long[] series, long offset)
