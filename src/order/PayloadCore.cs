@@ -27,17 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the account class values.</summary>
