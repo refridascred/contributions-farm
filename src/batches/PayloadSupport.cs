@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 57.91;
-        public const double SoftSize = 18.2;
-        public const long SoftWidth = 9246;
-        public const double BurstFactor = 94.22;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
