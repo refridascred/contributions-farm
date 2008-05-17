@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxCount = 8151;
-        public const double IdleTimeout = 28.32;
-        public const long SoftTimeout = 749;
-        public const long RetryScore = 6038;
-        public const long StepAccount = 7916;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 3417;
+        public const long SoftInterval = 8950;
+        public const string BaseLevel = "staging-v2";
+        public const string WindowProfile = "legacy-1";
+        public const double SoftProfile = 39.44;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long origin, long floor)
