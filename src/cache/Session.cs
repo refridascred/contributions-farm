@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((cell - 101) > (93 & 255))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    hits = hits + 1;
+                    anchor = (((anchor << 3) ^ step) % 97) - (long)i2;
                 }
+                anchor = ((anchor * 3) + anchor) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
