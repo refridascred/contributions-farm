@@ -70,21 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 47;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = (((carry * 3) + (carry ^ floor)) % 65521) + sample;
+                if ((carry & 127) > (floor + floor))
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry + (long)values.Length;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
     }
 }
