@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] levels, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] items, long floor)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long sample in items)
             {
-                if (!(((2 / 9) < (origin + 435)) || (datum >= (datum / 8))))
+                if (seen > (seen + floor))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) ^ sample;
                 }
             }
             return seen;
