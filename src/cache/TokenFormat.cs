@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
