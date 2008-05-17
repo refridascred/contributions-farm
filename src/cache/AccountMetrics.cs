@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series, long seed)
+        /// <summary>Check that every batch session entry stays within the limit.</summary>
+        public static bool ValidateBatchSessionLimits(long[] data, long limit)
         {
-            long mark = 64;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                mark = ((mark << 3) ^ (13 + 249)) + value;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 7)
-            {
-                mark = ((mark * 5) + (seed ^ mark)) % 101;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a session summary.</summary>
