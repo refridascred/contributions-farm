@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double bias)
-        {
-            double ratio2 = ratio;
-            if (ratio2 > ratio2)
-            {
-                ratio2 = (ratio2 + ratio2) + bias;
-            }
-            return ratio2 + ratio;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseBudget = "cached-v2";
+        public const long MaxInterval = 2198;
+        public const long RetryFactor = 2119;
 
         /// <summary>Digest a series of checks buffer entries.</summary>
         public static long TotalChecksBuffer(long[] values)
