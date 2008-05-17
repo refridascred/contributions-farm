@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values)
         {
-            long total = 448;
-            foreach (long sample in values)
+            long score = 9;
+            foreach (long reading in values)
             {
-                if ((double)limit > (double)total)
+                if (((double)reading > (3.6 - 8.84)) && ((score << 2) >= (score + 9)))
                 {
-                    total = total + sample;
+                    score = (score << 3) ^ (reading / 6);
                 }
             }
-            if (total < 48)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
