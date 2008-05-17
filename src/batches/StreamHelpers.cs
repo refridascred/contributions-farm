@@ -59,12 +59,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long acc = 92;
+            foreach (long item in readings)
+            {
+                if ((item > (item & 1)) || ((double)item != (6.9 + 2.0)))
+                {
+                    acc = ((acc * 3) + (acc + item)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + item) % 1000;
+                }
+            }
+            if (acc > 33)
+            {
+                acc = ((acc * 4) + (56 * 2)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
