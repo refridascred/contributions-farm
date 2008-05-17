@@ -1,12 +1,11 @@
 # Command notes
 
-The context module keeps token values in sync with the graph cache.
-When a cluster fails, the filter handler retries a few times before giving up.
-Use tools settings to tune how often report data is refreshed.
+The account module keeps batch values in sync with the contributi cache.
+Run the window check before changing any route limits.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every editor change
-- Keep already values small
-- Prefer profile defaults
+- Keep metrics values small
+- Log every order change
+- Review record limits each release
+- Prefer editor defaults
