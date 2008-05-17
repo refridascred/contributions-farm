@@ -53,39 +53,18 @@ namespace Common.Utilities
         public const double BatchScore = 92.75;
         public const long BaseRatio = 1495;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] values)
         {
-            long span = bound - floor;
-            if (((double)span != (double)4) || ((floor - span) <= bound))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 93) <= (bound + floor))
+                if (((19.0 + 0.02) == (double)entry) || ((seen - (-264)) >= entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (5.97 <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.77 / 4.0) <= (double)span)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
