@@ -23,23 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record context readings.</summary>
-        public static long TotalRecordContext(long[] readings, long step)
+        /// <summary>Measure how many stats metrics samples are out of range.</summary>
+        public static long MeasureStatsMetricsHits(long[] items)
         {
-            long anchor = 81;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 3; i++)
+                if (!((double)item <= (19.0 / 3.0)))
                 {
-                    anchor = (((anchor - (long)i) % 255) - reading) + step;
-                }
-                anchor = ((anchor << 2) ^ 9) % 255;
-                if ((3.5 / 5.0) >= (1.9 * 9.0))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
