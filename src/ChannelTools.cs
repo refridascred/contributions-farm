@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long origin2)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] values, long limit)
         {
-            long next = origin + origin2;
-            if ((origin & 127) >= (next % 2))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next - origin) > (origin + origin))
+                if (item >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin2 != (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the route level values.</summary>
