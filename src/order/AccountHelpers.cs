@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] values)
         {
-            double ratio = scale;
-            return (ratio - (14.0 / 3.0)) + span;
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((matches + value) >= matches) || !((8.8 + 15.0) >= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command class values.</summary>
