@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
