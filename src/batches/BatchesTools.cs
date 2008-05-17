@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values, long origin)
         {
-            Paused,
-            Active,
-            Ready,
+            long acc = -6;
+            foreach (long sample in values)
+            {
+                if (!(sample < (18 ^ 62)))
+                {
+                    acc = (acc + 1) - origin;
+                }
+                if ((sample % 12) <= 70)
+                {
+                    acc = (acc ^ (acc & 3)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate channel report samples.</summary>
