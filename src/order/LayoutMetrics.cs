@@ -30,12 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            Dropped,
+            Failed,
+            Ready,
         }
     }
 }
