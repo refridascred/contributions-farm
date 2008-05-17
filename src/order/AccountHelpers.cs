@@ -43,26 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long step)
         {
-            long sum = 8;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (((sum << 1) > item) || ((item * 4) <= (sum % 3)))
+                if (entry > step)
                 {
-                    sum = (sum << 3) ^ (169 & 15);
-                }
-                if (((item << 3) > (sum + 8)) || ((27 - sum) > (sum & 63)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum ^ (sum ^ sum)) % 4096;
-            }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Describe the already class values.</summary>
