@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Failed,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
