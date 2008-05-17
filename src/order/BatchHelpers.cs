@@ -30,13 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
