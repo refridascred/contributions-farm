@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache metric measurements.</summary>
-        public static double ScaleCacheMetric(double ratio, double span)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double gain, double span)
         {
-            double drift = (double)(5 ^ 8);
-            if (drift > (double)255)
-            {
-                drift = ((drift + (double)83) - ratio) + span;
-            }
-            else
-            {
-                drift = drift + (double)612;
-            }
-            return drift + drift;
+            double drift = gain;
+            return (drift - (double)90) + span;
         }
 
         /// <summary>Describe the command level values.</summary>
