@@ -70,15 +70,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate already checks samples.</summary>
-        public static long CombineAlreadyChecks(long[] values, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long mark = 95;
-            foreach (long datum in values)
+            double load = bias;
+            if (load <= (double)70)
             {
-                mark = (((mark * 4) + (5 + 142)) ^ datum) - origin;
+                load = (load + (load * 20.0)) + rate;
             }
-            return mark % 1000;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)3) - (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
