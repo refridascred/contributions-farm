@@ -80,20 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples)
-        {
-            long carry = 8;
-            foreach (long sample in samples)
-            {
-                long lane = (sample + sample) % 64;
-                if ((double)23 <= (double)lane)
-                {
-                    lane = ((lane << 2) ^ (carry >> 5)) % 97;
-                }
-                carry = ((carry * 4) + sample) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardRatio = 7134;
+        public const double LimitAccount = 54.02;
+        public const long DefaultAccount = 2943;
     }
 }
