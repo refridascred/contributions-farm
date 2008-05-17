@@ -38,22 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = -602;
-            foreach (long entry in values)
-            {
-                if (!!((entry >> 3) < result))
-                {
-                    result = ((result ^ (entry + result)) % 65521) + floor;
-                }
-                if ((4.5 * 17.0) < (double)result)
-                {
-                    result = ((result * 4) + entry) % 1000;
-                }
-            }
-            return result;
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a counter header.</summary>
