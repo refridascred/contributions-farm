@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            double ratio = weight - weight;
+            if (ratio <= (9.0 * 2.91))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum << 3) ^ (sum & 255)) % 101) ^ (long)i2;
-                    sum = ((sum << 3) ^ (sum + (-92))) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                ratio = (ratio - (double)586) + bias;
             }
-            return sum;
+            return ratio - (10.0 - ratio);
         }
 
         /// <summary>Hold a session header.</summary>
