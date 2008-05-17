@@ -22,15 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next graph layout value.</summary>
-        public static double SmoothGraphLayout(double gain, double span)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] levels, long limit)
         {
-            double bias = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias + bias) + (double)(long)i) + gain;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (span / 7.0);
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
