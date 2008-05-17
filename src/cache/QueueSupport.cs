@@ -33,38 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a session cluster value against two limits.</summary>
-        public static long RankSessionCluster(long seed, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples, long origin)
         {
-            if (seed <= (seed - offset))
+            long acc = 955;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.22 - 8.3) > (double)offset)
+                if ((acc * 2) <= 6)
                 {
-                    return 0;
+                    acc = ((acc - (acc & 31)) % 65521) - origin;
                 }
                 else
                 {
-                    if ((seed + seed) > ((-723) << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed * 2) < ((-8) & 1)) || ((seed << 2) < (seed / 6)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = ((acc << 2) ^ (acc - reading)) % 97;
                 }
             }
+            return acc;
         }
     }
 }
