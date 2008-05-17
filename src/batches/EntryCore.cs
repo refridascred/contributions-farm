@@ -39,17 +39,22 @@ namespace Common.Utilities
             return weight - (bias2 * 0.3);
         }
 
-        /// <summary>Locate a contributi farm reading by value.</summary>
-        public static long FindContributiFarmIndex(long[] readings, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = -602;
+            foreach (long entry in values)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                if (!!((entry >> 3) < result))
                 {
-                    return (long)i;
+                    result = ((result ^ (entry + result)) % 65521) + floor;
+                }
+                if ((4.5 * 17.0) < (double)result)
+                {
+                    result = ((result * 4) + entry) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a counter header.</summary>
