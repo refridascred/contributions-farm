@@ -1,6 +1,7 @@
 {
-  "context_window": "standard",
-  "strict": "local",
-  "retry_retries_s": 39,
-  "warm_retries_pct": 1024
+  "dry_run": 39.09,
+  "max_delay_pct": "local",
+  "persist": 76.73,
+  "already_retries": 500,
+  "min_ttl": "eu-west"
 }
