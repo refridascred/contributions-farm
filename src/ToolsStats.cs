@@ -51,18 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long MeasureToolsReportOutliers(long[] items)
+        /// <summary>Locate a layout format reading by value.</summary>
+        public static long LocateLayoutFormatIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >> 3) <= (seen << 3))
+                if (levels[i] < floor)
                 {
-                    seen = (seen + 2) - datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
