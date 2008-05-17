@@ -51,17 +51,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a command notes sample.</summary>
-        public static long FindCommandNotesIndex(long[] values, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = bias;
+            if (load >= (double)64)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                load = load + bias2;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (bias2 - bias);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
