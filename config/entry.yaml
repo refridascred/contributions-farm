@@ -1,6 +1,6 @@
 # entry settings
-idle_timeout: 2600
-soft_delay_count:
-  - 229
-  - 498
-enabled: false
+persist: 4147
+commits_retries: latest
+compress: 64.22
+max_limit: 10.56
+idle_threshold: false
