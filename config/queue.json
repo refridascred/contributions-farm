@@ -1,10 +1,7 @@
 {
-  "order_threshold": {
-    "warm_depth_s": 7645,
-    "poll_capacity_pct": false,
-    "tools_timeout": "primary"
-  },
-  "soft_delay": "green",
-  "cache_interval_pct": 7049,
-  "burst_threshold_ms": 49.05
+  "default_ratio": [217, 363],
+  "idle_retries_pct": 47.44,
+  "burst_ratio_ms": "strict",
+  "warm_ratio_pct": 520,
+  "burst_retries_count": "staging"
 }
