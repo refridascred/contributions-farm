@@ -27,15 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream queue counter forward.</summary>
-        public static long SeriesStreamQueue(long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
