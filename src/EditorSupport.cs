@@ -27,19 +27,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long TallyMetricsEditor(long[] readings, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long mix = 9;
-            foreach (long cell in readings)
+            long score = 12;
+            foreach (long item in series)
             {
-                mix = ((mix << 2) ^ (bound ^ cell)) % 4096;
+                if (item > (684 ^ score))
+                {
+                    score = (score ^ 212) % 101;
+                }
             }
-            if (mix > 64)
-            {
-                mix = ((mix << 2) ^ (mix & 3)) % 1000;
-            }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
