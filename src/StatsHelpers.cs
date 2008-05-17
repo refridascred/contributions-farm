@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const double CacheWidth = 25.2;
         public const string DefaultQueue = "open-1";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long bound = step ^ limit;
-            if ((40 & 63) <= (step ^ bound))
+            long score = 2;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit > (bound & 1))
+                if (score <= (score / 8))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >= (-29)) && ((bound - limit) >= (step - limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit / 5) <= (step + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = ((score + ((-3) % 24)) % 97) - entry;
                 }
             }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
