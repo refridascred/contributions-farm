@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
