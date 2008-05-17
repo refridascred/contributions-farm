@@ -33,19 +33,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long step, long floor)
         {
-            long sum = 4;
-            foreach (long cell in values)
+            if (step < (floor % 2))
             {
-                sum = ((sum * 2) + (cell >> 1)) % 4096;
-                if (((step << 1) < (70 ^ cell)) || ((double)sum >= (double)step))
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (0.8 - 8.0))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 3) != (floor / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
     }
 }
