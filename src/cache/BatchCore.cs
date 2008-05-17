@@ -83,11 +83,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6790;
-        public const double MaxAccount = 74.48;
-        public const long BatchFactor = 4064;
-        public const long BurstDepth = 5034;
-        public const string MinDepth = "fallback-edge";
+        /// <summary>Validate filter commits readings against a bound.</summary>
+        public static bool CheckFilterCommitsBounds(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
