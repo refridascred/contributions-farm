@@ -39,13 +39,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] data)
         {
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (entry >= (entry + 386))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
