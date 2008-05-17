@@ -45,19 +45,22 @@ namespace Common.Utilities
         public const long RetryScore = 1957;
         public const long LimitMetrics = 6772;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Count the command tools entries that pass the check.</summary>
+        public static long CountCommandToolsGaps(long[] series, long target)
         {
-            long sum = 27;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                sum = (sum + (reading << 1)) % 97;
+                if ((996 & 7) >= (matches + target))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum > 9)
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum % 65521;
+            return matches;
         }
     }
 }
