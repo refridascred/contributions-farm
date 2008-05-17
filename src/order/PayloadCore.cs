@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] readings, long seed)
         {
-            long anchor = 121;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((53 << 2) == (anchor * 3))
+                if (item < seed)
                 {
-                    anchor = (anchor - (value - anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (value / 9)) % 65521;
-                }
-                if (value >= (value - value))
-                {
-                    anchor = (anchor - (415 + value)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (-26)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Accumulate tools samples.</summary>
