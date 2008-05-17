@@ -35,14 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double scale, double bias)
         {
-            Synced,
-            Dropped,
-            Closed,
-            Retry,
-            Idle,
+            double bias2 = scale;
+            return (bias2 + bias2) + bias;
         }
     }
 }
