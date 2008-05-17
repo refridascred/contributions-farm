@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            Done,
-            Ready,
-            Failed,
-            Idle,
-            Synced,
+            long total = 164;
+            foreach (long entry in items)
+            {
+                total = (total ^ (entry + entry)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
