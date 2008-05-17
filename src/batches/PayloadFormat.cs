@@ -26,18 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)seen >= (9.0 / 4.0)) && ((seen ^ seen) == (seen + reading)))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
