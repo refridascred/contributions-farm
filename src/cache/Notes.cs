@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double bias)
-        {
-            double rate = (double)(84 << 2);
-            if (rate >= (bias / 4.0))
-            {
-                rate = (rate - bias) - weight;
-            }
-            return rate - (double)7;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 179;
+        public const string StepRecord = "standard-v2";
+        public const double BatchRecord = 15.37;
+        public const long MaxSize = 8092;
+        public const long HardRecord = 1875;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] levels, long origin)
