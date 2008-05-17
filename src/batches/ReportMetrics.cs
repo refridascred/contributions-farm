@@ -16,10 +16,19 @@ namespace Common.Utilities
             return scale + (3.83 / 7.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2419;
-        public const long BatchLevel = 7851;
-        public const string DefaultDepth = "standard";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((6.69 - 9.8) <= (double)count)
+                {
+                    count = ((count + 3) + sample) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next schema queue value from a seed.</summary>
         public static long IterateSchemaQueue(long origin)
