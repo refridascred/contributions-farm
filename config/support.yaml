@@ -1,19 +1,18 @@
 # support settings
-cache_limit_s:
-  burst_ttl_s: 6761
-  idle_ttl_s: 39.37
-  verbose: 1024
-base_ttl_s: stable
-sync_window_pct:
-  min_threshold: 1.37
-  batch_size:
-    metric_timeout: 1024
-    layout_interval: true
-    soft_threshold_count:
-      - 331
-      - 423
-    default_retries_ms: fallback
-    default_ttl_s: primary
-    commits_ratio: latest
-  max_window_count: edge
-  soft_interval_s: standard
+soft_retries_count: 34.33
+audit: 895
+record_retries: stable
+flush_limit_ms: 4120
+burst_limit:
+  poll_window: 30
+  enabled:
+    readonly: 25.06
+    stream_timeout: 250
+    base_delay: stable
+    sync_depth_count: 79.69
+    persist: legacy
+  cache_depth: primary
+  counter_ttl: fallback
+  default_depth_s: 83.2
+  idle_size: 60
+flush_delay_s: 9086
