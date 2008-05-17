@@ -1,7 +1,18 @@
 {
-  "default_depth": 61.35,
-  "persist": 46.68,
-  "strict": ["cached", "strict", "strict", "legacy"],
-  "payload_delay": "edge",
-  "counter_limit": 52.76
+  "batch_interval_s": ["edge", "legacy", "local"],
+  "entry_ttl": {
+    "hard_retries_pct": false,
+    "report_retries": [85, 417, 299, 408],
+    "cache_window_s": 72.47,
+    "format_size": {
+      "default_capacity_count": ["strict", "edge"],
+      "burst_timeout_count": true,
+      "flush_depth_pct": 12.7
+    },
+    "compress": "standard"
+  },
+  "dry_run": 43.19,
+  "persist": false,
+  "channel_interval": 100,
+  "counter_interval": "eu-west"
 }
