@@ -51,12 +51,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long step)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the graph level values.</summary>
