@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            Synced,
-            Failed,
-            Ready,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((93 & 255) <= tally)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
