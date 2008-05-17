@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double bias, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] readings, long target)
         {
-            double weight = (double)38;
-            return (weight - (span + weight)) + bias;
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
