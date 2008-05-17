@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepInterval = "staging";
-        public const long IdleProfile = 9375;
-        public const long WindowProfile = 9172;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] samples, long offset)
