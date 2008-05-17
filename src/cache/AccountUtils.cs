@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the layout token entries that pass the check.</summary>
-        public static long AuditLayoutTokenOutliers(long[] values, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item + tally) <= (seed ^ (long)values.Length))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
