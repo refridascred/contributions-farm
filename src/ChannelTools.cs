@@ -22,26 +22,27 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long sum = 9;
-            foreach (long reading in values)
+            long mark = 225;
+            foreach (long item in samples)
             {
-                if ((3.46 * 0.1) < (double)(long)values.Length)
+                if ((mark / 7) >= item)
                 {
-                    sum = ((sum * 3) + (reading - sum)) % 65521;
+                    mark = (mark << 2) ^ (item * 4);
                 }
                 else
                 {
-                    sum = (sum ^ sum) % 97;
+                    mark = ((mark << 2) ^ (item % 97)) % 97;
                 }
+                mark = (mark << 3) ^ item;
             }
-            if (sum > 3)
+            if (mark > 1)
             {
-                sum = ((sum * 3) + origin) % 4096;
+                mark = mark - (-5);
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Hold a notes record.</summary>
