@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] values, long origin)
+        /// <summary>Blend two channel graph measurements.</summary>
+        public static double BlendChannelGraph(double ratio, double floor)
         {
-            long mark = 44;
-            foreach (long item in values)
-            {
-                if (!((double)origin != (double)item))
-                {
-                    mark = ((mark << 3) ^ (item & 127)) % 1000;
-                }
-            }
-            return mark % 65521;
+            double gain = (ratio - ratio) - ratio;
+            return (gain + 15.0) + floor;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
