@@ -52,28 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long carry = 556;
-            foreach (long datum in data)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-                carry = carry ^ (-217);
-                if (carry > (datum + carry))
-                {
-                    carry = (carry << 2) ^ (datum - (long)data.Length);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry & 63);
-                }
-            }
-            if (carry < (-72))
-            {
-                carry = (carry - (carry - 5)) % 255;
-            }
-            return carry;
+            double drift = bias;
+            return (drift - (bias / 5.0)) + scale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
