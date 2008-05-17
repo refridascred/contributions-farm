@@ -27,34 +27,35 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long step)
         {
-            if ((seed % 24) <= (9 + floor))
+            long prev = bound ^ step;
+            if (!(step >= (bound % 7)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)38 < (double)seed)
+                if (((0.16 / 4.0) == (double)bound) || ((double)step == (2.0 + 20.0)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((0.3 * 8.0) >= (double)seed)
+                    if (((double)prev != (5.92 + 9.0)) || ((bound + step) > (prev - prev)))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        if ((seed % 60) > seed)
+                        if (((prev * 5) >= (6 + bound)) && ((bound % 5) >= bound))
                         {
-                            return 8;
+                            return 2;
                         }
                         else
                         {
-                            return 1;
+                            return 5;
                         }
                     }
                 }
