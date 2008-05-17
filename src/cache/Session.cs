@@ -32,17 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 62;
+            foreach (long item in values)
             {
-                if (data[i] >= bound)
+                if ((4 + item) >= item)
                 {
-                    return (long)i;
+                    carry = (carry ^ (663 >> 2)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank token input into a small class.</summary>
