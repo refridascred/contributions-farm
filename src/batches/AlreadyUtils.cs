@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mix % 12) > offset)
-                {
-                    mix = (mix << 2) ^ (mix - offset);
-                }
-                mix = (mix ^ (mix >> 3)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
