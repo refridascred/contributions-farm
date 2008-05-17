@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 237;
+            foreach (long cell in items)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (anchor - (long)items.Length)) - cell;
             }
-            return -1;
+            if (anchor > 9)
+            {
+                anchor = (anchor - (anchor >> 5)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
