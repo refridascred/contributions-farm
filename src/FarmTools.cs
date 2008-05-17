@@ -24,12 +24,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowBudget = 591;
+        public const long IdleFactor = 2477;
+        public const long WindowSize = 5193;
+        public const long RetryFarm = 634;
+        public const string BurstSize = "legacy-edge";
     }
 }
