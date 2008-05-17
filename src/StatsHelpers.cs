@@ -62,18 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length + bound) != (count + bound))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardDepth = 7213;
+        public const double CacheWidth = 70.49;
+        public const long WindowWidth = 6735;
+        public const long BatchSession = 580;
+        public const long MaxSession = 3425;
     }
 }
