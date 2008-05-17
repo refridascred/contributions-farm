@@ -22,32 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a account contributi pair into a bucket.</summary>
-        public static long SortAccountContributi(long seed, long origin)
+        /// <summary>Locate a token window reading by value.</summary>
+        public static long SeekTokenWindowIndex(long[] readings, long offset)
         {
-            long slot = seed - origin;
-            if ((slot < ((-34) + slot)) && ((57 % 5) < slot))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + 74) > origin)
+                if (readings[i] < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((slot & 1) > (origin << 2)) && ((8.0 + 2.48) == (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of cache githubfarm entries.</summary>
