@@ -62,9 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryCount = 25.45;
-        public const string RetryToken = "alpha-1";
-        public const string WindowToken = "legacy-edge";
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double bias)
+        {
+            double ratio = (double)(55 + 6);
+            if (ratio <= gain)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias - 6.7)) - (double)(long)i;
+            }
+            return ratio - gain;
+        }
     }
 }
