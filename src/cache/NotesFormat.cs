@@ -27,9 +27,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryBudget = 2221;
-        public const long SoftBudget = 7483;
-        public const long HardNotes = 9828;
+        /// <summary>Digest a series of command cache entries.</summary>
+        public static long TallyCommandCache(long[] items, long limit)
+        {
+            long acc = 829;
+            foreach (long sample in items)
+            {
+                acc = (acc - (acc - sample)) % 255;
+                if ((8.1 * 19.0) < (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 93)
+            {
+                acc = (acc ^ (limit + 5)) % 65521;
+            }
+            return acc % 97;
+        }
     }
 }
