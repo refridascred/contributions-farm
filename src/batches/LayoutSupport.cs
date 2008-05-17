@@ -58,12 +58,9 @@ namespace Common.Utilities
         public const string MinTimeout = "stable";
         public const double MaxScore = 19.95;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 6461;
+        public const double MinBuffer = 94.78;
+        public const long StepBuffer = 7263;
     }
 }
