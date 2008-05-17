@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long MinSession = 9085;
         public const string SoftSession = "standard-v2";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long limit)
         {
-            Ready,
-            Done,
-            Dropped,
-            Active,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
