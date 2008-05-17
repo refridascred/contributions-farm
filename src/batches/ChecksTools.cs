@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] levels, long origin)
         {
-            long result = -17;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                result = ((result + ((-904) << 1)) % 97) + value;
+                if (((sample - sample) != (hits + hits)) || ((sample > hits) || ((43 * 5) != (hits + sample))))
+                {
+                    hits = (hits + 2) + origin;
+                }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
