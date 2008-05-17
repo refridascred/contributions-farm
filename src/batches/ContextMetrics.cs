@@ -49,19 +49,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double offset)
-        {
-            double scale = (double)2 + rate;
-            if (scale <= rate)
-            {
-                scale = scale - (rate / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 1992;
+        public const long CacheAccount = 1945;
+        public const string MaxAccount = "latest";
     }
 }
