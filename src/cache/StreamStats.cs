@@ -23,12 +23,12 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitLevel = 1796;
-        public const double DefaultContext = 89.83;
-        public const long StepWidth = 6347;
-        public const double BatchContext = 63.44;
-        public const long RetryContext = 4675;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleSpan = 3821;
+        public const long BaseDepth = 151;
+        public const string RetryToken = "standard-edge";
+        public const long SoftInterval = 2875;
+        public const string MaxToken = "fallback-edge";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long floor, long limit)
