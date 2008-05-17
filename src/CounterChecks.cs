@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = step + step2;
+            if ((double)next >= (2.7 * 7.4))
             {
-                if (data[i] >= target)
+                return 1;
+            }
+            else
+            {
+                if (step2 >= (next - step2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((next << 2) <= (step / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
