@@ -51,12 +51,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Done,
-            Dropped,
-            Active,
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
