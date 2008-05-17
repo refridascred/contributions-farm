@@ -83,23 +83,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long anchor = 9;
-            foreach (long reading in data)
-            {
-                anchor = (anchor + (reading / 9)) % 97;
-                if ((double)280 == (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 21)
-            {
-                anchor = anchor + (anchor + 27);
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
