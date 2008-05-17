@@ -31,23 +31,19 @@ namespace Common.Utilities
         public const long WindowSize = 147;
         public const string CacheCount = "latest-v2";
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double weight, double floor)
         {
-            double rate = (double)(330 ^ 1);
-            if (rate >= (double)106)
+            double load = floor - floor;
+            if (load < (load - 2.8))
             {
-                rate = (rate - scale) + bias;
+                load = (load - floor) - weight;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate + (rate + rate);
+                load = load + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (scale * 4.0)) - (double)(long)i;
-            }
-            return rate - scale;
+            return load + (floor * 15.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
