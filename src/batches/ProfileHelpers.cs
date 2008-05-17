@@ -20,15 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long anchor = 76;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((1.12 * 6.2) > (double)anchor))
+                {
+                    anchor = ((anchor + offset) % 4096) ^ item;
+                }
             }
-            return anchor;
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
