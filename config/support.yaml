@@ -1,9 +1,6 @@
 # support settings
-hard_limit: 30.82
-stream_capacity: primary
-tools_ratio:
-  - edge
-  - blue
-report_depth: legacy
-audit: 73.32
-filter_threshold: 306
+cache_depth_count: 9552
+retry_capacity_count:
+  - green
+  - strict
+sync_depth_ms: 500
