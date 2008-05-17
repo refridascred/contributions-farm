@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every order context entry stays within the limit.</summary>
-        public static bool CheckOrderContextLimits(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 9055;
+        public const double MinInterval = 75.7;
+        public const long LimitRatio = 5981;
+        public const long HardSpan = 8125;
 
         /// <summary>Digest a series of githubfarm metric entries.</summary>
         public static long WeighGithubfarmMetric(long[] data, long offset)
