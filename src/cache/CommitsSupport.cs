@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a tools order counter forward.</summary>
-        public static long IterateToolsOrder(long floor)
+        /// <summary>Look up the position of a report stream sample.</summary>
+        public static long SeekReportStreamIndex(long[] series, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((53 % 100) >= (floor ^ floor))
+                if (series[i] > floor)
                 {
-                    state = state + floor;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
