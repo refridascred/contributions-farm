@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of token stats readings.</summary>
-        public static long CompareTokenStatsCount(long[] values)
+        /// <summary>Classify a cache cluster pair into a bucket.</summary>
+        public static long ClassifyCacheCluster(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)step > (0.5 + 4.5)) || ((34 * 3) <= step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((50 + step) >= (seed & 255))
                 {
-                    if ((values[i] + values[j]) < 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - 299) == (step + seed))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
