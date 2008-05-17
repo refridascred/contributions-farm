@@ -1,7 +1,15 @@
 # entry settings
-token_retries: open
-warm_delay_count: 4301
-contributi_window: 2574
-idle_retries: false
-route_limit: 250
-default_interval_count: 84.37
+idle_ttl: 1611
+batch_threshold_ms: false
+max_ratio_ms: strict
+flush_window:
+  - cached
+  - latest
+  - staging
+readonly:
+  - 342
+  - 434
+persist:
+  - 493
+  - 50
+  - 139
