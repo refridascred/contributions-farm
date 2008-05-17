@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
+        /// <summary>Look up the position of a stats farm sample.</summary>
+        public static long LookupStatsFarmIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
