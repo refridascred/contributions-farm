@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 8847;
         public const long HardGithubfarm = 4159;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            Closed,
-            Done,
-            Ready,
-            Locked,
-            Paused,
+            long mark = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 2) + (target + mark)) % 97;
+                mark = mark + (target >> 4);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of metric githubfarm readings.</summary>
