@@ -49,38 +49,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batches context pair into a bucket.</summary>
-        public static long BucketBatchesContext(long offset, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((target % 3) != (offset + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 * 9.6) > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((1.0 - 4.0) > (double)target) && ((offset + offset) != (9 - 9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
