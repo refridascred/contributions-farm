@@ -54,10 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleInterval = "staging-v2";
-        public const long CacheTimeout = 5706;
-        public const long WindowBatches = 4088;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 94.64;
+        public const long HardSize = 5214;
+        public const string DefaultSpan = "cached-1";
+        public const long BurstRatio = 1931;
+        public const long StepCount = 272;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double scale, double span)
