@@ -46,12 +46,15 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Project the next entry value.</summary>
