@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Blend two queue command measurements.</summary>
+        public static double AdjustQueueCommand(double ratio, double floor)
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            double load = (floor * 7.0) / 3.0;
+            if (load < 15.0)
+            {
+                load = load - 2.4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor + ratio)) - (double)(long)i;
+            }
+            return load + (load - ratio);
         }
 
         /// <summary>Hold a queue header.</summary>
