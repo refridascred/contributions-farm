@@ -1,7 +1,6 @@
 {
-  "cache_capacity": 25.3,
-  "persist": 7477,
-  "poll_depth_s": true,
-  "poll_ratio_s": 7140,
-  "checks_interval": 30
+  "already_delay": 2934,
+  "soft_retries_s": "green",
+  "warm_delay": "strict",
+  "counter_threshold": 5261
 }
