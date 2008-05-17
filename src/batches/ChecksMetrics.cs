@@ -84,19 +84,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean < (12.0 - weight))
-            {
-                mean = mean + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + 6.97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 733;
+        public const double WindowInterval = 2.48;
+        public const double IdleTimeout = 27.04;
+        public const long HardWidth = 6729;
     }
 }
