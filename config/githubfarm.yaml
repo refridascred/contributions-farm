@@ -1,5 +1,8 @@
 # githubfarm settings
-max_timeout_count: true
-strict: 44.5
-buffer_depth: 30
-warm_threshold_pct: 6699
+audit: local
+queue_window:
+  - 327
+  - 393
+  - 399
+  - 284
+poll_ratio: 82
