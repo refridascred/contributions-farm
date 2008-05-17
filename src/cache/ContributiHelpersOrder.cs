@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first batches support entry that matches the target.</summary>
-        public static long LookupBatchesSupportIndex(long[] data, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                if (4.13 < (double)item)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next batches value.</summary>
