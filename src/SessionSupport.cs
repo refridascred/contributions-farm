@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 782;
+            foreach (long entry in data)
             {
-                if (values[i] < offset)
+                if ((entry >> 5) <= 76)
                 {
-                    return (long)i;
+                    mix = mix - (entry + mix);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Match up context support samples.</summary>
