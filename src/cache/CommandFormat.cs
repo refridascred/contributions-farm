@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Queued,
-            Done,
-            Paused,
-            Stale,
-            Synced,
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
