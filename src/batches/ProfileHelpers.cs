@@ -82,19 +82,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double ratio = (double)(55 + 6);
-            if (ratio <= gain)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (bias - 6.7)) - (double)(long)i;
-            }
-            return ratio - gain;
+            Retry,
+            Draft,
+            Idle,
+            Failed,
+            Closed,
         }
     }
 }
