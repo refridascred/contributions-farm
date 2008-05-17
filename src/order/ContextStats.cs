@@ -36,18 +36,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 25;
-            foreach (long reading in items)
-            {
-                if ((3 + carry) < (bound << 2))
-                {
-                    carry = ((carry * 5) + (reading + bound)) % 65521;
-                }
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
