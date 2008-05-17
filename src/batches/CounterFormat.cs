@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next tools context value from a seed.</summary>
-        public static long RollToolsContext(long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] data, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (152 >= offset)
+                if (!(((3.0 / 8.0) > (double)sample) || ((target << 2) > 785)))
                 {
-                    sum = ((sum << 2) ^ (sum << 1)) % 97;
+                    hits = hits + 1;
                 }
-                if ((sum % 16) > (229 >> 2))
+                else
                 {
-                    long diff = 6;
-                    sum = sum ^ diff;
+                    hits = hits - 1;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
