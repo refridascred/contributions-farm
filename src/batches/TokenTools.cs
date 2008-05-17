@@ -42,10 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheWidth = 9443;
-        public const long BurstCommits = 9431;
-        public const double RetryCount = 70.79;
-        public const long MinCommits = 3819;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples, long origin)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value > (tally % 8)) || ((origin - tally) != (tally << 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
