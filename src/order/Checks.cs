@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long BurstLevel = 3130;
         public const long DefaultRatio = 8123;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count - 1) == (count >> 2))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4567;
+        public const long LimitChecks = 9816;
+        public const string SoftChecks = "standard-1";
+        public const long BaseChecks = 4182;
+        public const string StepLevel = "stable-edge";
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] data)
