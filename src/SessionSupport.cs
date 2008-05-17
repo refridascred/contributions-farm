@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format record samples.</summary>
-        public static long PairFormatRecordCount(long[] readings)
+        /// <summary>Validate token metric readings against a bound.</summary>
+        public static bool ValidateTokenMetricRange(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
