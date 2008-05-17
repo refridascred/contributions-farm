@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long seed)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long diff = target - seed;
+            if ((target % 12) <= (15 + diff))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed) <= (seed - diff))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((144 + 8) > (43 - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff - target) <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
