@@ -40,21 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i <= 1) || (((long)i * 4) <= ((long)i >> 3)))
-                {
-                    sum = ((sum << 2) ^ (origin - origin)) % 255;
-                    sum = sum ^ 7;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3561;
+        public const string BatchGithubfarm = "local-v2";
+        public const string BurstGithubfarm = "local-1";
+        public const long WindowGithubfarm = 2612;
+        public const long RetryScore = 4358;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsRange(long[] values, long step)
