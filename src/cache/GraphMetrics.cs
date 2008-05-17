@@ -28,18 +28,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit buffer filter readings against a rule.</summary>
-        public static long TallyBufferFilterGaps(long[] items)
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long CompareSchemaRecordCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value / 8) > hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
