@@ -35,25 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long target, long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long slot = target - bound;
-            if ((double)target == (20.0 / 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((9.2 * 7.02) < (double)bound) && ((17.0 - 3.12) != (double)slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
