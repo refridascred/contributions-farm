@@ -24,22 +24,10 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 1925;
+        public const string MinSize = "standard-edge";
+        public const long IdleReport = 4917;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleRatio = 6957;
