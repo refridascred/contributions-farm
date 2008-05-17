@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the cache format series from a seed.</summary>
-        public static long SeriesCacheFormat(long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!((result * 5) >= result))
+                if ((6.99 / 9.0) < (double)datum)
                 {
-                    continue;
+                    count = count + 3;
                 }
-                else
-                {
-                    result = result - (result + result);
-                }
-                result = (result - result) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
