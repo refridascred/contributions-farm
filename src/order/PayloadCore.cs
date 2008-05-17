@@ -23,15 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a layout format counter forward.</summary>
-        public static long StepLayoutFormat(long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
