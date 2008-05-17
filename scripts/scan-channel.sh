@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-strict}"
 case "${mode}" in
-    edge)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in local open; do
+    log "checking ${item}"
+done
