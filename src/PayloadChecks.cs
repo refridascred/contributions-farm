@@ -26,17 +26,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate layout schema readings against a bound.</summary>
