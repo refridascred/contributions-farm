@@ -1,6 +1,12 @@
 {
-  "enabled": 2315,
-  "context_timeout": 651,
-  "layout_retries": 15,
-  "idle_threshold": "latest"
+  "contributi_timeout": 14.33,
+  "readonly": ["latest", "legacy"],
+  "batch_timeout_s": false,
+  "base_timeout_count": "green",
+  "max_depth_s": {
+    "base_retries": 69,
+    "verbose": ["strict", "primary", "legacy", "primary"],
+    "batch_size": 8996
+  },
+  "base_window": 30
 }
