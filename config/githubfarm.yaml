@@ -1,5 +1,23 @@
 # githubfarm settings
-flush_interval: true
-idle_ratio: true
-enabled: 25.52
-default_ttl_s: 78
+hard_ttl: 37
+dry_run:
+  - 146
+  - 213
+cluster_threshold: primary
+retry_depth_pct:
+  flush_depth_s:
+    - cached
+    - primary
+    - fallback
+    - stable
+  payload_window: 44.56
+  sync_size_pct: cached
+  burst_limit: 42
+  hard_window_pct: 9.89
+  warm_size_pct:
+    strict: 78
+    base_ratio_count: 5329
+    min_ratio_count:
+      - 452
+      - 425
+      - 500
