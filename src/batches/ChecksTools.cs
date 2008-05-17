@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const long IdleProfile = 9375;
         public const long WindowProfile = 9172;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples, long offset)
         {
-            Closed,
-            New,
-            Queued,
+            long sum = 990;
+            foreach (long item in samples)
+            {
+                sum = (((sum << 2) ^ 1) - item) + offset;
+            }
+            if (sum > 3)
+            {
+                sum = (sum + (883 + (-820))) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
