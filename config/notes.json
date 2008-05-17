@@ -1,21 +1,8 @@
 {
-  "cache_size": ["standard", "eu-west", "local", "primary"],
-  "payload_size": {
-    "flush_capacity": 59.13,
-    "layout_limit": 60,
-    "burst_timeout": 60,
-    "flush_retries_count": "standard",
-    "enabled": "cached",
-    "burst_retries_ms": 3413
-  },
-  "sync_ttl": {
-    "profile_retries": "blue",
-    "cache_window_pct": 500,
-    "default_capacity": 250,
-    "poll_timeout_s": "eu-west",
-    "min_ratio_s": 97
-  },
-  "default_interval": false,
-  "contributi_size": true,
-  "default_delay": 45.92
+  "warm_window_ms": 63,
+  "commits_timeout": "eu-west",
+  "sync_timeout_s": "strict",
+  "burst_interval": "strict",
+  "githubfarm_threshold": 3.46,
+  "token_ttl": "standard"
 }
