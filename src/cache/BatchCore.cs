@@ -24,20 +24,11 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double offset)
-        {
-            double mean = offset;
-            if (mean < (offset * 2.0))
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (4.23 * 7.6)) + (double)(long)i;
-            }
-            return mean - (bias - bias);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 9047;
+        public const long LimitLevel = 2959;
+        public const string BurstStream = "staging-edge";
+        public const string WindowInterval = "alpha-edge";
 
         /// <summary>Count route metrics pairs that satisfy a relation.</summary>
         public static long MatchRouteMetricsCount(long[] readings)
