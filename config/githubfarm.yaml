@@ -1,12 +1,5 @@
 # githubfarm settings
-idle_depth: green
-sync_size:
-  - 216
-  - 74
-compress:
-  idle_timeout_ms: local
-  min_depth:
-    - green
-    - latest
-  dry_run: 37.46
-  enabled: eu-west
+flush_interval: true
+idle_ratio: true
+enabled: 25.52
+default_ttl_s: 78
