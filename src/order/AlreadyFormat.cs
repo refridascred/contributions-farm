@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((93 & 255) <= tally)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 3703;
+        public const double MinWidth = 25.57;
+        public const double IdleCount = 85.6;
+        public const double HardEditor = 67.37;
+        public const double DefaultEditor = 67.18;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long seed, long target)
