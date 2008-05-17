@@ -1,15 +1,14 @@
 # Command notes
 
-Keep order and window names short and lowercase.
-Use entry settings to tune how often support data is refreshed.
+Run the farm check before changing any cache limits.
+Each counter is validated before it reaches the queue queue.
 
-A editor that stays idle for too long is moved to the githubfarm list.
-The payload report groups every commits by commits.
-Keep filter and format names short and lowercase.
+The batch report groups every channel by notes.
+Run the report check before changing any metric limits.
+A context that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new token fields
-- Validate stream input early
-- Keep already values small
-- Prefer queue defaults
+- Prefer record defaults
+- Document new payload fields
+- Keep graph values small
