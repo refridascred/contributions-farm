@@ -25,10 +25,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 34.11;
-        public const long RetrySpan = 1859;
-        public const string DefaultBatch = "strict";
-        public const double RetryRatio = 64.67;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
