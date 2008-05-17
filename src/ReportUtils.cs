@@ -32,12 +32,16 @@ namespace Common.Utilities
         public const string DefaultGraph = "open-edge";
         public const double LimitInterval = 51.48;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix - mix) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate farm samples.</summary>
