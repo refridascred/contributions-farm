@@ -1,28 +1,7 @@
 # support settings
-notes_depth: 32.5
-max_ratio_count: true
-verbose: 500
-hard_ratio_ms: 30
-idle_retries_s: 90
-report_window:
-  readonly: latest
-  retry_threshold_s: 12.73
-  base_threshold_s:
-    burst_size_pct:
-      - 481
-      - 114
-    warm_limit: legacy
-    verbose: green
-    hard_timeout_ms: 60
-  metrics_interval: false
-  cache_threshold:
-    base_limit_ms: cached
-    tools_retries: true
-    githubfarm_threshold:
-      - eu-west
-      - cached
-      - standard
-      - green
-    hard_ttl: blue
-    burst_retries_s: 23.22
-    metric_window: open
+audit: 9.79
+sync_limit_ms: 84
+max_capacity_count: 17
+compress:
+  - legacy
+  - open
