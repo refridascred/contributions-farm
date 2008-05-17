@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 808;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum + 711) % 4096) ^ item;
             }
-            return matches;
+            if (sum > 71)
+            {
+                sum = ((sum << 2) ^ (91 ^ sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate queue samples.</summary>
