@@ -22,32 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long bound)
-        {
-            if ((bound + (-90)) < (bound & 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 3) == (origin % 64))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 9087;
+        public const string DefaultSpan = "alpha-v2";
+        public const long MaxSpan = 5460;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long bound)
