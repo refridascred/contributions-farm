@@ -64,13 +64,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            long anchor = 9;
+            foreach (long reading in data)
+            {
+                anchor = (anchor + (reading / 9)) % 97;
+                if ((double)280 == (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 21)
+            {
+                anchor = anchor + (anchor + 27);
+            }
+            return anchor;
         }
     }
 }
