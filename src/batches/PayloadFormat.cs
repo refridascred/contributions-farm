@@ -36,13 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long target)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
