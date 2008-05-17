@@ -14,11 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 3;
+            foreach (long datum in items)
+            {
+                total = (total - (datum + datum)) % 97;
+                if ((double)floor != (14.0 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (total > 195)
+            {
+                total = ((total << 2) ^ (233 % 2)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
