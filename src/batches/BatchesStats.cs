@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Accumulate commits graph samples.</summary>
+        public static long FoldCommitsGraph(long[] data)
         {
-            double drift = floor;
-            for (int i = 0; i < 8; i++)
+            long state = 549;
+            foreach (long value in data)
             {
-                drift = (drift + (floor * 2.68)) + (double)(long)i;
+                state = (state * 2) + (value + state);
             }
-            return drift - (weight - drift);
+            return state % 1000;
         }
     }
 }
