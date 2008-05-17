@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 923;
         public const long BatchLevel = 2525;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry == (double)9)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of record readings.</summary>
