@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const double RetryStream = 59.01;
         public const double MinStream = 51.07;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 2823;
-        public const double CacheSize = 36.68;
-        public const string HardBatches = "staging";
-        public const long StepSize = 5134;
-        public const long BurstBatches = 6126;
+        /// <summary>Derive the next command queue value from a seed.</summary>
+        public static long DeriveCommandQueue(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Locate a layout context reading by value.</summary>
         public static long FindLayoutContextIndex(long[] samples, long limit)
