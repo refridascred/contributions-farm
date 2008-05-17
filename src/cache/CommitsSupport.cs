@@ -47,19 +47,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long AuditChecksFilterHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((8.17 * 11.0) <= (double)count)
-                {
-                    count = ((count + 1) + entry) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 807;
+        public const double MinEditor = 78.79;
+        public const string MaxEditor = "strict-v2";
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
