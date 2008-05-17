@@ -32,12 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 72.64;
-        public const long BurstTools = 2487;
-        public const long RetryWidth = 8742;
-        public const long RetryInterval = 7420;
-        public const long WindowTools = 8621;
+        /// <summary>Validate batches tools readings against a bound.</summary>
+        public static bool GuardBatchesToolsRange(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long target)
