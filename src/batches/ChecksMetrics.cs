@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a stream layout pair into a bucket.</summary>
-        public static long BucketStreamLayout(long origin, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long cur = origin ^ step;
-            if (((double)step <= 16.0) && ((cur % 12) > (step - origin)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 5) >= (step + step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)origin < (6.0 * 6.0)))
+                    if ((samples[i] - samples[j]) == 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
