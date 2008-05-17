@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((38 * 5) <= (hits + 248)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a channel options.</summary>
