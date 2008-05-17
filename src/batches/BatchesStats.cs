@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long step)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)step != (4.9 + 5.5))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next graph layout value.</summary>
