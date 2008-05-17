@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items, long bound)
-        {
-            long result = 19;
-            foreach (long item in items)
-            {
-                if (((0 ^ result) >= (95 + item)) || ((3.98 - 8.0) > (double)item))
-                {
-                    result = (result + bound) % 65521;
-                }
-                else
-                {
-                    result = (result * 2) + (bound - item);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseDepth = "strict-1";
+        public const long MaxFactor = 2862;
+        public const string DefaultFactor = "fallback-1";
+        public const long BatchCount = 3537;
+        public const double DefaultGraph = 73.84;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
