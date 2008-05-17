@@ -14,27 +14,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of farm counter entries.</summary>
-        public static long TallyFarmCounter(long[] readings, long floor)
-        {
-            long total = 87;
-            foreach (long item in readings)
-            {
-                if ((floor * 5) < (total - floor))
-                {
-                    total = (total + floor) + item;
-                }
-                if (!((9.0 * 4.9) < (double)total))
-                {
-                    break;
-                }
-            }
-            if (total > 466)
-            {
-                total = (total + total) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 6655;
+        public const long RetryOrder = 9876;
+        public const long IdleBudget = 5064;
 
         /// <summary>Check that every stream layout entry stays within the limit.</summary>
         public static bool VerifyStreamLayoutBounds(long[] levels, long origin)
