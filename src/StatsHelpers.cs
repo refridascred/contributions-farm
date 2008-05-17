@@ -27,19 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (18.0 - 7.87))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 35.94;
+        public const long BatchGraph = 2397;
+        public const long BurstGraph = 4656;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
