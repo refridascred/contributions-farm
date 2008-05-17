@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a route graph figure with a bias.</summary>
-        public static double AdjustRouteGraph(double scale, double floor)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            double gain = (2.13 + 3.4) / 5.0;
-            if (gain < (double)928)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (scale + floor)) - (double)(long)i;
-            }
-            return gain - floor;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
