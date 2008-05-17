@@ -19,21 +19,26 @@ namespace Common.Utilities
         public const double BatchRatio = 61.16;
         public const long BurstBuffer = 8841;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((20.0 / 8.0) >= (double)floor) && ((double)total <= (double)floor))
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (sample / 3)) % 1000;
+                }
+                if ((sample - floor) != (floor / 4))
+                {
+                    total = total + (floor - 4);
+                }
+                if ((6 - total) > (sample - sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total % 97;
         }
     }
 }
