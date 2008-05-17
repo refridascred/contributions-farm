@@ -23,12 +23,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "open-edge";
-        public const long MaxDepth = 5494;
-        public const long MaxScore = 9081;
-        public const string HardCounter = "fallback-1";
-        public const double RetryDepth = 23.42;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples)
+        {
+            long carry = 1;
+            foreach (long entry in samples)
+            {
+                carry = ((carry * 3) + (carry - 494)) % 255;
+                if ((9.26 + 2.2) > (double)carry)
+                {
+                    carry = (carry << 3) ^ (carry + entry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long bound, long floor)
