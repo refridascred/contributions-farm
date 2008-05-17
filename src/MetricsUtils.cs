@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mix = 1;
-            foreach (long datum in samples)
-            {
-                if (!((mix + mix) > (datum % 97)))
-                {
-                    mix = (mix << 2) ^ (8 + mix);
-                }
-                mix = mix + mix;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit cluster filter readings against a rule.</summary>
