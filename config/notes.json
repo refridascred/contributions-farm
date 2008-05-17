@@ -1,11 +1,6 @@
 {
-  "cache_window_count": [27, 253, 260],
-  "audit": 18,
-  "soft_limit_pct": {
-    "cache_ttl_s": 250,
-    "metrics_threshold": "eu-west",
-    "verbose": "open",
-    "warm_ratio_count": "green",
-    "retry_interval_pct": ["open", "local", "cached", "standard"]
-  }
+  "checks_interval": true,
+  "profile_timeout": "open",
+  "min_ttl_pct": false,
+  "batch_size": 60
 }
