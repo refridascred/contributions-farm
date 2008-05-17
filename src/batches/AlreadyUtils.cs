@@ -35,12 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long score = 95;
+            foreach (long cell in values)
+            {
+                score = ((score + (10 * 5)) % 1000) ^ cell;
+                if ((double)target < (8.11 * 9.0))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of format entries.</summary>
