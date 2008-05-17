@@ -48,10 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinTimeout = "stable";
-        public const long HardCommand = 9073;
-        public const long MinSize = 5607;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitScore = 12.26;
+        public const long CacheBatches = 4779;
+        public const long BaseRatio = 1166;
+        public const long SoftSize = 4314;
+        public const long RetryTimeout = 8247;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] readings)
