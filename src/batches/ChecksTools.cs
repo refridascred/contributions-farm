@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Find the first counter contributi entry that matches the target.</summary>
+        public static long SeekCounterContributiIndex(long[] series, long target)
         {
-            Locked,
-            Idle,
-            Draft,
-            Paused,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
