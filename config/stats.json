@@ -1,12 +1,14 @@
 {
-  "audit": 37,
-  "sync_ttl_count": 96.99,
-  "idle_window_pct": [285, 420, 460],
-  "poll_ttl_count": {
-    "readonly": 65.2,
-    "strict": "open",
-    "base_size": 38.23,
-    "metrics_depth": [215, 149]
+  "compress": {
+    "base_size_s": "blue",
+    "soft_ttl_s": ["stable", "primary"],
+    "burst_ratio_pct": 6938,
+    "poll_retries_pct": true,
+    "poll_ratio": 3556
   },
-  "idle_timeout_pct": true
+  "base_interval": 54.24,
+  "cache_ttl_count": [74, 436, 145, 423],
+  "readonly": 3196,
+  "burst_capacity_ms": 48.85,
+  "counter_threshold": "stable"
 }
