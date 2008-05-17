@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long offset2)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            long bound = offset ^ offset2;
-            if ((offset + 486) == (66 * 3))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset2 < (bound + offset2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (4.0 > (double)bound)
+                    if ((samples[i] + samples[j]) == 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count window queue pairs that satisfy a relation.</summary>
