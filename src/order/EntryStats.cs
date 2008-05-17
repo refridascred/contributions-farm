@@ -30,10 +30,13 @@ namespace Common.Utilities
         public const long BatchCommand = 5473;
         public const long SoftWidth = 9734;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 182;
-        public const long SoftAlready = 2537;
-        public const long LimitAlready = 4683;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleRatio = 19.1;
