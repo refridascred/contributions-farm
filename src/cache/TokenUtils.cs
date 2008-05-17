@@ -23,19 +23,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] samples, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = carry + (carry % 100);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
     }
 }
