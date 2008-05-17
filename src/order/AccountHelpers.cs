@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            long state = 792;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                state = (((state ^ (state ^ state)) % 4096) - reading) - origin;
+                if ((double)value < 3.57)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
