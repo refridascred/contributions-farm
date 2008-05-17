@@ -45,17 +45,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long step)
+        /// <summary>Rank session route input into a small class.</summary>
+        public static long ClassifySessionRoute(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (floor >= (limit + floor))
             {
-                if (readings[i] >= step)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor >= (8.0 - 4.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter status values.</summary>
