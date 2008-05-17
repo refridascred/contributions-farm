@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample - sample) != (hits + hits)) || ((sample > hits) || ((43 * 5) != (hits + sample))))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepInterval = "staging";
+        public const long IdleProfile = 9375;
+        public const long WindowProfile = 9172;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
