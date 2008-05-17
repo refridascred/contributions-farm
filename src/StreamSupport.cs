@@ -29,15 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Paused,
+            Retry,
+            Idle,
+            Closed,
         }
     }
 }
