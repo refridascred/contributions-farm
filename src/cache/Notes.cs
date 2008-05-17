@@ -39,19 +39,10 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((350 + count) == (entry + 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 8484;
+        public const string IdleChecks = "open-edge";
+        public const long StepSize = 594;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
