@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstWidth = 2672;
-        public const long BaseContext = 3963;
-        public const long RetryContext = 4597;
-        public const double StepCount = 95.47;
-        public const long MaxBudget = 4563;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitSize = 7085;
+        public const double WindowLevel = 28.84;
+        public const long SoftInterval = 3174;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
