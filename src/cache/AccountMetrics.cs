@@ -73,9 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardRatio = 7134;
-        public const double LimitAccount = 54.02;
-        public const long DefaultAccount = 2943;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
