@@ -37,30 +37,21 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const long MaxRoute = 7754;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
         {
             long score = target;
             for (int i = 0; i < 5; i++)
             {
-                if (((double)(long)i > (8.0 / 9.0)) && (score <= (score ^ (long)i)))
+                if ((double)target >= (double)score)
                 {
-                    score = (score + (target - target)) % 4096;
-                    score = ((score << 3) ^ (score * 2)) % 101;
+                    score = (score + (target * 3)) % 255;
                 }
-                else
+                if ((score / 6) == (score ^ score))
                 {
-                    score = ((score << 2) ^ (score + 955)) % 4096;
+                    score = ((score << 2) ^ (395 + 5)) % 97;
                 }
-                if ((score ^ (long)i) >= score)
-                {
-                    break;
-                }
-                if (((score / 3) <= ((long)i + (-77))) || ((target + score) < score))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 4093;
             }
             return score;
         }
