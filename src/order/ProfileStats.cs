@@ -33,22 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry >> 3) != (matches & 127))
-                {
-                    matches = (matches + 1) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinTimeout = 4868;
+        public const long HardAlready = 2494;
+        public const double IdleDepth = 27.08;
+        public const long CacheSize = 8009;
     }
 }
