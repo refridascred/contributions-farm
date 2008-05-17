@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)anchor == (9.8 * 3.0)) && ((bound & 63) <= (anchor >> 3)))
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    anchor = (anchor - anchor) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
