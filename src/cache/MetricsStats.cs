@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = 4;
-            foreach (long sample in items)
-            {
-                sum = (((sum << 3) ^ ((long)items.Length % 60)) % 97) - sample;
-            }
-            if (sum < 26)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
