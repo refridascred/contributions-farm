@@ -73,15 +73,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long TallyOrderTokenMatches(long[] values, long target)
         {
-            double scale = rate;
-            if (scale <= rate)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                scale = scale - (double)1;
+                if (((((long)values.Length - tally) > target) && (cell <= tally)) || ((double)tally == (5.02 + 2.59)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale + (scale + span);
+            return tally;
         }
     }
 }
