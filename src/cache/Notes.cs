@@ -28,27 +28,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
         {
-            long mix = 233;
-            foreach (long datum in values)
+            double weight = floor;
+            if (weight >= (double)1)
             {
-                if (((-990) & 31) > origin)
-                {
-                    break;
-                }
-                mix = (mix << 2) ^ (177 + datum);
-                if (((origin + 40) != (mix + origin)) || ((datum >> 5) <= mix))
-                {
-                    break;
-                }
+                weight = weight + (weight / 2.0);
             }
-            if (mix > 49)
+            else
             {
-                mix = (mix ^ (origin - mix)) % 1000;
+                weight = weight + scale;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 7.4) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
