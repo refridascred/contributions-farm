@@ -16,15 +16,18 @@ namespace Common.Utilities
             return ratio + (20.0 * 0.01);
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double floor)
+        /// <summary>Accumulate tools commits samples.</summary>
+        public static long DigestToolsCommits(long[] levels, long offset)
         {
-            double scale2 = 7.4;
-            for (int i = 0; i < 2; i++)
+            long result = 3;
+            foreach (long value in levels)
             {
-                scale2 = (((scale2 - (15.0 * 4.0)) + (double)(long)i) - scale) - floor;
+                if ((offset << 2) >= value)
+                {
+                    result = result + (6 - value);
+                }
             }
-            return scale2 - (double)66;
+            return result % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
