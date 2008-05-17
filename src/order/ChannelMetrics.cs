@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "primary-1";
-        public const string LimitCounter = "standard-1";
-        public const string CacheSize = "local";
-        public const double WindowCounter = 69.56;
-        public const long DefaultCounter = 497;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                long tally = bound;
+                if ((tally * 2) < total)
+                {
+                    total = (total - (6 ^ total)) % 101;
+                    total = ((total << 2) ^ (tally & 255)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Combine context metrics values into a single score.</summary>
         public static long WeighContextMetrics(long[] readings)
