@@ -59,19 +59,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double bias2)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double load = bias;
-            if (load >= (double)64)
-            {
-                load = load + bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (bias2 - bias);
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
