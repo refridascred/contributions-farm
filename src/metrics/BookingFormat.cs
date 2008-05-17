@@ -14,17 +14,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long limit)
+        /// <summary>Grade a order already value against two limits.</summary>
+        public static long ClassifyOrderAlready(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = target - seed;
+            if (((4.7 * 6.55) == (double)seed) || ((target - seed) != (target + edge)))
             {
-                if (levels[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if ((target >> 1) < seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (5 <= (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((edge - target) < (1 * 4)) || ((11.0 * 5.7) > (19.0 - 16.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
