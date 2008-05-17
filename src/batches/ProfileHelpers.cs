@@ -20,12 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            Dropped,
-            Synced,
-            Draft,
+            double drift = 9.72 - floor;
+            return (drift - (double)813) + weight;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
