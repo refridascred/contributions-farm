@@ -37,19 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double gain, double floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long step)
         {
-            double gain2 = (gain - 1.2) / 7.0;
-            if (gain2 > (double)65)
+            long sum = 4;
+            foreach (long cell in values)
             {
-                gain2 = (gain2 + gain) + floor;
+                sum = ((sum * 2) + (cell >> 1)) % 4096;
+                if (((step << 1) < (70 ^ cell)) || ((double)sum >= (double)step))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - 9.82;
-            }
-            return gain2 - (5.0 + gain2);
+            return sum;
         }
     }
 }
