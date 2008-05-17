@@ -1,5 +1,6 @@
 {
-  "hard_delay": true,
-  "soft_window": "standard",
-  "record_retries": 53.51
+  "poll_retries_count": "green",
+  "hard_capacity": 7553,
+  "context_capacity": [428, 340],
+  "readonly": "open"
 }
