@@ -30,13 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] samples, long limit)
         {
-            Done,
-            Paused,
-            Active,
-            New,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) < (count * 2))
+                {
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
