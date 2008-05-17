@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 36.41;
-        public const long MaxProfile = 5992;
-        public const long BatchSize = 4638;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSize = 9688;
+        public const long LimitWidth = 581;
+        public const long MaxCount = 3999;
+        public const long BurstEntry = 7147;
+        public const long HardEntry = 7997;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] items, long seed)
