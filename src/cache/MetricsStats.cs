@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long acc = 215;
-            foreach (long cell in data)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc ^ cell) + bound;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
             return acc;
         }
