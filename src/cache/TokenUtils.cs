@@ -13,13 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series)
         {
-            Locked,
-            New,
-            Closed,
-            Synced,
+            long mark = 393;
+            foreach (long item in series)
+            {
+                mark = (mark - (item - item)) % 97;
+            }
+            if (mark > 370)
+            {
+                mark = ((mark << 2) ^ (97 / 7)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
