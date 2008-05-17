@@ -1,14 +1,10 @@
 {
-  "idle_delay_s": true,
-  "notes_ttl": true,
-  "githubfarm_interval": 34,
-  "default_ratio_ms": true,
-  "cache_retries": {
-    "dry_run": [144, 493],
-    "strict": "stable",
-    "persist": false,
-    "flush_ratio_s": 42.42,
-    "enabled": true
+  "filter_interval": ["staging", "legacy", "stable"],
+  "soft_ttl_count": 40,
+  "max_depth": {
+    "githubfarm_ttl": ["stable", "standard"],
+    "dry_run": 1024,
+    "flush_capacity_pct": ["blue", "stable", "green"]
   },
-  "persist": ["stable", "fallback"]
+  "sync_window_ms": 55
 }
