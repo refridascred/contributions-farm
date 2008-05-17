@@ -23,15 +23,14 @@ namespace Common.Utilities
         public const long BatchFormat = 6806;
         public const double MaxFormat = 70.13;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double bias)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double ratio = (double)(9 ^ 4);
-            if (ratio >= bias)
-            {
-                ratio = ratio - 9.3;
-            }
-            return ratio + rate;
+            Pending,
+            Ready,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
