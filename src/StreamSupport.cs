@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "local-1";
-        public const long BaseInterval = 3687;
-        public const long MinRatio = 9778;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Synced,
+            Idle,
+            Done,
+            Paused,
+            Active,
+        }
 
         /// <summary>Measure how many stats metrics samples are out of range.</summary>
         public static long MeasureStatsMetricsHits(long[] items)
