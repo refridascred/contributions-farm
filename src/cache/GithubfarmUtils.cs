@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BurstEntry = 7147;
         public const long HardEntry = 7997;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long seed)
+        /// <summary>Locate a buffer tools reading by value.</summary>
+        public static long FindBufferToolsIndex(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < seed)
+                if ((values[i] >= step) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
