@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long limit)
         {
-            long result = 391;
-            foreach (long cell in values)
+            long step = target - limit;
+            if ((limit - limit) > (step + 65))
             {
-                if ((160 * 5) != (cell + result))
+                return 5;
+            }
+            else
+            {
+                if (target >= (target >> 2))
                 {
-                    result = (result << 2) ^ (result & 255);
-                    result = (result - ((-239) - result)) % 97;
+                    return 2;
                 }
-                result = (result * 3) + (cell % 5);
+                else
+                {
+                    if ((limit >> 1) > (limit & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step + limit) > step) || ((step & 15) < ((-2) - 9)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            if (result > 71)
-            {
-                result = (result + (result * 2)) % 1000;
-            }
-            return result % 65521;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
