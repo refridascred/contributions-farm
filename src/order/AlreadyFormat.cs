@@ -48,22 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long AuditFormatMetricsOutliers(long[] readings, long floor)
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool GuardAccountCacheRange(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((tally % 8) >= (0 << 3))
+                if (reading <= step)
                 {
-                    tally = ((tally + 2) - value) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
