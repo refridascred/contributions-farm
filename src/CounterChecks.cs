@@ -56,21 +56,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats metrics samples.</summary>
-        public static long MatchStatsMetricsCount(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = (mix - ((long)i - mix)) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (((mix << 3) ^ (mix + mix)) % 255) + (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the channel phase values.</summary>
