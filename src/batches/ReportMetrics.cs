@@ -12,15 +12,20 @@ namespace Common.Utilities
         public const double SoftFilter = 57.35;
         public const long StepFilter = 9937;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            double load = bias - scale;
-            for (int i = 0; i < 5; i++)
+            long acc = 88;
+            foreach (long cell in items)
             {
-                load = (load + (2.6 * 19.0)) + (double)(long)i;
+                acc = (acc * 2) + (acc * 3);
+                acc = (acc ^ (acc << 3)) % 65521;
+                if (((acc & 255) != (acc + cell)) && ((3.6 + 10.0) < (6.0 / 7.0)))
+                {
+                    break;
+                }
             }
-            return load - (double)(-4);
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
