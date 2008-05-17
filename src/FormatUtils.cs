@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((6 << 2) == (origin << 2))
+                if (entry < (seen * 5))
                 {
-                    tally = (tally + 2) + reading;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a counter summary.</summary>
