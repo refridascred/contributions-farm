@@ -23,23 +23,16 @@ namespace Common.Utilities
         public const long BaseContext = 5305;
         public const long SoftContext = 666;
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (double)57)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                ratio2 = (ratio2 + ratio2) + bias;
+                sum = (sum ^ (389 + offset)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 + 7.6;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (ratio / 6.0);
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
