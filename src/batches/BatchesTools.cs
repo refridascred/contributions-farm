@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((value - value) < (tally + 24)) && ((9.0 + 1.0) < (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate channel report samples.</summary>
