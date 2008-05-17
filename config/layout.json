@@ -1,28 +1,19 @@
 {
-  "commits_size": {
-    "persist": "cached",
+  "warm_capacity": {
+    "poll_ttl_s": 45.44,
     "readonly": {
-      "channel_size": "staging",
-      "idle_delay_ms": "stable",
-      "counter_interval": ["legacy", "eu-west"],
-      "flush_ratio_count": 55
+      "flush_timeout_pct": 7970,
+      "record_threshold": 72,
+      "retry_interval_count": 3235,
+      "poll_depth_count": "strict",
+      "soft_window_pct": "local"
     },
-    "min_window": [189, 380, 234, 296],
-    "warm_timeout": true
+    "warm_window_count": 250,
+    "layout_retries": false,
+    "retry_timeout_s": true
   },
-  "report_retries": "local",
-  "sync_limit_ms": {
-    "cache_ratio": true,
-    "route_capacity": 72,
-    "context_threshold": false,
-    "default_delay": false,
-    "schema_retries": {
-      "max_ratio": 87,
-      "poll_limit": 74,
-      "strict": ["primary", "green"],
-      "readonly": "staging",
-      "cache_retries": "latest",
-      "poll_retries": "strict"
-    }
-  }
+  "burst_depth_pct": 3287,
+  "default_threshold_count": 84.66,
+  "warm_capacity_pct": "legacy",
+  "default_interval_s": false
 }
