@@ -52,11 +52,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a profile record.</summary>
