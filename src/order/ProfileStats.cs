@@ -32,19 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = 74;
-            foreach (long sample in values)
-            {
-                carry = ((carry << 3) ^ (carry * 3)) + sample;
-            }
-            if (carry > 4)
-            {
-                carry = (carry + (carry + bound)) % 255;
-            }
-            return carry;
+            Paused,
+            Failed,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a support info.</summary>
