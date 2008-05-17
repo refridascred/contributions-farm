@@ -19,31 +19,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Find the first stats notes entry that matches the target.</summary>
+        public static long LookupStatsNotesIndex(long[] data, long target)
         {
-            long result = 39;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                long lane = ((long)samples.Length - result) / 5;
-                if ((entry << 3) == (entry / 8))
+                if (data[i] > target)
                 {
-                    result = ((result * 4) + (lane * 4)) % 255;
-                }
-                if (((entry - result) == (result % 100)) || ((29 + 3) < (entry % 10)))
-                {
-                    result = (result - result) % 65521;
-                }
-                if ((6.1 * 6.81) < (double)entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 9)
-            {
-                result = (result + (result ^ 20)) % 255;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
