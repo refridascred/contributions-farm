@@ -1,13 +1,11 @@
 {
-  "persist": 30,
-  "hard_interval": "cached",
-  "readonly": "fallback",
-  "soft_window_ms": {
-    "idle_limit_s": "staging",
-    "poll_depth_pct": 100,
-    "enabled": "latest",
-    "readonly": "edge"
+  "graph_window": 6398,
+  "strict": {
+    "poll_limit_s": false,
+    "base_limit_s": 24,
+    "session_timeout": "blue",
+    "readonly": 51.77
   },
-  "batch_limit_pct": 250,
-  "cache_limit": "legacy"
+  "min_window_s": ["green", "fallback", "standard"],
+  "audit": false
 }
