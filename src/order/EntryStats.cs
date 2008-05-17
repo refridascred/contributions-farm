@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                if (cell <= (floor >> 3))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
