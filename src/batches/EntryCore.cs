@@ -63,15 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double drift = 3.0;
-            if (drift < gain)
-            {
-                drift = (drift + (20.0 / 5.0)) + span;
-            }
-            return drift + (double)49;
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
