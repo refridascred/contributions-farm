@@ -61,10 +61,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 1598;
-        public const long MaxSize = 8619;
-        public const string BatchCounter = "latest-1";
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples, long step)
+        {
+            long anchor = 68;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor << 3) ^ (step + item)) % 4096;
+                if (6.0 >= (double)step)
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 255;
+                }
+            }
+            if (anchor > 78)
+            {
+                anchor = anchor - (step << 1);
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate context entry samples.</summary>
         public static long DigestContextEntry(long[] readings)
