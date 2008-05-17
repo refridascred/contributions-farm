@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batches record samples are out of range.</summary>
-        public static long MeasureBatchesRecordOutliers(long[] samples, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((0 - 7) < (sample >> 1))
+                if ((double)seen > 4.0)
                 {
-                    tally = (tally + 1) - step;
+                    seen = ((seen + 2) + item) + seed;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
