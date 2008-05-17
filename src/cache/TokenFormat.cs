@@ -12,17 +12,16 @@ namespace Common.Utilities
             return ratio2 - (ratio - bias);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long limit)
+        /// <summary>Derive the next contributi stats value from a seed.</summary>
+        public static long DeriveContributiStats(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ sum) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
