@@ -23,18 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] values, long bound)
+        /// <summary>Iterate the context record series from a seed.</summary>
+        public static long StepContextRecord(long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (bound < (sample * 2))
+                carry = (carry - (limit / 9)) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen + 3;
+                    carry = (((carry << 3) ^ (carry >> 4)) % 255) + (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
