@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const double WindowCommand = 31.36;
         public const string RetryInterval = "standard-1";
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long floor)
         {
-            double bias2 = (double)848;
-            if (bias2 < (double)23)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 + bias;
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (offset - bias)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
     }
 }
