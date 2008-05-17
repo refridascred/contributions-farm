@@ -29,19 +29,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next report tools value from a seed.</summary>
-        public static long IterateReportTools(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (sum <= (sum >> 5))
-                {
-                    sum = (sum + bound) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 6015;
+        public const string WindowMetrics = "open";
+        public const double BaseTimeout = 22.86;
+        public const long MinSpan = 1711;
     }
 }
