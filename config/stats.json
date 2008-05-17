@@ -1,10 +1,7 @@
 {
-  "filter_interval": ["staging", "legacy", "stable"],
-  "soft_ttl_count": 40,
-  "max_depth": {
-    "githubfarm_ttl": ["stable", "standard"],
-    "dry_run": 1024,
-    "flush_capacity_pct": ["blue", "stable", "green"]
-  },
-  "sync_window_ms": 55
+  "burst_window_pct": 8476,
+  "poll_window_pct": 3784,
+  "readonly": 78,
+  "max_ratio_s": "fallback",
+  "default_capacity": false
 }
