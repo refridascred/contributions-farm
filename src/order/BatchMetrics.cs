@@ -37,14 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Active,
-            Locked,
-            New,
-            Idle,
-            Synced,
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
