@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many batch metrics samples are out of range.</summary>
+        public static long CountBatchMetricsHits(long[] levels, long seed)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits + 1) >= (hits * 5))
+                {
+                    hits = ((hits + 2) + item) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
