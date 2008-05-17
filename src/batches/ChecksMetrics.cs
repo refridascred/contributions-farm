@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "legacy-v2";
-        public const long SoftWindow = 7757;
-        public const long MaxWindow = 310;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double offset)
+        {
+            double drift = (3.0 * 1.33) * 4.8;
+            return (drift - (ratio + ratio)) + offset;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] readings)
