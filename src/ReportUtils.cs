@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Derive the next context payload value from a seed.</summary>
+        public static long RollContextPayload(long floor)
         {
-            long result = 4;
-            foreach (long cell in levels)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result * 4) + (40 & 127)) + (long)i;
-                }
-                result = ((result << 2) ^ cell) % 101;
-                if (14.0 > (double)cell)
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
