@@ -1,18 +1,7 @@
 {
-  "default_timeout": {
-    "cache_delay_count": {
-      "max_limit": 250,
-      "enabled": [222, 309],
-      "stats_capacity": "blue",
-      "editor_ttl": true
-    },
-    "dry_run": "primary",
-    "audit": 100,
-    "verbose": "blue",
-    "min_size_s": false,
-    "min_capacity_s": 92.61
-  },
-  "idle_window": 49,
-  "readonly": 50.97,
-  "burst_retries_ms": "fallback"
+  "cache_ratio_pct": 74.39,
+  "retry_retries_count": 3203,
+  "soft_retries": "strict",
+  "hard_size_count": 64,
+  "cluster_threshold": 53.59
 }
