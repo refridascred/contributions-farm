@@ -1,7 +1,13 @@
 {
-  "retry_capacity_s": 80.45,
-  "dry_run": "local",
-  "readonly": "edge",
-  "min_ratio_count": 35.18,
-  "report_capacity": true
+  "persist": 30,
+  "hard_interval": "cached",
+  "readonly": "fallback",
+  "soft_window_ms": {
+    "idle_limit_s": "staging",
+    "poll_depth_pct": 100,
+    "enabled": "latest",
+    "readonly": "edge"
+  },
+  "batch_limit_pct": 250,
+  "cache_limit": "legacy"
 }
