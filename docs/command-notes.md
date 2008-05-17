@@ -1,14 +1,16 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any batches limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+Run the channel check before changing any metric limits.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
-Defaults for filter live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the payload list.
+The format module keeps format values in sync with the report cache.
+When a already fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate format input early
-- Review metric limits each release
+- Document new notes fields
+- Keep layout values small
+- Log every channel change
+- Prefer record defaults
