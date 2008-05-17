@@ -32,19 +32,20 @@ namespace Common.Utilities
         public const long RetryInterval = 7420;
         public const long WindowTools = 8621;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] series, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > target)
+                if (((long)i * 5) >= (long)i)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + 5) % 4096;
+                    acc = acc ^ target;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
