@@ -16,15 +16,22 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Digest a series of checks buffer entries.</summary>
+        public static long TotalChecksBuffer(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long score = 5;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (686 <= (sample ^ score))
+                {
+                    score = (score << 2) ^ score;
+                }
             }
-            return anchor;
+            if (score > 330)
+            {
+                score = (score + (6 >> 3)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Blend two route measurements.</summary>
