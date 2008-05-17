@@ -54,18 +54,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Rank already cluster input into a small class.</summary>
+        public static long GradeAlreadyCluster(long target, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long delta = target - floor;
+            if ((61 - delta) != (236 << 3))
             {
-                if ((cell / 3) > cell)
+                return 0;
+            }
+            else
+            {
+                if ((delta + target) >= delta)
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (!((delta & 127) != (floor ^ delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next commits value.</summary>
