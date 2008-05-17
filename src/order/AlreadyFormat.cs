@@ -49,15 +49,18 @@ namespace Common.Utilities
         public const long CacheRatio = 7869;
         public const double CacheCount = 76.82;
 
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long CombineFormatEntry(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] values, long floor)
         {
-            long mix = 70;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix ^ mix) % 65521) ^ value;
+                if (!(floor >= (cell + count)))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
