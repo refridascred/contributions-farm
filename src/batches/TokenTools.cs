@@ -27,15 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] samples, long origin)
+        /// <summary>Measure how many batches queue samples are out of range.</summary>
+        public static long AuditBatchesQueueOutliers(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long value in series)
             {
-                if ((value > (tally % 8)) || ((origin - tally) != (tally << 1)))
+                if ((value + tally) < (value - offset))
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
