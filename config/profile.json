@@ -1,7 +1,7 @@
 {
-  "cache_ratio_pct": 74.39,
-  "retry_retries_count": 3203,
-  "soft_retries": "strict",
-  "hard_size_count": 64,
-  "cluster_threshold": 53.59
+  "stats_retries": "blue",
+  "sync_window_ms": 23,
+  "readonly": 1024,
+  "flush_size": [131, 284],
+  "batch_timeout": false
 }
