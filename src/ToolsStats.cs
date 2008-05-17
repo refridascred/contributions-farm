@@ -56,12 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
