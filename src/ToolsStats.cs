@@ -51,26 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] data, long bound)
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long MeasureToolsReportOutliers(long[] items)
         {
-            long anchor = -8;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (!(bound > (974 << 3)))
+                if ((seen >> 3) <= (seen << 3))
                 {
-                    anchor = (anchor + (bound << 3)) % 4096;
-                }
-                if ((anchor + item) > bound)
-                {
-                    anchor = anchor - (item + item);
-                }
-                else
-                {
-                    anchor = anchor ^ item;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
