@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const string BatchRatio = "latest-edge";
         public const long MinChecks = 3954;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long mix = 64;
+            foreach (long cell in series)
             {
-                score = (score - (target - (long)i)) % 65521;
-                score = (score - (score & 1)) % 97;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((cell + (long)series.Length) >= (mix % 3))
+                {
+                    mix = ((mix * 4) + (48 / 8)) - offset;
+                }
+                if (9.53 > (double)mix)
+                {
+                    break;
+                }
             }
-            return score;
+            return mix;
         }
     }
 }
