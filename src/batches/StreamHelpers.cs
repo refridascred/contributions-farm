@@ -28,12 +28,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Grade a queue notes value against two limits.</summary>
+        public static long BucketQueueNotes(long offset, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long prev = offset + origin;
+            if ((prev + prev) >= (origin ^ prev))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)prev == (8.0 * 2.7)) || ((double)prev < (9.0 + 11.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (prev < (1 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry header.</summary>
