@@ -31,11 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double drift = (3.0 * 1.33) * 4.8;
-            return (drift - (ratio + ratio)) + offset;
+            Draft,
+            Active,
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
