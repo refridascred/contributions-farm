@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const string StepCluster = "standard-edge";
         public const string IdleSpan = "primary-1";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] items)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double gain = bias;
+            if (gain >= (8.3 + bias))
             {
-                if ((((double)tally > (double)929) || ((tally & 63) >= 6)) && (((0 / 3) == (cell * 3)) || ((0.45 / 3.0) > (double)cell)))
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain + (double)8) + floor;
             }
-            return tally;
+            return gain - (bias / 6.0);
         }
 
         /// <summary>Check that every support context entry stays within the limit.</summary>
