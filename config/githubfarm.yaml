@@ -1,8 +1,4 @@
 # githubfarm settings
-retry_timeout: edge
-payload_depth: 3
-sync_interval: 36.74
-base_window_count:
-  - 345
-  - 305
-dry_run: strict
+verbose: standard
+enabled: 250
+soft_capacity_pct: staging
