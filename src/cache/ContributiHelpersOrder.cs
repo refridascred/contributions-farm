@@ -19,10 +19,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 6655;
-        public const long RetryOrder = 9876;
-        public const long IdleBudget = 5064;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
         public static bool CheckBufferGithubfarmBounds(long[] series, long offset)
