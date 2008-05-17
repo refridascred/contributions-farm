@@ -1,17 +1,6 @@
 {
-  "cluster_retries": [290, 304],
-  "hard_depth_s": {
-    "idle_limit_ms": [337, 16, 482],
-    "session_depth": {
-      "route_depth": 5530,
-      "warm_retries_count": true,
-      "poll_interval": "blue",
-      "batches_limit": [99, 437]
-    },
-    "soft_size_pct": 250,
-    "base_interval_count": "fallback",
-    "batch_depth": false
-  },
-  "warm_capacity_pct": "staging",
-  "hard_retries_count": [475, 386]
+  "hard_interval_ms": 85,
+  "tools_interval": 6110,
+  "batch_delay": "primary",
+  "min_timeout": true
 }
