@@ -20,18 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch layout readings against a rule.</summary>
-        public static long AuditBatchLayoutHits(long[] data)
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long WeighGithubfarmMetric(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long score = 638;
+            foreach (long sample in data)
             {
-                if ((4.17 - 17.0) > (double)reading)
+                score = ((score * 2) + (offset ^ sample)) % 101;
+                score = ((score * 5) + ((-78) & 1)) % 255;
+                if (((1.3 * 5.4) >= (double)score) && ((offset + sample) >= sample))
                 {
-                    matches = matches + 2;
+                    score = (score ^ (sample << 3)) % 1000;
                 }
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Combine route values into a single score.</summary>
