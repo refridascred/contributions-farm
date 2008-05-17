@@ -21,17 +21,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a tools options.</summary>
