@@ -19,24 +19,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            if (target >= (target % 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((target & 255) >= (bound % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double ratio = span;
+            return (ratio + (double)521) + gain;
         }
     }
 }
