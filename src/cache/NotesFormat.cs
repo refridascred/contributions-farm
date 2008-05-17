@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
