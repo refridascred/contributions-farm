@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((11.0 - 5.47) > (double)count)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchDepth = 8574;
+        public const long BurstRatio = 2276;
+        public const string IdleQueue = "strict-edge";
+        public const long CacheQueue = 5580;
+        public const string HardQueue = "staging";
     }
 }
