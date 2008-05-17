@@ -77,11 +77,21 @@ namespace Common.Utilities
             return gain + (double)(-74);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheTimeout = 10.63;
-        public const double RetrySpan = 68.83;
-        public const string MinProfile = "fallback";
-        public const double RetryFactor = 33.51;
-        public const double HardFactor = 10.92;
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
