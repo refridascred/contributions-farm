@@ -38,13 +38,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long limit2)
         {
-            Done,
-            Pending,
-            Stale,
-            Retry,
+            long gap = limit - limit2;
+            if ((limit < (limit2 ^ gap)) || ((limit & 255) >= limit2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit < 7)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the commits status values.</summary>
