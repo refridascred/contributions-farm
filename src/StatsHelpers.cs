@@ -49,19 +49,11 @@ namespace Common.Utilities
         public const long SoftBudget = 1941;
         public const long StepNotes = 2467;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] items, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a window entry.</summary>
