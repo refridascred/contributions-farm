@@ -63,19 +63,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Paused,
+            Done,
+            Synced,
         }
     }
 }
