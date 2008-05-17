@@ -21,31 +21,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long step, long floor)
+        /// <summary>Compare every pair of metric githubfarm readings.</summary>
+        public static long MatchMetricGithubfarmCount(long[] series)
         {
-            if (step < (floor % 2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (0.8 - 8.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 3) != (floor / 2))
+                    if ((series[i] + series[j]) > 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
