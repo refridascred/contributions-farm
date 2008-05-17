@@ -29,21 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally - tally) < ((-5) * 3))
                 {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
