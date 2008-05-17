@@ -37,12 +37,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first cache contributi entry that matches the target.</summary>
-        public static long LookupCacheContributiIndex(long[] samples, long limit)
+        /// <summary>Find the first entry token entry that matches the target.</summary>
+        public static long FindEntryTokenIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] >= limit)
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
