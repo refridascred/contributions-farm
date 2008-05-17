@@ -1,21 +1,7 @@
 # entry settings
-verbose: true
-contributi_interval:
-  default_window_pct:
-    - 271
-    - 33
-    - 149
-    - 286
-  strict: 75.4
-  base_timeout_count:
-    route_capacity: latest
-    sync_ttl_s: open
-    commits_window: stable
-    payload_threshold: 74.25
-    flush_timeout_count: 500
-    enabled: local
-  hard_size_pct: 16
-  flush_window_ms: primary
-already_depth: 8156
-entry_threshold: 250
-channel_limit: 18.38
+batches_retries: 66
+poll_retries: 51.45
+cache_size_count: legacy
+strict: cached
+persist: 100
+burst_size_count: 2385
