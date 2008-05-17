@@ -60,18 +60,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the record schema entries that pass the check.</summary>
-        public static long AuditRecordSchemaOutliers(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = 27;
+            foreach (long reading in data)
             {
-                if ((matches + entry) >= matches)
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum + (reading << 1)) % 97;
             }
-            return matches;
+            if (sum > 9)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
