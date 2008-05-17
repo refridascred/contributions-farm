@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=313
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary strict legacy; do
+for item in strict green local; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=342
+log "limit is ${CHANNEL_LIMIT}"
