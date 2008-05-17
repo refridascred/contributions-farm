@@ -38,19 +38,18 @@ namespace Common.Utilities
             return gain - (bias / 6.0);
         }
 
-        /// <summary>Check that every support context entry stays within the limit.</summary>
-        public static bool ValidateSupportContextLimits(long[] items, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (datum > origin)
+                if ((8.94 - 2.0) >= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
