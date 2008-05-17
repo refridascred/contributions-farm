@@ -22,14 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long limit)
         {
-            New,
-            Retry,
-            Stale,
-            Queued,
-            Dropped,
+            long bound = step ^ limit;
+            if ((40 & 63) <= (step ^ bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit > (bound & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >= (-29)) && ((bound - limit) >= (step - limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit / 5) <= (step + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
