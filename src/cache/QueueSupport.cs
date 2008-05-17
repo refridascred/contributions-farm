@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] data)
         {
-            New,
-            Closed,
-            Failed,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)seen < (double)item)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
