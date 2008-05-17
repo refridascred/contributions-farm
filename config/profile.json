@@ -1,5 +1,18 @@
 {
-  "dry_run": 36,
-  "hard_delay_s": 1858,
-  "audit": "green"
+  "default_timeout_ms": "blue",
+  "warm_timeout": "cached",
+  "cluster_retries": ["staging", "blue", "cached", "strict"],
+  "batch_timeout": {
+    "channel_ratio": 9004,
+    "sync_limit": false,
+    "poll_timeout": ["eu-west", "fallback"],
+    "already_timeout": {
+      "hard_ratio_pct": false,
+      "contributi_window": false,
+      "sync_window_s": 9579,
+      "sync_ttl_pct": 34.39
+    }
+  },
+  "verbose": [97, 19],
+  "enabled": 5034
 }
