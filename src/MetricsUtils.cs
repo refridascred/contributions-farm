@@ -61,15 +61,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long ScoreAccountProfile(long[] data, long limit)
-        {
-            long mark = 929;
-            foreach (long sample in data)
-            {
-                mark = ((mark * 3) + (sample + mark)) + limit;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinWidth = 58.02;
+        public const long WindowCache = 3131;
+        public const long BaseSpan = 7892;
     }
 }
