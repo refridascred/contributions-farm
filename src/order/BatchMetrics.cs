@@ -50,17 +50,16 @@ namespace Common.Utilities
         public const string WindowPayload = "standard-edge";
         public const long BaseLevel = 1601;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mark = mark + mark;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the graph level values.</summary>
