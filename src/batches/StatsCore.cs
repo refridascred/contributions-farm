@@ -54,25 +54,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long bound, long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long cur = bound ^ limit;
-            if (338 >= (cur >> 1))
+            double rate2 = bias;
+            if (rate2 > rate)
             {
-                return 1;
+                rate2 = rate2 - (bias * 2.2);
             }
-            else
-            {
-                if ((cur / 5) != (2 * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return rate2 - (rate - rate);
         }
 
         /// <summary>Describe the record state values.</summary>
