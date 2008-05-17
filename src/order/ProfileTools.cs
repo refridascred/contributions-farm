@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long origin, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            if (((origin - origin) <= seed) && ((9.1 - 9.9) >= (double)seed))
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((5 - seed) >= (seed & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((24 * 4) >= (seed % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a entry summary.</summary>
