@@ -46,13 +46,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
