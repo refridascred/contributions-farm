@@ -59,17 +59,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools stats value from a seed.</summary>
-        public static long StepToolsStats(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] samples, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                state = (state + ((long)i >> 4)) % 4096;
-                state = (state ^ ((long)i + limit)) % 97;
-                state = ((state * 4) + (long)i) % 4093;
+                if (limit > (value & 127))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
