@@ -59,14 +59,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Compare every pair of channel farm readings.</summary>
+        public static long CompareChannelFarmCount(long[] levels)
         {
-            Draft,
-            Closed,
-            Idle,
-            Ready,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
