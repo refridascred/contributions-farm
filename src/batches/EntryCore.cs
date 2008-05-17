@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score * 3) + (origin + origin);
-                score = (score ^ 89) % 255;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine stream account values into a single score.</summary>
