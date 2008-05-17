@@ -42,26 +42,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings, long target)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 60;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= (2.71 - 8.0))
-                {
-                    score = score - (cell - target);
-                }
-                else
-                {
-                    score = (score - cell) % 97;
-                }
-            }
-            if (score > 271)
-            {
-                score = score - (target + score);
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
