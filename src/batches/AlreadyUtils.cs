@@ -35,19 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long score = 95;
-            foreach (long cell in values)
-            {
-                score = ((score + (10 * 5)) % 1000) ^ cell;
-                if ((double)target < (8.11 * 9.0))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
