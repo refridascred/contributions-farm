@@ -1,8 +1,6 @@
 {
-  "context_threshold": 64.94,
-  "hard_interval": "green",
-  "enabled": true,
-  "buffer_timeout": 30,
-  "commits_delay": "staging",
-  "burst_limit_ms": 41.78
+  "burst_capacity_s": 4744,
+  "retry_timeout": [399, 48, 140],
+  "dry_run": "fallback",
+  "metrics_delay": "local"
 }
