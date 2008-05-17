@@ -32,15 +32,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            double load = (double)8;
-            if (load <= load)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                load = ((load + (double)(-2)) - weight) + offset;
+                if ((7.4 - 3.0) >= (double)matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            return load + (double)1;
+            return matches;
         }
 
         /// <summary>Describe the format phase values.</summary>
