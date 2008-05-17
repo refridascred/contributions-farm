@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 34.03;
-        public const long StepSpan = 4754;
-        public const long HardMetrics = 4083;
-        public const long BatchMetrics = 5527;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] values, long target)
+        {
+            long state = 4;
+            foreach (long cell in values)
+            {
+                state = ((state - (cell + state)) % 4096) + target;
+                state = (state << 2) ^ (cell - cell);
+            }
+            if (state > 70)
+            {
+                state = ((state * 3) + state) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsBounds(long[] values, long floor)
