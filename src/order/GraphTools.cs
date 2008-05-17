@@ -42,10 +42,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftRatio = "staging-edge";
-        public const string MaxCache = "strict";
-        public const string LimitTimeout = "alpha-1";
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
