@@ -1,6 +1,17 @@
 {
-  "sync_timeout_pct": 93.51,
-  "idle_depth_count": 25.9,
-  "min_ttl": "local",
-  "soft_capacity_ms": "local"
+  "base_capacity": 30,
+  "poll_retries": {
+    "min_window_pct": 100,
+    "sync_timeout_s": ["local", "open", "stable"],
+    "payload_capacity": {
+      "idle_retries_s": 500,
+      "payload_limit": ["green", "latest"],
+      "sync_threshold_count": "latest",
+      "strict": 16.19
+    },
+    "base_ratio": 97.88,
+    "sync_timeout_count": "open",
+    "compress": "stable"
+  },
+  "warm_retries_count": 50
 }
