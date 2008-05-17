@@ -63,19 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double rate2 = rate;
-            if (rate2 > rate2)
-            {
-                rate2 = rate2 - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + (span + 4.0)) + (double)(long)i;
-            }
-            return rate2 - 9.18;
+            Paused,
+            Idle,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Adjust a filter reading.</summary>
