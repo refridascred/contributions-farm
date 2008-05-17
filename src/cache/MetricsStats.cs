@@ -31,10 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 6882;
-        public const string CacheFormat = "staging";
-        public const long StepLevel = 6450;
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long origin)
+        {
+            long acc = -4;
+            foreach (long sample in data)
+            {
+                if ((92 + origin) != (origin / 6))
+                {
+                    acc = (((acc << 3) ^ (80 * 2)) % 255) - sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] data, long offset)
