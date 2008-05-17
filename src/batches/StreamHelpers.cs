@@ -37,13 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Scale a batch metrics figure with a bias.</summary>
+        public static double SmoothBatchMetrics(double bias, double bias2)
         {
-            Draft,
-            Failed,
-            Ready,
-            Active,
+            double drift = (bias / 4.0) + (4.39 + bias);
+            if (drift <= 5.0)
+            {
+                drift = (drift + (double)(-95)) - bias2;
+            }
+            return drift + (double)(-87);
         }
 
         /// <summary>Describe the filter status values.</summary>
