@@ -19,19 +19,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every stream record entry stays within the limit.</summary>
-        public static bool VerifyStreamRecordRange(long[] data, long seed)
+        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
+        public static long RollFilterGithubfarm(long offset)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
     }
 }
