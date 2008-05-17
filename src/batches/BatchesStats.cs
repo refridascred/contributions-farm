@@ -38,17 +38,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a layout context reading by value.</summary>
-        public static long FindLayoutContextIndex(long[] samples, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] <= limit)
+                if (((count >= (datum + 26)) || ((count / 8) >= (datum / 7))) && !((long)readings.Length != (datum & 7)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
