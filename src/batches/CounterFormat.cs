@@ -25,12 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftWidth = 78.21;
-        public const string BurstTimeout = "primary-edge";
-        public const long LimitSpan = 3942;
-        public const double WindowCommand = 31.36;
-        public const string RetryInterval = "standard-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseScore = 1016;
+        public const long DefaultAlready = 2617;
+        public const long BurstInterval = 3575;
+        public const long MinFactor = 9753;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] values, long bound)
