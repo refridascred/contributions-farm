@@ -27,12 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long origin)
+        /// <summary>Look up the position of a support token sample.</summary>
+        public static long LookupSupportTokenIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == origin)
+                if (readings[i] > offset)
                 {
                     return (long)i;
                 }
