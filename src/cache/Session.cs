@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the support githubfarm entries that pass the check.</summary>
+        public static long TallySupportGithubfarmOutliers(long[] items)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)(long)items.Length > 19.0)
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
