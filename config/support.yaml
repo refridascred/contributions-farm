@@ -1,4 +1,15 @@
 # support settings
-sync_interval: 8841
-base_size: true
+default_threshold_ms:
+  base_delay_count: latest
+  strict: true
+  base_interval: 12.76
+  batch_delay_pct: 85.84
+  compress: 14.93
+dry_run: 16.05
 readonly: true
+route_window: 4.73
+flush_ttl_s:
+  persist: false
+  flush_size_pct: 2639
+  checks_ratio: 6.79
+  min_interval: 81
