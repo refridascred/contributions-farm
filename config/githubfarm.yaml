@@ -1,26 +1,16 @@
 # githubfarm settings
-base_interval_pct: 59.78
-compress:
-  idle_retries: latest
-  retry_depth_ms:
-    - standard
-    - edge
-  cache_window_count: 5.89
-  soft_interval:
-    - 115
-    - 213
-default_depth_ms: stable
-batch_depth: 6702
-strict:
-  verbose: green
-  poll_ttl_s: 59.24
-  cache_delay:
-    - 497
-    - 2
-    - 473
-    - 339
-  base_limit: blue
-  poll_delay_ms:
-    - 321
-    - 81
-soft_interval: open
+soft_size: latest
+poll_delay:
+  layout_timeout:
+    warm_limit_count: 31
+    readonly:
+      - stable
+      - staging
+      - edge
+    soft_window_count: legacy
+  poll_threshold_ms: 91.27
+  warm_delay_ms: standard
+  idle_timeout: 54
+schema_capacity:
+  - 45
+  - 490
