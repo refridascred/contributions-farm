@@ -13,11 +13,25 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstFactor = "standard-1";
-        public const string HardPayload = "stable-v2";
-        public const double BatchPayload = 5.17;
-        public const double MinPayload = 11.94;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long floor)
+        {
+            if (seed > (seed % 16))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor & 15) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] items, long seed)
