@@ -1,5 +1,18 @@
 {
-  "min_retries": "latest",
-  "idle_threshold_s": [155, 172, 56],
-  "tools_retries": 16.36
+  "base_timeout_ms": {
+    "audit": "legacy",
+    "cache_threshold": ["stable", "edge", "stable", "blue"],
+    "compress": 65.15
+  },
+  "enabled": true,
+  "cache_ratio_s": 1024,
+  "account_delay": {
+    "min_window_pct": "open",
+    "strict": 250,
+    "burst_timeout_ms": 500,
+    "min_retries_count": "blue",
+    "base_limit": ["green", "edge", "standard"]
+  },
+  "compress": "open",
+  "stream_limit": 4339
 }
