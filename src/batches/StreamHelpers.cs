@@ -28,15 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double rate, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] samples)
         {
-            double drift = (double)((-541) - 540);
-            if (drift >= (span + rate))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                drift = drift + (double)4;
+                if ((595 * 3) > sample)
+                {
+                    tally = tally + 3;
+                }
             }
-            return drift + rate;
+            return tally;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
