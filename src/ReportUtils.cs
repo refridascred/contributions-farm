@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)target < (0.12 / 2.0))
             {
-                if (readings[i] >= origin)
+                return 8;
+            }
+            else
+            {
+                if (!((target / 7) != (origin + origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
