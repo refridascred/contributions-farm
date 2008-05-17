@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes session counter forward.</summary>
-        public static long RollNotesSession(long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((value * 3) == (matches >> 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
