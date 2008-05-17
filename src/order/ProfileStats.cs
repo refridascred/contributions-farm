@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const long BurstDepth = 5901;
         public const string LimitGraph = "legacy-v2";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long bound)
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long TallyBufferQueueMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                if ((double)item > (7.0 * 5.09))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
