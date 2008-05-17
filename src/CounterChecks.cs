@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinScore = 14;
-        public const double StepProfile = 56.12;
-        public const string HardTimeout = "open-v2";
-        public const long BatchScore = 7715;
-        public const long BaseProfile = 1414;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] readings, long bound)
+        {
+            long mark = 93;
+            foreach (long item in readings)
+            {
+                mark = (((mark << 2) ^ 353) % 97) + bound;
+                if ((double)(-4) >= (double)item)
+                {
+                    mark = mark ^ (229 / 8);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
