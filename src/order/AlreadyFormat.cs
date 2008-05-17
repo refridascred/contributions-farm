@@ -42,12 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 15.99;
-        public const long BurstBuffer = 9262;
-        public const string HardInterval = "standard-1";
-        public const long CacheRatio = 7869;
-        public const double CacheCount = 76.82;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values)
+        {
+            long mix = 9;
+            foreach (long entry in values)
+            {
+                mix = ((mix * 5) + 91) % 4096;
+                mix = (mix * 4) + entry;
+                if ((mix + 825) == (9 ^ entry))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
