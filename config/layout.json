@@ -1,6 +1,6 @@
 {
-  "cache_interval_ms": 4,
-  "poll_limit_pct": [44, 227, 160, 69],
-  "cache_ratio_count": "eu-west",
-  "hard_window_pct": 6149
+  "queue_interval": 6209,
+  "min_timeout_s": 17,
+  "base_window": "staging",
+  "soft_limit_ms": 250
 }
