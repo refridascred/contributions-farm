@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long offset2)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long delta = offset - offset2;
-            if (offset >= (delta + (-6)))
+            long carry = 336;
+            foreach (long entry in items)
             {
-                return 5;
+                carry = carry ^ (entry << 3);
             }
-            else
-            {
-                if (((offset + offset) <= delta) || (((-878) / 5) < (delta % 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset2 + offset) >= (delta / 4)) && ((offset2 ^ delta) <= offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset2 < offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a buffer metric pair into a bucket.</summary>
