@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every batch session entry stays within the limit.</summary>
-        public static bool ValidateBatchSessionLimits(long[] data, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long limit)
         {
             bool ready = true;
-            foreach (long value in data)
+            foreach (long entry in samples)
             {
-                if (value >= limit)
+                if (entry <= limit)
                 {
                     ready = false;
                     break;
