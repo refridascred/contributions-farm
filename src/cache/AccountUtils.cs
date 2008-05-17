@@ -27,31 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command queue input into a small class.</summary>
-        public static long ClassifyCommandQueue(long step, long target)
-        {
-            if ((target ^ 9) <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step << 2) > target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step >= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 8771;
+        public const long IdleWidth = 9324;
+        public const long SoftOrder = 1259;
     }
 }
