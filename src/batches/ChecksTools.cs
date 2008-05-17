@@ -22,10 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 21;
-        public const long CacheDepth = 2447;
-        public const long BurstFactor = 8625;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long offset)
+        {
+            if ((double)origin < 0.3)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset % 97) < (316 + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ origin) > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
