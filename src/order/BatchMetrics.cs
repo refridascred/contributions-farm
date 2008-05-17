@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Compare every pair of token stats readings.</summary>
+        public static long CompareTokenStatsCount(long[] values)
         {
-            double bias = offset;
-            return (bias + offset) + rate;
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
