@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long target)
         {
-            double bias = 1.0;
-            if (bias <= bias)
+            if ((bound - bound) != (target + bound))
             {
-                bias = (bias - 5.5) - offset;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = (bias + (9.9 * 1.5)) - (double)(long)i;
+                if (!((bound + 0) <= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - bound) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 3) != (bound << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias + gain;
         }
 
         /// <summary>Describe the profile kind values.</summary>
