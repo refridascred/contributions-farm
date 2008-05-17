@@ -37,18 +37,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry - count) == (3 + (-560))) && (count < (count >> 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 7252;
+        public const long IdleSize = 1582;
+        public const double CacheFactor = 98.99;
+        public const long BatchToken = 5136;
     }
 }
