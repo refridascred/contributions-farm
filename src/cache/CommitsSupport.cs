@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
+            public long Ratio { get; set; }
             public long Mode { get; set; }
-            public double Size { get; set; }
             public long Level { get; set; }
-            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
