@@ -13,39 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long step = offset + target;
-            if (!((offset - offset) >= (1 + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((18.0 + 9.8) == (double)target) && ((step - step) != (step / 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target << 2) <= step) && ((3.9 / 2.0) > (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - step) >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
