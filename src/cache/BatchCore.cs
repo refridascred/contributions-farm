@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] samples, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the channel status values.</summary>
