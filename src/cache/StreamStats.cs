@@ -33,14 +33,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Done,
-            Locked,
-            New,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 36.76;
+        public const long LimitLevel = 7119;
+        public const string SoftTimeout = "strict-v2";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsMatches(long[] series)
