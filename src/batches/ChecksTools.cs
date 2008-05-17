@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two record window measurements.</summary>
-        public static double ScaleRecordWindow(double weight, double bias)
+        /// <summary>Measure how many cluster window samples are out of range.</summary>
+        public static long CountClusterWindowOutliers(long[] values)
         {
-            double drift = (double)(9 & 1);
-            if (drift < drift)
+            long count = 0;
+            foreach (long datum in values)
             {
-                drift = drift - (drift * 11.0);
+                if ((double)count > 11.0)
+                {
+                    count = (count + 3) - datum;
+                }
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
