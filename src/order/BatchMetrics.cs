@@ -37,11 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7822;
-        public const double SoftFactor = 48.3;
-        public const long SoftRatio = 6619;
-        public const double SoftTools = 38.48;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Active,
+            Locked,
+            New,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
