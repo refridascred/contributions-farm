@@ -38,19 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool ValidateMetricCommitsRange(long[] readings, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Pending,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
