@@ -29,15 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next command queue value from a seed.</summary>
-        public static long DeriveCommandQueue(long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a layout context reading by value.</summary>
