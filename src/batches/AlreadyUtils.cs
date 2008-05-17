@@ -42,14 +42,11 @@ namespace Common.Utilities
         public const double DefaultEditor = 56.78;
         public const long CacheEditor = 4793;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            New,
-            Dropped,
-            Queued,
-            Closed,
-            Idle,
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
