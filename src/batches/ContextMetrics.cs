@@ -40,21 +40,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Compare every pair of cache metric readings.</summary>
+        public static long PairCacheMetricCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 16)
+                    if ((readings[i] - readings[j]) > 13)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
