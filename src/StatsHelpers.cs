@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const double CacheWidth = 25.2;
         public const string DefaultQueue = "open-1";
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long offset, long origin)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            if ((offset + offset) == (origin + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((9.81 + 6.9) != (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin + 957) <= ((-758) / 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
