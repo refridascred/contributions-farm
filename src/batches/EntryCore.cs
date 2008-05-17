@@ -39,13 +39,17 @@ namespace Common.Utilities
             return weight - (bias2 * 0.3);
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Locate a contributi farm reading by value.</summary>
+        public static long FindContributiFarmIndex(long[] readings, long origin)
         {
-            Failed,
-            Closed,
-            Locked,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter header.</summary>
