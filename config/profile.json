@@ -1,11 +1,7 @@
 {
-  "graph_window": 6398,
-  "strict": {
-    "poll_limit_s": false,
-    "base_limit_s": 24,
-    "session_timeout": "blue",
-    "readonly": 51.77
-  },
-  "min_window_s": ["green", "fallback", "standard"],
-  "audit": false
+  "burst_window": 75.06,
+  "tools_ttl": 4137,
+  "cache_limit": 7197,
+  "sync_capacity_pct": [300, 269],
+  "batch_interval_ms": 72.18
 }
