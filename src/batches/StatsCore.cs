@@ -31,13 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            Stale,
-            Paused,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum < 16)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
