@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] readings)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((((matches + matches) >= sample) || ((sample >> 1) == (sample ^ matches))) && (matches > (sample + matches)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
