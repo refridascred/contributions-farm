@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 5180;
-        public const long CacheFormat = 368;
-        public const long IdleScore = 9636;
-        public const long BurstInterval = 7853;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 34.03;
+        public const long StepSpan = 4754;
+        public const long HardMetrics = 4083;
+        public const long BatchMetrics = 5527;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchRoute = 6081;
