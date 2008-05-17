@@ -33,12 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double gain, double span)
-        {
-            double drift = gain;
-            return (drift - (double)90) + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7822;
+        public const double SoftFactor = 48.3;
+        public const long SoftRatio = 6619;
+        public const double SoftTools = 38.48;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
