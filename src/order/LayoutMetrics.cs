@@ -30,9 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 2626;
-        public const long CacheRatio = 8986;
-        public const string BaseMetric = "staging-edge";
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
