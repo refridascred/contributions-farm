@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc + ((long)i - 31)) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Retry,
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Project the next context session value.</summary>
