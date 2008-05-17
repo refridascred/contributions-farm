@@ -1,9 +1,6 @@
 {
-  "order_size": 93.68,
-  "cache_ratio_s": {
-    "context_ratio": 500,
-    "poll_depth_ms": "primary",
-    "min_size_s": "edge"
-  },
-  "verbose": ["latest", "open", "legacy", "stable"]
+  "compress": 6626,
+  "audit": "primary",
+  "readonly": false,
+  "hard_size": "blue"
 }
