@@ -14,21 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of stats route readings.</summary>
-        public static long OverlapStatsRouteCount(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
