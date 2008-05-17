@@ -81,12 +81,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample >= (6.7 / 4.0)) || (((tally << 1) >= 8) && ((3.0 + 0.4) >= (6.6 * 10.0))))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
     }
 }
