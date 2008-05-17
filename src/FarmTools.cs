@@ -38,18 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] readings, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((seen < (cell - 563)) || ((cell + seen) > (cell / 7))) && (((cell - seen) < (seen - seen)) && ((3.99 / 8.0) > (double)cell)))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Done,
         }
     }
 }
