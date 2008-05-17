@@ -32,15 +32,13 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
