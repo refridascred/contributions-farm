@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Rank cache schema input into a small class.</summary>
+        public static long BucketCacheSchema(long target, long bound)
         {
-            double ratio = weight;
-            if (ratio < (double)18)
+            long diff = target + bound;
+            if (target >= (target + 1))
             {
-                ratio = ratio - (double)(-682);
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio - (5.72 - bias)) + (double)(long)i;
+                if ((target - diff) >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return ratio + (double)343;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
