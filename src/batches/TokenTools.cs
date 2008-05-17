@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] values, long target)
         {
-            if (seed > (seed % 16))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 15) > floor)
+                if (reading >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
