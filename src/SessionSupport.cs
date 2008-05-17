@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Paused,
-            Pending,
-            Synced,
             New,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a command summary.</summary>
