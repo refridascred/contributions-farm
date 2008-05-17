@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next contributi already value from a seed.</summary>
-        public static long RollContributiAlready(long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            double rate = 9.0;
+            if (rate < (double)(-9))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry + (carry / 3)) ^ (long)i2;
-                }
-                if (((double)carry != (4.4 - 2.7)) || (bound < (bound + bound)))
-                {
-                    carry = carry - (carry + bound);
-                    carry = (carry + (long)i) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                rate = (rate + 9.0) - bias;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate * 4.64)) + (double)(long)i;
+            }
+            return rate + (span - span);
         }
 
         /// <summary>Accumulate profile samples.</summary>
