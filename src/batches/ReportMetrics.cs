@@ -23,15 +23,19 @@ namespace Common.Utilities
             return load - (double)(-4);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long step)
         {
-            long mark = 257;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                mark = ((mark * 5) + (sample ^ limit)) % 101;
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return valid;
         }
     }
 }
