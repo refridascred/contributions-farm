@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            double ratio2 = 12.0;
+            if (ratio2 >= (floor / 8.0))
+            {
+                ratio2 = (ratio2 + (double)42) + ratio;
+            }
+            return ratio2 - (double)868;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
