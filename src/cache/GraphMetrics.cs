@@ -23,12 +23,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleSize = 19.98;
-        public const double WindowCounter = 7.78;
-        public const double StepFactor = 27.42;
-        public const string StepCounter = "open-edge";
-        public const long MaxCounter = 9721;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items)
+        {
+            long result = 318;
+            foreach (long sample in items)
+            {
+                result = (result << 2) ^ (sample / 5);
+            }
+            return result;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double weight, double offset)
