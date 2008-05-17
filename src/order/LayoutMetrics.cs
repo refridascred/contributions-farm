@@ -19,31 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            if ((limit + limit) >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 5) >= (limit % 60))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.74 - 1.83) >= (11.0 + 8.3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double bias = rate;
+            return (bias - (double)6) + offset;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
