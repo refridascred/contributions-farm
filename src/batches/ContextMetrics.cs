@@ -53,23 +53,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double load = bias;
-            if (load <= (double)70)
-            {
-                load = (load + (load * 20.0)) + rate;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)3) - (double)(long)i;
-            }
-            return load - load;
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
