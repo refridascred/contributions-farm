@@ -17,23 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((seed * 4) <= (score + score))
-                {
-                    score = score - (long)i;
-                }
-                else
-                {
-                    score = (score ^ ((long)i + score)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Retry,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
