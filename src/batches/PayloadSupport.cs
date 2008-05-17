@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long HardInterval = 2440;
         public const string IdleCount = "legacy";
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit stats contributi readings against a rule.</summary>
+        public static long AuditStatsContributiMatches(long[] series, long seed)
         {
-            Paused,
-            Draft,
-            Idle,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches >> 3) <= 703)
+                {
+                    matches = ((matches + 1) - cell) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
