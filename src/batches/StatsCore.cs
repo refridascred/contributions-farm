@@ -51,15 +51,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long seed)
         {
-            double rate2 = bias;
-            if (rate2 > rate)
+            if ((seed >> 2) > ((-4) - seed))
             {
-                rate2 = rate2 - (bias * 2.2);
+                return 6;
             }
-            return rate2 - (rate - rate);
+            else
+            {
+                if (limit <= (95 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
