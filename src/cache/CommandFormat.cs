@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double floor)
-        {
-            double weight = (double)(1 - 35);
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight + (rate - weight)) - (double)(long)i) + floor;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 5460;
+        public const long MinChecks = 5602;
+        public const long SoftCount = 1150;
+        public const long BaseInterval = 1068;
+        public const long MaxInterval = 4324;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "primary-1";
