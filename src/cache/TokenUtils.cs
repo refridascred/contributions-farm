@@ -29,31 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if ((bound + step) > (77 + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step == (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (19.0 >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Ready,
+            Draft,
+            Queued,
         }
     }
 }
