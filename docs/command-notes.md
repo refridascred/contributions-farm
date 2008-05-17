@@ -1,12 +1,14 @@
 # Command notes
 
-Run the metric check before changing any profile limits.
-The command module keeps contributi values in sync with the account cache.
-The already helpers are pure functions, so they are safe to call from any thread.
+Run the queue check before changing any record limits.
+Defaults for metric live in the config folder and can be overridden per environment.
+
+Each token is validated before it reaches the counter queue.
+Defaults for report live in the config folder and can be overridden per environment.
+The stats report groups every buffer by queue.
 
 ## Guidelines
 
-- Log every commits change
-- Prefer batches defaults
-- Review payload limits each release
-- Validate support input early
+- Keep graph values small
+- Validate profile input early
+- Prefer record defaults
