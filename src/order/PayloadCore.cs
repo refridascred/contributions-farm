@@ -40,15 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = 1;
+            foreach (long datum in samples)
             {
-                state = ((state * 2) + (long)i) % 97;
+                acc = (acc - (datum - 70)) % 97;
             }
-            return state;
+            if (acc > 92)
+            {
+                acc = (acc * 2) + (270 % 97);
+            }
+            return acc % 97;
         }
     }
 }
