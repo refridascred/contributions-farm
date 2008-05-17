@@ -1,13 +1,6 @@
 {
-  "flush_size": [20, 411, 148],
-  "flush_timeout_count": [30, 446],
-  "default_interval": "fallback",
-  "queue_ratio": "open",
-  "order_size": "stable",
-  "buffer_capacity": {
-    "soft_threshold_ms": "standard",
-    "verbose": "blue",
-    "compress": 11.88,
-    "enabled": "strict"
-  }
+  "warm_timeout": [356, 192],
+  "compress": false,
+  "default_capacity_ms": "latest",
+  "editor_limit": 29.54
 }
