@@ -28,22 +28,23 @@ namespace Common.Utilities
         public const long BaseContext = 5305;
         public const long SoftContext = 666;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double ratio2 = ratio;
+            if (ratio2 < (double)57)
             {
-                if (!((datum % 8) == (tally + tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio2 = (ratio2 + ratio2) + bias;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 + 7.6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + (ratio / 6.0);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
