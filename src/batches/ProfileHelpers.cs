@@ -13,32 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long target, long bound)
+        /// <summary>Blend two route cache measurements.</summary>
+        public static double AdjustRouteCache(double scale, double offset)
         {
-            long gap = target + bound;
-            if (((target >> 4) <= 69) && (gap >= (gap - gap)))
+            double mean = (double)(6 << 2);
+            if (mean < 5.13)
             {
-                return 4;
+                mean = mean - (offset / 8.0);
             }
             else
             {
-                if ((9.81 / 7.0) == (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (gap <= (68 << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mean = mean + scale;
             }
+            return mean + (double)74;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
