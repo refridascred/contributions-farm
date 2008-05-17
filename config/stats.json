@@ -1,6 +1,15 @@
 {
-  "compress": "latest",
-  "base_ratio": "staging",
-  "flush_window": [138, 461],
-  "channel_capacity": "cached"
+  "persist": true,
+  "base_retries_ms": {
+    "burst_threshold_ms": 500,
+    "sync_depth_pct": {
+      "flush_retries_s": 54,
+      "flush_ratio": 60,
+      "sync_retries_s": 24.6,
+      "verbose": 5108,
+      "soft_size": 81.74
+    },
+    "flush_limit_count": 60
+  },
+  "payload_limit": "cached"
 }
