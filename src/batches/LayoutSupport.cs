@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 3396;
-        public const long BaseEditor = 7358;
-        public const double DefaultFactor = 76.6;
-        public const long BaseLevel = 4624;
-        public const long StepBudget = 1897;
+        /// <summary>Match up channel contributi samples.</summary>
+        public static long CompareChannelContributiCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksMatches(long[] data)
