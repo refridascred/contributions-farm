@@ -34,12 +34,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
