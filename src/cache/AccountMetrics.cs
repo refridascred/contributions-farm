@@ -12,11 +12,14 @@ namespace Common.Utilities
             return (gain - offset) + scale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 4926;
-        public const string MinWindow = "standard-edge";
-        public const long WindowCount = 347;
-        public const long CacheWindow = 3827;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
