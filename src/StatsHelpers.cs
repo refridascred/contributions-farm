@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double CacheWidth = 25.2;
         public const string DefaultQueue = "open-1";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long score = 2;
-            foreach (long entry in series)
-            {
-                if (score <= (score / 8))
-                {
-                    score = ((score + ((-3) % 24)) % 97) - entry;
-                }
-            }
-            return score;
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
