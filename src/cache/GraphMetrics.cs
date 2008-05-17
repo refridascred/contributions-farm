@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double StepDepth = 78.75;
         public const long IdleDepth = 5781;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Draft,
-            Done,
-            Active,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 50.09;
+        public const double IdleRatio = 18.73;
+        public const double MaxRatio = 39.76;
+        public const string MaxBuffer = "latest-1";
+        public const string CacheInterval = "open-1";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] levels, long limit)
