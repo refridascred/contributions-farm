@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 4473;
-        public const double RetryBudget = 20.07;
-        public const string MaxRatio = "alpha-v2";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)(long)readings.Length > (double)(-72))
+                {
+                    matches = ((matches + 1) - cell) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two cache metric measurements.</summary>
         public static double ScaleCacheMetric(double ratio, double span)
