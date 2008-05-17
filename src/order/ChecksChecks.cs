@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double drift = span;
+            if (drift >= (drift / 3.0))
             {
-                if ((8.7 + 9.0) != (double)cell)
-                {
-                    count = count + 3;
-                }
+                drift = drift - (double)11;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (rate * 2.9)) + (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Describe the commits mode values.</summary>
