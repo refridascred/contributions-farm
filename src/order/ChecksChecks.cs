@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const long MinCache = 3987;
         public const long BaseCache = 6426;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings, long limit)
-        {
-            long sum = 6;
-            foreach (long value in readings)
-            {
-                sum = (((sum + (sum % 64)) % 1000) + value) + limit;
-            }
-            if (sum < 581)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxTimeout = 475;
+        public const long CacheRatio = 3222;
+        public const string HardBuffer = "fallback";
+        public const string LimitBuffer = "cached-v2";
+        public const long BurstSize = 2989;
     }
 }
