@@ -47,18 +47,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long CountOrderPayloadHits(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((19.0 / 8.0) <= (double)sample)
-                {
-                    matches = matches + 2;
-                }
+                mark = ((mark << 3) ^ step) % 97;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
