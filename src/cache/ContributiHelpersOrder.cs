@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Check that every layout batches entry stays within the limit.</summary>
+        public static bool VerifyLayoutBatchesRange(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
