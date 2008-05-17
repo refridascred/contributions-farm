@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const long MaxCount = 4197;
         public const string CacheDepth = "fallback";
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series, long seed)
         {
-            Locked,
-            Closed,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((((seed * 2) < seed) || ((value + seen) != (value + value))) && ((double)seed <= (9.8 * 5.7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
