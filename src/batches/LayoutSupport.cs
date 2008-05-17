@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double scale = bias;
-            return (scale + 6.0) + offset;
+            Synced,
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Match up channel contributi samples.</summary>
