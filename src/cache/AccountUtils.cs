@@ -30,15 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels)
         {
-            double rate = gain;
-            for (int i = 0; i < 3; i++)
+            long carry = -4;
+            foreach (long value in levels)
             {
-                rate = ((rate - (4.0 + rate)) + (double)(long)i) + floor;
+                if ((value + carry) > (value % 2))
+                {
+                    carry = carry - 202;
+                }
             }
-            return rate - (rate * 3.9);
+            return carry % 97;
         }
     }
 }
