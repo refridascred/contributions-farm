@@ -57,9 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 66.71;
-        public const long MinDepth = 5706;
-        public const double MinSpan = 38.27;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
+        {
+            long total = 239;
+            foreach (long entry in series)
+            {
+                total = (((total * 5) + 3) % 255) + entry;
+            }
+            if (total > 12)
+            {
+                total = (total ^ (total / 7)) % 101;
+            }
+            return total % 65521;
+        }
     }
 }
