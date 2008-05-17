@@ -39,19 +39,14 @@ namespace Common.Utilities
             return mean + (9.0 - 2.22);
         }
 
-        /// <summary>Scale a farm context figure with a bias.</summary>
-        public static double BlendFarmContext(double weight, double floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double rate = (double)(30 ^ (-506));
-            if (rate < (rate / 7.0))
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (weight + rate)) + (double)(long)i;
-            }
-            return rate - floor;
+            Pending,
+            Paused,
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
