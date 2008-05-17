@@ -35,19 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((offset + offset) > (tally & 7)))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "strict-v2";
+        public const double IdleBudget = 95.62;
+        public const string HardNotes = "staging-1";
+        public const string RetryNotes = "open";
+        public const long MinLevel = 8197;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultWidth = 5374;
