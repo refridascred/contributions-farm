@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter commits samples.</summary>
-        public static long FoldCounterCommits(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = 63;
-            foreach (long item in levels)
-            {
-                mix = mix + item;
-                if ((51 + 13) <= (mix - item))
-                {
-                    mix = (mix << 2) ^ (mix / 9);
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
