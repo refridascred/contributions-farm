@@ -27,10 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 72.02;
-        public const string DefaultGraph = "open-edge";
-        public const double LimitInterval = 51.48;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long bound)
