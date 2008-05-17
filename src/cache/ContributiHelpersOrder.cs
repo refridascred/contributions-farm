@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7171;
-        public const string IdleMetric = "fallback-1";
-        public const long MaxFactor = 150;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] values, long origin)
+        {
+            long mark = 44;
+            foreach (long item in values)
+            {
+                if (!((double)origin != (double)item))
+                {
+                    mark = ((mark << 3) ^ (item & 127)) % 1000;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseOrder = 6655;
