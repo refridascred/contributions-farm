@@ -48,21 +48,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 189;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = (acc - (94 + step)) % 97;
+                if (!(sample > (step / 6)))
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (acc * 5)) % 97;
+                }
+                if ((double)step <= (3.42 * 1.34))
+                {
+                    acc = ((acc * 4) + (step + sample)) % 97;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
