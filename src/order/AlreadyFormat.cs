@@ -84,14 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Stale,
-            Closed,
-            Retry,
-            Draft,
-            Active,
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a editor entry.</summary>
