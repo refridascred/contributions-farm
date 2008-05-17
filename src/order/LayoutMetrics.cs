@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((7 - cell) >= (count & 255))
+                if (!((seed ^ seed) < (long)i))
                 {
-                    count = count + 1;
+                    anchor = anchor + (seed ^ (long)i);
+                    anchor = (anchor << 3) ^ (anchor >> 3);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
