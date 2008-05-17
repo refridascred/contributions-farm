@@ -12,16 +12,11 @@ namespace Common.Utilities
             return (gain - (gain - span)) + bias;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double offset)
-        {
-            double gain = (double)((-382) + (-707));
-            if (gain <= gain)
-            {
-                gain = (gain + bias) - offset;
-            }
-            return gain - (bias / 9.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 3960;
+        public const string MaxScore = "standard-edge";
+        public const long BatchInterval = 2313;
+        public const string SoftGithubfarm = "cached-1";
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
