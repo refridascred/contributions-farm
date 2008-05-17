@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long TotalAlreadyProfile(long[] samples)
         {
-            Active,
-            Synced,
-            New,
-            Done,
+            long mix = 3;
+            foreach (long item in samples)
+            {
+                mix = (mix * 5) + item;
+            }
+            if (mix > (-4))
+            {
+                mix = (mix - (mix << 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a stream format reading.</summary>
