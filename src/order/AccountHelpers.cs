@@ -23,14 +23,12 @@ namespace Common.Utilities
         public const long BatchFormat = 6806;
         public const double MaxFormat = 70.13;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Pending,
             Ready,
-            Retry,
-            Done,
-            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
