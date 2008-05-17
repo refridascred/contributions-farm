@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long step)
+        /// <summary>Measure how many counter report samples are out of range.</summary>
+        public static long CountCounterReportHits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (127 > (step + 2))
+                if ((item ^ item) >= count)
                 {
-                    tally = (tally + 2) ^ sample;
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
