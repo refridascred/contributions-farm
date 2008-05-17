@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm stats readings.</summary>
-        public static long CompareGithubfarmStatsCount(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 986;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)carry == (6.79 * 1.9)) || ((value + value) >= (carry + bound)))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry << 2) ^ carry) % 65521;
                 }
             }
-            return seen;
+            if (carry < 23)
+            {
+                carry = ((carry * 5) + ((-67) & 31)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
