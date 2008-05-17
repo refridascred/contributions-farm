@@ -52,21 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
