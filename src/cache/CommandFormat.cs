@@ -30,18 +30,11 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Locate a layout counter reading by value.</summary>
-        public static long FindLayoutCounterIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "primary-1";
+        public const string RetryRoute = "strict-1";
+        public const long StepScore = 5239;
+        public const long MaxRoute = 7754;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long target)
