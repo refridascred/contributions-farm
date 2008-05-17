@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] data, long step)
+        /// <summary>Audit schema githubfarm readings against a rule.</summary>
+        public static long AuditSchemaGithubfarmOutliers(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (datum != step)
+                if ((double)item >= (double)96)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of commits editor entries.</summary>
