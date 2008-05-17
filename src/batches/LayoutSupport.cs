@@ -42,10 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 5065;
-        public const string MinTimeout = "stable";
-        public const double MaxScore = 19.95;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
