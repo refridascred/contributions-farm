@@ -41,11 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 4763;
-        public const double CacheCounter = 91.46;
-        public const double HardCounter = 8.69;
-        public const long IdleBudget = 7378;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
