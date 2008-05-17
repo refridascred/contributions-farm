@@ -43,18 +43,15 @@ namespace Common.Utilities
             return bias + (bias * 0.75);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)cell <= (0.1 + 3.0)) && ((double)tally <= (double)cell))
-                {
-                    tally = tally + 1;
-                }
+                mean = ((mean - mean) - (double)(long)i) + offset;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Hold a metrics header.</summary>
