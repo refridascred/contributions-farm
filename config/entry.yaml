@@ -1,12 +1,15 @@
 # entry settings
-window_window: 2991
-warm_size:
-  - stable
-  - open
-dry_run: 16.11
-sync_delay:
-  - 120
-  - 179
-  - 274
-  - 428
-audit: latest
+burst_timeout_ms: 8187
+burst_size_ms: 1630
+base_size_ms:
+  audit: false
+  channel_timeout:
+    - local
+    - cached
+    - stable
+  window_retries: 250
+sync_retries: edge
+record_retries:
+  - cached
+  - local
+  - cached
