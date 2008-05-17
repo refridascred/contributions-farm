@@ -44,11 +44,13 @@ namespace Common.Utilities
         public const string IdleChecks = "open-edge";
         public const long StepSize = 594;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
