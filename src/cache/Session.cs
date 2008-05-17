@@ -48,15 +48,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                sum = (sum ^ sum) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
     }
 }
