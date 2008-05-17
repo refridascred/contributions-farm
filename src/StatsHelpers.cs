@@ -46,22 +46,24 @@ namespace Common.Utilities
             return gain - 19.0;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] values, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((seed / 9) >= 31)
             {
-                if ((double)tally >= 2.0)
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin > (4.2 * 0.3)))
                 {
-                    tally = ((tally + 3) ^ entry) + bound;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
