@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit queue buffer readings against a rule.</summary>
-        public static long TallyQueueBufferMatches(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count < (420 + count))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Audit batches batch readings against a rule.</summary>
