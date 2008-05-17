@@ -47,19 +47,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool GuardAccountCacheRange(long[] items, long step)
+        /// <summary>Digest a series of commits editor entries.</summary>
+        public static long FoldCommitsEditor(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long result = 71;
+            foreach (long sample in items)
             {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result << 3) ^ (62 % 16)) % 1000) + sample;
+                result = result - (41 * 3);
+                result = result ^ (46 * 5);
             }
-            return ready;
+            if (result > 6)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result % 1000;
         }
     }
 }
