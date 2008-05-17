@@ -35,19 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every batch tools entry stays within the limit.</summary>
-        public static bool CheckBatchToolsLimits(long[] readings, long bound)
+        /// <summary>Fold a list of context cache readings.</summary>
+        public static long WeighContextCache(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if (entry <= bound)
+                if ((double)(long)readings.Length < 4.8)
                 {
-                    stale = false;
-                    break;
+                    state = ((state << 2) ^ (sample ^ state)) % 101;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Fold a list of batch schema readings.</summary>
