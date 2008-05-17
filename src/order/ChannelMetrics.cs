@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            double ratio2 = 12.0;
-            if (ratio2 >= (floor / 8.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = (ratio2 + (double)42) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio2 - (double)868;
+            return seen;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
