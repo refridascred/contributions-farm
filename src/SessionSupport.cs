@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Blend two order already measurements.</summary>
+        public static double AdjustOrderAlready(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = bias;
+            if (weight > weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + 9.0;
             }
-            return hits;
+            else
+            {
+                weight = weight - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (bias * 1.27)) - (double)(long)i;
+            }
+            return weight + (double)(-4);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
