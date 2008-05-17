@@ -1,5 +1,18 @@
 {
-  "max_interval_pct": 60,
-  "poll_interval_ms": 5805,
-  "context_limit": 89
+  "token_interval": 1024,
+  "enabled": "local",
+  "audit": true,
+  "base_depth_ms": "edge",
+  "command_capacity": {
+    "record_retries": 21.92,
+    "default_ratio_ms": 4116,
+    "idle_ratio_s": [371, 252],
+    "soft_depth_pct": 21.61,
+    "verbose": {
+      "stats_threshold": ["blue", "staging", "legacy"],
+      "warm_timeout_pct": "staging",
+      "warm_capacity_ms": 500,
+      "min_delay_ms": "open"
+    }
+  }
 }
