@@ -19,26 +19,19 @@ namespace Common.Utilities
         public const double BatchRatio = 61.16;
         public const long BurstBuffer = 8841;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings, long limit)
         {
-            long total = -7;
-            foreach (long sample in values)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                if (((20.0 / 8.0) >= (double)floor) && ((double)total <= (double)floor))
-                {
-                    total = (total + (sample / 3)) % 1000;
-                }
-                if ((sample - floor) != (floor / 4))
-                {
-                    total = total + (floor - 4);
-                }
-                if ((6 - total) > (sample - sample))
-                {
-                    break;
-                }
+                sum = (((sum + (sum % 64)) % 1000) + value) + limit;
             }
-            return total % 97;
+            if (sum < 581)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
