@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a stats farm sample.</summary>
-        public static long LookupStatsFarmIndex(long[] items, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == step)
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
