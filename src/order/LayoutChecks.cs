@@ -81,18 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] data, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (offset > 6)
+                if (sample <= offset)
                 {
-                    hits = (hits + 3) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
