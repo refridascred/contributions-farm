@@ -32,12 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 9525;
-        public const long RetryMetric = 5227;
-        public const long StepSpan = 5314;
-        public const long SoftWidth = 5836;
-        public const double BatchWidth = 5.68;
+        /// <summary>Find the first stream channel entry that matches the target.</summary>
+        public static long SeekStreamChannelIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] readings)
