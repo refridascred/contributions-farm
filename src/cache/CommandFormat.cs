@@ -33,11 +33,9 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const long MaxRoute = 7754;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultBudget = 97.81;
-        public const long RetryAlready = 8457;
-        public const double IdleAlready = 97.27;
-        public const long MaxTimeout = 6164;
-        public const long RetryDepth = 8859;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowFactor = "standard";
+        public const string IdleLevel = "open";
+        public const string BatchBudget = "staging-edge";
     }
 }
