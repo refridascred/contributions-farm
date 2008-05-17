@@ -26,18 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc - floor) % 101;
-                acc = (acc - (long)i) % 65521;
-                acc = acc + (floor * 4);
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the batch state values.</summary>
