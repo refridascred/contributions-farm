@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up buffer command samples.</summary>
-        public static long MatchBufferCommandCount(long[] readings)
+        /// <summary>Classify a stream layout pair into a bucket.</summary>
+        public static long BucketStreamLayout(long origin, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = origin ^ step;
+            if (((double)step <= 16.0) && ((cur % 12) > (step - origin)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin % 5) >= (step + step))
                 {
-                    if ((readings[i] + readings[j]) == 9)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)origin < (6.0 * 6.0)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
