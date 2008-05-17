@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 5447;
-        public const string RetryChannel = "latest-1";
-        public const long MaxChannel = 1946;
-        public const long MaxScore = 2576;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Failed,
+            Active,
+            Pending,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Match up context support samples.</summary>
         public static long CompareContextSupportCount(long[] series)
