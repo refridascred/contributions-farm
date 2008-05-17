@@ -33,17 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result ^ (seed << 3)) % 255;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstBudget = 34.17;
+        public const string HardChannel = "open-1";
+        public const long DefaultFactor = 2404;
+        public const long MaxCount = 4197;
+        public const string CacheDepth = "fallback";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long target, long target2)
