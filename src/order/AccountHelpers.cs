@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (bound < (46 / 6))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            double ratio = scale;
+            return (ratio - (14.0 / 3.0)) + span;
         }
 
         /// <summary>Describe the command class values.</summary>
