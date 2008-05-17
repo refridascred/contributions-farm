@@ -57,20 +57,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long target)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            if ((3.0 / 6.0) <= (double)seed)
             {
-                mix = ((mix * 5) + 91) % 4096;
-                mix = (mix * 4) + entry;
-                if ((mix + 825) == (9 ^ entry))
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (8.0 / 2.0))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (target < (target % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Describe the window kind values.</summary>
