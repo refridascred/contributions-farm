@@ -35,39 +35,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long seed, long origin)
+        /// <summary>Count the commits channel entries that pass the check.</summary>
+        public static long CountCommitsChannelHits(long[] values, long origin)
         {
-            long span = seed ^ origin;
-            if ((double)span < 6.0)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span + seed) >= (origin - origin))
+                if (!(reading < (origin * 4)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > (seed + span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((span * 2) <= (10 ^ origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
