@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of notes context readings.</summary>
-        public static long CompareNotesContextCount(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total - bound) % 1000) ^ (long)i2;
                 }
+                total = (total - (total * 2)) % 101;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a token summary.</summary>
