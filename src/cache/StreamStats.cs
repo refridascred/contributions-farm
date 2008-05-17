@@ -19,10 +19,12 @@ namespace Common.Utilities
         public const long RetryMetric = 7534;
         public const double BaseMetric = 19.25;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 36.76;
-        public const long LimitLevel = 7119;
-        public const string SoftTimeout = "strict-v2";
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long floor, long limit)
