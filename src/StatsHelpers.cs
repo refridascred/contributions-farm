@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = 6;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = (((carry * 5) + (datum ^ step)) % 255) ^ (long)i;
-                }
-                if ((datum + step) == (step + (long)series.Length))
-                {
-                    carry = (carry ^ step) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (datum ^ 104)) % 97;
-                }
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
