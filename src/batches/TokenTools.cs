@@ -23,12 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 53;
-        public const long RetryLevel = 625;
-        public const long BaseDepth = 2973;
-        public const long StepSession = 4555;
-        public const double HardDepth = 24.45;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Draft,
+            New,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesHits(long[] readings, long step)
