@@ -34,22 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Validate metric commits readings against a bound.</summary>
+        public static bool ValidateMetricCommitsRange(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (((value & 3) == (matches - 34)) || ((double)value != (17.0 - 1.11)))
+                if (entry < floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
