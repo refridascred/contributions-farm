@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Queued,
-            Retry,
-            New,
+            Done,
+            Ready,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
