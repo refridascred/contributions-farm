@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultInterval = 2004;
+        public const double BatchGraph = 44.3;
+        public const double SoftScore = 64.06;
+        public const string CacheDepth = "open-v2";
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
