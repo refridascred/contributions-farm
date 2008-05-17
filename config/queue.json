@@ -1,6 +1,6 @@
 {
-  "compress": 6626,
-  "audit": "primary",
-  "readonly": false,
-  "hard_size": "blue"
+  "tools_delay": 60,
+  "burst_interval_pct": 95,
+  "base_capacity_s": true,
+  "entry_interval": ["fallback", "fallback", "edge", "open"]
 }
