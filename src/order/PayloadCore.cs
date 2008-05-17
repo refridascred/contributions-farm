@@ -45,13 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((limit ^ limit) < (item ^ count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
