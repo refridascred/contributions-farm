@@ -1,7 +1,4 @@
 # support settings
-max_ratio_count: 2082
-order_window: primary
-default_ratio_s: stable
-record_interval: 60
-schema_capacity: 250
-stream_capacity: green
+flush_threshold_ms: 72.88
+compress: staging
+default_limit_s: latest
