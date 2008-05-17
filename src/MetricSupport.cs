@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long MinGraph = 7003;
         public const string MaxLevel = "primary";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels)
         {
-            long anchor = 27;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((datum - datum) >= datum) && ((5.71 + 11.0) == (double)anchor))
+                if ((7.0 + 12.0) != (double)item)
                 {
-                    anchor = ((anchor + (anchor * 2)) % 1000) - floor;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > 361)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a stream info.</summary>
