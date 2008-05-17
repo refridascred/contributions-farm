@@ -28,16 +28,15 @@ namespace Common.Utilities
             return weight2 + 9.0;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Combine tools metrics values into a single score.</summary>
+        public static long CombineToolsMetrics(long[] levels, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long total = 3;
+            foreach (long value in levels)
             {
-                sum = (sum - (sum + sum)) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
+                total = ((total - (value / 2)) % 101) - seed;
             }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
