@@ -36,11 +36,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double bias, double floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double mean = (double)(2 - 249);
-            return ((mean - (double)19) + bias) + floor;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate already checks samples.</summary>
