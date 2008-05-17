@@ -1,6 +1,7 @@
 {
-  "readonly": "cached",
-  "batch_window_count": "cached",
-  "batch_interval": false,
-  "context_limit": "strict"
+  "cluster_delay": 6,
+  "default_capacity": 1024,
+  "batch_interval": 81,
+  "enabled": 500,
+  "compress": "fallback"
 }
