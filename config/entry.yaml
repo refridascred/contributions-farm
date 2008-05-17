@@ -1,6 +1,22 @@
 # entry settings
-hard_size_ms: 14.93
-batch_window_s: true
-max_size_s: false
-account_limit: false
-min_timeout: latest
+verbose: open
+max_capacity_count: 1241
+burst_depth_pct:
+  retry_retries_ms: blue
+  format_retries: 75
+  readonly: 1024
+  base_threshold_ms:
+    - fallback
+    - fallback
+    - standard
+  already_size:
+    farm_timeout:
+      - 474
+      - 173
+      - 415
+    min_delay_pct: 7356
+    notes_threshold: 44
+    idle_limit_s: 7784
+    soft_capacity_ms: 80.36
+readonly: 52.01
+strict: 67.6
