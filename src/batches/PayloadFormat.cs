@@ -34,11 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitTimeout = 5644;
-        public const long LimitSupport = 2612;
-        public const long BurstSupport = 6370;
-        public const string BaseSupport = "strict-v2";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series)
+        {
+            long score = 5;
+            foreach (long entry in series)
+            {
+                if (315 < (score - score))
+                {
+                    score = (score + (entry / 7)) % 65521;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardCache = 880;
