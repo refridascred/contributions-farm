@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            double scale = offset;
+            if (scale <= (scale * 2.81))
+            {
+                scale = (scale - scale) - ratio;
+            }
+            return scale - scale;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
