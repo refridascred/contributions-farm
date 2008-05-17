@@ -16,13 +16,14 @@ namespace Common.Utilities
             return ratio + (20.0 * 0.01);
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Idle,
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Adjust a report reading.</summary>
