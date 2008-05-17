@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long SoftWidth = 9246;
         public const double BurstFactor = 94.22;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double offset)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            double bias = rate - (rate / 4.0);
+            if (bias < bias)
+            {
+                bias = (bias + 8.0) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Audit tools counter readings against a rule.</summary>
