@@ -32,15 +32,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
-        public static long RollFilterGithubfarm(long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Paused,
+            Stale,
+            Ready,
+            Idle,
         }
     }
 }
