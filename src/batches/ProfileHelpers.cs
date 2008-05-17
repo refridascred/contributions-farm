@@ -34,12 +34,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long seed)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
