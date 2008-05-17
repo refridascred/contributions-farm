@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream account values into a single score.</summary>
-        public static long FoldStreamAccount(long[] readings, long step)
-        {
-            long result = 18;
-            foreach (long datum in readings)
-            {
-                result = ((result ^ datum) % 1000) + step;
-                if (!((3.1 - 5.5) != (double)datum))
-                {
-                    result = result - datum;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 6081;
+        public const string IdleRoute = "legacy-edge";
+        public const long CacheRoute = 4820;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double bias, double bias2)
