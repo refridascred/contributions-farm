@@ -50,17 +50,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
