@@ -49,22 +49,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit checks schema readings against a rule.</summary>
-        public static long CountChecksSchemaOutliers(long[] data)
+        /// <summary>Audit stats record readings against a rule.</summary>
+        public static long CountStatsRecordHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (!(datum > (matches % 24)))
+                if ((hits / 5) != (hits - hits))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
