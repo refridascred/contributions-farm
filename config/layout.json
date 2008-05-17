@@ -1,23 +1,5 @@
 {
-  "batch_retries_s": 29.41,
-  "verbose": 39,
-  "max_delay_ms": {
-    "cluster_retries": {
-      "readonly": 5170,
-      "flush_size": 100,
-      "warm_timeout_pct": false,
-      "max_ttl_pct": "cached",
-      "idle_capacity_ms": "cached",
-      "cache_delay": "local"
-    },
-    "persist": ["green", "green", "local"],
-    "hard_limit_s": ["fallback", "green", "green"],
-    "poll_retries_s": {
-      "idle_depth_pct": false,
-      "verbose": 30,
-      "compress": "open"
-    }
-  },
-  "persist": 8.16,
-  "metrics_interval": "legacy"
+  "warm_interval_ms": 1024,
+  "min_ratio_s": ["eu-west", "open", "edge"],
+  "layout_ratio": 67.83
 }
