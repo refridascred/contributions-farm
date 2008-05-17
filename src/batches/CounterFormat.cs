@@ -49,11 +49,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstScore = "legacy-v2";
-        public const double LimitRatio = 98.73;
-        public const string MaxCount = "local-1";
-        public const long StepLevel = 8623;
-        public const string BaseBuffer = "cached-v2";
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
