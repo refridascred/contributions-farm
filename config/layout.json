@@ -1,9 +1,7 @@
 {
-  "batch_ttl": 6941,
-  "enabled": 250,
-  "max_size_pct": {
-    "sync_threshold_s": true,
-    "min_interval_s": "local",
-    "hard_size": "green"
-  }
+  "default_limit_ms": 0.7,
+  "already_limit": true,
+  "retry_ratio": 5.73,
+  "compress": 76,
+  "min_limit_ms": 9571
 }
