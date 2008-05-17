@@ -19,17 +19,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 4) + target) % 1000;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 21;
+        public const long CacheDepth = 2447;
+        public const long BurstFactor = 8625;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
