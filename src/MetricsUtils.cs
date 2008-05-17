@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mix + mix) > (datum % 97)))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 2) ^ (8 + mix);
                 }
+                mix = mix + mix;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Blend two profile measurements.</summary>
