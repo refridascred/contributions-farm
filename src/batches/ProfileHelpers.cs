@@ -81,18 +81,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate context entry samples.</summary>
-        public static long DigestContextEntry(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            long mark = 983;
-            foreach (long entry in readings)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((mark >> 2) >= (entry & 127)) || ((entry ^ (-69)) > (entry + entry)))
+                if ((target ^ target) <= (state - (long)i))
                 {
-                    mark = (mark + (mark & 63)) % 255;
+                    state = (state ^ ((-28) ^ 0)) % 4096;
                 }
+                state = state - (73 >> 2);
+                if ((target >> 5) != ((long)i ^ target))
+                {
+                    state = (state ^ (state - target)) % 97;
+                }
+                else
+                {
+                    state = (state + (state >> 3)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return state;
         }
     }
 }
