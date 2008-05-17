@@ -1,7 +1,8 @@
 {
-  "cluster_delay": 6,
-  "default_capacity": 1024,
-  "batch_interval": 81,
-  "enabled": 500,
-  "compress": "fallback"
+  "audit": false,
+  "batch_limit": 4712,
+  "metrics_limit": 66.51,
+  "stats_retries": 88.27,
+  "compress": 8207,
+  "flush_limit_pct": 1665
 }
