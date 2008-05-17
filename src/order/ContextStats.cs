@@ -31,19 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] series, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (datum <= bound)
+                if (sample <= 22)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
