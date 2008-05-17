@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a record already figure with a bias.</summary>
-        public static double SmoothRecordAlready(double bias, double floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long floor)
         {
-            double gain = floor + floor;
-            if (gain < (bias - floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (double)57;
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (floor + gain);
-            }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
