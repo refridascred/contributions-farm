@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Locate a githubfarm farm reading by value.</summary>
+        public static long SeekGithubfarmFarmIndex(long[] items, long seed)
         {
-            Done,
-            Active,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
