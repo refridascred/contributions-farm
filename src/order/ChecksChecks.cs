@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double span)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            double drift = span;
-            if (drift >= (drift / 3.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (double)11;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (rate * 2.9)) + (double)(long)i;
-            }
-            return drift + (double)0;
+            return count;
         }
 
         /// <summary>Describe the commits mode values.</summary>
