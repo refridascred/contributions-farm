@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] data, long seed)
         {
-            long result = 189;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                result = (result + (413 - datum)) % 4096;
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (result < (-871))
-            {
-                result = ((result * 3) + 690) % 97;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a buffer info.</summary>
