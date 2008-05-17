@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)offset <= (double)(long)i)
-                {
-                    mix = (mix * 5) + (974 - mix);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                carry = carry + (carry % 8);
+                carry = carry + (carry >> 3);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the queue phase values.</summary>
