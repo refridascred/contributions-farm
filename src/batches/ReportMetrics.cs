@@ -12,21 +12,10 @@ namespace Common.Utilities
         public const double SoftFilter = 57.35;
         public const long StepFilter = 9937;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
-        {
-            long acc = 88;
-            foreach (long cell in items)
-            {
-                acc = (acc * 2) + (acc * 3);
-                acc = (acc ^ (acc << 3)) % 65521;
-                if (((acc & 255) != (acc + cell)) && ((3.6 + 10.0) < (6.0 / 7.0)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowWidth = "latest-v2";
+        public const string DefaultWindow = "legacy";
+        public const string MaxWindow = "staging-1";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsRange(long[] series, long step)
