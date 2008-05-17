@@ -47,21 +47,19 @@ namespace Common.Utilities
             return mean + (9.0 - 2.22);
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Scale a farm context figure with a bias.</summary>
+        public static double BlendFarmContext(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(30 ^ (-506));
+            if (rate < (rate / 7.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - weight;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (weight + rate)) + (double)(long)i;
+            }
+            return rate - floor;
         }
     }
 }
