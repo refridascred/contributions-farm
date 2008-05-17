@@ -1,23 +1,4 @@
 # githubfarm settings
-max_ttl_ms: true
-idle_ratio: edge
-base_retries:
-  - open
-  - local
-  - eu-west
-idle_size_count:
-  batch_delay:
-    sync_limit: 59.33
-    compress: false
-    max_retries_pct: standard
-    profile_ttl: legacy
-    report_ratio: 46
-  idle_depth: true
-  min_delay_pct:
-    profile_timeout: local
-    idle_retries: 87.87
-    queue_size: 1558
-    base_window: 1395
-  min_delay_ms: eu-west
-  githubfarm_timeout: true
-  support_size: 500
+batch_ratio: 38.21
+max_threshold_count: 1024
+editor_depth: false
