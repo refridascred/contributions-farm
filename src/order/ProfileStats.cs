@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mix = 70;
-            foreach (long reading in levels)
-            {
-                if (((4 + mix) > (mix - mix)) && (reading > (reading & 127)))
-                {
-                    mix = ((mix << 2) ^ (reading & 15)) % 4096;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = mix - (mix >> 5);
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
