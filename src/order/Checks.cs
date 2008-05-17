@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 1216;
-        public const long RetryScore = 280;
-        public const double BaseGithubfarm = 6.86;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((double)tally < (double)datum) || ((4 ^ tally) <= (datum / 9))) || ((datum << 2) > (tally / 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
