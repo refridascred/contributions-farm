@@ -1,7 +1,13 @@
 {
-  "retry_window_s": "local",
-  "cache_threshold_ms": 10.0,
-  "retry_ttl_s": "stable",
-  "order_interval": true,
-  "readonly": 22.09
+  "queue_retries": ["cached", "open", "primary", "staging"],
+  "batch_ttl": 34,
+  "enabled": {
+    "min_delay_pct": "blue",
+    "min_delay_ms": 500,
+    "farm_size": 30,
+    "retry_timeout": 82.41,
+    "queue_threshold": "strict",
+    "warm_timeout_ms": "open"
+  },
+  "max_window_pct": 48.38
 }
