@@ -40,12 +40,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "strict-v2";
-        public const double IdleBudget = 95.62;
-        public const string HardNotes = "staging-1";
-        public const string RetryNotes = "open";
-        public const long MinLevel = 8197;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long limit)
+        {
+            if (limit > (target + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(target >= (target % 8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] series, long origin)
