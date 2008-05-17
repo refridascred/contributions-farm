@@ -37,12 +37,14 @@ namespace Common.Utilities
         public const long HardWidth = 9071;
         public const long SoftProfile = 7842;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Paused,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Hold a counter header.</summary>
