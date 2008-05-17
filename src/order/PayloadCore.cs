@@ -42,12 +42,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long limit)
         {
-            Paused,
-            Ready,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
