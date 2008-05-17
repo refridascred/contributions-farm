@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)(long)readings.Length > (double)(-72))
+                if ((hits - 9) < (hits - hits))
                 {
-                    matches = ((matches + 1) - cell) - step;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
