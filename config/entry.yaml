@@ -1,15 +1,11 @@
 # entry settings
-persist: cached
-audit: 6254
-sync_limit_pct: 8018
-soft_retries: green
-min_ttl_ms: stable
-batch_timeout:
-  buffer_timeout: 21.21
-  graph_timeout:
-    base_timeout_pct: staging
-    cache_timeout_ms: 85.95
-    audit: staging
-    soft_limit: 100
-    enabled: 75.63
-  batch_retries_s: green
+audit: stable
+report_limit: 2
+idle_threshold: true
+compress:
+  - latest
+  - blue
+  - local
+  - primary
+soft_interval: 5717
+poll_threshold_count: legacy
