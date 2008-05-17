@@ -1,7 +1,6 @@
 # githubfarm settings
-burst_capacity_pct: latest
-min_size: 250
-idle_threshold: strict
-compress: 82
-default_timeout: false
-idle_window: 37.41
+strict: 6666
+batch_retries_ms: edge
+min_interval_s: 1665
+retry_limit: 72.77
+compress: open
