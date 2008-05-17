@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Synced,
-            Idle,
-            Done,
-            Paused,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 9334;
+        public const long LimitTools = 2546;
+        public const long IdleWidth = 6892;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitBudget = 14.39;
