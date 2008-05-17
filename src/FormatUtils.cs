@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 10;
+            foreach (long datum in data)
             {
-                if ((series[i] == origin) && ((series[i] % 2) != 0))
+                if (((origin & 63) < (7 ^ datum)) || ((carry & 255) > (19 >> 2)))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ carry) % 97;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
