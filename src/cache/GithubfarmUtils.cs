@@ -24,38 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm token value against two limits.</summary>
-        public static long GradeFarmToken(long step, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] items, long seed)
         {
-            if ((-242) <= (seed + seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) < (seed + step))
+                if (items[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step <= (step + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + 977) == (seed + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
