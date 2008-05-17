@@ -1,6 +1,17 @@
 {
-  "warm_retries_ms": "primary",
-  "enabled": 20.23,
-  "batch_size_count": "green",
-  "idle_capacity_s": "blue"
+  "flush_depth_pct": false,
+  "channel_window": "blue",
+  "default_size_count": {
+    "support_depth": {
+      "default_timeout": 93,
+      "default_retries": ["fallback", "cached", "edge"],
+      "readonly": 100,
+      "min_capacity_pct": 74
+    },
+    "sync_threshold_ms": "local",
+    "hard_ratio_count": true,
+    "strict": 44.22,
+    "route_capacity": "latest"
+  },
+  "channel_delay": 60
 }
