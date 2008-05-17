@@ -20,11 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryScore = 3850;
-        public const long RetryLevel = 4734;
-        public const string BurstCluster = "stable-edge";
-        public const double DefaultSpan = 46.34;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Idle,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
