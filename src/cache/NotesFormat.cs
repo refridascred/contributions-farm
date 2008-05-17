@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long origin, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            if (target >= (origin + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin + (-79)) <= (2 * 2)) || (1 < target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target - origin) != (205 + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
