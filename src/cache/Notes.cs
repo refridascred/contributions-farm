@@ -39,22 +39,18 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)(long)series.Length <= (double)hits)
+                if ((350 + count) == (entry + 1))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
