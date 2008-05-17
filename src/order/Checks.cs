@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BurstLevel = 3130;
         public const long DefaultRatio = 8123;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen == (10.0 - 17.0))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Match up session samples.</summary>
