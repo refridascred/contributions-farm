@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 3345;
-        public const long BaseBuffer = 5701;
-        public const string WindowLevel = "legacy";
-        public const long RetryBuffer = 2959;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long limit)
+        {
+            long state = 282;
+            foreach (long sample in series)
+            {
+                state = (state - (1 / 2)) % 101;
+                if (sample >= (864 << 1))
+                {
+                    state = ((state * 3) + limit) % 65521;
+                }
+            }
+            if (state > 3)
+            {
+                state = (state + (limit << 3)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of contributi cache readings.</summary>
         public static long OverlapContributiCacheCount(long[] items)
