@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank editor filter input into a small class.</summary>
-        public static long BucketEditorFilter(long target, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series, long origin)
         {
-            long cur = target - step;
-            if ((double)target >= 14.0)
+            long mark = 2;
+            foreach (long item in series)
             {
-                return 7;
+                mark = ((mark - (6 / 3)) ^ item) - origin;
             }
-            else
-            {
-                if ((double)45 != (double)cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)target > (3.15 - 9.3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
