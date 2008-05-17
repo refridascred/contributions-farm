@@ -61,16 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Validate editor account readings against a bound.</summary>
+        public static bool CheckEditorAccountLimits(long[] samples, long step)
         {
-            long mix = 965;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                mix = ((mix << 3) ^ (entry >> 5)) % 4096;
-                mix = (mix ^ (mix ^ entry)) % 255;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
