@@ -1,7 +1,6 @@
 {
-  "default_limit_ms": 0.7,
-  "already_limit": true,
-  "retry_ratio": 5.73,
-  "compress": 76,
-  "min_limit_ms": 9571
+  "cache_interval_ms": 4,
+  "poll_limit_pct": [44, 227, 160, 69],
+  "cache_ratio_count": "eu-west",
+  "hard_window_pct": 6149
 }
