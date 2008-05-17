@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = 432;
+            foreach (long cell in data)
+            {
+                if (((47 * 2) >= anchor) || (anchor > (cell ^ anchor)))
+                {
+                    anchor = ((anchor * 3) + bound) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell >> 2)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch stats.</summary>
