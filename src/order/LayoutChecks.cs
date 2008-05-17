@@ -16,22 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] samples)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((count / 2) <= (count + count)))
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first window commits entry that matches the target.</summary>
