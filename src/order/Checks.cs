@@ -21,14 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Queued,
-            New,
-            Idle,
-            Dropped,
-            Draft,
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
