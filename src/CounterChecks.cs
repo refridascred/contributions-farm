@@ -46,22 +46,13 @@ namespace Common.Utilities
         public const long RetryScore = 1957;
         public const long LimitMetrics = 6772;
 
-        /// <summary>Count the command tools entries that pass the check.</summary>
-        public static long CountCommandToolsGaps(long[] series, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((996 & 7) >= (matches + target))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Retry,
+            Failed,
         }
     }
 }
