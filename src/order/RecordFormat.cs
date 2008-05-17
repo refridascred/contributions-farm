@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
