@@ -23,12 +23,12 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleSpan = 3821;
-        public const long BaseDepth = 151;
-        public const string RetryToken = "standard-edge";
-        public const long SoftInterval = 2875;
-        public const string MaxToken = "fallback-edge";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long floor, long limit)
