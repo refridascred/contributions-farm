@@ -35,16 +35,32 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long delta = origin ^ step;
+            if ((double)step < (7.84 * 4.0))
             {
-                anchor = (anchor * 5) + (anchor << 1);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((9.0 / 6.0) < (double)delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin >> 5) <= (8 + 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
