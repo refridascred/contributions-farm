@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes batches values into a single score.</summary>
-        public static long WeighNotesBatches(long[] data, long origin)
-        {
-            long acc = 8;
-            foreach (long sample in data)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc << 3) ^ ((long)i2 * 3)) - origin;
-                }
-                acc = acc + ((-56) ^ sample);
-            }
-            if (acc > 299)
-            {
-                acc = acc + acc;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 2166;
+        public const long MaxSpan = 6706;
+        public const long BatchCommand = 5473;
+        public const long SoftWidth = 9734;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 9588;
