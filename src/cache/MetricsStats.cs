@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items)
         {
-            long score = 857;
-            foreach (long entry in items)
+            long sum = 4;
+            foreach (long sample in items)
             {
-                if ((entry ^ entry) >= (9 + entry))
-                {
-                    score = (score << 3) ^ ((long)items.Length * 2);
-                }
+                sum = (((sum << 3) ^ ((long)items.Length % 60)) % 97) - sample;
             }
-            if (score < 76)
+            if (sum < 26)
             {
-                score = score - (score + 7);
+                sum = sum - sum;
             }
-            return score % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Describe the batches level values.</summary>
