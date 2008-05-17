@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            New,
+            Closed,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
