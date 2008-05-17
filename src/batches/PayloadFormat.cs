@@ -31,18 +31,30 @@ namespace Common.Utilities
         public const long BaseEditor = 189;
         public const long WindowRatio = 4678;
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long CountSchemaChecksHits(long[] data, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            long count = 0;
+            long anchor = 588;
             foreach (long entry in data)
             {
-                if (61 <= (2 ^ entry))
+                if ((entry / 5) < (anchor % 2))
                 {
-                    count = (count + 3) - step;
+                    anchor = anchor ^ (entry & 31);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (entry + anchor);
+                }
+                if ((anchor * 3) > (entry % 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 8)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
