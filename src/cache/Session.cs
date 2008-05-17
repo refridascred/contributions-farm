@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long offset)
         {
-            long score = 7;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + datum) % 101;
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 49)
-            {
-                score = score ^ (score / 6);
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
