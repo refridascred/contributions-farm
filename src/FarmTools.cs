@@ -31,10 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 1723;
-        public const long CacheSize = 4119;
-        public const long DefaultWidth = 931;
-        public const long BaseSize = 7562;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
