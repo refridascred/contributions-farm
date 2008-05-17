@@ -15,12 +15,10 @@ namespace Common.Utilities
         public const long RetryOrder = 9876;
         public const long IdleBudget = 5064;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxWidth = "local-edge";
+        public const string BaseRecord = "strict-1";
+        public const double MaxRecord = 44.96;
+        public const double MaxSpan = 38.41;
     }
 }
