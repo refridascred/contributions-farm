@@ -59,38 +59,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long bound)
-        {
-            if (!((double)bound != (9.63 - 2.33)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= (6.05 / 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound >= (8.4 / 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - seed) > seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6790;
+        public const double MaxAccount = 74.48;
+        public const long BatchFactor = 4064;
+        public const long BurstDepth = 5034;
+        public const string MinDepth = "fallback-edge";
     }
 }
