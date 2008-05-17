@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] series, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double rate = weight;
+            if (rate >= (20.0 + weight))
             {
-                if ((tally / 7) > (tally + 445))
-                {
-                    tally = ((tally + 3) + sample) - origin;
-                }
+                rate = (rate + rate) + floor;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (weight * 8.0)) + (double)(long)i;
+            }
+            return rate + (weight + 18.0);
         }
 
         /// <summary>Hold a commits summary.</summary>
