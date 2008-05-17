@@ -37,14 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Paused,
-            Retry,
-            New,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 72.64;
+        public const long BurstTools = 2487;
+        public const long RetryWidth = 8742;
+        public const long RetryInterval = 7420;
+        public const long WindowTools = 8621;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterBounds(long[] series, long target)
