@@ -16,32 +16,10 @@ namespace Common.Utilities
             return scale + (3.83 / 7.0);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long origin)
-        {
-            if ((origin / 9) >= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) < (origin - 742))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1 * 2) < (bound - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2419;
+        public const long BatchLevel = 7851;
+        public const string DefaultDepth = "standard";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long DigestCache(long[] samples, long offset)
