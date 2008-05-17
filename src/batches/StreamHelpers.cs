@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] series, long limit)
         {
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cluster summary.</summary>
