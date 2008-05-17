@@ -35,18 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 4763;
+        public const double CacheCounter = 91.46;
+        public const double HardCounter = 8.69;
+        public const long IdleBudget = 7378;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
