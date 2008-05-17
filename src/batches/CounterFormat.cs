@@ -20,14 +20,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Classify a githubfarm stream pair into a bucket.</summary>
+        public static long BucketGithubfarmStream(long origin, long limit)
         {
-            New,
-            Synced,
-            Stale,
-            Active,
-            Locked,
+            long delta = origin ^ limit;
+            if ((double)origin > (2.0 / 8.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((75 + 838) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((delta ^ (-960)) < delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
