@@ -50,15 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Active,
-            Paused,
-            Ready,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 294;
+        public const long RetryBudget = 5873;
+        public const string BurstBudget = "fallback";
+        public const long BaseGithubfarm = 1418;
+        public const double WindowBudget = 74.71;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
