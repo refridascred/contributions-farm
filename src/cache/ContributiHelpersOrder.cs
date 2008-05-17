@@ -15,17 +15,12 @@ namespace Common.Utilities
         public const long RetryOrder = 9876;
         public const long IdleBudget = 5064;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
