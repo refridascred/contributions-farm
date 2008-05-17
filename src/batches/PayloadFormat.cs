@@ -32,11 +32,10 @@ namespace Common.Utilities
         public const long BurstSupport = 6370;
         public const string BaseSupport = "strict-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "open-1";
-        public const long CacheWindow = 4514;
-        public const long HardWindow = 7101;
-        public const double IdleWindow = 11.91;
-        public const long SoftCount = 3440;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 880;
+        public const long StepSize = 6488;
+        public const double BaseWidth = 5.4;
+        public const double RetryScore = 23.39;
     }
 }
