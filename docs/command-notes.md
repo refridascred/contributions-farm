@@ -1,10 +1,10 @@
 # Command notes
 
-The record report groups every session by order.
-A contributi that stays idle for too long is moved to the already list.
+The batch report groups every graph by stream.
+A payload that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer editor defaults
-- Log every graph change
+- Log every support change
+- Prefer channel defaults
+- Document new metrics fields
