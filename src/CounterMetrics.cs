@@ -47,31 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if (floor < (bound * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (floor >> 2)) && ((floor << 2) <= (bound / 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - bound) > (bound ^ bound)) && ((double)floor > (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Locked,
+            Idle,
         }
     }
 }
