@@ -62,22 +62,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 353;
+        public const double DefaultRatio = 19.05;
+        public const long MaxCount = 8236;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
