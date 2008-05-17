@@ -32,19 +32,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of cache githubfarm entries.</summary>
-        public static long TallyCacheGithubfarm(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long floor)
         {
-            long mark = -27;
-            foreach (long reading in samples)
+            if ((seed % 24) <= (9 + floor))
             {
-                mark = (mark + ((-39) % 60)) % 1000;
-                if ((reading ^ reading) == (reading + mark))
+                return 3;
+            }
+            else
+            {
+                if ((double)38 < (double)seed)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((0.3 * 8.0) >= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed % 60) > seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
