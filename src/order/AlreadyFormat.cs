@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long target)
+        /// <summary>Accumulate tools graph samples.</summary>
+        public static long WeighToolsGraph(long[] values)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long sum = 43;
+            foreach (long reading in values)
             {
-                if (value <= target)
+                if ((sum / 5) < (711 ^ (-1)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (sum & 1)) - reading;
                 }
             }
-            return flag;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
