@@ -19,21 +19,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 88;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)state < (20.0 - 4.0))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (954 + bound)) + sample;
                 }
             }
-            return count;
+            if (state < 224)
+            {
+                state = (state + (state ^ bound)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
