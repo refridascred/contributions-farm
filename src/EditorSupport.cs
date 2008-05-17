@@ -22,18 +22,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Find the first format stats entry that matches the target.</summary>
+        public static long FindFormatStatsIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + entry) < entry)
+                if ((items[i] <= step) && ((items[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
