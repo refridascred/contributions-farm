@@ -26,27 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] levels)
         {
-            long state = 74;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((state ^ cell) < state)
+                if ((item + (long)levels.Length) <= (count ^ count))
                 {
-                    state = (state + ((long)samples.Length + cell)) % 101;
-                    state = (state + (cell >> 4)) % 1000;
-                }
-                if (state >= cell)
-                {
-                    state = ((state << 3) ^ 60) % 4096;
+                    count = count + 3;
                 }
             }
-            if (state < 240)
-            {
-                state = state - state;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
