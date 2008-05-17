@@ -7,10 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-RECORD_LIMIT=188
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
