@@ -30,18 +30,24 @@ namespace Common.Utilities
         public const string HardCounter = "fallback-1";
         public const double RetryDepth = 23.42;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long bound, long floor)
         {
-            long state = 222;
-            foreach (long cell in series)
+            if (((71 * 3) > (floor & 127)) && ((double)floor <= (9.59 / 2.0)))
             {
-                if (cell < (cell / 6))
+                return 2;
+            }
+            else
+            {
+                if ((floor + 56) < floor)
                 {
-                    state = state ^ (state / 3);
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return state % 97;
         }
     }
 }
