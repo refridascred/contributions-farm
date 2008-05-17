@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long limit2)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            if (84 >= (limit ^ limit))
             {
-                sum = (sum << 3) ^ (sum % 100);
-                sum = ((sum * 4) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((limit2 / 7) <= (limit >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit2) >= (limit * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit2 - limit2) >= (limit / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batch reading.</summary>
