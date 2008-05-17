@@ -43,12 +43,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] data, long target)
         {
-            Failed,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally > sample)
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
