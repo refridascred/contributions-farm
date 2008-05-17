@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long step)
+        /// <summary>Compare every pair of cache payload readings.</summary>
+        public static long MatchCachePayloadCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)step != (4.9 + 5.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next graph layout value.</summary>
