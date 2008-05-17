@@ -42,19 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] series, long limit)
+        /// <summary>Count the contributi layout entries that pass the check.</summary>
+        public static long MeasureContributiLayoutGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (entry > limit)
+                if ((datum * 3) <= (tally >> 5))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a cluster summary.</summary>
