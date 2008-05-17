@@ -13,11 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardFactor = 4295;
-        public const long BurstCount = 9103;
-        public const long RetryMetric = 7534;
-        public const double BaseMetric = 19.25;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double LimitRecord = 25.28;
