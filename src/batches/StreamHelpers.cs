@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate already format readings against a bound.</summary>
-        public static bool ValidateAlreadyFormatLimits(long[] items, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= bound)
+                if (!((offset % 3) < count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a support record.</summary>
