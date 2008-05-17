@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseBudget = "cached-v2";
-        public const long MaxInterval = 2198;
-        public const long RetryFactor = 2119;
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double bias)
+        {
+            double rate = (double)(84 << 2);
+            if (rate >= (bias / 4.0))
+            {
+                rate = (rate - bias) - weight;
+            }
+            return rate - (double)7;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] levels, long origin)
