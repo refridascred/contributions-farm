@@ -40,22 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] items)
         {
-            long score = 23;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((23 >= (score >> 2)) || (score < value))
+                if ((value * 5) > (value + value))
                 {
-                    score = score - (value ^ score);
+                    seen = seen + 3;
                 }
             }
-            if (score < 5)
-            {
-                score = (score + (score * 4)) % 101;
-            }
-            return score % 97;
+            return seen;
         }
     }
 }
