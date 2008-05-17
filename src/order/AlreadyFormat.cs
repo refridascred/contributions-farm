@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long limit)
+        /// <summary>Count the account payload entries that pass the check.</summary>
+        public static long MeasureAccountPayloadOutliers(long[] series, long offset)
         {
-            long step = target - limit;
-            if ((limit - limit) > (step + 65))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (target >= (target >> 2))
+                if ((double)offset == (6.53 - 7.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 1) > (limit & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step + limit) > step) || ((step & 15) < ((-2) - 9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 3) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
