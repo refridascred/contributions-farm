@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] samples, long step)
         {
-            double mean = scale;
-            if (mean >= (offset + mean))
+            long state = 71;
+            foreach (long sample in samples)
             {
-                mean = mean - mean;
+                if ((step << 3) >= (934 >> 1))
+                {
+                    state = state - (sample ^ step);
+                }
+                else
+                {
+                    state = ((state * 5) + (step + state)) % 255;
+                }
             }
-            return mean - (mean + mean);
+            if (state < 243)
+            {
+                state = (state ^ (993 + step)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
