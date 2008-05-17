@@ -56,12 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long limit)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            long result = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((limit & 63) != (result / 7)))
+                {
+                    result = (result + (limit / 5)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
