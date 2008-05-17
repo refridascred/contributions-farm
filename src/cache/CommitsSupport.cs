@@ -35,24 +35,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples, long offset)
         {
-            if ((56 + floor) > origin)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 15) <= floor)
+                if (!((offset + offset) > (tally & 7)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
