@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            double rate = ratio;
-            if (rate < bias)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + 20.0;
+            return hits;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
