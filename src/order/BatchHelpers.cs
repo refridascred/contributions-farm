@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long bound)
         {
-            if (((limit + origin) > limit) || ((limit / 5) > origin))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (5.85 + 0.06))
+                if (entry <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((94 / 9) >= (limit + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
