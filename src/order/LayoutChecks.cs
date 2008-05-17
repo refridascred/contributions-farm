@@ -90,11 +90,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
