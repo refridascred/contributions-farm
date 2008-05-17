@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] samples, long step)
         {
-            long state = 305;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                state = ((state << 2) ^ (value / 2)) - offset;
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
