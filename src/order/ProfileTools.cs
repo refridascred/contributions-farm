@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] samples, long offset)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
