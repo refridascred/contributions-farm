@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const long HardSchema = 6720;
         public const long BaseSize = 6816;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long step)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
