@@ -1,15 +1,12 @@
 # Command notes
 
-Each route is validated before it reaches the session queue.
-Run the context check before changing any cache limits.
-
-Keep account and farm names short and lowercase.
-The entry module keeps metric values in sync with the schema cache.
-Run the record check before changing any metric limits.
+The context module keeps token values in sync with the graph cache.
+When a cluster fails, the filter handler retries a few times before giving up.
+Use tools settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new already fields
-- Prefer window defaults
-- Log every token change
+- Document new queue fields
+- Log every editor change
+- Keep already values small
+- Prefer profile defaults
