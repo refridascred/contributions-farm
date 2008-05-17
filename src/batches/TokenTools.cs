@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxLevel = 54.04;
-        public const long HardRecord = 2455;
-        public const long DefaultWidth = 741;
-        public const long WindowRecord = 1737;
-        public const double MinSpan = 33.55;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstFactor = "standard-1";
