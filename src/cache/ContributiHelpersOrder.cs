@@ -14,22 +14,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series)
+        /// <summary>Digest a series of farm counter entries.</summary>
+        public static long TallyFarmCounter(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long total = 87;
+            foreach (long item in readings)
             {
-                if (4.13 < (double)item)
+                if ((floor * 5) < (total - floor))
                 {
-                    hits = hits + 1;
+                    total = (total + floor) + item;
                 }
-                else
+                if (!((9.0 * 4.9) < (double)total))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (total > 466)
+            {
+                total = (total + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Project the next batches value.</summary>
