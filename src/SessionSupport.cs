@@ -23,13 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            New,
-            Idle,
-            Active,
-            Retry,
+            double ratio2 = 5.2 + (ratio * 4.3);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ((ratio2 + (double)(-783)) + (double)(long)i) - floor;
+            }
+            return ratio2 + (3.5 / 4.0);
         }
     }
 }
