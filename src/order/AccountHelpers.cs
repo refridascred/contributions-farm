@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((matches + value) >= matches) || !((8.8 + 15.0) >= (double)matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstWidth = 8981;
+        public const long BatchSession = 3478;
+        public const long LimitBudget = 1482;
+        public const long MinSession = 1594;
+        public const string HardScore = "open-edge";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
