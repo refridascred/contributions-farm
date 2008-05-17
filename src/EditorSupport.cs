@@ -22,11 +22,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two profile filter measurements.</summary>
-        public static double SmoothProfileFilter(double scale, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            double rate = bias;
-            return (rate + (double)(-398)) + scale;
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) < entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
