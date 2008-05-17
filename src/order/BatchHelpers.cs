@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Draft,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "open-edge";
+        public const long MaxDepth = 5494;
+        public const long MaxScore = 9081;
+        public const string HardCounter = "fallback-1";
+        public const double RetryDepth = 23.42;
 
         /// <summary>Iterate the counter payload series from a seed.</summary>
         public static long SeriesCounterPayload(long seed)
