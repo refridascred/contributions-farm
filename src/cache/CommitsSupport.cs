@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 5.03;
-        public const long HardGraph = 243;
-        public const long BaseTimeout = 923;
-        public const long BatchLevel = 2525;
+        /// <summary>Roll a tools order counter forward.</summary>
+        public static long IterateToolsOrder(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((53 % 100) >= (floor ^ floor))
+                {
+                    state = state + floor;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
