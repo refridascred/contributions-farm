@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Closed,
-            Queued,
-            Pending,
-            Synced,
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
