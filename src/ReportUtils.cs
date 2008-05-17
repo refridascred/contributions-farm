@@ -27,12 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitSize = 9.96;
-        public const long BurstCount = 6674;
-        public const string MinBuffer = "latest-v2";
-        public const double LimitWidth = 53.83;
-        public const double BurstBuffer = 61.5;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] values, long origin)
