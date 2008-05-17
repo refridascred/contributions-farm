@@ -80,19 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context cache readings.</summary>
-        public static long WeighContextCache(long[] readings)
-        {
-            long state = 4;
-            foreach (long sample in readings)
-            {
-                if ((double)(long)readings.Length < 4.8)
-                {
-                    state = ((state << 2) ^ (sample ^ state)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftRatio = "staging-edge";
+        public const string MaxCache = "strict";
+        public const string LimitTimeout = "alpha-1";
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
