@@ -25,11 +25,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double bias2 = bias;
-            return bias2 - gain;
+            Active,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a tools header.</summary>
