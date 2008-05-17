@@ -1,4 +1,4 @@
 # githubfarm settings
-audit: true
-sync_ratio_count: primary
-githubfarm_window: 7448
+metrics_retries: true
+persist: true
+sync_ratio_count: 1599
