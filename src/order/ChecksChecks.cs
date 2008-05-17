@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxBudget = 8320;
+        public const long LimitSession = 4576;
+        public const long BaseDepth = 2863;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] levels)
