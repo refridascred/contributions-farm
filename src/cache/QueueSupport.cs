@@ -11,26 +11,14 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 8847;
         public const long HardGithubfarm = 4159;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] values, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long acc = 891;
-            foreach (long datum in values)
-            {
-                if ((acc >> 5) < acc)
-                {
-                    acc = ((acc - limit) % 65521) ^ datum;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (565 >> 2);
-                }
-            }
-            if (acc < 9)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            Closed,
+            Done,
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Rank already input into a small class.</summary>
