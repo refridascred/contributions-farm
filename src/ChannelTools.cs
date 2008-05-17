@@ -20,16 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next account farm value.</summary>
-        public static double ScaleAccountFarm(double scale, double floor)
-        {
-            double gain = (double)(4 + 4);
-            if (gain >= (double)12)
-            {
-                gain = (gain - scale) - floor;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "stable-v2";
+        public const long BatchTimeout = 5429;
+        public const long BaseFilter = 4688;
+        public const long StepScore = 1267;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] values, long seed)
