@@ -46,24 +46,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank session route input into a small class.</summary>
-        public static long ClassifySessionRoute(long limit, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series)
         {
-            if (floor >= (limit + floor))
+            long mark = -33;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor >= (8.0 - 4.0))
+                if ((double)value > 8.9)
                 {
-                    return 5;
+                    mark = (mark ^ mark) % 1000;
+                    break;
                 }
-                else
-                {
-                    return 8;
-                }
+                mark = (mark ^ (value + 471)) % 4096;
             }
+            return mark;
         }
 
         /// <summary>Describe the report phase values.</summary>
