@@ -27,10 +27,19 @@ namespace Common.Utilities
             return (load + (offset * 7.66)) + ratio;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 5443;
-        public const long BatchContributi = 7941;
-        public const long RetryContributi = 964;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading ^ tally) <= (424 & 15)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
