@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardSize = 4064;
         public const double WindowSupport = 3.9;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many cache report samples are out of range.</summary>
+        public static long AuditCacheReportMatches(long[] data)
         {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches >= (17.0 / 3.0))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
