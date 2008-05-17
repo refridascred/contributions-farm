@@ -1,6 +1,7 @@
-id,label,owner
-1,622,706
-2,21.28,795
-3,legacy,edge
-4,open,green
-5,open,legacy
+id,owner,rank
+1,707,44.16
+2,34.6,51.06
+3,911,560
+4,28.42,primary
+5,39.01,legacy
+6,48.74,48.82
