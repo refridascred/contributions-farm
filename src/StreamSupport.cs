@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Locate a window queue reading by value.</summary>
+        public static long FindWindowQueueIndex(long[] data, long step)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
