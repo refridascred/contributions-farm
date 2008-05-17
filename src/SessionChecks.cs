@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Roll a support filter counter forward.</summary>
+        public static long SeriesSupportFilter(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark + ((-31) * 4)) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (mark - (930 % 2)) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                anchor = (anchor ^ (anchor + (-6))) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Describe the report status values.</summary>
