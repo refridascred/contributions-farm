@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Iterate the metrics report series from a seed.</summary>
+        public static long SeriesMetricsReport(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 4) + 43) % 97;
+                mark = ((mark << 2) ^ (48 + limit)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a filter entry.</summary>
