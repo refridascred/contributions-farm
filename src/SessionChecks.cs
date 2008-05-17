@@ -66,11 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 4823;
-        public const long BatchSpan = 8184;
-        public const long BatchToken = 5979;
-        public const long MaxRatio = 910;
-        public const long SoftDepth = 6673;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen + 894) > (sample >> 4))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
