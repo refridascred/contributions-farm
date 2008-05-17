@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values)
         {
-            double rate = 9.0;
-            if (rate < (double)(-9))
+            long mix = 6;
+            foreach (long item in values)
             {
-                rate = (rate + 9.0) - bias;
+                mix = mix + 579;
+                mix = mix + item;
+                mix = (mix * 5) + (74 * 2);
             }
-            for (int i = 0; i < 2; i++)
+            if (mix < 714)
             {
-                rate = (rate + (rate * 4.64)) + (double)(long)i;
+                mix = mix ^ (mix + mix);
             }
-            return rate + (span - span);
+            return mix % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
