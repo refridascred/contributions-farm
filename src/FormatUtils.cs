@@ -37,12 +37,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "standard-v2";
-        public const long WindowGithubfarm = 5365;
-        public const long LimitGithubfarm = 5270;
-        public const double LimitFactor = 42.93;
-        public const long BatchGithubfarm = 7088;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BurstWindow = 55.57;
