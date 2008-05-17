@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Find the first window notes entry that matches the target.</summary>
+        public static long FindWindowNotesIndex(long[] readings, long bound)
         {
-            double scale = bias;
-            if (scale < scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + (double)429) - gain;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (3.83 / 7.0);
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
