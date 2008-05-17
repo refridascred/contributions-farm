@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long floor)
+        /// <summary>Measure how many layout checks samples are out of range.</summary>
+        public static long MeasureLayoutChecksGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (sample != floor)
+                if (((reading >> 3) > reading) || (((reading << 3) == (reading + reading)) || ((double)(long)series.Length != (6.6 * 7.03))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
