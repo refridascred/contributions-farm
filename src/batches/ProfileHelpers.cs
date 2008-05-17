@@ -20,23 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Accumulate farm githubfarm samples.</summary>
+        public static long FoldFarmGithubfarm(long[] levels, long step)
         {
-            double ratio2 = floor - ratio;
-            if (ratio2 <= (floor / 9.0))
+            long carry = 46;
+            foreach (long sample in levels)
             {
-                ratio2 = ratio2 - floor;
+                carry = (((carry << 2) ^ (carry >> 1)) % 65521) - sample;
             }
-            else
+            if (carry < (-7))
             {
-                ratio2 = ratio2 + floor;
+                carry = carry ^ (carry - step);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (floor / 5.0)) - (double)(long)i;
-            }
-            return ratio2 - (double)72;
+            return carry;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
