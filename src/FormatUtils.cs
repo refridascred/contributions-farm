@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
