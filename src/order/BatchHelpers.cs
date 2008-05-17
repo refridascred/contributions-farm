@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
