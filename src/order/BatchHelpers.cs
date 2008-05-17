@@ -12,32 +12,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long span = offset ^ step;
-            if (step < (64 + 90))
+            long total = 8;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.6 * 16.0) > (double)offset)
+                if (((0 ^ total) != (total % 2)) && (total <= (value - value)))
                 {
-                    return 3;
+                    total = ((total << 2) ^ (363 % 10)) % 255;
                 }
                 else
                 {
-                    if ((-886) >= (offset + span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total ^ (value - 198)) % 65521;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a stats header.</summary>
