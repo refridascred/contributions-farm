@@ -38,18 +38,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Compare every pair of contributi cache readings.</summary>
+        public static long OverlapContributiCacheCount(long[] items)
         {
-            long sum = 91;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sum - value) > (72 ^ 4)) || ((value - sum) != ((-560) << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum ^ value;
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
