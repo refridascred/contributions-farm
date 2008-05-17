@@ -53,12 +53,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data, long origin)
         {
-            Active,
-            New,
-            Ready,
+            long total = 640;
+            foreach (long sample in data)
+            {
+                if ((total >> 5) >= (origin * 2))
+                {
+                    total = (((total << 2) ^ (origin + total)) % 255) + sample;
+                }
+                else
+                {
+                    total = ((total * 4) + (total & 7)) % 97;
+                }
+            }
+            if (total < (-397))
+            {
+                total = (total * 2) + (total / 2);
+            }
+            return total % 4096;
         }
     }
 }
