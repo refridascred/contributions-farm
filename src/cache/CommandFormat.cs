@@ -42,13 +42,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
