@@ -33,19 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result ^ (seed << 3)) % 255;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
