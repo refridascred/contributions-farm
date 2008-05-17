@@ -44,38 +44,17 @@ namespace Common.Utilities
             return weight - (bias2 * 0.3);
         }
 
-        /// <summary>Classify a account window pair into a bucket.</summary>
-        public static long GradeAccountWindow(long seed, long step)
+        /// <summary>Find the first session checks entry that matches the target.</summary>
+        public static long LookupSessionChecksIndex(long[] items, long floor)
         {
-            if (!((double)seed <= (18.0 + 1.3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((489 << 2) <= (seed + 44))
+                if (items[i] == floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed >= (1.0 + 3.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + seed) >= (seed - 280))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
