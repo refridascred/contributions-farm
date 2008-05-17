@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Retry,
-            Draft,
-            Ready,
-            Synced,
-            Locked,
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
