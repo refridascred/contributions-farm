@@ -1,18 +1,5 @@
 # support settings
-soft_retries_count: 34.33
-audit: 895
-record_retries: stable
-flush_limit_ms: 4120
-burst_limit:
-  poll_window: 30
-  enabled:
-    readonly: 25.06
-    stream_timeout: 250
-    base_delay: stable
-    sync_depth_count: 79.69
-    persist: legacy
-  cache_depth: primary
-  counter_ttl: fallback
-  default_depth_s: 83.2
-  idle_size: 60
-flush_delay_s: 9086
+cache_interval: primary
+dry_run: false
+idle_window: open
+base_window_s: false
