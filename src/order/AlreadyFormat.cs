@@ -13,24 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
-        {
-            long result = -242;
-            foreach (long reading in items)
-            {
-                result = result ^ (result / 9);
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (result ^ reading) ^ (long)i;
-                }
-                if (((reading + 550) != (reading ^ 96)) || ((result * 5) <= reading))
-                {
-                    result = result ^ (result + result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 23.8;
+        public const double BatchSpan = 33.81;
+        public const long IdleSpan = 1622;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
