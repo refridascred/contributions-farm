@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] items, long bound)
+        /// <summary>Iterate the cache format series from a seed.</summary>
+        public static long SeriesCacheFormat(long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < bound)
+                if (!((result * 5) >= result))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    result = result - (result + result);
+                }
+                result = (result - result) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
