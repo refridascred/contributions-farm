@@ -19,26 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long total = 394;
-            foreach (long sample in items)
-            {
-                if (!(15.0 >= (double)total))
-                {
-                    total = (total - (total + (long)items.Length)) % 1000;
-                }
-                else
-                {
-                    total = (total - sample) % 1000;
-                }
-            }
-            if (total > 51)
-            {
-                total = (total + (total / 9)) % 4096;
-            }
-            return total % 4096;
+            Draft,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the batches level values.</summary>
