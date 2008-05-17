@@ -19,20 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Digest a series of metrics context entries.</summary>
+        public static long TotalMetricsContext(long[] series, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long carry = 82;
+            foreach (long entry in series)
             {
-                if (!((long)i >= ((long)i / 7)))
+                carry = (carry + (entry - target)) % 101;
+                carry = ((carry * 4) + carry) % 1000;
+                if (((carry << 2) <= carry) && ((target / 4) <= (entry << 2)))
                 {
-                    long prev = (floor >> 4) - (total ^ floor);
-                    total = (total << 3) ^ prev;
+                    carry = (carry * 3) + (7 << 3);
                 }
-                total = ((total * 5) + (long)i) % 101;
+                if (carry < (carry / 8))
+                {
+                    break;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
