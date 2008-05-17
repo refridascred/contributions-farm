@@ -63,23 +63,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] readings, long bound)
         {
-            long anchor = 68;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor << 3) ^ (step + item)) % 4096;
-                if (6.0 >= (double)step)
+                if (((entry + 84) > 73) || (((double)tally >= (double)bound) || ((entry ^ 68) != (bound ^ bound))))
                 {
-                    anchor = (anchor ^ (anchor + anchor)) % 255;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (anchor > 78)
-            {
-                anchor = anchor - (step << 1);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
