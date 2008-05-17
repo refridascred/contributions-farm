@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long origin)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
