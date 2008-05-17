@@ -39,11 +39,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two cluster metrics measurements.</summary>
-        public static double ProjectClusterMetrics(double gain, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long offset)
         {
-            double gain2 = bias;
-            return (gain2 + (bias + 10.0)) + gain;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
