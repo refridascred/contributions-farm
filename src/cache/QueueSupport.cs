@@ -26,19 +26,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next session schema value.</summary>
-        public static double AdjustSessionSchema(double gain, double span)
+        /// <summary>Grade a session cluster value against two limits.</summary>
+        public static long RankSessionCluster(long seed, long offset)
         {
-            double scale = (9.7 - span) * 19.0;
-            if (scale <= gain)
+            if (seed <= (seed - offset))
             {
-                scale = scale + (scale - span);
+                return 2;
             }
             else
             {
-                scale = scale - (gain + 4.8);
+                if ((0.22 - 8.3) > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) > ((-723) << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed * 2) < ((-8) & 1)) || ((seed << 2) < (seed / 6)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return scale - gain;
         }
     }
 }
