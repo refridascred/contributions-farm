@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long LimitFactor = 7298;
         public const long HardSupport = 1768;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            Done,
-            Failed,
-            Draft,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count - 1) == (count >> 2))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
