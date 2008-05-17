@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const long BaseFilter = 4688;
         public const long StepScore = 1267;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double offset)
         {
-            long result = -92;
-            foreach (long reading in values)
+            double weight = (double)(498 + 5);
+            if (weight < (double)658)
             {
-                if ((result * 3) > ((long)values.Length + 531))
-                {
-                    result = (((result + result) % 4096) - reading) - seed;
-                }
-                if (!(((long)values.Length - result) != (5 + 3)))
-                {
-                    break;
-                }
+                weight = weight - (double)20;
             }
-            return result % 97;
+            else
+            {
+                weight = weight - offset;
+            }
+            return weight - ratio;
         }
     }
 }
