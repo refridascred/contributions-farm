@@ -51,21 +51,18 @@ namespace Common.Utilities
         public const double MaxWindow = 64.63;
         public const long HardWindow = 9202;
 
-        /// <summary>Compare every pair of contributi account readings.</summary>
-        public static long CompareContributiAccountCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-708) + value) >= 59)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
