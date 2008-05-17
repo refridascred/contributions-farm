@@ -28,12 +28,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate githubfarm support samples.</summary>
+        public static long ScoreGithubfarmSupport(long[] data, long bound)
         {
-            New,
-            Done,
-            Draft,
+            long mix = 3;
+            foreach (long sample in data)
+            {
+                mix = (mix * 2) + (bound - sample);
+                if (mix <= bound)
+                {
+                    mix = (mix << 3) ^ (mix + sample);
+                }
+                else
+                {
+                    mix = (mix ^ (61 * 5)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
