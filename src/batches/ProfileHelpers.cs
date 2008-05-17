@@ -20,11 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            double drift = 9.72 - floor;
-            return (drift - (double)813) + weight;
+            double ratio2 = floor - ratio;
+            if (ratio2 <= (floor / 9.0))
+            {
+                ratio2 = ratio2 - floor;
+            }
+            else
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (floor / 5.0)) - (double)(long)i;
+            }
+            return ratio2 - (double)72;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
