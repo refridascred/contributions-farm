@@ -14,12 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            Ready,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the farm kind values.</summary>
