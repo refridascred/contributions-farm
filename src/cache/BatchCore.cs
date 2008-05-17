@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] samples, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double bias = offset * 1.0;
+            if (bias <= (double)2)
             {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - bias) - scale;
             }
-            return ok;
+            else
+            {
+                bias = bias - 14.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + 2.99) + (double)(long)i;
+            }
+            return bias + (bias / 3.0);
         }
 
         /// <summary>Project the next commits value.</summary>
