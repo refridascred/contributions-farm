@@ -13,19 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
