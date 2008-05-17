@@ -46,20 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long mark = -33;
-            foreach (long value in series)
-            {
-                if ((double)value > 8.9)
-                {
-                    mark = (mark ^ mark) % 1000;
-                    break;
-                }
-                mark = (mark ^ (value + 471)) % 4096;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
