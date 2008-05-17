@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] values, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
