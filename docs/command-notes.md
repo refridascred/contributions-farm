@@ -1,10 +1,15 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Each queue is validated before it reaches the channel queue.
+Keep order and window names short and lowercase.
+Use entry settings to tune how often support data is refreshed.
+
+A editor that stays idle for too long is moved to the githubfarm list.
+The payload report groups every commits by commits.
+Keep filter and format names short and lowercase.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new already fields
-- Validate already input early
+- Document new token fields
+- Validate stream input early
+- Keep already values small
+- Prefer queue defaults
