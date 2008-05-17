@@ -1,19 +1,15 @@
 # entry settings
-min_ratio: false
-default_threshold_s: 8542
-route_retries:
-  contributi_window: standard
-  compress:
-    warm_depth_s: green
-    max_size_s: primary
-    retry_depth_count: false
-    base_threshold_s: primary
-    enabled: blue
-  max_timeout_pct: green
-  verbose: 100
-compress: legacy
-min_interval_s: strict
-default_size:
-  - 15
-  - 267
-  - 21
+persist: cached
+audit: 6254
+sync_limit_pct: 8018
+soft_retries: green
+min_ttl_ms: stable
+batch_timeout:
+  buffer_timeout: 21.21
+  graph_timeout:
+    base_timeout_pct: staging
+    cache_timeout_ms: 85.95
+    audit: staging
+    soft_limit: 100
+    enabled: 75.63
+  batch_retries_s: green
