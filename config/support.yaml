@@ -1,20 +1,14 @@
 # support settings
-base_retries:
-  cache_ttl: 1291
-  min_size_ms: 4134
+default_capacity_s: strict
+buffer_window: 25
+support_timeout: stable
+hard_retries: cached
+min_window:
   compress:
-    min_ttl_pct: green
-    readonly: latest
-    idle_limit_ms: 7120
-max_capacity_s: false
-idle_threshold_count: 64.47
-retry_capacity_pct:
-  cluster_depth: eu-west
-  batch_capacity_ms:
-    - green
-    - edge
+    - fallback
     - legacy
-    - stable
-  compress: 7637
-idle_interval: 1753
-batch_threshold_s: false
+    - standard
+  batches_interval: stable
+  cache_threshold_pct: 2066
+  readonly: 5599
+counter_ratio: 44.11
