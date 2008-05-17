@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double DefaultTimeout = 59.23;
         public const string LimitFactor = "standard-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseTimeout = "staging-edge";
-        public const long BatchBuffer = 2375;
-        public const long BaseCount = 1011;
-        public const double BatchRatio = 61.16;
-        public const long BurstBuffer = 8841;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 9603;
+        public const double WindowSpan = 91.49;
+        public const long MinCache = 3987;
+        public const long BaseCache = 6426;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] readings, long limit)
