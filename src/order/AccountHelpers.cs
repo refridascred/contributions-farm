@@ -59,11 +59,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
