@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Idle,
-            Failed,
+            long state = 401;
+            foreach (long item in series)
+            {
+                state = (state - (52 ^ item)) % 1000;
+                if ((state - item) <= item)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
