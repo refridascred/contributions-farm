@@ -87,15 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] series, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long carry = 89;
-            foreach (long datum in series)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry + ((long)series.Length - datum)) - seed;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
     }
 }
