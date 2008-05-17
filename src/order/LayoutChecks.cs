@@ -65,22 +65,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double offset)
         {
-            long carry = 498;
-            foreach (long value in levels)
+            double gain = (double)((-2) & 7);
+            if (gain >= 5.0)
             {
-                if ((carry * 2) < value)
-                {
-                    carry = (carry ^ carry) % 97;
-                }
+                gain = gain + 3.0;
             }
-            if (carry < 319)
+            else
             {
-                carry = (carry ^ (carry * 5)) % 97;
+                gain = gain - offset;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (bias / 6.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Hold a counter options.</summary>
