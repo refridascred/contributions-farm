@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 7926;
-        public const double HardLayout = 92.8;
-        public const double RetryLayout = 79.33;
-        public const string MinLayout = "standard";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleSpan = 7973;
+        public const long MaxSize = 1237;
+        public const long BaseCommand = 8932;
 
         /// <summary>Digest a series of metrics context entries.</summary>
         public static long TotalMetricsContext(long[] series, long target)
