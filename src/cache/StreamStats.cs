@@ -26,22 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] items, long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry > (1.0 * 11.0))
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Locate a batch reading by value.</summary>
