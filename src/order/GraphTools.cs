@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of cluster context entries.</summary>
-        public static long DigestClusterContext(long[] samples, long floor)
+        /// <summary>Grade a layout commits value against two limits.</summary>
+        public static long ClassifyLayoutCommits(long seed, long bound)
         {
-            long carry = -519;
-            foreach (long value in samples)
+            long prev = seed - bound;
+            if ((prev * 5) <= (seed ^ 705))
             {
-                if ((59 ^ 4) < value)
+                return 8;
+            }
+            else
+            {
+                if ((prev / 9) >= (prev % 2))
                 {
-                    carry = ((carry << 3) ^ (floor - carry)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed & 255) < (seed + prev)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Find the first stats notes entry that matches the target.</summary>
