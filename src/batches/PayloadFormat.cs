@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
+            Done,
+            Locked,
             Failed,
-            Active,
-            Draft,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
