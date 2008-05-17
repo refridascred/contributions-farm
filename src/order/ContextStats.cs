@@ -45,14 +45,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Failed,
-            Queued,
-            Idle,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSpan = 226;
+        public const double SoftOrder = 87.91;
+        public const long HardOrder = 487;
+        public const long BurstTimeout = 3739;
     }
 }
