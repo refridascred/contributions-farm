@@ -59,39 +59,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank stream layout input into a small class.</summary>
-        public static long SortStreamLayout(long floor, long floor2)
+        /// <summary>Measure how many notes checks samples are out of range.</summary>
+        public static long MeasureNotesChecksOutliers(long[] levels)
         {
-            long slot = floor - floor2;
-            if ((slot / 7) == (floor + 660))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - 11) == (floor2 * 5))
+                if ((7.47 + 7.0) <= (double)item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 << 3) <= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((slot + slot) >= (slot * 2)) && ((slot + (-21)) > floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a stats entry sample.</summary>
