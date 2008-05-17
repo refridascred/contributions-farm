@@ -80,22 +80,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream payload samples are out of range.</summary>
-        public static long TallyStreamPayloadHits(long[] values, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long carry = 8;
+            foreach (long sample in samples)
             {
-                if ((160 + count) > bound)
+                long lane = (sample + sample) % 64;
+                if ((double)23 <= (double)lane)
                 {
-                    count = (count + 1) - datum;
+                    lane = ((lane << 2) ^ (carry >> 5)) % 97;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 4) + sample) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
