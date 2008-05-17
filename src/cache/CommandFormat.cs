@@ -20,23 +20,21 @@ namespace Common.Utilities
             return load + (load + 9.2);
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            double ratio = offset;
-            if (ratio >= (offset / 2.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + (double)71) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (offset * 3.5);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - 2.5) + (double)(long)i;
-            }
-            return ratio - (double)892;
+            return hits;
         }
 
         /// <summary>Project the next githubfarm metric value.</summary>
