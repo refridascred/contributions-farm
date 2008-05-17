@@ -37,13 +37,19 @@ namespace Common.Utilities
         public const long HardLevel = 1528;
         public const double BatchCluster = 33.52;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every already context entry stays within the limit.</summary>
+        public static bool VerifyAlreadyContextRange(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
