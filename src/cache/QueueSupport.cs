@@ -23,22 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 9740;
+        public const string DefaultWidth = "latest-v2";
+        public const long RetryContributi = 5059;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchDepth = 8574;
