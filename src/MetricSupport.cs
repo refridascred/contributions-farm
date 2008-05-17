@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio + (20.0 * 0.01);
         }
 
-        /// <summary>Accumulate tools commits samples.</summary>
-        public static long DigestToolsCommits(long[] levels, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = 3;
-            foreach (long value in levels)
-            {
-                if ((offset << 2) >= value)
-                {
-                    result = result + (6 - value);
-                }
-            }
-            return result % 1000;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
