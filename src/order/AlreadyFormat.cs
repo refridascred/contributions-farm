@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const string MaxSize = "local-edge";
         public const long DefaultStats = 1615;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 23.8;
-        public const double BatchSpan = 33.81;
-        public const long IdleSpan = 1622;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 5945;
+        public const long MaxWidth = 2880;
+        public const string CacheRatio = "standard";
+        public const long LimitNotes = 4696;
+        public const long DefaultSize = 6490;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiOutliers(long[] data, long offset)
