@@ -13,13 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long mark = -4;
+            foreach (long sample in items)
+            {
+                if (sample <= (mark / 2))
+                {
+                    mark = ((mark << 2) ^ mark) % 255;
+                }
+                if ((sample - sample) > mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
