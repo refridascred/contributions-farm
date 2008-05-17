@@ -39,18 +39,21 @@ namespace Common.Utilities
             return mean - (bias - bias);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] series, long origin)
+        /// <summary>Count route metrics pairs that satisfy a relation.</summary>
+        public static long MatchRouteMetricsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin + seen) > ((-1) ^ origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
