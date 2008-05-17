@@ -43,18 +43,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 2) <= (seen + 29))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 94.5;
+        public const string WindowSpan = "staging-1";
+        public const long LimitDepth = 6076;
+        public const double BurstQueue = 93.43;
+        public const long BatchQueue = 5783;
     }
 }
