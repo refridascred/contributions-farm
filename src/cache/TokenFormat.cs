@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string LimitScore = "cached-edge";
         public const long BaseScore = 6020;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double rate2 = rate;
-            if (rate2 <= rate2)
-            {
-                rate2 = rate2 + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - 6.1) + (double)(long)i;
-            }
-            return rate2 - (floor * 19.0);
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
