@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=166
+COMMAND_LIMIT=162
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for item in edge green strict latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
