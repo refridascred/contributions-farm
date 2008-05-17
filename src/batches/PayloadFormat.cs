@@ -14,26 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long mark = 86;
-            foreach (long sample in series)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (86 < (sample << 1))
-                {
-                    mark = (mark + (sample - sample)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 3) + step) % 97;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (mark > 320)
-            {
-                mark = mark ^ step;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
