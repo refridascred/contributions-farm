@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first counter contributi entry that matches the target.</summary>
-        public static long SeekCounterContributiIndex(long[] series, long target)
+        /// <summary>Blend two record window measurements.</summary>
+        public static double ScaleRecordWindow(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(9 & 1);
+            if (drift < drift)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift * 11.0);
             }
-            return -1;
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift - bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
