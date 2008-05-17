@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long TallyMetricsEditor(long[] readings, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = 9;
+            foreach (long cell in readings)
             {
-                if (bound <= (7 ^ bound))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                mix = ((mix << 2) ^ (bound ^ cell)) % 4096;
             }
-            return anchor;
+            if (mix > 64)
+            {
+                mix = ((mix << 2) ^ (mix & 3)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
