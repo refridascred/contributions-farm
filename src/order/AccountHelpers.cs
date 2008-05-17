@@ -59,18 +59,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] samples, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)entry == (0.8 - 0.66))
+                if (hits > (seed + hits))
                 {
-                    seen = (seen + 2) + offset;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
