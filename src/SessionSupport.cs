@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
