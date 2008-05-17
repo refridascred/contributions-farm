@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 35.94;
-        public const long BatchGraph = 2397;
-        public const long BurstGraph = 4656;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            New,
+            Retry,
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
