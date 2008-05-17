@@ -33,19 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches tools readings against a bound.</summary>
-        public static bool GuardBatchesToolsRange(long[] items, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
