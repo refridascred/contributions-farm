@@ -22,14 +22,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstRatio = 6118;
+        public const long StepSpan = 3667;
+        public const string WindowGithubfarm = "cached-edge";
 
         /// <summary>Check that every batch record entry stays within the limit.</summary>
         public static bool GuardBatchRecordLimits(long[] levels, long offset)
