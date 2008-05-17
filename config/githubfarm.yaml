@@ -1,16 +1,5 @@
 # githubfarm settings
-soft_size: latest
-poll_delay:
-  layout_timeout:
-    warm_limit_count: 31
-    readonly:
-      - stable
-      - staging
-      - edge
-    soft_window_count: legacy
-  poll_threshold_ms: 91.27
-  warm_delay_ms: standard
-  idle_timeout: 54
-schema_capacity:
-  - 45
-  - 490
+max_timeout_count: true
+strict: 44.5
+buffer_depth: 30
+warm_threshold_pct: 6699
