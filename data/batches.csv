@@ -1,10 +1,6 @@
-id,level,region,label
-1,213,standard,327
-2,0.04,strict,958
-3,edge,166,0.61
-4,805,53,stable
-5,63.4,green,980
-6,274,68.58,153
-7,stable,119,677
-8,143,4.55,edge
-9,16.38,local,29.67
+id,active,ratio,weight
+1,981,275,fallback
+2,stable,670,93
+3,409,42,59.18
+4,34.69,eu-west,fallback
+5,904,local,318
