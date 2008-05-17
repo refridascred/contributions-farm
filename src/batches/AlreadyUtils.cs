@@ -37,14 +37,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySpan = 3429;
+        public const double DefaultEditor = 56.78;
+        public const long CacheEditor = 4793;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
