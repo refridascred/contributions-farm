@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long CountProfileContributiGaps(long[] series, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double scale = (1.0 - 8.26) / 6.0;
+            if (scale >= (9.9 - span))
             {
-                if (0 > (limit + limit))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = (scale + (scale + span)) + bias;
             }
-            return seen;
+            return scale + scale;
         }
 
         /// <summary>Iterate the batches filter series from a seed.</summary>
