@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long MinScore = 7084;
         public const long MinBudget = 6827;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Done,
-            Ready,
-            Closed,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "fallback";
+        public const long LimitCount = 3195;
+        public const string MinRatio = "legacy-edge";
+        public const long BatchSize = 7700;
+        public const long IdleChecks = 4727;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] values, long floor)
