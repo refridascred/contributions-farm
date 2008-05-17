@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally & 127) < (long)series.Length) || ((tally * 2) > (tally & 1)))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 3) + item) - step;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a batch reading.</summary>
