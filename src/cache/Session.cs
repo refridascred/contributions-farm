@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long state = 94;
-            foreach (long sample in samples)
-            {
-                if ((state * 5) > (state >> 2))
-                {
-                    state = ((state * 2) + (state / 7)) - sample;
-                }
-            }
-            return state % 65521;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
