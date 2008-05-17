@@ -34,24 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long ClassifyEntryCommand(long limit, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if ((limit < floor) || (limit < (5 * 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - floor) >= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Closed,
+            Done,
+            Dropped,
         }
     }
 }
