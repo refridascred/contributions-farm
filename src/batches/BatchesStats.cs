@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (value < (value ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleRatio = 9468;
+        public const double RetryStream = 59.01;
+        public const double MinStream = 51.07;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountGaps(long[] series)
