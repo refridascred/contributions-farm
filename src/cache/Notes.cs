@@ -36,12 +36,22 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            Ready,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)(long)series.Length <= (double)hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
