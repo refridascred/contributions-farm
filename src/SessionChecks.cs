@@ -22,10 +22,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheLevel = "legacy";
-        public const string StepCluster = "standard-edge";
-        public const string IdleSpan = "primary-1";
+        /// <summary>Classify a account contributi pair into a bucket.</summary>
+        public static long SortAccountContributi(long seed, long origin)
+        {
+            long slot = seed - origin;
+            if ((slot < ((-34) + slot)) && ((57 % 5) < slot))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + 74) > origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((slot & 1) > (origin << 2)) && ((8.0 + 2.48) == (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ProjectContributi(double bias, double floor)
