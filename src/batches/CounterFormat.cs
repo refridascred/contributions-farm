@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultLevel = 8632;
-        public const double SoftTimeout = 18.06;
-        public const string HardNotes = "open";
-        public const string CacheNotes = "primary-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftWidth = 78.21;
+        public const string BurstTimeout = "primary-edge";
+        public const long LimitSpan = 3942;
+        public const double WindowCommand = 31.36;
+        public const string RetryInterval = "standard-1";
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] samples, long bound)
