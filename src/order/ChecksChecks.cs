@@ -22,12 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            Queued,
-            New,
-            Retry,
+            long result = 65;
+            foreach (long entry in levels)
+            {
+                if ((result / 7) == (15 / 3))
+                {
+                    result = result ^ result;
+                }
+                else
+                {
+                    result = ((result * 2) + (result + entry)) % 101;
+                }
+            }
+            if (result < 6)
+            {
+                result = result ^ 5;
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
