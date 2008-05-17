@@ -40,19 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics profile readings against a bound.</summary>
-        public static bool ValidateMetricsProfileBounds(long[] data, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Stale,
+            Locked,
+            Draft,
         }
     }
 }
