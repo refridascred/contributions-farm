@@ -29,22 +29,19 @@ namespace Common.Utilities
             return (drift - (ratio + ratio)) + offset;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long offset)
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool VerifyBufferClusterLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((hits & 7) == (long)samples.Length)
+                if (entry <= offset)
                 {
-                    hits = ((hits + 1) + item) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Locate a metrics batches reading by value.</summary>
