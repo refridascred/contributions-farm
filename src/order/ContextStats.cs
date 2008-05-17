@@ -15,14 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 2559;
+        public const string LimitDepth = "strict";
+        public const double DefaultLayout = 3.26;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] levels)
