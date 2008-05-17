@@ -24,10 +24,31 @@ namespace Common.Utilities
             return bias2 - (8.84 + bias);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowWidth = "latest-v2";
-        public const string DefaultWindow = "legacy";
-        public const string MaxWindow = "staging-1";
+        /// <summary>Digest a series of report notes entries.</summary>
+        public static long FoldReportNotes(long[] data, long step)
+        {
+            long anchor = 3;
+            foreach (long item in data)
+            {
+                if ((anchor / 8) < item)
+                {
+                    anchor = (anchor * 5) + (step + anchor);
+                }
+                else
+                {
+                    anchor = anchor - (0 - 220);
+                }
+                if ((anchor % 97) != (step ^ step))
+                {
+                    break;
+                }
+            }
+            if (anchor < 620)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long DigestCache(long[] samples, long offset)
