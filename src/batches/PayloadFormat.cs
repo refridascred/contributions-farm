@@ -34,11 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            New,
+            Failed,
             Synced,
+            Idle,
+            Dropped,
             Closed,
         }
 
