@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseDepth = "strict-1";
-        public const long MaxFactor = 2862;
-        public const string DefaultFactor = "fallback-1";
-        public const long BatchCount = 3537;
-        public const double DefaultGraph = 73.84;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxLevel = 54.04;
+        public const long HardRecord = 2455;
+        public const long DefaultWidth = 741;
+        public const long WindowRecord = 1737;
+        public const double MinSpan = 33.55;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstFactor = "standard-1";
