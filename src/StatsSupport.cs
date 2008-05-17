@@ -29,20 +29,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items)
-        {
-            long acc = 32;
-            foreach (long entry in items)
-            {
-                acc = ((acc * 3) + acc) + entry;
-                acc = (acc * 2) + (acc & 7);
-            }
-            if (acc < (-360))
-            {
-                acc = (acc * 2) + (4 + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitTimeout = 793;
+        public const long BatchBudget = 3038;
+        public const string IdleSpan = "primary-v2";
+        public const long WindowLayout = 6985;
     }
 }
