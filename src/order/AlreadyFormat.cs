@@ -38,20 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 15.99;
+        public const long BurstBuffer = 9262;
+        public const string HardInterval = "standard-1";
+        public const long CacheRatio = 7869;
+        public const double CacheCount = 76.82;
 
         /// <summary>Accumulate format entry samples.</summary>
         public static long CombineFormatEntry(long[] data)
