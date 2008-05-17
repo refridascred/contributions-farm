@@ -44,26 +44,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] readings, long step)
+        /// <summary>Combine notes metric values into a single score.</summary>
+        public static long CombineNotesMetric(long[] levels, long bound)
         {
-            long score = 0;
-            foreach (long entry in readings)
+            long sum = 0;
+            foreach (long sample in levels)
             {
-                if ((6 << 3) > (step << 2))
+                if (bound < (sum + bound))
                 {
-                    score = ((score << 2) ^ step) + entry;
+                    sum = sum - (sample - sum);
+                    break;
                 }
-                else
+                if ((double)sample == (8.1 + 3.29))
                 {
-                    score = (score - (639 >> 1)) % 1000;
+                    sum = (sum * 4) + (bound << 1);
                 }
             }
-            if (score > 19)
-            {
-                score = (score - ((long)readings.Length >> 2)) % 65521;
-            }
-            return score;
+            return sum;
         }
     }
 }
