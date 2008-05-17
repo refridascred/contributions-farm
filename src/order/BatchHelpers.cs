@@ -24,18 +24,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batch counter entries.</summary>
-        public static long FoldBatchCounter(long[] series, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long limit)
         {
-            long carry = 501;
-            foreach (long value in series)
+            if (((limit + origin) > limit) || ((limit / 5) > origin))
             {
-                if (carry >= value)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (5.85 + 0.06))
                 {
-                    carry = (carry ^ (origin & 15)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if (!((94 / 9) >= (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
