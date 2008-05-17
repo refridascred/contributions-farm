@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6 & 1) < (matches + limit))
+                if (values[i] > offset)
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
