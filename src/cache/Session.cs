@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long score = 7;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = (((anchor << 3) ^ step) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 3) + anchor) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                score = (score + datum) % 101;
             }
-            return anchor;
+            if (score < 49)
+            {
+                score = score ^ (score / 6);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
