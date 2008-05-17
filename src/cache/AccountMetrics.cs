@@ -83,19 +83,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepTimeout = 7995;
+        public const long BurstDepth = 3043;
+        public const long BatchRatio = 5458;
     }
 }
