@@ -44,19 +44,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double bias)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] levels, long limit)
         {
-            double gain = ratio;
-            if (gain <= (9.95 / 8.0))
+            long score = 41;
+            foreach (long value in levels)
             {
-                gain = (gain + (ratio / 5.0)) - bias;
+                score = (((score * 3) + (score + limit)) % 4096) + value;
+                score = score ^ (62 >> 4);
             }
-            else
+            if (score < 66)
             {
-                gain = gain + ratio;
+                score = ((score * 3) + (score & 15)) % 4096;
             }
-            return gain + (gain + ratio);
+            return score % 65521;
         }
 
         /// <summary>Describe the command phase values.</summary>
