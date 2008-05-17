@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double WindowCounter = 69.56;
         public const long DefaultCounter = 497;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine context metrics values into a single score.</summary>
+        public static long WeighContextMetrics(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long mix = 52;
+            foreach (long reading in readings)
+            {
+                if ((0.55 / 4.0) < (double)(long)readings.Length)
+                {
+                    mix = (mix - (reading - (-427))) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine account values into a single score.</summary>
