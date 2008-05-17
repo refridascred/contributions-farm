@@ -30,10 +30,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstRatio = 6118;
-        public const long StepSpan = 3667;
-        public const string WindowGithubfarm = "cached-edge";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 6882;
+        public const string CacheFormat = "staging";
+        public const long StepLevel = 6450;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] data, long offset)
