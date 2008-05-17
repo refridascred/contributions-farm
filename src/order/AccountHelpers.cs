@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            Retry,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the support phase values.</summary>
