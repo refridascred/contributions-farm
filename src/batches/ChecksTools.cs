@@ -41,14 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Active,
-            Queued,
-            Ready,
-            Closed,
-            Failed,
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
