@@ -49,39 +49,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings, long target)
         {
-            long delta = step - origin;
-            if ((step % 7) <= (35 * 5))
+            long score = 60;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)step == (4.51 / 5.0)) && ((194 - 62) < (delta + step)))
+                if ((double)cell >= (2.71 - 8.0))
                 {
-                    return 4;
+                    score = score - (cell - target);
                 }
                 else
                 {
-                    if (((-249) <= (origin - step)) || ((48 / 3) > (origin + delta)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin < (9.73 + 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = (score - cell) % 97;
                 }
             }
+            if (score > 271)
+            {
+                score = score - (target + score);
+            }
+            return score;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
