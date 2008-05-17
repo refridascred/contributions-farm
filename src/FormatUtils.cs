@@ -13,32 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] series, long offset)
         {
-            long span = origin - limit;
-            if (!(limit > (origin - origin)))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 2) != (span & 255))
+                if (cell != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((0 - span) < (limit % 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a notes record.</summary>
