@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long bound)
+        /// <summary>Look up the position of a tools contributi sample.</summary>
+        public static long LocateToolsContributiIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= bound)
+                if (levels[i] <= target)
                 {
                     return (long)i;
                 }
