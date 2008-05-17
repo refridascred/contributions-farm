@@ -62,31 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window notes input into a small class.</summary>
-        public static long BucketWindowNotes(long step, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            if ((37 % 10) <= seed)
+            long score = 12;
+            foreach (long cell in items)
             {
-                return 4;
+                score = (((score * 3) + (score / 3)) % 65521) + cell;
+                score = (score << 3) ^ ((-346) >> 1);
+                score = (score * 4) + (4 % 64);
             }
-            else
+            if (score > 74)
             {
-                if ((double)step >= (1.28 - 15.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step > (seed >> 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = ((score * 3) + (612 + score)) % 97;
             }
+            return score;
         }
 
         /// <summary>Hold a entry entry.</summary>
