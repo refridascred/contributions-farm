@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_ratio: 38.21
-max_threshold_count: 1024
-editor_depth: false
+retry_timeout: edge
+payload_depth: 3
+sync_interval: 36.74
+base_window_count:
+  - 345
+  - 305
+dry_run: strict
