@@ -1,14 +1,14 @@
 {
-  "order_timeout": [312, 11],
-  "enabled": "staging",
-  "checks_depth": {
-    "dry_run": [279, 431],
-    "flush_interval": 80,
-    "order_window": 500,
-    "min_retries": true,
-    "max_capacity_pct": 60,
-    "default_capacity": 80.96
-  },
-  "layout_depth": false,
-  "flush_depth": "green"
+  "enabled": 74,
+  "max_size_s": 29.8,
+  "dry_run": "strict",
+  "min_ratio_count": 51.3,
+  "readonly": {
+    "soft_limit_count": "eu-west",
+    "cache_delay_pct": 91,
+    "layout_ttl": "green",
+    "checks_timeout": "standard",
+    "poll_limit": 30,
+    "account_size": 58
+  }
 }
