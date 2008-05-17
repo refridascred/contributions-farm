@@ -86,12 +86,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] data, long offset)
         {
-            Ready,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (offset > 6)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
