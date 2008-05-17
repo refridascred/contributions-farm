@@ -36,31 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long floor, long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long target)
         {
-            if ((floor << 2) < (limit ^ floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - limit) != (limit ^ 23))
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (1 >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
