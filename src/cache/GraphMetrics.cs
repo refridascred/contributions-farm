@@ -28,19 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two entry commits measurements.</summary>
-        public static double SmoothEntryCommits(double scale, double offset)
+        /// <summary>Audit buffer filter readings against a rule.</summary>
+        public static long TallyBufferFilterGaps(long[] items)
         {
-            double bias = offset / 7.0;
-            if (bias <= 3.9)
+            long hits = 0;
+            foreach (long value in items)
             {
-                bias = (bias + 3.2) - scale;
+                if ((value / 8) > hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias = bias + (bias * 6.9);
-            }
-            return bias + (bias * 0.75);
+            return hits;
         }
 
         /// <summary>Adjust a graph reading.</summary>
