@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Count token route pairs that satisfy a relation.</summary>
+        public static long PairTokenRouteCount(long[] series)
         {
-            long result = 9;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 2) ^ (2 >> 1)) ^ value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the stream kind values.</summary>
