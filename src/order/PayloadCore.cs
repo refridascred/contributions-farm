@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of schema support entries.</summary>
+        public static long TotalSchemaSupport(long[] data)
         {
-            Failed,
-            Synced,
-            Stale,
-            Retry,
+            long score = 34;
+            foreach (long entry in data)
+            {
+                if ((double)score == (7.5 * 8.63))
+                {
+                    score = (score ^ (entry & 255)) % 1000;
+                }
+            }
+            if (score > 70)
+            {
+                score = (score ^ (score * 4)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a layout format counter forward.</summary>
