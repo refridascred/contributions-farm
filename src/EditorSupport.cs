@@ -15,11 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
