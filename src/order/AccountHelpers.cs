@@ -48,12 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1057;
-        public const double BurstBudget = 71.83;
-        public const long MinProfile = 9371;
-        public const string BaseDepth = "local-v2";
-        public const string BurstScore = "open";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 3) > cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] levels, long limit)
