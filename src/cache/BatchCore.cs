@@ -24,19 +24,19 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] levels, long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double mean = (0.5 / 9.0) - (double)8;
+            if (mean <= mean)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - bias;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 8.5) + (double)(long)i;
+            }
+            return mean - bias2;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
