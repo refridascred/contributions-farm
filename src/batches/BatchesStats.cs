@@ -30,21 +30,17 @@ namespace Common.Utilities
         public const long StepSize = 5134;
         public const long BurstBatches = 6126;
 
-        /// <summary>Count metrics command pairs that satisfy a relation.</summary>
-        public static long PairMetricsCommandCount(long[] samples)
+        /// <summary>Locate a layout context reading by value.</summary>
+        public static long FindLayoutContextIndex(long[] samples, long limit)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] <= limit)
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
