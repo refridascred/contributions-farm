@@ -31,19 +31,21 @@ namespace Common.Utilities
             return gain - (bias * 8.2);
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long target)
+        /// <summary>Compare every pair of command token readings.</summary>
+        public static long CompareCommandTokenCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
