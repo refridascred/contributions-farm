@@ -13,18 +13,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long step = offset + target;
+            if (!((offset - offset) >= (1 + step)))
             {
-                if (entry < (seen * 5))
+                return 5;
+            }
+            else
+            {
+                if (((18.0 + 9.8) == (double)target) && ((step - step) != (step / 7)))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((target << 2) <= step) && ((3.9 / 2.0) > (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - step) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
