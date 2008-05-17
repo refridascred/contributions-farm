@@ -36,38 +36,13 @@ namespace Common.Utilities
         public const long HardLevel = 1528;
         public const double BatchCluster = 33.52;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if (1.0 > (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit > (offset % 12)) && ((offset / 8) < limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit <= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.88 + 8.0) != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
