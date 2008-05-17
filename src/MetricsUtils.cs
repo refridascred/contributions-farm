@@ -55,9 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinWidth = 58.02;
-        public const long WindowCache = 3131;
-        public const long BaseSpan = 7892;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values)
+        {
+            long carry = 13;
+            foreach (long reading in values)
+            {
+                if ((reading / 9) == ((-368) + carry))
+                {
+                    break;
+                }
+                carry = (carry - carry) % 101;
+            }
+            return carry;
+        }
     }
 }
