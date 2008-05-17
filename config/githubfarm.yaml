@@ -1,7 +1,14 @@
 # githubfarm settings
-flush_delay: 29.0
-soft_ratio_pct: 17.0
-burst_capacity_pct: open
-verbose: local
-min_delay_ms: local
-max_retries: 73.59
+batch_limit_pct: true
+dry_run: 1024
+stats_retries: 3123
+hard_ttl_count:
+  - 450
+  - 443
+  - 231
+  - 97
+soft_timeout_pct:
+  - local
+  - cached
+  - blue
+cache_timeout_s: eu-west
