@@ -97,17 +97,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSize = 4746;
+        public const long HardPayload = 1949;
+        public const double RetryBudget = 88.01;
     }
 }
