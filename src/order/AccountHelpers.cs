@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double bias)
         {
-            long sum = 35;
-            foreach (long sample in levels)
+            double drift = weight;
+            if (drift <= (drift - drift))
             {
-                sum = (sum - (sample & 31)) % 101;
+                drift = (drift + (weight + weight)) + bias;
             }
-            return sum;
+            return drift - (double)1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
