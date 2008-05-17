@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long acc = -381;
+            foreach (long item in series)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc ^ 28) % 255) ^ (long)i;
+                    acc = (acc - (678 / 9)) % 65521;
+                }
+                acc = (acc + (floor - item)) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Adjust a filter already reading.</summary>
