@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of report token readings.</summary>
-        public static long WeighReportToken(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] samples, long seed)
         {
-            long mark = 910;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (entry * 3)) % 255;
-                if ((entry + mark) == (entry ^ entry))
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
