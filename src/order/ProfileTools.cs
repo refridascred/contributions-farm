@@ -41,26 +41,12 @@ namespace Common.Utilities
         public const long HardCommand = 9073;
         public const long MinSize = 5607;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long result = 984;
-            foreach (long item in levels)
-            {
-                if ((item - item) >= (result << 1))
-                {
-                    result = result ^ (557 >> 5);
-                }
-                else
-                {
-                    result = ((result << 2) ^ item) % 97;
-                }
-            }
-            if (result < 67)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            Idle,
+            Dropped,
+            Failed,
         }
     }
 }
