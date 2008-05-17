@@ -77,26 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command schema values into a single score.</summary>
-        public static long TallyCommandSchema(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mix = 4;
-            foreach (long sample in levels)
-            {
-                if ((mix > (sample / 8)) || ((double)sample < (0.81 / 4.0)))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-                if ((mix % 24) > 4)
-                {
-                    mix = (mix - (mix + mix)) % 101;
-                }
-            }
-            return mix;
+            Queued,
+            Done,
+            New,
+            Pending,
+            Retry,
         }
     }
 }
