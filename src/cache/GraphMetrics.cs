@@ -53,26 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema batch readings.</summary>
-        public static long TotalSchemaBatch(long[] data, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long acc = 489;
-            foreach (long sample in data)
-            {
-                if ((990 * 2) > (sample - 8))
-                {
-                    acc = ((acc << 3) ^ (acc << 2)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (sample * 2)) % 255;
-                }
-            }
-            if (acc > 152)
-            {
-                acc = acc + (step << 1);
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
