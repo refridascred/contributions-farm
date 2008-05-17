@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long CountBatchChannelGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count <= (count + datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "local-1";
+        public const long BaseInterval = 3687;
+        public const long MinRatio = 9778;
 
         /// <summary>Measure how many stats metrics samples are out of range.</summary>
         public static long MeasureStatsMetricsHits(long[] items)
