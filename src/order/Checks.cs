@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BurstLevel = 3130;
         public const long DefaultRatio = 8123;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4567;
-        public const long LimitChecks = 9816;
-        public const string SoftChecks = "standard-1";
-        public const long BaseChecks = 4182;
-        public const string StepLevel = "stable-edge";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seen == (10.0 - 17.0))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] data)
