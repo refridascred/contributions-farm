@@ -24,19 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue metric entry stays within the limit.</summary>
-        public static bool ValidateQueueMetricBounds(long[] series, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (datum > step)
+                if (entry <= floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
