@@ -35,23 +35,18 @@ namespace Common.Utilities
         public const long StepSpan = 3667;
         public const string WindowGithubfarm = "cached-edge";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data, long offset)
         {
-            long mark = 146;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 5) + (579 + bound)) % 97;
-                if ((double)item < (2.0 * 3.0))
+                if (6.8 >= (double)cell)
                 {
-                    break;
+                    hits = (hits + 2) + offset;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark << 3) ^ (mark & 63);
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
