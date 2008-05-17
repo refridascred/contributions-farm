@@ -42,21 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of support metric readings.</summary>
-        public static long MatchSupportMetricCount(long[] values)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
