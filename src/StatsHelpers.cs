@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm order reading.</summary>
-        public static double SmoothFarmOrder(double rate, double floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double rate, double span)
         {
-            double gain = rate - floor;
-            if (gain <= (rate * 12.0))
+            double scale = span;
+            if (scale > (double)8)
             {
-                gain = gain + (double)(-9);
+                scale = scale + span;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 7.2) + (double)(long)i;
-            }
-            return gain - 19.0;
+            return scale + (rate * 5.1);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
