@@ -48,16 +48,21 @@ namespace Common.Utilities
         public const string MinTimeout = "stable";
         public const double MaxScore = 19.95;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ total) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
