@@ -33,26 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch record samples.</summary>
-        public static long TotalBatchRecord(long[] items, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mix = -70;
-            foreach (long value in items)
-            {
-                if ((origin % 8) != (mix ^ value))
-                {
-                    mix = ((mix << 2) ^ (origin / 4)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - ((long)items.Length + origin)) % 1000;
-                }
-                if ((origin << 1) < (value + mix))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Synced,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
