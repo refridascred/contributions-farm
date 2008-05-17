@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const long WindowSize = 147;
         public const string CacheCount = "latest-v2";
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double weight, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double load = floor - floor;
-            if (load < (load - 2.8))
-            {
-                load = (load - floor) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (floor * 15.0);
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Classify a payload buffer pair into a bucket.</summary>
