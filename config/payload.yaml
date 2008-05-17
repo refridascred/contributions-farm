@@ -1,16 +1,12 @@
 # payload settings
-cache_window_pct: eu-west
-verbose: open
-hard_limit:
-  - strict
-  - latest
-editor_limit:
-  max_capacity:
-    - 365
-    - 493
-    - 310
-  retry_limit_ms:
-    githubfarm_interval: 30
-    readonly: false
-    flush_ratio_count: 100
-  audit: true
+cluster_ttl: standard
+warm_threshold:
+  burst_window_ms: 20
+  min_threshold_ms: 13.28
+  enabled: stable
+  context_capacity: 6437
+  compress: 79
+poll_capacity:
+  - 30
+  - 337
+  - 30
