@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((28 & 7) == (datum * 5)) || (((double)tally > (double)datum) || ((7.1 * 8.5) >= (double)datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 3396;
+        public const long BaseEditor = 7358;
+        public const double DefaultFactor = 76.6;
+        public const long BaseLevel = 4624;
+        public const long StepBudget = 1897;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksMatches(long[] data)
