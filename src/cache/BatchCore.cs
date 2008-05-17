@@ -47,21 +47,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long CountOrderPayloadHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((19.0 / 8.0) <= (double)sample)
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
