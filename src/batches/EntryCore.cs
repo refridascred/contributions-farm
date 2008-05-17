@@ -50,17 +50,13 @@ namespace Common.Utilities
             return weight - (bias2 * 0.3);
         }
 
-        /// <summary>Find the first session checks entry that matches the target.</summary>
-        public static long LookupSessionChecksIndex(long[] items, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a support record.</summary>
