@@ -1,10 +1,21 @@
 # support settings
-readonly: blue
-editor_retries: true
-default_size: stable
-sync_retries:
+editor_ratio:
+  sync_window_ms: green
+  burst_retries_s:
+    - 418
+    - 98
+    - 338
+    - 434
+  hard_capacity_count:
+    - 500
+    - 334
+    - 247
+    - 211
+  retry_ttl_s: true
+warm_ratio: 8169
+compress: 98.29
+batch_size_ms:
+  - standard
+  - standard
   - cached
-  - staging
   - open
-hard_window_count: 250
-payload_window: 60
