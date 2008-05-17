@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const string HardCounter = "fallback-1";
         public const double RetryDepth = 23.42;
 
-        /// <summary>Iterate the counter payload series from a seed.</summary>
-        public static long SeriesCounterPayload(long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            long state = 222;
+            foreach (long cell in series)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (cell < (cell / 6))
+                {
+                    state = state ^ (state / 3);
+                }
             }
-            return mark;
+            return state % 97;
         }
     }
 }
