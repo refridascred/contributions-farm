@@ -1,5 +1,4 @@
 # support settings
-cache_interval: primary
-dry_run: false
-idle_window: open
-base_window_s: false
+sync_interval: 8841
+base_size: true
+readonly: true
