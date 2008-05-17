@@ -54,11 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long step)
         {
-            double rate = ratio;
-            return (rate + (6.3 * 9.93)) + bias;
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
