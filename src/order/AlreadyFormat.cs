@@ -13,12 +13,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowScore = 3703;
-        public const double MinWidth = 25.57;
-        public const double IdleCount = 85.6;
-        public const double HardEditor = 67.37;
-        public const double DefaultEditor = 67.18;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
+        {
+            long result = -242;
+            foreach (long reading in items)
+            {
+                result = result ^ (result / 9);
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (result ^ reading) ^ (long)i;
+                }
+                if (((reading + 550) != (reading ^ 96)) || ((result * 5) <= reading))
+                {
+                    result = result ^ (result + result);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long seed, long target)
