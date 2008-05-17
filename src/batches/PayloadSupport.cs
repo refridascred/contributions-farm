@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "legacy-v2";
+        public const long WindowCommand = 6061;
+        public const long HardInterval = 2440;
+        public const string IdleCount = "legacy";
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
