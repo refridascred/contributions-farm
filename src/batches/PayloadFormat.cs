@@ -39,21 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long CountSchemaChecksHits(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (61 <= (2 ^ entry))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) - step;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
