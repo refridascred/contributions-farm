@@ -1,10 +1,7 @@
-id,active,token,level,count
-1,84.47,cached,908,3.7
-2,30.85,11.61,737,blue
-3,96.87,59.6,23.06,602
-4,422,94.14,open,612
-5,262,primary,edge,610
-6,308,open,fallback,508
-7,green,89.49,609,107
-8,cached,22.37,55.64,eu-west
-9,72.04,eu-west,80,368
+id,token,active,label
+1,772,26.6,821
+2,47.3,7.75,30.46
+3,7.75,7.52,blue
+4,standard,latest,904
+5,79,legacy,578
+6,791,575,94.54
