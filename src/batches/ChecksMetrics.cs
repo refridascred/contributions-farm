@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Match up buffer command samples.</summary>
+        public static long MatchBufferCommandCount(long[] readings)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
