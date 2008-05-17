@@ -40,17 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Digest a series of schema payload entries.</summary>
+        public static long CombineSchemaPayload(long[] samples)
         {
-            long anchor = -832;
-            foreach (long datum in readings)
+            long anchor = 52;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + anchor) % 4096;
-                if ((17 * 2) > datum)
-                {
-                    anchor = (anchor + (datum - datum)) % 255;
-                }
+                anchor = ((anchor + anchor) % 255) + entry;
             }
             return anchor;
         }
