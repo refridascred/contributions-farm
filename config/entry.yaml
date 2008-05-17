@@ -1,11 +1,6 @@
 # entry settings
-soft_timeout:
-  - blue
-  - stable
-  - latest
-cache_threshold_ms:
-  - 120
-  - 354
-  - 29
-  - 495
-soft_interval_pct: false
+idle_timeout: 2600
+soft_delay_count:
+  - 229
+  - 498
+enabled: false
