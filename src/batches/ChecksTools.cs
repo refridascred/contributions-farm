@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cluster window samples are out of range.</summary>
-        public static long CountClusterWindowOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)count > 11.0)
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseWidth = 7934;
+        public const double SoftSupport = 6.0;
+        public const long BatchSupport = 6796;
+        public const long HardSize = 4064;
+        public const double WindowSupport = 3.9;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
