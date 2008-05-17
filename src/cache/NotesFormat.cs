@@ -20,17 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] items, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (items[i] == bound)
+                if ((datum * 3) >= (datum / 4))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
