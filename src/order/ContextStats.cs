@@ -31,14 +31,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Pending,
-            Paused,
-            Idle,
-            Active,
             Failed,
+            Done,
+            Locked,
         }
     }
 }
