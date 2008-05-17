@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of farm batches readings.</summary>
-        public static long PairFarmBatchesCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxWidth = "staging";
+        public const string DefaultChecks = "strict-edge";
+        public const string BatchRatio = "latest-edge";
+        public const long MinChecks = 3954;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long target)
