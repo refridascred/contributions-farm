@@ -46,13 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Paused,
-            Pending,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 8141;
+        public const string IdleAlready = "latest-1";
+        public const long MinFactor = 7039;
+        public const string BaseDepth = "staging";
+        public const long RetryDepth = 1859;
 
         /// <summary>Grade a commits graph value against two limits.</summary>
         public static long GradeCommitsGraph(long floor, long offset)
