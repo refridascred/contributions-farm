@@ -1,5 +1,6 @@
 {
-  "idle_ratio_s": 923,
-  "cache_ttl_ms": ["stable", "staging", "legacy"],
-  "burst_size_count": 5583
+  "warm_retries_ms": "primary",
+  "enabled": 20.23,
+  "batch_size_count": "green",
+  "idle_capacity_s": "blue"
 }
