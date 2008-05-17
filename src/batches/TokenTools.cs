@@ -33,17 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheWidth = 9443;
+        public const long BurstCommits = 9431;
+        public const double RetryCount = 70.79;
+        public const long MinCommits = 3819;
     }
 }
