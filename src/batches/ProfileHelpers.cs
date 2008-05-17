@@ -13,19 +13,32 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate farm githubfarm samples.</summary>
-        public static long FoldFarmGithubfarm(long[] levels, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long target, long bound)
         {
-            long carry = 46;
-            foreach (long sample in levels)
+            long gap = target + bound;
+            if (((target >> 4) <= 69) && (gap >= (gap - gap)))
             {
-                carry = (((carry << 2) ^ (carry >> 1)) % 65521) - sample;
+                return 4;
             }
-            if (carry < (-7))
+            else
             {
-                carry = carry ^ (carry - step);
+                if ((9.81 / 7.0) == (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (gap <= (68 << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
