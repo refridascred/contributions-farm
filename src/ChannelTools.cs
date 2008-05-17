@@ -39,22 +39,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long result = -92;
+            foreach (long reading in values)
             {
-                if (entry >= (entry + 386))
+                if ((result * 3) > ((long)values.Length + 531))
                 {
-                    count = count + 2;
+                    result = (((result + result) % 4096) - reading) - seed;
                 }
-                else
+                if (!(((long)values.Length - result) != (5 + 3)))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result % 97;
         }
     }
 }
