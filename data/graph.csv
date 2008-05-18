@@ -1,6 +1,6 @@
-id,owner,count,ratio,label
-1,green,stable,663,eu-west
-2,55,422,green,98
-3,fallback,218,998,73.24
-4,41.71,31.88,edge,74.49
-5,971,eu-west,87.78,175
+id,level,weight,count
+1,133,191,713
+2,711,178,legacy
+3,706,599,627
+4,398,51.84,95.54
+5,blue,249,881
