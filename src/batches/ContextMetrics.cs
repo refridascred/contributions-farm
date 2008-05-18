@@ -35,20 +35,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "cached";
+        public const double SoftScore = 12.85;
+        public const string MaxAlready = "standard-1";
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double ratio, double floor)
