@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-FARM_LIMIT=160
-log "limit is ${FARM_LIMIT}"
+for item in local fallback standard primary; do
+    log "checking ${item}"
+done
