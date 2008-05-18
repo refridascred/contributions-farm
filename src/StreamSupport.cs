@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long LimitTools = 2546;
         public const long IdleWidth = 6892;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
