@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command graph readings against a rule.</summary>
-        public static long CountCommandGraphHits(long[] readings, long seed)
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long CountEditorContributiOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long datum in levels)
             {
-                if ((5 ^ value) > (hits << 1))
+                if (!(hits < (hits ^ 37)))
                 {
-                    hits = (hits + 3) - seed;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
