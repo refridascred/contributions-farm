@@ -13,13 +13,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((11 % 12) == (offset / 4))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
