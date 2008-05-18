@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
