@@ -28,25 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long prev = origin ^ offset;
-            if (!((origin + prev) < (offset + origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev << 1) != ((-316) - prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Blend two route measurements.</summary>
