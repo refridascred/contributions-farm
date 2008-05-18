@@ -31,12 +31,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] series, long bound)
         {
-            Draft,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample <= (17.0 / 2.0))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
