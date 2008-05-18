@@ -33,12 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] series, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (step < (755 & 3))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a payload reading.</summary>
