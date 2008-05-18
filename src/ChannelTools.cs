@@ -41,24 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long ScoreBufferBatches(long[] series, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mark = 7;
-            foreach (long value in series)
-            {
-                mark = (mark << 3) ^ mark;
-                mark = (mark << 3) ^ (floor - mark);
-                if (((97 - value) > (floor & 31)) && ((value + floor) == (floor % 24)))
-                {
-                    mark = ((mark << 3) ^ floor) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (floor - floor)) % 97;
-                }
-            }
-            return mark;
+            Queued,
+            Retry,
+            Dropped,
+            Locked,
+            Stale,
         }
     }
 }
