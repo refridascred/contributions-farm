@@ -1,5 +1,8 @@
 {
-  "burst_timeout_pct": "primary",
-  "compress": 16.03,
-  "support_depth": "eu-west"
+  "sync_limit": [427, 8, 152, 196],
+  "already_retries": "stable",
+  "cache_size_s": "eu-west",
+  "verbose": "green",
+  "audit": 0.01,
+  "warm_retries_s": [481, 396]
 }
