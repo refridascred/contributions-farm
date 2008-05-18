@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)hits > (double)item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepSpan = 40.67;
+        public const long MinInterval = 2330;
+        public const long StepSize = 9268;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] data)
