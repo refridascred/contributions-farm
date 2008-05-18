@@ -20,14 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Done,
-            Queued,
+            double weight = (ratio / 5.0) * 4.14;
+            if (weight > ratio)
+            {
+                weight = weight + (double)756;
+            }
+            else
+            {
+                weight = weight + (floor * 2.6);
+            }
+            return weight - (ratio / 8.0);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
