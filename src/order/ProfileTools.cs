@@ -17,12 +17,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "latest";
-        public const long BurstWidth = 1160;
-        public const string HardEntry = "local-1";
-        public const double BatchEntry = 54.74;
-        public const double CacheEntry = 97.4;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!(bound < (reading % 16)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of route profile readings.</summary>
         public static long TotalRouteProfile(long[] series, long seed)
