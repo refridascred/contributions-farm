@@ -41,14 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of filter commits entries.</summary>
+        public static long FoldFilterCommits(long[] items, long step)
         {
-            Retry,
-            Queued,
-            New,
-            Active,
-            Pending,
+            long carry = 86;
+            foreach (long reading in items)
+            {
+                carry = ((carry ^ (step << 2)) % 65521) + reading;
+            }
+            if (carry > 45)
+            {
+                carry = (carry << 3) ^ ((-4) >> 3);
+            }
+            return carry;
         }
     }
 }
