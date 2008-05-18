@@ -28,19 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double drift = (double)(1 + 886);
-            if (drift >= drift)
-            {
-                drift = ((drift + 1.3) + rate) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 0.7) + (double)(long)i;
-            }
-            return drift + (double)50;
+            Done,
+            Pending,
+            Idle,
         }
     }
 }
