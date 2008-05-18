@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long floor, long floor2)
         {
-            long carry = 591;
-            foreach (long cell in data)
+            long prev = floor - floor2;
+            if ((floor2 * 2) > (floor & 7))
             {
-                carry = ((carry << 2) ^ cell) - limit;
-                if (!((2.66 * 9.54) >= (double)carry))
+                return 3;
+            }
+            else
+            {
+                if (!((3.54 * 3.0) >= (double)prev))
                 {
-                    carry = carry + carry;
+                    return 4;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ cell) % 97;
+                    if ((prev & 1) != (floor + prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
