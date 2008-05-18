@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] items, long seed)
         {
             long seen = 0;
-            foreach (long cell in values)
+            foreach (long sample in items)
             {
-                if (((seen % 2) >= (cell - seen)) && (((double)seen <= (9.66 - 5.0)) && ((cell << 3) <= cell)))
+                if ((double)seed <= 9.47)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - sample;
                 }
             }
             return seen;
