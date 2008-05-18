@@ -42,17 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph tools reading by value.</summary>
-        public static long SeekGraphToolsIndex(long[] samples, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a tools header.</summary>
