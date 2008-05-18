@@ -29,9 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 4765;
-        public const string DefaultLevel = "fallback-v2";
-        public const long StepDepth = 8097;
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
