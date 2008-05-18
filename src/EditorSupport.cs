@@ -74,21 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Roll a commits profile counter forward.</summary>
+        public static long RollCommitsProfile(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((1.49 * 7.06) != (double)mix) || (mix > ((long)i + mix)))
                 {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 3) + (seed + 85)) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
