@@ -1,6 +1,9 @@
-id,rank,count,owner
-1,147,local,28
-2,493,fallback,staging
-3,edge,primary,920
-4,64.35,70,493
-5,legacy,69.21,912
+id,rank,token,weight,region
+1,440,cached,70.0,9.18
+2,289,369,28.0,97
+3,81.34,16,35.92,8.14
+4,standard,475,53.17,695
+5,90.51,71.85,240,378
+6,487,480,44,719
+7,74.34,99,strict,518
+8,primary,35.08,918,12.39
