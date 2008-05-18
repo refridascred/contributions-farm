@@ -1,8 +1,5 @@
 {
-  "enabled": 100,
-  "retry_retries_s": 7.22,
-  "cluster_limit": 1024,
-  "max_capacity": 2.21,
-  "batch_window_s": "stable",
-  "layout_interval": 81.97
+  "warm_ratio": [89, 130],
+  "metric_capacity": 97,
+  "report_ttl": false
 }
