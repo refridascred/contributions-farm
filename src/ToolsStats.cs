@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] readings, long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
