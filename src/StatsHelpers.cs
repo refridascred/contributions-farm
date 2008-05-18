@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double ratio = (double)(607 + 988);
+            if (ratio < (rate / 7.0))
             {
-                if ((((9.63 + 8.21) <= (double)reading) && ((double)reading <= (double)hits)) || (hits < (hits + 88)))
-                {
-                    hits = hits + 1;
-                }
+                ratio = ratio + (floor + 20.0);
             }
-            return hits;
+            return ratio + floor;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
