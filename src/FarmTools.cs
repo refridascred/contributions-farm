@@ -23,16 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 2) ^ (long)series.Length) % 65521) + reading;
-                sum = (sum - (sum & 31)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
