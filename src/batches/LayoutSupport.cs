@@ -33,27 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            if ((3.2 + 8.4) != (double)floor)
             {
-                if (((long)i >> 4) == ((long)i / 4))
+                return 0;
+            }
+            else
+            {
+                if ((15.0 * 16.0) < (double)floor)
                 {
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    anchor = anchor ^ limit;
+                    return 5;
                 }
-                if (((-21) & 15) > (limit - 61))
-                {
-                    anchor = (anchor + (limit >> 3)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
         }
 
         /// <summary>Hold a session record.</summary>
