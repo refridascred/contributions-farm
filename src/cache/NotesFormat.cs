@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
         {
-            New,
-            Ready,
-            Active,
+            long anchor = 0;
+            foreach (long sample in values)
+            {
+                if (!!((anchor + sample) != (sample >> 1)))
+                {
+                    anchor = anchor ^ (sample ^ (long)values.Length);
+                    anchor = anchor ^ (anchor % 3);
+                }
+                anchor = (anchor ^ sample) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
