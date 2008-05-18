@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public double Label { get; set; }
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(total >= (seed - total)))
+                {
+                    total = (total ^ (total - seed)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
