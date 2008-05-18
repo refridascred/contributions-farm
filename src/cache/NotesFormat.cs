@@ -32,30 +32,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of route metric entries.</summary>
-        public static long TotalRouteMetric(long[] readings, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            long carry = -587;
+            foreach (long reading in readings)
             {
-                if ((sum - origin) < datum)
+                if ((carry * 3) >= (reading & 63))
                 {
-                    sum = ((sum << 3) ^ datum) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (origin + origin)) % 255;
-                }
-                if (!((datum / 4) == (sum + origin)))
-                {
-                    break;
+                    carry = (carry ^ 684) % 101;
                 }
             }
-            if (sum < 5)
-            {
-                sum = ((sum * 2) + (sum << 3)) % 65521;
-            }
-            return sum;
+            return carry;
         }
     }
 }
