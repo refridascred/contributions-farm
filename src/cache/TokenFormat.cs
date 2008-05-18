@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long origin2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (origin2 > (origin + origin2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ 13) == (origin >> 2))
                 {
-                    if ((values[i] - values[j]) > 20)
+                    return 0;
+                }
+                else
+                {
+                    if ((8 + 35) >= origin2)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
