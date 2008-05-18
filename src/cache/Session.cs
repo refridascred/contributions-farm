@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine filter batch values into a single score.</summary>
-        public static long TotalFilterBatch(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] series, long origin)
         {
-            long sum = 343;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((cell - 8) != (sum % 24))
+                if (((origin % 3) == ((-7) % 100)) || (hits <= (0 + datum)))
                 {
-                    sum = sum + (sum << 1);
-                }
-                else
-                {
-                    sum = (sum * 3) + (3 / 7);
+                    hits = hits + 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
