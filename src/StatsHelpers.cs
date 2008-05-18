@@ -45,21 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats contributi pairs that satisfy a relation.</summary>
-        public static long OverlapStatsContributiCount(long[] readings)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
