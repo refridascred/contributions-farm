@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Closed,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 7431;
+        public const long LimitToken = 3381;
+        public const long HardCount = 3346;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long target)
