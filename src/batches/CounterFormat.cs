@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor token samples.</summary>
-        public static long ScoreEditorToken(long[] values, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long anchor = 4;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor << 2) ^ limit) % 4096) ^ sample;
-                if ((anchor >> 1) > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 75)
-            {
-                anchor = (anchor * 2) + (limit ^ anchor);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
