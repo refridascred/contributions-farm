@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 49.28;
-        public const double MaxSize = 46.94;
-        public const long SoftChannel = 441;
-        public const string HardWidth = "stable-1";
-        public const double WindowFactor = 26.6;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry ^ entry) != (79 + hits))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitNotes = 1220;
