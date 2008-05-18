@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstSize = 95.98;
-        public const double DefaultBudget = 13.06;
-        public const double BaseTimeout = 97.87;
-        public const long BurstStream = 4172;
-        public const double IdleBudget = 31.1;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseSchema = 9726;
