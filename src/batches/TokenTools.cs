@@ -16,23 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = 4;
-            foreach (long value in data)
-            {
-                mix = (mix + (value << 3)) % 97;
-                if (mix >= (mix / 8))
-                {
-                    mix = (mix ^ (value >> 4)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
