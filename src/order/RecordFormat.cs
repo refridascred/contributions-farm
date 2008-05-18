@@ -33,10 +33,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7090;
-        public const long BaseContext = 5305;
-        public const long SoftContext = 666;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 8340;
+        public const long WindowWidth = 5857;
+        public const long StepCommand = 248;
+        public const double HardFactor = 48.1;
+        public const long RetryCommand = 1821;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] levels, long seed)
