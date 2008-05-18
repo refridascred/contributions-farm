@@ -54,12 +54,11 @@ namespace Common.Utilities
         public const double SoftScore = 12.85;
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
             public long Limit { get; set; }
         }
 
