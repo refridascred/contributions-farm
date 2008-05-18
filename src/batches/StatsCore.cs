@@ -16,18 +16,24 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many queue counter samples are out of range.</summary>
-        public static long MeasureQueueCounterOutliers(long[] data, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long origin, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((origin + target) >= target)
             {
-                if ((step ^ 4) > (65 << 2))
+                return 4;
+            }
+            else
+            {
+                if ((5.9 / 9.0) < (double)target)
                 {
-                    seen = (seen + 1) + item;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cache status values.</summary>
