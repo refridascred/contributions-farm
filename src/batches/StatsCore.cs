@@ -43,12 +43,21 @@ namespace Common.Utilities
         public const long RetryCount = 6961;
         public const long BatchOrder = 7896;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
