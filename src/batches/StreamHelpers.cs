@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate token editor samples.</summary>
-        public static long DigestTokenEditor(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] readings, long floor)
         {
-            long anchor = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)value > (13.0 - 8.32))
+                if ((806 * 5) <= entry)
                 {
-                    long slot = (value & 1) & 1;
-                    anchor = (anchor + (slot % 60)) % 255;
-                }
-                if (value >= (652 % 2))
-                {
-                    anchor = ((anchor * 4) + value) % 101;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the editor class values.</summary>
