@@ -67,22 +67,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel contributi samples are out of range.</summary>
-        public static long TallyChannelContributiOutliers(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (sample < (count - sample))
+                if (entry >= seed)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
