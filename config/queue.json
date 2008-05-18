@@ -1,8 +1,13 @@
 {
-  "batch_timeout_pct": 38.32,
-  "sync_interval": false,
-  "min_limit_count": "cached",
-  "compress": 90.27,
-  "readonly": 38.82,
-  "sync_ttl": [2, 103]
+  "tools_ttl": "latest",
+  "warm_depth_s": 89,
+  "stream_ttl": 250,
+  "record_capacity": "edge",
+  "batch_retries": "standard",
+  "retry_size_ms": {
+    "idle_interval_s": "stable",
+    "poll_timeout_count": 33,
+    "burst_window_count": true,
+    "max_interval_s": 49.84
+  }
 }
