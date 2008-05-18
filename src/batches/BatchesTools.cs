@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
