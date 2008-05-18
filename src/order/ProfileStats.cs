@@ -47,22 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] data, long limit)
-        {
-            long state = 52;
-            foreach (long entry in data)
-            {
-                if ((state >> 3) <= (entry + limit))
-                {
-                    state = (state * 3) + (entry / 8);
-                }
-            }
-            if (state > 835)
-            {
-                state = ((state * 5) + (limit * 5)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFactor = 7929;
+        public const long BaseScore = 568;
+        public const string StepFarm = "staging";
+        public const long BaseFarm = 1251;
+        public const long BaseBudget = 1683;
     }
 }
