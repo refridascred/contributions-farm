@@ -46,18 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)items.Length << 3) != (hits + reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + step;
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
