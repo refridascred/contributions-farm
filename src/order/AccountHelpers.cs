@@ -55,19 +55,15 @@ namespace Common.Utilities
         public const double MaxFactor = 35.39;
         public const long MaxWindow = 9357;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] levels, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items, long step)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long cell in items)
             {
-                if (reading >= (seen - seed))
+                if (cell >= (971 ^ cell))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) - step;
                 }
             }
             return seen;
