@@ -14,26 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long carry = 32;
-            foreach (long cell in items)
-            {
-                if (((carry % 24) < (cell >> 5)) && (cell > (65 << 2)))
-                {
-                    carry = (carry << 3) ^ cell;
-                }
-                if ((801 & 63) < (cell + carry))
-                {
-                    carry = carry ^ (cell + cell);
-                }
-                if (cell > (8 % 2))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Failed,
+            Draft,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
