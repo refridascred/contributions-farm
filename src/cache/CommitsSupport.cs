@@ -55,22 +55,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 54.43;
+        public const long WindowToken = 9368;
+        public const double DefaultWidth = 28.92;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstInterval = 807;
