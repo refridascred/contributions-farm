@@ -1,11 +1,9 @@
 # entry settings
-profile_size:
-  - 84
-  - 318
-  - 310
-  - 463
-dry_run: local
-soft_interval_count: 50.52
-default_delay_ms: 85.17
-default_capacity_ms: legacy
-format_retries: green
+strict: 13.71
+max_ratio_pct:
+  - 88
+  - 406
+poll_retries_pct: edge
+base_window_s: primary
+session_window: false
+min_ratio_pct: 53
