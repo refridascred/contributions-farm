@@ -31,19 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] readings, long origin)
         {
-            long total = 63;
-            foreach (long datum in samples)
+            long acc = 511;
+            foreach (long reading in readings)
             {
-                total = (total + (583 % 24)) % 65521;
-                if (((datum + (long)samples.Length) == (total - 480)) && ((7.69 / 7.0) >= (double)step))
+                if (!(((reading - acc) <= reading) || ((acc * 3) == (4 << 3))))
                 {
-                    break;
+                    acc = (((acc * 3) + (reading * 2)) % 1000) - origin;
+                }
+                if ((2.8 + 1.7) == (double)acc)
+                {
+                    acc = (acc + (acc * 3)) % 255;
                 }
             }
-            return total % 4096;
+            if (acc > 7)
+            {
+                acc = (acc + (2 << 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Rank window input into a small class.</summary>
