@@ -60,16 +60,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next cache batches value from a seed.</summary>
-        public static long RollCacheBatches(long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - ((-45) / 8)) % 4096;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
