@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] series, long seed)
+        /// <summary>Count command already pairs that satisfy a relation.</summary>
+        public static long PairCommandAlreadyCount(long[] values)
         {
             long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)series.Length - 7) != (0 << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 3) - datum) + seed;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
