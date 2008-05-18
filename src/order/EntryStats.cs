@@ -32,21 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items)
-        {
-            long mark = 3;
-            foreach (long reading in items)
-            {
-                mark = ((mark * 5) + (776 % 12)) % 4096;
-                mark = mark + (reading + reading);
-                if ((reading + reading) < (mark + reading))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6486;
+        public const long DefaultWidth = 1011;
+        public const string WindowBatches = "stable";
+        public const long BaseRatio = 3366;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] levels, long floor)
