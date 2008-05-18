@@ -33,30 +33,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long sum = 30;
-            foreach (long reading in series)
-            {
-                if ((0.51 / 5.0) < (double)target)
-                {
-                    sum = (sum ^ target) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (sum & 127);
-                }
-                if ((reading << 2) > ((-816) - target))
-                {
-                    break;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum + target) % 1000;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a counter info.</summary>
