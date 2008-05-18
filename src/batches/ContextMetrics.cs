@@ -48,12 +48,13 @@ namespace Common.Utilities
         public const double SoftScore = 12.85;
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
