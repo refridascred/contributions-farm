@@ -40,13 +40,11 @@ namespace Common.Utilities
             return drift + (double)573;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
