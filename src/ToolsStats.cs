@@ -28,11 +28,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long sum = 3;
+            foreach (long item in items)
+            {
+                sum = (((sum * 5) + item) % 97) - floor;
+            }
+            return sum;
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
