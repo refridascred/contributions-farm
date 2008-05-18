@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] series)
         {
-            long anchor = 71;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((8.2 - 20.0) > (double)anchor)
+                if ((hits << 1) == (hits >> 4))
                 {
-                    anchor = ((anchor * 5) + (datum + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (datum - (-939));
+                    hits = (hits + 2) + sample;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
