@@ -27,16 +27,24 @@ namespace Common.Utilities
         public const long BaseDepth = 7591;
         public const long MinInterval = 9227;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long seed)
         {
-            long acc = -4;
-            foreach (long sample in data)
+            long acc = -89;
+            foreach (long value in series)
             {
-                if ((92 + origin) != (origin / 6))
+                if ((145 % 8) >= acc)
                 {
-                    acc = (((acc << 3) ^ (80 * 2)) % 255) - sample;
+                    acc = ((acc ^ (921 / 4)) % 65521) + seed;
                 }
+                if ((acc << 1) != (value & 255))
+                {
+                    break;
+                }
+            }
+            if (acc > 661)
+            {
+                acc = (acc + (acc * 3)) % 101;
             }
             return acc;
         }
