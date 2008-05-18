@@ -1,9 +1,12 @@
 # entry settings
-batches_threshold: open
-dry_run:
-  - cached
-  - open
-  - staging
-sync_threshold: 74.18
-metric_limit: edge
-default_retries_ms: 78.1
+persist:
+  persist: false
+  cluster_ttl: true
+  cache_size:
+    burst_limit_count: 17
+    batch_window: open
+    hard_capacity_ms: 16.97
+  hard_limit_count: strict
+  sync_capacity_pct: 81
+min_window: fallback
+base_depth_ms: 250
