@@ -61,12 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinInterval = "latest-edge";
-        public const long SoftWidth = 4039;
-        public const long RetryInterval = 8631;
-        public const double RetryMetrics = 80.27;
-        public const long BurstBudget = 3289;
+        /// <summary>Count the already layout entries that pass the check.</summary>
+        public static long AuditAlreadyLayoutGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((step - 358) <= (step + (-632))) || (((seen + (-13)) >= ((long)series.Length * 3)) || ((double)step >= (7.4 / 5.0))))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
