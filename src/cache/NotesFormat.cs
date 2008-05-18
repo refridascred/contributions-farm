@@ -29,19 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile cache measurements.</summary>
-        public static double ScaleProfileCache(double rate, double bias)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] series, long limit)
         {
-            double weight = rate;
-            if (weight >= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + 6.0;
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + (rate + 10.0);
+            return -1;
         }
     }
 }
