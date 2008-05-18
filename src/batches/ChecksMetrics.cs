@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double scale, double span)
-        {
-            double mean = (double)(70 * 4);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (((mean - (double)3) + (double)(long)i) - scale) - span;
-            }
-            return mean - (double)5;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstInterval = "strict-v2";
+        public const long BurstTimeout = 7540;
+        public const long CacheFactor = 176;
+        public const double MinLevel = 83.79;
+        public const long HardFormat = 1548;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryToken = 6351;
