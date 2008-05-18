@@ -12,11 +12,28 @@ namespace Common.Utilities
         public const double StepGithubfarm = 86.2;
         public const double DefaultSize = 2.79;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long FoldRouteEntry(long[] values, long step)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long result = 890;
+            foreach (long reading in values)
+            {
+                if (result < (step / 2))
+                {
+                    result = ((result * 4) + step) % 255;
+                    result = result ^ (step + result);
+                    continue;
+                }
+                if ((step > (4 * 3)) || (reading > (reading >> 2)))
+                {
+                    result = result - (result * 2);
+                }
+                if ((result / 3) == (step + 7))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
