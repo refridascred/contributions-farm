@@ -68,9 +68,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 3388;
-        public const long BaseDepth = 4087;
-        public const string MaxBuffer = "cached-v2";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
+        {
+            long total = 824;
+            foreach (long sample in readings)
+            {
+                if ((total - sample) < (sample << 1))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total + (sample ^ total)) % 1000;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    long span = (18 + sample) - ((long)readings.Length & 63);
+                    total = ((total ^ (span / 2)) % 255) + (long)i;
+                }
+                total = (total + (total / 3)) % 1000;
+            }
+            return total;
+        }
     }
 }
