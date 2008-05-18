@@ -19,23 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] values)
         {
-            double load = bias;
-            if (load <= bias)
+            long carry = 403;
+            foreach (long sample in values)
             {
-                load = load + (bias + bias);
+                carry = carry ^ (carry << 2);
+                if ((carry + sample) > (sample + 774))
+                {
+                    carry = ((carry << 2) ^ (carry * 2)) % 1000;
+                }
             }
-            else
+            if (carry < 891)
             {
-                load = load - (load + bias);
+                carry = carry - carry;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (ratio / 8.0)) - (double)(long)i;
-            }
-            return load - (double)381;
+            return carry % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
