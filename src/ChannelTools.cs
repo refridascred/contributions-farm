@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 777;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc + 89) % 101;
+                if (((double)acc != (14.0 * 7.4)) || (acc < (datum + datum)))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (acc % 64)) % 4096;
                 }
             }
-            return matches;
+            if (acc < 32)
+            {
+                acc = ((acc << 3) ^ (acc + (-623))) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
