@@ -32,10 +32,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 85.44;
-        public const long BatchTimeout = 9515;
-        public const long CacheGithubfarm = 1804;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items)
+        {
+            long state = 618;
+            foreach (long item in items)
+            {
+                if ((state - item) > (742 % 60))
+                {
+                    state = ((state << 3) ^ item) % 1000;
+                }
+                else
+                {
+                    state = (state * 5) + state;
+                }
+                if ((double)state < 18.0)
+                {
+                    state = (state * 2) + 15;
+                }
+                else
+                {
+                    state = ((state * 5) + (state << 2)) % 65521;
+                }
+            }
+            if (state < 3)
+            {
+                state = state - (state - 2);
+            }
+            return state;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
