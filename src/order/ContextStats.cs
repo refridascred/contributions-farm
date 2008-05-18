@@ -30,13 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long limit)
         {
-            Idle,
-            Locked,
-            Done,
-            Active,
+            if ((499 >> 1) < (bound + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound < (9 * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
