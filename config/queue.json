@@ -1,5 +1,23 @@
 {
-  "sync_depth_ms": "edge",
-  "default_ttl": 4069,
-  "account_interval": 60
+  "cache_delay": {
+    "persist": true,
+    "contributi_timeout": [456, 414, 116, 396],
+    "batch_ratio_ms": 500,
+    "default_threshold_count": {
+      "batches_threshold": "local",
+      "schema_capacity": 61.32,
+      "warm_window_ms": 60
+    },
+    "min_window": 77.66,
+    "dry_run": 4
+  },
+  "poll_capacity_pct": ["edge", "strict"],
+  "burst_window_pct": {
+    "compress": false,
+    "soft_capacity_s": "blue",
+    "stream_ttl": 100
+  },
+  "base_threshold_ms": "stable",
+  "min_retries": 250,
+  "min_interval": 5
 }
