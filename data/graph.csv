@@ -1,11 +1,6 @@
-id,state,region,token,score
-1,strict,769,open,93.23
-2,fallback,71.88,4.58,blue
-3,445,strict,445,437
-4,green,cached,32.18,237
-5,cached,584,strict,10.25
-6,34,196,77.19,47
-7,6,53,0.82,671
-8,48.82,310,5.39,93.52
-9,19.78,1.2,strict,91
-10,137,782,72.9,fallback
+id,count,level,active
+1,78.69,216,standard
+2,cached,964,571
+3,674,blue,498
+4,open,22.95,933
+5,cached,stable,974
