@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= origin)
+                if (samples[i] > floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
