@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Draft,
-            Paused,
-            Done,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 6582;
+        public const long CacheNotes = 9458;
+        public const long BaseNotes = 3998;
+        public const string RetryLevel = "cached-edge";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyMatches(long[] levels)
