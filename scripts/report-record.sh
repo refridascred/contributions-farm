@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=316
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+RECORD_LIMIT=487
+log "limit is ${RECORD_LIMIT}"
