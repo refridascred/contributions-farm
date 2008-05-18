@@ -54,17 +54,13 @@ namespace Common.Utilities
         public const double SoftScore = 12.85;
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
