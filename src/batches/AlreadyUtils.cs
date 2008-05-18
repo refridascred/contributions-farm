@@ -12,32 +12,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long floor)
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long CountToolsCommitsOutliers(long[] levels, long offset)
         {
-            long lane = offset - floor;
-            if ((offset ^ lane) != (27 - floor))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + lane) >= (floor % 10))
+                if (9 > item)
                 {
-                    return 0;
+                    count = (count + 1) + offset;
                 }
                 else
                 {
-                    if (floor > (lane % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the farm state values.</summary>
