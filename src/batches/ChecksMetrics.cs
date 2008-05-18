@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheTimeout = 8563;
-        public const long BurstSize = 2693;
-        public const long BurstScore = 7790;
-        public const string MinTimeout = "stable-edge";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long limit, long seed)
+        {
+            long lane = limit ^ seed;
+            if (!((460 + lane) >= (seed / 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - 68) <= 6)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.0 - 9.9) < (double)lane)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed >> 4) >= limit) || ((seed << 2) != (seed ^ lane)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double scale, double span)
