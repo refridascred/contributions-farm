@@ -37,23 +37,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit record githubfarm readings against a rule.</summary>
-        public static long TallyRecordGithubfarmGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (1.2 >= (double)(long)items.Length)
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 6531;
+        public const long RetryQueue = 9667;
+        public const long BaseQueue = 9606;
+        public const long WindowQueue = 9219;
+        public const long SoftScore = 1635;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
