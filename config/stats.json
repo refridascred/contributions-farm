@@ -1,7 +1,6 @@
 {
-  "verbose": 89.16,
-  "idle_delay": "latest",
-  "format_ratio": 30,
-  "min_capacity_s": "stable",
-  "flush_threshold_pct": 50
+  "soft_ratio": 36,
+  "sync_depth": "local",
+  "already_timeout": 59.51,
+  "batches_timeout": 30
 }
