@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardTimeout = 6407;
-        public const double MinLayout = 12.73;
-        public const long RetryLayout = 6581;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double LimitCache = 44.99;
