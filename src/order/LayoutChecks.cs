@@ -47,18 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window support readings against a rule.</summary>
-        public static long MeasureWindowSupportMatches(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((sample - seen) > (seen + seen))
+                if ((3.1 / 8.0) == (double)value)
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the already layout entries that pass the check.</summary>
