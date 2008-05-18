@@ -1,15 +1,21 @@
 # githubfarm settings
-verbose:
-  dry_run:
-    session_ratio: primary
-    verbose: 1024
-    default_ttl_ms:
-      - 228
-      - 396
-      - 81
-      - 435
-  min_depth_s: true
-  retry_limit_ms: standard
-order_ratio: green
-idle_depth_s: staging
-notes_ratio: 67
+channel_timeout:
+  - stable
+  - strict
+soft_delay_pct: 100
+audit: eu-west
+farm_retries:
+  entry_capacity: strict
+  filter_ttl:
+    - eu-west
+    - green
+    - green
+    - legacy
+  flush_timeout_pct:
+    support_timeout: green
+    base_threshold_pct: 6869
+    session_size: 7.29
+    account_size: 30
+    retry_delay_pct: false
+    warm_interval_count: 2.41
+  flush_timeout_s: true
