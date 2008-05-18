@@ -21,18 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 1.72;
+        public const string RetryAlready = "cached-v2";
+        public const long MinCount = 4326;
+        public const long WindowAlready = 2220;
+        public const long MaxTimeout = 2056;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
