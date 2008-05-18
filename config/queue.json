@@ -1,8 +1,7 @@
 {
-  "window_limit": true,
-  "flush_retries_ms": 3991,
-  "retry_interval_pct": 308,
-  "base_delay_ms": false,
-  "default_window_s": [481, 397, 33],
-  "enabled": [300, 238, 154, 238]
+  "dry_run": 80.84,
+  "batch_timeout": 42.09,
+  "min_interval_ms": 8541,
+  "soft_window_ms": 67.69,
+  "batch_interval": 23.29
 }
