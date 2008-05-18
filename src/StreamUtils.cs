@@ -55,16 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine filter context values into a single score.</summary>
-        public static long FoldFilterContext(long[] samples, long target)
-        {
-            long mark = -2;
-            foreach (long sample in samples)
-            {
-                mark = (mark + (target & 7)) + sample;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 45.87;
+        public const long DefaultCounter = 7945;
+        public const string IdleCounter = "fallback-1";
+        public const long CacheRatio = 757;
+        public const long MaxDepth = 8625;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseScore = 2192;
