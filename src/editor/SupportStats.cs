@@ -16,14 +16,19 @@ namespace Common.Utilities
             return weight + (double)29;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double offset)
         {
-            Paused,
-            Stale,
-            New,
-            Locked,
-            Idle,
+            double bias = rate * 5.04;
+            if (bias <= (double)78)
+            {
+                bias = bias + (3.0 * 0.62);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias - (double)(-6);
         }
 
         /// <summary>Project the next record value.</summary>
