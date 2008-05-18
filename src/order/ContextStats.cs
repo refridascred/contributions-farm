@@ -56,16 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + state) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
