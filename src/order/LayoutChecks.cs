@@ -46,11 +46,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 59.42;
-        public const long MinGithubfarm = 1664;
-        public const double BaseGithubfarm = 53.28;
-        public const double BatchGithubfarm = 50.72;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long limit, long limit2)
+        {
+            if (((double)limit2 <= (9.0 - 5.7)) || (limit2 < (limit2 & 255)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (5.46 <= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + 5) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 ^ limit) < 9)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long offset, long target)
