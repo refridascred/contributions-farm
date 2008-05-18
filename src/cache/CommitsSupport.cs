@@ -77,21 +77,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((335 - limit2) < (62 + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit2 - limit) == (limit2 << 3))
                 {
-                    if ((samples[i] + samples[j]) != 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit2 >= (1.83 - 2.61))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
     }
 }
