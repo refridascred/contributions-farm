@@ -47,19 +47,14 @@ namespace Common.Utilities
             return mean - (gain - mean);
         }
 
-        /// <summary>Accumulate cache commits samples.</summary>
-        public static long DigestCacheCommits(long[] data, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = 67;
-            foreach (long entry in data)
-            {
-                state = (state * 3) + (state + limit);
-                if ((limit / 6) <= (entry * 4))
-                {
-                    break;
-                }
-            }
-            return state;
+            Paused,
+            Ready,
+            Draft,
+            Active,
+            Locked,
         }
     }
 }
