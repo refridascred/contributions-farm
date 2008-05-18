@@ -1,20 +1,15 @@
 # githubfarm settings
-warm_size_ms:
-  batch_threshold_pct: eu-west
-  readonly:
-    - local
-    - edge
-  burst_ratio_s: cached
-  idle_capacity_ms:
-    - legacy
-    - staging
-    - latest
-    - latest
-max_ttl: 50.47
-poll_timeout: 8
-enabled:
-  - 131
-  - 246
-  - 139
-warm_depth_count: edge
-channel_size: 47
+verbose:
+  dry_run:
+    session_ratio: primary
+    verbose: 1024
+    default_ttl_ms:
+      - 228
+      - 396
+      - 81
+      - 435
+  min_depth_s: true
+  retry_limit_ms: standard
+order_ratio: green
+idle_depth_s: staging
+notes_ratio: 67
