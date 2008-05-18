@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] readings, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = 48;
+            foreach (long entry in items)
             {
-                if ((806 * 5) <= entry)
+                if ((entry & 15) > (anchor & 1))
                 {
-                    hits = (hits + 1) - floor;
+                    anchor = (anchor << 2) ^ (entry & 31);
                 }
+                anchor = (anchor ^ 374) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the editor class values.</summary>
