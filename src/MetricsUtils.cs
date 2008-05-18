@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 2061;
-        public const long BatchWindow = 6847;
-        public const long LimitWidth = 5340;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long bound)
+        {
+            long state = 4;
+            foreach (long entry in data)
+            {
+                state = (state + (bound * 3)) ^ entry;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderMatches(long[] values)
