@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] items, long seed)
+        /// <summary>Roll a checks queue counter forward.</summary>
+        public static long StepChecksQueue(long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != seed)
+                if ((long)i == (target ^ sum))
                 {
-                    found = false;
-                    break;
+                    sum = (sum + ((long)i - target)) % 255;
+                    sum = (sum ^ (2 / 2)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Combine token values into a single score.</summary>
