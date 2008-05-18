@@ -62,19 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Stale,
+            Idle,
+            Queued,
         }
     }
 }
