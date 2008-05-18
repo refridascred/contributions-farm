@@ -1,14 +1,13 @@
 # Command notes
 
-When a window fails, the metric handler retries a few times before giving up.
-The cache module keeps checks values in sync with the farm cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for route live in the config folder and can be overridden per environment.
 
-Keep metric and githubfarm names short and lowercase.
-When a buffer fails, the already handler retries a few times before giving up.
-Use profile settings to tune how often channel data is refreshed.
+The account helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any command limits.
 
 ## Guidelines
 
-- Document new batches fields
-- Review format limits each release
-- Keep stream values small
+- Document new queue fields
+- Log every command change
+- Validate farm input early
