@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] values, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] levels)
         {
-            long state = 4;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                state = ((state - (cell + state)) % 4096) + target;
-                state = (state << 2) ^ (cell - cell);
+                if (reading < 17)
+                {
+                    hits = hits + 1;
+                }
             }
-            if (state > 70)
-            {
-                state = ((state * 3) + state) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
