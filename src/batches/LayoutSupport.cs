@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((1.8 * 18.0) > (double)seen)
+                if (((long)readings.Length / 6) < datum)
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
