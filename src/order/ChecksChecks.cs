@@ -25,13 +25,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long floor, long target)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((4.17 / 3.0) <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > ((-5) ^ floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target >= (target << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
