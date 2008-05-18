@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Locate a command counter reading by value.</summary>
+        public static long LookupCommandCounterIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((43 - cell) <= 21) || (((count >> 1) >= ((-5) + count)) && (cell <= (count / 3))))
+                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
