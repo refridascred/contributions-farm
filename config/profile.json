@@ -1,14 +1,10 @@
 {
-  "retry_threshold_s": 70,
-  "min_size_pct": {
-    "enabled": 31.37,
-    "idle_capacity": "local",
-    "flush_capacity_count": 14.0,
-    "max_delay_pct": "latest",
-    "min_ratio": false,
-    "burst_ratio": "staging"
+  "buffer_limit": ["legacy", "stable"],
+  "warm_depth": false,
+  "cache_threshold": {
+    "soft_window_s": 3198,
+    "persist": "latest",
+    "audit": 19.08
   },
-  "default_depth_count": 60,
-  "base_capacity": "fallback",
-  "batch_limit_s": 60
+  "context_timeout": "staging"
 }
