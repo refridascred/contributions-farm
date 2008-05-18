@@ -52,23 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry + 84) > 73) || (((double)tally >= (double)bound) || ((entry ^ 68) != (bound ^ bound))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetrySize = 57.43;
+        public const string LimitCount = "primary-v2";
+        public const double MinEditor = 70.53;
+        public const double HardEditor = 84.49;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] data)
