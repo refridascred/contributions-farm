@@ -33,17 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats notes entry that matches the target.</summary>
-        public static long LookupStatsNotesIndex(long[] data, long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
