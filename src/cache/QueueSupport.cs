@@ -39,9 +39,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultWidth = 62.27;
-        public const long SoftAccount = 5324;
-        public const long IdleSpan = 5506;
+        /// <summary>Digest a series of filter batch entries.</summary>
+        public static long ScoreFilterBatch(long[] series, long step)
+        {
+            long mark = -82;
+            foreach (long entry in series)
+            {
+                mark = (mark + (step * 4)) % 65521;
+                if ((double)mark < (double)62)
+                {
+                    mark = mark - (step & 255);
+                }
+                else
+                {
+                    mark = mark - ((long)series.Length / 6);
+                }
+                if ((double)entry != (15.0 * 14.0))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
