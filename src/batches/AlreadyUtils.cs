@@ -59,19 +59,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] readings, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (reading > limit)
+                if (item > floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
