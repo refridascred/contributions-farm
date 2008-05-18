@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            Idle,
-            Done,
-            Ready,
-            Paused,
-            Pending,
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total + (total * 2)) % 101;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
