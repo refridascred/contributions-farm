@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((451 * 3) > (count >> 5))
+                {
+                    count = ((count + 1) ^ item) - target;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
