@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Idle,
+            Paused,
         }
     }
 }
