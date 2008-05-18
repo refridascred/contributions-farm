@@ -84,13 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Dropped,
-            Locked,
-            Active,
-            Ready,
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
