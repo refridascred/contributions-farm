@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the cluster checks entries that pass the check.</summary>
-        public static long CountClusterChecksHits(long[] data, long seed)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((((tally + seed) < sample) && ((9 >> 2) < seed)) || ((seed & 255) != (sample * 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
