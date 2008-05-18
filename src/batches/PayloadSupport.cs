@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] values)
         {
-            long carry = 98;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((value - carry) <= (carry + value)) && (carry >= 5))
+                if (((count >> 1) > (count >> 4)) && (value <= count))
                 {
-                    carry = (carry + (value >> 2)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (carry + value)) % 4096;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Compare every pair of queue buffer readings.</summary>
