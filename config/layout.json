@@ -1,12 +1,6 @@
 {
-  "cache_delay": {
-    "filter_depth": ["local", "legacy", "staging", "standard"],
-    "batch_size_s": "legacy",
-    "base_ratio": false
-  },
-  "session_ratio": true,
-  "compress": "local",
-  "buffer_window": true,
-  "max_ratio_count": 49,
-  "hard_threshold_ms": "green"
+  "batch_capacity": "strict",
+  "base_interval_ms": 9654,
+  "burst_delay_s": "strict",
+  "account_capacity": "latest"
 }
