@@ -25,17 +25,19 @@ namespace Common.Utilities
             return mean + (mean + span);
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (samples[i] == limit)
+                if (sample > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
