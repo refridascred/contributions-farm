@@ -51,25 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long seed, long seed2)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long span = seed - seed2;
-            if ((seed2 >> 1) <= seed)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)span != (4.5 - 11.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
