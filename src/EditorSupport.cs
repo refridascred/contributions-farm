@@ -25,12 +25,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 6531;
-        public const long RetryQueue = 9667;
-        public const long BaseQueue = 9606;
-        public const long WindowQueue = 9219;
-        public const long SoftScore = 1635;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double floor)
+        {
+            double drift = ratio;
+            if (drift >= (double)29)
+            {
+                drift = (drift - 1.19) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + (double)573;
+        }
 
         /// <summary>Iterate the metric session series from a seed.</summary>
         public static long SeriesMetricSession(long bound)
