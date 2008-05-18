@@ -55,11 +55,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Queued,
+            Closed,
+            Draft,
+            Paused,
         }
     }
 }
