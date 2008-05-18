@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long limit2)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long step, long bound)
         {
-            long diff = limit + limit2;
-            if (limit2 > (diff ^ limit2))
+            if (6.0 < (double)bound)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (limit2 <= (5 + limit))
+                if ((double)step < 4.0)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit2 - limit) < (limit2 << 3))
+                    if (3.37 >= (double)step)
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        return 1;
+                        if ((bound + step) >= (step >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
