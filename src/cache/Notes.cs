@@ -25,15 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double bias2)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            double load = bias;
-            if (load < (double)3)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - load) - bias2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (bias - bias);
+            return count;
         }
 
         /// <summary>Digest a series of queue entry entries.</summary>
