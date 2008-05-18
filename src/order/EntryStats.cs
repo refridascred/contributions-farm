@@ -14,31 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long floor, long target)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double gain, double offset)
         {
-            if ((floor + target) < (floor & 1))
+            double rate = gain;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                rate = rate - (double)(long)i;
             }
-            else
-            {
-                if (!((double)floor < (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((16.0 / 3.0) >= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return rate + offset;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
