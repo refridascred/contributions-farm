@@ -43,19 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
