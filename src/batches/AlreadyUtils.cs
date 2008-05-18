@@ -22,22 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long lane = offset - floor;
+            if ((offset ^ lane) != (27 - floor))
             {
-                if ((((seen >> 5) >= (origin & 1)) || ((9.6 - 17.0) > (double)origin)) && (((entry - entry) > (seen ^ entry)) || ((seen % 16) > (origin & 3))))
+                return 3;
+            }
+            else
+            {
+                if ((offset + lane) >= (floor % 10))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor > (lane % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metric mode values.</summary>
