@@ -1,10 +1,4 @@
 # githubfarm settings
-poll_size_ms: open
-flush_ttl_count: fallback
-retry_threshold_pct:
-  - latest
-  - fallback
-  - green
-  - standard
-githubfarm_ttl: true
-metric_ratio: 79.64
+dry_run: false
+idle_threshold: latest
+cache_ratio_ms: true
