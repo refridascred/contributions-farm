@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheInterval = 1650;
-        public const long MinSpan = 3293;
-        public const long StepInterval = 2722;
-        public const long DefaultBudget = 9783;
-        public const long CacheSchema = 2268;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Failed,
+            Pending,
+            Paused,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long seed)
