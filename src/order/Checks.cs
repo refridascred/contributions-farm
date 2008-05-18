@@ -31,32 +31,13 @@ namespace Common.Utilities
         public const string MinDepth = "stable-1";
         public const long DefaultQueue = 4714;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = 21;
-            foreach (long value in items)
-            {
-                if ((value + anchor) >= 3)
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                    anchor = ((anchor * 3) + (value ^ 80)) % 65521;
-                    break;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (anchor + (anchor % 8)) - (long)i;
-                }
-                if (!((value << 2) <= 176))
-                {
-                    anchor = ((anchor << 2) ^ (809 - value)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + 6) % 97;
-                }
-            }
-            return anchor % 1000;
+            New,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
