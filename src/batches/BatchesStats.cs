@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values, long limit)
         {
-            Failed,
-            Active,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches > (datum ^ datum)) || ((double)limit >= (double)datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
