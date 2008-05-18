@@ -1,5 +1,9 @@
 # entry settings
-default_interval: cached
-batch_interval: 79.38
-cache_threshold_count: 4678
-flush_capacity_ms: local
+burst_interval_count: false
+hard_delay_count: staging
+base_window_count: 100
+default_delay_ms: eu-west
+cache_limit_ms:
+  - 460
+  - 22
+  - 136
