@@ -15,22 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((double)tally >= 3.0) || ((value / 7) > value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
