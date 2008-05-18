@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const string LimitPayload = "latest-1";
         public const double CacheLevel = 57.54;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Compare every pair of tools graph readings.</summary>
+        public static long PairToolsGraphCount(long[] data)
         {
             long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count > (8.91 - 3.1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) ^ value;
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
