@@ -1,6 +1,11 @@
 {
-  "idle_threshold": 8591,
-  "warm_limit_pct": true,
-  "retry_size_count": 8848,
-  "min_ttl_s": "staging"
+  "min_capacity_pct": ["blue", "cached"],
+  "batch_size": [468, 496],
+  "batch_timeout": 250,
+  "batch_depth_ms": {
+    "default_limit_ms": "blue",
+    "strict": 250,
+    "persist": "primary"
+  },
+  "max_capacity_ms": [402, 351]
 }
