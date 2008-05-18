@@ -56,14 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            Paused,
-            Idle,
-            Queued,
-            Ready,
-            Closed,
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel contributi samples are out of range.</summary>
