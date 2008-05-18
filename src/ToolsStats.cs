@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm farm readings.</summary>
-        public static long CombineGithubfarmFarm(long[] values)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] readings, long limit)
         {
-            long sum = -7;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                sum = (sum - item) % 97;
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the farm phase values.</summary>
