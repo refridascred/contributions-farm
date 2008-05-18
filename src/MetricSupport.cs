@@ -52,15 +52,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            double rate2 = offset;
-            if (rate2 < rate2)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = rate2 - (rate * 9.6);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate2 + (offset + rate2);
+            return tally;
         }
     }
 }
