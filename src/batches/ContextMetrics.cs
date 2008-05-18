@@ -61,10 +61,11 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 4229;
-        public const long StepLevel = 8853;
-        public const string MaxSpan = "staging-1";
-        public const double LimitCounter = 53.8;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
