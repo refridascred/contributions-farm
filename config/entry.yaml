@@ -1,17 +1,11 @@
 # entry settings
-default_limit_count:
+min_ratio_ms: 17.25
+cache_timeout: 58.12
+soft_capacity_s:
+  - 128
+  - 388
+  - 159
+layout_retries: true
+stream_depth:
   - latest
-  - cached
-  - open
-  - primary
-sync_retries_count: local
-metrics_ratio: false
-base_threshold:
-  notes_delay: cached
-  max_window_ms: 250
-  base_delay: true
-notes_size: strict
-default_capacity_ms:
-  - local
-  - stable
   - eu-west
