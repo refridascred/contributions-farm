@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long step)
-        {
-            long mark = 83;
-            foreach (long datum in samples)
-            {
-                if (((double)step == (double)mark) || ((step - mark) < step))
-                {
-                    mark = (((mark << 2) ^ (mark + 9)) % 101) - datum;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCount = 40.74;
+        public const long MinCommits = 3727;
+        public const string BaseCommits = "stable-1";
+        public const long RetryWidth = 2223;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
