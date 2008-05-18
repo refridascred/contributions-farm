@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] samples, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (item > step)
+                if (!((datum + datum) < 6))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
