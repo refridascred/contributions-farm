@@ -59,19 +59,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every report profile entry stays within the limit.</summary>
-        public static bool GuardReportProfileLimits(long[] readings, long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
