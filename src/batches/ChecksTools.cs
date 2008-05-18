@@ -44,13 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Synced,
-            Closed,
-            Locked,
-            Active,
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
