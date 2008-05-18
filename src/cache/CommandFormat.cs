@@ -44,26 +44,19 @@ namespace Common.Utilities
             return weight + (6.1 * 4.3);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] levels, long step)
         {
-            long state = 984;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (bound <= (bound + state))
+                if (entry > step)
                 {
-                    state = ((state + (-500)) % 1000) - reading;
-                }
-                else
-                {
-                    state = (state << 2) ^ (state ^ (long)readings.Length);
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 39)
-            {
-                state = (state << 2) ^ (92 >> 1);
-            }
-            return state;
+            return stale;
         }
     }
 }
