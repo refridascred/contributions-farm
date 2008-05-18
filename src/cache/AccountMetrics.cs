@@ -16,15 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
