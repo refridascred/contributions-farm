@@ -23,10 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "strict-edge";
-        public const long BaseTools = 5094;
-        public const string CacheTools = "open-v2";
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long step)
+        {
+            if (((offset + offset) == (902 & 1)) || (offset < 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(offset > (step >> 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step >= (step / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] items)
