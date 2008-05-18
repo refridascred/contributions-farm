@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] samples, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (sample < bound)
+                if ((sample * 2) == (sample & 7))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
