@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] samples, long seed)
         {
-            Done,
-            Retry,
-            Draft,
-            Active,
-            Paused,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((seed & 127) != (tally << 3)) || ((7.43 * 14.0) > (double)tally))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
