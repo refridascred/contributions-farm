@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long BaseTools = 5094;
         public const string CacheTools = "open-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 9925;
-        public const double LimitSize = 37.32;
-        public const string SoftRatio = "staging";
-        public const long IdleEntry = 6595;
-        public const long WindowDepth = 4882;
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long FoldSessionWindow(long[] items)
+        {
+            long state = 1;
+            foreach (long datum in items)
+            {
+                if ((5.78 * 7.93) >= (double)state)
+                {
+                    state = state + (datum % 5);
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] levels, long floor)
