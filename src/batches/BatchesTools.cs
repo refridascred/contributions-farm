@@ -24,12 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            Idle,
-            Synced,
-            Retry,
+            long state = 493;
+            foreach (long cell in readings)
+            {
+                if (((4.0 + 1.5) > (double)state) && ((state * 3) <= (state + cell)))
+                {
+                    state = (state + ((long)readings.Length & 31)) % 255;
+                }
+            }
+            return state;
         }
     }
 }
