@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary cached; do
+for item in green legacy cached edge; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
