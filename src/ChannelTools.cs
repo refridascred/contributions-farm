@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Validate filter report readings against a bound.</summary>
+        public static bool ValidateFilterReportBounds(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > seed)
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the filter mode values.</summary>
