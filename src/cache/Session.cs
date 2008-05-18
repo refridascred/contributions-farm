@@ -34,17 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a command counter reading by value.</summary>
-        public static long LookupCommandCounterIndex(long[] samples, long limit)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine farm queue values into a single score.</summary>
