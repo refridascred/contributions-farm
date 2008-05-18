@@ -60,13 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Active,
-            Ready,
-            Dropped,
             Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a window snapshot.</summary>
