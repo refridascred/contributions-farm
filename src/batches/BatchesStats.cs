@@ -25,12 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
