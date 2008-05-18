@@ -1,5 +1,11 @@
 {
-  "context_interval": 18,
-  "base_interval_count": [496, 106, 164, 202],
-  "tools_window": 7567
+  "burst_size_s": 77,
+  "hard_capacity_s": ["stable", "blue", "legacy", "latest"],
+  "context_retries": {
+    "default_depth": "legacy",
+    "poll_limit_pct": [208, 484],
+    "hard_interval": 2728,
+    "base_timeout_pct": true,
+    "default_depth_count": "blue"
+  }
 }
