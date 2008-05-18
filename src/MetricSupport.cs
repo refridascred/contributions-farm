@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstBudget = 5946;
-        public const double BatchLayout = 42.3;
-        public const string RetryLayout = "stable-v2";
-        public const string HardDepth = "latest-1";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Dropped,
+            Locked,
+            Active,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long seed)
