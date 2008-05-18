@@ -72,9 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1949;
-        public const long StepAlready = 6769;
-        public const long IdleInterval = 3195;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultBudget = 28.44;
+        public const string MaxGithubfarm = "fallback-1";
+        public const long LimitGithubfarm = 9183;
+        public const long IdleGithubfarm = 6157;
     }
 }
