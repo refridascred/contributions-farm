@@ -1,6 +1,9 @@
 # entry settings
-enabled: eu-west
-schema_window: 34.68
-min_interval_pct: staging
-batches_retries: 1512
-max_timeout_s: true
+idle_limit_ms: true
+readonly:
+  - 135
+  - 484
+  - 368
+  - 81
+context_window: 0.5
+compress: 48.9
