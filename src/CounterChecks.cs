@@ -82,18 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] samples, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((0.3 / 6.0) < (4.9 + 4.17))
-                {
-                    matches = ((matches + 3) + value) + target;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Derive the next already profile value from a seed.</summary>
