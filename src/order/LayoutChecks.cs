@@ -61,18 +61,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already layout entries that pass the check.</summary>
-        public static long AuditAlreadyLayoutGaps(long[] series, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((step - 358) <= (step + (-632))) || (((seen + (-13)) >= ((long)series.Length * 3)) || ((double)step >= (7.4 / 5.0))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) - sample;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a context info.</summary>
