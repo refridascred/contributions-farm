@@ -1,6 +1,5 @@
 {
-  "burst_ttl_pct": 7793,
-  "warm_window": 26,
-  "metric_timeout": 60,
-  "batch_threshold": "cached"
+  "warm_interval_pct": 93.12,
+  "sync_capacity": 66.31,
+  "enabled": "edge"
 }
