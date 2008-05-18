@@ -1,14 +1,5 @@
 {
-  "retry_capacity_pct": 17,
-  "entry_delay": "strict",
-  "record_capacity": true,
-  "batch_ratio": 100,
-  "dry_run": {
-    "dry_run": "fallback",
-    "max_ratio_count": 100,
-    "batch_size_s": "legacy",
-    "base_limit_count": 68.29,
-    "sync_timeout_s": 5002
-  },
-  "hard_interval_s": 30
+  "batch_limit_s": 500,
+  "dry_run": 7243,
+  "default_capacity_ms": 9826
 }
