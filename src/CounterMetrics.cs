@@ -53,14 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Locked,
-            Done,
-            Idle,
-            Queued,
-            Pending,
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
