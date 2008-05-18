@@ -20,17 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] data, long target)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long AuditSessionToolsMatches(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                if ((double)(long)values.Length <= (12.0 * 6.51))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + entry) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
