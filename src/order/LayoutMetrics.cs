@@ -33,14 +33,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double bias, double span)
         {
-            Ready,
-            Synced,
-            Active,
-            Paused,
-            Retry,
+            double mean = bias;
+            if (mean < span)
+            {
+                mean = mean - bias;
+            }
+            return mean + span;
         }
     }
 }
