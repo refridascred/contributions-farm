@@ -43,14 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Derive the next schema queue value from a seed.</summary>
+        public static long SeriesSchemaQueue(long origin)
         {
-            Locked,
-            Done,
-            Dropped,
-            Paused,
-            Draft,
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result << 3) ^ (origin - result);
+                result = (result ^ (result - origin)) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count graph batch pairs that satisfy a relation.</summary>
