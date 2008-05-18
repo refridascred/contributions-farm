@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next layout queue value from a seed.</summary>
-        public static long StepLayoutQueue(long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state << 2) ^ (state ^ state)) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a stream cache figure with a bias.</summary>
