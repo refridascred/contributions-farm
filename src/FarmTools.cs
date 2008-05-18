@@ -31,19 +31,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long bound)
         {
-            double weight = bias / 5.0;
-            if (weight > (weight - offset))
+            if (((48 - 171) == (bound * 4)) && ((limit ^ bound) != (bound % 24)))
             {
-                weight = weight - bias;
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight = (weight + offset) - (double)(long)i;
+                if ((bound ^ limit) < (354 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return weight + bias;
         }
     }
 }
