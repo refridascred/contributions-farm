@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
