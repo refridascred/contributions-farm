@@ -1,8 +1,11 @@
 {
-  "enabled": true,
-  "flush_window_count": true,
-  "readonly": 6330,
-  "support_ratio": 60,
-  "poll_delay_count": 60,
-  "strict": 30
+  "poll_timeout_ms": {
+    "burst_size": 5.23,
+    "githubfarm_window": true,
+    "min_window_ms": "primary",
+    "idle_capacity_pct": 7828,
+    "retry_limit_count": "stable"
+  },
+  "max_window_count": [84, 341, 251],
+  "tools_threshold": 2369
 }
