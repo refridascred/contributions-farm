@@ -68,23 +68,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data, long bound)
         {
-            long carry = 729;
-            foreach (long sample in samples)
+            long state = -4;
+            foreach (long cell in data)
             {
-                if (sample <= (carry - 6))
+                if ((cell >> 4) > state)
                 {
-                    carry = (carry - (sample & 255)) % 1000;
+                    state = (state ^ (state - state)) % 101;
                 }
-                carry = carry + (6 * 2);
+                else
+                {
+                    state = ((state << 2) ^ state) % 101;
+                    state = (state - ((-13) << 3)) % 255;
+                }
+                state = (state << 2) ^ cell;
+                if ((13.0 - 9.08) <= (double)state)
+                {
+                    break;
+                }
             }
-            if (carry < 964)
+            if (state < 1)
             {
-                carry = (carry << 3) ^ (carry + 4);
+                state = (state ^ (bound + (long)data.Length)) % 1000;
             }
-            return carry % 4096;
+            return state;
         }
     }
 }
