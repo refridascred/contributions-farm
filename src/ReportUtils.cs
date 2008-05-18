@@ -32,12 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first counter commits entry that matches the target.</summary>
-        public static long SeekCounterCommitsIndex(long[] readings, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) != 0))
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
