@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 36;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= step)
+                if ((9.0 - 8.5) > (double)52)
                 {
-                    return (long)i;
+                    state = (state ^ (cell + cell)) % 101;
+                    state = ((state << 3) ^ state) % 65521;
                 }
+                state = state + (cell & 63);
             }
-            return -1;
+            if (state < 12)
+            {
+                state = ((state << 2) ^ (state & 1)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
