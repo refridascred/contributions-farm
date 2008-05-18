@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally / 6) >= (value + tally))
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
