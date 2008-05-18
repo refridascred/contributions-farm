@@ -1,13 +1,11 @@
 {
-  "flush_size": 72,
-  "base_timeout": 394,
-  "default_limit_s": 96.09,
-  "flush_depth_s": {
-    "support_size": "stable",
-    "poll_retries": 51.22,
-    "layout_size": 7989,
-    "payload_retries": 9231,
-    "window_interval": [312, 176, 300],
-    "retry_limit_s": 37
-  }
+  "metrics_capacity": "open",
+  "metric_window": {
+    "readonly": "blue",
+    "max_ttl_ms": "edge",
+    "poll_retries_ms": 2019,
+    "min_depth": 23,
+    "command_timeout": "legacy"
+  },
+  "strict": "stable"
 }
