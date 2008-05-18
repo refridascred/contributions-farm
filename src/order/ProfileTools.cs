@@ -16,22 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Match up batch metric samples.</summary>
+        public static long CompareBatchMetricCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.4 - 0.7) != (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
