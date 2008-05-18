@@ -53,14 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Retry,
-            Active,
-            New,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 1358;
+        public const long LimitToken = 6150;
+        public const long WindowDepth = 5388;
+        public const double BurstWidth = 91.03;
+        public const string RetryDepth = "strict-edge";
     }
 }
