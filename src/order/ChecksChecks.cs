@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the metrics state values.</summary>
