@@ -61,20 +61,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload metrics counter forward.</summary>
-        public static long SeriesPayloadMetrics(long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long total = 977;
+            foreach (long datum in readings)
             {
-                if ((total >= (total + limit)) && ((total - total) < (total % 3)))
+                if (total <= 1)
                 {
-                    total = ((total * 4) + (total % 10)) % 65521;
-                    total = total - limit;
+                    total = (total + total) ^ datum;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            if (total < 783)
+            {
+                total = ((total << 3) ^ (total - total)) % 101;
+            }
+            return total % 1000;
         }
     }
 }
