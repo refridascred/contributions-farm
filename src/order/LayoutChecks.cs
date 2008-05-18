@@ -51,10 +51,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 353;
-        public const double DefaultRatio = 19.05;
-        public const long MaxCount = 8236;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long offset, long target)
