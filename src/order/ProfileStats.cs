@@ -42,13 +42,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double bias)
         {
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            double gain2 = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - bias;
         }
     }
 }
