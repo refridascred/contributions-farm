@@ -1,26 +1,10 @@
 # entry settings
-account_window:
-  - staging
-  - edge
-  - legacy
-  - fallback
-idle_limit: 4833
-max_retries_ms: green
-idle_ratio:
-  base_depth: latest
-  cache_limit_s: 70
-  default_window_ms: 16.48
-  stream_limit:
-    default_retries:
-      - 381
-      - 211
-      - 40
-      - 36
-    readonly: 68.61
-    poll_size: green
-    poll_interval_pct: 46
-    stream_capacity: stable
-    soft_depth_ms: 9891
-  dry_run: latest
-  hard_size_count: eu-west
-poll_interval: 4282
+poll_delay_ms: 81
+warm_capacity_count:
+  - cached
+  - cached
+  - stable
+strict: 41.63
+warm_capacity_pct: true
+editor_threshold: 4233
+filter_depth: eu-west
