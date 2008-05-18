@@ -16,22 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already tools entries.</summary>
-        public static long ScoreAlreadyTools(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long mark = 5;
-            foreach (long cell in levels)
+            long anchor = 71;
+            foreach (long datum in samples)
             {
-                if ((mark * 4) >= (mark ^ mark))
+                if ((8.2 - 20.0) > (double)anchor)
                 {
-                    mark = ((mark << 3) ^ cell) % 65521;
+                    anchor = ((anchor * 5) + (datum + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum - (-939));
                 }
             }
-            if (mark > 26)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Locate a command counter reading by value.</summary>
