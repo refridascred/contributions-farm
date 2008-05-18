@@ -27,22 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double weight, double span)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double rate = 5.61;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)seen > (12.0 + 1.54)) && (((seen & 31) >= (seen + 77)) || ((entry - entry) > seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate + (span * 3.92)) + (double)(long)i;
             }
-            return seen;
+            return rate - weight;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
