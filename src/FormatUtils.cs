@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((entry - entry) < (matches << 3)) || ((entry * 3) <= (matches % 2)))
+                if (!((cell - seen) > (seen * 5)))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
