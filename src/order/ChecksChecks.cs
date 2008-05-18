@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit contributi batch readings against a rule.</summary>
-        public static long TallyContributiBatchOutliers(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 9;
+            foreach (long sample in values)
             {
-                if ((double)seen >= (double)item)
+                if (sample < acc)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc ^ (acc + sample)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
