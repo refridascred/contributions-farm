@@ -1,13 +1,9 @@
 # entry settings
-poll_interval: 37
-default_interval_count:
-  max_threshold_count: 63
-  enabled: 500
-  flush_interval_s:
-    verbose: standard
-    base_ratio_ms: false
-    retry_size: cached
-  verbose: latest
-  graph_retries: local
-persist: 6.16
-strict: 78
+batches_threshold: open
+dry_run:
+  - cached
+  - open
+  - staging
+sync_threshold: 74.18
+metric_limit: edge
+default_retries_ms: 78.1
