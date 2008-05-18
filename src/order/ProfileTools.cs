@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Active,
+            Failed,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Match up batch metric samples.</summary>
