@@ -44,13 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            Pending,
+            Failed,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
