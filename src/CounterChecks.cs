@@ -69,13 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data, long step)
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            long anchor = 2;
+            foreach (long reading in data)
+            {
+                anchor = anchor - (step - anchor);
+                if ((double)reading < (10.0 - 15.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
