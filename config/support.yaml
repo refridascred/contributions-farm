@@ -1,7 +1,11 @@
 # support settings
-soft_threshold_count: 1024
-sync_interval: 4
-cache_size_pct: open
-idle_ratio: stable
-audit: 19
-idle_capacity_ms: 4
+retry_retries_s: open
+dry_run: edge
+hard_ratio:
+  profile_ttl: true
+  enabled:
+    - primary
+    - local
+    - open
+    - open
+  idle_delay_s: false
