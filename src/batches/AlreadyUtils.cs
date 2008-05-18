@@ -34,12 +34,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings, long limit)
         {
-            Draft,
-            New,
-            Failed,
+            long acc = 161;
+            foreach (long value in readings)
+            {
+                if (345 >= (value * 3))
+                {
+                    acc = (acc + value) % 255;
+                }
+                if ((limit / 3) <= (value + value))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every report profile entry stays within the limit.</summary>
