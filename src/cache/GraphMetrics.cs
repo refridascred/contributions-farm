@@ -42,24 +42,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next stats notes value from a seed.</summary>
-        public static long RollStatsNotes(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(39 >= ((long)i >> 5)))
-                {
-                    carry = (carry + 99) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ 7;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepRatio = "cached-1";
+        public const long BatchGraph = 8255;
+        public const string BaseBudget = "cached-1";
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long DeriveGraph(long offset)
