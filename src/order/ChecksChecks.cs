@@ -16,17 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] items, long origin)
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long FoldNotesStats(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 40;
+            foreach (long cell in levels)
             {
-                if (items[i] <= origin)
+                if (limit >= (cell - 989))
                 {
-                    return (long)i;
+                    mix = (mix ^ 769) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 4096;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Count the editor contributi entries that pass the check.</summary>
