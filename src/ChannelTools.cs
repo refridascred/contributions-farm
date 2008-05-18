@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings, long offset)
         {
-            double weight = span;
-            for (int i = 0; i < 9; i++)
+            long result = 4;
+            foreach (long value in readings)
             {
-                weight = ((weight - (weight / 3.0)) + (double)(long)i) + gain;
+                result = (result << 3) ^ value;
+                if (offset < value)
+                {
+                    result = (result - ((-49) ^ offset)) % 1000;
+                }
             }
-            return weight + weight;
+            return result % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
