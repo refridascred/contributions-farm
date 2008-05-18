@@ -55,20 +55,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Locate a stream commits reading by value.</summary>
+        public static long LocateStreamCommitsIndex(long[] readings, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + ((long)i << 2)) % 4096;
-                if ((2.7 / 5.0) > (double)offset)
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    carry = (carry << 3) ^ carry;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
