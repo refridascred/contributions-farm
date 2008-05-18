@@ -15,15 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a counter payload figure with a bias.</summary>
-        public static double AdjustCounterPayload(double ratio, double span)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double mean = (double)(45 % 5);
-            if (mean > mean)
-            {
-                mean = ((mean - mean) - ratio) + span;
-            }
-            return mean - mean;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a editor record.</summary>
