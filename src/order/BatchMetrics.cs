@@ -41,17 +41,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = span;
+            return scale2 - (span - scale);
         }
 
         /// <summary>Locate a route reading by value.</summary>
