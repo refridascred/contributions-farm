@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Locked,
-            Closed,
-            Pending,
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
