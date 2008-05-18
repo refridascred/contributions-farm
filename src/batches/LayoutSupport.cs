@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many format command samples are out of range.</summary>
-        public static long TallyFormatCommandGaps(long[] levels, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((-702) <= (bound - count))
+                if ((double)seen >= (8.0 + 17.0))
                 {
-                    count = (count + 3) - cell;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
