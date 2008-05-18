@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue strict; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+CHANNEL_LIMIT=33
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
