@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a filter context value against two limits.</summary>
-        public static long BucketFilterContext(long offset, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            long bound = offset - seed;
-            if ((bound % 16) == (offset + bound))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed ^ seed) > (offset % 10))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed >> 2) == (seed & 31))
+                    if ((items[i] ^ items[j]) != 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset - bound) >= (seed + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
