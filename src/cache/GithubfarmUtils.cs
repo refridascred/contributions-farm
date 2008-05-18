@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
