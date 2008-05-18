@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long RetryProfile = 9253;
         public const double MaxWidth = 38.8;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Stale,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 5422;
+        public const double BatchProfile = 49.89;
+        public const string HardProfile = "cached-1";
+        public const string BatchScore = "local";
+        public const string SoftProfile = "standard-1";
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] items)
