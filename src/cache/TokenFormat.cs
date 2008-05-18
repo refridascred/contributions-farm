@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate window account readings against a bound.</summary>
