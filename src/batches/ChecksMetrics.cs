@@ -57,35 +57,28 @@ namespace Common.Utilities
             return weight + (double)23;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long origin2)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long bound)
         {
-            if ((origin2 >= (642 + origin2)) && ((double)origin2 != (0.4 / 5.0)))
+            if ((bound - bound) > (bound & 127))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((origin2 >> 2) < origin)
+                if ((45 + floor) <= bound)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (!((32 & 1) == (origin2 << 1)))
+                    if (((9.22 / 9.0) >= (double)floor) && ((6 << 1) < (bound / 3)))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        if (!(origin >= (origin + origin2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 5;
                     }
                 }
             }
