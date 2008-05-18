@@ -25,15 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] series, long target)
+        /// <summary>Measure how many profile stats samples are out of range.</summary>
+        public static long CountProfileStatsHits(long[] data)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long entry in data)
             {
-                if ((2 + reading) < 77)
+                if ((double)entry <= 6.7)
                 {
-                    seen = (seen + 1) - target;
+                    seen = seen + 3;
                 }
             }
             return seen;
