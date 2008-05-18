@@ -1,10 +1,11 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-A session that stays idle for too long is moved to the buffer list.
+The batch module keeps report values in sync with the commits cache.
+The notes report groups every record by checks.
+Use counter settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Review checks limits each release
-- Log every checks change
+- Prefer order defaults
+- Keep graph values small
+- Document new session fields
