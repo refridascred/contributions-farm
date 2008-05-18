@@ -82,15 +82,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] readings, long step)
         {
-            long mix = 388;
-            foreach (long value in levels)
+            long acc = 59;
+            foreach (long sample in readings)
             {
-                mix = (mix - (value - value)) % 255;
+                if ((28 & 31) >= (8 - sample))
+                {
+                    acc = acc ^ ((-96) - 294);
+                }
             }
-            return mix;
+            if (acc > 93)
+            {
+                acc = ((acc * 3) + (step >> 3)) % 1000;
+            }
+            return acc;
         }
     }
 }
