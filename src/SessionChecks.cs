@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)seen >= (double)value)
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token phase values.</summary>
