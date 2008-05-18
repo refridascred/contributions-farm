@@ -1,5 +1,7 @@
 {
-  "soft_depth_pct": "staging",
-  "cache_ratio_pct": 5.83,
-  "flush_ttl": 4115
+  "soft_depth_ms": ["strict", "strict", "green", "edge"],
+  "dry_run": 73,
+  "verbose": ["local", "blue", "fallback", "green"],
+  "idle_ttl_count": false,
+  "min_size": "latest"
 }
