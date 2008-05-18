@@ -1,5 +1,6 @@
 {
-  "max_retries_count": 34.74,
-  "soft_delay": [437, 187, 65, 203],
-  "warm_delay": "standard"
+  "poll_interval_pct": "cached",
+  "flush_ttl_ms": ["green", "stable"],
+  "idle_threshold_ms": 8616,
+  "persist": 7383
 }
