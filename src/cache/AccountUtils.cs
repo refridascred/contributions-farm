@@ -33,11 +33,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            Done,
+            Pending,
+            Active,
+            New,
+            Paused,
         }
     }
 }
