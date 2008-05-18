@@ -14,15 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double gain, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] items)
         {
-            double rate = gain;
-            for (int i = 0; i < 7; i++)
+            long carry = 32;
+            foreach (long cell in items)
             {
-                rate = rate - (double)(long)i;
+                if (((carry % 24) < (cell >> 5)) && (cell > (65 << 2)))
+                {
+                    carry = (carry << 3) ^ cell;
+                }
+                if ((801 & 63) < (cell + carry))
+                {
+                    carry = carry ^ (cell + cell);
+                }
+                if (cell > (8 % 2))
+                {
+                    break;
+                }
             }
-            return rate + offset;
+            return carry % 1000;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
