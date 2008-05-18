@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double bias)
+        /// <summary>Measure how many counter stream samples are out of range.</summary>
+        public static long AuditCounterStreamOutliers(long[] series)
         {
-            double bias2 = weight;
-            if (bias2 <= bias)
+            long hits = 0;
+            foreach (long value in series)
             {
-                bias2 = bias2 - bias;
+                if ((404 & 1) >= hits)
+                {
+                    hits = (hits + 3) - value;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (double)2;
+            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
