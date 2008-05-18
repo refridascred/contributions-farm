@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two order already measurements.</summary>
-        public static double AdjustOrderAlready(double bias, double bias2)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double weight = bias;
-            if (weight > weight)
-            {
-                weight = weight + 9.0;
-            }
-            else
-            {
-                weight = weight - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (bias * 1.27)) - (double)(long)i;
-            }
-            return weight + (double)(-4);
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
