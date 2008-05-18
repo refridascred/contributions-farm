@@ -14,22 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] levels, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((hits / 3) >= (sample % 12))
+                if (((seen & 127) < seen) && !((limit * 4) == (seen / 7)))
                 {
-                    hits = (hits + 2) + origin;
+                    seen = (seen + 1) + reading;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the metric mode values.</summary>
