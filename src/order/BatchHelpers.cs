@@ -37,11 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Queued,
+            New,
+            Active,
         }
     }
 }
