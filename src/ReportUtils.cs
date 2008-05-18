@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 9176;
         public const long DefaultLevel = 4387;
 
-        /// <summary>Combine buffer token values into a single score.</summary>
-        public static long TallyBufferToken(long[] levels, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long bound)
         {
-            long carry = -869;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                carry = ((carry ^ seed) % 255) + cell;
-                carry = ((carry * 3) + carry) % 101;
+                if (sample >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return flag;
         }
 
         /// <summary>Describe the channel status values.</summary>
