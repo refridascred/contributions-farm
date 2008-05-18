@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] readings, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((cell - seen) > (seen * 5)))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a account stream value against two limits.</summary>
