@@ -36,21 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph channel counter forward.</summary>
-        public static long DeriveGraphChannel(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((step + step) <= (long)i)
-                {
-                    carry = ((carry * 2) + (step - carry)) % 97;
-                }
-                carry = carry ^ (step >> 3);
-                carry = (carry ^ (carry << 3)) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "local-1";
+        public const long BaseSupport = 131;
+        public const long BaseScore = 411;
+        public const double BaseWidth = 31.8;
+        public const double RetryScore = 47.08;
     }
 }
