@@ -36,19 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= bound)
+                if (levels[i] < seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
