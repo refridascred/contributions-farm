@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            double drift = scale / 9.0;
-            if (drift > (double)3)
+            long acc = 31;
+            foreach (long reading in data)
             {
-                drift = drift - (double)980;
+                if ((double)reading >= (8.0 + 2.0))
+                {
+                    acc = (acc - (reading * 5)) % 101;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor + scale)) + (double)(long)i;
-            }
-            return drift - scale;
+            return acc;
         }
 
         /// <summary>Describe the stats state values.</summary>
