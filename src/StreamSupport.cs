@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Closed,
-            Ready,
-            Failed,
-            Idle,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultWidth = 8249;
+        public const long CacheInterval = 4470;
+        public const double BurstInterval = 23.16;
+        public const long MaxGithubfarm = 3368;
+        public const long RetryGithubfarm = 944;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
