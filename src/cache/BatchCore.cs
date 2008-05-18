@@ -39,22 +39,24 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if (!((seed2 << 1) < (seed2 / 5)))
             {
-                if ((834 >> 3) < (floor % 60))
+                return 3;
+            }
+            else
+            {
+                if (seed2 > (seed + seed))
                 {
-                    seen = (seen + 1) + datum;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
