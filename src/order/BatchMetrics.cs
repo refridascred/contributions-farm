@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a tools payload sample.</summary>
-        public static long SeekToolsPayloadIndex(long[] items, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((items[i] >= seed) && ((items[i] % 2) == 0))
+                if ((count & 1) <= (value ^ value))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
