@@ -1,8 +1,17 @@
 {
-  "dry_run": "edge",
-  "githubfarm_size": "latest",
-  "cache_retries_pct": 32,
-  "metric_depth": "standard",
-  "warm_size_count": true,
-  "max_depth_pct": "cached"
+  "retry_limit_pct": "strict",
+  "cache_capacity": 97,
+  "idle_window": {
+    "cache_timeout": {
+      "stream_threshold": [445, 238],
+      "flush_threshold_s": true,
+      "batch_delay_s": "local",
+      "compress": 33.16,
+      "cache_size": 30
+    },
+    "batch_ttl_pct": "edge",
+    "cache_threshold": 7135,
+    "flush_limit_pct": 26.4,
+    "notes_limit": false
+  }
 }
