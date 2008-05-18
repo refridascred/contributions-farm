@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double gain, double offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double floor)
         {
-            double weight = (gain + offset) * 20.0;
-            if (weight >= offset)
+            double rate = floor / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                weight = weight - (weight / 2.0);
+                rate = (rate - floor) + (double)(long)i;
             }
-            else
-            {
-                weight = weight - (weight + 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + 9.1) + (double)(long)i;
-            }
-            return weight - gain;
+            return rate + scale;
         }
 
         /// <summary>Hold a counter record.</summary>
