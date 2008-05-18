@@ -29,18 +29,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] readings, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long acc = 45;
-            foreach (long sample in readings)
-            {
-                if ((8.97 / 9.0) > (double)seed)
-                {
-                    acc = (((acc * 3) + (8 - acc)) % 255) ^ sample;
-                }
-            }
-            return acc;
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
