@@ -69,14 +69,9 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Draft,
-            Closed,
-            Active,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheScore = 26.93;
+        public const string WindowFarm = "legacy-edge";
+        public const long DefaultInterval = 7897;
     }
 }
