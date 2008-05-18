@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BaseInterval = 905;
         public const long CacheWidth = 5702;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (reading <= seed)
+                if (item <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
