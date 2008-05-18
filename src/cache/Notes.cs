@@ -44,10 +44,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 8484;
-        public const string IdleChecks = "open-edge";
-        public const long StepSize = 594;
+        /// <summary>Digest a series of route tools entries.</summary>
+        public static long DigestRouteTools(long[] samples, long limit)
+        {
+            long mark = 33;
+            foreach (long entry in samples)
+            {
+                mark = (mark - 63) % 255;
+                mark = (mark * 2) + (entry + 93);
+                mark = ((mark * 2) + limit) % 101;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 1885;
