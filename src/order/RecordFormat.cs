@@ -43,18 +43,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading * 5) != (5 + (-292)))
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
