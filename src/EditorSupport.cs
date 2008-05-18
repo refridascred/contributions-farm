@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Derive the next buffer account value from a seed.</summary>
+        public static long SeriesBufferAccount(long limit)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state - (limit >> 4)) % 4096) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the format level values.</summary>
