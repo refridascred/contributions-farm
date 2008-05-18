@@ -45,11 +45,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long step, long target)
         {
-            double ratio = span;
-            return (ratio + (double)521) + gain;
+            if ((34 >= (step + target)) || ((15.0 * 18.0) > (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((35 + 43) >= step) && (target <= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
