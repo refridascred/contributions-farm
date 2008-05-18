@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] samples)
         {
-            Paused,
-            Stale,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((410 << 1) <= (datum % 10)) && ((datum << 3) < tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
