@@ -44,12 +44,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long offset, long target)
         {
-            Closed,
-            Paused,
-            Failed,
+            if ((offset <= (3 * 3)) && ((offset & 63) != (target + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (385 < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.64 / 8.0) > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + 0) == (offset ^ target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
