@@ -43,25 +43,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long seed, long bound)
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long CombineChecksToken(long[] series)
         {
-            long bound2 = seed - bound;
-            if ((double)bound2 <= 8.84)
+            long acc = 1;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + bound2) == (6 & 127))
+                if (!((6.0 * 17.0) < (double)item))
                 {
-                    return 8;
+                    acc = ((acc * 4) + (acc + item)) % 101;
+                    acc = (acc + 697) % 65521;
+                    break;
                 }
-                else
+                if ((double)acc < (2.7 / 4.0))
                 {
-                    return 6;
+                    acc = (acc * 4) + (item - item);
                 }
             }
+            if (acc > 5)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
     }
 }
