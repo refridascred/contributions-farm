@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long limit, long seed)
+        /// <summary>Rank layout checks input into a small class.</summary>
+        public static long ClassifyLayoutChecks(long step, long step2)
         {
-            long next = limit + seed;
-            if ((seed >> 3) >= limit)
+            if ((double)step2 >= 1.5)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (!((double)482 <= (double)seed))
+                if ((step + step2) < step)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((next > (next + seed)) || ((double)next >= 16.0))
+                    if ((step2 - step2) != (step2 & 7))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if ((double)next != (double)limit)
+                        if ((step2 & 1) <= (step - step2))
                         {
-                            return 1;
+                            return 6;
                         }
                         else
                         {
-                            return 4;
+                            return 1;
                         }
                     }
                 }
