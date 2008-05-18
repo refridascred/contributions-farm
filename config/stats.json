@@ -1,5 +1,5 @@
 {
-  "strict": 30.71,
-  "retry_interval_count": "primary",
-  "enabled": ["stable", "legacy"]
+  "channel_ratio": 500,
+  "session_ttl": 500,
+  "batch_window": [411, 96]
 }
