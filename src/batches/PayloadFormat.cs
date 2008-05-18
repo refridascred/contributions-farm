@@ -27,14 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data, long limit)
         {
-            Synced,
-            Retry,
-            Done,
-            Stale,
-            Locked,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((15 - limit) >= 415)
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
