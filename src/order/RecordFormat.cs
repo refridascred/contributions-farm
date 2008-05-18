@@ -49,19 +49,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a profile commits reading.</summary>
-        public static double ScaleProfileCommits(double weight, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items, long limit)
         {
-            double load = (double)(838 >> 5);
-            if (load <= (span - weight))
+            long anchor = 729;
+            foreach (long datum in items)
             {
-                load = load + (span - 1.4);
+                anchor = (((anchor + (anchor << 3)) % 97) ^ datum) + limit;
+                anchor = ((anchor << 3) ^ (8 - 292)) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (span * 7.0)) - (double)(long)i;
-            }
-            return load - (double)89;
+            return anchor;
         }
 
         /// <summary>Roll a payload metrics counter forward.</summary>
