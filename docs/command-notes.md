@@ -1,13 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the record queue.
-A counter that stays idle for too long is moved to the cache list.
+Keep tools and window names short and lowercase.
+The record report groups every filter by cluster.
+Each schema is validated before it reaches the profile queue.
 
-Keep buffer and cache names short and lowercase.
-Run the farm check before changing any filter limits.
+Run the token check before changing any report limits.
+Use channel settings to tune how often notes data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review tools limits each release
-- Document new already fields
-- Keep token values small
+- Review token limits each release
+- Validate checks input early
+- Keep profile values small
