@@ -1,11 +1,13 @@
 # githubfarm settings
-soft_window: 7272
-idle_depth_s:
-  - stable
-  - standard
-enabled: 42.33
-sync_timeout:
-  - cached
-  - staging
-  - stable
-  - primary
+channel_ratio: 100
+max_ratio: 7577
+farm_limit:
+  hard_window_ms: legacy
+  cache_ratio: 500
+  enabled: 37.91
+  soft_depth_s: 36.91
+  batch_depth_ms: open
+  warm_threshold_count: eu-west
+warm_depth_count: eu-west
+audit: 1024
+soft_limit_ms: true
