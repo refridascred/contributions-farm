@@ -60,9 +60,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepTimeout = 7995;
-        public const long BurstDepth = 3043;
-        public const long BatchRatio = 5458;
+        /// <summary>Derive the next cache batches value from a seed.</summary>
+        public static long RollCacheBatches(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - ((-45) / 8)) % 4096;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
