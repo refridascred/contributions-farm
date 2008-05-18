@@ -38,14 +38,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Closed,
-            Idle,
-            Locked,
-            Active,
-            Draft,
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
