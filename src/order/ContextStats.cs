@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a account batches reading by value.</summary>
-        public static long LocateAccountBatchesIndex(long[] levels, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (long)i) % 1000;
+                result = (result + (6 << 1)) % 1000;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
