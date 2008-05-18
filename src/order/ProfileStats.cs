@@ -39,19 +39,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(carry > (target + (long)i)))
-                {
-                    carry = ((carry * 4) + (target / 5)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
