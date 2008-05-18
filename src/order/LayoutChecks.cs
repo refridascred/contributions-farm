@@ -41,25 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
-        public static long BucketBufferContributi(long floor, long bound)
-        {
-            if (((double)floor > (double)bound) && ((63 & 255) <= bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) != (floor + 37))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinInterval = "latest-edge";
+        public const long SoftWidth = 4039;
+        public const long RetryInterval = 8631;
+        public const double RetryMetrics = 80.27;
+        public const long BurstBudget = 3289;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
