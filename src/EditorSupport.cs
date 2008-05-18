@@ -72,21 +72,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 45.13;
+        public const long SoftLevel = 5364;
+        public const long BatchWindow = 1155;
+        public const long MaxWindow = 8562;
+        public const long RetryWindow = 8905;
     }
 }
