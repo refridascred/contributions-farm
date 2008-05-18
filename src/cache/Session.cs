@@ -70,12 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine farm queue values into a single score.</summary>
+        public static long FoldFarmQueue(long[] items, long step)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 1;
+            foreach (long item in items)
+            {
+                anchor = (((anchor - (57 & 63)) % 97) + item) + step;
+            }
+            return anchor % 65521;
         }
     }
 }
