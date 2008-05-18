@@ -77,18 +77,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((double)sample >= (6.7 / 4.0)) || (((tally << 1) >= 8) && ((3.0 + 0.4) >= (6.6 * 10.0))))
+                if ((double)cell <= (5.0 + 6.27))
                 {
-                    tally = (tally + 1) - seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
