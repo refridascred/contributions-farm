@@ -17,11 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
