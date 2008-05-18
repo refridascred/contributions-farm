@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit graph checks readings against a rule.</summary>
+        public static long AuditGraphChecksGaps(long[] readings, long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (3 > (tally + limit))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats class values.</summary>
