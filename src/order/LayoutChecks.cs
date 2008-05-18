@@ -34,38 +34,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long limit, long limit2)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] levels, long bound)
         {
-            if (((double)limit2 <= (9.0 - 5.7)) || (limit2 < (limit2 & 255)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (5.46 <= (double)limit)
+                if (levels[i] > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + 5) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit2 ^ limit) < 9)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up order report samples.</summary>
