@@ -33,19 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long acc = 129;
-            foreach (long sample in data)
-            {
-                acc = acc + (sample * 4);
-                if ((3.5 * 3.41) >= (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Idle,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the metric class values.</summary>
