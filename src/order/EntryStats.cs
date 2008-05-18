@@ -15,27 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of entry window entries.</summary>
-        public static long ScoreEntryWindow(long[] data, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc * 3)) % 1000;
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc ^ datum) % 97) + (long)i;
-                }
-                if (16.0 >= (double)step)
-                {
-                    acc = (acc ^ (datum + datum)) % 4096;
-                }
-                else
-                {
-                    acc = acc + (long)data.Length;
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
