@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mean - (6.3 / 6.0);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] data)
-        {
-            long total = 18;
-            foreach (long cell in data)
-            {
-                total = ((total << 2) ^ (cell / 6)) % 65521;
-                if ((cell >> 1) < (total & 1))
-                {
-                    total = total + (total % 97);
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "latest";
+        public const long BurstWidth = 1160;
+        public const string HardEntry = "local-1";
+        public const double BatchEntry = 54.74;
+        public const double CacheEntry = 97.4;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long bound, long step)
