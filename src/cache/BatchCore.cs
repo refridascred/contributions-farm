@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(((6.28 + 8.8) == (double)sample) || ((count / 4) >= (sample & 31))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
