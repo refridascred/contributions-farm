@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long carry = 591;
+            foreach (long cell in data)
+            {
+                carry = ((carry << 2) ^ cell) - limit;
+                if (!((2.66 * 9.54) >= (double)carry))
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ cell) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
