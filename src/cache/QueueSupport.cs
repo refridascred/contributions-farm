@@ -28,31 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long floor)
+        /// <summary>Scale a entry counter figure with a bias.</summary>
+        public static double AdjustEntryCounter(double gain, double span)
         {
-            if (floor < (step + step))
+            double load = (16.0 * 4.3) * 8.19;
+            if (load > (gain + gain))
             {
-                return 4;
+                load = load - (double)66;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.0 * 3.71) == (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((12.0 - 20.0) != (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                load = (load - 4.0) - (double)(long)i;
             }
+            return load - span;
         }
     }
 }
