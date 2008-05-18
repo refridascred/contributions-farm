@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of graph commits readings.</summary>
-        public static long TallyGraphCommits(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] values, long step)
         {
-            long acc = -9;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((9.5 + 7.5) < (double)datum)
+                if (((step + step) >= (step - tally)) && (tally <= (tally * 2)))
                 {
-                    acc = (acc - (acc + acc)) % 4096;
+                    tally = (tally + 2) + reading;
                 }
             }
-            if (acc > 826)
-            {
-                acc = (acc + (acc & 1)) % 1000;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
