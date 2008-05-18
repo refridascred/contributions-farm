@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const long HardInterval = 2440;
         public const string IdleCount = "legacy";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long step, long step2)
-        {
-            if ((step - step) >= (5 - 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step2 >= (5.87 + 1.15)) && ((step2 << 1) == (step >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (438 / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step2 << 3) <= (step + step2)) || ((step2 - step) < (step + step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFactor = 6281;
+        public const long StepCount = 3082;
+        public const long BatchFormat = 1094;
+        public const long WindowScore = 8235;
+        public const long HardFormat = 9080;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long step, long target)
