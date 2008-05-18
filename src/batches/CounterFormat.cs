@@ -26,12 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long target)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
