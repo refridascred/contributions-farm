@@ -23,21 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > (origin ^ origin))
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
