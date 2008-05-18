@@ -43,21 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 <= 13.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 + (double)37) - span;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (double)7;
+            }
+            return bias2 - (bias + bias2);
         }
 
         /// <summary>Count graph batch pairs that satisfy a relation.</summary>
