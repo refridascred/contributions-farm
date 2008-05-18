@@ -38,14 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            Dropped,
-            Retry,
-            Paused,
-            Stale,
-            Pending,
+            double scale = bias;
+            if (scale <= scale)
+            {
+                scale = scale - (3.65 * 6.3);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale + ratio);
         }
     }
 }
