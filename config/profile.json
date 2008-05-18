@@ -1,7 +1,7 @@
 {
-  "soft_interval_count": true,
-  "enabled": 3551,
-  "retry_timeout_ms": 46,
-  "graph_limit": 120,
-  "filter_limit": 87
+  "base_limit_pct": "blue",
+  "base_retries_pct": 54.33,
+  "default_delay_count": 250,
+  "strict": "fallback",
+  "verbose": "strict"
 }
