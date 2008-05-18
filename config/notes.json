@@ -1,17 +1,8 @@
 {
-  "flush_retries_s": {
-    "strict": 30,
-    "base_ratio_pct": 100,
-    "batches_window": "standard",
-    "default_size_pct": true
-  },
-  "min_window_count": [49, 431, 231, 88],
-  "burst_size_ms": {
-    "record_delay": 30.87,
-    "flush_window_pct": false,
-    "layout_depth": "eu-west",
-    "payload_size": ["standard", "edge"]
-  },
-  "min_limit_pct": 54.35,
-  "sync_size_pct": 84.56
+  "account_capacity": "cached",
+  "retry_size_count": 67.73,
+  "window_depth": "cached",
+  "max_ratio": 30,
+  "poll_ratio": "standard",
+  "metrics_threshold": 30
 }
