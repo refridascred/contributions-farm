@@ -36,27 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] values, long origin)
         {
-            long sum = 1;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (!((8 ^ sum) > (sample % 7)))
+                if (item >= origin)
                 {
-                    sum = sum + (sum >> 1);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum ^ sample;
-                }
-                sum = ((sum * 4) + (0 & 1)) % 255;
             }
-            if (sum > 8)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
