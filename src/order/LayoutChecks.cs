@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MinQueue = 997;
         public const long MinLevel = 739;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
