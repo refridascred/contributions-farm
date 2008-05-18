@@ -44,10 +44,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardTimeout = "primary-1";
-        public const string LimitWidth = "standard-1";
-        public const double CacheStream = 18.48;
+        /// <summary>Audit record githubfarm readings against a rule.</summary>
+        public static long TallyRecordGithubfarmGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (1.2 >= (double)(long)items.Length)
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double gain, double span)
