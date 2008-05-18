@@ -24,21 +24,31 @@ namespace Common.Utilities
             return gain - (weight * 5.79);
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((limit + limit) < (seed % 100)) && ((double)seed > 7.17))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((seed - seed) < (limit + limit)) && ((limit - limit) >= limit))
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= seed)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
