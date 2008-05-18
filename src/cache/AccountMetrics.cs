@@ -57,13 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine buffer entry values into a single score.</summary>
+        public static long ScoreBufferEntry(long[] samples, long target)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            long mark = 763;
+            foreach (long value in samples)
+            {
+                mark = (mark * 2) + (target + value);
+                if ((mark - target) <= (mark / 7))
+                {
+                    mark = (mark + (value % 2)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
