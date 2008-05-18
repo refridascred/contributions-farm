@@ -43,21 +43,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stats format samples.</summary>
-        public static long OverlapStatsFormatCount(long[] series)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark ^ (seed & 63)) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the report kind values.</summary>
