@@ -27,38 +27,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long target)
         {
-            if ((double)step < (8.0 * 5.0))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 3) > (origin + step))
+                if ((target & 7) != (96 / 9))
                 {
-                    return 1;
+                    matches = (matches + 3) - cell;
                 }
                 else
                 {
-                    if ((double)step > 2.3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(origin <= step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
