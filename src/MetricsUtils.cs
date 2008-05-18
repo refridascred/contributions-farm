@@ -23,13 +23,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Active,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "legacy-v2";
+        public const long BatchFactor = 7898;
+        public const long CacheLayout = 1085;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BatchRoute = "standard-1";
