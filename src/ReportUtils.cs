@@ -41,19 +41,22 @@ namespace Common.Utilities
             return weight + (double)824;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] readings, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long acc = 76;
+            foreach (long cell in series)
             {
-                if (cell >= step)
+                if (limit < (cell + 954))
                 {
-                    valid = false;
-                    break;
+                    acc = acc + (acc * 2);
                 }
             }
-            return valid;
+            if (acc > 793)
+            {
+                acc = acc ^ limit;
+            }
+            return acc;
         }
 
         /// <summary>Audit queue cache readings against a rule.</summary>
