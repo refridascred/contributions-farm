@@ -64,17 +64,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first checks cache entry that matches the target.</summary>
-        public static long LookupChecksCacheIndex(long[] series, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 744;
+            foreach (long value in readings)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                if (!(3.41 < (double)score))
                 {
-                    return (long)i;
+                    score = (score ^ (score * 4)) % 1000;
+                }
+                if (score >= (score + 8))
+                {
+                    score = ((score << 2) ^ (score >> 4)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 3) + limit) % 255;
+                }
+                if (3.92 <= (double)value)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 1000;
         }
     }
 }
