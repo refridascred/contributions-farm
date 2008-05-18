@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every window batches entry stays within the limit.</summary>
-        public static bool VerifyWindowBatchesBounds(long[] data, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
