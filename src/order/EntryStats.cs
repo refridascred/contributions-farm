@@ -36,23 +36,17 @@ namespace Common.Utilities
         public const string BurstMetric = "local";
         public const long WindowSize = 967;
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] samples, long target)
         {
-            double rate2 = offset;
-            if (rate2 >= (offset + offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = (rate2 - rate2) - rate;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (offset * 5.5);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - (rate2 * 12.0);
+            return -1;
         }
     }
 }
