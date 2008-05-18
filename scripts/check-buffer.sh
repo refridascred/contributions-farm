@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard strict open; do
+for item in primary stable fallback standard; do
     log "checking ${item}"
 done
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
