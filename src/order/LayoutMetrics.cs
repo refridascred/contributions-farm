@@ -21,12 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 1.72;
-        public const string RetryAlready = "cached-v2";
-        public const long MinCount = 4326;
-        public const long WindowAlready = 2220;
-        public const long MaxTimeout = 2056;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
