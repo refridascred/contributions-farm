@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double MinLayout = 12.73;
         public const long RetryLayout = 6581;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 44.99;
+        public const long RetryCount = 5557;
+        public const string MaxBudget = "standard";
+        public const long BurstCache = 9215;
+        public const double MaxCache = 80.91;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long seed)
