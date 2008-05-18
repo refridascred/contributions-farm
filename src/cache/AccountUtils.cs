@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long WindowReport = 5886;
         public const long SoftDepth = 8158;
 
-        /// <summary>Iterate the metrics commits series from a seed.</summary>
-        public static long StepMetricsCommits(long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long result = 884;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                result = (((result - 5) % 1000) - datum) - bound;
             }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
