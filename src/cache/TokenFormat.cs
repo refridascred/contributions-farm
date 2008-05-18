@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const double MinLayout = 12.73;
         public const long RetryLayout = 6581;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 6564;
-        public const double LimitScore = 33.21;
-        public const long MaxBudget = 9081;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long seed)
