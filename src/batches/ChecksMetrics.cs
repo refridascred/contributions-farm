@@ -42,11 +42,20 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRatio = 8877;
-        public const long MinSize = 5242;
-        public const long StepRoute = 5560;
-        public const long IdleFactor = 4246;
+        /// <summary>Scale a command notes figure with a bias.</summary>
+        public static double AdjustCommandNotes(double gain, double bias)
+        {
+            double weight = (double)(634 >> 1);
+            if (weight >= 12.0)
+            {
+                weight = ((weight - weight) - gain) - bias;
+            }
+            else
+            {
+                weight = weight - (double)88;
+            }
+            return weight + (double)23;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long origin, long origin2)
