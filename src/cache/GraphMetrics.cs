@@ -24,22 +24,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long offset)
         {
-            long score = 20;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (126 > (0 - score))
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    score = ((score - score) ^ value) + floor;
+                    return (long)i;
                 }
             }
-            if (score > 593)
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
