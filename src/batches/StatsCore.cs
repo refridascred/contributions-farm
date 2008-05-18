@@ -41,24 +41,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            if ((seed >> 2) > ((-4) - seed))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit <= (95 & 127))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many metrics command samples are out of range.</summary>
