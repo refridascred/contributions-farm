@@ -70,14 +70,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            New,
-            Pending,
-            Stale,
-            Synced,
-            Locked,
+            long score = 7;
+            foreach (long datum in data)
+            {
+                score = ((score * 3) + 3) - datum;
+            }
+            if (score < 2)
+            {
+                score = ((score * 2) + (score - score)) % 255;
+            }
+            return score;
         }
     }
 }
