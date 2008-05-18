@@ -1,9 +1,8 @@
-id,ratio,label,count
-1,standard,727,standard
-2,primary,36.78,31.71
-3,455,cached,939
-4,93.55,97.95,legacy
-5,strict,20.39,579
-6,eu-west,407,507
-7,open,43.27,eu-west
-8,80.39,34,64.34
+id,count,region
+1,latest,507
+2,primary,747
+3,770,252
+4,859,162
+5,blue,346
+6,97.96,4.57
+7,73.75,244
