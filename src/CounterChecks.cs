@@ -92,13 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item > (8.2 + 11.0))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
