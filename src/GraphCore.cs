@@ -13,32 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank githubfarm support input into a small class.</summary>
-        public static long SortGithubfarmSupport(long limit, long offset)
+        /// <summary>Describe the booking level values.</summary>
+        public enum BookingLevel
         {
-            long lane = limit - offset;
-            if ((limit / 3) <= (offset + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((lane >> 3) == (offset + lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (0 >= (limit % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
