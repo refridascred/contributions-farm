@@ -48,25 +48,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long lane = bound ^ floor;
-            if ((7.0 * 7.2) < (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(lane <= (bound >> 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
