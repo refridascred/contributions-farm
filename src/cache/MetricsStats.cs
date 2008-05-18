@@ -20,11 +20,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 5777;
-        public const string BaseContext = "legacy";
-        public const long BatchContext = 2680;
-        public const double IdleWidth = 77.39;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheSpan = "strict";
+        public const double DefaultGraph = 7.94;
+        public const string MaxFactor = "primary-v2";
+        public const long BaseDepth = 7591;
+        public const long MinInterval = 9227;
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] data, long origin)
