@@ -31,12 +31,14 @@ namespace Common.Utilities
         public const long RetryTimeout = 5401;
         public const long DefaultBudget = 9807;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 1590;
-        public const long DefaultWidth = 9846;
-        public const long IdleScore = 9998;
-        public const double LimitTools = 96.48;
-        public const long MinTools = 8068;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Digest a series of context githubfarm entries.</summary>
         public static long FoldContextGithubfarm(long[] readings, long bound)
