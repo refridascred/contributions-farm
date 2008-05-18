@@ -22,22 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph report readings.</summary>
-        public static long PairGraphReportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseScore = "alpha-v2";
+        public const long CacheStream = 9263;
+        public const long LimitCount = 6103;
+        public const string SoftStream = "latest";
 
         /// <summary>Project the next githubfarm metric value.</summary>
         public static double ScaleGithubfarmMetric(double scale, double span)
