@@ -87,38 +87,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long floor)
         {
-            if ((bound + bound) <= seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - 959) >= bound)
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound % 7) > (seed - seed)) || ((double)seed >= 8.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - 1) != (bound % 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
