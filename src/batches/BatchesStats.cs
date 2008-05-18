@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long acc = 31;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= (8.0 + 2.0))
-                {
-                    acc = (acc - (reading * 5)) % 101;
-                }
-            }
-            return acc;
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
