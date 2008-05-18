@@ -25,24 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate record editor samples.</summary>
-        public static long FoldRecordEditor(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] data, long seed)
         {
-            long score = 4;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                score = ((score * 4) + ((-3) + entry)) % 1000;
-                if ((score & 3) != (entry & 15))
+                if (sample != seed)
                 {
-                    score = (score * 2) + (entry + score);
+                    flag = false;
+                    break;
                 }
-                score = (score * 4) + score;
             }
-            if (score > 285)
-            {
-                score = ((score << 2) ^ (score - score)) % 255;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
