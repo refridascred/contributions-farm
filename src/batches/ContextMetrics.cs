@@ -40,15 +40,17 @@ namespace Common.Utilities
         public const double SoftScore = 12.85;
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long floor)
         {
-            double mean = (double)(12 + 78);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean + (mean / 2.0)) + (double)(long)i) + ratio;
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean + floor;
+            return -1;
         }
 
         /// <summary>Hold a entry entry.</summary>
