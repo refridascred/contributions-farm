@@ -53,21 +53,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
