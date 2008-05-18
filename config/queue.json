@@ -1,7 +1,8 @@
 {
-  "metrics_timeout": 250,
-  "audit": ["strict", "open", "blue"],
-  "farm_threshold": 32.47,
-  "min_window_s": "stable",
-  "sync_limit": true
+  "tools_depth": [134, 264, 424, 324],
+  "stream_limit": 60,
+  "already_depth": false,
+  "enabled": "fallback",
+  "max_window_pct": "primary",
+  "burst_threshold_pct": 5116
 }
