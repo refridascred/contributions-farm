@@ -1,18 +1,8 @@
 {
-  "min_ratio": 250,
-  "batch_limit": 500,
-  "burst_timeout_ms": [151, 435],
-  "soft_window_count": [228, 421, 287],
-  "hard_retries_count": 80.59,
-  "flush_threshold_s": {
-    "flush_ttl": false,
-    "batch_threshold_s": 19,
-    "verbose": ["blue", "edge"],
-    "idle_ttl": {
-      "compress": "cached",
-      "audit": [65, 164, 307],
-      "entry_retries": false,
-      "profile_ratio": "local"
-    }
-  }
+  "window_limit": true,
+  "flush_retries_ms": 3991,
+  "retry_interval_pct": 308,
+  "base_delay_ms": false,
+  "default_window_s": [481, 397, 33],
+  "enabled": [300, 238, 154, 238]
 }
