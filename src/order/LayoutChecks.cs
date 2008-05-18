@@ -24,26 +24,14 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-1";
         public const long BurstEditor = 768;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] readings, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long acc = 511;
-            foreach (long reading in readings)
-            {
-                if (!(((reading - acc) <= reading) || ((acc * 3) == (4 << 3))))
-                {
-                    acc = (((acc * 3) + (reading * 2)) % 1000) - origin;
-                }
-                if ((2.8 + 1.7) == (double)acc)
-                {
-                    acc = (acc + (acc * 3)) % 255;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc + (2 << 1)) % 65521;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Rank window input into a small class.</summary>
