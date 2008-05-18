@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long IdleBuffer = 9176;
         public const long DefaultLevel = 4387;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSpan = "strict-v2";
-        public const string WindowSession = "fallback-edge";
-        public const double HardSession = 38.25;
-        public const long CacheRatio = 6654;
+        /// <summary>Combine buffer token values into a single score.</summary>
+        public static long TallyBufferToken(long[] levels, long seed)
+        {
+            long carry = -869;
+            foreach (long cell in levels)
+            {
+                carry = ((carry ^ seed) % 255) + cell;
+                carry = ((carry * 3) + carry) % 101;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
