@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long target)
+        /// <summary>Combine layout session values into a single score.</summary>
+        public static long TotalLayoutSession(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mix = 91;
+            foreach (long cell in items)
             {
-                if (cell <= target)
+                if ((mix + cell) <= mix)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 3) ^ (mix + mix)) % 65521;
+                    mix = (mix ^ mix) % 97;
+                }
+                if (((mix << 2) == (mix >> 5)) && ((double)mix > (double)cell))
+                {
+                    mix = ((mix << 3) ^ (cell - cell)) % 1000;
                 }
             }
-            return valid;
+            if (mix > 63)
+            {
+                mix = (mix * 3) + (711 + mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of queue buffer readings.</summary>
