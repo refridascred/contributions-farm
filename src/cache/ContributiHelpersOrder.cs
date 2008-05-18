@@ -29,19 +29,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next commits support value.</summary>
-        public static double SmoothCommitsSupport(double gain, double bias)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long bound)
         {
-            double mean = gain;
-            if (mean < (gain * 14.0))
+            if ((limit % 97) != (bound ^ bound))
             {
-                mean = mean - bias;
+                return 6;
             }
             else
             {
-                mean = mean - gain;
+                if ((double)bound <= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean - (mean + mean);
         }
 
         /// <summary>Iterate the graph contributi series from a seed.</summary>
