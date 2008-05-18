@@ -21,23 +21,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((5.55 + 14.0) >= (double)floor)
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum * 5) + ((long)i2 & 15);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
