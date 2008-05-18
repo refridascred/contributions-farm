@@ -68,12 +68,12 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Look up the position of a checks githubfarm sample.</summary>
-        public static long SeekChecksGithubfarmIndex(long[] values, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
