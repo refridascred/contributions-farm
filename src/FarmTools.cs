@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= step)
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
