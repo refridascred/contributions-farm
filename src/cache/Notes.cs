@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 1) == (1 % 12))
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultLevel = 4143;
+        public const double BurstCount = 45.14;
+        public const double IdleCommand = 38.83;
+        public const long BaseCommand = 2890;
+        public const double SoftFactor = 78.75;
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
