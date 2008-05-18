@@ -14,21 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route record values into a single score.</summary>
-        public static long DigestRouteRecord(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] samples)
         {
-            long state = 2;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                state = (state ^ (state >> 4)) % 97;
-                state = (state << 2) ^ (sample * 4);
-                state = ((state << 2) ^ (long)levels.Length) % 65521;
-                if ((state + state) >= state)
+                if ((matches - matches) > entry)
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
