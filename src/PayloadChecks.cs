@@ -31,13 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] samples, long target)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
