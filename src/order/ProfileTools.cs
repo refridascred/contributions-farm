@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine batch window values into a single score.</summary>
-        public static long WeighBatchWindow(long[] samples, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long target, long bound)
         {
-            long carry = 316;
-            foreach (long reading in samples)
+            if ((248 <= bound) && ((double)bound < (1.62 - 2.94)))
             {
-                carry = ((carry - 608) % 255) + reading;
-                if (((double)carry != (4.1 + 0.81)) && ((limit << 1) >= 174))
+                return 1;
+            }
+            else
+            {
+                if ((target * 4) >= (585 - bound))
                 {
-                    carry = (carry * 3) + carry;
+                    return 3;
                 }
-                if (((-2) + carry) <= 71)
+                else
                 {
-                    break;
+                    if ((bound - 61) <= (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
