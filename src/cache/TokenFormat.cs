@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((tally * 4) <= (tally << 1)) || (((double)cell < 20.0) && ((14.0 / 5.0) < (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
