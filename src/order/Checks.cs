@@ -37,13 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a batch report pair into a bucket.</summary>
+        public static long RankBatchReport(long step, long seed)
         {
-            New,
-            Retry,
-            Ready,
-            Failed,
+            if ((6.2 > (double)seed) && ((6.3 * 8.9) < (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >= (seed - 2)) && ((seed % 10) >= step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((8.98 + 2.85) != (double)seed) && ((step << 3) < (step % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.0 * 19.0) != (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
