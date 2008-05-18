@@ -7,11 +7,16 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in primary local open; do
-    log "checking ${item}"
+RECORD_LIMIT=164
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
