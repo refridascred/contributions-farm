@@ -37,18 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long CountRecordTokenMatches(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value ^ seen) < (65 + seen))
+                if (values[i] >= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
