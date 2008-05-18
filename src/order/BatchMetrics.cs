@@ -79,13 +79,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Dropped,
-            Ready,
-            Locked,
-            Retry,
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
