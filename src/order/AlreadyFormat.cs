@@ -49,12 +49,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Derive the next metric batch value from a seed.</summary>
+        public static long DeriveMetricBatch(long bound)
         {
-            Paused,
-            Queued,
-            Draft,
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                long tally = bound % 3;
+                tally = (tally - bound) % 101;
+                if ((tally - bound) <= ((long)i / 7))
+                {
+                    tally = ((tally << 2) ^ (total + total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
