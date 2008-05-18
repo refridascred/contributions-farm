@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of filter checks entries.</summary>
-        public static long TotalFilterChecks(long[] values, long origin)
-        {
-            long state = 6;
-            foreach (long value in values)
-            {
-                state = ((state + (long)values.Length) - value) - origin;
-            }
-            return state % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitDepth = 68.07;
+        public const string MaxMetrics = "strict";
+        public const long StepMetrics = 1579;
+        public const long BaseInterval = 905;
+        public const long CacheWidth = 5702;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmRange(long[] data, long bound)
