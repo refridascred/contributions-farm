@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series)
+        /// <summary>Validate tools stats readings against a bound.</summary>
+        public static bool CheckToolsStatsRange(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((double)sample <= (1.05 - 5.85))
+                if (item >= bound)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Match up contributi samples.</summary>
