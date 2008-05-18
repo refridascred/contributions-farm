@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Ready,
-            Pending,
-            Done,
-            Synced,
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
