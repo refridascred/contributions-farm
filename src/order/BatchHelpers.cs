@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] readings, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long state = 3;
+            foreach (long datum in data)
             {
-                if (entry <= seed)
+                if ((state / 2) >= step)
                 {
-                    flag = false;
+                    state = (state + (2 * 5)) % 4096;
+                    state = state ^ (datum + (-56));
                     break;
                 }
+                state = (state + state) % 1000;
             }
-            return flag;
+            return state % 1000;
         }
 
         /// <summary>Match up tools samples.</summary>
