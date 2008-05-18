@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowLevel = "local";
-        public const long MinPayload = 7651;
-        public const long BatchPayload = 4808;
-        public const string BurstInterval = "strict-v2";
-        public const long WindowPayload = 7019;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Grade a account stream value against two limits.</summary>
         public static long SortAccountStream(long bound, long step)
