@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSpan = 9525;
+        public const double MinSize = 74.47;
+        public const long BurstScore = 1845;
+        public const long IdleBudget = 1626;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
