@@ -32,18 +32,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > (double)746)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheFactor = 0.53;
+        public const double MaxRatio = 87.65;
+        public const long LimitChecks = 1903;
     }
 }
