@@ -20,19 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] data, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long sum = 8;
+            foreach (long datum in series)
             {
-                if (sample >= origin)
+                if (sum > (datum + sum))
                 {
-                    stale = false;
+                    sum = sum + (offset - sum);
+                }
+                if (sum < (24 ^ datum))
+                {
                     break;
                 }
             }
-            return stale;
+            if (sum < 6)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
