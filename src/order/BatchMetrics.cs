@@ -41,16 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Match up stats format samples.</summary>
+        public static long OverlapStatsFormatCount(long[] series)
         {
-            long anchor = 819;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (reading & 1)) % 97;
-                anchor = (anchor - anchor) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
