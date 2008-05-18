@@ -42,24 +42,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long limit)
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long TallyCommitsGithubfarmHits(long[] levels)
         {
-            if ((0.4 + 2.0) < (double)limit)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step + limit) > (limit + step)) && ((61 * 5) >= step))
+                if ((double)seen <= (double)item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
