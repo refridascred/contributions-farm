@@ -1,8 +1,11 @@
 # entry settings
-default_retries_ms:
-  batches_retries: 250
-  audit: 49.85
-  readonly: 32
-  persist: 52
-idle_ttl: 1024
-sync_delay_pct: local
+poll_capacity_s:
+  - 169
+  - 310
+  - 245
+  - 46
+batch_ratio_count:
+  - 244
+  - 358
+idle_depth: 51.99
+cache_limit: latest
