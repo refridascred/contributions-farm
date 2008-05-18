@@ -24,10 +24,23 @@ namespace Common.Utilities
             return gain + 3.1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 12.15;
-        public const long DefaultSchema = 4922;
-        public const double IdleRatio = 78.49;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                long seen = ((long)i + (long)i) * 2;
+                if (seen <= ((long)i - (-170)))
+                {
+                    carry = (carry - (seen + seen)) % 65521;
+                    continue;
+                }
+                carry = (carry * 5) + (long)i;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long target)
