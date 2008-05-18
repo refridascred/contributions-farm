@@ -95,17 +95,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long floor)
+        /// <summary>Scale a payload order figure with a bias.</summary>
+        public static double ProjectPayloadOrder(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                scale2 = ((scale2 + 20.0) - (double)(long)i) - bias;
             }
-            return -1;
+            return scale2 + scale2;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
