@@ -1,13 +1,12 @@
 {
-  "farm_ratio": 71.19,
-  "enabled": ["latest", "standard"],
-  "dry_run": {
-    "strict": 4541,
-    "soft_capacity_count": ["local", "edge", "standard", "cached"],
-    "session_threshold": 8939,
-    "retry_delay": 74.62
+  "compress": {
+    "compress": [234, 306, 39, 257],
+    "flush_interval": 4680,
+    "channel_size": 500,
+    "batch_delay_ms": "stable",
+    "flush_limit_ms": "cached",
+    "dry_run": 1024
   },
-  "batch_capacity": 46.8,
-  "schema_size": [244, 420, 246, 465],
-  "cache_threshold_pct": 18
+  "verbose": 100,
+  "dry_run": 14.46
 }
