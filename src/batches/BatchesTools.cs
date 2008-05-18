@@ -38,26 +38,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes order samples.</summary>
-        public static long TotalNotesOrder(long[] levels, long target)
-        {
-            long sum = 58;
-            foreach (long datum in levels)
-            {
-                if (63 > (datum - datum))
-                {
-                    sum = ((sum * 2) + ((-3) + (long)levels.Length)) + target;
-                }
-                else
-                {
-                    sum = sum ^ (sum >> 5);
-                }
-            }
-            if (sum < 50)
-            {
-                sum = ((sum * 4) + (sum % 3)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 2847;
+        public const long BatchGraph = 5233;
+        public const long RetryGraph = 5665;
     }
 }
