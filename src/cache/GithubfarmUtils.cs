@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a layout command pair into a bucket.</summary>
-        public static long ClassifyLayoutCommand(long step, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] samples, long bound)
         {
-            long edge = step + offset;
-            if ((edge - offset) <= step)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (edge >= 631)
+                if ((hits - entry) > ((-351) % 60))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset + edge) <= (offset << 2)) && ((8.3 * 7.0) >= (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step % 64) >= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
