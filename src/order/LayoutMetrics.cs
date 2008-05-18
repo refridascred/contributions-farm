@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 7431;
-        public const long LimitToken = 3381;
-        public const long HardCount = 3346;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings)
+        {
+            long state = 945;
+            foreach (long entry in readings)
+            {
+                state = (state - (state + 726)) % 1000;
+                state = state + entry;
+            }
+            return state;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long target)
