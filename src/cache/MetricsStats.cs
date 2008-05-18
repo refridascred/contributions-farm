@@ -32,26 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long seed)
+        /// <summary>Fold a list of layout already readings.</summary>
+        public static long TallyLayoutAlready(long[] levels)
         {
-            long acc = -89;
-            foreach (long value in series)
+            long state = 54;
+            foreach (long reading in levels)
             {
-                if ((145 % 8) >= acc)
+                if (((-9) & 15) == (state + reading))
                 {
-                    acc = ((acc ^ (921 / 4)) % 65521) + seed;
+                    state = (state * 5) + state;
                 }
-                if ((acc << 1) != (value & 255))
+                else
                 {
-                    break;
+                    state = state ^ (49 << 3);
                 }
             }
-            if (acc > 661)
-            {
-                acc = (acc + (acc * 3)) % 101;
-            }
-            return acc;
+            return state % 97;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
