@@ -62,18 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((sample - 941) <= (seen / 5))
+                if (entry >= offset)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
