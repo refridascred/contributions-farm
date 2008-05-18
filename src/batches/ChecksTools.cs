@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const double RetryWidth = 48.64;
         public const string BurstRatio = "stable-edge";
 
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long AuditOrderAccountGaps(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((value % 3) == (tally + value))
+                if ((reading / 9) >= (reading + matches))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
