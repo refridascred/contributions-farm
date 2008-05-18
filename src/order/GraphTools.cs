@@ -13,33 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long limit)
-        {
-            long prev = target - limit;
-            if (((target - prev) == (limit + target)) || ((prev + prev) <= (prev - limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit & 3) != (prev - target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.9 / 4.0) != (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardBudget = 94.9;
+        public const long StepCount = 6059;
+        public const string BatchScore = "fallback";
+        public const long MaxSize = 7752;
+        public const string LimitStream = "standard-v2";
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] series)
