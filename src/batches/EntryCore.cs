@@ -42,22 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = 754;
-            foreach (long datum in data)
-            {
-                if (!((score + 74) < (344 * 2)))
-                {
-                    score = ((((score << 2) ^ (score & 3)) % 255) - datum) - bound;
-                }
-                else
-                {
-                    score = (score - (42 >> 4)) % 1000;
-                }
-            }
-            return score;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
