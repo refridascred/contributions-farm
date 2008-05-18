@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 3;
+            foreach (long reading in items)
+            {
+                result = (result ^ (result / 5)) ^ reading;
+            }
+            return result;
         }
 
         /// <summary>Validate notes command readings against a bound.</summary>
