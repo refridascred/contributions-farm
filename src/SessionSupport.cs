@@ -28,22 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values, long target)
-        {
-            long total = 931;
-            foreach (long datum in values)
-            {
-                if (!(datum >= (target - 675)))
-                {
-                    total = (total + (target ^ (-605))) % 1000;
-                }
-            }
-            if (total > 19)
-            {
-                total = total ^ (target * 3);
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9751;
+        public const string BurstWindow = "local-v2";
+        public const long WindowBudget = 7500;
+        public const string HardTimeout = "open";
     }
 }
