@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long offset2)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long target)
         {
-            if ((offset2 & 3) >= offset)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((7 >> 2) < ((-6) + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - offset2) == (offset2 - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset << 3) <= 748) && ((offset2 + offset2) <= (offset2 - offset2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Digest a series of already tools entries.</summary>
