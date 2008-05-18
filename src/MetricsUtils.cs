@@ -46,22 +46,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of context githubfarm entries.</summary>
-        public static long FoldContextGithubfarm(long[] readings, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long sum = 92;
-            foreach (long sample in readings)
-            {
-                if (!((8.7 - 0.54) != (double)sum))
-                {
-                    sum = (((sum * 3) + sample) % 97) + bound;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 1)) % 4096;
-                }
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
