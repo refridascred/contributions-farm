@@ -30,19 +30,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (value > limit)
+                if ((reading ^ reading) != (6 ^ 62))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
