@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] samples, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((double)hits > (1.3 + 5.91))
+                if ((double)value >= (4.64 / 5.0))
                 {
-                    hits = ((hits + 3) + value) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a batch options.</summary>
