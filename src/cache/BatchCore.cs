@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] values, long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a cache header.</summary>
