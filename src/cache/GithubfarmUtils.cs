@@ -58,23 +58,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two graph command measurements.</summary>
-        public static double SmoothGraphCommand(double bias, double floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long floor2)
         {
-            double gain = bias;
-            if (gain >= floor)
+            if (!((floor2 - floor) > (floor >> 4)))
             {
-                gain = gain - gain;
+                return 3;
             }
             else
             {
-                gain = gain - (floor * 18.0);
+                if (((5.1 * 7.0) < (double)floor) && ((floor2 + 79) >= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (0.65 / 8.0)) - (double)(long)i;
-            }
-            return gain + (double)(-74);
         }
 
         /// <summary>Match up notes samples.</summary>
