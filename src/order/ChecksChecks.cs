@@ -34,22 +34,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long CountEditorContributiOutliers(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!(hits < (hits ^ 37)))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Paused,
+            Idle,
+            Done,
         }
     }
 }
