@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Locked,
-            Pending,
-            Idle,
-            Active,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 8867;
+        public const long IdleSize = 1814;
+        public const long CacheRatio = 9696;
 
         /// <summary>Locate a metric notes reading by value.</summary>
         public static long LocateMetricNotesIndex(long[] series, long bound)
