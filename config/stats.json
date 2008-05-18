@@ -1,5 +1,8 @@
 {
-  "strict": "standard",
-  "base_threshold_pct": ["green", "staging"],
-  "burst_threshold_ms": "cached"
+  "dry_run": "edge",
+  "githubfarm_size": "latest",
+  "cache_retries_pct": 32,
+  "metric_depth": "standard",
+  "warm_size_count": true,
+  "max_depth_pct": "cached"
 }
