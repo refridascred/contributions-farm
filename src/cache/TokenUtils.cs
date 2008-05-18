@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((hits - datum) <= datum)
+                if ((anchor + origin) > (anchor % 3))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor - (anchor + anchor)) % 255;
                 }
+                else
+                {
+                    anchor = (anchor - origin) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
