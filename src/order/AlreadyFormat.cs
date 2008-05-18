@@ -13,10 +13,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 6016;
-        public const long StepFactor = 3308;
-        public const string LimitScore = "primary-1";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Failed,
+            Done,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long target)
