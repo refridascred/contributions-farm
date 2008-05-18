@@ -31,20 +31,10 @@ namespace Common.Utilities
         public const string WindowBatches = "stable";
         public const long BaseRatio = 3366;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxScore = 51.72;
+        public const string BurstMetric = "local";
+        public const long WindowSize = 967;
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double rate, double offset)
