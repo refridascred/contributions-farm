@@ -19,18 +19,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 7;
+            foreach (long cell in values)
             {
-                if ((tally / 6) >= (value + tally))
+                if (((long)values.Length * 2) > (cell - cell))
                 {
-                    tally = tally + 2;
+                    mix = ((mix << 2) ^ (offset ^ offset)) % 255;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 4) + (offset / 7);
+                }
+                if ((cell * 5) >= 8)
+                {
+                    mix = (mix ^ 0) % 65521;
+                }
+                if (((double)offset == (3.0 * 3.83)) && (cell <= (95 % 100)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 907)
+            {
+                mix = ((mix << 2) ^ (offset + offset)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
