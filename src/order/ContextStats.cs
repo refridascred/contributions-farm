@@ -52,17 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi editor reading by value.</summary>
-        public static long FindContributiEditorIndex(long[] readings, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] < bound)
+                if (anchor < origin)
                 {
-                    return (long)i;
+                    anchor = (anchor - (363 + origin)) % 97;
                 }
+                else
+                {
+                    anchor = (anchor ^ (origin & 1)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
