@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open stable; do
+RECORD_LIMIT=483
+log "limit is ${RECORD_LIMIT}"
+
+for item in latest eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
