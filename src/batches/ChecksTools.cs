@@ -15,11 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long seed2)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long diff = seed + seed2;
+            if ((2 - diff) == (seed ^ seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed2 > diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
