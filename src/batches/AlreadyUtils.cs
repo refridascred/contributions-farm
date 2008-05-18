@@ -50,12 +50,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            double load = 0.3 - (double)2;
+            if (load <= weight)
+            {
+                load = load - (double)7;
+            }
+            else
+            {
+                load = load + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 5.45) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
