@@ -67,11 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 8557;
+        public const long StepGraph = 9945;
+        public const long BatchSpan = 6128;
+        public const long MinBudget = 3125;
+        public const string DefaultGraph = "cached-edge";
     }
 }
