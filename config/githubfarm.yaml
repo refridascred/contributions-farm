@@ -1,11 +1,11 @@
 # githubfarm settings
-base_retries_ms: strict
-verbose: staging
-cache_timeout_ms: 30.58
-route_ttl: true
-contributi_ttl:
-  poll_ratio_ms: 500
-  retry_ttl: open
-  soft_delay: false
-  context_threshold: 28
-soft_interval: 250
+soft_window: 7272
+idle_depth_s:
+  - stable
+  - standard
+enabled: 42.33
+sync_timeout:
+  - cached
+  - staging
+  - stable
+  - primary
