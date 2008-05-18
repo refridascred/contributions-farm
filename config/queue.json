@@ -1,5 +1,7 @@
 {
-  "default_delay_s": 1024,
-  "poll_window_s": true,
-  "strict": [432, 335, 204, 163]
+  "metrics_timeout": 250,
+  "audit": ["strict", "open", "blue"],
+  "farm_threshold": 32.47,
+  "min_window_s": "stable",
+  "sync_limit": true
 }
