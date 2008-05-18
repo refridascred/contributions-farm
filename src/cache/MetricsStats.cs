@@ -27,13 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            New,
+            Failed,
             Queued,
-            Locked,
-            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the session class values.</summary>
