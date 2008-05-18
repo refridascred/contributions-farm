@@ -47,18 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long TallyGraphMetricHits(long[] series, long offset)
+        /// <summary>Look up the position of a commits context sample.</summary>
+        public static long FindCommitsContextIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9 >> 5) > offset)
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
                 {
-                    tally = (tally + 2) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
