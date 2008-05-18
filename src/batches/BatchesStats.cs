@@ -46,14 +46,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Synced,
-            Queued,
-            Retry,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 10.78;
+        public const long BaseSize = 2942;
+        public const long MinLevel = 831;
     }
 }
