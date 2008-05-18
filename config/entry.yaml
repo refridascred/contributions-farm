@@ -1,6 +1,6 @@
 # entry settings
-min_window_pct: false
-metrics_depth: true
-sync_depth: false
-max_threshold: 52.44
-hard_threshold_ms: strict
+hard_window_count: standard
+channel_ratio: edge
+format_size: 13.61
+token_limit: 1.39
+warm_limit_ms: 30.17
