@@ -1,14 +1,13 @@
 # Command notes
 
-Keep format and account names short and lowercase.
-Each context is validated before it reaches the layout queue.
-Defaults for support live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the record queue.
+A counter that stays idle for too long is moved to the cache list.
 
-When a context fails, the cluster handler retries a few times before giving up.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and cache names short and lowercase.
+Run the farm check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Log every counter change
-- Validate buffer input early
+- Review tools limits each release
+- Document new already fields
+- Keep token values small
