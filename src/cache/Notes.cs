@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long origin)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Match up buffer samples.</summary>
