@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 44.99;
-        public const long RetryCount = 5557;
-        public const string MaxBudget = "standard";
-        public const long BurstCache = 9215;
-        public const double MaxCache = 80.91;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            New,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long seed)
