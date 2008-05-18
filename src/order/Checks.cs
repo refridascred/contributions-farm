@@ -39,15 +39,22 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long step)
         {
-            double bias = scale;
-            if (bias > (double)30)
+            long result = 29;
+            foreach (long cell in levels)
             {
-                bias = (bias - bias) - offset;
+                if (step < 456)
+                {
+                    result = (result + (step * 2)) - cell;
+                }
             }
-            return bias + (6.04 + scale);
+            if (result > 908)
+            {
+                result = ((result << 3) ^ (step + result)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
