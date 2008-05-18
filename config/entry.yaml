@@ -1,5 +1,6 @@
 # entry settings
-poll_capacity: standard
-hard_delay: open
-payload_depth: 250
-farm_capacity: 500
+enabled: eu-west
+schema_window: 34.68
+min_interval_pct: staging
+batches_retries: 1512
+max_timeout_s: true
