@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long origin, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            if ((origin + origin) != (origin - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin + limit) >= (origin % 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit & 15) <= 884) || (((-2) % 24) >= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor options.</summary>
