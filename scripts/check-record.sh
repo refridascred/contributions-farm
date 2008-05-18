@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green fallback cached; do
+for item in blue eu-west; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-local}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=245
+log "limit is ${RECORD_LIMIT}"
