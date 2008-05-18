@@ -45,10 +45,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 16.04;
-        public const double StepFactor = 31.36;
-        public const long HardRatio = 4573;
-        public const long BurstNotes = 9416;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum ^ sum) % 101) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (origin + origin)) % 101;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
