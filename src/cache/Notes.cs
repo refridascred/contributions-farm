@@ -51,11 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 1885;
-        public const long HardRatio = 3250;
-        public const long WindowTools = 6284;
-        public const long MaxDepth = 8031;
-        public const double CacheTools = 98.91;
+        /// <summary>Accumulate support already samples.</summary>
+        public static long WeighSupportAlready(long[] readings, long step)
+        {
+            long state = 703;
+            foreach (long value in readings)
+            {
+                if (!((double)step < (12.0 - 4.0)))
+                {
+                    state = ((state - state) % 65521) - value;
+                }
+            }
+            return state;
+        }
     }
 }
