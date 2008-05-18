@@ -37,10 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 54.43;
-        public const long WindowToken = 9368;
-        public const double DefaultWidth = 28.92;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading < (reading + (-7))) && ((6.5 - 2.88) > (double)reading))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstInterval = 807;
