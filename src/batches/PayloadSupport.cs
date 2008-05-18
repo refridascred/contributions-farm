@@ -19,21 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue buffer readings.</summary>
-        public static long PairQueueBufferCount(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
