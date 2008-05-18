@@ -29,11 +29,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 3442;
-        public const long BaseLevel = 1627;
-        public const long IdleDepth = 7383;
-        public const long MaxLevel = 131;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long seed, long target)
+        {
+            if ((target & 127) < seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(seed <= (seed * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(target > (target % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph account entries.</summary>
         public static long DigestGraphAccount(long[] levels, long limit)
