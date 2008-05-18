@@ -1,5 +1,5 @@
 {
-  "base_threshold_count": 32,
-  "enabled": "strict",
-  "sync_size": false
+  "sync_threshold_pct": true,
+  "report_timeout": ["blue", "latest", "open", "latest"],
+  "soft_ratio_s": 9.01
 }
