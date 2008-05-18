@@ -54,25 +54,22 @@ namespace Common.Utilities
         public const string BurstMetric = "local";
         public const long WindowSize = 967;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] series)
         {
-            long slot = offset - seed;
-            if (((8.3 - 4.3) == (double)offset) || ((offset ^ slot) != (51 >> 4)))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - seed) < seed)
+                if (((7.32 * 5.4) > (double)matches) && (datum >= (datum ^ datum)))
                 {
-                    return 4;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 1;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
