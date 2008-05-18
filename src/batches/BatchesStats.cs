@@ -29,19 +29,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double mean = (double)(6 >> 5);
+            if (mean < (mean * 3.3))
             {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (rate + rate);
             }
-            return flag;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (rate / 8.0)) - (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Hold a stream info.</summary>
