@@ -1,5 +1,17 @@
 {
-  "checks_delay": true,
-  "batch_threshold_pct": "cached",
-  "strict": 1024
+  "warm_ratio": "strict",
+  "dry_run": {
+    "cache_limit": 0.19,
+    "report_depth": {
+      "compress": "blue",
+      "idle_delay_ms": "standard",
+      "strict": true,
+      "sync_limit": 90.1
+    },
+    "cache_size": 55.48,
+    "payload_ttl": 58
+  },
+  "batch_ttl_ms": 2391,
+  "poll_timeout": 9437,
+  "context_retries": 3381
 }
