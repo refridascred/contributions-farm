@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 8) >= (449 >> 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitInterval = 71.45;
+        public const string MaxEditor = "latest-1";
+        public const double BaseSize = 55.41;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] readings)
