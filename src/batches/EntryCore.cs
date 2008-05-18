@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryBudget = 4996;
-        public const long MaxRatio = 3523;
-        public const string DefaultMetrics = "alpha-1";
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double span)
+        {
+            double bias = (weight / 5.0) * 8.52;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + (bias - weight);
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] samples, long target)
