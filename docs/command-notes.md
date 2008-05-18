@@ -1,14 +1,16 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the already list.
-Each commits is validated before it reaches the metrics queue.
-Use format settings to tune how often token data is refreshed.
+The stats report groups every stats by session.
+Keep cluster and metric names short and lowercase.
+Run the session check before changing any order limits.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Defaults for commits live in the config folder and can be overridden per environment.
+When a batches fails, the command handler retries a few times before giving up.
+Run the profile check before changing any farm limits.
+Use support settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Document new batch fields
-- Review route limits each release
-- Validate editor input early
+- Review metric limits each release
+- Log every window change
+- Prefer command defaults
+- Document new metrics fields
