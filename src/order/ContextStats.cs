@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] items)
+        /// <summary>Roll a layout profile counter forward.</summary>
+        public static long DeriveLayoutProfile(long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(tally > (tally / 4)))
+                anchor = ((anchor * 2) + ((long)i * 3)) % 255;
+                if ((4.61 - 0.5) <= (double)anchor)
                 {
-                    tally = (tally + 3) ^ entry;
+                    anchor = (anchor - (offset + 951)) % 1000;
                 }
+                else
+                {
+                    anchor = (anchor << 3) ^ offset;
+                    anchor = ((anchor * 4) + (9 >> 5)) % 101;
+                }
+                anchor = anchor ^ (offset - offset);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
