@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] levels, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < seed)
+                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
