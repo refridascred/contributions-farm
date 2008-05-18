@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a payload stats.</summary>
