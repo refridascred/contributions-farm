@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio2 = (double)6 / 2.0;
+            return ((ratio2 - (double)262) + ratio) + bias;
         }
 
         /// <summary>Hold a checks stats.</summary>
