@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] items)
         {
-            long carry = 35;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                carry = (carry - (value >> 1)) - seed;
+                if (!(tally > (tally / 4)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
