@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long score = 88;
-            foreach (long value in data)
-            {
-                score = score ^ (4 + 59);
-                score = ((score << 2) ^ (value + value)) % 101;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
