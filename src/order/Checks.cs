@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long CountClusterBatchOutliers(long[] samples)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell % 12) == (cell + cell))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
