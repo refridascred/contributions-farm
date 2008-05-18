@@ -13,17 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (data[i] < origin)
+                if (cell >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
