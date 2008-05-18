@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count checks cluster pairs that satisfy a relation.</summary>
-        public static long MatchChecksClusterCount(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] >= floor) && ((data[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
