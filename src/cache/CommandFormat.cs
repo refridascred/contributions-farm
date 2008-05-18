@@ -50,17 +50,31 @@ namespace Common.Utilities
             return weight + (6.1 * 4.3);
         }
 
-        /// <summary>Find the first metric stats entry that matches the target.</summary>
-        public static long FindMetricStatsIndex(long[] levels, long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (floor <= (floor >> 3))
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((3.93 * 1.3) == (double)floor)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + floor) != (floor - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
