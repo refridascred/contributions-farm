@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] readings, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (value != offset)
+                if ((seen - entry) >= (entry - 35))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the report status values.</summary>
