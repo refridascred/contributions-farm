@@ -34,12 +34,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "stable-edge";
-        public const long HardBudget = 4954;
-        public const string LimitInterval = "strict";
-        public const double MinInterval = 49.52;
-        public const long MinSize = 5608;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] samples, long target)
