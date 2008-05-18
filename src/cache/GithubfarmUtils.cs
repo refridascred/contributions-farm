@@ -46,19 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] readings, long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
