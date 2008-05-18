@@ -35,25 +35,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank format checks input into a small class.</summary>
-        public static long SortFormatChecks(long bound, long step)
+        /// <summary>Count the batch contributi entries that pass the check.</summary>
+        public static long AuditBatchContributiMatches(long[] data)
         {
-            long offset = bound ^ step;
-            if (((step / 8) >= bound) && ((double)offset < (8.44 / 3.0)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (bound * 4))
+                if (tally >= (tally >> 2))
                 {
-                    return 7;
+                    tally = (tally + 2) - item;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
