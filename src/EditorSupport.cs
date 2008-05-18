@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] series, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                total = total - (long)i;
-                total = ((total * 3) + (long)i) % 97;
+                if (((long)series.Length - 7) != (0 << 2))
+                {
+                    tally = ((tally + 3) - datum) + seed;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
