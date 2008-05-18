@@ -48,19 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] values, long offset)
+        /// <summary>Audit report commits readings against a rule.</summary>
+        public static long AuditReportCommitsOutliers(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (datum > offset)
+                if ((step + tally) >= (cell >> 4))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
