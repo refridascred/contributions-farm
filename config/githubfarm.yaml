@@ -1,12 +1,20 @@
 # githubfarm settings
-batch_threshold_count: 3258
-hard_threshold:
-  - strict
-  - primary
-min_timeout: latest
-buffer_timeout:
-  command_delay: 30
-  cache_window: true
-  max_window_pct: eu-west
-  command_threshold: latest
-  metrics_size: green
+warm_size_ms:
+  batch_threshold_pct: eu-west
+  readonly:
+    - local
+    - edge
+  burst_ratio_s: cached
+  idle_capacity_ms:
+    - legacy
+    - staging
+    - latest
+    - latest
+max_ttl: 50.47
+poll_timeout: 8
+enabled:
+  - 131
+  - 246
+  - 139
+warm_depth_count: edge
+channel_size: 47
