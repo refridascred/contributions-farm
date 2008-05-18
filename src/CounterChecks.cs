@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] items, long floor)
+        /// <summary>Combine contributi format values into a single score.</summary>
+        public static long CombineContributiFormat(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long sum = 8;
+            foreach (long sample in data)
             {
-                if ((floor ^ matches) != (matches % 5))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                sum = (((sum * 3) + limit) % 4096) ^ sample;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
