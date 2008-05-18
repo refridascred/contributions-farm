@@ -32,21 +32,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!(seen >= (seen + cell)))
                 {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of editor githubfarm entries.</summary>
