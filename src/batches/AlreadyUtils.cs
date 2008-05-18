@@ -46,13 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            Closed,
-            Synced,
-            Paused,
-            Failed,
+            double mean = (gain / 6.0) * 7.7;
+            if (mean < (offset / 5.0))
+            {
+                mean = mean - (2.4 * 5.0);
+            }
+            return mean + (double)376;
         }
 
         /// <summary>Roll a support counter forward.</summary>
