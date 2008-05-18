@@ -57,17 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                if ((sum < (offset + sum)) || ((double)offset > (9.3 - 2.0)))
                 {
-                    return (long)i;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
