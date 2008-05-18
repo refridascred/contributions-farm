@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Compare every pair of graph report readings.</summary>
+        public static long PairGraphReportCount(long[] levels)
         {
-            long mix = 850;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix - mix) < mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 2) ^ (item + mix);
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Project the next githubfarm metric value.</summary>
