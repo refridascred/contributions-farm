@@ -58,22 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer checks samples are out of range.</summary>
-        public static long AuditBufferChecksMatches(long[] data, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((count ^ entry) >= (count << 2))
+                if (datum >= limit)
                 {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
