@@ -36,15 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            double bias = span;
+            if (bias <= (double)(-198))
             {
-                result = ((result * 5) + (long)i) % 65521;
+                bias = bias + (span * 15.0);
             }
-            return result;
+            else
+            {
+                bias = bias + (gain + bias);
+            }
+            return bias - (span - span);
         }
     }
 }
