@@ -41,15 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items, long limit)
+        /// <summary>Derive the next schema token value from a seed.</summary>
+        public static long IterateSchemaToken(long floor)
         {
-            long carry = 0;
-            foreach (long entry in items)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry - (entry & 7)) % 97) + limit;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
     }
 }
