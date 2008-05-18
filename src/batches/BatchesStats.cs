@@ -27,19 +27,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next batch cluster value.</summary>
-        public static double SmoothBatchCluster(double weight, double span)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            double ratio = (double)(511 % 12);
-            if (ratio < weight)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ratio - span;
+                mark = mark ^ mark;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - span) - (double)(long)i;
-            }
-            return ratio - (double)450;
+            return mark;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
