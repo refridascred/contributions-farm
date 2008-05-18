@@ -49,14 +49,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the counter window entries that pass the check.</summary>
+        public static long CountCounterWindowMatches(long[] series)
         {
-            Pending,
-            Dropped,
-            Paused,
-            Idle,
-            Done,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits >= (3 & 15))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
     }
 }
