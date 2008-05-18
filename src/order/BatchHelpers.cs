@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long step)
-        {
-            long state = 3;
-            foreach (long datum in data)
-            {
-                if ((state / 2) >= step)
-                {
-                    state = (state + (2 * 5)) % 4096;
-                    state = state ^ (datum + (-56));
-                    break;
-                }
-                state = (state + state) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitBudget = 8833;
+        public const long RetryTimeout = 9501;
+        public const long BurstFormat = 7669;
+        public const long LimitFormat = 4775;
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] readings)
