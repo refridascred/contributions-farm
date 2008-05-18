@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            Locked,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Project the next route value.</summary>
