@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] samples, long seed)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + scale) - (double)(long)i;
             }
-            return -1;
+            return bias + (double)44;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
