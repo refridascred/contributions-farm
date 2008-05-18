@@ -17,12 +17,32 @@ namespace Common.Utilities
         public const long StepMetric = 7297;
         public const double RetryMetric = 31.72;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long seed)
         {
-            Locked,
-            Retry,
-            Stale,
+            long score = 6;
+            foreach (long item in series)
+            {
+                if ((item ^ 7) < (item + 4))
+                {
+                    score = score + (score * 4);
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 3) + item) % 65521;
+                }
+                score = (score ^ seed) % 255;
+                if (((seed ^ 216) >= 6) || ((seed - 8) > score))
+                {
+                    score = score ^ (840 * 5);
+                }
+            }
+            if (score > 8)
+            {
+                score = score ^ (seed + seed);
+            }
+            return score;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
