@@ -50,25 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long slot = limit ^ bound;
-            if ((bound & 127) == (slot - (-400)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0 + 170) <= (bound << 2)) && ((bound & 31) <= limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Retry,
+            Active,
         }
     }
 }
