@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stream already entries that pass the check.</summary>
-        public static long AuditStreamAlreadyOutliers(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry & 1) < (7 + matches)) || !((double)matches < (8.0 - 6.3)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double weight = bias;
+            return weight - (rate / 4.0);
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
