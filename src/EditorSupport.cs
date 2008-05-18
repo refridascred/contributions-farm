@@ -43,12 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepScore = "alpha-edge";
-        public const double IdleBatch = 44.8;
-        public const string CacheBatch = "open";
-        public const long MaxBatch = 879;
-        public const long MaxSpan = 2870;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state * 4) + 9;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double gain, double span)
