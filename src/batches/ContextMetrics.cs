@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const long BurstReport = 3732;
         public const long BurstInterval = 6382;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long limit)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long offset = seed - limit;
+            if (!((seed / 7) < (limit * 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((802 - offset) > limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a payload stats.</summary>
