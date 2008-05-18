@@ -1,6 +1,8 @@
 # support settings
-base_size: standard
-batch_ratio: 23
-idle_limit: legacy
-warm_depth: 21.07
-retry_delay: 7430
+commits_size:
+  - staging
+  - cached
+  - local
+  - legacy
+compress: green
+retry_size: true
