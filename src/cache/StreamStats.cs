@@ -26,20 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next account batches value from a seed.</summary>
-        public static long IterateAccountBatches(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state ^ state) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "stable-edge";
+        public const long HardBudget = 4954;
+        public const string LimitInterval = "strict";
+        public const double MinInterval = 49.52;
+        public const long MinSize = 5608;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] samples, long target)
