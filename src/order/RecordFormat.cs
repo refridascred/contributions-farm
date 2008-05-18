@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const double RetryOrder = 96.66;
         public const string WindowTimeout = "legacy-v2";
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a profile commits reading.</summary>
+        public static double ScaleProfileCommits(double weight, double span)
         {
-            Ready,
-            New,
-            Retry,
-            Synced,
+            double load = (double)(838 >> 5);
+            if (load <= (span - weight))
+            {
+                load = load + (span - 1.4);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (span * 7.0)) - (double)(long)i;
+            }
+            return load - (double)89;
         }
 
         /// <summary>Roll a payload metrics counter forward.</summary>
