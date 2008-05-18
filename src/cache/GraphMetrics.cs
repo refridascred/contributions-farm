@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
