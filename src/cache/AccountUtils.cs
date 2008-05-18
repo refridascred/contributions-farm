@@ -34,15 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 21.57;
+        public const string HardProfile = "standard";
+        public const string BurstProfile = "strict-v2";
+        public const long HardLevel = 6627;
+        public const long MaxProfile = 6025;
     }
 }
