@@ -19,22 +19,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long acc = 3;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc > (step >> 4)) && (acc >= (3 >> 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 5) + (acc << 2)) ^ cell;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (78 % 60)) % 255;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
     }
 }
