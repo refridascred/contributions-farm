@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Closed,
+            Queued,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
