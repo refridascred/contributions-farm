@@ -1,9 +1,6 @@
 # entry settings
-idle_limit_ms: true
-readonly:
-  - 135
-  - 484
-  - 368
-  - 81
-context_window: 0.5
-compress: 48.9
+min_window_pct: false
+metrics_depth: true
+sync_depth: false
+max_threshold: 52.44
+hard_threshold_ms: strict
