@@ -74,14 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] series)
         {
-            New,
-            Paused,
-            Dropped,
-            Ready,
-            Retry,
+            long carry = 22;
+            foreach (long item in series)
+            {
+                carry = ((carry * 2) + (item & 7)) % 4096;
+            }
+            return carry;
         }
     }
 }
