@@ -1,7 +1,6 @@
 {
-  "cache_interval_ms": false,
-  "warm_size_ms": "eu-west",
-  "sync_retries": 500,
-  "flush_capacity_ms": 93.92,
-  "filter_depth": 0.55
+  "burst_ttl_pct": 7793,
+  "warm_window": 26,
+  "metric_timeout": 60,
+  "batch_threshold": "cached"
 }
