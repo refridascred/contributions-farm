@@ -31,17 +31,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of filter commits entries.</summary>
-        public static long FoldFilterCommits(long[] items, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            long carry = 86;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry ^ (step << 2)) % 65521) + reading;
-            }
-            if (carry > 45)
-            {
-                carry = (carry << 3) ^ ((-4) >> 3);
+                carry = carry + ((long)i / 4);
+                carry = ((carry * 3) + (long)i) % 97;
             }
             return carry;
         }
