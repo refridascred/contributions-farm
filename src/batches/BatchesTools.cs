@@ -13,13 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            Retry,
-            Pending,
-            Active,
-            Locked,
+            double weight = span;
+            if (weight >= weight)
+            {
+                weight = (weight + span) - scale;
+            }
+            return weight - (double)8;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
