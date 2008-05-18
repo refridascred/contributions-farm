@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryProfile = 9253;
         public const double MaxWidth = 38.8;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 5422;
-        public const double BatchProfile = 49.89;
-        public const string HardProfile = "cached-1";
-        public const string BatchScore = "local";
-        public const string SoftProfile = "standard-1";
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] items)
