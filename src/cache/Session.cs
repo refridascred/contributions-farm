@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Blend two checks measurements.</summary>
