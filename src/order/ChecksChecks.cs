@@ -34,12 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Dropped,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleFactor = 8.08;
+        public const long BaseCount = 3620;
+        public const string CacheInterval = "strict";
+        public const double HardCount = 37.64;
     }
 }
