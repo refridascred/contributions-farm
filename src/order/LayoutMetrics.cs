@@ -53,18 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] series, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value - value) != (value / 4))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Retry,
+            Closed,
+            Dropped,
         }
     }
 }
