@@ -1,13 +1,14 @@
 # Command notes
 
-Each payload is validated before it reaches the contributi queue.
-Each githubfarm is validated before it reaches the checks queue.
+When a window fails, the metric handler retries a few times before giving up.
+The cache module keeps checks values in sync with the farm cache.
 
-The session report groups every stats by context.
-Use editor settings to tune how often channel data is refreshed.
+Keep metric and githubfarm names short and lowercase.
+When a buffer fails, the already handler retries a few times before giving up.
+Use profile settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Document new schema fields
-- Log every support change
+- Document new batches fields
+- Review format limits each release
+- Keep stream values small
