@@ -1,10 +1,9 @@
 {
-  "default_threshold_count": "green",
-  "verbose": 80,
-  "warm_size_s": "legacy",
-  "hard_size_ms": {
-    "persist": 5367,
-    "sync_limit_ms": "legacy",
-    "idle_ratio": "open"
-  }
+  "readonly": true,
+  "audit": {
+    "default_capacity_pct": 55.34,
+    "cache_ratio": 500,
+    "warm_interval": ["strict", "standard", "legacy", "standard"]
+  },
+  "idle_retries_ms": true
 }
