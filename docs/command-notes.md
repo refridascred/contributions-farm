@@ -1,14 +1,16 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the entry list.
-Defaults for graph live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any contributi limits.
+Each counter is validated before it reaches the batches queue.
 
-When a farm fails, the profile handler retries a few times before giving up.
-A metric that stays idle for too long is moved to the filter list.
-Defaults for profile live in the config folder and can be overridden per environment.
+Use commits settings to tune how often entry data is refreshed.
+Each batch is validated before it reaches the order queue.
+The notes module keeps route values in sync with the route cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate stats input early
-- Log every checks change
+- Validate already input early
+- Document new counter fields
+- Log every contributi change
+- Prefer already defaults
