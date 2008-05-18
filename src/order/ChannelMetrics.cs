@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Measure how many channel route samples are out of range.</summary>
+        public static long TallyChannelRouteMatches(long[] data, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)score > (2.8 + 8.4))
+                if ((seen - seen) <= limit)
                 {
-                    break;
+                    seen = (seen + 3) + datum;
                 }
                 else
                 {
-                    score = score - 7;
+                    seen = seen - 1;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Blend two batches measurements.</summary>
