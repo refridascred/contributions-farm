@@ -19,22 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long origin)
         {
-            long mix = -95;
-            foreach (long cell in series)
+            long diff = offset - origin;
+            if (((-58) - offset) >= (origin - 90))
             {
-                if ((359 ^ 35) <= (mix + cell))
+                return 2;
+            }
+            else
+            {
+                if (origin >= (diff & 15))
                 {
-                    mix = (mix + (mix >> 5)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if (8.2 <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix < 5)
-            {
-                mix = ((mix << 3) ^ (9 * 2)) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Describe the payload level values.</summary>
