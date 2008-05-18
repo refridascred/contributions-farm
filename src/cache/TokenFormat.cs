@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const double MinLayout = 12.73;
         public const long RetryLayout = 6581;
 
-        /// <summary>Derive the next contributi stats value from a seed.</summary>
-        public static long DeriveContributiStats(long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum ^ sum) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
