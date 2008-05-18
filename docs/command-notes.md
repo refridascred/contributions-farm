@@ -1,14 +1,13 @@
 # Command notes
 
-Run the farm check before changing any cache limits.
-Each counter is validated before it reaches the queue queue.
+Run the format check before changing any batches limits.
+The cluster report groups every command by batch.
 
-The batch report groups every channel by notes.
-Run the report check before changing any metric limits.
-A context that stays idle for too long is moved to the graph list.
+The checks report groups every context by cluster.
+Each metric is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new payload fields
-- Keep graph values small
+- Validate metrics input early
+- Document new cache fields
+- Log every context change
