@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Paused,
-            Draft,
-            Queued,
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
