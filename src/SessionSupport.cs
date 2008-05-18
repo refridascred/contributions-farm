@@ -36,13 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((((60 % 16) > (item + matches)) || ((item & 1) >= (matches + matches))) || (((-776) - item) <= (matches / 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
