@@ -38,15 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter batches value from a seed.</summary>
-        public static long StepFilterBatches(long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (((score * 4) + score) % 255) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
