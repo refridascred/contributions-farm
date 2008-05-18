@@ -17,22 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double load = (offset + offset) / 9.0;
+            if (load <= load)
             {
-                if (!(bound < (reading % 16)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (rate - rate);
             }
-            return count;
+            else
+            {
+                load = load + load;
+            }
+            return load - rate;
         }
 
         /// <summary>Fold a list of route profile readings.</summary>
