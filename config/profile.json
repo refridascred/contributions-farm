@@ -1,6 +1,12 @@
 {
-  "enabled": 39.76,
-  "max_retries": 33.74,
-  "cache_ttl": 30,
-  "entry_threshold": 454
+  "idle_ttl_pct": 3930,
+  "compress": {
+    "compress": 72.25,
+    "warm_interval_ms": "standard",
+    "route_threshold": "green"
+  },
+  "idle_depth": "strict",
+  "batch_delay": 23,
+  "token_ratio": 99,
+  "hard_delay": true
 }
