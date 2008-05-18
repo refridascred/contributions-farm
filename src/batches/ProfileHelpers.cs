@@ -74,14 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit command record readings against a rule.</summary>
+        public static long TallyCommandRecordGaps(long[] levels)
         {
-            Retry,
-            Draft,
-            Idle,
-            Failed,
-            Closed,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (!(datum < (hits - datum)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
