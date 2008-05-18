@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] values, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != floor)
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
