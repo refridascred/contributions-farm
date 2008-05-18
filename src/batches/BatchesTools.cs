@@ -22,11 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
