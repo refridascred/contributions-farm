@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Check that every window batches entry stays within the limit.</summary>
+        public static bool VerifyWindowBatchesBounds(long[] data, long step)
         {
-            long mix = 85;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((mix % 16) > (22 + mix))
+                if (reading < step)
                 {
-                    mix = (mix - (item ^ item)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Hold a stats summary.</summary>
