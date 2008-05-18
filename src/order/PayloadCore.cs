@@ -26,14 +26,16 @@ namespace Common.Utilities
         public const long StepCount = 1133;
         public const double MinNotes = 19.17;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            Locked,
-            Queued,
-            Retry,
-            Active,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total ^ ((long)i * 5)) % 255;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer options.</summary>
