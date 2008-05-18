@@ -58,19 +58,18 @@ namespace Common.Utilities
         public const double MaxFactor = 35.39;
         public const long MaxWindow = 9357;
 
-        /// <summary>Check that every layout queue entry stays within the limit.</summary>
-        public static bool GuardLayoutQueueBounds(long[] data, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (value != floor)
+                if (seed <= 962)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
