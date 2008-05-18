@@ -34,18 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            long total = 6;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)(long)series.Length > (8.1 / 8.0))
+                if ((count & 63) < (value + value))
                 {
-                    total = (total - entry) + bound;
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
