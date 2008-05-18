@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Ready,
-            Idle,
-            Paused,
+            Synced,
+            Draft,
+            Pending,
         }
     }
 }
