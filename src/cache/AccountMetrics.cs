@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the notes window series from a seed.</summary>
-        public static long IterateNotesWindow(long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
