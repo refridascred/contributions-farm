@@ -68,18 +68,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the support graph entries that pass the check.</summary>
-        public static long TallySupportGraphHits(long[] data, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((766 - floor) == (count + count))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
