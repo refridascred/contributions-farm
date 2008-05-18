@@ -1,8 +1,8 @@
 {
-  "base_limit": "latest",
-  "idle_ratio_s": "edge",
-  "base_ratio_ms": [403, 151, 449],
-  "default_capacity": ["stable", "legacy", "open", "latest"],
-  "readonly": true,
-  "warm_ttl_ms": 3674
+  "batch_timeout_pct": 38.32,
+  "sync_interval": false,
+  "min_limit_count": "cached",
+  "compress": 90.27,
+  "readonly": 38.82,
+  "sync_ttl": [2, 103]
 }
