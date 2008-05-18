@@ -14,14 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchSpan = 3456;
+        public const double IdleLevel = 70.13;
+        public const long WindowLevel = 6257;
+        public const double BaseDepth = 32.51;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long bound)
