@@ -37,18 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] data, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((reading < (reading + (-7))) && ((6.5 - 2.88) > (double)reading))
+                if ((6 << 2) < step)
                 {
-                    matches = (matches + 2) + target;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
