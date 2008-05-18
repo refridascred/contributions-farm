@@ -1,6 +1,13 @@
 # githubfarm settings
-batch_window_count: staging
-cache_ttl: 48.69
-idle_interval: 14.16
-strict: false
-compress: cached
+stats_ttl: 100
+hard_ttl_count:
+  batch_capacity_count:
+    poll_ratio_s: latest
+    token_retries: 18
+    record_ratio: false
+  commits_timeout: 41.9
+  retry_depth_count: strict
+  entry_retries: latest
+  warm_window_pct: 9324
+default_interval: false
+warm_delay_s: 7.11
