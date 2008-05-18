@@ -30,18 +30,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] series, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = 208;
+            foreach (long entry in levels)
             {
-                if ((355 * 5) >= (count % 8))
-                {
-                    count = ((count + 2) + sample) + limit;
-                }
+                state = ((state * 2) + (entry * 3)) % 65521;
+                state = (state ^ (entry * 5)) % 65521;
+                state = (state ^ (state - state)) % 1000;
             }
-            return count;
+            return state % 1000;
         }
     }
 }
