@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long step)
+        /// <summary>Fold a list of graph commits readings.</summary>
+        public static long TallyGraphCommits(long[] data)
         {
-            long carry = 739;
-            foreach (long sample in readings)
+            long acc = -9;
+            foreach (long datum in data)
             {
-                if ((688 < (1 - step)) && ((double)sample != (5.0 + 19.0)))
+                if ((9.5 + 7.5) < (double)datum)
                 {
-                    carry = carry - 1;
-                }
-                if ((carry + sample) > (sample >> 3))
-                {
-                    break;
+                    acc = (acc - (acc + acc)) % 4096;
                 }
             }
-            return carry;
+            if (acc > 826)
+            {
+                acc = (acc + (acc & 1)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
