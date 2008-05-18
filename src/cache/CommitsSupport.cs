@@ -77,31 +77,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long limit2)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if ((335 - limit2) < (62 + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 - limit) == (limit2 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit2 >= (1.83 - 2.61))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Dropped,
+            Ready,
+            Retry,
         }
     }
 }
