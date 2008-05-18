@@ -40,23 +40,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double load = 0.3 - (double)2;
-            if (load <= weight)
-            {
-                load = load - (double)7;
-            }
-            else
-            {
-                load = load + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 5.45) + (double)(long)i;
-            }
-            return load - offset;
+            Pending,
+            Draft,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
