@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
