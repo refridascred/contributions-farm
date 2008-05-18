@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats command samples are out of range.</summary>
-        public static long TallyStatsCommandMatches(long[] data, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((11.0 > (double)target) && ((18.0 / 8.0) > (double)sample))
+                if ((tally + reading) > (tally - 302))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a commits context sample.</summary>
