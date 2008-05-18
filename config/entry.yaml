@@ -1,11 +1,11 @@
 # entry settings
-poll_capacity_s:
-  - 169
-  - 310
-  - 245
-  - 46
-batch_ratio_count:
-  - 244
-  - 358
-idle_depth: 51.99
-cache_limit: latest
+hard_retries_count: local
+sync_retries: 31
+idle_size:
+  warm_capacity: 83.41
+  cache_capacity_s: blue
+  idle_size: 500
+strict:
+  - open
+  - legacy
+context_capacity: 30
