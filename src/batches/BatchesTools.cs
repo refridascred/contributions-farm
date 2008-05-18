@@ -22,18 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = 493;
-            foreach (long cell in readings)
-            {
-                if (((4.0 + 1.5) > (double)state) && ((state * 3) <= (state + cell)))
-                {
-                    state = (state + ((long)readings.Length & 31)) % 255;
-                }
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
