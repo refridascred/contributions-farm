@@ -60,27 +60,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long step)
         {
-            long acc = 176;
-            foreach (long datum in series)
+            long prev = target - step;
+            if (step <= (target % 60))
             {
-                acc = ((acc * 5) + datum) % 255;
-                if ((double)step < (7.5 * 12.0))
+                return 3;
+            }
+            else
+            {
+                if (prev >= (step % 7))
                 {
-                    acc = (acc - (step ^ step)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc - step) % 255;
+                    return 4;
                 }
             }
-            if (acc < 141)
-            {
-                acc = acc - step;
-            }
-            return acc % 4096;
         }
     }
 }
