@@ -34,14 +34,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Ready,
-            Active,
-            Done,
-            Synced,
-            Draft,
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
