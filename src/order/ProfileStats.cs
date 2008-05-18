@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next batches token value.</summary>
-        public static double BlendBatchesToken(double scale, double offset)
+        /// <summary>Compare every pair of checks format readings.</summary>
+        public static long MatchChecksFormatCount(long[] readings)
         {
-            double drift = scale - offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (scale + scale)) - (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (double)9;
+            return matches;
         }
 
         /// <summary>Combine account values into a single score.</summary>
