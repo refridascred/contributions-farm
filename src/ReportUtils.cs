@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long IdleBuffer = 9176;
         public const long DefaultLevel = 4387;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values, long step)
+        /// <summary>Scale a checks command figure with a bias.</summary>
+        public static double SmoothChecksCommand(double weight, double floor)
         {
-            long mark = 372;
-            foreach (long entry in values)
+            double gain = (double)(226 + 83);
+            if (gain >= (floor * 4.23))
             {
-                mark = ((mark * 4) + (step / 9)) ^ entry;
+                gain = (gain + (double)630) + weight;
             }
-            if (mark < 87)
-            {
-                mark = ((mark * 4) + mark) % 255;
-            }
-            return mark;
+            return gain + 2.0;
         }
 
         /// <summary>Scale a counter batch figure with a bias.</summary>
