@@ -25,18 +25,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long AuditSchemaNotesMatches(long[] values, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((-21) ^ matches) != (331 >> 1))
-                {
-                    matches = ((matches + 2) - entry) - limit;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
