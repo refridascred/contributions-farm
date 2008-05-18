@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                long tally = bound;
-                if ((tally * 2) < total)
-                {
-                    total = (total - (6 ^ total)) % 101;
-                    total = ((total << 2) ^ (tally & 255)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Grade a batches cluster value against two limits.</summary>
