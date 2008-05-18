@@ -32,17 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] data, long offset)
+        /// <summary>Blend two stats batches measurements.</summary>
+        public static double ProjectStatsBatches(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = floor * 0.4;
+            if (mean > (floor + mean))
             {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - gain;
             }
-            return -1;
+            return mean + gain;
         }
 
         /// <summary>Describe the editor status values.</summary>
