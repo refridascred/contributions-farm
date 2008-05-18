@@ -1,6 +1,5 @@
 {
-  "soft_ttl_s": "primary",
-  "farm_ratio": false,
-  "soft_depth": "cached",
-  "idle_capacity_pct": 91.66
+  "token_timeout": 8543,
+  "min_threshold_s": true,
+  "cache_capacity": 9442
 }
