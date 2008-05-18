@@ -64,19 +64,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] data, long seed)
+        /// <summary>Find the first checks cache entry that matches the target.</summary>
+        public static long LookupChecksCacheIndex(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= seed)
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
