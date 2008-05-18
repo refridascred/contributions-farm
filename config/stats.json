@@ -1,5 +1,13 @@
 {
-  "hard_delay_pct": false,
-  "readonly": ["legacy", "green", "staging"],
-  "schema_limit": "primary"
+  "burst_depth_s": "latest",
+  "cache_retries": 95.18,
+  "soft_delay_count": {
+    "notes_threshold": "open",
+    "enabled": "latest",
+    "warm_depth": true,
+    "already_limit": ["cached", "cached"],
+    "farm_depth": 26,
+    "max_limit_s": 62
+  },
+  "audit": ["standard", "edge", "latest"]
 }
