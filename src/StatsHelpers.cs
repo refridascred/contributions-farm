@@ -56,12 +56,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double gain, double offset)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            double gain2 = gain;
+            return (gain2 - gain2) + offset;
         }
     }
 }
