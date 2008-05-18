@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Adjust a batches graph reading.</summary>
+        public static double ScaleBatchesGraph(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = ratio - 1.0;
+            if (rate >= (double)362)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - 6.0;
             }
-            return matches;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate - rate;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
