@@ -38,9 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 32.48;
-        public const double SoftTimeout = 58.03;
-        public const string IdleScore = "standard-1";
+        /// <summary>Validate counter farm readings against a bound.</summary>
+        public static bool GuardCounterFarmBounds(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
