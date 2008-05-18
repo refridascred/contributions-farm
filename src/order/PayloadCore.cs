@@ -45,13 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
