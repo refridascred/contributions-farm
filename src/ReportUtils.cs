@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBudget = 64.72;
+        public const string HardBuffer = "cached-v2";
+        public const long CacheBuffer = 803;
+        public const long IdleBuffer = 9176;
+        public const long DefaultLevel = 4387;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
