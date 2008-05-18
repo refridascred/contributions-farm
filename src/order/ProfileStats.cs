@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of checks format readings.</summary>
-        public static long MatchChecksFormatCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)bound >= (double)seen)
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
