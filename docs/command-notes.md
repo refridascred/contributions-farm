@@ -1,11 +1,13 @@
 # Command notes
 
-Keep record and order names short and lowercase.
-Each checks is validated before it reaches the cache queue.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Each payload is validated before it reaches the contributi queue.
+Each githubfarm is validated before it reaches the checks queue.
+
+The session report groups every stats by context.
+Use editor settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Log every payload change
-- Review cache limits each release
+- Prefer farm defaults
+- Document new schema fields
+- Log every support change
