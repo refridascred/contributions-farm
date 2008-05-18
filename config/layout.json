@@ -1,13 +1,12 @@
 {
-  "queue_ratio": "fallback",
-  "enabled": [417, 141, 483, 375],
-  "cache_capacity": "open",
-  "counter_depth": {
-    "already_limit": [228, 159, 442],
-    "verbose": "blue",
-    "buffer_capacity": 62,
-    "hard_capacity_s": 57.37,
-    "readonly": 68.07,
-    "dry_run": "latest"
-  }
+  "idle_timeout_ms": 30,
+  "sync_capacity_ms": 5.91,
+  "commits_delay": {
+    "max_timeout_ms": 5544,
+    "readonly": "latest",
+    "poll_limit": "fallback",
+    "enabled": ["fallback", "legacy", "local"]
+  },
+  "idle_size_count": "fallback",
+  "cache_threshold_s": true
 }
