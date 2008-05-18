@@ -45,13 +45,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((0 + sum) == (42 + sum))
+                {
+                    sum = (sum * 3) + (long)i;
+                }
+                if ((8 + sum) != (sum / 9))
+                {
+                    sum = (sum * 3) + (origin - (-610));
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
