@@ -28,13 +28,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Synced,
-            Closed,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstBudget = 17.34;
+        public const long MaxScore = 5612;
+        public const long BatchSize = 8909;
     }
 }
