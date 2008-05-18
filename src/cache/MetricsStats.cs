@@ -55,22 +55,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] series, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((offset + tally) > (cell * 3)) && ((offset >> 4) > offset))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
