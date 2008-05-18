@@ -32,16 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = mark ^ mark;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
