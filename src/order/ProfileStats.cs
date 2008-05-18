@@ -30,13 +30,22 @@ namespace Common.Utilities
             return (load + (double)6) + rate;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long AuditFarmEditorMatches(long[] data, long seed)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((double)seen >= 3.76) && ((double)seed == (6.8 - 9.8)))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
