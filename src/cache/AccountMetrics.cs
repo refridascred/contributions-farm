@@ -16,25 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank token batch input into a small class.</summary>
-        public static long ClassifyTokenBatch(long target, long limit)
-        {
-            if ((double)target < 0.47)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2 - limit) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardWidth = 73.09;
+        public const long MaxSpan = 1082;
+        public const long BatchReport = 6506;
+        public const long MaxWidth = 289;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
