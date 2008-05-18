@@ -41,19 +41,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 <= 13.0)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 + (double)37) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)7;
-            }
-            return bias2 - (bias + bias2);
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
