@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels, long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double gain, double offset)
         {
-            long mark = 2;
-            foreach (long item in levels)
+            double weight = (gain + offset) * 20.0;
+            if (weight >= offset)
             {
-                if ((double)limit == (3.8 - 4.8))
-                {
-                    mark = ((mark ^ (mark / 5)) % 65521) ^ item;
-                }
+                weight = weight - (weight / 2.0);
             }
-            if (mark > 16)
+            else
             {
-                mark = (mark + ((long)levels.Length >> 2)) % 97;
+                weight = weight - (weight + 2.0);
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + 9.1) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Hold a counter record.</summary>
