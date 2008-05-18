@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long limit)
         {
-            long state = 945;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                state = (state - (state + 726)) % 1000;
-                state = state + entry;
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
