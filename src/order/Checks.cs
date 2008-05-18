@@ -12,22 +12,24 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (bound < 0)
             {
-                if ((matches * 3) <= datum)
+                return 7;
+            }
+            else
+            {
+                if ((3 / 3) != (seed ^ bound))
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
