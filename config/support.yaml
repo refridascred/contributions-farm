@@ -1,23 +1,6 @@
 # support settings
-default_depth:
-  audit:
-    soft_retries_count: false
-    base_window: 35.12
-    compress: 250
-    default_limit_count: primary
-    soft_timeout_pct: 61.37
-    soft_size: latest
-  retry_interval: 1582
-  idle_limit_pct: green
-  layout_interval: false
-  persist: open
-  githubfarm_depth: 17.73
-sync_ttl: 77.82
-metric_depth: 5.02
-max_ratio_pct: edge
-report_delay: false
-verbose:
-  - 452
-  - 380
-  - 235
-  - 441
+dry_run: 3074
+compress: 38
+cache_capacity_ms: false
+cache_delay: false
+strict: 60
