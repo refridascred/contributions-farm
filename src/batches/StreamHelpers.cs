@@ -37,22 +37,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum - datum) > (hits + hits)))
-                {
-                    hits = (hits + 2) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Idle,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the report phase values.</summary>
