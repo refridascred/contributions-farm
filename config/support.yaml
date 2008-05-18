@@ -1,17 +1,12 @@
 # support settings
-hard_ttl: false
-flush_ttl:
-  - staging
-  - staging
-  - standard
-  - green
-min_size_pct:
-  - 226
-  - 363
-  - 162
-hard_timeout_ms:
-  channel_limit: 83.67
-  batch_timeout: 58.27
-  hard_delay_pct: 37.15
-persist: 1135
-cache_retries_count: primary
+retry_depth_count:
+  readonly: true
+  idle_ratio: 60
+  base_ttl_ms: 50.03
+  sync_depth_count:
+    - standard
+    - blue
+  compress: true
+  min_delay: fallback
+sync_delay: 35.32
+soft_timeout_count: true
