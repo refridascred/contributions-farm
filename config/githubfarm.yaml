@@ -1,36 +1,9 @@
 # githubfarm settings
-retry_capacity_count: 20.26
-sync_ratio_ms:
-  - stable
-  - eu-west
-  - fallback
-readonly: true
-filter_timeout: false
-min_depth_count: 90
-persist:
-  enabled:
-    - strict
-    - blue
-  retry_window_pct:
-    sync_ttl_s:
-      - legacy
-      - strict
-      - strict
-      - edge
-    soft_window_s: 60
-    audit:
-      - standard
-      - eu-west
-      - latest
-    burst_window: true
-  max_ratio: fallback
-  persist: 60
-  flush_ttl_pct: staging
-  entry_ratio:
-    base_interval_s:
-      - 121
-      - 130
-      - 141
-      - 474
-    max_depth: 6395
-    flush_threshold: 3.67
+retry_limit: 30
+poll_depth_s: 37
+checks_interval:
+  route_limit: local
+  base_ratio_count: 1725
+  burst_window: 1
+  min_ratio_count: 50
+entry_size: true
