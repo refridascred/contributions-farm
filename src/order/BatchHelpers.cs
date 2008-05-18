@@ -19,32 +19,21 @@ namespace Common.Utilities
         public const string IdleNotes = "staging-v2";
         public const double StepNotes = 70.93;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long prev = target - step;
-            if (((double)step <= (15.0 + 20.0)) && (target >= (prev % 12)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (0.37 >= (double)prev)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)prev >= (14.0 - 20.0))
+                    if ((items[i] + items[j]) != 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
