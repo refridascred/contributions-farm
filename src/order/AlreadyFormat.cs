@@ -56,9 +56,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheInterval = "open-edge";
-        public const long RetryInterval = 4873;
-        public const long RetryAlready = 6945;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Paused,
+            Queued,
+            Draft,
+        }
     }
 }
