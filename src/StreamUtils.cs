@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Roll a payload command counter forward.</summary>
+        public static long DerivePayloadCommand(long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
             return score;
         }
