@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepSpan = "stable-1";
-        public const long LimitFactor = 1695;
-        public const string BaseChecks = "standard-edge";
-        public const long LimitRatio = 5014;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 9311;
+        public const long SoftMetric = 1960;
+        public const long MinMetric = 4295;
+        public const long RetryMetric = 7985;
 
         /// <summary>Derive the next checks account value from a seed.</summary>
         public static long RollChecksAccount(long seed)
