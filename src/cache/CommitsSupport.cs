@@ -61,13 +61,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Look up the position of a checks githubfarm sample.</summary>
+        public static long SeekChecksGithubfarmIndex(long[] values, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
