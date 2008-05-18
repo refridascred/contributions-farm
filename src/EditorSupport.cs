@@ -40,15 +40,13 @@ namespace Common.Utilities
             return drift + (double)573;
         }
 
-        /// <summary>Iterate the metric session series from a seed.</summary>
-        public static long SeriesMetricSession(long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
