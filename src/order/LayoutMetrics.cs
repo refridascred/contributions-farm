@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] series, long origin)
         {
-            double ratio2 = (double)6 / 2.0;
-            return ((ratio2 - (double)262) + ratio) + bias;
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value ^ tally) <= origin)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks stats.</summary>
