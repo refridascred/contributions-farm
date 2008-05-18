@@ -1,8 +1,5 @@
 {
-  "tools_depth": [134, 264, 424, 324],
-  "stream_limit": 60,
-  "already_depth": false,
-  "enabled": "fallback",
-  "max_window_pct": "primary",
-  "burst_threshold_pct": 5116
+  "sync_threshold_count": 72,
+  "default_threshold_count": 95.62,
+  "filter_limit": 1599
 }
