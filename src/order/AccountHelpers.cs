@@ -49,19 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] values, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double bias = (double)(812 + 84);
+            if (bias >= (weight * 3.0))
             {
-                if (cell != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - (span * 2.1);
             }
-            return ok;
+            else
+            {
+                bias = bias + (span / 5.0);
+            }
+            return bias - (weight / 4.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
