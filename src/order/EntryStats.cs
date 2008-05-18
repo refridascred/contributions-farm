@@ -15,14 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Iterate the cluster counter series from a seed.</summary>
+        public static long RollClusterCounter(long bound)
         {
-            Stale,
-            Locked,
-            Draft,
-            Idle,
-            Paused,
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
