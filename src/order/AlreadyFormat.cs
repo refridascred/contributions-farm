@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string BaseCommits = "stable-1";
         public const long RetryWidth = 2223;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings, long seed)
+        /// <summary>Look up the position of a queue editor sample.</summary>
+        public static long FindQueueEditorIndex(long[] levels, long limit)
         {
-            long result = 761;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result ^ (seed >> 2)) % 97) - reading;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 80)
-            {
-                result = (result << 2) ^ (result << 2);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
