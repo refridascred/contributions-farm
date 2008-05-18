@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -829;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark ^ (target * 3)) + reading;
             }
-            return hits;
+            if (mark < 424)
+            {
+                mark = ((mark << 3) ^ (mark + target)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
