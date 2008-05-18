@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long step)
         {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark + ((long)i * 5)) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stats summary.</summary>
