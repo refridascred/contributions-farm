@@ -57,16 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 3.45;
+        public const long BurstCommand = 1272;
+        public const long LimitTimeout = 2498;
+        public const long MaxSpan = 5994;
+        public const long BaseCommand = 9017;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] readings, long limit)
