@@ -52,22 +52,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor githubfarm readings.</summary>
-        public static long FoldEditorGithubfarm(long[] values)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] items, long seed)
         {
-            long total = 809;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (!(entry < (4 + 87)))
+                if (value != seed)
                 {
-                    total = total + (464 - entry);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (40 >> 5)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return valid;
         }
     }
 }
