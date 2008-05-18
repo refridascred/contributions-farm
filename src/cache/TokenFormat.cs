@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (3.6 + bias) - bias;
+            if (mean >= (double)52)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = mean - (4.0 - bias);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (weight * 8.0)) + (double)(long)i;
+            }
+            return mean + 8.9;
         }
 
         /// <summary>Describe the farm class values.</summary>
