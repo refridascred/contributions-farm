@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a order context counter forward.</summary>
+        public static long RollOrderContext(long seed)
         {
-            Synced,
-            Closed,
-            Locked,
-            Paused,
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a account stats.</summary>
