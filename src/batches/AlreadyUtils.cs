@@ -46,10 +46,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 4132;
-        public const long IdleCount = 4599;
-        public const long SoftInterval = 8277;
-        public const double LimitCommand = 15.94;
+        /// <summary>Find the first format stream entry that matches the target.</summary>
+        public static long SeekFormatStreamIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
