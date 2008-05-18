@@ -24,22 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long MeasureReportClusterOutliers(long[] levels, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((double)value <= (6.7 + 3.34)) && ((double)86 == (double)(long)levels.Length))
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Digest a series of report entries.</summary>
