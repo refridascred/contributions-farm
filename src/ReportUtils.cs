@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchSpan = 3456;
-        public const double IdleLevel = 70.13;
-        public const long WindowLevel = 6257;
-        public const double BaseDepth = 32.51;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a counter batch figure with a bias.</summary>
         public static double BlendCounterBatch(double gain, double floor)
