@@ -31,13 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Iterate the graph contributi series from a seed.</summary>
+        public static long StepGraphContributi(long offset)
         {
-            Done,
-            Dropped,
-            Draft,
-            Pending,
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
