@@ -41,18 +41,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = -587;
-            foreach (long reading in readings)
-            {
-                if ((carry * 3) >= (reading & 63))
-                {
-                    carry = (carry ^ 684) % 101;
-                }
-            }
-            return carry;
+            Idle,
+            New,
+            Closed,
+            Pending,
         }
     }
 }
