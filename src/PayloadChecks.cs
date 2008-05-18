@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long origin)
-        {
-            long score = 3;
-            foreach (long datum in data)
-            {
-                if (((origin / 3) < (datum + origin)) && ((origin / 6) >= (datum / 2)))
-                {
-                    score = score - (score - datum);
-                    score = score + (datum + score);
-                    break;
-                }
-                score = (score << 2) ^ score;
-            }
-            if (score > 1)
-            {
-                score = score ^ (score ^ score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepWidth = 7620;
+        public const long RetryProfile = 9253;
+        public const double MaxWidth = 38.8;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
