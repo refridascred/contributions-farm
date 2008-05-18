@@ -51,18 +51,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] series, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            long score = 2;
-            foreach (long item in series)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9.3 / 7.0) == (double)score)
+                if (((long)i >> 4) == ((long)i / 4))
                 {
-                    score = (((score << 3) ^ (item & 3)) % 101) + target;
+                    break;
                 }
+                else
+                {
+                    anchor = anchor ^ limit;
+                }
+                if (((-21) & 15) > (limit - 61))
+                {
+                    anchor = (anchor + (limit >> 3)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the context phase values.</summary>
