@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long BatchGraph = 8255;
         public const string BaseBudget = "cached-1";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen <= (datum + 0))
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
