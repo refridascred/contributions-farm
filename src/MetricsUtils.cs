@@ -48,22 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] samples, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (limit > (value & 127))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            New,
         }
     }
 }
