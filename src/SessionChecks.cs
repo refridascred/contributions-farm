@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen - entry) >= (entry - 35))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
