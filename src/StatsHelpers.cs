@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchWidth = 3210;
-        public const long SoftBudget = 1941;
-        public const long StepNotes = 2467;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((1 / 4) <= (item / 4))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
