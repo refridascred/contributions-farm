@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            long mix = 89;
+            foreach (long value in readings)
+            {
+                mix = mix - (value / 9);
+            }
+            if (mix < 99)
+            {
+                mix = ((mix * 4) + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a context stats.</summary>
