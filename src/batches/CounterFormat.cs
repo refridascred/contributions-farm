@@ -30,25 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long target, long target2)
-        {
-            long prev = target + target2;
-            if ((prev ^ prev) > (target + target2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((39 + prev) > (prev << 2)) && ((prev + 161) >= (target2 + 24)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "alpha-v2";
+        public const long BatchQueue = 1348;
+        public const long MaxWidth = 4085;
     }
 }
