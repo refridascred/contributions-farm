@@ -27,18 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] values, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((item + item) >= (hits * 5)))
+                if (!(carry > (target + (long)i)))
                 {
-                    hits = (hits + 3) + bound;
+                    carry = ((carry * 4) + (target / 5)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
     }
 }
