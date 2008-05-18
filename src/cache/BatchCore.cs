@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit cache command readings against a rule.</summary>
-        public static long MeasureCacheCommandHits(long[] samples, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)hits != (4.36 / 9.0))
-                {
-                    hits = ((hits + 3) ^ datum) - seed;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
