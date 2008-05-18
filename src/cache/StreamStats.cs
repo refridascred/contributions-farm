@@ -46,12 +46,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long origin)
         {
-            Idle,
-            Dropped,
-            Paused,
+            long offset = seed - origin;
+            if ((origin + origin) <= ((-18) << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - 240) != (origin + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (2.51 <= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed > (seed << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
