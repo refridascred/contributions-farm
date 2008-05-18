@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < 20.0)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Project the next filter value.</summary>
