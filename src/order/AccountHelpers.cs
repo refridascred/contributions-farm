@@ -34,14 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "legacy";
+        public const long HardFactor = 2404;
+        public const long MinBudget = 9196;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesRange(long[] values, long origin)
