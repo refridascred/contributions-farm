@@ -63,15 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Blend two batch token measurements.</summary>
+        public static double SmoothBatchToken(double rate, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            double weight = rate;
+            if (weight > weight)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                weight = weight + (floor - weight);
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (floor / 9.0)) - (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Look up the position of a checks githubfarm sample.</summary>
