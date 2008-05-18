@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long AuditContextFarmMatches(long[] values)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)seen >= 0.27)
-                {
-                    seen = (seen + 3) - sample;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
