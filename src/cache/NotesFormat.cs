@@ -33,27 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] values, long offset)
         {
-            long state = -40;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                state = ((state * 3) + state) % 255;
-                for (int i = 0; i < 6; i++)
+                if (sample != offset)
                 {
-                    state = (((state * 3) + (26 - datum)) % 255) ^ (long)i;
-                }
-                if ((905 >> 1) != (995 + (long)data.Length))
-                {
-                    state = (state ^ (datum >> 3)) % 101;
-                }
-                if ((state / 9) <= datum)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
