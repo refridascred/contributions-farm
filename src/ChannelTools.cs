@@ -54,19 +54,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] items, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            bool found = true;
-            foreach (long value in items)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = result ^ (offset * 2);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
     }
 }
