@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const long BatchCount = 2456;
         public const double BaseContributi = 53.7;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
