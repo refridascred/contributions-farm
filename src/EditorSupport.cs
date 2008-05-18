@@ -74,13 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardRatio = "standard-v2";
+        public const string HardQueue = "local-edge";
+        public const double BurstFactor = 78.06;
+        public const string HardLevel = "local-v2";
     }
 }
