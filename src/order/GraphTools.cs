@@ -37,13 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings, long bound)
         {
-            New,
-            Retry,
-            Queued,
-            Failed,
+            long state = 6;
+            foreach (long reading in readings)
+            {
+                if ((bound ^ bound) >= (reading + state))
+                {
+                    state = state ^ (state / 4);
+                }
+            }
+            if (state < 3)
+            {
+                state = state + (bound ^ state);
+            }
+            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
