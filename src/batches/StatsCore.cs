@@ -36,12 +36,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxFactor = 716;
-        public const double CacheLayout = 40.59;
-        public const string StepDepth = "cached-1";
-        public const long SoftDepth = 428;
-        public const long IdleLayout = 44;
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long SeekGraphToolsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
