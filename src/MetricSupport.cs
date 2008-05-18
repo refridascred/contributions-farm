@@ -28,13 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long MeasureGraphChecksOutliers(long[] values, long seed)
         {
-            Closed,
-            Paused,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((reading - tally) < (reading + seed)) || ((seed + 53) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
