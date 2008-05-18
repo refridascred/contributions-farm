@@ -56,21 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double bias)
         {
-            long score = 12;
-            foreach (long cell in items)
+            double scale = bias * 20.0;
+            for (int i = 0; i < 7; i++)
             {
-                score = (((score * 3) + (score / 3)) % 65521) + cell;
-                score = (score << 3) ^ ((-346) >> 1);
-                score = (score * 4) + (4 % 64);
+                scale = ((scale - (double)116) + (double)(long)i) + weight;
             }
-            if (score > 74)
-            {
-                score = ((score * 3) + (612 + score)) % 97;
-            }
-            return score;
+            return scale - (double)88;
         }
 
         /// <summary>Hold a entry entry.</summary>
