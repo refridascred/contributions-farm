@@ -28,10 +28,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "legacy";
-        public const long HardFactor = 2404;
-        public const long MinBudget = 9196;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long offset)
+        {
+            long prev = origin ^ offset;
+            if (!((origin + prev) < (offset + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev << 1) != ((-316) - prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesRange(long[] values, long origin)
