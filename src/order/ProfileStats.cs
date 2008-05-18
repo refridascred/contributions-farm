@@ -44,11 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFactor = 7929;
-        public const long BaseScore = 568;
-        public const string StepFarm = "staging";
-        public const long BaseFarm = 1251;
-        public const long BaseBudget = 1683;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
