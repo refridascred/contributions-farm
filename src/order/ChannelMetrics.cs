@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            long mix = 8;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= (mix >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - (mix & 255)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ item;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue batch sample.</summary>
