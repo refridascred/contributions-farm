@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long anchor = 87;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor - anchor) != (item & 255)) || ((669 % 24) <= (item % 12)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = anchor + (149 * 2);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
