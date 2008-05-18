@@ -57,15 +57,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double ratio, double span)
+        /// <summary>Audit queue cache readings against a rule.</summary>
+        public static long MeasureQueueCacheOutliers(long[] readings)
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                load = ((load - (load + 13.0)) + (double)(long)i) - span;
+                if ((((entry + hits) > entry) || (hits >= entry)) && !((hits + hits) != (hits - 445)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return load - 6.1;
+            return hits;
         }
     }
 }
