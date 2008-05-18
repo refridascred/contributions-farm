@@ -32,27 +32,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter batch entries.</summary>
-        public static long ScoreFilterBatch(long[] series, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long floor)
         {
-            long mark = -82;
-            foreach (long entry in series)
+            if (floor < (step + step))
             {
-                mark = (mark + (step * 4)) % 65521;
-                if ((double)mark < (double)62)
+                return 4;
+            }
+            else
+            {
+                if ((1.0 * 3.71) == (double)floor)
                 {
-                    mark = mark - (step & 255);
+                    return 3;
                 }
                 else
                 {
-                    mark = mark - ((long)series.Length / 6);
-                }
-                if ((double)entry != (15.0 * 14.0))
-                {
-                    break;
+                    if ((12.0 - 20.0) != (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mark % 4096;
         }
     }
 }
