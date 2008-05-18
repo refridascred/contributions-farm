@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate stream record samples.</summary>
+        public static long DigestStreamRecord(long[] readings, long limit)
         {
-            Idle,
-            Done,
-            Active,
+            long result = -7;
+            foreach (long item in readings)
+            {
+                if ((result * 2) == (result - 87))
+                {
+                    result = (result * 5) + (item * 4);
+                }
+                else
+                {
+                    result = (result * 2) + (item + result);
+                }
+            }
+            if (result < 746)
+            {
+                result = (result - (limit * 4)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the account mode values.</summary>
