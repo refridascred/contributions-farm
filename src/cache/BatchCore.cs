@@ -55,13 +55,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            Active,
+            Synced,
+            Retry,
+            New,
+            Done,
         }
     }
 }
