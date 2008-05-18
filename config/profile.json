@@ -1,19 +1,7 @@
 {
-  "notes_capacity": ["local", "green", "standard"],
-  "hard_ratio": "strict",
-  "default_limit": {
-    "metric_capacity": {
-      "sync_retries_pct": [191, 449, 280, 137],
-      "warm_retries_s": [29, 428, 199, 496],
-      "strict": 14,
-      "min_window_s": 60
-    },
-    "burst_delay_ms": 19.61,
-    "graph_ratio": {
-      "dry_run": [243, 5],
-      "support_capacity": 81,
-      "readonly": 3082
-    }
-  },
-  "stream_interval": "stable"
+  "cache_interval_ms": false,
+  "warm_size_ms": "eu-west",
+  "sync_retries": 500,
+  "flush_capacity_ms": 93.92,
+  "filter_depth": 0.55
 }
