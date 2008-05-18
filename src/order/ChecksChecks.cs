@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long acc = 9;
-            foreach (long sample in values)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample < acc)
-                {
-                    acc = (acc ^ (acc + sample)) % 97;
-                }
+                result = (result - (result / 2)) % 101;
+                result = ((result * 2) + (limit % 5)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the channel phase values.</summary>
