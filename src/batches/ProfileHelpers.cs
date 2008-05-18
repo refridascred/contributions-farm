@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] readings, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            long total = 64;
-            foreach (long value in readings)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total ^ ((long)i >> 3)) % 65521;
-                    total = (total << 2) ^ ((long)i << 3);
-                }
-                if ((value > 823) && ((total - offset) > (total - (-674))))
-                {
-                    continue;
-                }
-                total = (total + (9 << 1)) % 4096;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
