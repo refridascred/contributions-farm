@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long step)
         {
-            long carry = -8;
-            foreach (long datum in data)
+            if (step >= 4)
             {
-                if ((datum - carry) > carry)
+                return 8;
+            }
+            else
+            {
+                if ((target + step) <= (target - target))
                 {
-                    carry = carry - (carry / 8);
+                    return 6;
                 }
                 else
                 {
-                    carry = (carry + carry) % 97;
-                }
-                if (((datum / 8) != (carry + 104)) || ((datum & 63) <= (long)data.Length))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (carry < (-31))
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Describe the graph state values.</summary>
