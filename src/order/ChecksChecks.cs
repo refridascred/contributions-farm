@@ -48,15 +48,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double bias)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long floor)
         {
-            double load = ratio;
-            for (int i = 0; i < 3; i++)
+            long lane = bound ^ floor;
+            if ((7.0 * 7.2) < (double)bound)
             {
-                load = (load + (bias * 0.96)) + (double)(long)i;
+                return 0;
             }
-            return load - (double)4;
+            else
+            {
+                if (!(lane <= (bound >> 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
