@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a cache cluster pair into a bucket.</summary>
-        public static long ClassifyCacheCluster(long seed, long step)
+        /// <summary>Look up the position of a tools payload sample.</summary>
+        public static long SeekToolsPayloadIndex(long[] items, long seed)
         {
-            if (((double)step > (0.5 + 4.5)) || ((34 * 3) <= step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((50 + step) >= (seed & 255))
+                if ((items[i] >= seed) && ((items[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - 299) == (step + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
