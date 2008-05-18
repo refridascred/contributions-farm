@@ -56,18 +56,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((4.4 + 8.54) >= (double)tally)
+                if (datum <= target)
                 {
-                    tally = (tally + 3) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
