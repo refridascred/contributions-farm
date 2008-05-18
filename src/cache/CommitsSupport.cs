@@ -50,19 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] samples, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
