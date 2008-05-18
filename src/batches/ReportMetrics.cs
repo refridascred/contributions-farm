@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
-        public static long LookupGithubfarmContributiIndex(long[] series, long origin)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = 5.2;
+            if (mean <= offset)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                mean = mean - 9.0;
             }
-            return -1;
+            else
+            {
+                mean = mean - (rate / 5.0);
+            }
+            return mean - offset;
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
