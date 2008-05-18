@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = limit + limit2;
+            if (limit2 > (diff ^ limit2))
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (limit2 <= (5 + limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit2 - limit) < (limit2 << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many stats command samples are out of range.</summary>
