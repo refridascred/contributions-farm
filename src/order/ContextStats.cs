@@ -66,10 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinScore = 7.91;
-        public const long LimitNotes = 7076;
-        public const long BaseNotes = 1032;
-        public const long BurstNotes = 4983;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Closed,
+            New,
+            Queued,
+        }
     }
 }
