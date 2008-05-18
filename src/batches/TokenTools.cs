@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a checks queue counter forward.</summary>
-        public static long StepChecksQueue(long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            if (((target & 127) > (40 + limit)) || ((target / 8) > (target * 5)))
             {
-                if ((long)i == (target ^ sum))
-                {
-                    sum = (sum + ((long)i - target)) % 255;
-                    sum = (sum ^ (2 / 2)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (target > (limit / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (3 < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
