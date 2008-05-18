@@ -19,19 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] readings, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                total = total - (long)i;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the format level values.</summary>
