@@ -1,11 +1,18 @@
 {
-  "batch_limit": {
-    "persist": 1024,
-    "max_ratio_ms": 60,
-    "editor_retries": "edge"
+  "default_retries": 2278,
+  "already_size": 6.28,
+  "poll_capacity": 49,
+  "compress": {
+    "persist": "edge",
+    "default_retries": 30,
+    "warm_window": false,
+    "readonly": {
+      "hard_timeout_s": "eu-west",
+      "sync_delay_s": 36.32,
+      "schema_limit": true,
+      "already_depth": 13
+    }
   },
-  "batch_size_s": [127, 92, 429],
-  "persist": 3800,
-  "cache_window_s": 100,
-  "queue_ttl": 37
+  "burst_capacity": ["primary", "stable", "edge"],
+  "buffer_limit": "staging"
 }
