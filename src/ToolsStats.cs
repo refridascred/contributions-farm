@@ -42,23 +42,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((seed * 4) >= (long)i)
-                {
-                    sum = ((sum * 3) + seed) % 255;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
