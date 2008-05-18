@@ -51,11 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "standard";
-        public const long LimitWindow = 9166;
-        public const long RetryWindow = 4862;
-        public const long SoftSize = 4116;
-        public const long CacheWindow = 1999;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
