@@ -1,8 +1,5 @@
 {
-  "hard_size": "strict",
-  "sync_retries_s": 10,
-  "checks_size": [329, 279, 168],
-  "retry_ratio_s": "strict",
-  "token_delay": ["fallback", "blue", "primary"],
-  "audit": true
+  "context_interval": 18,
+  "base_interval_count": [496, 106, 164, 202],
+  "tools_window": 7567
 }
