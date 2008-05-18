@@ -1,5 +1,7 @@
 {
-  "channel_ratio": 500,
-  "session_ttl": 500,
-  "batch_window": [411, 96]
+  "retry_limit": 84.49,
+  "strict": "cached",
+  "cache_timeout": 69,
+  "filter_window": "eu-west",
+  "token_interval": 31.85
 }
