@@ -67,18 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] values, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (offset >= (seen >> 1))
+                if (item > step)
                 {
-                    seen = (seen + 3) ^ entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
