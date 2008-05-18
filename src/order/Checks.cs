@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long bound, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double bias)
         {
-            long edge = bound - offset;
-            if (!((3.7 + 9.0) != (double)edge))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound > (double)4) || (edge < (edge - edge)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double load = rate - (rate - rate);
+            return load - (bias + bias);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
