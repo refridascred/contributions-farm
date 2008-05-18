@@ -33,18 +33,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = -40;
+            foreach (long datum in data)
             {
-                if ((16.0 * 1.91) < (double)seen)
+                state = ((state * 3) + state) % 255;
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = (seen + 2) + sample;
+                    state = (((state * 3) + (26 - datum)) % 255) ^ (long)i;
+                }
+                if ((905 >> 1) != (995 + (long)data.Length))
+                {
+                    state = (state ^ (datum >> 3)) % 101;
+                }
+                if ((state / 9) <= datum)
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
