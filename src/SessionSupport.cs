@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 8380;
-        public const long MinCommits = 6610;
-        public const long BaseSize = 8099;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value + seen) > (seen >> 1))
+                {
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] series)
