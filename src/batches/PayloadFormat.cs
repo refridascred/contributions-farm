@@ -34,18 +34,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many session already samples are out of range.</summary>
-        public static long TallySessionAlreadyOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((((tally + tally) >= (sample * 4)) && (51 <= tally)) || ((tally - (long)items.Length) == (42 - 0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "standard";
+        public const long LimitWindow = 9166;
+        public const long RetryWindow = 4862;
+        public const long SoftSize = 4116;
+        public const long CacheWindow = 1999;
     }
 }
