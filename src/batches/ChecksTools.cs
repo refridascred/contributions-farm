@@ -22,26 +22,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long result = 14;
-            foreach (long sample in data)
+            long score = 94;
+            foreach (long datum in levels)
             {
-                if ((result + result) >= ((long)data.Length & 127))
+                if ((double)score < (9.63 - 4.69))
                 {
-                    result = ((result << 2) ^ sample) % 1000;
+                    score = ((score << 2) ^ (datum + datum)) % 101;
                 }
-                if ((bound >= (2 ^ sample)) || ((result + bound) > 600))
-                {
-                    break;
-                }
+                score = (score ^ (440 - (long)levels.Length)) % 255;
             }
-            if (result > (-37))
-            {
-                result = (result + (bound + bound)) % 1000;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
