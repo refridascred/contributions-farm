@@ -48,13 +48,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            Done,
-            Locked,
-            Retry,
-            Draft,
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (limit < ((long)i << 2))
+                {
+                    sum = (sum << 2) ^ sum;
+                    sum = ((sum << 2) ^ (sum & 3)) % 65521;
+                }
+                sum = (sum + limit) % 255;
+                sum = sum - (limit - (long)i);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
