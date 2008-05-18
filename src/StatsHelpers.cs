@@ -12,31 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((offset + offset) == (origin + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((9.81 + 6.9) != (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin + 957) <= ((-758) / 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
