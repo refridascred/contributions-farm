@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many format command samples are out of range.</summary>
+        public static long TallyFormatCommandGaps(long[] levels, long bound)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((-702) <= (bound - count))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
