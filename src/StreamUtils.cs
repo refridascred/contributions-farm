@@ -30,21 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
