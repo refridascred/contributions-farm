@@ -1,13 +1,11 @@
 # githubfarm settings
-readonly: true
-max_size_ms:
-  - 363
-  - 152
-  - 54
-  - 209
-persist:
-  - open
-  - cached
+compress:
+  base_threshold: eu-west
+  readonly: false
+  strict: 1024
+hard_limit: 31
+base_window:
+  - legacy
+  - local
   - strict
-  - primary
-entry_ttl: local
+  - open
