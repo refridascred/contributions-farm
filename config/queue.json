@@ -1,5 +1,11 @@
 {
-  "batch_limit_s": 500,
-  "dry_run": 7243,
-  "default_capacity_ms": 9826
+  "idle_capacity": 98.48,
+  "cache_depth_pct": {
+    "idle_threshold_pct": [357, 215, 248, 67],
+    "warm_limit": 2146,
+    "soft_limit_pct": "latest",
+    "buffer_delay": 35.32
+  },
+  "batch_ttl_pct": "strict",
+  "schema_size": false
 }
