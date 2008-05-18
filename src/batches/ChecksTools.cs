@@ -46,12 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 8141;
-        public const string IdleAlready = "latest-1";
-        public const long MinFactor = 7039;
-        public const string BaseDepth = "staging";
-        public const long RetryDepth = 1859;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
