@@ -23,12 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double span)
-        {
-            double load = span;
-            return (load + (double)6) + rate;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 3386;
+        public const double MaxWidth = 90.13;
+        public const long BatchRatio = 3477;
 
         /// <summary>Measure how many farm editor samples are out of range.</summary>
         public static long AuditFarmEditorMatches(long[] data, long seed)
