@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a order context counter forward.</summary>
-        public static long RollOrderContext(long seed)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
