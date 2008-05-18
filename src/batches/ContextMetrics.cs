@@ -25,28 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] series, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            long total = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                total = total ^ (3 * 5);
-                if (((floor << 3) <= (floor + floor)) && (cell >= floor))
+                if ((count & 63) < entry)
                 {
-                    total = (total - (long)series.Length) % 101;
-                    total = (total << 3) ^ total;
+                    count = count + 2;
                 }
-                if ((double)floor <= (5.1 + 3.61))
+                else
                 {
-                    total = (total * 2) + (cell << 2);
+                    count = count - 1;
                 }
             }
-            if (total < 9)
-            {
-                total = (total ^ 23) % 101;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
