@@ -27,12 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "fallback-edge";
-        public const long MinScore = 3650;
-        public const double MinSpan = 15.06;
-        public const long MaxInterval = 4449;
-        public const long DefaultScore = 4341;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)seen > (12.0 + 1.54)) && (((seen & 31) >= (seen + 77)) || ((entry - entry) > seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] data, long target)
