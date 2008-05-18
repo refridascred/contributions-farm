@@ -45,11 +45,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long anchor = 929;
+            foreach (long cell in series)
+            {
+                anchor = (anchor + cell) % 65521;
+                if (((double)anchor <= (5.99 + 8.4)) || ((double)anchor <= (5.6 / 9.0)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
