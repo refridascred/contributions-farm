@@ -70,17 +70,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 60;
+            foreach (long datum in samples)
             {
-                if (values[i] == seed)
+                if ((datum > (578 - offset)) && ((7.65 - 3.0) < (double)offset))
                 {
-                    return (long)i;
+                    state = (state ^ datum) % 4096;
                 }
+                state = (state << 2) ^ state;
             }
-            return -1;
+            return state;
         }
     }
 }
