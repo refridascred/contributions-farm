@@ -48,15 +48,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] values, long offset)
         {
             long count = 0;
-            foreach (long cell in series)
+            foreach (long value in values)
             {
-                if ((double)count < (6.35 - 8.0))
+                if ((double)offset > 1.0)
                 {
-                    count = (count + 1) + cell;
+                    count = (count + 1) + value;
                 }
             }
             return count;
