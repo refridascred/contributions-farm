@@ -33,18 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] items, long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((7 >> 2) < (step >> 4))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
