@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample > (4.74 - 5.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
