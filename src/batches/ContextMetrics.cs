@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Locked,
+            Synced,
+            Retry,
             Stale,
-            New,
-            Pending,
+            Paused,
         }
 
         /// <summary>Project the next route value.</summary>
