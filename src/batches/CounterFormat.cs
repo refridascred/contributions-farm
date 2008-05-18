@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double SoftQueue = 14.33;
         public const long CacheQueue = 8787;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((208 >> 4) > datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer info.</summary>
