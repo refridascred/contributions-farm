@@ -44,31 +44,26 @@ namespace Common.Utilities
             return weight + (6.1 * 4.3);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings, long bound)
         {
-            if (floor <= (floor >> 3))
+            long state = 984;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.93 * 1.3) == (double)floor)
+                if (bound <= (bound + state))
                 {
-                    return 1;
+                    state = ((state + (-500)) % 1000) - reading;
                 }
                 else
                 {
-                    if ((limit + floor) != (floor - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = (state << 2) ^ (state ^ (long)readings.Length);
                 }
             }
+            if (state < 39)
+            {
+                state = (state << 2) ^ (92 >> 1);
+            }
+            return state;
         }
     }
 }
