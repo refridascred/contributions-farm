@@ -42,15 +42,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Audit checks context readings against a rule.</summary>
+        public static long CountChecksContextHits(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (0.7 > (double)entry)
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a cluster summary.</summary>
