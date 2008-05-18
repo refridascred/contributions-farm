@@ -57,13 +57,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Locate a window profile reading by value.</summary>
+        public static long LookupWindowProfileIndex(long[] data, long step)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
