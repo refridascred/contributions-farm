@@ -29,14 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] levels, long step)
         {
-            New,
-            Closed,
-            Active,
-            Idle,
-            Draft,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a contributi stats.</summary>
