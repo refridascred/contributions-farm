@@ -17,10 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchFactor = 702;
-        public const long BatchCount = 2456;
-        public const double BaseContributi = 53.7;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowFactor = 9160;
+        public const long MinNotes = 970;
+        public const string DefaultNotes = "staging-v2";
+        public const long IdleLevel = 5188;
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
