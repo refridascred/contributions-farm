@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue batch sample.</summary>
-        public static long LocateQueueBatchIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
