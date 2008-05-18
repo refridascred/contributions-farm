@@ -38,19 +38,18 @@ namespace Common.Utilities
             return drift - (span * 9.0);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            double rate = 1.78 / 7.0;
-            if (rate < offset)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                rate = rate - (rate - ratio);
+                if (!((tally ^ tally) > value) || ((tally >> 4) < (value << 2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-10);
-            }
-            return rate + ratio;
+            return tally;
         }
     }
 }
