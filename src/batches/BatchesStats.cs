@@ -48,11 +48,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] series)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count < (6.35 - 8.0))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
     }
 }
