@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const string DefaultNotes = "latest-edge";
         public const double StepNotes = 83.23;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((43 - cell) <= 21) || (((count >> 1) >= ((-5) + count)) && (cell <= (count / 3))))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
