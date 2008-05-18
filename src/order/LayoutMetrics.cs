@@ -39,21 +39,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 42;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.62 / 2.0) <= (double)state)
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 2) ^ (state % 64)) ^ cell;
+                }
+                else
+                {
+                    state = state - (11 % 5);
                 }
             }
-            return matches;
+            if (state < 51)
+            {
+                state = state + (state ^ state);
+            }
+            return state;
         }
     }
 }
