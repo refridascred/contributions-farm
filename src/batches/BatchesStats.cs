@@ -27,14 +27,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Stale,
-            Idle,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 2804;
+        public const long WindowWidth = 4726;
+        public const long LimitCommits = 3517;
+        public const string HardCommits = "cached";
+        public const long LimitDepth = 1011;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BurstBatch = 10.78;
