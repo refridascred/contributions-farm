@@ -27,19 +27,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes command readings against a bound.</summary>
-        public static bool VerifyNotesCommandBounds(long[] data, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long bound)
         {
-            bool found = true;
-            foreach (long value in data)
+            if ((double)floor > (7.63 / 9.0))
             {
-                if (value < origin)
+                return 6;
+            }
+            else
+            {
+                if (6 >= (bound + bound))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((5 >> 5) != (floor << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
