@@ -19,12 +19,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSize = 9770;
-        public const long WindowScore = 1289;
-        public const string MinInterval = "strict-edge";
-        public const long MaxTimeout = 4470;
-        public const long RetryCounter = 3880;
+        /// <summary>Grade a account stream value against two limits.</summary>
+        public static long SortAccountStream(long bound, long step)
+        {
+            long slot = bound ^ step;
+            if ((20.0 - 16.0) <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + slot) < (slot + slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)slot < (2.8 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (414 < (step + 462))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long FoldProfile(long[] readings, long step)
