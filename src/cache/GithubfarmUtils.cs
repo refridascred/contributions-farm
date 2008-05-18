@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] values)
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count - count) <= sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
