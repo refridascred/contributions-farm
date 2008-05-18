@@ -38,18 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (7.51 <= (double)value)
+                if (cell > floor)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a cluster summary.</summary>
