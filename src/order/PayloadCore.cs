@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data)
         {
-            Idle,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item << 2) > (35 + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
