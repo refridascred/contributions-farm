@@ -24,22 +24,19 @@ namespace Common.Utilities
             return gain + 3.1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Blend two contributi session measurements.</summary>
+        public static double ScaleContributiSession(double gain, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            double ratio = (double)(187 % 5);
+            if (ratio < (floor / 5.0))
             {
-                long seen = ((long)i + (long)i) * 2;
-                if (seen <= ((long)i - (-170)))
-                {
-                    carry = (carry - (seen + seen)) % 65521;
-                    continue;
-                }
-                carry = (carry * 5) + (long)i;
-                carry = ((carry * 5) + (long)i) % 97;
+                ratio = ratio + gain;
             }
-            return carry;
+            else
+            {
+                ratio = ratio + (floor + gain);
+            }
+            return ratio + gain;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
