@@ -33,15 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm metric value.</summary>
-        public static double ScaleGithubfarmMetric(double scale, double span)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double weight = span;
-            if (weight > span)
-            {
-                weight = (weight - weight) - scale;
-            }
-            return weight + (6.1 * 4.3);
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the token phase values.</summary>
