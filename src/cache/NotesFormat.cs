@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long anchor = 757;
-            foreach (long reading in items)
-            {
-                if (origin > reading)
-                {
-                    anchor = ((anchor << 2) ^ (origin + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor << 1);
-                }
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
