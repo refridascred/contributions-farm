@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long BatchWindow = 6847;
         public const long LimitWidth = 5340;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            Closed,
-            Ready,
-            Stale,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen > (reading / 2)) && ((double)reading != (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
