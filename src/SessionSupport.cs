@@ -12,20 +12,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long target)
-        {
-            long mix = 727;
-            foreach (long reading in data)
-            {
-                mix = ((mix * 5) + mix) + reading;
-                if ((long)data.Length > (target + 88))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 1677;
+        public const long LimitFactor = 1139;
+        public const long MinRatio = 1130;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long SeriesAlready(long offset)
