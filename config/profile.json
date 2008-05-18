@@ -1,6 +1,14 @@
 {
-  "metrics_depth": 73.43,
-  "min_interval_count": "legacy",
-  "retry_depth": 27.12,
-  "idle_depth_ms": true
+  "idle_delay_count": {
+    "batch_limit_s": 1024,
+    "context_timeout": "stable",
+    "verbose": false,
+    "counter_timeout": 37,
+    "cache_capacity_s": "blue"
+  },
+  "dry_run": "blue",
+  "poll_ratio_count": 85.41,
+  "persist": ["stable", "fallback", "cached"],
+  "warm_limit_count": "green",
+  "graph_ttl": "primary"
 }
