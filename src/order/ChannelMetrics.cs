@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long mix = 8;
+            foreach (long item in levels)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (item >= (mix >> 2))
+                {
+                    mix = (mix - (mix & 255)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ item;
+                }
             }
             return mix;
         }
