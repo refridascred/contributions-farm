@@ -72,19 +72,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long result = 84;
-            foreach (long entry in data)
-            {
-                result = (result ^ (22 >> 5)) % 4096;
-                if ((double)3 != (double)entry)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Pending,
+            Locked,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Roll a context session counter forward.</summary>
