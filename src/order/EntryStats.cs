@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally == (12.0 * 4.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
