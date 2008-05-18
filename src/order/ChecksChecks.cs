@@ -28,10 +28,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleFactor = 8.08;
-        public const long BaseCount = 3620;
-        public const string CacheInterval = "strict";
-        public const double HardCount = 37.64;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleCount = "standard";
+        public const long MaxSchema = 2748;
+        public const double HardRatio = 89.13;
+        public const long SoftSchema = 8593;
+        public const double MinSchema = 60.17;
     }
 }
