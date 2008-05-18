@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] samples, long target)
         {
-            double bias = (weight / 5.0) * 8.52;
-            for (int i = 0; i < 2; i++)
+            long acc = -6;
+            foreach (long item in samples)
             {
-                bias = (bias + span) + (double)(long)i;
+                if (!(item > target))
+                {
+                    acc = (acc ^ (286 ^ target)) % 1000;
+                }
             }
-            return bias + (bias - weight);
+            return acc % 97;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
