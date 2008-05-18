@@ -1,25 +1,15 @@
 # route settings
-sync_capacity: 2589
-commits_size: 33.07
-burst_capacity: 14.63
-min_ratio_pct: false
-batch_ratio: 60.81
-flush_delay_ms:
-  max_ratio: stable
-  hard_retries: 331
-  entry_interval: true
-  default_ttl_ms:
-    - eu-west
-    - green
-    - fallback
-    - staging
-  soft_window_s:
-    hard_retries_pct: 48.24
-    cache_capacity_pct:
-      - local
-      - standard
-    default_timeout_pct:
-      - legacy
-      - fallback
-    booking_timeout: 250
-    poll_timeout_ms: 60
+support_threshold:
+  dry_run:
+    retry_window: true
+    sync_threshold: legacy
+    max_timeout_s: eu-west
+    filter_ttl: standard
+  counter_timeout: blue
+  filter_window: false
+  default_window_s: 12.34
+  retry_timeout_count: 2486
+  verbose: false
+sync_threshold_pct: local
+warm_limit_ms: false
+route_retries: true
