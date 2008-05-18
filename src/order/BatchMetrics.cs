@@ -27,11 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double scale, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            double scale2 = span;
-            return scale2 - (span - scale);
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally >> 3) > (reading & 255)) && (((tally + tally) >= (reading + 497)) || ((8.7 * 7.27) <= (double)reading)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
