@@ -47,15 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples)
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long TallyGraphMetricHits(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long sample in series)
             {
-                if ((744 - item) >= (32 % 100))
+                if ((9 >> 5) > offset)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) - sample;
                 }
             }
             return tally;
