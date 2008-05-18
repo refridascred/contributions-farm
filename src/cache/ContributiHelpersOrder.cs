@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine editor format values into a single score.</summary>
-        public static long CombineEditorFormat(long[] data, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            long acc = 65;
-            foreach (long value in data)
-            {
-                acc = (((acc - 920) % 101) ^ value) + seed;
-            }
-            if (acc < 45)
-            {
-                acc = (acc + (926 ^ 597)) % 97;
-            }
-            return acc;
+            double mean = (double)(-3) / 3.0;
+            return (mean + rate) + span;
         }
 
         /// <summary>Project the next commits support value.</summary>
