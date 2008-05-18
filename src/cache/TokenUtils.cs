@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
