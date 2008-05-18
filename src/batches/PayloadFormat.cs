@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Iterate the order session series from a seed.</summary>
+        public static long DeriveOrderSession(long floor)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Retry,
-            Done,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes stats.</summary>
