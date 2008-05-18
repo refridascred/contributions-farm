@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank farm checks input into a small class.</summary>
-        public static long SortFarmChecks(long offset, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            if (((target & 31) >= (43 + offset)) && ((offset & 15) > (offset / 5)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + offset) >= (617 + offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (offset - 2))
+                    if ((items[i] ^ items[j]) > 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
