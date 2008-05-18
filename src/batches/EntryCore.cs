@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] == seed)
+                if (offset > (601 * 5))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
