@@ -1,6 +1,8 @@
 {
-  "counter_capacity": true,
-  "retry_ratio_ms": 500,
-  "record_interval": [467, 223, 113],
-  "flush_ttl": 66.97
+  "poll_size_pct": true,
+  "burst_size_s": 93,
+  "command_ratio": 30,
+  "verbose": 564,
+  "githubfarm_capacity": ["standard", "staging"],
+  "flush_depth_count": "blue"
 }
