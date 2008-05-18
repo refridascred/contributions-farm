@@ -32,18 +32,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Digest a series of route metric entries.</summary>
+        public static long TotalRouteMetric(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                if ((matches - 893) < (-7))
+                if ((sum - origin) < datum)
                 {
-                    matches = (matches + 3) + value;
+                    sum = ((sum << 3) ^ datum) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (origin + origin)) % 255;
+                }
+                if (!((datum / 4) == (sum + origin)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 5)
+            {
+                sum = ((sum * 2) + (sum << 3)) % 65521;
+            }
+            return sum;
         }
     }
 }
