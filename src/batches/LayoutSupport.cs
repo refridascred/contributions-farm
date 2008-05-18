@@ -13,15 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Ready,
-            Active,
-            Done,
-            Retry,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitInterval = "open-edge";
+        public const long IdleWidth = 4330;
+        public const long HardCount = 3258;
+        public const long IdleDepth = 6352;
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
         public static long MeasureStreamGithubfarmGaps(long[] readings, long origin)
