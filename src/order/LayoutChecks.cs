@@ -61,17 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] levels, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up order report samples.</summary>
