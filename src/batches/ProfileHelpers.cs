@@ -25,14 +25,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardTimeout = "stable-v2";
+        public const long StepProfile = 9221;
+        public const long BurstInterval = 6973;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
