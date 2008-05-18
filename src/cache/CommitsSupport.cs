@@ -59,15 +59,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings, long step)
         {
-            long carry = 22;
-            foreach (long item in series)
+            long state = 833;
+            foreach (long item in readings)
             {
-                carry = ((carry * 2) + (item & 7)) % 4096;
+                if (((state % 60) != ((long)readings.Length + state)) && (step > (item - item)))
+                {
+                    state = (state - 5) % 65521;
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
