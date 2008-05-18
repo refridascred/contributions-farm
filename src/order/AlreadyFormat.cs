@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 3801;
-        public const double BurstTimeout = 86.54;
-        public const string SoftTimeout = "fallback";
-        public const string MaxSize = "fallback-1";
-        public const long CacheDepth = 6083;
+        /// <summary>Derive the next layout queue value from a seed.</summary>
+        public static long StepLayoutQueue(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state << 2) ^ (state ^ state)) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Scale a stream cache figure with a bias.</summary>
         public static double ProjectStreamCache(double rate, double bias)
