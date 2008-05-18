@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long offset = step ^ origin;
-            if (((offset - step) != (982 + 574)) && ((origin << 2) <= (step - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) == (origin + 555))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + offset) < 373)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
