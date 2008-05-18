@@ -37,12 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the window kind values.</summary>
