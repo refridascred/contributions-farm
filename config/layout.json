@@ -1,8 +1,7 @@
 {
-  "sync_limit": [427, 8, 152, 196],
-  "already_retries": "stable",
-  "cache_size_s": "eu-west",
-  "verbose": "green",
-  "audit": 0.01,
-  "warm_retries_s": [481, 396]
+  "soft_ttl_count": "blue",
+  "max_threshold_s": 3,
+  "tools_depth": "blue",
+  "cache_depth": 10.6,
+  "stats_window": [367, 6, 171, 30]
 }
