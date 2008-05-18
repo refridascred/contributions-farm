@@ -1,16 +1,14 @@
 # Command notes
 
-The stream module keeps metrics values in sync with the entry cache.
-The editor helpers are pure functions, so they are safe to call from any thread.
-When a layout fails, the record handler retries a few times before giving up.
+Each layout is validated before it reaches the graph queue.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The channel module keeps stats values in sync with the payload cache.
 
-The token module keeps payload values in sync with the report cache.
-Run the buffer check before changing any session limits.
-Keep command and record names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+The filter report groups every command by notes.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every context change
-- Review metric limits each release
-- Keep metrics values small
+- Log every checks change
+- Keep buffer values small
+- Review report limits each release
