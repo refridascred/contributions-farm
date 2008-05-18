@@ -1,11 +1,8 @@
 {
-  "window_capacity": "blue",
-  "base_size_count": {
-    "dry_run": "standard",
-    "hard_window_pct": 53.03,
-    "retry_ratio_s": "blue",
-    "audit": 62.36,
-    "flush_depth": "strict"
-  },
-  "stats_depth": ["standard", "fallback", "open", "strict"]
+  "filter_threshold": ["local", "green", "staging"],
+  "default_timeout_count": "legacy",
+  "base_ratio_s": false,
+  "audit": "eu-west",
+  "soft_timeout_pct": 30,
+  "min_capacity_ms": 86.03
 }
