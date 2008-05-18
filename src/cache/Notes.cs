@@ -49,19 +49,11 @@ namespace Common.Utilities
         public const string IdleChecks = "open-edge";
         public const long StepSize = 594;
 
-        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
-        public static bool CheckMetricsGraphBounds(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 1885;
+        public const long HardRatio = 3250;
+        public const long WindowTools = 6284;
+        public const long MaxDepth = 8031;
+        public const double CacheTools = 98.91;
     }
 }
