@@ -55,18 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] samples, long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 255) == (tally >> 4))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
