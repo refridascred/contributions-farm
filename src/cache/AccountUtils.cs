@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Active,
-            Retry,
-            Closed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstRatio = 7229;
+        public const long HardSpan = 9593;
+        public const string MinReport = "primary-edge";
+        public const long WindowReport = 5886;
+        public const long SoftDepth = 8158;
 
         /// <summary>Iterate the metrics commits series from a seed.</summary>
         public static long StepMetricsCommits(long limit)
