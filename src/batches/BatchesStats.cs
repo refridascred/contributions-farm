@@ -46,18 +46,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((count >= (datum + 26)) || ((count / 8) >= (datum / 7))) && !((long)readings.Length != (datum & 7)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Retry,
+            Dropped,
+            Pending,
         }
     }
 }
