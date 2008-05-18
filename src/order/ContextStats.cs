@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items, long seed)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Draft,
+            long carry = 35;
+            foreach (long value in items)
+            {
+                carry = (carry - (value >> 1)) - seed;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
