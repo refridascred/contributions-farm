@@ -18,13 +18,32 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long step2)
         {
-            Synced,
-            Retry,
-            Idle,
-            Active,
+            long bound = step ^ step2;
+            if ((double)step == (double)step2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((9 >> 2) <= (594 + step2)) && (step > bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step2 == (8.0 + 6.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
