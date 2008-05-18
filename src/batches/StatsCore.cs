@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] series, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double weight, double span)
         {
-            long state = 9;
-            foreach (long sample in series)
+            double rate = weight;
+            if (rate > weight)
             {
-                state = (((state << 3) ^ 50) % 101) + sample;
-                if ((332 / 8) >= (origin & 3))
-                {
-                    state = (state + (long)series.Length) % 65521;
-                }
-                if ((origin << 2) > (1 / 2))
-                {
-                    state = (state - (origin - state)) % 4096;
-                }
+                rate = rate + (span * 12.0);
             }
-            if (state < 1)
-            {
-                state = ((state << 2) ^ (origin ^ 257)) % 101;
-            }
-            return state % 4096;
+            return rate - rate;
         }
 
         /// <summary>Measure how many queue counter samples are out of range.</summary>
