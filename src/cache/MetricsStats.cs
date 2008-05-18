@@ -51,13 +51,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Scale a tools contributi figure with a bias.</summary>
+        public static double ProjectToolsContributi(double gain, double offset)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            double load = offset - offset;
+            if (load > (double)498)
+            {
+                load = load - offset;
+            }
+            else
+            {
+                load = load + (gain / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (8.64 - gain);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
