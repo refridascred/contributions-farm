@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 8943;
-        public const long CacheGraph = 2274;
-        public const string LimitGraph = "staging-1";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryDepth = 6104;
