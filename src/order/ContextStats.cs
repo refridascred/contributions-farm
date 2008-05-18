@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long seed, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long next = seed + offset;
-            if ((offset + next) > 4)
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset < next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) < (offset - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((6.13 * 3.03) >= (double)next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
