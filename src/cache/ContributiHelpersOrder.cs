@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next filter record value from a seed.</summary>
-        public static long DeriveFilterRecord(long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long result = 71;
+            foreach (long value in series)
             {
-                if ((score <= limit) || (limit >= score))
-                {
-                    score = (score + (score + score)) % 97;
-                }
-                long cur = (score % 16) - (score - limit);
-                if ((cur & 127) >= (limit - score))
-                {
-                    cur = (cur << 2) ^ (82 & 255);
-                }
-                else
-                {
-                    cur = (cur - (score ^ limit)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                result = (((result * 4) + (floor + floor)) % 1000) + value;
             }
-            return score;
+            if (result < 681)
+            {
+                result = (result ^ (result * 3)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
