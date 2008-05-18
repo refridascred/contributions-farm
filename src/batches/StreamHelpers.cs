@@ -42,21 +42,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command token readings.</summary>
-        public static long CompareCommandTokenCount(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 30;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0.51 / 5.0) < (double)target)
                 {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ target) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (sum & 127);
+                }
+                if ((reading << 2) > ((-816) - target))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 7)
+            {
+                sum = (sum + target) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already summary.</summary>
