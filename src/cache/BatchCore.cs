@@ -65,22 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Classify a format stats pair into a bucket.</summary>
+        public static long GradeFormatStats(long bound, long floor)
         {
-            long score = 5;
-            foreach (long value in readings)
+            if ((double)1 <= (double)bound)
             {
-                if (((166 - seed) == (291 >> 1)) || (3.98 < (double)seed))
+                return 4;
+            }
+            else
+            {
+                if ((4 <= floor) && ((186 + 681) > (floor + bound)))
                 {
-                    score = (((score * 4) + score) % 255) + value;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (score > 171)
-            {
-                score = ((score << 2) ^ (8 * 3)) % 97;
-            }
-            return score % 65521;
         }
     }
 }
