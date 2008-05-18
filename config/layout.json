@@ -1,12 +1,6 @@
 {
-  "idle_timeout_ms": 30,
-  "sync_capacity_ms": 5.91,
-  "commits_delay": {
-    "max_timeout_ms": 5544,
-    "readonly": "latest",
-    "poll_limit": "fallback",
-    "enabled": ["fallback", "legacy", "local"]
-  },
-  "idle_size_count": "fallback",
-  "cache_threshold_s": true
+  "min_window_s": "standard",
+  "idle_ratio_pct": ["edge", "standard", "stable", "legacy"],
+  "cache_depth_pct": ["latest", "standard", "primary"],
+  "cluster_threshold": "green"
 }
