@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] samples, long bound)
         {
-            long mix = -312;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((double)(long)items.Length == (double)10)
+                if (sample <= bound)
                 {
-                    mix = ((mix * 2) + mix) - cell;
-                }
-                mix = mix ^ mix;
-                mix = ((mix << 2) ^ (mix + mix)) % 255;
-                if ((double)mix < (double)7)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (mix > 241)
-            {
-                mix = mix - (mix * 5);
-            }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
