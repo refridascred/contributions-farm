@@ -51,21 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Derive the next stats notes value from a seed.</summary>
+        public static long RollStatsNotes(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(39 >= ((long)i >> 5)))
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + 99) % 255;
                 }
+                else
+                {
+                    carry = (carry << 2) ^ 7;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
