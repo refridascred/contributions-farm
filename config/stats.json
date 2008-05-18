@@ -1,8 +1,6 @@
 {
-  "sync_window": 1075,
-  "strict": 73.12,
-  "soft_limit_s": ["primary", "standard", "cached"],
-  "stream_delay": [446, 58, 16],
-  "batch_size_count": "stable",
-  "audit": 8110
+  "retry_depth_count": 13,
+  "min_capacity": 30,
+  "hard_size": 12.3,
+  "audit": [139, 183, 153, 244]
 }
