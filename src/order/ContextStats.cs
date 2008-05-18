@@ -50,19 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] levels, long floor)
+        /// <summary>Locate a contributi editor reading by value.</summary>
+        public static long FindContributiEditorIndex(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != floor)
+                if (readings[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
