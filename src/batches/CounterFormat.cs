@@ -23,15 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
