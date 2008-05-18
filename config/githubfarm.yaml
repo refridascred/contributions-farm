@@ -1,9 +1,6 @@
 # githubfarm settings
-stats_retries:
-  - 34
-  - 468
-  - 298
-  - 243
-warm_ratio: false
-layout_timeout: false
-flush_threshold_s: 84.58
+dry_run:
+  - 44
+  - 213
+metric_threshold: staging
+audit: false
