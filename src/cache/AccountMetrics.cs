@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Iterate the notes window series from a seed.</summary>
+        public static long IterateNotesWindow(long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
