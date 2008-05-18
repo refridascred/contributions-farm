@@ -34,21 +34,13 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a channel info.</summary>
