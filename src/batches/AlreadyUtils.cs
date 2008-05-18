@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
