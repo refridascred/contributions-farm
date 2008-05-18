@@ -52,19 +52,10 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 4229;
+        public const long StepLevel = 8853;
+        public const string MaxSpan = "staging-1";
+        public const double LimitCounter = 53.8;
     }
 }
