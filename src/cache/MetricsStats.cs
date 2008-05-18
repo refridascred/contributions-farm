@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double scale, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            double bias = offset;
-            for (int i = 0; i < 4; i++)
+            double weight = bias;
+            if (weight < (double)6)
             {
-                bias = (bias + scale) - (double)(long)i;
+                weight = (weight - weight) - span;
             }
-            return bias + (double)44;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
