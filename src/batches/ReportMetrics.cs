@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((12 ^ offset) <= 67))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
