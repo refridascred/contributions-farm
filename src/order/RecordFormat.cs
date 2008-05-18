@@ -57,13 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((seen * 4) != (value + seen)) && (value <= seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context mode values.</summary>
