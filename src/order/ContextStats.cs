@@ -36,12 +36,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] levels, long floor)
         {
-            Closed,
-            New,
-            Queued,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
