@@ -1,11 +1,12 @@
 {
-  "base_size_pct": {
-    "soft_size_s": "primary",
-    "batch_limit_s": 27.02,
-    "audit": "open"
+  "tools_delay": 59,
+  "min_depth_pct": "strict",
+  "poll_size_s": 20,
+  "support_ratio": 5476,
+  "hard_depth_ms": {
+    "sync_limit": true,
+    "sync_threshold_pct": ["stable", "strict", "latest", "fallback"],
+    "schema_capacity": true
   },
-  "strict": 83,
-  "default_limit_ms": "primary",
-  "persist": "edge",
-  "hard_limit_count": 500
+  "readonly": 12.05
 }
