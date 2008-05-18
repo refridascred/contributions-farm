@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double scale, double span)
         {
-            Pending,
-            Retry,
-            Failed,
-            Stale,
+            double gain = scale;
+            if (gain <= span)
+            {
+                gain = gain + (gain / 5.0);
+            }
+            return gain - (3.1 * 5.44);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
