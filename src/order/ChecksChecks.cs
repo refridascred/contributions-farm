@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series, long origin)
+        /// <summary>Adjust a queue notes reading.</summary>
+        public static double BlendQueueNotes(double weight, double offset)
         {
-            long mark = 2;
-            foreach (long item in series)
+            double mean = offset - 2.39;
+            if (mean >= (mean - mean))
             {
-                mark = ((mark - (6 / 3)) ^ item) - origin;
+                mean = mean - (weight * 9.6);
             }
-            return mark;
+            return mean - offset;
         }
 
         /// <summary>Digest a series of notes stats entries.</summary>
