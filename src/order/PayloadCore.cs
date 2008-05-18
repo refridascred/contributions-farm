@@ -24,20 +24,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Derive the next format token value from a seed.</summary>
+        public static long SeriesFormatToken(long step)
         {
-            long mix = 45;
-            foreach (long entry in levels)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((mix / 6) >= (mix + entry)) || ((mix * 3) <= mix))
-                {
-                    mix = mix - entry;
-                    continue;
-                }
-                mix = (mix - (mix - mix)) % 1000;
+                total = (total - total) % 101;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
