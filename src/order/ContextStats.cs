@@ -56,21 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinScore = 7.91;
+        public const long LimitNotes = 7076;
+        public const long BaseNotes = 1032;
+        public const long BurstNotes = 4983;
     }
 }
