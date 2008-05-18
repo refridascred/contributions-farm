@@ -43,15 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph contributi series from a seed.</summary>
-        public static long StepGraphContributi(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 32.48;
+        public const double SoftTimeout = 58.03;
+        public const string IdleScore = "standard-1";
     }
 }
