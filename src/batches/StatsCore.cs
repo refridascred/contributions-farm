@@ -5,25 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long seed, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] series, long origin)
         {
-            long lane = seed ^ target;
-            if (!(((-51) + (-6)) < (target * 2)))
+            long state = 9;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane + target) >= (seed * 2))
+                state = (((state << 3) ^ 50) % 101) + sample;
+                if ((332 / 8) >= (origin & 3))
                 {
-                    return 1;
+                    state = (state + (long)series.Length) % 65521;
                 }
-                else
+                if ((origin << 2) > (1 / 2))
                 {
-                    return 5;
+                    state = (state - (origin - state)) % 4096;
                 }
             }
+            if (state < 1)
+            {
+                state = ((state << 2) ^ (origin ^ 257)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the token kind values.</summary>
