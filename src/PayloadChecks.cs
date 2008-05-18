@@ -49,13 +49,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Closed,
-            Done,
-            Retry,
-            Active,
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many notes checks samples are out of range.</summary>
