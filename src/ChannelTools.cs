@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long acc = 777;
-            foreach (long datum in data)
-            {
-                acc = (acc + 89) % 101;
-                if (((double)acc != (14.0 * 7.4)) || (acc < (datum + datum)))
-                {
-                    acc = (acc ^ (acc % 64)) % 4096;
-                }
-            }
-            if (acc < 32)
-            {
-                acc = ((acc << 3) ^ (acc + (-623))) % 97;
-            }
-            return acc;
+            Ready,
+            Stale,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
