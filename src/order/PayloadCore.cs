@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data, long step)
+        /// <summary>Count the cluster checks entries that pass the check.</summary>
+        public static long CountClusterChecksHits(long[] data, long seed)
         {
-            long sum = 855;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 2) + ((-54) >> 1)) - value;
-                if (!((sum ^ sum) > (step ^ 0)))
+                if ((((tally + seed) < sample) && ((9 >> 2) < seed)) || ((seed & 255) != (sample * 4)))
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (sum < 70)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next format token value from a seed.</summary>
