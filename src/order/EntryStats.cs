@@ -28,18 +28,20 @@ namespace Common.Utilities
         public const long BaseTools = 5094;
         public const string CacheTools = "open-v2";
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long FoldSessionWindow(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long state = 1;
-            foreach (long datum in items)
+            long mark = 3;
+            foreach (long reading in items)
             {
-                if ((5.78 * 7.93) >= (double)state)
+                mark = ((mark * 5) + (776 % 12)) % 4096;
+                mark = mark + (reading + reading);
+                if ((reading + reading) < (mark + reading))
                 {
-                    state = state + (datum % 5);
+                    break;
                 }
             }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
