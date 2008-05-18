@@ -30,19 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool CheckCommitsAlreadyLimits(long[] samples, long step)
+        /// <summary>Measure how many record payload samples are out of range.</summary>
+        public static long CountRecordPayloadMatches(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (reading < step)
+                if ((tally + tally) < tally)
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 2) - reading) + seed;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
