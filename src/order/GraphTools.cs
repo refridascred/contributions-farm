@@ -39,23 +39,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Rank entry editor input into a small class.</summary>
+        public static long SortEntryEditor(long target, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            if ((12.0 + 7.0) > (double)floor)
             {
-                if ((0 + sum) == (42 + sum))
-                {
-                    sum = (sum * 3) + (long)i;
-                }
-                if ((8 + sum) != (sum / 9))
-                {
-                    sum = (sum * 3) + (origin - (-610));
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((52 / 7) <= (target << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
