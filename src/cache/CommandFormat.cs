@@ -48,19 +48,17 @@ namespace Common.Utilities
             return weight + (6.1 * 4.3);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long bound)
+        /// <summary>Find the first metric stats entry that matches the target.</summary>
+        public static long FindMetricStatsIndex(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= bound)
+                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
