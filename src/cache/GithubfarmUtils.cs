@@ -33,22 +33,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long floor2)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long target)
         {
-            if (!((floor2 - floor) > (floor >> 4)))
+            long edge = origin + target;
+            if ((double)edge <= (9.4 + 1.0))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (((5.1 * 7.0) < (double)floor) && ((floor2 + 79) >= floor))
+                if (((8 ^ origin) < (target + target)) && ((9 - 762) < (target + origin)))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    return 2;
                 }
             }
         }
