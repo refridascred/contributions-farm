@@ -24,10 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 6534;
-        public const long DefaultFactor = 9120;
-        public const long DefaultDepth = 3399;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultTimeout = 7588;
+        public const long CachePayload = 638;
+        public const string MaxRatio = "primary";
 
         /// <summary>Locate a cache record reading by value.</summary>
         public static long LookupCacheRecordIndex(long[] values, long seed)
