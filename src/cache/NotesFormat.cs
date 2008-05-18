@@ -29,19 +29,10 @@ namespace Common.Utilities
             return load + (double)386;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleScore = 2898;
+        public const long MaxBudget = 9793;
+        public const long BurstEntry = 6229;
+        public const double BaseEntry = 11.99;
     }
 }
