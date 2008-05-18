@@ -41,20 +41,14 @@ namespace Common.Utilities
             return weight + (double)824;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            long acc = 76;
-            foreach (long cell in series)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (limit < (cell + 954))
-                {
-                    acc = acc + (acc * 2);
-                }
-            }
-            if (acc > 793)
-            {
-                acc = acc ^ limit;
+                acc = (acc - (seed + acc)) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
             return acc;
         }
