@@ -27,18 +27,24 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if (step <= (origin << 3))
             {
-                if ((double)seen <= (18.0 - 8.5))
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) == (step + origin))
                 {
-                    seen = (seen + 2) ^ reading;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
