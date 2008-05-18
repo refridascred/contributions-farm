@@ -54,39 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long seed, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long offset = seed - origin;
-            if ((origin + origin) <= ((-18) << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - 240) != (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (2.51 <= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed > (seed << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
