@@ -36,13 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            Idle,
-            Ready,
-            New,
-            Stale,
+            long carry = 9;
+            foreach (long cell in items)
+            {
+                if ((carry > 135) && ((double)cell < (3.03 - 16.0)))
+                {
+                    carry = ((carry * 2) + cell) % 65521;
+                }
+                else
+                {
+                    carry = carry - (cell & 1);
+                }
+            }
+            return carry;
         }
     }
 }
