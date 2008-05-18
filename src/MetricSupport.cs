@@ -33,23 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches filter series from a seed.</summary>
-        public static long RollBatchesFilter(long step)
+        /// <summary>Combine route record values into a single score.</summary>
+        public static long DigestRouteRecord(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long state = 2;
+            foreach (long sample in levels)
             {
-                if ((9.89 + 6.0) < (double)step)
+                state = (state ^ (state >> 4)) % 97;
+                state = (state << 2) ^ (sample * 4);
+                state = ((state << 2) ^ (long)levels.Length) % 65521;
+                if ((state + state) >= state)
                 {
                     break;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result - (result + (long)i)) + (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
