@@ -30,13 +30,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long seed, long bound)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            if ((bound >> 2) > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound >= 17.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
