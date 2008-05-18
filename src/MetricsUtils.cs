@@ -42,14 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3434;
+        public const long WindowFactor = 2547;
+        public const long SoftCount = 3656;
+        public const long StepSize = 737;
+        public const string HardSchema = "stable-1";
 
         /// <summary>Locate a window profile reading by value.</summary>
         public static long LookupWindowProfileIndex(long[] data, long step)
