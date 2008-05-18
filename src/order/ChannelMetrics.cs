@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)score > (2.8 + 8.4))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    score = score - 7;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two batches measurements.</summary>
