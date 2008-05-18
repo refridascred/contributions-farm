@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = 1;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((acc * 4) < 66)
+                {
+                    acc = ((acc * 3) + (sample ^ sample)) % 101;
+                }
+                acc = acc + 921;
+                acc = (acc + (acc << 3)) % 255;
             }
-            return anchor;
+            if (acc > 50)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
