@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            if ((limit + target) == (limit + limit))
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((45 << 2) == (68 - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit != (18.0 + 20.0)) || (target > (0 - target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
