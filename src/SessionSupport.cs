@@ -41,10 +41,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9751;
-        public const string BurstWindow = "local-v2";
-        public const long WindowBudget = 7500;
-        public const string HardTimeout = "open";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Retry,
+            Queued,
+            New,
+            Active,
+            Pending,
+        }
     }
 }
