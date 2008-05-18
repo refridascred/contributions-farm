@@ -24,10 +24,17 @@ namespace Common.Utilities
         public const string IdleRoute = "primary-edge";
         public const double BaseRoute = 13.69;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinBudget = 3856;
-        public const long DefaultRecord = 8968;
-        public const string BaseRecord = "open-v2";
-        public const long SoftRecord = 9561;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
