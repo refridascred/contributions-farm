@@ -21,12 +21,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseSize = 2237;
-        public const double IdleBudget = 85.67;
-        public const long DefaultWidth = 2461;
-        public const double RetryWidth = 48.64;
-        public const string BurstRatio = "stable-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 922;
+        public const long IdleContributi = 7754;
+        public const long DefaultContributi = 2049;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] values, long floor)
