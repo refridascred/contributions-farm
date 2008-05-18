@@ -41,21 +41,13 @@ namespace Common.Utilities
         public const string LimitPayload = "latest-1";
         public const double CacheLevel = 57.54;
 
-        /// <summary>Compare every pair of tools graph readings.</summary>
-        public static long PairToolsGraphCount(long[] data)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
