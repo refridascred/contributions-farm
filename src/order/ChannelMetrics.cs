@@ -23,11 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftScore = 6124;
-        public const double WindowChannel = 72.3;
-        public const long StepChannel = 4251;
-        public const long WindowInterval = 2709;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Draft,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatGaps(long[] series, long step)
