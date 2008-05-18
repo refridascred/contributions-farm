@@ -31,12 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "primary-edge";
-        public const double WindowEntry = 32.4;
-        public const string MinSize = "strict-1";
-        public const long StepEntry = 8925;
-        public const long DefaultCount = 2914;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)carry >= (20.0 + 7.0))
+                {
+                    carry = (carry + ((long)i - carry)) % 4096;
+                    carry = carry + (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultGithubfarm = 555;
