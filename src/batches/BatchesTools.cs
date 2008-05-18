@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Idle,
-            Queued,
-            Ready,
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
