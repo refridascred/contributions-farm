@@ -40,17 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric payload entry that matches the target.</summary>
-        public static long LocateMetricPayloadIndex(long[] levels, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of filter order readings.</summary>
