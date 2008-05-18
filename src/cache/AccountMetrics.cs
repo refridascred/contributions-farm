@@ -33,18 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long result = 7;
-            foreach (long cell in levels)
+            long score = 944;
+            foreach (long item in data)
             {
-                if ((floor <= (70 << 3)) || ((cell + cell) > cell))
+                for (int i = 0; i < 7; i++)
                 {
-                    result = result - (floor << 1);
+                    score = (((score << 3) ^ item) % 65521) - (long)i;
+                }
+                if ((score - item) != (item & 63))
+                {
+                    score = (score << 2) ^ (763 - score);
                 }
             }
-            return result;
+            return score % 1000;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
