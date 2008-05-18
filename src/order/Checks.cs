@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long bound, long seed)
+        /// <summary>Compare every pair of stats context readings.</summary>
+        public static long OverlapStatsContextCount(long[] data)
         {
-            if (bound < 0)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3 / 3) != (seed ^ bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
