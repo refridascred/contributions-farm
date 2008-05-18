@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] samples, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < limit)
+                if (levels[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
