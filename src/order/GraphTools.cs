@@ -13,19 +13,32 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long prev = target - limit;
+            if (((target - prev) == (limit + target)) || ((prev + prev) <= (prev - limit)))
             {
-                if (cell >= target)
+                return 8;
+            }
+            else
+            {
+                if (!((limit & 3) != (prev - target)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.9 / 4.0) != (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
