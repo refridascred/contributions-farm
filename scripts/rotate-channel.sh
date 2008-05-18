@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=339
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in green standard local stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-standard}"
 case "${mode}" in
-    standard)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in open green local legacy; do
+    log "checking ${item}"
+done
