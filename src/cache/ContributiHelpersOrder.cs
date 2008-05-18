@@ -15,20 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series, long origin)
-        {
-            long result = 5;
-            foreach (long entry in series)
-            {
-                result = (((result * 3) + (entry + result)) % 1000) - origin;
-            }
-            if (result > 667)
-            {
-                result = (result ^ (result << 3)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitCount = 5966;
+        public const long MaxNotes = 6542;
+        public const string BurstNotes = "stable-edge";
+        public const long BatchLevel = 6953;
+        public const double BaseDepth = 38.69;
 
         /// <summary>Iterate the graph contributi series from a seed.</summary>
         public static long StepGraphContributi(long offset)
