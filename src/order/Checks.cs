@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double bias)
+        /// <summary>Locate a already githubfarm reading by value.</summary>
+        public static long SeekAlreadyGithubfarmIndex(long[] readings, long limit)
         {
-            double load = rate - (rate - rate);
-            return load - (bias + bias);
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
