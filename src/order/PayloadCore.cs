@@ -31,10 +31,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 78.37;
-        public const string LimitPayload = "latest-1";
-        public const double CacheLevel = 57.54;
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long limit)
+        {
+            long sum = 402;
+            foreach (long cell in items)
+            {
+                if ((long)items.Length > cell)
+                {
+                    sum = ((sum + (77 + sum)) % 101) - limit;
+                }
+                else
+                {
+                    sum = sum - (cell / 8);
+                }
+            }
+            if (sum < 4)
+            {
+                sum = (sum - (18 >> 1)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
