@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 42.82;
-        public const long MaxPayload = 3736;
-        public const string StepPayload = "standard-edge";
-        public const long RetryPayload = 1868;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitDepth = 6955;
+        public const double BatchFactor = 68.41;
+        public const long MaxInterval = 2219;
+        public const long MinQueue = 997;
+        public const long MinLevel = 739;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
