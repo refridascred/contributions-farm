@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many counter report samples are out of range.</summary>
-        public static long CountCounterReportHits(long[] data, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = 625;
+            foreach (long cell in readings)
             {
-                if ((item ^ item) >= count)
+                if ((509 <= (cell - cell)) || ((14.0 + 5.29) < (double)carry))
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = ((carry ^ (548 - cell)) % 1000) + seed;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
