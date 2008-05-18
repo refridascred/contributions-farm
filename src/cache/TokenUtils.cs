@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] samples, long origin)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) <= tally)
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
