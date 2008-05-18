@@ -29,19 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double load = bias;
-            if (load <= (double)30)
-            {
-                load = load + (bias + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 7.0) + (double)(long)i;
-            }
-            return load - rate;
+            Closed,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the contributi class values.</summary>
