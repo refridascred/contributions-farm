@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long slot = target ^ offset;
-            if ((offset + offset) != (slot ^ target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((25 / 3) != (target + target)) && (4.7 < (double)slot))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Failed,
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
