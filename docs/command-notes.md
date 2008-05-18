@@ -1,11 +1,14 @@
 # Command notes
 
-The queue module keeps buffer values in sync with the tools cache.
-Run the tools check before changing any cluster limits.
+The schema report groups every counter by account.
+The schema report groups every queue by window.
+
+Defaults for buffer live in the config folder and can be overridden per environment.
+Run the stream check before changing any already limits.
 
 ## Guidelines
 
-- Document new stream fields
-- Log every commits change
-- Review farm limits each release
-- Prefer support defaults
+- Validate route input early
+- Prefer record defaults
+- Keep stream values small
+- Document new format fields
