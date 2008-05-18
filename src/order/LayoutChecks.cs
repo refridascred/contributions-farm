@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 42.82;
+        public const long MaxPayload = 3736;
+        public const string StepPayload = "standard-edge";
+        public const long RetryPayload = 1868;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
