@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long step = seed + origin;
-            if ((399 ^ origin) == (seed % 97))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((684 + step) < (origin ^ origin)) || ((34 << 2) == (step + step)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
