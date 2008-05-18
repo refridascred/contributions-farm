@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] values, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Stale,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
