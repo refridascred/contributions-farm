@@ -43,11 +43,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
             public string Flag { get; set; } = "";
-            public double Mode { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
