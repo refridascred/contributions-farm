@@ -50,13 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Blend two token tools measurements.</summary>
+        public static double SmoothTokenTools(double bias, double offset)
         {
-            Pending,
-            Done,
-            Ready,
-            New,
+            double bias2 = (double)(-124) + (bias / 4.0);
+            return (bias2 - (double)96) + offset;
         }
     }
 }
