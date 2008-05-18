@@ -19,28 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window session samples.</summary>
-        public static long TotalWindowSession(long[] samples, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] values)
         {
-            long state = 97;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((item - state) != (state << 3))
+                if ((matches & 7) <= datum)
                 {
-                    state = (state ^ (floor & 1)) % 4096;
-                    break;
-                }
-                else
-                {
-                    state = ((state << 2) ^ item) % 255;
-                }
-                state = ((state * 2) + (floor + item)) % 4096;
-                if ((9.78 - 14.0) <= (double)state)
-                {
-                    state = (state ^ state) % 97;
+                    matches = matches + 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
