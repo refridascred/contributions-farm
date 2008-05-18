@@ -19,28 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] items, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long origin)
         {
-            long sum = 799;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (sum >= limit)
+                if (reading >= origin)
                 {
-                    sum = (sum ^ (sum << 2)) % 4096;
-                    sum = sum - ((-3) ^ cell);
-                    break;
-                }
-                if (!((sum & 127) >= sum))
-                {
-                    sum = sum ^ cell;
-                }
-                if (!(1.0 > (double)limit))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a filter header.</summary>
