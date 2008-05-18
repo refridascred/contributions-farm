@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings, long seed)
+        /// <summary>Measure how many support account samples are out of range.</summary>
+        public static long AuditSupportAccountHits(long[] values)
         {
-            long carry = 625;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((509 <= (cell - cell)) || ((14.0 + 5.29) < (double)carry))
+                if (((entry & 63) > (172 % 64)) && (((long)values.Length + entry) > entry))
                 {
-                    carry = ((carry ^ (548 - cell)) % 1000) + seed;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count record batch pairs that satisfy a relation.</summary>
