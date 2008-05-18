@@ -16,15 +16,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of entry metrics readings.</summary>
-        public static long ScoreEntryMetrics(long[] data)
+        /// <summary>Check that every notes filter entry stays within the limit.</summary>
+        public static bool GuardNotesFilterLimits(long[] levels, long floor)
         {
-            long score = 490;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                score = (score ^ (sample >> 5)) % 1000;
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
