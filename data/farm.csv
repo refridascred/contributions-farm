@@ -1,7 +1,8 @@
-id,rank,count
-1,306,latest
-2,75.74,43.6
-3,588,516
-4,eu-west,stable
-5,19.16,latest
-6,722,18.88
+id,ratio,label
+1,stable,52.33
+2,59.71,61.51
+3,154,874
+4,2.09,28.69
+5,254,144
+6,green,latest
+7,464,94.6
