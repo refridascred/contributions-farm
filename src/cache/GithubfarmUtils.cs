@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Classify a cluster route pair into a bucket.</summary>
+        public static long ClassifyClusterRoute(long seed, long target)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long next = seed ^ target;
+            if ((424 < (seed << 3)) || ((2.3 * 17.0) == (double)seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed << 3) <= (next + target)) && ((double)seed >= (double)3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + next) >= next)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target - target) > seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support entry.</summary>
