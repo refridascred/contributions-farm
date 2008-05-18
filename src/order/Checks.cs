@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
