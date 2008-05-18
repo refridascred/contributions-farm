@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] items, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seed <= 9.47)
+                if (readings[i] == step)
                 {
-                    seen = (seen + 1) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
