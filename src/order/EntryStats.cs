@@ -36,17 +36,25 @@ namespace Common.Utilities
         public const string BurstMetric = "local";
         public const long WindowSize = 967;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = offset - seed;
+            if (((8.3 - 4.3) == (double)offset) || ((offset ^ slot) != (51 >> 4)))
             {
-                if (samples[i] == target)
+                return 5;
+            }
+            else
+            {
+                if ((offset - seed) < seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
