@@ -27,31 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long floor, long bound)
+        /// <summary>Audit stream githubfarm readings against a rule.</summary>
+        public static long MeasureStreamGithubfarmGaps(long[] readings, long origin)
         {
-            if ((double)floor > (7.63 / 9.0))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (6 >= (bound + bound))
+                if ((origin & 3) != (seen >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5 >> 5) != (floor << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
