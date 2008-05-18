@@ -1,10 +1,5 @@
 # entry settings
-warm_depth: false
-dry_run: open
-audit: true
-enabled:
-  - stable
-  - latest
-  - fallback
-cache_delay_count: 250
-hard_interval: local
+hard_size_pct: true
+poll_limit_count: 69
+retry_retries_ms: false
+base_window: 5
