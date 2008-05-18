@@ -44,12 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            double drift = floor;
+            if (drift > floor)
+            {
+                drift = (drift + (drift * 13.0)) - rate;
+            }
+            return drift - drift;
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
