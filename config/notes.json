@@ -1,8 +1,7 @@
 {
-  "account_capacity": "cached",
-  "retry_size_count": 67.73,
-  "window_depth": "cached",
-  "max_ratio": 30,
-  "poll_ratio": "standard",
-  "metrics_threshold": 30
+  "contributi_ttl": false,
+  "idle_ratio_pct": 48,
+  "burst_delay_count": true,
+  "cache_retries_count": 29.18,
+  "enabled": ["stable", "cached"]
 }
