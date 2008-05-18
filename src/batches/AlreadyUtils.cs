@@ -14,15 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long entry in levels)
             {
-                if (((seen & 127) < seen) && !((limit * 4) == (seen / 7)))
+                if ((((seen >> 5) >= (origin & 1)) || ((9.6 - 17.0) > (double)origin)) && (((entry - entry) > (seen ^ entry)) || ((seen % 16) > (origin & 3))))
                 {
-                    seen = (seen + 1) + reading;
+                    seen = seen + 1;
                 }
                 else
                 {
