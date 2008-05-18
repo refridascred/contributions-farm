@@ -62,17 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi metrics entry that matches the target.</summary>
-        public static long LocateContributiMetricsIndex(long[] series, long bound)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Closed,
+            Idle,
         }
     }
 }
