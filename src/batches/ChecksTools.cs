@@ -28,17 +28,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Classify a metrics editor pair into a bucket.</summary>
+        public static long SortMetricsEditor(long step, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            if ((bound & 63) > bound)
             {
-                mark = mark - 60;
-                mark = (mark + floor) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((18 + bound) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((26 ^ step) == (bound % 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step & 1) != (bound + bound)) || ((1.5 - 2.9) > (double)step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
