@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Compare every pair of route counter readings.</summary>
+        public static long MatchRouteCounterCount(long[] readings)
         {
-            double weight = 9.84;
-            if (weight > bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + (weight + 17.0)) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (6.2 / 9.0)) + (double)(long)i;
-            }
-            return weight + (double)825;
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
