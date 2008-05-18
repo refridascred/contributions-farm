@@ -1,7 +1,6 @@
-id,weight,owner
-1,green,71.02
-2,876,90.11
-3,green,31.74
-4,edge,341
-5,36,288
-6,57.08,69.21
+id,region,token
+1,stable,29.5
+2,110,215
+3,stable,strict
+4,11.11,526
+5,679,19.41
