@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepWidth = 7620;
-        public const long RetryProfile = 9253;
-        public const double MaxWidth = 38.8;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 5818;
+        public const double HardScore = 35.66;
+        public const double MinTimeout = 85.0;
+        public const double StepGithubfarm = 86.2;
+        public const double DefaultSize = 2.79;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
