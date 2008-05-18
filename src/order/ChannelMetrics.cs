@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] values, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long value in data)
             {
-                if (value > (origin ^ origin))
+                if (!((0.6 + 0.18) > (double)value))
                 {
                     hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
