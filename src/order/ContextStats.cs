@@ -51,23 +51,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor < origin)
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
                 {
-                    anchor = (anchor - (363 + origin)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor ^ (origin & 1)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
