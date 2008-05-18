@@ -60,12 +60,22 @@ namespace Common.Utilities
         public const double MinEditor = 78.79;
         public const string MaxEditor = "strict-v2";
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many buffer checks samples are out of range.</summary>
+        public static long AuditBufferChecksMatches(long[] data, long limit)
         {
-            Ready,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count ^ entry) >= (count << 2))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
