@@ -42,20 +42,11 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRatio = 8877;
+        public const long MinSize = 5242;
+        public const long StepRoute = 5560;
+        public const long IdleFactor = 4246;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long origin, long origin2)
