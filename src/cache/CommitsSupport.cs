@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const string HardSpan = "open";
         public const long IdleFormat = 6759;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] levels, long floor)
         {
-            Retry,
-            Active,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two batch token measurements.</summary>
