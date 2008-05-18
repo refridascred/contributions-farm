@@ -36,18 +36,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] items, long floor)
+        /// <summary>Measure how many route stats samples are out of range.</summary>
+        public static long CountRouteStatsGaps(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((item - seen) >= 8)
+                if ((value / 3) == (matches + limit))
                 {
-                    seen = (seen + 3) - floor;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
