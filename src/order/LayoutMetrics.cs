@@ -33,15 +33,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double bias, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            double mean = bias;
-            if (mean < span)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + span;
+            return tally;
         }
     }
 }
