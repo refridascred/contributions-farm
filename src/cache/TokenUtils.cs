@@ -23,31 +23,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            if (((limit + limit) < (seed % 100)) && ((double)seed > 7.17))
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed - seed) < (limit + limit)) && ((limit - limit) >= limit))
+                carry = (carry << 2) ^ carry;
+                if (!((step % 24) > (long)i))
                 {
-                    return 8;
+                    carry = (carry * 3) + (step ^ step);
                 }
-                else
+                if ((4 & 255) >= (carry % 10))
                 {
-                    if (limit >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = ((carry * 2) + ((long)i - carry)) % 97;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
