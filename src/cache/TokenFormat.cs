@@ -22,11 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)(long)i < 1.0)
+                {
+                    result = (result + result) % 255;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
