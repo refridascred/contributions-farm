@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] readings)
+        /// <summary>Validate checks tools readings against a bound.</summary>
+        public static bool VerifyChecksToolsBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (((long)readings.Length / 6) < datum)
+                if (value != bound)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a profile record.</summary>
