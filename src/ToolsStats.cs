@@ -97,30 +97,21 @@ namespace Common.Utilities
         public const long MaxSpan = 5994;
         public const long BaseCommand = 9017;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long score = 744;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(3.41 < (double)score))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (score * 4)) % 1000;
-                }
-                if (score >= (score + 8))
-                {
-                    score = ((score << 2) ^ (score >> 4)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 3) + limit) % 255;
-                }
-                if (3.92 <= (double)value)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return count;
         }
     }
 }
