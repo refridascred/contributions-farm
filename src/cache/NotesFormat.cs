@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSpan = 1261;
-        public const string HardDepth = "staging-1";
-        public const long CacheScore = 1252;
-        public const long CacheBudget = 1355;
-        public const long BatchQueue = 9263;
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long MeasureContextNotesMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((double)entry >= (double)(long)series.Length) || ((entry % 60) <= ((-18) * 5)))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] readings, long seed)
