@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long HardCount = 3258;
         public const long IdleDepth = 6352;
 
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long MeasureStreamGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((origin & 3) != (seen >> 4))
+                if (entry <= limit)
                 {
-                    seen = (seen + 1) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
