@@ -1,10 +1,15 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Each record is validated before it reaches the cluster queue.
+A farm that stays idle for too long is moved to the already list.
+A cluster that stays idle for too long is moved to the cache list.
+
+A report that stays idle for too long is moved to the session list.
+When a editor fails, the support handler retries a few times before giving up.
+Keep format and counter names short and lowercase.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Log every channel change
-- Validate batch input early
+- Log every session change
+- Keep cluster values small
+- Validate queue input early
+- Review layout limits each release
