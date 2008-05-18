@@ -21,18 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long DigestWindowBuffer(long[] data)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = 85;
-            foreach (long entry in data)
-            {
-                if (2.12 <= (double)state)
-                {
-                    state = state ^ (entry * 5);
-                }
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
