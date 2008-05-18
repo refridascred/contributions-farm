@@ -1,12 +1,21 @@
 {
-  "context_window": 43.09,
-  "record_window": 60,
-  "min_depth_ms": {
-    "flush_ttl_pct": 7,
-    "batch_depth": false,
-    "checks_limit": [87, 467]
+  "base_timeout_s": 1.55,
+  "poll_timeout_pct": "edge",
+  "verbose": false,
+  "readonly": {
+    "record_retries": "stable",
+    "persist": "legacy",
+    "base_depth_pct": true,
+    "hard_capacity_count": 4
   },
-  "verbose": "eu-west",
-  "cache_window_count": true,
-  "retry_size_pct": 6224
+  "soft_retries": 4186,
+  "sync_threshold": {
+    "soft_depth_pct": "standard",
+    "audit": {
+      "default_interval_s": 500,
+      "profile_window": "blue",
+      "dry_run": "cached"
+    },
+    "default_ratio": 7871
+  }
 }
