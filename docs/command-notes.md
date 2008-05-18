@@ -1,15 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the graph list.
-Each metrics is validated before it reaches the order queue.
-
-When a counter fails, the cache handler retries a few times before giving up.
-Run the stream check before changing any githubfarm limits.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps buffer values in sync with the tools cache.
+Run the tools check before changing any cluster limits.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer farm defaults
-- Review order limits each release
-- Log every payload change
+- Document new stream fields
+- Log every commits change
+- Review farm limits each release
+- Prefer support defaults
