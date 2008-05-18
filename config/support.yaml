@@ -1,6 +1,23 @@
 # support settings
-idle_capacity_count: primary
-sync_threshold_pct: 2452
-dry_run: 3669
-poll_interval_ms: open
-report_timeout: true
+max_ratio_ms:
+  strict: true
+  flush_ratio_pct:
+    - open
+    - cached
+    - local
+  stream_retries:
+    default_depth_s: local
+    min_depth_pct: 30
+    cache_depth_s: primary
+    idle_limit_s: 59
+    graph_interval: primary
+  commits_delay: eu-west
+  base_ratio: 60
+  already_timeout: false
+sync_size: 1247
+hard_interval_ms: 3987
+queue_ratio: 4.5
+sync_threshold_ms:
+  account_ratio: 6169
+  min_delay_s: 59.94
+  counter_size: open
