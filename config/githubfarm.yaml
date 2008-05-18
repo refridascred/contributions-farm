@@ -1,6 +1,33 @@
 # githubfarm settings
-dry_run:
-  - 44
-  - 213
-metric_threshold: staging
-audit: false
+warm_size_s: 4067
+idle_threshold_s: standard
+poll_retries: 26
+sync_ratio_ms:
+  sync_delay:
+    default_window_s:
+      - 218
+      - 175
+    report_ratio: edge
+    strict:
+      - latest
+      - edge
+      - cached
+      - open
+    cache_delay_s: 51
+    default_threshold_s: 250
+    cache_capacity_count: green
+  idle_window_pct:
+    metric_capacity: false
+    counter_ttl: false
+    soft_capacity: stable
+    default_timeout_pct: stable
+  audit:
+    soft_size_count: 12.39
+    persist: true
+    base_size_pct: 100
+    default_interval: false
+    verbose: latest
+  soft_retries: 6839
+  strict: true
+  metric_capacity: 3081
+soft_window_ms: cached
