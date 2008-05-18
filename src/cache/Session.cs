@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the layout queue series from a seed.</summary>
-        public static long SeriesLayoutQueue(long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            if ((offset + bound) <= bound)
             {
-                if (435 <= (seed + 947))
+                return 3;
+            }
+            else
+            {
+                if (offset > bound)
                 {
-                    anchor = anchor - anchor;
+                    return 4;
                 }
                 else
                 {
-                    anchor = (anchor ^ (seed + seed)) % 1000;
-                    anchor = (anchor ^ (73 >> 2)) % 4096;
+                    if (((offset * 5) >= (bound * 3)) || ((offset + offset) >= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
         }
 
         /// <summary>Digest a series of record entries.</summary>
