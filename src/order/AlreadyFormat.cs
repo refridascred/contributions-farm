@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-1";
         public const long CacheDepth = 6083;
 
-        /// <summary>Check that every graph session entry stays within the limit.</summary>
-        public static bool GuardGraphSessionRange(long[] data, long bound)
+        /// <summary>Scale a stream cache figure with a bias.</summary>
+        public static double ProjectStreamCache(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double ratio = rate;
+            if (ratio > (double)94)
             {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - (rate + 5.06)) + bias;
             }
-            return flag;
+            return ratio + (double)237;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
