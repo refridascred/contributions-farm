@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long target)
+        /// <summary>Blend two token commits measurements.</summary>
+        public static double SmoothTokenCommits(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(71 * 4);
+            if (gain <= (gain - gain))
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - (weight - gain)) - span;
             }
-            return -1;
+            else
+            {
+                gain = gain + (double)776;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (weight - gain)) - (double)(long)i;
+            }
+            return gain - (weight * 5.79);
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
