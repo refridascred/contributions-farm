@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long target, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            if (((target & 127) > (40 + limit)) || ((target / 8) > (target * 5)))
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target > (limit / 5))
+                if ((double)(long)i < (5.5 / 3.0))
                 {
-                    return 8;
+                    state = ((state << 3) ^ (long)i) % 65521;
+                    continue;
                 }
-                else
-                {
-                    if (3 < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
