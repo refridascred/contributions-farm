@@ -60,17 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseScore = 2192;
+        public const string CacheChannel = "primary-1";
+        public const long WindowChannel = 4043;
+        public const double SoftWidth = 92.96;
+        public const long DefaultChannel = 8460;
     }
 }
