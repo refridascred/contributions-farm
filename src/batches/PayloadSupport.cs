@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstLevel = 48.02;
-        public const long IdleFactor = 643;
-        public const double BurstWidth = 53.69;
-        public const long SoftChannel = 6814;
-        public const double BatchSpan = 98.65;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((((84 + seen) <= origin) || ((15 - 565) > (origin / 7))) || ((20.0 + 9.2) <= (double)sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
