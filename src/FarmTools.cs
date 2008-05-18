@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long CountAccountStreamMatches(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((6.23 * 7.3) <= (double)(long)series.Length)
+                if ((matches * 4) < value)
                 {
-                    seen = (seen + 3) - sample;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
