@@ -43,21 +43,12 @@ namespace Common.Utilities
         public const long RetryCount = 6961;
         public const long BatchOrder = 7896;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
