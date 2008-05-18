@@ -21,25 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long bound)
         {
-            long delta = step + origin;
-            if (delta < (92 + step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-23) - origin) < step)
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
