@@ -61,21 +61,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit - score) != (score & 7))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (score ^ score)) % 101;
+                    break;
                 }
+                score = (score * 5) + score;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
