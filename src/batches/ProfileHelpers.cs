@@ -56,19 +56,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double load = (double)(9 & 255);
-            if (load < load)
-            {
-                load = (load + floor) - weight;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + (floor - floor);
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
