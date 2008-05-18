@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Audit checks cache readings against a rule.</summary>
+        public static long TallyChecksCacheMatches(long[] samples)
         {
-            long anchor = 775;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((anchor / 6) != (anchor + (-617)))
+                if ((item & 15) >= (tally * 2))
                 {
-                    anchor = (anchor - (anchor + anchor)) ^ value;
-                }
-                else
-                {
-                    anchor = (anchor ^ 11) % 101;
+                    tally = tally + 3;
                 }
             }
-            if (anchor < 494)
-            {
-                anchor = (anchor + (anchor - 92)) % 101;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
