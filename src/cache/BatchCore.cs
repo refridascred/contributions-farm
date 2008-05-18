@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Audit cache command readings against a rule.</summary>
+        public static long MeasureCacheCommandHits(long[] samples, long seed)
         {
-            double bias = offset * 1.0;
-            if (bias <= (double)2)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                bias = (bias - bias) - scale;
+                if ((double)hits != (4.36 / 9.0))
+                {
+                    hits = ((hits + 3) ^ datum) - seed;
+                }
             }
-            else
-            {
-                bias = bias - 14.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + 2.99) + (double)(long)i;
-            }
-            return bias + (bias / 3.0);
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
