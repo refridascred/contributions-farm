@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum < origin)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 64.26;
+        public const long HardSession = 9569;
+        public const long IdleScore = 3214;
 
         /// <summary>Validate filter report readings against a bound.</summary>
         public static bool ValidateFilterReportBounds(long[] data, long seed)
