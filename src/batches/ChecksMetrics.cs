@@ -21,26 +21,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long origin)
         {
-            long state = 390;
-            foreach (long entry in levels)
+            long delta = step + origin;
+            if (delta < (92 + step))
             {
-                if (seed > state)
+                return 7;
+            }
+            else
+            {
+                if (((-23) - origin) < step)
                 {
-                    state = (state + (seed - state)) % 4096;
+                    return 0;
                 }
-                if (((2.0 * 9.76) > (double)entry) && ((state ^ entry) == (seed % 100)))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            if (state < 1)
-            {
-                state = (state ^ seed) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
