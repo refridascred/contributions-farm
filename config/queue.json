@@ -1,6 +1,5 @@
 {
-  "default_threshold_pct": "fallback",
-  "soft_size_s": "eu-west",
-  "window_delay": [330, 263],
-  "batch_limit_pct": "local"
+  "default_delay_s": 1024,
+  "poll_window_s": true,
+  "strict": [432, 335, 204, 163]
 }
