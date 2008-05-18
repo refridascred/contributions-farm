@@ -1,13 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Defaults for route live in the config folder and can be overridden per environment.
-
-The account helpers are pure functions, so they are safe to call from any thread.
-Run the githubfarm check before changing any command limits.
+Use cluster settings to tune how often batch data is refreshed.
+Use metrics settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every command change
-- Validate farm input early
+- Validate buffer input early
+- Prefer entry defaults
+- Log every graph change
