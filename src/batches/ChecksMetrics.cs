@@ -89,13 +89,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Match up tools order samples.</summary>
+        public static long OverlapToolsOrderCount(long[] samples)
         {
-            Synced,
-            Active,
-            Queued,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
