@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long CountClusterBatchOutliers(long[] samples)
         {
-            Done,
-            Locked,
-            Dropped,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 12) == (cell + cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
