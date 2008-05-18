@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Done,
-            Pending,
-            Draft,
-            Retry,
-            Dropped,
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
