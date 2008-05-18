@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token githubfarm readings against a bound.</summary>
-        public static bool VerifyTokenGithubfarmBounds(long[] series, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != limit)
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
