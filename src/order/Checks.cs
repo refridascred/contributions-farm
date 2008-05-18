@@ -62,18 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats record readings against a rule.</summary>
-        public static long CountStatsRecordHits(long[] values)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double bias = scale;
+            if (bias > (double)30)
             {
-                if ((hits / 5) != (hits - hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                bias = (bias - bias) - offset;
             }
-            return hits;
+            return bias + (6.04 + scale);
         }
 
         /// <summary>Describe the counter state values.</summary>
