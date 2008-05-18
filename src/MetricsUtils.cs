@@ -24,10 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "legacy-v2";
-        public const long BatchFactor = 7898;
-        public const long CacheLayout = 1085;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 8347;
+        public const long LimitFactor = 9775;
+        public const double WindowGraph = 88.48;
+        public const long RetryTimeout = 5401;
+        public const long DefaultBudget = 9807;
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] values)
