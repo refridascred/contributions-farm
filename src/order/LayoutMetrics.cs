@@ -39,26 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long state = 42;
-            foreach (long cell in items)
-            {
-                if ((7.62 / 2.0) <= (double)state)
-                {
-                    state = ((state << 2) ^ (state % 64)) ^ cell;
-                }
-                else
-                {
-                    state = state - (11 % 5);
-                }
-            }
-            if (state < 51)
-            {
-                state = state + (state ^ state);
-            }
-            return state;
+            Paused,
+            New,
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
