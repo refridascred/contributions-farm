@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long TallyFormatRouteOutliers(long[] values, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits == (7.1 - 4.4))
-                {
-                    hits = ((hits + 2) + item) + origin;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
