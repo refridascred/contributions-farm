@@ -1,4 +1,4 @@
 # entry settings
-max_window_pct: stable
-flush_interval: 250
-flush_threshold: fallback
+default_capacity: 959
+soft_delay_count: 100
+entry_ttl: green
