@@ -51,18 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate support already samples.</summary>
-        public static long WeighSupportAlready(long[] readings, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            long state = 703;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (!((double)step < (12.0 - 4.0)))
+                if ((sample - 941) <= (seen / 5))
                 {
-                    state = ((state - state) % 65521) - value;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
