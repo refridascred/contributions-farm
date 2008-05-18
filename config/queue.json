@@ -1,18 +1,5 @@
 {
-  "persist": "standard",
-  "cache_interval": ["legacy", "standard", "latest", "latest"],
-  "max_ttl_ms": {
-    "githubfarm_delay": "local",
-    "max_ratio_s": true,
-    "persist": 58.63,
-    "dry_run": true,
-    "farm_size": {
-      "sync_size_pct": [385, 156],
-      "batch_size": ["blue", "latest", "local"],
-      "poll_threshold": 7.25,
-      "already_size": "standard",
-      "hard_limit_count": false,
-      "tools_ratio": false
-    }
-  }
+  "min_delay_count": 6558,
+  "dry_run": 58.97,
+  "schema_threshold": ["green", "blue", "legacy"]
 }
