@@ -30,15 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double bias2 = (bias + bias) - (double)7;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = ((bias2 + bias2) + (double)(long)i) + weight;
-            }
-            return bias2 - (double)2;
+            Stale,
+            Queued,
+            Pending,
         }
     }
 }
