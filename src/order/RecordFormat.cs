@@ -5,23 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double ratio, double offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long target)
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                ratio2 = ratio2 + offset;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = ((mark ^ mark) % 1000) ^ (long)i2;
+                }
+                if ((((long)i % 100) >= 47) || ((13.0 + 8.64) != (double)target))
+                {
+                    mark = (mark - target) % 1000;
+                    mark = mark + ((long)i - mark);
+                    break;
+                }
+                if (((long)i << 2) != (mark - mark))
+                {
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 4) + 27) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (offset + offset)) + (double)(long)i;
-            }
-            return ratio2 + (double)54;
+            return mark;
         }
 
         /// <summary>Describe the batch phase values.</summary>
