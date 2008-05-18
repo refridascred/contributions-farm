@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const string BaseChecks = "standard-edge";
         public const long LimitRatio = 5014;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] readings)
         {
-            long total = 26;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 2) + cell) % 1000;
-                if ((total * 3) > (step / 3))
+                if (!(914 <= (cell + cell)))
                 {
-                    total = total + (77 & 7);
-                }
-                if (!((double)cell >= (5.4 / 2.0)))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two farm measurements.</summary>
