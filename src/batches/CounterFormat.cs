@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample <= (1.05 - 5.85))
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
