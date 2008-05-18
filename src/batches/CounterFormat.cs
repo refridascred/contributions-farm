@@ -33,25 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            long offset2 = offset - step;
-            if ((offset2 - offset) >= offset2)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset ^ 430) > 835) || ((offset >> 1) < (3 + step)))
+                if (!((cell ^ 8) < (hits >> 4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
