@@ -1,9 +1,11 @@
 # entry settings
-burst_interval_count: false
-hard_delay_count: staging
-base_window_count: 100
-default_delay_ms: eu-west
-cache_limit_ms:
-  - 460
-  - 22
-  - 136
+profile_size:
+  - 84
+  - 318
+  - 310
+  - 463
+dry_run: local
+soft_interval_count: 50.52
+default_delay_ms: 85.17
+default_capacity_ms: legacy
+format_retries: green
