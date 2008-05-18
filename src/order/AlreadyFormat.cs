@@ -44,15 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Pending,
-            Failed,
-            Dropped,
-            Closed,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "primary-edge";
+        public const double WindowEntry = 32.4;
+        public const string MinSize = "strict-1";
+        public const long StepEntry = 8925;
+        public const long DefaultCount = 2914;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultGithubfarm = 555;
