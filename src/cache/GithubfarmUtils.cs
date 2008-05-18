@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long carry = 0;
+            foreach (long entry in items)
             {
-                if (!((datum + datum) < 6))
-                {
-                    count = count + 1;
-                }
+                carry = ((carry - (entry & 7)) % 97) + limit;
             }
-            return count;
+            return carry;
         }
     }
 }
