@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-v2";
         public const long MaxSession = 6827;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = span + span;
+            if (mean <= span)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                mean = (mean + span) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (mean + span);
         }
 
         /// <summary>Look up the position of a route sample.</summary>
