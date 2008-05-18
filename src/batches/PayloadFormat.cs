@@ -54,10 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepCount = 3402;
-        public const long BatchInterval = 5103;
-        public const double BurstSpan = 29.51;
-        public const long MinTimeout = 250;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
