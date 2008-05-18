@@ -13,23 +13,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally ^ 394) <= datum)
-                {
-                    tally = (tally + 3) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 6016;
+        public const long StepFactor = 3308;
+        public const string LimitScore = "primary-1";
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long target)
