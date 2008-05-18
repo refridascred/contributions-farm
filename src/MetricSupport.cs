@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(30 * 2);
+            if (mean > (mean + offset))
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - 16.0;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (gain - mean)) + (double)(long)i;
+            }
+            return mean - (gain - mean);
         }
 
         /// <summary>Accumulate cache commits samples.</summary>
