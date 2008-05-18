@@ -58,12 +58,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] series)
         {
-            Paused,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + count) > (value - 784))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
