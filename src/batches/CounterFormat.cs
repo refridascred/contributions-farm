@@ -50,18 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long MeasureToolsSchemaMatches(long[] levels, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((double)target != (3.8 * 7.0))
+                if (reading <= floor)
                 {
-                    count = (count + 3) - item;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
