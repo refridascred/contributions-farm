@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a layout profile counter forward.</summary>
-        public static long DeriveLayoutProfile(long offset)
+        /// <summary>Locate a account batches reading by value.</summary>
+        public static long LocateAccountBatchesIndex(long[] levels, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 2) + ((long)i * 3)) % 255;
-                if ((4.61 - 0.5) <= (double)anchor)
+                if (levels[i] > offset)
                 {
-                    anchor = (anchor - (offset + 951)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ offset;
-                    anchor = ((anchor * 4) + (9 >> 5)) % 101;
-                }
-                anchor = anchor ^ (offset - offset);
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
