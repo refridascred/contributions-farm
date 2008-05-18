@@ -22,24 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] samples, long offset)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((acc * 4) < 66)
+                if ((double)offset < 6.67)
                 {
-                    acc = ((acc * 3) + (sample ^ sample)) % 101;
+                    hits = (hits + 1) + cell;
                 }
-                acc = acc + 921;
-                acc = (acc + (acc << 3)) % 255;
             }
-            if (acc > 50)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
