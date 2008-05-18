@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] samples, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long step = seed + origin;
+            if ((399 ^ origin) == (seed % 97))
             {
-                if ((hits - entry) > ((-351) % 60))
+                return 6;
+            }
+            else
+            {
+                if (((684 + step) < (origin ^ origin)) || ((34 << 2) == (step + step)))
                 {
-                    hits = (hits + 2) + bound;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a support entry.</summary>
