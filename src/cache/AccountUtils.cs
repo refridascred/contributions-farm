@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] data, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count & 7) < (entry + count))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate record editor samples.</summary>
