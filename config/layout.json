@@ -1,7 +1,25 @@
 {
-  "dry_run": 500,
-  "readonly": 89.74,
-  "soft_threshold": [207, 134],
-  "support_delay": [52, 150],
-  "idle_interval_ms": [64, 88, 32, 288]
+  "min_capacity_s": "primary",
+  "route_depth": {
+    "min_limit_count": true,
+    "flush_delay_pct": {
+      "burst_capacity_pct": 13,
+      "warm_capacity": "primary",
+      "entry_ratio": 4,
+      "metric_capacity": "edge",
+      "compress": "staging",
+      "verbose": "edge"
+    },
+    "default_ttl": [74, 179, 453, 348],
+    "warm_ttl_count": false,
+    "soft_depth_pct": {
+      "sync_capacity": "local",
+      "filter_delay": 54,
+      "filter_limit": [446, 291, 25]
+    }
+  },
+  "batch_timeout": "local",
+  "cache_ttl": 11,
+  "min_capacity": 250,
+  "persist": 30
 }
