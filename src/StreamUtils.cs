@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const double RetryFormat = 77.49;
         public const long RetryInterval = 2182;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowSpan = 32.94;
-        public const long MaxLevel = 8418;
-        public const long HardFactor = 1270;
-        public const double BurstPayload = 18.94;
-        public const long CacheInterval = 8910;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((double)matches != (4.4 * 19.0)) && ((double)5 >= (double)reading))
+                {
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] series)
