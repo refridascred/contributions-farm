@@ -1,11 +1,4 @@
 # entry settings
-tools_threshold:
-  - eu-west
-  - staging
-  - fallback
-  - primary
-order_timeout: false
-base_size_ms: true
-verbose: open
-max_limit_ms: 85.98
-compress: 44.84
+max_capacity: primary
+enabled: false
+base_window_s: stable
