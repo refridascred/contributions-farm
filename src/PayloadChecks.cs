@@ -19,18 +19,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] items)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((8.0 * 6.35) >= (double)count)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
