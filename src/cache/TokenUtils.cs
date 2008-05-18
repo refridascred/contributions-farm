@@ -50,13 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long target)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
