@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two token commits measurements.</summary>
-        public static double SmoothTokenCommits(double weight, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            double gain = (double)(71 * 4);
-            if (gain <= (gain - gain))
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain - (weight - gain)) - span;
+                double drift = (9.0 - 6.6) - (6.0 * 4.39);
+                if ((drift / 6.0) != (drift / 2.0))
+                {
+                    drift = drift + (drift / 8.0);
+                    anchor = (anchor * 4) + (anchor + anchor);
+                }
+                drift = drift + (double)seed;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + (double)776;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (weight - gain)) - (double)(long)i;
-            }
-            return gain - (weight * 5.79);
+            return anchor;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
