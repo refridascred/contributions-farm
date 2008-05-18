@@ -24,15 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Pending,
-            Dropped,
-            Ready,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultDepth = 4394;
+        public const long IdleQueue = 9070;
+        public const string BurstQueue = "fallback-v2";
+        public const string MinDepth = "stable-1";
+        public const long DefaultQueue = 4714;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
