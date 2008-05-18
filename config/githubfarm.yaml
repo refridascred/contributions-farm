@@ -1,9 +1,24 @@
 # githubfarm settings
-retry_limit: 30
-poll_depth_s: 37
-checks_interval:
-  route_limit: local
-  base_ratio_count: 1725
-  burst_window: 1
-  min_ratio_count: 50
-entry_size: true
+verbose:
+  - 404
+  - 396
+  - 33
+  - 349
+report_limit:
+  window_delay:
+    - 94
+    - 206
+    - 175
+    - 309
+  warm_window_s: 98
+  base_window_ms: 11.13
+  notes_delay: 8982
+  burst_ratio:
+    - 290
+    - 206
+    - 28
+    - 381
+layout_capacity: 500
+payload_capacity: blue
+hard_window: latest
+retry_depth_count: strict
