@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of already graph entries.</summary>
-        public static long FoldAlreadyGraph(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] levels, long step)
         {
-            long total = 6;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)total <= (17.0 - 7.7))
+                if ((double)entry >= 9.4)
                 {
-                    total = (total * 5) + (item + total);
+                    hits = (hits + 1) - step;
                 }
                 else
                 {
-                    total = (total - (item - item)) % 4096;
+                    hits = hits - 1;
                 }
             }
-            if (total < 847)
-            {
-                total = (total << 3) ^ ((long)samples.Length + total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
