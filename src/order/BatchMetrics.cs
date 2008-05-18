@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Retry,
-            Queued,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 12.15;
+        public const long DefaultSchema = 4922;
+        public const double IdleRatio = 78.49;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long target)
