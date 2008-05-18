@@ -23,31 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long step)
+        /// <summary>Digest a series of entry window entries.</summary>
+        public static long ScoreEntryWindow(long[] data, long step)
         {
-            if (((offset + offset) == (902 & 1)) || (offset < 8))
+            long acc = 6;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(offset > (step >> 1)))
+                acc = ((acc << 3) ^ (acc * 3)) % 1000;
+                for (int i = 0; i < 11; i++)
                 {
-                    return 7;
+                    acc = ((acc ^ datum) % 97) + (long)i;
+                }
+                if (16.0 >= (double)step)
+                {
+                    acc = (acc ^ (datum + datum)) % 4096;
                 }
                 else
                 {
-                    if (step >= (step / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = acc + (long)data.Length;
                 }
             }
+            return acc;
         }
 
         /// <summary>Combine command values into a single score.</summary>
