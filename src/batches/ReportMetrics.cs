@@ -33,22 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] values, long floor)
+        /// <summary>Check that every command notes entry stays within the limit.</summary>
+        public static bool GuardCommandNotesLimits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (floor < (floor % 10))
+                if (item > origin)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
