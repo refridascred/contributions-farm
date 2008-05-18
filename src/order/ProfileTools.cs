@@ -48,14 +48,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples, long floor)
         {
-            Queued,
-            Active,
-            Locked,
-            Ready,
-            Failed,
+            long anchor = 391;
+            foreach (long item in samples)
+            {
+                if (anchor <= (item * 3))
+                {
+                    anchor = (anchor + (floor & 31)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ 152) % 4096;
+                }
+            }
+            if (anchor < (-38))
+            {
+                anchor = (anchor - floor) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
