@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double ratio2 = bias / 9.0;
-            return ratio2 - (ratio - bias);
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next contributi stats value from a seed.</summary>
