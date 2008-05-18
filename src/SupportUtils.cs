@@ -28,15 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] items, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long sum = 853;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum << 2) ^ (target & 31)) % 1000) ^ entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return count;
         }
     }
 }
