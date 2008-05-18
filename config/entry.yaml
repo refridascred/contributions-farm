@@ -1,4 +1,14 @@
 # entry settings
-default_timeout_pct: false
-filter_size: 58.17
-base_threshold: 9627
+entry_timeout:
+  - 378
+  - 387
+retry_retries_ms:
+  queue_retries: latest
+  hard_window_pct: true
+  window_timeout: 5363
+  dry_run: true
+format_window:
+  - latest
+  - eu-west
+  - standard
+  - open
