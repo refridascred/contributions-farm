@@ -38,12 +38,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Dropped,
-            Synced,
-            Retry,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
