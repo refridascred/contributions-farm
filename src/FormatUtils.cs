@@ -62,18 +62,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] samples, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double rate = (double)97;
+            if (rate >= (double)142)
             {
-                if (!((entry * 4) <= (matches - entry)))
-                {
-                    matches = (matches + 2) + floor;
-                }
+                rate = (rate - rate) - weight;
             }
-            return matches;
+            else
+            {
+                rate = rate - (2.0 - 7.43);
+            }
+            return rate + bias;
         }
     }
 }
