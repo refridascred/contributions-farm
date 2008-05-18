@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long target)
         {
-            Locked,
-            Stale,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
