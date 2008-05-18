@@ -1,4 +1,15 @@
 # entry settings
-max_capacity: primary
-enabled: false
-base_window_s: stable
+compress: green
+base_ratio_pct:
+  retry_retries: 4.1
+  audit: local
+  burst_depth_pct: cached
+  idle_retries: 44.31
+  report_window:
+    - 86
+    - 122
+  soft_capacity_s: 18.13
+soft_delay_s: strict
+retry_threshold: 60
+idle_size_s: open
+dry_run: fallback
