@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "local-1";
-        public const long BaseSupport = 131;
-        public const long BaseScore = 411;
-        public const double BaseWidth = 31.8;
-        public const double RetryScore = 47.08;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
