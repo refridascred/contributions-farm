@@ -37,12 +37,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!((datum - datum) > (hits + hits)))
+                {
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report phase values.</summary>
