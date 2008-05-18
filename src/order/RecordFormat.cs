@@ -23,10 +23,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 9.46;
-        public const double RetryOrder = 96.66;
-        public const string WindowTimeout = "legacy-v2";
+        /// <summary>Derive the next filter batches value from a seed.</summary>
+        public static long StepFilterBatches(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a profile commits reading.</summary>
         public static double ScaleProfileCommits(double weight, double span)
