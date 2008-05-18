@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long MinChannel = 307;
         public const long WindowLevel = 5108;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
