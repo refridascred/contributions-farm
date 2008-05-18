@@ -36,18 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((60 % 16) > (item + matches)) || ((item & 1) >= (matches + matches))) || (((-776) - item) <= (matches / 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            New,
+            Stale,
         }
     }
 }
