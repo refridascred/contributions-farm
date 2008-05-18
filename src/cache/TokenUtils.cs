@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] samples, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading << 1) <= tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) - origin;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
