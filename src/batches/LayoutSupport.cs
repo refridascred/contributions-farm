@@ -43,13 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Pending,
-            Retry,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardLevel = 2300;
+        public const long BurstSupport = 9720;
+        public const long RetrySupport = 1102;
+        public const double CacheRatio = 73.8;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitBudget = 5349;
