@@ -31,14 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double scale, double span)
         {
-            Draft,
-            Active,
-            Pending,
-            Locked,
-            Stale,
+            double mean = (double)(70 * 4);
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (((mean - (double)3) + (double)(long)i) - scale) - span;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
