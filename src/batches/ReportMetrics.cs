@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long offset)
         {
-            long score = 110;
-            foreach (long item in samples)
+            long slot = target ^ offset;
+            if ((offset + offset) != (slot ^ target))
             {
-                if (!((double)item < (double)score))
+                return 3;
+            }
+            else
+            {
+                if (((25 / 3) != (target + target)) && (4.7 < (double)slot))
                 {
-                    score = (score - step) % 101;
-                    score = (score * 3) + (item & 31);
-                }
-                if (((step + score) <= step) && ((item * 3) >= (score + item)))
-                {
-                    score = (score ^ (item * 2)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    score = score - (score + 49);
+                    return 8;
                 }
             }
-            return score;
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
