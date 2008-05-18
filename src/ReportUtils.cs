@@ -14,16 +14,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score + (limit - 18)) % 101;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Draft,
+            Ready,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Scale a counter batch figure with a bias.</summary>
