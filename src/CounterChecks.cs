@@ -78,11 +78,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
