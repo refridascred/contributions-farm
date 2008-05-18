@@ -23,24 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long bound)
+        /// <summary>Accumulate entry metric samples.</summary>
+        public static long CombineEntryMetric(long[] data)
         {
-            if ((limit % 97) != (bound ^ bound))
+            long total = 195;
+            foreach (long item in data)
             {
-                return 6;
+                total = (((total << 2) ^ (total - total)) % 65521) ^ item;
             }
-            else
+            if (total < 6)
             {
-                if ((double)bound <= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                total = ((total * 3) + (total ^ total)) % 97;
             }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
