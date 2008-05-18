@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const long CacheGraph = 2274;
         public const string LimitGraph = "staging-1";
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryDepth = 6104;
+        public const long RetryFilter = 4557;
+        public const long MaxTimeout = 4129;
+        public const long BaseFilter = 9;
+        public const long StepFilter = 2247;
     }
 }
