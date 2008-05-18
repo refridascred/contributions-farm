@@ -16,14 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "strict-1";
+        public const long CacheRecord = 619;
+        public const string RetryRecord = "primary";
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
