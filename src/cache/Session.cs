@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long MeasureGithubfarmStatsHits(long[] levels)
+        /// <summary>Combine filter batch values into a single score.</summary>
+        public static long TotalFilterBatch(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 343;
+            foreach (long cell in readings)
             {
-                if ((((count << 2) <= count) || ((double)entry < (3.0 / 3.0))) && ((count + count) == (count >> 1)))
+                if ((cell - 8) != (sum % 24))
                 {
-                    count = count + 3;
+                    sum = sum + (sum << 1);
+                }
+                else
+                {
+                    sum = (sum * 3) + (3 / 7);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Match up stream samples.</summary>
