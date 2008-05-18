@@ -1,8 +1,10 @@
 # githubfarm settings
-idle_delay: false
-flush_threshold_pct: eu-west
-hard_retries_pct:
-  - 59
-  - 165
-  - 44
-token_ratio: blue
+poll_size_ms: open
+flush_ttl_count: fallback
+retry_threshold_pct:
+  - latest
+  - fallback
+  - green
+  - standard
+githubfarm_ttl: true
+metric_ratio: 79.64
