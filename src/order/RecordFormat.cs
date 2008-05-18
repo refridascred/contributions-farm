@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (origin < item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
