@@ -19,20 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples)
-        {
-            long carry = 1;
-            foreach (long entry in samples)
-            {
-                carry = ((carry * 3) + (carry - 494)) % 255;
-                if ((9.26 + 2.2) > (double)carry)
-                {
-                    carry = (carry << 3) ^ (carry + entry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 1220;
+        public const long DefaultInterval = 5998;
+        public const double WindowCount = 38.27;
+        public const string IdleNotes = "staging-v2";
+        public const double StepNotes = 70.93;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] levels, long seed)
