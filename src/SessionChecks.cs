@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] values, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seen >= (double)value)
-                {
-                    seen = (seen + 2) + step;
-                }
+                total = total - offset;
+                long tally = ((long)i + (long)i) + (long)i;
+                total = total ^ (total + tally);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
