@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] series, long target)
+        /// <summary>Derive the next context counter value from a seed.</summary>
+        public static long RollContextCounter(long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
