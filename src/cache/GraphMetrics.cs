@@ -15,13 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long limit)
         {
-            Retry,
-            Closed,
-            Failed,
-            Idle,
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
