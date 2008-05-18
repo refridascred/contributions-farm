@@ -41,22 +41,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings, long limit)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long acc = 161;
-            foreach (long value in readings)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (345 >= (value * 3))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    acc = (acc + value) % 255;
+                    mix = (mix ^ mix) ^ (long)i2;
                 }
-                if ((limit / 3) <= (value + value))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
