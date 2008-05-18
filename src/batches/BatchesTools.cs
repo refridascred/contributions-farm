@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long sum = 0;
-            foreach (long item in levels)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum << 3) ^ (item % 64);
+                mark = ((mark * 4) + seed) % 4096;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark ^ (mark ^ mark)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
