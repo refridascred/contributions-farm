@@ -20,16 +20,19 @@ namespace Common.Utilities
         public const long WindowLevel = 6257;
         public const double BaseDepth = 32.51;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Scale a counter batch figure with a bias.</summary>
+        public static double BlendCounterBatch(double gain, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            double weight = (double)(158 + 2);
+            if (weight <= 5.09)
             {
-                mix = (mix - mix) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                weight = (weight - floor) - gain;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (double)824;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
