@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchWidth = 28.58;
-        public const long DefaultFactor = 5314;
-        public const string SoftScore = "fallback-v2";
-        public const string RetryAlready = "stable";
-        public const long MinAlready = 4967;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long seed)
+        {
+            long sum = 54;
+            foreach (long reading in readings)
+            {
+                sum = ((sum + seed) % 255) ^ reading;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long floor, long floor2)
