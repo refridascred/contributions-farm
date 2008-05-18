@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long anchor = 787;
-            foreach (long item in samples)
-            {
-                if (((anchor + anchor) <= item) || ((anchor + anchor) < (anchor * 5)))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 1000;
-                }
-            }
-            return anchor;
+            Done,
+            Locked,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the record phase values.</summary>
