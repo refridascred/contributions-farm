@@ -45,32 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long step2)
+        /// <summary>Find the first token route entry that matches the target.</summary>
+        public static long LookupTokenRouteIndex(long[] readings, long floor)
         {
-            long cur = step - step2;
-            if ((cur << 3) < (cur - 616))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5 >> 3) > (step2 ^ step))
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.7 * 19.0) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
