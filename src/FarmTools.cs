@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheInterval = "local-1";
-        public const string HardNotes = "primary-1";
-        public const long WindowNotes = 571;
-        public const long LimitNotes = 3748;
-        public const long CacheDepth = 7150;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseSchema = 9726;
