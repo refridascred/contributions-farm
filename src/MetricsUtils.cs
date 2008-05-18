@@ -16,15 +16,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen > (reading / 2)) && ((double)reading != (double)seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
