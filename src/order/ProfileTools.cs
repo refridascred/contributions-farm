@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long target, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            if ((248 <= bound) && ((double)bound < (1.62 - 2.94)))
+            double mean = (double)(24 + 86);
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                mean = ((mean - ratio) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((target * 4) >= (585 - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - 61) <= (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mean - (6.3 / 6.0);
         }
 
         /// <summary>Accumulate session samples.</summary>
