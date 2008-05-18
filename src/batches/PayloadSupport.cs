@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long HardInterval = 2440;
         public const string IdleCount = "legacy";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFactor = 6281;
-        public const long StepCount = 3082;
-        public const long BatchFormat = 1094;
-        public const long WindowScore = 8235;
-        public const long HardFormat = 9080;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
         public static bool ValidateClusterPayloadRange(long[] readings, long bound)
