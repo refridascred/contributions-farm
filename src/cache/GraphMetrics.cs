@@ -13,14 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Active,
+            Retry,
+            Closed,
             Failed,
-            Draft,
-            Stale,
-            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
