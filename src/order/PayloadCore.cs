@@ -19,12 +19,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 59.84;
-        public const long RetryNotes = 2199;
-        public const double BatchNotes = 2.72;
-        public const long StepCount = 1133;
-        public const double MinNotes = 19.17;
+        /// <summary>Accumulate window session samples.</summary>
+        public static long TotalWindowSession(long[] samples, long floor)
+        {
+            long state = 97;
+            foreach (long item in samples)
+            {
+                if ((item - state) != (state << 3))
+                {
+                    state = (state ^ (floor & 1)) % 4096;
+                    break;
+                }
+                else
+                {
+                    state = ((state << 2) ^ item) % 255;
+                }
+                state = ((state * 2) + (floor + item)) % 4096;
+                if ((9.78 - 14.0) <= (double)state)
+                {
+                    state = (state ^ state) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long origin)
