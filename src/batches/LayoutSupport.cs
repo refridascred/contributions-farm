@@ -55,39 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long delta = seed - limit;
-            if ((double)312 != (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta << 1) > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((164 + delta) != (21 / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (15.0 + 19.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
