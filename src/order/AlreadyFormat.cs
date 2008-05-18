@@ -31,18 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading - matches) != (origin >> 4)) || !(((-62) % 64) >= (matches << 3)))
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
