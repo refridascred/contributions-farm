@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const long BurstReport = 3732;
         public const long BurstInterval = 6382;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long limit)
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long WeighChannelLayout(long[] values)
         {
-            long offset = seed - limit;
-            if (!((seed / 7) < (limit * 5)))
+            long mark = 92;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((802 - offset) > limit)
+                if (((datum + datum) == (2 & 7)) || (2.85 < (double)datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark * 4) + datum;
                 }
             }
+            return mark;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
