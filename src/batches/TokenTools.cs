@@ -21,21 +21,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((long)i - (long)i) < (score + score))
+                if (!((8.65 / 8.0) <= (double)entry) && ((matches ^ entry) > step))
                 {
-                    score = (score * 4) + 427;
-                    continue;
+                    matches = matches + 1;
                 }
-                score = (score * 2) + (score & 255);
-                score = ((score * 2) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
