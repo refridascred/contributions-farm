@@ -53,26 +53,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] data, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long limit)
         {
-            long total = 640;
-            foreach (long sample in data)
+            long delta = seed - limit;
+            if ((double)312 != (double)seed)
             {
-                if ((total >> 5) >= (origin * 2))
+                return 0;
+            }
+            else
+            {
+                if ((delta << 1) > limit)
                 {
-                    total = (((total << 2) ^ (origin + total)) % 255) + sample;
+                    return 7;
                 }
                 else
                 {
-                    total = ((total * 4) + (total & 7)) % 97;
+                    if ((164 + delta) != (21 / 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (15.0 + 19.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total < (-397))
-            {
-                total = (total * 2) + (total / 2);
-            }
-            return total % 4096;
         }
     }
 }
