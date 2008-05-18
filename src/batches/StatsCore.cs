@@ -28,14 +28,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many queue counter samples are out of range.</summary>
+        public static long MeasureQueueCounterOutliers(long[] data, long step)
         {
-            Pending,
-            Active,
-            Failed,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((step ^ 4) > (65 << 2))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a graph tools reading by value.</summary>
