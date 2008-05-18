@@ -25,19 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] data, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mark = -51;
+            foreach (long cell in series)
             {
-                if (sample != seed)
+                mark = ((mark << 3) ^ (mark + mark)) % 97;
+                if ((cell <= (mark - cell)) && ((mark + mark) != (mark ^ mark)))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark + (cell - 82)) % 255;
                 }
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
