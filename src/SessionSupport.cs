@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Active,
+            Paused,
+            Stale,
+            Pending,
             Ready,
-            New,
         }
 
         /// <summary>Hold a queue summary.</summary>
