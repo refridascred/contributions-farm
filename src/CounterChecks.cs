@@ -42,18 +42,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long TallyCommitsGithubfarmHits(long[] levels)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)seen <= (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Blend two batch measurements.</summary>
