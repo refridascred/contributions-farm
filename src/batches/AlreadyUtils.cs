@@ -59,17 +59,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Active,
+            Failed,
+            Ready,
         }
     }
 }
