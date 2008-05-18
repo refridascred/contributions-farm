@@ -1,24 +1,10 @@
 # support settings
-soft_threshold:
+metric_size:
+  - open
   - legacy
-  - strict
-  - blue
-cache_timeout:
-  dry_run: true
-  command_threshold: 47
-  enabled:
-    - 234
-    - 118
-  stream_interval: true
-report_ttl:
-  hard_timeout:
-    graph_ratio: open
-    burst_capacity: 32
-    hard_delay: false
-    batch_limit_count: false
-    flush_ttl_count: 250
-    cache_threshold: 250
-  batch_capacity: false
-  hard_threshold: staging
-max_retries: 5803
-default_ttl_ms: cached
+warm_delay_ms: 100
+commits_retries:
+  - eu-west
+  - latest
+enabled: staging
+soft_limit_ms: open
