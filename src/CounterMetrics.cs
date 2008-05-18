@@ -16,20 +16,21 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long span = (mark & 7) - (seed - (long)i);
-                if (((long)i & 31) != (span % 16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    span = (span ^ (seed << 2)) % 65521;
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
