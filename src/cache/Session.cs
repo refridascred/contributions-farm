@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many session report samples are out of range.</summary>
-        public static long AuditSessionReportMatches(long[] values, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long offset = origin + origin2;
+            if ((double)84 == (double)offset)
             {
-                if (!((48 << 1) <= datum) || !((hits + datum) != (datum + step)))
+                return 4;
+            }
+            else
+            {
+                if ((origin / 4) > origin2)
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of already tools entries.</summary>
