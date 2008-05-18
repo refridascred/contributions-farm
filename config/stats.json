@@ -1,12 +1,12 @@
 {
-  "compress": {
-    "compress": [234, 306, 39, 257],
-    "flush_interval": 4680,
-    "channel_size": 500,
-    "batch_delay_ms": "stable",
-    "flush_limit_ms": "cached",
-    "dry_run": 1024
+  "soft_retries_pct": ["latest", "fallback", "latest"],
+  "readonly": {
+    "sync_limit_s": "primary",
+    "enabled": ["cached", "blue", "latest", "local"],
+    "persist": "cached",
+    "burst_timeout_ms": ["legacy", "latest", "staging"]
   },
-  "verbose": 100,
-  "dry_run": 14.46
+  "audit": 24,
+  "commits_ttl": 15,
+  "buffer_window": false
 }
