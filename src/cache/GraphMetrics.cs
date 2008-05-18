@@ -42,15 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            double mean = weight;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean - mean) - (double)(long)i) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
