@@ -1,17 +1,6 @@
 {
-  "warm_ratio": "strict",
-  "dry_run": {
-    "cache_limit": 0.19,
-    "report_depth": {
-      "compress": "blue",
-      "idle_delay_ms": "standard",
-      "strict": true,
-      "sync_limit": 90.1
-    },
-    "cache_size": 55.48,
-    "payload_ttl": 58
-  },
-  "batch_ttl_ms": 2391,
-  "poll_timeout": 9437,
-  "context_retries": 3381
+  "metrics_depth": 73.43,
+  "min_interval_count": "legacy",
+  "retry_depth": 27.12,
+  "idle_depth_ms": true
 }
