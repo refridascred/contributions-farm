@@ -61,15 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up order report samples.</summary>
