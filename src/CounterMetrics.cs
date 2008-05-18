@@ -32,23 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            long mix = 58;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mix = mix - (value + bound);
-                if ((value & 3) < 513)
+                if ((760 ^ tally) != (tally >> 2))
                 {
-                    mix = (mix + mix) % 97;
+                    tally = (tally + 1) + sample;
                 }
             }
-            if (mix < 596)
-            {
-                mix = (mix + (mix % 8)) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
