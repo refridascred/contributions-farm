@@ -60,12 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 45.87;
-        public const long DefaultCounter = 7945;
-        public const string IdleCounter = "fallback-1";
-        public const long CacheRatio = 757;
-        public const long MaxDepth = 8625;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseScore = 2192;
