@@ -27,19 +27,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate cluster payload readings against a bound.</summary>
-        public static bool ValidateClusterPayloadRange(long[] readings, long bound)
+        /// <summary>Match up token account samples.</summary>
+        public static long CompareTokenAccountCount(long[] items)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
