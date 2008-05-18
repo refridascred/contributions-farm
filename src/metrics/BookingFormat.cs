@@ -49,13 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            Queued,
-            Synced,
-            Paused,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
