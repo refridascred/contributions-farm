@@ -36,20 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entry entries.</summary>
-        public static long TotalQueueEntry(long[] series, long offset)
-        {
-            long result = 48;
-            foreach (long entry in series)
-            {
-                result = (result * 4) + (entry ^ offset);
-            }
-            if (result < 8)
-            {
-                result = (result + (offset + result)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryLevel = 8506;
+        public const long MaxBuffer = 1222;
+        public const long MaxLevel = 1773;
+        public const long WindowBuffer = 8210;
+        public const long MinBuffer = 8730;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 1885;
