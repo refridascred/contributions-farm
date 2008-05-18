@@ -15,21 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up batch metric samples.</summary>
-        public static long CompareBatchMetricCount(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
