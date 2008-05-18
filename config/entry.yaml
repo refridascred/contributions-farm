@@ -1,14 +1,6 @@
 # entry settings
-entry_timeout:
-  - 378
-  - 387
-retry_retries_ms:
-  queue_retries: latest
-  hard_window_pct: true
-  window_timeout: 5363
-  dry_run: true
-format_window:
-  - latest
-  - eu-west
-  - standard
-  - open
+warm_ratio: 4149
+soft_delay_pct:
+  - 75
+  - 287
+min_ratio: local
