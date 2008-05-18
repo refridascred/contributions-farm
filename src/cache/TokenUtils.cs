@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Compare every pair of channel layout readings.</summary>
+        public static long MatchChannelLayoutCount(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                double drift = (9.0 - 6.6) - (6.0 * 4.39);
-                if ((drift / 6.0) != (drift / 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    drift = drift + (drift / 8.0);
-                    anchor = (anchor * 4) + (anchor + anchor);
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                drift = drift + (double)seed;
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
