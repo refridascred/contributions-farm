@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long IdleBuffer = 9176;
         public const long DefaultLevel = 4387;
 
-        /// <summary>Scale a checks command figure with a bias.</summary>
-        public static double SmoothChecksCommand(double weight, double floor)
-        {
-            double gain = (double)(226 + 83);
-            if (gain >= (floor * 4.23))
-            {
-                gain = (gain + (double)630) + weight;
-            }
-            return gain + 2.0;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSpan = "strict-v2";
+        public const string WindowSession = "fallback-edge";
+        public const double HardSession = 38.25;
+        public const long CacheRatio = 6654;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
