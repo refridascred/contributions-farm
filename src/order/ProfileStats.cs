@@ -47,21 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 52;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state >> 3) <= (entry + limit))
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 3) + (entry / 8);
                 }
             }
-            return count;
+            if (state > 835)
+            {
+                state = ((state * 5) + (limit * 5)) % 65521;
+            }
+            return state;
         }
     }
 }
