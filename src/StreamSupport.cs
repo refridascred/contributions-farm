@@ -42,18 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] levels, long floor)
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long TotalBatchesOrder(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = 70;
+            foreach (long sample in items)
             {
-                if ((((floor + 41) <= floor) && ((seen * 2) == (datum - datum))) && (7 >= datum))
+                if (((10.0 / 6.0) > (double)origin) || ((double)(long)items.Length >= 5.0))
                 {
-                    seen = seen + 3;
+                    total = ((total ^ (350 % 24)) % 1000) - sample;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
