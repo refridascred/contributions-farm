@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the queue entry entries that pass the check.</summary>
-        public static long TallyQueueEntryOutliers(long[] items, long floor)
+        /// <summary>Digest a series of commits checks entries.</summary>
+        public static long ScoreCommitsChecks(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 9;
+            foreach (long item in readings)
             {
-                if ((count + 79) != (81 & 127))
-                {
-                    count = ((count + 1) ^ entry) + floor;
-                }
+                acc = ((acc - ((long)readings.Length + floor)) % 255) + item;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
