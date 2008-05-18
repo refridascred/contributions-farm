@@ -1,7 +1,14 @@
 {
-  "counter_retries": "latest",
-  "idle_size_count": 48.37,
-  "poll_delay_pct": "cached",
-  "soft_ttl_count": 46.21,
-  "warm_capacity_s": [232, 411]
+  "format_retries": {
+    "hard_depth": {
+      "stream_depth": "legacy",
+      "base_limit_ms": 1024,
+      "stats_capacity": 16.69
+    },
+    "hard_delay": 16,
+    "cluster_limit": "local"
+  },
+  "sync_delay": 96,
+  "burst_ratio_count": "blue",
+  "min_retries": 60
 }
