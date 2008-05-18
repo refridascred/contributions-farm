@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Idle,
-            Failed,
-            Retry,
-            Paused,
-            Pending,
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
