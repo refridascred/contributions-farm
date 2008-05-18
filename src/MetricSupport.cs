@@ -45,21 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Accumulate cache commits samples.</summary>
+        public static long DigestCacheCommits(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 67;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state * 3) + (state + limit);
+                if ((limit / 6) <= (entry * 4))
                 {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
