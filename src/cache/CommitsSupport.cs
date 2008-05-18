@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit checks cache readings against a rule.</summary>
-        public static long TallyChecksCacheMatches(long[] samples)
+        /// <summary>Match up checks support samples.</summary>
+        public static long PairChecksSupportCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item & 15) >= (tally * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
