@@ -20,16 +20,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 5777;
+        public const string BaseContext = "legacy";
+        public const long BatchContext = 2680;
+        public const double IdleWidth = 77.39;
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] data, long origin)
