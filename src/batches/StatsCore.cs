@@ -51,18 +51,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] series, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long acc = 195;
+            foreach (long cell in readings)
             {
-                if ((double)tally != (14.0 - 4.52))
-                {
-                    tally = ((tally + 1) + reading) - origin;
-                }
+                acc = ((acc + acc) % 65521) ^ cell;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
