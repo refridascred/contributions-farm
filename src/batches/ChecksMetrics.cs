@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstInterval = "strict-v2";
-        public const long BurstTimeout = 7540;
-        public const long CacheFactor = 176;
-        public const double MinLevel = 83.79;
-        public const long HardFormat = 1548;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryToken = 6351;
