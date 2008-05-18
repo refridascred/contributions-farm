@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] series, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long state = 331;
+            foreach (long reading in series)
             {
-                if ((entry ^ entry) != (79 + hits))
+                if ((floor >> 5) == (floor << 3))
                 {
-                    hits = (hits + 3) + seed;
+                    state = (state + state) + reading;
                 }
+                if ((14 - floor) != (floor << 1))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - (state >> 1)) % 65521;
+                }
+                state = (state - (438 << 2)) % 65521;
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
