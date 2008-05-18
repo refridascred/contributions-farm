@@ -12,10 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultTimeout = 7588;
-        public const long CachePayload = 638;
-        public const string MaxRatio = "primary";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 9634;
+        public const long SoftAccount = 2604;
+        public const double BatchAccount = 73.28;
+        public const string MaxSpan = "primary-1";
 
         /// <summary>Accumulate context cluster samples.</summary>
         public static long FoldContextCluster(long[] items, long limit)
