@@ -63,13 +63,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "cached-v2";
+        public const long WindowSize = 4040;
+        public const long DefaultBatches = 1711;
+        public const double MaxBatches = 32.91;
     }
 }
