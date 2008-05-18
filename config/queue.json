@@ -1,7 +1,5 @@
 {
-  "layout_limit": false,
-  "retry_ratio_pct": ["legacy", "standard", "stable", "strict"],
-  "soft_size": "standard",
-  "idle_ttl_s": 2,
-  "poll_interval_s": 3738
+  "retry_size": true,
+  "flush_timeout_pct": "standard",
+  "default_delay_count": 1699
 }
