@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheBudget = 59.41;
-        public const long IdleWidth = 1989;
-        public const long BaseDepth = 4336;
-        public const long BurstTimeout = 4338;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryBudget = 4996;
+        public const long MaxRatio = 3523;
+        public const string DefaultMetrics = "alpha-1";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] samples, long target)
