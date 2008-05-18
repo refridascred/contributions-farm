@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue editor sample.</summary>
-        public static long FindQueueEditorIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultWidth = 44.55;
+        public const double RetrySpan = 3.76;
+        public const long DefaultScore = 6684;
+        public const long SoftSession = 2296;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
