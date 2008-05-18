@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit command account readings against a rule.</summary>
-        public static long TallyCommandAccountMatches(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if (target >= (origin & 7))
             {
-                if ((tally - reading) >= (8 - tally))
+                return 5;
+            }
+            else
+            {
+                if ((target << 1) >= target)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((92 - target) <= (target >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next context counter value from a seed.</summary>
