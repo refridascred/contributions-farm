@@ -17,15 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] data)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long entry in data)
             {
-                if ((matches * 4) < value)
+                if ((((double)matches > (double)entry) && ((double)entry < (8.25 - 6.4))) && (((double)entry != (8.7 * 5.0)) && ((matches + entry) >= matches)))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
