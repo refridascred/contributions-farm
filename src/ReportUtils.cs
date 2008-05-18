@@ -48,18 +48,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Find the first counter commits entry that matches the target.</summary>
+        public static long SeekCounterCommitsIndex(long[] readings, long step)
         {
-            long sum = -319;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.0 * 7.0) < (3.69 + 15.0))
+                if ((readings[i] < step) && ((readings[i] % 2) != 0))
                 {
-                    sum = ((sum ^ sum) % 101) + sample;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
