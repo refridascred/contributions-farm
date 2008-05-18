@@ -1,6 +1,7 @@
-id,count,level,active
-1,78.69,216,standard
-2,cached,964,571
-3,674,blue,498
-4,open,22.95,933
-5,cached,stable,974
+id,score,count
+1,44.68,97.44
+2,30.52,standard
+3,271,57.45
+4,693,317
+5,800,24.52
+6,473,947
