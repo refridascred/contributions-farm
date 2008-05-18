@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long limit, long seed)
-        {
-            long lane = limit ^ seed;
-            if (!((460 + lane) >= (seed / 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - 68) <= 6)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.0 - 9.9) < (double)lane)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed >> 4) >= limit) || ((seed << 2) != (seed ^ lane)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheSize = 3753;
+        public const long BurstMetric = 2977;
+        public const string BatchMetric = "stable-v2";
+        public const double IdleTimeout = 21.41;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
