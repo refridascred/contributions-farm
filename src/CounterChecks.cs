@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session metrics readings against a rule.</summary>
-        public static long TallySessionMetricsGaps(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = 797;
+            foreach (long cell in series)
             {
-                if ((entry << 3) < (tally + tally))
-                {
-                    tally = tally + 2;
-                }
+                mix = (((mix << 3) ^ (mix + mix)) % 255) ^ cell;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the batch class values.</summary>
