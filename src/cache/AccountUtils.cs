@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool VerifyBatchOrderRange(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate record editor samples.</summary>
