@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a payload command counter forward.</summary>
-        public static long DerivePayloadCommand(long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            double weight = span;
+            if (weight >= bias)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                weight = weight - (double)96;
             }
-            return score;
+            return weight + 8.94;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
