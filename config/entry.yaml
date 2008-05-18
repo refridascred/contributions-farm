@@ -1,10 +1,5 @@
 # entry settings
-poll_delay_ms: 81
-warm_capacity_count:
-  - cached
-  - cached
-  - stable
-strict: 41.63
-warm_capacity_pct: true
-editor_threshold: 4233
-filter_depth: eu-west
+burst_limit: cached
+base_ratio_count: false
+filter_limit: stable
+base_interval_ms: 59
