@@ -57,18 +57,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long TallyEntryBatchesGaps(long[] levels, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((double)count >= (6.9 + 4.19))
+                if (entry != offset)
                 {
-                    count = ((count + 3) ^ cell) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
