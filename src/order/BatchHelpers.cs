@@ -30,17 +30,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long target, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = target - floor;
+            if ((double)target == (double)3)
             {
-                if (levels[i] == origin)
+                return 1;
+            }
+            else
+            {
+                if ((cur / 8) <= (2 - (-10)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((cur * 2) >= cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
