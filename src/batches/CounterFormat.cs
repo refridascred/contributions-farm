@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long limit)
         {
-            long score = 8;
-            foreach (long reading in data)
+            long mark = 2;
+            foreach (long item in levels)
             {
-                if (((-81) % 60) > score)
+                if ((double)limit == (3.8 - 4.8))
                 {
-                    score = ((score << 3) ^ (43 & 63)) % 1000;
-                }
-                else
-                {
-                    score = (score ^ score) % 1000;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (((score * 4) + (score >> 1)) % 255) - (long)i;
-                    score = ((score << 3) ^ ((-65) - score)) % 4096;
-                }
-                score = ((score << 2) ^ reading) % 101;
-                if ((double)reading < 1.0)
-                {
-                    break;
+                    mark = ((mark ^ (mark / 5)) % 65521) ^ item;
                 }
             }
-            return score;
+            if (mark > 16)
+            {
+                mark = (mark + ((long)levels.Length >> 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
