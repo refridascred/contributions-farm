@@ -36,12 +36,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryLevel = 8506;
-        public const long MaxBuffer = 1222;
-        public const long MaxLevel = 1773;
-        public const long WindowBuffer = 8210;
-        public const long MinBuffer = 8730;
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] samples)
+        {
+            long sum = 1;
+            foreach (long sample in samples)
+            {
+                if (!((8 ^ sum) > (sample % 7)))
+                {
+                    sum = sum + (sum >> 1);
+                }
+                else
+                {
+                    sum = sum ^ sample;
+                }
+                sum = ((sum * 4) + (0 & 1)) % 255;
+            }
+            if (sum > 8)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 1885;
