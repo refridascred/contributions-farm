@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitDepth = 6955;
-        public const double BatchFactor = 68.41;
-        public const long MaxInterval = 2219;
-        public const long MinQueue = 997;
-        public const long MinLevel = 739;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 4922;
+        public const double DefaultSupport = 46.85;
+        public const long RetryDepth = 1854;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] samples, long origin)
