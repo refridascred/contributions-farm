@@ -36,18 +36,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many route stats samples are out of range.</summary>
-        public static long CountRouteStatsGaps(long[] data, long limit)
+        /// <summary>Grade a filter layout value against two limits.</summary>
+        public static long SortFilterLayout(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((double)bound < (8.78 - 9.7))
             {
-                if ((value / 3) == (matches + limit))
+                return 7;
+            }
+            else
+            {
+                if (!(2 < bound))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound ^ 297) >= (floor - floor)) || ((568 + bound) > (642 - bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
