@@ -37,25 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long diff = limit ^ floor;
-            if ((5 + diff) <= (limit + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= 5.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
