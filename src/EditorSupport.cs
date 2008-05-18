@@ -42,16 +42,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Validate githubfarm context readings against a bound.</summary>
+        public static bool CheckGithubfarmContextLimits(long[] data, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                state = (state * 4) + 9;
-                state = ((state * 4) + (long)i) % 97;
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
