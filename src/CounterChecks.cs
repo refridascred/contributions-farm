@@ -69,21 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count batches cluster pairs that satisfy a relation.</summary>
-        public static long PairBatchesClusterCount(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
