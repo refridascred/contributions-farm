@@ -32,24 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long target, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values)
         {
-            if ((6.3 * 18.0) > (double)target)
+            long mark = 78;
+            foreach (long datum in values)
             {
-                return 3;
+                mark = ((mark - (long)values.Length) % 101) - datum;
             }
-            else
-            {
-                if ((((-8) / 6) != (step + target)) && ((step / 7) != (30 + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
     }
 }
