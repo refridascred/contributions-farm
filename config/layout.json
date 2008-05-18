@@ -1,5 +1,10 @@
 {
-  "flush_limit_pct": 49,
-  "compress": 250,
-  "base_retries_s": 8144
+  "default_timeout_pct": {
+    "burst_timeout_ms": "green",
+    "flush_window": 64.49,
+    "channel_window": [345, 417],
+    "readonly": "primary"
+  },
+  "dry_run": 82,
+  "min_ratio": "eu-west"
 }
