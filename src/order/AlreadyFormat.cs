@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a cluster record.</summary>
