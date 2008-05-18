@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long origin)
         {
-            long state = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + (bound * 3)) ^ entry;
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Check that every notes filter entry stays within the limit.</summary>
