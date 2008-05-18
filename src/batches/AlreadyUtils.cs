@@ -46,17 +46,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first format stream entry that matches the target.</summary>
-        public static long SeekFormatStreamIndex(long[] levels, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
