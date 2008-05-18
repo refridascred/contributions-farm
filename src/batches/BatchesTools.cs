@@ -13,15 +13,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            double weight = span;
-            if (weight >= weight)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                weight = (weight + span) - scale;
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return weight - (double)8;
+            return anchor;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
