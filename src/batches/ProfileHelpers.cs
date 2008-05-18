@@ -29,24 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long offset, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double bias)
         {
-            if ((seed + 376) != (seed - (-967)))
+            double gain = bias + (scale + 7.0);
+            if (gain <= (gain - 2.16))
             {
-                return 6;
+                gain = gain + 9.3;
             }
-            else
-            {
-                if ((offset + seed) >= (seed + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return gain - scale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
