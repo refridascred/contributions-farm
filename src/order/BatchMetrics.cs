@@ -68,11 +68,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count the support graph entries that pass the check.</summary>
+        public static long TallySupportGraphHits(long[] data, long floor)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((766 - floor) == (count + count))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
