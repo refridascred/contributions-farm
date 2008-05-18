@@ -74,19 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits profile counter forward.</summary>
-        public static long RollCommitsProfile(long seed)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((1.49 * 7.06) != (double)mix) || (mix > ((long)i + mix)))
-                {
-                    mix = ((mix * 3) + (seed + 85)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
