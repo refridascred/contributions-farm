@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] samples, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long limit)
         {
-            long acc = -6;
+            long anchor = -24;
             foreach (long item in samples)
             {
-                if (!(item > target))
+                if (!((item - anchor) >= (-53)))
                 {
-                    acc = (acc ^ (286 ^ target)) % 1000;
+                    anchor = anchor ^ (anchor - limit);
+                    anchor = anchor ^ (anchor << 1);
                 }
+                anchor = (anchor - (limit ^ item)) % 4096;
             }
-            return acc % 97;
+            if (anchor > 89)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
