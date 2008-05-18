@@ -103,21 +103,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer support readings.</summary>
-        public static long OverlapBufferSupportCount(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long origin, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin - 45) >= (step >> 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (step >= (step / 8))
                 {
-                    if ((items[i] - items[j]) < 2)
+                    return 8;
+                }
+                else
+                {
+                    if (!((9 - origin) == (step + 1)))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.9 + 6.64) > (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
