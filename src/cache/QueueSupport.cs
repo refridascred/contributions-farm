@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count layout entry pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutEntryCount(long[] readings)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc & 127) == (acc - offset))
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc * 5) + (offset + (long)i);
                 }
+                else
+                {
+                    acc = (acc - (offset ^ offset)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count command notes pairs that satisfy a relation.</summary>
