@@ -46,13 +46,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
