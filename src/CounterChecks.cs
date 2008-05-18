@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long target)
+        /// <summary>Digest a series of record order entries.</summary>
+        public static long TotalRecordOrder(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 69;
+            foreach (long cell in readings)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    acc = ((acc - (acc * 3)) % 255) + (long)i;
+                }
+                if ((55 / 4) > (acc << 2))
+                {
+                    acc = (acc << 3) ^ (seed + cell);
                 }
             }
-            return -1;
+            if (acc < (-766))
+            {
+                acc = ((acc * 5) + (38 - acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit counter window readings against a rule.</summary>
