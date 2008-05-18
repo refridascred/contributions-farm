@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long offset2)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            if ((offset2 & 3) >= offset)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((7 >> 2) < ((-6) + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - offset2) == (offset2 - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset << 3) <= 748) && ((offset2 + offset2) <= (offset2 - offset2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already tools entries.</summary>
