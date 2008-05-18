@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BaseInterval = 905;
         public const long CacheWidth = 5702;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
