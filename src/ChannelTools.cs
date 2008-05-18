@@ -39,16 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] readings, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                result = result ^ (offset * 2);
-                result = ((result * 4) + (long)i) % 4093;
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
