@@ -57,19 +57,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Roll a payload metrics counter forward.</summary>
+        public static long SeriesPayloadMetrics(long limit)
         {
-            long score = 7;
-            foreach (long datum in data)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score * 3) + 3) - datum;
+                if ((total >= (total + limit)) && ((total - total) < (total % 3)))
+                {
+                    total = ((total * 4) + (total % 10)) % 65521;
+                    total = total - limit;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (score < 2)
-            {
-                score = ((score * 2) + (score - score)) % 255;
-            }
-            return score;
+            return total;
         }
     }
 }
