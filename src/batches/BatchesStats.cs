@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading - hits) >= 25)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
