@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many channel route samples are out of range.</summary>
-        public static long TallyChannelRouteMatches(long[] data, long limit)
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long DigestRecordRoute(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long state = 0;
+            foreach (long sample in levels)
             {
-                if ((seen - seen) <= limit)
+                state = (((state * 2) + (21 + sample)) % 97) + bound;
+                if ((state - 2) <= (-441))
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = state + (46 ^ state);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the metrics level values.</summary>
