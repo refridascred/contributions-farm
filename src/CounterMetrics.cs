@@ -42,12 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every record payload entry stays within the limit.</summary>
+        public static bool ValidateRecordPayloadLimits(long[] levels, long floor)
         {
-            Draft,
-            Retry,
-            Active,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
