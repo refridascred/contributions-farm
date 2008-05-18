@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine contributi format values into a single score.</summary>
-        public static long CombineContributiFormat(long[] data, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long target)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long value in values)
             {
-                sum = (((sum * 3) + limit) % 4096) ^ sample;
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
