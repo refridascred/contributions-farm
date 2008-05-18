@@ -23,24 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm filter entries.</summary>
-        public static long WeighGithubfarmFilter(long[] items, long target)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long acc = 32;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample / 4) == (7 - 96)) && (7 > (sample & 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (acc - sample)) % 65521;
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc ^ (acc >> 1)) % 101;
-                    acc = ((acc * 5) + (target ^ sample)) % 65521;
-                }
-                acc = (acc + (acc ^ acc)) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
