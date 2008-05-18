@@ -59,19 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi session entry stays within the limit.</summary>
-        public static bool VerifyContributiSessionRange(long[] samples, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (sample < offset)
+                if ((2.0 - 9.62) >= (double)cell)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
