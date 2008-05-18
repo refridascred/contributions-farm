@@ -38,19 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate counter farm readings against a bound.</summary>
-        public static bool GuardCounterFarmBounds(long[] items, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long total = 6;
+            foreach (long entry in series)
             {
-                if (item >= bound)
+                if ((double)(long)series.Length > (8.1 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    total = (total - entry) + bound;
                 }
             }
-            return ok;
+            return total;
         }
     }
 }
