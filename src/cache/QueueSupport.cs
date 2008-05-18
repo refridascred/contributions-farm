@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the queue account entries that pass the check.</summary>
-        public static long TallyQueueAccountHits(long[] levels)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (5.94 <= 20.0)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a report summary.</summary>
