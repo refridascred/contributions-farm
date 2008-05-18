@@ -29,13 +29,21 @@ namespace Common.Utilities
         public const long BatchFactor = 7898;
         public const long CacheLayout = 1085;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            Paused,
-            Draft,
-            Locked,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
