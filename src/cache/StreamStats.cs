@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
