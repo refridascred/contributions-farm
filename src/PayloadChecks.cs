@@ -19,13 +19,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] items, long floor)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item - seen) >= 8)
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
