@@ -33,18 +33,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((cell ^ 8) < (hits >> 4)))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
