@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long limit)
         {
-            long state = -71;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (!((15.0 / 2.0) < (double)entry))
+                if (item < limit)
                 {
-                    state = (state << 3) ^ (2 * 4);
-                }
-                else
-                {
-                    state = state - entry;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 1)
-            {
-                state = (state ^ (state + state)) % 65521;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
