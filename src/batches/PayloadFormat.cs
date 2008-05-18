@@ -31,22 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 7878;
+        public const long BurstFormat = 4836;
+        public const string SoftBudget = "standard";
+        public const long IdleFormat = 8794;
+        public const long SoftFormat = 5973;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string HardWindow = "standard";
