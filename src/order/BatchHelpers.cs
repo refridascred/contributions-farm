@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series, long floor)
+        /// <summary>Locate a payload format reading by value.</summary>
+        public static long SeekPayloadFormatIndex(long[] items, long origin)
         {
-            long state = 331;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor >> 5) == (floor << 3))
+                if (items[i] > origin)
                 {
-                    state = (state + state) + reading;
+                    return (long)i;
                 }
-                if ((14 - floor) != (floor << 1))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state - (state >> 1)) % 65521;
-                }
-                state = (state - (438 << 2)) % 65521;
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
