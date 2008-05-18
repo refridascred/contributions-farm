@@ -29,40 +29,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long step)
-        {
-            long prev = bound ^ step;
-            if (!(step >= (bound % 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((0.16 / 4.0) == (double)bound) || ((double)step == (2.0 + 20.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)prev != (5.92 + 9.0)) || ((bound + step) > (prev - prev)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((prev * 5) >= (6 + bound)) && ((bound % 5) >= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 3442;
+        public const long BaseLevel = 1627;
+        public const long IdleDepth = 7383;
+        public const long MaxLevel = 131;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
