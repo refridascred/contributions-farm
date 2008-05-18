@@ -1,7 +1,11 @@
 {
-  "stats_retries": "blue",
-  "sync_window_ms": 23,
-  "readonly": 1024,
-  "flush_size": [131, 284],
-  "batch_timeout": false
+  "batch_limit": {
+    "persist": 1024,
+    "max_ratio_ms": 60,
+    "editor_retries": "edge"
+  },
+  "batch_size_s": [127, 92, 429],
+  "persist": 3800,
+  "cache_window_s": 100,
+  "queue_ttl": 37
 }
