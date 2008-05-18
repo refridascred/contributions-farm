@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            Done,
+            Retry,
+            Draft,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a queue info.</summary>
