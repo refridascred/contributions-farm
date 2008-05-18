@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const string SoftTimeout = "staging-v2";
         public const long BurstDepth = 8988;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Match up counter samples.</summary>
