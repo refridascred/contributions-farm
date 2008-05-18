@@ -1,21 +1,5 @@
 {
-  "base_timeout_s": 1.55,
-  "poll_timeout_pct": "edge",
-  "verbose": false,
-  "readonly": {
-    "record_retries": "stable",
-    "persist": "legacy",
-    "base_depth_pct": true,
-    "hard_capacity_count": 4
-  },
-  "soft_retries": 4186,
-  "sync_threshold": {
-    "soft_depth_pct": "standard",
-    "audit": {
-      "default_interval_s": 500,
-      "profile_window": "blue",
-      "dry_run": "cached"
-    },
-    "default_ratio": 7871
-  }
+  "strict": 30.71,
+  "retry_interval_count": "primary",
+  "enabled": ["stable", "legacy"]
 }
