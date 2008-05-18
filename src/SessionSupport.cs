@@ -31,16 +31,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry + ((long)i / 4);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
