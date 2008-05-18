@@ -1,5 +1,12 @@
 {
-  "dry_run": true,
-  "default_depth": 98.39,
-  "verbose": "local"
+  "context_window": 43.09,
+  "record_window": 60,
+  "min_depth_ms": {
+    "flush_ttl_pct": 7,
+    "batch_depth": false,
+    "checks_limit": [87, 467]
+  },
+  "verbose": "eu-west",
+  "cache_window_count": true,
+  "retry_size_pct": 6224
 }
