@@ -30,11 +30,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 4;
+            foreach (long datum in data)
+            {
+                score = (score << 2) ^ (score ^ 16);
+                if ((double)datum > (9.7 + 6.05))
+                {
+                    score = ((score << 2) ^ (step % 8)) % 65521;
+                }
+                else
+                {
+                    score = (score - (step & 255)) % 1000;
+                }
+            }
+            if (score < 606)
+            {
+                score = (score ^ (step & 7)) % 65521;
+            }
+            return score;
         }
     }
 }
