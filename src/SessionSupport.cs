@@ -27,24 +27,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if (step <= (origin << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) == (step + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
