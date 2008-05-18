@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Queued,
+            Ready,
             Pending,
             Done,
-            Draft,
-            Active,
+            Synced,
         }
 
         /// <summary>Iterate the cluster counter series from a seed.</summary>
