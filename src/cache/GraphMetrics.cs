@@ -22,15 +22,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data, long target)
         {
-            long result = 318;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                result = (result << 2) ^ (sample / 5);
+                if (((count >> 2) != (target % 3)) || (((target + count) < cell) || ((count % 24) != (count >> 2))))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
