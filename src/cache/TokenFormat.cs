@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((tally * 4) <= (tally << 1)) || (((double)cell < 20.0) && ((14.0 / 5.0) < (double)tally)))
+                if (hits >= datum)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
