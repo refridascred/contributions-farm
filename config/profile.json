@@ -1,8 +1,6 @@
 {
-  "poll_size_pct": true,
-  "burst_size_s": 93,
-  "command_ratio": 30,
-  "verbose": 564,
-  "githubfarm_capacity": ["standard", "staging"],
-  "flush_depth_count": "blue"
+  "sync_ttl_s": 4.64,
+  "verbose": 48.47,
+  "flush_size_pct": 8197,
+  "enabled": true
 }
