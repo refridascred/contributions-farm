@@ -83,32 +83,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long bound, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long span = bound ^ seed;
-            if (bound <= (bound / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((span << 3) != (seed + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound & 127) > seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
