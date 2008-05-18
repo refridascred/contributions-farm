@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                result = (result * 3) + origin;
-                result = ((result * 2) + (long)i) % 101;
+                if (((long)values.Length << 3) <= seen)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Project the next contributi value.</summary>
