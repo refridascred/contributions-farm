@@ -14,15 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] values)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
             long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell == (8.58 * 1.3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
