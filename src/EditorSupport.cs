@@ -61,14 +61,13 @@ namespace Common.Utilities
             return ((drift - drift) + gain) + span;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Done,
-            Locked,
-            Paused,
             Idle,
-            Closed,
+            Locked,
+            Draft,
+            Active,
         }
     }
 }
