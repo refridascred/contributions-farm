@@ -23,21 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result - (floor / 9)) % 65521;
-                if ((double)floor <= 6.1)
-                {
-                    result = (result * 4) + ((long)i % 60);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3752;
+        public const double LimitSpan = 73.63;
+        public const double CacheRatio = 72.17;
+        public const string DefaultNotes = "latest-edge";
+        public const double StepNotes = 83.23;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] levels)
