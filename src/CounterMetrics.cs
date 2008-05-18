@@ -50,20 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i ^ anchor) <= ((long)i - target))
-                {
-                    continue;
-                }
-                anchor = ((anchor << 3) ^ (anchor + target)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSpan = 8147;
+        public const long BurstBudget = 6756;
+        public const long RetryRatio = 952;
+        public const long CacheInterval = 9541;
     }
 }
