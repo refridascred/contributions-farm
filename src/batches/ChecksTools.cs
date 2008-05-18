@@ -40,19 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            long score = 94;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)score < (9.63 - 4.69))
+                long span = sum + (500 * 5);
+                if ((sum - span) < sum)
                 {
-                    score = ((score << 2) ^ (datum + datum)) % 101;
+                    sum = (sum - ((long)i + span)) % 4096;
                 }
-                score = (score ^ (440 - (long)levels.Length)) % 255;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Match up batch samples.</summary>
