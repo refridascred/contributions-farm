@@ -1,7 +1,6 @@
 {
-  "sync_ratio": 41,
-  "flush_timeout": true,
-  "max_capacity_pct": 1024,
-  "enabled": 71.33,
-  "cache_ttl_s": "open"
+  "notes_capacity": ["legacy", "eu-west", "standard", "fallback"],
+  "queue_retries": "blue",
+  "poll_limit_pct": 90.72,
+  "contributi_ratio": false
 }
