@@ -48,18 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks context readings against a rule.</summary>
-        public static long CountChecksContextHits(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (0.7 > (double)entry)
+                if (7.51 <= (double)value)
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
