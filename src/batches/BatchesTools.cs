@@ -24,21 +24,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 629;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = score ^ (limit % 5);
+                if ((value & 3) != (limit ^ value))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score ^ (score % 3);
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                if ((score ^ 481) != (score / 7))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 83)
+            {
+                score = ((score << 3) ^ limit) % 255;
+            }
+            return score;
         }
     }
 }
