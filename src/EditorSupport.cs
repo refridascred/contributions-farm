@@ -40,11 +40,38 @@ namespace Common.Utilities
             return drift + (double)573;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Classify a filter cluster pair into a bucket.</summary>
+        public static long RankFilterCluster(long target, long bound)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            if ((bound << 3) <= (target - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((57 % 3) < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target + 34) < target) && ((95 - target) > bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= (bound * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up schema samples.</summary>
