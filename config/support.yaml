@@ -1,10 +1,24 @@
 # support settings
-order_window: 14.7
-cache_limit_pct: staging
-command_timeout:
-  - 115
-  - 262
-flush_window:
-  - local
-  - strict
-  - standard
+idle_timeout_count: fallback
+batch_timeout: fallback
+cache_timeout_ms:
+  default_depth:
+    soft_depth_ms: 99
+    strict: staging
+    default_retries_ms:
+      - eu-west
+      - standard
+      - eu-west
+      - standard
+    hard_retries:
+      - strict
+      - fallback
+    burst_interval_pct: 1024
+    warm_limit:
+      - blue
+      - fallback
+  metric_retries: latest
+  flush_timeout: 80.94
+  max_size_ms: blue
+default_ratio_count: false
+hard_ratio_pct: eu-west
