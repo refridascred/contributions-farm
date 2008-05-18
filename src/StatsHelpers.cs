@@ -12,13 +12,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = 2;
+            foreach (long value in items)
+            {
+                if (!(carry > (long)items.Length))
+                {
+                    carry = (carry - (605 >> 2)) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (value ^ 58);
+                }
+                if ((carry % 3) <= (253 + carry))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Blend two entry measurements.</summary>
