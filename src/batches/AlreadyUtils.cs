@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Iterate the token githubfarm series from a seed.</summary>
+        public static long DeriveTokenGithubfarm(long target)
         {
-            double mean = (gain / 6.0) * 7.7;
-            if (mean < (offset / 5.0))
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - (2.4 * 5.0);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mean + (double)376;
+            return state;
         }
 
         /// <summary>Hold a context options.</summary>
