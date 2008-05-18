@@ -16,11 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardWidth = 73.09;
-        public const long MaxSpan = 1082;
-        public const long BatchReport = 6506;
-        public const long MaxWidth = 289;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
+        {
+            long total = 9;
+            foreach (long entry in readings)
+            {
+                total = (total ^ (entry * 4)) % 101;
+            }
+            if (total < 671)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
