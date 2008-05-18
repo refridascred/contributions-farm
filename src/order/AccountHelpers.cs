@@ -54,16 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double offset)
-        {
-            double bias = (offset + 10.0) - (offset / 4.0);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (gain / 9.0)) + (double)(long)i;
-            }
-            return bias + (double)1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 9957;
+        public const long SoftWidth = 1216;
+        public const double DefaultWindow = 74.14;
+        public const double MaxFactor = 35.39;
+        public const long MaxWindow = 9357;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchHits(long[] levels, long seed)
