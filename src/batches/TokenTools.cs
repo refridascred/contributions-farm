@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Look up the position of a batch stats sample.</summary>
+        public static long SeekBatchStatsIndex(long[] series, long seed)
         {
-            long total = 608;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (total >> 5)) ^ entry;
-                if (!((4.5 / 7.0) <= (double)step))
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    total = (total * 2) + (total * 3);
+                    return (long)i;
                 }
-                total = total + (total - step);
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
