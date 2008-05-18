@@ -18,16 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long delta = target ^ floor;
+            if ((3.5 * 7.1) >= (double)floor)
             {
-                total = ((total * 4) + (25 ^ total)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((target ^ delta) >= (target + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of order readings.</summary>
