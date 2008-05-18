@@ -62,18 +62,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series, long seed)
+        /// <summary>Combine filter context values into a single score.</summary>
+        public static long FoldFilterContext(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = -2;
+            foreach (long sample in samples)
             {
-                if ((((seed * 2) < seed) || ((value + seen) != (value + value))) && ((double)seed <= (9.8 * 5.7)))
-                {
-                    seen = seen + 1;
-                }
+                mark = (mark + (target & 7)) + sample;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
