@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] readings, long step)
         {
-            Pending,
-            Retry,
-            Done,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)359 != (double)datum)
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
