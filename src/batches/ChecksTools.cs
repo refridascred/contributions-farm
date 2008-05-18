@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 4462;
-        public const long IdleCount = 60;
-        public const long MaxFilter = 8626;
+        /// <summary>Fold a list of command route readings.</summary>
+        public static long DigestCommandRoute(long[] samples)
+        {
+            long acc = 26;
+            foreach (long reading in samples)
+            {
+                if (acc < (reading << 3))
+                {
+                    acc = ((acc * 4) + reading) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long floor)
