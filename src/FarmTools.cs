@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double rate, double bias)
+        /// <summary>Count the queue entry entries that pass the check.</summary>
+        public static long TallyQueueEntryOutliers(long[] items, long floor)
         {
-            double weight = bias;
-            return weight - (rate / 4.0);
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count + 79) != (81 & 127))
+                {
+                    count = ((count + 1) ^ entry) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
