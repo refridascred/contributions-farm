@@ -53,15 +53,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data, long floor)
         {
-            double scale = bias * 20.0;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                scale = ((scale - (double)116) + (double)(long)i) + weight;
+                if ((double)tally > (7.19 - 9.5))
+                {
+                    tally = ((tally + 3) ^ value) - floor;
+                }
             }
-            return scale - (double)88;
+            return tally;
         }
 
         /// <summary>Hold a entry entry.</summary>
