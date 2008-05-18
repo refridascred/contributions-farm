@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long mark = 826;
-            foreach (long cell in items)
-            {
-                if (!(cell > (cell & 3)))
-                {
-                    mark = ((mark << 3) ^ (cell * 5)) % 97;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowSpan = 32.94;
+        public const long MaxLevel = 8418;
+        public const long HardFactor = 1270;
+        public const double BurstPayload = 18.94;
+        public const long CacheInterval = 8910;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] series)
