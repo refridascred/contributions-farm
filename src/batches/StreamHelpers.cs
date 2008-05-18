@@ -68,13 +68,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            public long Label { get; set; }
             public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
