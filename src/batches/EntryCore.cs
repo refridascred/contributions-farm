@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window cluster sample.</summary>
-        public static long FindWindowClusterIndex(long[] series, long bound)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= bound)
+                if (samples[i] == seed)
                 {
                     return (long)i;
                 }
