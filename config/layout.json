@@ -1,28 +1,7 @@
 {
-  "graph_limit": {
-    "base_limit_s": {
-      "sync_retries_ms": 46.61,
-      "sync_interval_s": 5351,
-      "idle_ratio_count": 7484
-    },
-    "burst_timeout_count": 35.6,
-    "order_retries": {
-      "warm_limit_s": 8.35,
-      "base_depth_s": 40,
-      "account_delay": "open",
-      "flush_interval": 76,
-      "format_retries": 1024
-    }
-  },
-  "route_capacity": {
-    "base_timeout_s": [87, 411],
-    "hard_retries": "standard",
-    "batches_retries": 4.0,
-    "checks_delay": "green",
-    "channel_delay": "strict"
-  },
-  "command_capacity": "stable",
-  "notes_ttl": 30,
-  "filter_depth": 8,
-  "soft_retries_count": 9474
+  "dry_run": 500,
+  "readonly": 89.74,
+  "soft_threshold": [207, 134],
+  "support_delay": [52, 150],
+  "idle_interval_ms": [64, 88, 32, 288]
 }
