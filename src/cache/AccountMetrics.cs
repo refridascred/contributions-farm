@@ -16,20 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
-        {
-            long total = 9;
-            foreach (long entry in readings)
-            {
-                total = (total ^ (entry * 4)) % 101;
-            }
-            if (total < 671)
-            {
-                total = (total ^ total) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSize = 325;
+        public const long IdleFactor = 3147;
+        public const long BaseTimeout = 7690;
+        public const long DefaultWidth = 7171;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
