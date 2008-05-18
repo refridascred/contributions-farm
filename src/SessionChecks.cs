@@ -53,18 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph account entries.</summary>
-        public static long DigestGraphAccount(long[] levels, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long limit2)
         {
-            long carry = 0;
-            foreach (long value in levels)
+            long edge = limit ^ limit2;
+            if ((4.09 + 10.0) == (double)limit)
             {
-                if (limit > (value % 64))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit2 >= (2.86 + 20.0))
                 {
-                    carry = carry ^ (carry << 1);
+                    return 0;
+                }
+                else
+                {
+                    if (limit > (edge << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)edge > 0.7)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
