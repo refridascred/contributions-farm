@@ -1,12 +1,7 @@
 {
-  "soft_retries_pct": ["latest", "fallback", "latest"],
-  "readonly": {
-    "sync_limit_s": "primary",
-    "enabled": ["cached", "blue", "latest", "local"],
-    "persist": "cached",
-    "burst_timeout_ms": ["legacy", "latest", "staging"]
-  },
-  "audit": 24,
-  "commits_ttl": 15,
-  "buffer_window": false
+  "hard_capacity_pct": 3204,
+  "max_threshold": [167, 445, 53],
+  "batch_ratio_pct": 6116,
+  "retry_interval_ms": 2256,
+  "already_size": 59.29
 }
