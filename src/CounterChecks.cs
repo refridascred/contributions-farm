@@ -80,18 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data, long floor)
+        /// <summary>Count batches cluster pairs that satisfy a relation.</summary>
+        public static long PairBatchesClusterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally > (7.19 - 9.5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 3) ^ value) - floor;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a entry entry.</summary>
