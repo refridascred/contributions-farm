@@ -40,22 +40,19 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] values, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long acc = 360;
-            foreach (long datum in values)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                if ((offset % 10) >= (datum + acc))
-                {
-                    acc = (acc ^ (offset + acc)) % 101;
-                }
+                carry = ((carry << 2) ^ cell) % 65521;
             }
-            if (acc < 24)
+            if (carry < 90)
             {
-                acc = (acc - (offset & 1)) % 4096;
+                carry = (carry ^ ((-2) << 2)) % 255;
             }
-            return acc % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
