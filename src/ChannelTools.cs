@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long result = 4;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result << 3) ^ value;
-                if (offset < value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - ((-49) ^ offset)) % 1000;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
