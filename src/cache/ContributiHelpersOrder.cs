@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine editor format values into a single score.</summary>
+        public static long CombineEditorFormat(long[] data, long seed)
         {
-            Closed,
-            Queued,
-            New,
-            Pending,
-            Ready,
+            long acc = 65;
+            foreach (long value in data)
+            {
+                acc = (((acc - 920) % 101) ^ value) + seed;
+            }
+            if (acc < 45)
+            {
+                acc = (acc + (926 ^ 597)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
