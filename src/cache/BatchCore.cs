@@ -24,19 +24,25 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Grade a schema session value against two limits.</summary>
+        public static long GradeSchemaSession(long origin, long offset)
         {
-            double mean = (0.5 / 9.0) - (double)8;
-            if (mean <= mean)
+            long lane = origin + offset;
+            if ((lane & 15) > lane)
             {
-                mean = mean - bias;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean + 8.5) + (double)(long)i;
+                if ((9.0 / 2.0) == (double)lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean - bias2;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
