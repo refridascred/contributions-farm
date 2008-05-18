@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double floor)
-        {
-            double rate = floor / 3.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + scale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxLevel = 41.55;
+        public const long CacheTimeout = 9531;
+        public const long MinChannel = 307;
+        public const long WindowLevel = 5108;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
