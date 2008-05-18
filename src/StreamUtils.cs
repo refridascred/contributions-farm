@@ -30,11 +30,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxSpan = 75.45;
-        public const long MaxDepth = 9773;
-        public const long WindowScore = 4025;
-        public const double DefaultGithubfarm = 15.08;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long FoldSupport(long[] data, long step)
