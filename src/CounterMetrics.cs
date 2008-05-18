@@ -46,10 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSpan = 8147;
-        public const long BurstBudget = 6756;
-        public const long RetryRatio = 952;
-        public const long CacheInterval = 9541;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length << 3) != (hits + reading))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
     }
 }
