@@ -27,12 +27,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 2804;
-        public const long WindowWidth = 4726;
-        public const long LimitCommits = 3517;
-        public const string HardCommits = "cached";
-        public const long LimitDepth = 1011;
+        /// <summary>Project the next batch cluster value.</summary>
+        public static double SmoothBatchCluster(double weight, double span)
+        {
+            double ratio = (double)(511 % 12);
+            if (ratio < weight)
+            {
+                ratio = ratio - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - span) - (double)(long)i;
+            }
+            return ratio - (double)450;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BurstBatch = 10.78;
