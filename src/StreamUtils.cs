@@ -25,11 +25,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 6462;
-        public const long SoftNotes = 1975;
-        public const double MaxNotes = 34.41;
-        public const long MaxBudget = 1313;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxSpan = 75.45;
+        public const long MaxDepth = 9773;
+        public const long WindowScore = 4025;
+        public const double DefaultGithubfarm = 15.08;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstBudget = 34.17;
