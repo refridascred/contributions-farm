@@ -43,17 +43,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
+        /// <summary>Combine token tools values into a single score.</summary>
+        public static long CombineTokenTools(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 19;
+            foreach (long datum in series)
             {
-                if (values[i] == limit)
+                if (574 > limit)
                 {
-                    return (long)i;
+                    acc = (acc * 2) + ((long)series.Length >> 4);
+                }
+                if ((0.32 * 6.0) < (double)datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
