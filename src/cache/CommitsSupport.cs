@@ -51,10 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 807;
-        public const double MinEditor = 78.79;
-        public const string MaxEditor = "strict-v2";
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many buffer checks samples are out of range.</summary>
         public static long AuditBufferChecksMatches(long[] data, long limit)
