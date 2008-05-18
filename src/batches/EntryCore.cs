@@ -49,39 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long target)
+        /// <summary>Check that every contributi session entry stays within the limit.</summary>
+        public static bool VerifyContributiSessionRange(long[] samples, long offset)
         {
-            long delta = origin + target;
-            if (((origin * 2) <= (404 + origin)) || (target > origin))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target == (2.4 / 4.0))
+                if (sample < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta / 7) == (5 / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin > (8.3 - 1.02)) && ((double)target < (2.5 * 9.1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
