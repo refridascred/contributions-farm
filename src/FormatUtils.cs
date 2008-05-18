@@ -61,13 +61,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry * 4) <= (matches - entry)))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
