@@ -49,15 +49,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double ratio, double span)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double mean = ratio;
-            if (mean > (double)19)
-            {
-                mean = mean + (span + mean);
-            }
-            return mean + (double)455;
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
