@@ -1,13 +1,11 @@
 # Command notes
 
-Run the format check before changing any batches limits.
-The cluster report groups every command by batch.
-
-The checks report groups every context by cluster.
-Each metric is validated before it reaches the commits queue.
+Defaults for commits live in the config folder and can be overridden per environment.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Document new cache fields
-- Log every context change
+- Keep batch values small
+- Validate batch input early
+- Prefer profile defaults
+- Document new queue fields
