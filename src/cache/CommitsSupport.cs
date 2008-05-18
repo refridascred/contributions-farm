@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up checks support samples.</summary>
-        public static long PairChecksSupportCount(long[] series)
+        /// <summary>Grade a filter context value against two limits.</summary>
+        public static long BucketFilterContext(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = offset - seed;
+            if ((bound % 16) == (offset + bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ seed) > (offset % 10))
                 {
-                    if ((series[i] - series[j]) == 17)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed >> 2) == (seed & 31))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - bound) >= (seed + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
