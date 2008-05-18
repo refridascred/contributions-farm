@@ -19,21 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token queue samples.</summary>
-        public static long PairTokenQueueCount(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 18)
+                    if ((data[i] ^ data[j]) == 18)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
