@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many metrics checks samples are out of range.</summary>
+        public static long MeasureMetricsChecksHits(long[] readings)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count < (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
