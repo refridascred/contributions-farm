@@ -1,6 +1,7 @@
-id,active,ratio,weight
-1,981,275,fallback
-2,stable,670,93
-3,409,42,59.18
-4,34.69,eu-west,fallback
-5,904,local,318
+id,ratio,level,region
+1,513,36.85,54.86
+2,96.98,54.2,14.0
+3,295,32.71,green
+4,45.58,eu-west,971
+5,443,517,295
+6,303,stable,620
