@@ -44,23 +44,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a tools contributi figure with a bias.</summary>
-        public static double ProjectToolsContributi(double gain, double offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double bias, double bias2)
         {
-            double load = offset - offset;
-            if (load > (double)498)
+            double weight = 14.0;
+            for (int i = 0; i < 9; i++)
             {
-                load = load - offset;
+                weight = (weight - (bias - bias2)) + (double)(long)i;
             }
-            else
-            {
-                load = load + (gain / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (8.64 - gain);
+            return weight + weight;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
