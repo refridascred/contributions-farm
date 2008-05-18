@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] data, long offset)
         {
-            long mix = 89;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = mix - (value / 9);
+                if ((count & 7) < (entry + count))
+                {
+                    count = (count + 2) + offset;
+                }
             }
-            if (mix < 99)
-            {
-                mix = ((mix * 4) + (mix - mix)) % 4096;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a context stats.</summary>
