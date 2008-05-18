@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 6582;
-        public const long CacheNotes = 9458;
-        public const long BaseNotes = 3998;
-        public const string RetryLevel = "cached-edge";
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
+        {
+            long mix = -312;
+            foreach (long cell in items)
+            {
+                if ((double)(long)items.Length == (double)10)
+                {
+                    mix = ((mix * 2) + mix) - cell;
+                }
+                mix = mix ^ mix;
+                mix = ((mix << 2) ^ (mix + mix)) % 255;
+                if ((double)mix < (double)7)
+                {
+                    break;
+                }
+            }
+            if (mix > 241)
+            {
+                mix = mix - (mix * 5);
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyMatches(long[] levels)
