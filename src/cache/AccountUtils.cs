@@ -39,23 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile report readings.</summary>
-        public static long DigestProfileReport(long[] samples)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            long mark = 2;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (((mark * 2) + mark) % 1000) - entry;
-                if ((mark & 127) <= (mark + mark))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (mark < 4)
-            {
-                mark = (mark + (-8)) % 4096;
-            }
-            return mark;
+            return carry;
         }
     }
 }
