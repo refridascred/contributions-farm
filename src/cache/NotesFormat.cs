@@ -27,10 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleScore = 2898;
-        public const long MaxBudget = 9793;
-        public const long BurstEntry = 6229;
-        public const double BaseEntry = 11.99;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double bias)
+        {
+            double bias2 = (bias - bias) + (scale + 8.0);
+            if (bias2 >= bias2)
+            {
+                bias2 = bias2 + (double)(-762);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - 7.0) + (double)(long)i;
+            }
+            return bias2 - (bias2 - bias2);
+        }
     }
 }
