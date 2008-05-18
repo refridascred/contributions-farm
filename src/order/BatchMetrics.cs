@@ -61,22 +61,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)tally != (double)bound)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a window snapshot.</summary>
