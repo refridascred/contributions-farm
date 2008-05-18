@@ -1,13 +1,13 @@
 # githubfarm settings
-strict: 9097
-warm_capacity_ms: 56
-filter_limit: 9066
-soft_interval_ms:
-  githubfarm_delay: eu-west
-  burst_size: standard
-  context_depth: false
-  flush_timeout: 60
-  batch_limit: 13
-  enabled: 22.57
-compress: 36.03
-warm_threshold: 12.43
+readonly: true
+max_size_ms:
+  - 363
+  - 152
+  - 54
+  - 209
+persist:
+  - open
+  - cached
+  - strict
+  - primary
+entry_ttl: local
