@@ -32,25 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] data)
         {
-            long lane = bound ^ target;
-            if ((lane + lane) != (799 * 2))
+            long total = 18;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 63) == (lane / 8))
+                total = ((total << 2) ^ (cell / 6)) % 65521;
+                if ((cell >> 1) < (total & 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    total = total + (total % 97);
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
