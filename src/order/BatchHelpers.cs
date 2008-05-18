@@ -39,27 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data, long step)
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long CountRecordTokenMatches(long[] samples)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                score = (score << 2) ^ (score ^ 16);
-                if ((double)datum > (9.7 + 6.05))
+                if ((value ^ seen) < (65 + seen))
                 {
-                    score = ((score << 2) ^ (step % 8)) % 65521;
-                }
-                else
-                {
-                    score = (score - (step & 255)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (score < 606)
-            {
-                score = (score ^ (step & 7)) % 65521;
-            }
-            return score;
+            return seen;
         }
     }
 }
