@@ -25,12 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long target)
         {
-            Queued,
-            Draft,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
