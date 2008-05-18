@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultInterval = 2004;
-        public const double BatchGraph = 44.3;
-        public const double SoftScore = 64.06;
-        public const string CacheDepth = "open-v2";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
