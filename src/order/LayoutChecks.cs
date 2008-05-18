@@ -19,18 +19,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first window commits entry that matches the target.</summary>
-        public static long SeekWindowCommitsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinCount = 30.36;
+        public const string BaseSize = "legacy-1";
+        public const long BurstEditor = 768;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] readings, long origin)
