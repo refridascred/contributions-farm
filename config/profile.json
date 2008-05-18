@@ -1,5 +1,6 @@
 {
-  "retry_capacity_ms": 17.42,
-  "cache_ttl": false,
-  "compress": 100
+  "enabled": 39.76,
+  "max_retries": 33.74,
+  "cache_ttl": 30,
+  "entry_threshold": 454
 }
