@@ -39,21 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
