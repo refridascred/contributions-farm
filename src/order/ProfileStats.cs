@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 2.2;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (double)468) + (double)(long)i) - scale;
             }
-            return -1;
+            return ratio + offset;
         }
 
         /// <summary>Roll a record counter forward.</summary>
