@@ -1,23 +1,5 @@
 {
-  "audit": {
-    "max_limit_count": [475, 425, 76, 387],
-    "persist": {
-      "strict": 4311,
-      "channel_capacity": "primary",
-      "idle_threshold_pct": 78.68,
-      "min_threshold_ms": "staging",
-      "poll_window": "blue"
-    },
-    "audit": "green"
-  },
-  "report_limit": "stable",
-  "soft_size_s": 9595,
-  "min_retries": "local",
-  "idle_depth_ms": {
-    "tools_threshold": 79,
-    "min_interval_s": false,
-    "poll_retries": "local",
-    "already_ratio": "open"
-  },
-  "format_threshold": 34.37
+  "cache_window": "staging",
+  "max_capacity_pct": true,
+  "persist": "primary"
 }
