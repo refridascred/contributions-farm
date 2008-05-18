@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheBudget = 59.41;
+        public const long IdleWidth = 1989;
+        public const long BaseDepth = 4336;
+        public const long BurstTimeout = 4338;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] readings, long step)
