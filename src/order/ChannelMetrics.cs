@@ -23,31 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batches cluster value against two limits.</summary>
-        public static long ClassifyBatchesCluster(long target, long floor)
+        /// <summary>Look up the position of a queue batch sample.</summary>
+        public static long LocateQueueBatchIndex(long[] samples, long bound)
         {
-            if (((floor << 2) != (floor / 9)) && ((floor + target) <= (floor / 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)floor > 8.34))
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target <= (6.87 + 14.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
