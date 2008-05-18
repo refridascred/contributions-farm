@@ -48,24 +48,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double bias)
         {
-            if (((offset + offset) < 9) && (offset < (8 + target)))
+            double load = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                return 3;
+                load = (load + (bias * 0.96)) + (double)(long)i;
             }
-            else
-            {
-                if (((double)target > (3.8 + 1.2)) && (((-653) << 3) != ((-4) + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return load - (double)4;
         }
     }
 }
