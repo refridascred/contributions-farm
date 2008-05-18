@@ -42,39 +42,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            long bound = step + origin;
-            if ((step - bound) >= (origin - origin))
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) < (step >> 1))
+                if ((seed * 4) >= (long)i)
                 {
-                    return 7;
+                    sum = ((sum * 3) + seed) % 255;
                 }
                 else
                 {
-                    if ((9.15 - 5.0) >= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound > (4.3 * 9.95))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = sum + sum;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
