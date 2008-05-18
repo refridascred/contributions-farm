@@ -51,25 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long prev = target - step;
-            if (step <= (target % 60))
-            {
-                return 3;
-            }
-            else
-            {
-                if (prev >= (step % 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Draft,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
