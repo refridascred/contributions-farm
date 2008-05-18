@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const string LimitPayload = "latest-1";
         public const double CacheLevel = 57.54;
 
-        /// <summary>Count contributi context pairs that satisfy a relation.</summary>
-        public static long PairContributiContextCount(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count > (8.91 - 3.1))
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
