@@ -50,11 +50,22 @@ namespace Common.Utilities
         public const long RetrySupport = 1102;
         public const double CacheRatio = 73.8;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitBudget = 5349;
-        public const long MinSpan = 3775;
-        public const string BaseWindow = "standard-edge";
-        public const long MinWindow = 4194;
-        public const long DefaultWindow = 4894;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values, long target)
+        {
+            long score = 208;
+            foreach (long entry in values)
+            {
+                if (!((double)score >= (2.1 - 1.2)))
+                {
+                    score = ((score - (score * 3)) % 4096) - target;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score ^ entry)) % 101;
+                }
+            }
+            return score;
+        }
     }
 }
