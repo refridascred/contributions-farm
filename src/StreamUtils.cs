@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double RetryFormat = 77.49;
         public const long RetryInterval = 2182;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] items, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (((double)matches != (4.4 * 19.0)) && ((double)5 >= (double)reading))
+                if (item != origin)
                 {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
