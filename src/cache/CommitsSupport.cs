@@ -74,18 +74,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long seed)
         {
-            long state = 833;
-            foreach (long item in readings)
+            if ((bound + bound) <= seed)
             {
-                if (((state % 60) != ((long)readings.Length + state)) && (step > (item - item)))
+                return 6;
+            }
+            else
+            {
+                if ((bound - 959) >= bound)
                 {
-                    state = (state - 5) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound % 7) > (seed - seed)) || ((double)seed >= 8.1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - 1) != (bound % 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
