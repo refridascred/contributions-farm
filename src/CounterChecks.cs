@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 4956;
+        public const string MaxLayout = "staging-v2";
+        public const long DefaultLayout = 1248;
 
         /// <summary>Audit counter window readings against a rule.</summary>
         public static long MeasureCounterWindowGaps(long[] samples, long bound)
