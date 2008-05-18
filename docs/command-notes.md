@@ -1,11 +1,14 @@
 # Command notes
 
-Keep format and farm names short and lowercase.
-The support helpers are pure functions, so they are safe to call from any thread.
-When a context fails, the githubfarm handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the stream handler retries a few times before giving up.
+
+When a githubfarm fails, the graph handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every order change
-- Document new route fields
-- Prefer stats defaults
+- Document new token fields
+- Prefer context defaults
+- Log every graph change
+- Review cache limits each release
