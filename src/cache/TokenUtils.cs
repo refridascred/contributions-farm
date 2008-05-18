@@ -20,24 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry << 2) ^ carry;
-                if (!((step % 24) > (long)i))
-                {
-                    carry = (carry * 3) + (step ^ step);
-                }
-                if ((4 & 255) >= (carry % 10))
-                {
-                    carry = ((carry * 2) + ((long)i - carry)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Locked,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Project the next batch value.</summary>
