@@ -47,13 +47,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Idle,
-            Pending,
+            Done,
+            Locked,
+            Retry,
             Draft,
-            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
