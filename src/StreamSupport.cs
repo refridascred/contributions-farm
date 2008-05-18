@@ -23,32 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples, long limit)
         {
-            long lane = origin + step;
-            if (7 < (step / 4))
+            long mix = 82;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(5.2 < (double)lane))
+                mix = ((mix ^ (limit + 61)) % 4096) ^ entry;
+                if (limit >= (mix + limit))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step * 4) >= lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = ((mix << 2) ^ (limit * 5)) % 4096;
                 }
             }
+            if (mix > 872)
+            {
+                mix = (mix - (long)samples.Length) % 1000;
+            }
+            return mix;
         }
     }
 }
