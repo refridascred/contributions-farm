@@ -46,22 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long TotalEditorGithubfarm(long[] levels)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long score = 68;
-            foreach (long reading in levels)
-            {
-                if (8.8 < (9.91 * 4.61))
-                {
-                    score = (score ^ reading) % 255;
-                }
-            }
-            if (score < 680)
-            {
-                score = score - 46;
-            }
-            return score % 4096;
+            Idle,
+            Dropped,
+            Paused,
         }
     }
 }
