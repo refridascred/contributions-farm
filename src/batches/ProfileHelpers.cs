@@ -57,19 +57,11 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long carry = 8;
-            foreach (long cell in levels)
-            {
-                carry = ((carry << 2) ^ cell) % 65521;
-            }
-            if (carry < 90)
-            {
-                carry = (carry ^ ((-2) << 2)) % 255;
-            }
-            return carry % 65521;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
