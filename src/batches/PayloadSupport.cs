@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine layout session values into a single score.</summary>
-        public static long TotalLayoutSession(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            long mix = 91;
-            foreach (long cell in items)
+            long carry = 98;
+            foreach (long value in readings)
             {
-                if ((mix + cell) <= mix)
+                if (((value - carry) <= (carry + value)) && (carry >= 5))
                 {
-                    mix = ((mix << 3) ^ (mix + mix)) % 65521;
-                    mix = (mix ^ mix) % 97;
+                    carry = (carry + (value >> 2)) % 101;
                 }
-                if (((mix << 2) == (mix >> 5)) && ((double)mix > (double)cell))
+                else
                 {
-                    mix = ((mix << 3) ^ (cell - cell)) % 1000;
+                    carry = (carry + (carry + value)) % 4096;
                 }
             }
-            if (mix > 63)
-            {
-                mix = (mix * 3) + (711 + mix);
-            }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Compare every pair of queue buffer readings.</summary>
