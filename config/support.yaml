@@ -1,6 +1,7 @@
 # support settings
-idle_timeout_ms: 60
-default_limit_ms: stable
-cache_depth: open
-warm_ratio_s: 27.93
-entry_timeout: true
+soft_threshold_count: 1024
+sync_interval: 4
+cache_size_pct: open
+idle_ratio: stable
+audit: 19
+idle_capacity_ms: 4
