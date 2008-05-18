@@ -22,10 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2910;
-        public const double WindowToken = 41.14;
-        public const long SoftDepth = 8703;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 6462;
+        public const long SoftNotes = 1975;
+        public const double MaxNotes = 34.41;
+        public const long MaxBudget = 1313;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstBudget = 34.17;
