@@ -41,17 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm window reading by value.</summary>
-        public static long LocateFarmWindowIndex(long[] items, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
