@@ -45,22 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = 11;
-            foreach (long cell in values)
-            {
-                if ((5.04 + 0.15) != (double)(long)values.Length)
-                {
-                    mark = ((mark * 4) + (mark << 1)) + limit;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (cell / 8)) % 97;
-                }
-            }
-            return mark;
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
