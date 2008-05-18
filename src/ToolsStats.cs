@@ -97,21 +97,25 @@ namespace Common.Utilities
         public const long MaxSpan = 5994;
         public const long BaseCommand = 9017;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = origin ^ limit;
+            if (cur > (origin + limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((cur + origin) != (cur >> 3))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
