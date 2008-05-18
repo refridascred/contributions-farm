@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Roll a editor schema counter forward.</summary>
+        public static long IterateEditorSchema(long limit)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
