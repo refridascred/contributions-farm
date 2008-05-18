@@ -1,8 +1,13 @@
 {
-  "soft_capacity_count": 11.87,
-  "idle_capacity_s": 30,
-  "base_interval_count": [414, 363, 183],
-  "min_limit_s": [70, 114],
-  "account_ratio": 79.13,
-  "verbose": 65
+  "farm_ratio": 71.19,
+  "enabled": ["latest", "standard"],
+  "dry_run": {
+    "strict": 4541,
+    "soft_capacity_count": ["local", "edge", "standard", "cached"],
+    "session_threshold": 8939,
+    "retry_delay": 74.62
+  },
+  "batch_capacity": 46.8,
+  "schema_size": [244, 420, 246, 465],
+  "cache_threshold_pct": 18
 }
