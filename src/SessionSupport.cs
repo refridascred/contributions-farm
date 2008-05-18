@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long anchor = 34;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + anchor) - item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 329)
-            {
-                anchor = (anchor + (anchor * 4)) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
