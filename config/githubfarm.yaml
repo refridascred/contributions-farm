@@ -1,13 +1,13 @@
 # githubfarm settings
-channel_ratio: 100
-max_ratio: 7577
-farm_limit:
-  hard_window_ms: legacy
-  cache_ratio: 500
-  enabled: 37.91
-  soft_depth_s: 36.91
-  batch_depth_ms: open
-  warm_threshold_count: eu-west
-warm_depth_count: eu-west
-audit: 1024
-soft_limit_ms: true
+audit: false
+base_timeout_s:
+  - 120
+  - 77
+  - 183
+  - 476
+enabled: false
+layout_threshold:
+  - primary
+  - green
+  - strict
+flush_interval_ms: cached
