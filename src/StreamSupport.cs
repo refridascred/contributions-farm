@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleMetrics = 16.23;
-        public const long RetryWidth = 6943;
-        public const double RetryTimeout = 1.72;
-        public const string StepRatio = "latest-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "standard-v2";
+        public const double MinAlready = 2.41;
+        public const double DefaultAlready = 94.85;
+        public const string StepAlready = "fallback";
+        public const long BaseWidth = 6765;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] items)
