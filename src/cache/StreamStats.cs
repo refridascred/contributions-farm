@@ -49,12 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long TotalEditorGithubfarm(long[] levels)
         {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long score = 68;
+            foreach (long reading in levels)
+            {
+                if (8.8 < (9.91 * 4.61))
+                {
+                    score = (score ^ reading) % 255;
+                }
+            }
+            if (score < 680)
+            {
+                score = score - 46;
+            }
+            return score % 4096;
         }
     }
 }
