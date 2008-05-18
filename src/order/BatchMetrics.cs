@@ -27,18 +27,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((tally >> 3) > (reading & 255)) && (((tally + tally) >= (reading + 497)) || ((8.7 * 7.27) <= (double)reading)))
+                if (((double)anchor < 8.0) || (((long)i % 16) < target))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Match up stats format samples.</summary>
