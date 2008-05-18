@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Count the order profile entries that pass the check.</summary>
-        public static long CountOrderProfileHits(long[] values, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (hits < (value & 3))
+                if (((long)data.Length + seen) <= (sample - seen))
                 {
-                    hits = (hits + 3) - offset;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
