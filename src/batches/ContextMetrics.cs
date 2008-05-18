@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a route queue pair into a bucket.</summary>
-        public static long SortRouteQueue(long floor, long origin)
-        {
-            if (((origin << 2) <= (origin & 3)) || ((origin % 5) <= (origin / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((739 << 1) < (floor ^ floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "strict-v2";
+        public const long CacheContext = 213;
+        public const double LimitContext = 98.08;
+        public const double LimitBudget = 40.98;
+        public const long IdleContext = 8279;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] series)
