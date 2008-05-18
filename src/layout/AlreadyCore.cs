@@ -59,19 +59,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values)
-        {
-            long anchor = 116;
-            foreach (long entry in values)
-            {
-                anchor = (((anchor * 3) + (anchor + 413)) % 4096) ^ entry;
-            }
-            if (anchor > 23)
-            {
-                anchor = (anchor - (4 + anchor)) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 3155;
+        public const long BurstCluster = 784;
+        public const double SoftCluster = 40.76;
     }
 }
