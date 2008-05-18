@@ -39,23 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double mean = offset;
-            if (mean <= weight)
-            {
-                mean = mean - (offset / 6.0);
-            }
-            else
-            {
-                mean = mean - (double)7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (weight - 0.07)) - (double)(long)i;
-            }
-            return mean + offset;
+            Draft,
+            New,
+            Ready,
         }
     }
 }
