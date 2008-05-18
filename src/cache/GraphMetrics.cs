@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long anchor = 787;
+            foreach (long item in samples)
+            {
+                if (((anchor + anchor) <= item) || ((anchor + anchor) < (anchor * 5)))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record phase values.</summary>
