@@ -1,6 +1,6 @@
-id,owner,count,region,score
-1,72.16,739,open,legacy
-2,710,97.3,stable,standard
-3,54.33,83.47,987,68.96
-4,local,964,62.4,629
-5,396,94.99,170,919
+id,owner,active,count
+1,blue,652,local
+2,799,74.11,121
+3,879,847,512
+4,904,stable,26.86
+5,461,288,37.54
