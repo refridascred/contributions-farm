@@ -1,12 +1,13 @@
 # githubfarm settings
-stats_ratio:
-  - 313
-  - 227
-entry_ratio: false
-warm_window_ms: 67
-batches_retries:
-  - local
-  - standard
-  - open
-  - green
-support_threshold: cached
+flush_size_s: 5467
+base_capacity:
+  - 116
+  - 415
+  - 363
+hard_capacity_s: 88.79
+enabled: fallback
+order_ratio:
+  - 369
+  - 277
+  - 392
+cache_ttl: stable
