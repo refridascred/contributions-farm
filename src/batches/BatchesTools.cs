@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 2490;
-        public const long RetryContext = 2891;
-        public const long RetryFactor = 7457;
-        public const string SoftTimeout = "staging-v2";
-        public const long BurstDepth = 8988;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            New,
+            Ready,
+            Closed,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
