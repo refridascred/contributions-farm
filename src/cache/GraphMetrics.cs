@@ -28,18 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] data, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 20;
+            foreach (long value in levels)
             {
-                if (((count >> 2) != (target % 3)) || (((target + count) < cell) || ((count % 24) != (count >> 2))))
+                if (126 > (0 - score))
                 {
-                    count = count + 1;
+                    score = ((score - score) ^ value) + floor;
                 }
             }
-            return count;
+            if (score > 593)
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
