@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] values, long target)
         {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((target >> 3) <= datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
