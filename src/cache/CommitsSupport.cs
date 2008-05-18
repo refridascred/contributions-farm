@@ -77,19 +77,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell <= (5.0 + 6.27))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
