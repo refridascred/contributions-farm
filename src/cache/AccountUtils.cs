@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool VerifyBatchOrderRange(long[] levels, long target)
+        /// <summary>Roll a context profile counter forward.</summary>
+        public static long SeriesContextProfile(long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum > target)
+                result = result - ((long)i + result);
+                if (((result + result) < seed) && ((seed - result) > 4))
                 {
-                    found = false;
-                    break;
+                    result = (result << 2) ^ seed;
                 }
+                else
+                {
+                    result = (result + (result >> 3)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Accumulate record editor samples.</summary>
