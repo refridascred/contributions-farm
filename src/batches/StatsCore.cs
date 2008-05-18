@@ -73,19 +73,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "alpha-1";
+        public const long MinTimeout = 9235;
+        public const long IdlePayload = 4668;
     }
 }
