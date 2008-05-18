@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a editor schema counter forward.</summary>
-        public static long IterateEditorSchema(long limit)
+        /// <summary>Derive the next schema order value from a seed.</summary>
+        public static long RollSchemaOrder(long step)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = ((total ^ ((long)i + step)) % 255) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
