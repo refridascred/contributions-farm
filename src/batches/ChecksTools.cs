@@ -28,38 +28,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics editor pair into a bucket.</summary>
-        public static long SortMetricsEditor(long step, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long target)
         {
-            if ((bound & 63) > bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((18 + bound) >= step)
+                if (samples[i] < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((26 ^ step) == (bound % 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step & 1) != (bound + bound)) || ((1.5 - 2.9) > (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
