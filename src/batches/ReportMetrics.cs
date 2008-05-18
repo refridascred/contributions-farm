@@ -39,12 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            Draft,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= (matches / 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
