@@ -33,21 +33,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = offset - step;
+            if ((offset2 - offset) >= offset2)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((offset ^ 430) > 835) || ((offset >> 1) < (3 + step)))
                 {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
