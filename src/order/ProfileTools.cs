@@ -43,17 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema queue value from a seed.</summary>
-        public static long SeriesSchemaQueue(long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result << 3) ^ (origin - result);
-                result = (result ^ (result - origin)) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count graph batch pairs that satisfy a relation.</summary>
