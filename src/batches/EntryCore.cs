@@ -40,16 +40,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + floor) % 97;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
