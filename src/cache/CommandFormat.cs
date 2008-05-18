@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseScore = "alpha-v2";
-        public const long CacheStream = 9263;
-        public const long LimitCount = 6103;
-        public const string SoftStream = "latest";
+        /// <summary>Locate a report format reading by value.</summary>
+        public static long FindReportFormatIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next githubfarm metric value.</summary>
         public static double ScaleGithubfarmMetric(double scale, double span)
