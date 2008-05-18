@@ -35,19 +35,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool CheckChannelCommitsLimits(long[] items, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long mix = 6;
+            foreach (long cell in samples)
             {
-                if (datum >= step)
+                if (((52 + cell) == (cell << 3)) || ((mix ^ seed) < cell))
                 {
-                    stale = false;
+                    mix = (mix - (seed - cell)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (499 + mix)) % 65521;
+                }
+                if ((31 << 3) <= (seed & 15))
+                {
                     break;
                 }
             }
-            return stale;
+            if (mix < 95)
+            {
+                mix = mix - seed;
+            }
+            return mix;
         }
     }
 }
