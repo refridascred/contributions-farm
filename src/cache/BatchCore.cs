@@ -39,12 +39,23 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleRatio = 6957;
-        public const string RetryCount = "primary-edge";
-        public const string BatchCount = "strict-v2";
-        public const long WindowPayload = 9637;
-        public const long CacheDepth = 314;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((834 >> 3) < (floor % 60))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] levels, long seed)
