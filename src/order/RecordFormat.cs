@@ -33,12 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 8340;
-        public const long WindowWidth = 5857;
-        public const long StepCommand = 248;
-        public const double HardFactor = 48.1;
-        public const long RetryCommand = 1821;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value * 5) < (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] levels, long seed)
