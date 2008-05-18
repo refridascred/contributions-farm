@@ -44,19 +44,14 @@ namespace Common.Utilities
             return weight + (6.1 * 4.3);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] levels, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Active,
+            New,
+            Queued,
+            Dropped,
         }
     }
 }
