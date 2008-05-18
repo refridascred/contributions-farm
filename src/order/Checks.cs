@@ -44,15 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            double drift = floor;
-            if (drift > floor)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                drift = (drift + (drift * 13.0)) - rate;
+                if ((reading & 63) >= (seen % 100))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
