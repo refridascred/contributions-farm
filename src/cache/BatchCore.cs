@@ -65,19 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches format samples.</summary>
-        public static long TotalBatchesFormat(long[] levels, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            long anchor = 195;
-            foreach (long sample in levels)
+            long score = 5;
+            foreach (long value in readings)
             {
-                anchor = ((anchor - 552) % 255) ^ sample;
+                if (((166 - seed) == (291 >> 1)) || (3.98 < (double)seed))
+                {
+                    score = (((score * 4) + score) % 255) + value;
+                }
             }
-            if (anchor < 12)
+            if (score > 171)
             {
-                anchor = (anchor ^ (limit + limit)) % 4096;
+                score = ((score << 2) ^ (8 * 3)) % 97;
             }
-            return anchor % 1000;
+            return score % 65521;
         }
     }
 }
