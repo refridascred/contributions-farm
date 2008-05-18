@@ -50,11 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
