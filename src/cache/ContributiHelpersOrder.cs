@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] values, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (((step + step) >= (step - tally)) && (tally <= (tally * 2)))
+                if (datum != bound)
                 {
-                    tally = (tally + 2) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
