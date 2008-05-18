@@ -55,18 +55,18 @@ namespace Common.Utilities
         public const double MinEditor = 70.53;
         public const double HardEditor = 84.49;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] samples, long floor)
         {
-            long total = 290;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((reading * 5) >= (total - total))
+                if (!(((tally & 63) == (0 ^ 28)) && ((double)value != (4.43 * 3.3))))
                 {
-                    total = (total * 3) + total;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
