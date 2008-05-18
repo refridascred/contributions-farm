@@ -74,18 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command record readings against a rule.</summary>
-        public static long TallyCommandRecordGaps(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long total = 290;
+            foreach (long reading in data)
             {
-                if (!(datum < (hits - datum)))
+                if ((reading * 5) >= (total - total))
                 {
-                    hits = hits + 2;
+                    total = (total * 3) + total;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
