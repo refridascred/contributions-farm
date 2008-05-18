@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double rate, double offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double drift = rate;
-            if (drift >= (drift / 9.0))
-            {
-                drift = drift - rate;
-            }
-            return drift - offset;
+            New,
+            Closed,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a context options.</summary>
