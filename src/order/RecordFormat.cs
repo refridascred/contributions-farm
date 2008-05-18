@@ -43,23 +43,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 5) != (5 + (-292)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 9.46;
+        public const double RetryOrder = 96.66;
+        public const string WindowTimeout = "legacy-v2";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
