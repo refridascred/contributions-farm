@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultLevel = 4143;
-        public const double BurstCount = 45.14;
-        public const double IdleCommand = 38.83;
-        public const long BaseCommand = 2890;
-        public const double SoftFactor = 78.75;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
