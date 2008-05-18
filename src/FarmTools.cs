@@ -19,17 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Count record batch pairs that satisfy a relation.</summary>
+        public static long PairRecordBatchCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (carry % 8);
-                carry = carry + (carry >> 3);
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
