@@ -1,11 +1,15 @@
 # entry settings
-hard_retries_count: local
-sync_retries: 31
-idle_size:
-  warm_capacity: 83.41
-  cache_capacity_s: blue
-  idle_size: 500
-strict:
-  - open
-  - legacy
-context_capacity: 30
+audit:
+  dry_run: 79.44
+  poll_retries_s: 8711
+  graph_interval:
+    flush_interval_ms: 500
+    audit: 69
+    cache_retries_s: 79
+    window_threshold: 6858
+  sync_window: 15.71
+  filter_depth: true
+warm_ttl_ms: 100
+base_ratio_ms: 8922
+hard_delay_s: false
+hard_limit: standard
