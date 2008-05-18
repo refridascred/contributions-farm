@@ -39,24 +39,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank entry editor input into a small class.</summary>
-        public static long SortEntryEditor(long target, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long floor)
         {
-            if ((12.0 + 7.0) > (double)floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((52 / 7) <= (target << 2))
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
