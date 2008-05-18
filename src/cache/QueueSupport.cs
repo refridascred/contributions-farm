@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up profile window samples.</summary>
-        public static long MatchProfileWindowCount(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -4;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.64 - 5.2) == (double)state)
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (seed << 1)) + reading;
+                }
+                if ((18.0 / 4.0) > (double)seed)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > 97)
+            {
+                state = ((state * 5) + (364 - state)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
