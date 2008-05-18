@@ -1,26 +1,11 @@
 {
-  "soft_limit_pct": 30,
-  "flush_interval_count": 60,
-  "max_threshold_ms": {
-    "verbose": 69,
-    "dry_run": false,
-    "batch_delay": {
-      "max_depth_pct": false,
-      "cache_capacity_count": "fallback",
-      "hard_retries": 9.19,
-      "warm_timeout": 19.03,
-      "idle_limit_s": ["primary", "legacy", "blue", "edge"],
-      "burst_ratio_count": false
-    },
-    "retry_size_s": false,
-    "route_retries": "local"
+  "base_size_pct": {
+    "soft_size_s": "primary",
+    "batch_limit_s": 27.02,
+    "audit": "open"
   },
-  "sync_delay": "staging",
-  "enabled": {
-    "max_retries_s": 500,
-    "channel_ttl": 500,
-    "batches_size": "open",
-    "hard_interval_pct": 6244,
-    "min_ratio_s": 1024
-  }
+  "strict": 83,
+  "default_limit_ms": "primary",
+  "persist": "edge",
+  "hard_limit_count": 500
 }
