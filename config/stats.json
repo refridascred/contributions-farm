@@ -1,6 +1,19 @@
 {
-  "base_size": 8062,
-  "idle_depth": "green",
-  "batch_ratio_count": 1024,
-  "flush_depth_pct": ["standard", "legacy", "open", "cached"]
+  "base_threshold": {
+    "audit": {
+      "persist": 19,
+      "default_ratio_ms": 47,
+      "hard_limit": 324,
+      "batch_ratio": 500,
+      "graph_retries": "staging",
+      "default_depth": [129, 316, 94, 140]
+    },
+    "farm_retries": ["latest", "open", "eu-west", "fallback"],
+    "sync_ttl_count": 2036,
+    "hard_threshold_count": 66,
+    "idle_interval_ms": 9860,
+    "flush_interval": 95
+  },
+  "burst_window": false,
+  "stats_interval": 8622
 }
