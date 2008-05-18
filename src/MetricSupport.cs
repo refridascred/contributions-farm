@@ -24,13 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
+            Closed,
             Paused,
-            Ready,
             Draft,
-            Active,
             Locked,
         }
     }
