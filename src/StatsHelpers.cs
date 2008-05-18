@@ -50,12 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Paused,
-            Failed,
-            Draft,
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
