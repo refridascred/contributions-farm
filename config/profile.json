@@ -1,18 +1,5 @@
 {
-  "default_retries": 2278,
-  "already_size": 6.28,
-  "poll_capacity": 49,
-  "compress": {
-    "persist": "edge",
-    "default_retries": 30,
-    "warm_window": false,
-    "readonly": {
-      "hard_timeout_s": "eu-west",
-      "sync_delay_s": 36.32,
-      "schema_limit": true,
-      "already_depth": 13
-    }
-  },
-  "burst_capacity": ["primary", "stable", "edge"],
-  "buffer_limit": "staging"
+  "poll_ttl_ms": 100,
+  "base_size": 53,
+  "batch_timeout": true
 }
