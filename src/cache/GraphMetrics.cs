@@ -72,12 +72,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
