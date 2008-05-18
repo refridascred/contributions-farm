@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            double mean = 5.2;
-            if (mean <= offset)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - 9.0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (rate / 5.0);
-            }
-            return mean - offset;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
