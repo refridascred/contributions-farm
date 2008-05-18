@@ -48,12 +48,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i ^ anchor) <= ((long)i - target))
+                {
+                    continue;
+                }
+                anchor = ((anchor << 3) ^ (anchor + target)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
