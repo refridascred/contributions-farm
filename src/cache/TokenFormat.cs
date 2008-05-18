@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = -77;
-            foreach (long sample in series)
-            {
-                long cur = (71 + (long)series.Length) - (state - 586);
-                if ((cur - (long)series.Length) <= (sample % 8))
-                {
-                    continue;
-                }
-                if (seed > (sample + seed))
-                {
-                    state = ((state * 4) + (seed * 4)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ seed) % 101;
-                }
-            }
-            return state;
+            Idle,
+            Done,
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
