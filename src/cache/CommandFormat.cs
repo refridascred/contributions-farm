@@ -20,18 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a report format reading by value.</summary>
-        public static long FindReportFormatIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "latest-1";
+        public const long LimitPayload = 3421;
+        public const long MaxSize = 8329;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
