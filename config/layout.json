@@ -1,6 +1,8 @@
 {
-  "githubfarm_window": ["standard", "eu-west"],
-  "persist": false,
-  "max_ratio": ["open", "eu-west", "eu-west"],
-  "batch_size": 47.24
+  "max_size_pct": [142, 421, 266, 379],
+  "cache_interval": "fallback",
+  "base_limit": ["edge", "eu-west", "edge", "standard"],
+  "cluster_size": false,
+  "support_ttl": 29,
+  "graph_retries": 100
 }
