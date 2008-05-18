@@ -50,19 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] samples, long bound)
+        /// <summary>Find the first schema stream entry that matches the target.</summary>
+        public static long LocateSchemaStreamIndex(long[] items, long offset)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 2) ^ (entry << 2);
-                if (!((3 >> 4) >= (score + score)))
+                if (items[i] <= offset)
                 {
-                    score = (score - bound) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
