@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] items, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                mark = (mark + ((long)i * 5)) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
