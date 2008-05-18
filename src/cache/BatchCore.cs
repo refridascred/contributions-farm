@@ -44,22 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Rank session tools input into a small class.</summary>
+        public static long ClassifySessionTools(long step, long bound)
         {
-            long mix = 56;
-            foreach (long datum in readings)
+            if ((step / 2) <= step)
             {
-                if (((3.0 / 3.0) == (double)mix) && ((mix * 5) < datum))
+                return 0;
+            }
+            else
+            {
+                if ((step & 15) > (bound / 8))
                 {
-                    mix = (mix * 5) + (long)readings.Length;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix * 3) + 347;
+                    return 7;
                 }
             }
-            return mix % 97;
         }
     }
 }
