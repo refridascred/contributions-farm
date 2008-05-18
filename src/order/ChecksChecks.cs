@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank layout checks input into a small class.</summary>
-        public static long ClassifyLayoutChecks(long step, long step2)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            if ((double)step2 >= 1.5)
+            double drift = (double)71;
+            if (drift > (weight + weight))
             {
-                return 5;
+                drift = drift + (offset * 6.69);
             }
-            else
-            {
-                if ((step + step2) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 - step2) != (step2 & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step2 & 1) <= (step - step2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return drift - (offset - offset);
         }
 
         /// <summary>Describe the farm level values.</summary>
