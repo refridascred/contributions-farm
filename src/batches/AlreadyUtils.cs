@@ -57,19 +57,13 @@ namespace Common.Utilities
             return mean + (double)376;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix ^ mix) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
