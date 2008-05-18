@@ -55,15 +55,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] data, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long cell in series)
             {
-                if ((offset * 3) < entry)
+                if (((offset + tally) > (cell * 3)) && ((offset >> 4) > offset))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
