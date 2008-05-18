@@ -1,5 +1,7 @@
 {
-  "max_ratio_ms": 6800,
-  "cache_ratio_count": true,
-  "verbose": 60
+  "soft_interval_count": true,
+  "enabled": 3551,
+  "retry_timeout_ms": 46,
+  "graph_limit": 120,
+  "filter_limit": 87
 }
