@@ -28,16 +28,22 @@ namespace Common.Utilities
         public const long BaseContext = 5305;
         public const long SoftContext = 666;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = 52;
+            foreach (long reading in levels)
             {
-                sum = (sum ^ (389 + offset)) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((carry >= (carry - seed)) || (((long)levels.Length / 9) > (carry + reading)))
+                {
+                    carry = ((carry * 4) + (3 + seed)) % 255;
+                }
+                if ((1.04 < (double)carry) && (reading <= (seed >> 1)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Describe the context mode values.</summary>
