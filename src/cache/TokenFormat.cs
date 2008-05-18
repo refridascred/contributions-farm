@@ -20,13 +20,10 @@ namespace Common.Utilities
             return mean + 8.9;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Pending,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 3971;
+        public const long StepCounter = 8380;
+        public const double MaxSpan = 64.58;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstWidth = 278;
