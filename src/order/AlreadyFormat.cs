@@ -53,19 +53,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheInterval = "open-edge";
+        public const long RetryInterval = 4873;
+        public const long RetryAlready = 6945;
     }
 }
