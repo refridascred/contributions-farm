@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
+            Dropped,
+            Paused,
+            Active,
             Locked,
-            Idle,
-            New,
-            Done,
         }
 
         /// <summary>Hold a profile stats.</summary>
