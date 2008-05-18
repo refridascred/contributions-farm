@@ -1,12 +1,11 @@
 # Command notes
 
-The filter report groups every cache by metrics.
-When a route fails, the report handler retries a few times before giving up.
-When a format fails, the metric handler retries a few times before giving up.
+Keep record and order names short and lowercase.
+Each checks is validated before it reaches the cache queue.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new counter fields
-- Prefer editor defaults
-- Review context limits each release
-- Validate filter input early
+- Prefer stats defaults
+- Log every payload change
+- Review cache limits each release
