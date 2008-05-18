@@ -28,15 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long sum = 3;
-            foreach (long item in items)
-            {
-                sum = (((sum * 5) + item) % 97) - floor;
-            }
-            return sum;
+            Synced,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
