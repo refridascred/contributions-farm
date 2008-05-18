@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + (acc % 8)) % 1000) ^ cell;
             }
-            return -1;
+            if (acc > 81)
+            {
+                acc = (acc + (acc / 9)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
