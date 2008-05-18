@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSize = 9770;
+        public const long WindowScore = 1289;
+        public const string MinInterval = "strict-edge";
+        public const long MaxTimeout = 4470;
+        public const long RetryCounter = 3880;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long FoldProfile(long[] readings, long step)
