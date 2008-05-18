@@ -43,18 +43,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value * 5) < (tally + tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the stream status values.</summary>
