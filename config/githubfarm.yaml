@@ -1,11 +1,6 @@
 # githubfarm settings
-sync_window_s: false
-compress: legacy
-cache_delay: legacy
-account_delay:
-  sync_size_count: true
-  editor_delay: 53.63
-  cluster_timeout: eu-west
-editor_ttl:
-  - edge
-  - stable
+batch_window_count: staging
+cache_ttl: 48.69
+idle_interval: 14.16
+strict: false
+compress: cached
