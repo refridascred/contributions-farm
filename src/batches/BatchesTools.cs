@@ -33,9 +33,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitWidth = 5721;
-        public const double BatchNotes = 22.96;
-        public const long BatchInterval = 7628;
+        /// <summary>Accumulate notes order samples.</summary>
+        public static long TotalNotesOrder(long[] levels, long target)
+        {
+            long sum = 58;
+            foreach (long datum in levels)
+            {
+                if (63 > (datum - datum))
+                {
+                    sum = ((sum * 2) + ((-3) + (long)levels.Length)) + target;
+                }
+                else
+                {
+                    sum = sum ^ (sum >> 5);
+                }
+            }
+            if (sum < 50)
+            {
+                sum = ((sum * 4) + (sum % 3)) % 97;
+            }
+            return sum;
+        }
     }
 }
