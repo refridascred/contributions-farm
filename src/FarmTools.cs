@@ -21,12 +21,9 @@ namespace Common.Utilities
         public const long BurstStream = 4172;
         public const double IdleBudget = 31.1;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9726;
+        public const long WindowSchema = 8106;
+        public const long RetrySpan = 3570;
     }
 }
