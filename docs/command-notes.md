@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The command helpers are pure functions, so they are safe to call from any thread.
+Keep format and account names short and lowercase.
+Each context is validated before it reaches the layout queue.
+Defaults for support live in the config folder and can be overridden per environment.
+
+When a context fails, the cluster handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate batch input early
-- Prefer profile defaults
-- Document new queue fields
+- Prefer contributi defaults
+- Log every counter change
+- Validate buffer input early
