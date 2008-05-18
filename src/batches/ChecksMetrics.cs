@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string BatchMetric = "stable-v2";
         public const double IdleTimeout = 21.41;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate editor token samples.</summary>
+        public static long DigestEditorToken(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
+            long acc = 86;
+            foreach (long sample in values)
+            {
+                if (((sample - sample) <= (sample << 3)) || ((acc * 2) <= (sample - acc)))
+                {
+                    acc = ((acc << 3) ^ (sample / 4)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (234 << 3)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
