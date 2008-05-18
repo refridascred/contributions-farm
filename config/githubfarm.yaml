@@ -1,21 +1,27 @@
 # githubfarm settings
-channel_timeout:
-  - stable
-  - strict
-soft_delay_pct: 100
-audit: eu-west
-farm_retries:
-  entry_capacity: strict
-  filter_ttl:
-    - eu-west
+window_interval: 20.47
+strict: 3170
+poll_interval:
+  - 1
+  - 373
+dry_run:
+  cache_ttl_s:
+    - edge
+    - strict
+    - primary
+  contributi_ratio: 412
+  githubfarm_timeout:
+    payload_delay: true
+    base_ratio_ms: 9411
+    buffer_timeout: primary
+    batch_timeout_ms: eu-west
+    idle_timeout: edge
+  filter_limit: 25
+  flush_size: true
+  default_timeout_s:
+    - strict
+    - cached
+    - blue
     - green
-    - green
-    - legacy
-  flush_timeout_pct:
-    support_timeout: green
-    base_threshold_pct: 6869
-    session_size: 7.29
-    account_size: 30
-    retry_delay_pct: false
-    warm_interval_count: 2.41
-  flush_timeout_s: true
+readonly: 39
+max_ratio: 100
