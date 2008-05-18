@@ -1,10 +1,13 @@
 {
-  "buffer_limit": ["legacy", "stable"],
-  "warm_depth": false,
-  "cache_threshold": {
-    "soft_window_s": 3198,
-    "persist": "latest",
-    "audit": 19.08
-  },
-  "context_timeout": "staging"
+  "flush_size": 72,
+  "base_timeout": 394,
+  "default_limit_s": 96.09,
+  "flush_depth_s": {
+    "support_size": "stable",
+    "poll_retries": 51.22,
+    "layout_size": 7989,
+    "payload_retries": 9231,
+    "window_interval": [312, 176, 300],
+    "retry_limit_s": 37
+  }
 }
