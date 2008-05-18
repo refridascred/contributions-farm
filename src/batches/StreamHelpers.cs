@@ -20,18 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset >= (5.0 * 7.0))
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 3) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
