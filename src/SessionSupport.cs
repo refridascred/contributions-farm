@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = 34;
+            foreach (long item in readings)
             {
-                if ((value + seen) > (seen >> 1))
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 2) + anchor) - item;
             }
-            return seen;
+            if (anchor > 329)
+            {
+                anchor = (anchor + (anchor * 4)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
