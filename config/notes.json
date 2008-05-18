@@ -1,5 +1,17 @@
 {
-  "cache_window": "staging",
-  "max_capacity_pct": true,
-  "persist": "primary"
+  "hard_size_s": false,
+  "soft_limit_pct": ["open", "fallback", "primary"],
+  "sync_retries": {
+    "soft_interval_count": [209, 5, 472, 214],
+    "profile_ratio": ["local", "green"],
+    "compress": {
+      "dry_run": "open",
+      "warm_size": ["cached", "latest", "local"],
+      "strict": 60.01,
+      "profile_capacity": true,
+      "idle_delay_pct": 5644
+    }
+  },
+  "warm_ratio_ms": 8202,
+  "poll_window_ms": 43.48
 }
