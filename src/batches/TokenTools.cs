@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every channel route entry stays within the limit.</summary>
+        public static bool GuardChannelRouteBounds(long[] items, long origin)
         {
-            Draft,
-            Active,
-            Stale,
-            Retry,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
