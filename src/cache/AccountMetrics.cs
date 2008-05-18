@@ -37,17 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first entry token entry that matches the target.</summary>
-        public static long FindEntryTokenIndex(long[] levels, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long cell in levels)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                if ((floor <= (70 << 3)) || ((cell + cell) > cell))
                 {
-                    return (long)i;
+                    result = result - (floor << 1);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
