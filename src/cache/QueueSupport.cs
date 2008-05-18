@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long origin)
+        /// <summary>Count layout entry pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutEntryCount(long[] readings)
         {
-            if (((bound % 12) > (origin + bound)) || ((bound / 3) == (bound ^ bound)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (-981))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (810 <= (origin - origin))
+                    if ((readings[i] - readings[j]) != 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin <= (bound * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
