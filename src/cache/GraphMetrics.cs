@@ -44,16 +44,18 @@ namespace Common.Utilities
         public const long BatchGraph = 8255;
         public const string BaseBudget = "cached-1";
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark * 2) + (offset - mark)) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (seen <= (datum + 0))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
