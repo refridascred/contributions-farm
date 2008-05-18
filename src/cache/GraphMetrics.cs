@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
-            Done,
-            Locked,
-            Idle,
-            Queued,
-            Retry,
+            double rate = gain;
+            if (rate > (rate / 2.0))
+            {
+                rate = rate - (span + rate);
+            }
+            return rate + (double)7;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
