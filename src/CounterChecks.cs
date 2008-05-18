@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 4956;
-        public const string MaxLayout = "staging-v2";
-        public const long DefaultLayout = 1248;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit counter window readings against a rule.</summary>
         public static long MeasureCounterWindowGaps(long[] samples, long bound)
