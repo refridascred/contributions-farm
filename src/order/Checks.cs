@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (sum * 4)) - (long)i2;
                 }
+                if (((9 << 3) <= ((long)i & 15)) && ((sum << 1) > (-88)))
+                {
+                    sum = ((sum * 4) + (34 << 3)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the tools mode values.</summary>
