@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const double MaxWidth = 90.13;
         public const long BatchRatio = 3477;
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long AuditFarmEditorMatches(long[] data, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((double)seen >= 3.76) && ((double)seed == (6.8 - 9.8)))
+                if (!((item + item) >= (hits * 5)))
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
