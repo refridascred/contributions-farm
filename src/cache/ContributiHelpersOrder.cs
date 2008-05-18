@@ -37,19 +37,22 @@ namespace Common.Utilities
             return gain + 2.0;
         }
 
-        /// <summary>Validate buffer githubfarm readings against a bound.</summary>
-        public static bool CheckBufferGithubfarmBounds(long[] series, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (reading > offset)
+                if ((target > (32 + item)) && (((target % 5) >= (item << 1)) && ((6.87 - 4.73) == (double)count)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
