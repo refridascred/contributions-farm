@@ -1,14 +1,5 @@
 {
-  "default_window_s": "local",
-  "burst_window": 6572,
-  "batches_size": 97.21,
-  "stream_limit": "primary",
-  "cache_depth_s": {
-    "burst_timeout_count": "standard",
-    "context_ratio": "latest",
-    "compress": 97.46,
-    "stream_timeout": "latest",
-    "soft_interval_ms": [54, 211, 104, 81]
-  },
-  "cluster_delay": "open"
+  "account_depth": false,
+  "verbose": 100,
+  "default_size": ["strict", "legacy", "legacy", "legacy"]
 }
