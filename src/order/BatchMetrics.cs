@@ -57,19 +57,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] readings, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum < (offset + sum)) || ((double)offset > (9.3 - 2.0)))
+                if (readings[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
