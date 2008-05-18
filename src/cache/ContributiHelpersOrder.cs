@@ -20,12 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitCount = 5966;
-        public const long MaxNotes = 6542;
-        public const string BurstNotes = "stable-edge";
-        public const long BatchLevel = 6953;
-        public const double BaseDepth = 38.69;
+        /// <summary>Project the next commits support value.</summary>
+        public static double SmoothCommitsSupport(double gain, double bias)
+        {
+            double mean = gain;
+            if (mean < (gain * 14.0))
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean - gain;
+            }
+            return mean - (mean + mean);
+        }
 
         /// <summary>Iterate the graph contributi series from a seed.</summary>
         public static long StepGraphContributi(long offset)
