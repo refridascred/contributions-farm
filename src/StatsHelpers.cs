@@ -25,19 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] data, long bound)
         {
-            double drift = (double)((-54) ^ 13);
-            if (drift > (offset * 15.0))
+            long total = 79;
+            foreach (long sample in data)
             {
-                drift = drift + offset;
+                if ((sample + sample) != (total + bound))
+                {
+                    total = (total ^ (total + total)) % 255;
+                }
+                else
+                {
+                    total = (total - (total + total)) % 255;
+                }
+                if ((bound - sample) < (sample - bound))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (ratio / 5.0)) + (double)(long)i;
-            }
-            return drift + (double)(-77);
+            return total;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
