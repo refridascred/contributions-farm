@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long state = -71;
+            foreach (long entry in data)
+            {
+                if (!((15.0 / 2.0) < (double)entry))
+                {
+                    state = (state << 3) ^ (2 * 4);
+                }
+                else
+                {
+                    state = state - entry;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state ^ (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
