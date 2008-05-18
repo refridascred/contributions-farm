@@ -49,17 +49,38 @@ namespace Common.Utilities
         public const long StepSize = 737;
         public const string HardSchema = "stable-1";
 
-        /// <summary>Locate a window profile reading by value.</summary>
-        public static long LookupWindowProfileIndex(long[] data, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin >= 15.0)
             {
-                if (data[i] >= step)
+                return 1;
+            }
+            else
+            {
+                if (((6.9 + 8.0) > (double)origin) && (origin >= 797))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)bound == (7.6 * 3.2)) && ((double)origin != (4.7 + 4.2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin << 1) > (bound & 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
