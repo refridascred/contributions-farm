@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long LimitFactor = 1139;
         public const long MinRatio = 1130;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((double)seen <= (18.0 - 8.5))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
