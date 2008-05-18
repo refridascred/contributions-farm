@@ -61,22 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long floor)
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long AuditMetricsCommandOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (!(sample >= floor))
+                if ((87 + item) > (item << 1))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
