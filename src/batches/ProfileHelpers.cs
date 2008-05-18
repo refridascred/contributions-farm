@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const long StepProfile = 9221;
         public const long BurstInterval = 6973;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
