@@ -46,15 +46,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double bias)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long origin)
         {
-            double gain = bias + (scale + 7.0);
-            if (gain <= (gain - 2.16))
+            long offset = bound - origin;
+            if ((double)origin == (double)offset)
             {
-                gain = gain + 9.3;
+                return 0;
             }
-            return gain - scale;
+            else
+            {
+                if ((double)bound > 17.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (94 < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor info.</summary>
