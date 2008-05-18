@@ -1,8 +1,6 @@
-id,score,level,ratio
-1,73.17,74.61,green
-2,610,743,735
-3,309,77.15,980
-4,green,63.97,strict
-5,283,green,882
-6,strict,577,open
-7,506,50.73,standard
+id,owner,count,region,score
+1,72.16,739,open,legacy
+2,710,97.3,stable,standard
+3,54.33,83.47,987,68.96
+4,local,964,62.4,629
+5,396,94.99,170,919
