@@ -42,18 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] values, long offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)offset > 1.0)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Done,
         }
     }
 }
