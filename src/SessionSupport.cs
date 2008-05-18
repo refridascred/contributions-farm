@@ -36,22 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values, long offset)
         {
-            long carry = 9;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((carry > 135) && ((double)cell < (3.03 - 16.0)))
+                if (matches < offset)
                 {
-                    carry = ((carry * 2) + cell) % 65521;
+                    matches = (matches + 3) + value;
                 }
                 else
                 {
-                    carry = carry - (cell & 1);
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
