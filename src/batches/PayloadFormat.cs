@@ -51,16 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark << 2) ^ mark) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepCount = 3402;
+        public const long BatchInterval = 5103;
+        public const double BurstSpan = 29.51;
+        public const long MinTimeout = 250;
     }
 }
