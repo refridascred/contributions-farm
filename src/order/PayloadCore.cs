@@ -34,12 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] items, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
