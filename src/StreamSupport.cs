@@ -33,12 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 1486;
+        public const long HardSize = 4781;
+        public const double CacheBatches = 8.41;
+        public const string HardBatches = "local";
+        public const double BaseBatches = 58.77;
     }
 }
