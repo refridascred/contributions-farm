@@ -1,11 +1,10 @@
 # support settings
-flush_limit:
-  - 112
-  - 345
-  - 2
-  - 437
-cache_ratio:
-  - staging
-  - green
-cache_threshold: 97.44
-flush_threshold: 68.58
+cache_window_count: 38
+retry_retries: latest
+metric_timeout: 30
+githubfarm_ttl:
+  - strict
+  - latest
+  - edge
+  - edge
+min_size: 44.08
