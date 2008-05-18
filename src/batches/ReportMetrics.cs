@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCount = 21.66;
+        public const long BaseCounter = 86;
+        public const long HardCounter = 7150;
 
         /// <summary>Accumulate githubfarm support samples.</summary>
         public static long ScoreGithubfarmSupport(long[] data, long bound)
