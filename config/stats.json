@@ -1,5 +1,6 @@
 {
-  "profile_retries": false,
-  "layout_threshold": 58.54,
-  "warm_timeout_count": "latest"
+  "base_size": 8062,
+  "idle_depth": "green",
+  "batch_ratio_count": 1024,
+  "flush_depth_pct": ["standard", "legacy", "open", "cached"]
 }
