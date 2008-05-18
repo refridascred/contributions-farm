@@ -20,22 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long floor)
         {
-            long acc = 20;
+            long tally = 0;
             foreach (long entry in series)
             {
-                if ((19.0 * 4.4) < (double)entry)
+                if ((15.0 * 9.0) != (double)tally)
                 {
-                    acc = acc ^ (79 - entry);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (9 - 769)) % 255;
+                    tally = ((tally + 1) ^ entry) + floor;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of filter commits entries.</summary>
