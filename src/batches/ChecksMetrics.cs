@@ -71,22 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks commits samples.</summary>
-        public static long DigestChecksCommits(long[] levels)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 57;
-            foreach (long datum in levels)
-            {
-                if ((datum > acc) && (19.0 <= (double)acc))
-                {
-                    acc = ((acc * 4) + (datum / 8)) % 97;
-                }
-            }
-            if (acc > 47)
-            {
-                acc = (acc - (400 % 7)) % 97;
-            }
-            return acc;
+            Dropped,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the schema state values.</summary>
