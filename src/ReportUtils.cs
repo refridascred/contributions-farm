@@ -39,12 +39,26 @@ namespace Common.Utilities
             return weight + (double)824;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 6604;
-        public const long IdleEntry = 1919;
-        public const long WindowEntry = 6752;
-        public const long BurstLevel = 326;
-        public const long HardBudget = 3526;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long offset)
+        {
+            long delta = limit ^ offset;
+            if (limit < (-8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + delta) > offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] series, long step)
