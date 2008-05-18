@@ -52,23 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long sum = 66;
-            foreach (long sample in data)
-            {
-                sum = ((((sum * 5) + sum) % 97) ^ sample) + origin;
-                if ((6.6 / 2.0) != (double)sum)
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-            }
-            if (sum > 116)
-            {
-                sum = ((sum << 3) ^ 1) % 4096;
-            }
-            return sum % 97;
+            Pending,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
