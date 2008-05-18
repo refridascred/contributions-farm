@@ -23,21 +23,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((score % 16) <= score))
                 {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ score) % 4096;
+                }
+                if (((score + 61) <= value) || (offset < (score ^ value)))
+                {
+                    score = (score * 5) + (score % 16);
+                }
+                else
+                {
+                    score = (score ^ 1) % 97;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
