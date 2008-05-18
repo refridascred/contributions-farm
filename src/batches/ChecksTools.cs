@@ -28,17 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] < target)
+                if ((766 - count) > (reading >> 1))
                 {
-                    return (long)i;
+                    count = (count + 1) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
