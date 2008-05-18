@@ -42,11 +42,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster summary.</summary>
