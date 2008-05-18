@@ -25,21 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Digest a series of githubfarm filter entries.</summary>
+        public static long WeighGithubfarmFilter(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 32;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sample / 4) == (7 - 96)) && (7 > (sample & 3)))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc - sample)) % 65521;
                 }
+                else
+                {
+                    acc = (acc ^ (acc >> 1)) % 101;
+                    acc = ((acc * 5) + (target ^ sample)) % 65521;
+                }
+                acc = (acc + (acc ^ acc)) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
