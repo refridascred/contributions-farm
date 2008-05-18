@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 8867;
-        public const long IdleSize = 1814;
-        public const long CacheRatio = 9696;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings)
+        {
+            long sum = 3;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum - sum) % 101) + (long)i;
+                }
+                if ((5 >= (datum - datum)) || ((sum ^ datum) < (sum + 5)))
+                {
+                    sum = (sum * 2) + ((long)readings.Length ^ sum);
+                }
+            }
+            if (sum > (-5))
+            {
+                sum = sum - (sum + 1);
+            }
+            return sum;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string DefaultCache = "fallback-edge";
