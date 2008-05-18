@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=146
+for item in fallback blue local; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=337
 log "limit is ${RECORD_LIMIT}"
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in green fallback primary; do
-    log "checking ${item}"
-done
