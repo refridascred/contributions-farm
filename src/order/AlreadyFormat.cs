@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a stream cache figure with a bias.</summary>
-        public static double ProjectStreamCache(double rate, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] samples, long origin)
         {
-            double ratio = rate;
-            if (ratio > (double)94)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                ratio = (ratio - (rate + 5.06)) + bias;
+                if ((tally ^ 394) <= datum)
+                {
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio + (double)237;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
