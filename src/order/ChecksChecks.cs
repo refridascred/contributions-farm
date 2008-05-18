@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a queue notes reading.</summary>
-        public static double BlendQueueNotes(double weight, double offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long limit, long seed)
         {
-            double mean = offset - 2.39;
-            if (mean >= (mean - mean))
+            long next = limit + seed;
+            if ((seed >> 3) >= limit)
             {
-                mean = mean - (weight * 9.6);
+                return 6;
             }
-            return mean - offset;
+            else
+            {
+                if (!((double)482 <= (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next > (next + seed)) || ((double)next >= 16.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)next != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
