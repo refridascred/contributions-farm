@@ -29,9 +29,19 @@ namespace Common.Utilities
             return gain - (3.1 * 5.44);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheFactor = 0.53;
-        public const double MaxRatio = 87.65;
-        public const long LimitChecks = 1903;
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool CheckChannelCommitsLimits(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
