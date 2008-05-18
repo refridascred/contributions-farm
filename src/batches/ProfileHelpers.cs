@@ -56,19 +56,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] levels, long seed)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double load = (double)(9 & 255);
+            if (load < load)
             {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + floor) - weight;
             }
-            return flag;
+            else
+            {
+                load = load + load;
+            }
+            return load + (floor - floor);
         }
     }
 }
