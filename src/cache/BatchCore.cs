@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] levels, long seed)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double span)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            double mean = span * 14.0;
+            if (mean >= rate)
             {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + mean;
             }
-            return stale;
+            return mean - (double)0;
         }
     }
 }
