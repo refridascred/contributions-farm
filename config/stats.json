@@ -1,18 +1,5 @@
 {
-  "entry_threshold": false,
-  "strict": {
-    "base_capacity_count": ["standard", "green"],
-    "retry_ttl_pct": 2806,
-    "hard_capacity": 6983,
-    "context_delay": 51,
-    "poll_interval_s": ["eu-west", "strict"],
-    "enabled": true
-  },
-  "verbose": 30,
-  "sync_retries": 9091,
-  "persist": {
-    "max_threshold": "latest",
-    "sync_window_count": 62.37,
-    "hard_capacity_pct": "open"
-  }
+  "profile_retries": false,
+  "layout_threshold": 58.54,
+  "warm_timeout_count": "latest"
 }
