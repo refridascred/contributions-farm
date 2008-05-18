@@ -40,11 +40,23 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetrySize = 57.43;
-        public const string LimitCount = "primary-v2";
-        public const double MinEditor = 70.53;
-        public const double HardEditor = 84.49;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] values, long offset)
+        {
+            long acc = 360;
+            foreach (long datum in values)
+            {
+                if ((offset % 10) >= (datum + acc))
+                {
+                    acc = (acc ^ (offset + acc)) % 101;
+                }
+            }
+            if (acc < 24)
+            {
+                acc = (acc - (offset & 1)) % 4096;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmGaps(long[] samples, long floor)
