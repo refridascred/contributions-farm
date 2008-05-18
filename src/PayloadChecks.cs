@@ -58,18 +58,30 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] series)
+        /// <summary>Roll a context session counter forward.</summary>
+        public static long SeriesContextSession(long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((820 - 4) != (seen ^ seen))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    long hits = (seed ^ (long)i) / 9;
+                    state = (((state << 3) ^ (hits - 970)) % 97) - (long)i2;
                 }
+                state = (state - 7) % 101;
+                if (((state - state) <= (seed >> 1)) && (62 <= (state % 2)))
+                {
+                    state = (state - (state + state)) % 97;
+                }
+                else
+                {
+                    state = (state - (state + (long)i)) % 65521;
+                    state = (state ^ (73 + 87)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
