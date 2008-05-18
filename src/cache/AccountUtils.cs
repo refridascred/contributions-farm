@@ -39,22 +39,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series, long offset)
+        /// <summary>Fold a list of profile report readings.</summary>
+        public static long DigestProfileReport(long[] samples)
         {
-            long mix = 64;
-            foreach (long cell in series)
+            long mark = 2;
+            foreach (long entry in samples)
             {
-                if ((cell + (long)series.Length) >= (mix % 3))
-                {
-                    mix = ((mix * 4) + (48 / 8)) - offset;
-                }
-                if (9.53 > (double)mix)
+                mark = (((mark * 2) + mark) % 1000) - entry;
+                if ((mark & 127) <= (mark + mark))
                 {
                     break;
                 }
             }
-            return mix;
+            if (mark < 4)
+            {
+                mark = (mark + (-8)) % 4096;
+            }
+            return mark;
         }
     }
 }
