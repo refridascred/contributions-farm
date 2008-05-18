@@ -60,15 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Find the first batch window entry that matches the target.</summary>
+        public static long LookupBatchWindowIndex(long[] values, long origin)
         {
-            long acc = 195;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc + acc) % 65521) ^ cell;
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
