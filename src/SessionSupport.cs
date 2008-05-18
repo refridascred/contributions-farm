@@ -20,15 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] readings, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long mix = 95;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 2) ^ (entry << 2)) - target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
