@@ -34,17 +34,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] < seed)
+                if (offset > (277 >> 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
