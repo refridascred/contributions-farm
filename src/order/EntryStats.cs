@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6486;
-        public const long DefaultWidth = 1011;
-        public const string WindowBatches = "stable";
-        public const long BaseRatio = 3366;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchRatio = 6086;
+        public const long SoftCommand = 9092;
+        public const string SoftBudget = "strict-edge";
+        public const long MinInterval = 3084;
+        public const long HardCommand = 6166;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxScore = 51.72;
