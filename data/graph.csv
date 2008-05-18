@@ -1,9 +1,6 @@
-id,weight,score
-1,747,cached
-2,976,19.99
-3,standard,eu-west
-4,611,131
-5,61.74,140
-6,76.33,33.52
-7,stable,63.78
-8,standard,810
+id,label,ratio,active,region
+1,377,edge,671,25.78
+2,strict,74.03,163,36.24
+3,482,98.64,40.19,308
+4,202,43.66,485,696
+5,fallback,446,92,931
