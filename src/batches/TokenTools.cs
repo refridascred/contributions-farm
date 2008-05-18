@@ -32,26 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long sum = 8;
-            foreach (long datum in series)
-            {
-                if (sum > (datum + sum))
-                {
-                    sum = sum + (offset - sum);
-                }
-                if (sum < (24 ^ datum))
-                {
-                    break;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum % 1000;
+            Pending,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
