@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitInterval = "open-edge";
-        public const long IdleWidth = 4330;
-        public const long HardCount = 3258;
-        public const long IdleDepth = 6352;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextRange(long[] items, long limit)
