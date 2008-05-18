@@ -53,14 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double scale, double span)
         {
-            New,
-            Active,
-            Retry,
-            Closed,
-            Dropped,
+            double load = scale;
+            return (load + 6.0) + span;
         }
     }
 }
