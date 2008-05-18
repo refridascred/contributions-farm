@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long offset)
+        /// <summary>Combine cluster order values into a single score.</summary>
+        public static long TotalClusterOrder(long[] values)
         {
-            long delta = seed - offset;
-            if ((730 << 2) <= (64 + seed))
+            long score = 8;
+            foreach (long datum in values)
             {
-                return 4;
+                score = score ^ (datum & 15);
             }
-            else
-            {
-                if (((15.0 / 3.0) == (double)offset) || ((seed - seed) == (offset * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 64) != (offset - delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a command summary.</summary>
