@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] items, long floor)
         {
-            Active,
-            Done,
-            Pending,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally * 4) != (tally + entry))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
