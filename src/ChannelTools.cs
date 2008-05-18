@@ -25,19 +25,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double bias)
-        {
-            double scale = bias;
-            if (scale <= scale)
-            {
-                scale = scale - (3.65 * 6.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale + ratio);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepTimeout = 860;
+        public const double SoftGithubfarm = 9.7;
+        public const double WindowSize = 11.42;
     }
 }
