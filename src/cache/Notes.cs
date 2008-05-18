@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 68.01;
-        public const long WindowSize = 1971;
-        public const double BurstLayout = 35.43;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Done,
+            Draft,
+            Idle,
+            New,
+            Dropped,
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] samples, long floor)
