@@ -22,21 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Scale a counter payload figure with a bias.</summary>
+        public static double AdjustCounterPayload(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(45 % 5);
+            if (mean > mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = ((mean - mean) - ratio) + span;
             }
-            return count;
+            return mean - mean;
         }
 
         /// <summary>Project the next token value.</summary>
