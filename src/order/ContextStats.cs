@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheScore = "latest";
-        public const long MinLevel = 144;
-        public const long RetryTimeout = 1001;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long IterateToken(long origin)
