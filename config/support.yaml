@@ -1,11 +1,11 @@
 # support settings
-retry_retries_s: open
-dry_run: edge
-hard_ratio:
-  profile_ttl: true
-  enabled:
-    - primary
-    - local
-    - open
-    - open
-  idle_delay_s: false
+flush_limit:
+  - 112
+  - 345
+  - 2
+  - 437
+cache_ratio:
+  - staging
+  - green
+cache_threshold: 97.44
+flush_threshold: 68.58
