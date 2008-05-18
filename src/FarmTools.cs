@@ -17,25 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long origin, long floor)
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long CountAccountStreamMatches(long[] series)
         {
-            long edge = origin ^ floor;
-            if (((origin + floor) <= (floor - 82)) && ((173 << 1) > (origin + origin)))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (edge + floor))
+                if ((6.23 * 7.3) <= (double)(long)series.Length)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 3) - sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
