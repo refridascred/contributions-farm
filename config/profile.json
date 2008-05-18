@@ -1,5 +1,16 @@
 {
-  "token_timeout": 8543,
-  "min_threshold_s": true,
-  "cache_capacity": 9442
+  "metrics_depth": {
+    "flush_size_pct": true,
+    "burst_delay_s": [305, 460, 54, 235],
+    "readonly": 2235,
+    "idle_retries_ms": {
+      "default_window": ["legacy", "legacy", "local"],
+      "dry_run": "staging",
+      "compress": 95.6
+    },
+    "burst_size": false
+  },
+  "readonly": 250,
+  "compress": 1024,
+  "soft_ttl_pct": 98
 }
