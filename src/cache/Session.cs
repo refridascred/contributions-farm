@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] series, long origin)
+        /// <summary>Measure how many session report samples are out of range.</summary>
+        public static long AuditSessionReportMatches(long[] values, long step)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long datum in values)
             {
-                if (((origin % 3) == ((-7) % 100)) || (hits <= (0 + datum)))
+                if (!((48 << 1) <= datum) || !((hits + datum) != (datum + step)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
