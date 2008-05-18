@@ -1,28 +1,7 @@
 # entry settings
-account_threshold:
-  compress: 15.24
-  graph_window: standard
-  queue_threshold: 30
-persist:
-  base_ratio:
-    - edge
-    - fallback
-  default_depth: stable
-  batch_ratio_s: 4007
-  queue_ratio: open
-idle_depth_pct:
-  base_depth_count: 47.34
-  flush_delay_pct: green
-  idle_capacity_ms: true
-  filter_ratio:
-    enabled: false
-    flush_threshold_pct: 23.85
-    min_window: false
-    batch_limit_pct: cached
-    dry_run: 500
-    base_delay_s: fallback
-graph_capacity:
-  - 500
-  - 138
-  - 473
-  - 54
+poll_timeout_pct:
+  dry_run: false
+  compress: 30
+  warm_depth: 8694
+batch_threshold_count: local
+warm_retries: 42.74
