@@ -38,18 +38,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit schema githubfarm readings against a rule.</summary>
-        public static long AuditSchemaGithubfarmOutliers(long[] levels, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((double)item >= (double)96)
+                if (value >= (47 + hits))
                 {
-                    matches = (matches + 3) - limit;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first token route entry that matches the target.</summary>
