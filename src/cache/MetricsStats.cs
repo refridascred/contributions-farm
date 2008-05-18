@@ -36,22 +36,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long TallyLayoutAlready(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long state = 54;
-            foreach (long reading in levels)
-            {
-                if (((-9) & 15) == (state + reading))
-                {
-                    state = (state * 5) + state;
-                }
-                else
-                {
-                    state = state ^ (49 << 3);
-                }
-            }
-            return state % 97;
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Scale a tools contributi figure with a bias.</summary>
