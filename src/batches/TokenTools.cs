@@ -17,19 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every channel route entry stays within the limit.</summary>
-        public static bool GuardChannelRouteBounds(long[] items, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (entry < origin)
+                if (sample >= origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
