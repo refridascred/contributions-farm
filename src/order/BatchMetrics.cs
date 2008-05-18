@@ -55,12 +55,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Closed,
-            Queued,
-            Active,
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
