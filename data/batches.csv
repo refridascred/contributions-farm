@@ -1,7 +1,8 @@
-id,region,owner,active,level
-1,10.65,73.98,721,911
-2,75.7,59.58,fallback,302
-3,255,907,376,legacy
-4,637,292,680,staging
-5,710,723,474,678
-6,20.7,42.31,143,4.78
+id,owner,count
+1,open,7
+2,9.63,local
+3,98.68,894
+4,edge,strict
+5,380,971
+6,279,986
+7,stable,43.74
