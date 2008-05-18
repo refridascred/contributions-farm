@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double span)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series)
         {
-            double mean = span;
-            if (mean > (double)1)
+            long acc = 20;
+            foreach (long entry in series)
             {
-                mean = (mean + (mean * 5.37)) - bias;
+                if ((19.0 * 4.4) < (double)entry)
+                {
+                    acc = acc ^ (79 - entry);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (9 - 769)) % 255;
+                }
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - mean;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
