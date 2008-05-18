@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = -4;
-            foreach (long reading in readings)
-            {
-                if ((8.64 - 5.2) == (double)state)
-                {
-                    state = (state - (seed << 1)) + reading;
-                }
-                if ((18.0 / 4.0) > (double)seed)
-                {
-                    break;
-                }
-            }
-            if (state > 97)
-            {
-                state = ((state * 5) + (364 - state)) % 255;
-            }
-            return state % 65521;
+            Dropped,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
