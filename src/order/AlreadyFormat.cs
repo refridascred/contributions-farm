@@ -53,9 +53,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitTimeout = 9726;
-        public const double BurstFactor = 79.65;
-        public const long MinSize = 9531;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 555;
+        public const long IdleGithubfarm = 221;
+        public const long RetryWidth = 3103;
+        public const double BaseSize = 22.72;
     }
 }
