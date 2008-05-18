@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((acc & 127) == (acc - offset))
-                {
-                    acc = (acc * 5) + (offset + (long)i);
-                }
-                else
-                {
-                    acc = (acc - (offset ^ offset)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Locked,
+            Pending,
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Count command notes pairs that satisfy a relation.</summary>
