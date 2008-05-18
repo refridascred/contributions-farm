@@ -82,15 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] items, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] samples, long target)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long value in samples)
             {
-                if ((bound << 1) < datum)
+                if ((0.3 / 6.0) < (4.9 + 4.17))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 3) + value) + target;
                 }
             }
             return matches;
