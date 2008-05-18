@@ -14,13 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] values)
         {
-            Failed,
-            Draft,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (8.58 * 1.3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
