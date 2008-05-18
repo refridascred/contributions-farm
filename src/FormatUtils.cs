@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheCounter = 60.97;
+        public const double SoftRatio = 68.77;
+        public const string BatchLevel = "alpha-edge";
 
         /// <summary>Grade a account stream value against two limits.</summary>
         public static long SortAccountStream(long bound, long step)
