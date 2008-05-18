@@ -37,13 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Synced,
-            Ready,
+            Closed,
+            Paused,
             Failed,
-            Retry,
         }
 
         /// <summary>Describe the editor state values.</summary>
