@@ -39,12 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            Locked,
-            Active,
-            Dropped,
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
