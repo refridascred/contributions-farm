@@ -34,12 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= step)
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
