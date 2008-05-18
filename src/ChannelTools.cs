@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] items)
         {
-            if ((bound - bound) != (target + bound))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + 0) <= bound))
+                if (count > 195)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - bound) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 3) != (bound << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
