@@ -69,19 +69,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] items, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Active,
+            Pending,
+            Draft,
         }
     }
 }
