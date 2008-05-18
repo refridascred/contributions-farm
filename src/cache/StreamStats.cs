@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((22 - seed) == (acc % 24))
+                if (sample != limit)
                 {
-                    acc = ((acc << 2) ^ (long)i) % 101;
+                    ok = false;
+                    break;
                 }
-                acc = (acc + (seed & 7)) % 97;
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a command stats.</summary>
