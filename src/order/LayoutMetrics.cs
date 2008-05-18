@@ -19,24 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items)
         {
-            long state = 36;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((9.0 - 8.5) > (double)52)
+                if (!((tally & 255) <= (tally + reading)))
                 {
-                    state = (state ^ (cell + cell)) % 101;
-                    state = ((state << 3) ^ state) % 65521;
+                    tally = tally + 3;
                 }
-                state = state + (cell & 63);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state < 12)
-            {
-                state = ((state << 2) ^ (state & 1)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
