@@ -1,12 +1,26 @@
 # support settings
-retry_depth_count:
-  readonly: true
-  idle_ratio: 60
-  base_ttl_ms: 50.03
-  sync_depth_count:
-    - standard
-    - blue
-  compress: true
-  min_delay: fallback
-sync_delay: 35.32
-soft_timeout_count: true
+audit:
+  max_depth_pct: false
+  cache_size_s:
+    - staging
+    - legacy
+    - cached
+    - primary
+  dry_run:
+    compress: 2040
+    verbose: 1.59
+    base_threshold: false
+  record_ttl: 250
+  checks_interval:
+    - strict
+    - open
+    - open
+compress: open
+burst_interval: 30
+min_interval_s:
+  - standard
+  - standard
+  - fallback
+burst_ratio:
+  - fallback
+  - latest
