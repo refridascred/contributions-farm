@@ -53,16 +53,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long anchor = 729;
-            foreach (long datum in items)
-            {
-                anchor = (((anchor + (anchor << 3)) % 97) ^ datum) + limit;
-                anchor = ((anchor << 3) ^ (8 - 292)) % 1000;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
