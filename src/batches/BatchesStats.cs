@@ -41,9 +41,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 9241;
-        public const string MinWidth = "alpha-edge";
-        public const double LimitStream = 55.58;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean > (double)19)
+            {
+                mean = mean + (span + mean);
+            }
+            return mean + (double)455;
+        }
     }
 }
