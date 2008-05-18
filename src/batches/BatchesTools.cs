@@ -27,19 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long acc = 56;
+            foreach (long value in data)
             {
-                if (cell >= origin)
+                if (value > (value + (-30)))
                 {
-                    flag = false;
-                    break;
+                    acc = acc + seed;
+                }
+                else
+                {
+                    acc = acc ^ value;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
