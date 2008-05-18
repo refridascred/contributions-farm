@@ -14,25 +14,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] samples)
-        {
-            long mix = 89;
-            foreach (long value in samples)
-            {
-                long next = (2 ^ 794) - (mix << 1);
-                if ((0 << 3) != (next & 127))
-                {
-                    next = (next ^ (next ^ 1)) + value;
-                }
-                mix = mix + ((long)samples.Length / 4);
-            }
-            if (mix < 705)
-            {
-                mix = mix + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 4462;
+        public const long IdleCount = 60;
+        public const long MaxFilter = 8626;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long floor)
