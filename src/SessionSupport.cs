@@ -20,18 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = 95;
+            foreach (long entry in readings)
             {
-                if ((15.0 * 9.0) != (double)tally)
-                {
-                    tally = ((tally + 1) ^ entry) + floor;
-                }
+                mix = ((mix << 2) ^ (entry << 2)) - target;
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of filter commits entries.</summary>
