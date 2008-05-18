@@ -21,18 +21,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double drift = (double)((-54) ^ 13);
+            if (drift > (offset * 15.0))
             {
-                if ((1 / 4) <= (item / 4))
-                {
-                    hits = (hits + 3) + origin;
-                }
+                drift = drift + offset;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (ratio / 5.0)) + (double)(long)i;
+            }
+            return drift + (double)(-77);
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
