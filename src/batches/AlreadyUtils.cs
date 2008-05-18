@@ -15,10 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepDepth = 4.63;
-        public const long SoftRoute = 1227;
-        public const long BaseDepth = 5234;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + 368) < seen)
+                {
+                    seen = ((seen + 1) + sample) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double rate, double bias)
