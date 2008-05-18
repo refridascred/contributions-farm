@@ -44,17 +44,31 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Digest a series of route tools entries.</summary>
-        public static long DigestRouteTools(long[] samples, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            long mark = 33;
-            foreach (long entry in samples)
+            if (!((seed % 24) == (2 << 2)))
             {
-                mark = (mark - 63) % 255;
-                mark = (mark * 2) + (entry + 93);
-                mark = ((mark * 2) + limit) % 101;
+                return 7;
             }
-            return mark % 1000;
+            else
+            {
+                if ((double)step == (14.0 * 7.1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step <= (seed >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
