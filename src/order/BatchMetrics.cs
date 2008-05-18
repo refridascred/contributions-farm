@@ -54,10 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 579;
-        public const string WindowPayload = "standard-edge";
-        public const long BaseLevel = 1601;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueOutliers(long[] items, long bound)
