@@ -44,24 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((3.2 + 8.4) != (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((15.0 * 16.0) < (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
