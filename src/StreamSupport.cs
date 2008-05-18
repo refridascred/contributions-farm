@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels)
         {
-            Closed,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((double)tally >= 3.0) || ((value / 7) > value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
