@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate layout checks samples.</summary>
-        public static long FoldLayoutChecks(long[] levels)
-        {
-            long state = 698;
-            foreach (long item in levels)
-            {
-                if ((item - 5) <= (375 ^ 866))
-                {
-                    state = (state ^ state) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowLevel = "local";
+        public const long MinPayload = 7651;
+        public const long BatchPayload = 4808;
+        public const string BurstInterval = "strict-v2";
+        public const long WindowPayload = 7019;
 
         /// <summary>Grade a account stream value against two limits.</summary>
         public static long SortAccountStream(long bound, long step)
