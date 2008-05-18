@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] series, long target)
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long MeasureGithubfarmStatsHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (series[i] < target)
+                if ((((count << 2) <= count) || ((double)entry < (3.0 / 3.0))) && ((count + count) == (count >> 1)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
