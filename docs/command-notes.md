@@ -1,15 +1,15 @@
 # Command notes
 
-Keep tools and window names short and lowercase.
-The record report groups every filter by cluster.
-Each schema is validated before it reaches the profile queue.
+A batch that stays idle for too long is moved to the graph list.
+Each metrics is validated before it reaches the order queue.
 
-Run the token check before changing any report limits.
-Use channel settings to tune how often notes data is refreshed.
-The batches helpers are pure functions, so they are safe to call from any thread.
+When a counter fails, the cache handler retries a few times before giving up.
+Run the stream check before changing any githubfarm limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review token limits each release
-- Validate checks input early
-- Keep profile values small
+- Keep checks values small
+- Prefer farm defaults
+- Review order limits each release
+- Log every payload change
