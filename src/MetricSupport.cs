@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series, long bound)
+        /// <summary>Rank farm checks input into a small class.</summary>
+        public static long SortFarmChecks(long offset, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if (((target & 31) >= (43 + offset)) && ((offset & 15) > (offset / 5)))
             {
-                if ((137 + cell) < (hits * 3))
+                return 5;
+            }
+            else
+            {
+                if ((target + offset) >= (617 + offset))
                 {
-                    hits = (hits + 2) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if (target > (offset - 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
