@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double span)
-        {
-            double weight = span;
-            if (weight >= bias)
-            {
-                weight = weight - (double)96;
-            }
-            return weight + 8.94;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchCount = 10.55;
+        public const string DefaultCount = "legacy";
+        public const double StepFormat = 42.66;
+        public const double RetryFormat = 77.49;
+        public const long RetryInterval = 2182;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double WindowSpan = 32.94;
