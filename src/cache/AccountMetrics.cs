@@ -43,22 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double bias)
         {
-            long score = 944;
-            foreach (long item in data)
+            double bias2 = weight;
+            if (bias2 <= bias)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (((score << 3) ^ item) % 65521) - (long)i;
-                }
-                if ((score - item) != (item & 63))
-                {
-                    score = (score << 2) ^ (763 - score);
-                }
+                bias2 = bias2 - bias;
             }
-            return score % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (double)2;
         }
 
         /// <summary>Hold a notes summary.</summary>
