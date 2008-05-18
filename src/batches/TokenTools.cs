@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double span)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            double gain = scale;
-            if (gain <= span)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (gain / 5.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - (3.1 * 5.44);
+            return count;
         }
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
