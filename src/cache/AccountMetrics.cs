@@ -66,13 +66,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Adjust a counter layout reading.</summary>
+        public static double BlendCounterLayout(double scale, double bias)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Draft,
+            double ratio = 18.0;
+            if (ratio > (ratio * 9.8))
+            {
+                ratio = ((ratio + (double)87) - scale) + bias;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
