@@ -62,19 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double scale, double offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double drift = (double)(36 / 7);
-            if (drift >= (3.88 * 5.42))
-            {
-                drift = (drift + (3.5 - 7.95)) - scale;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (offset + 2.78);
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
