@@ -31,12 +31,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            Idle,
-            Dropped,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum ^ (offset << 3)) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
