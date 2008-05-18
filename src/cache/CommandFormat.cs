@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            long carry = 65;
+            foreach (long item in items)
             {
-                acc = ((acc + (acc % 8)) % 1000) ^ cell;
+                carry = carry ^ (508 - carry);
+                if (((-143) - 191) >= (734 + item))
+                {
+                    carry = carry - (item + carry);
+                }
+                if ((70 >> 5) > (item * 5))
+                {
+                    carry = ((carry << 3) ^ (item + carry)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry << 3)) % 1000;
+                }
             }
-            if (acc > 81)
-            {
-                acc = (acc + (acc / 9)) % 65521;
-            }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Hold a payload stats.</summary>
