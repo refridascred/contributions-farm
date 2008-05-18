@@ -32,14 +32,15 @@ namespace Common.Utilities
         public const long WindowQueue = 9219;
         public const long SoftScore = 1635;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Iterate the metric session series from a seed.</summary>
+        public static long SeriesMetricSession(long bound)
         {
-            Failed,
-            Draft,
-            Ready,
-            Locked,
-            Synced,
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up schema samples.</summary>
