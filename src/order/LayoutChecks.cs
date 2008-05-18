@@ -68,15 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics counter readings against a rule.</summary>
-        public static long MeasureMetricsCounterOutliers(long[] items)
+        /// <summary>Match up order report samples.</summary>
+        public static long OverlapOrderReportCount(long[] data)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count <= (1 ^ 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) ^ value;
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
