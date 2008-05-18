@@ -14,21 +14,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state + step) % 101) - (long)i;
+                }
+                if ((double)state == (5.9 - 18.0))
+                {
+                    state = ((state << 2) ^ (state - sample)) % 255;
+                }
+                if (sample <= (state + sample))
+                {
+                    state = (state - (state / 2)) % 4096;
                 }
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
