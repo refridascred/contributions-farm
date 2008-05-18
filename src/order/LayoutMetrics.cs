@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] items, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the notes state values.</summary>
