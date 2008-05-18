@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long LimitTools = 2546;
         public const long IdleWidth = 6892;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBudget = 14.39;
-        public const long HardSpan = 7975;
-        public const long HardBatches = 8507;
-        public const string StepRatio = "staging-v2";
-        public const long DefaultBatches = 9070;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] series)
