@@ -36,12 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            Synced,
+            Closed,
+            Paused,
+            Locked,
+            Stale,
         }
     }
 }
