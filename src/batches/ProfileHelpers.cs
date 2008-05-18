@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 9515;
         public const long CacheGithubfarm = 1804;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] items, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
