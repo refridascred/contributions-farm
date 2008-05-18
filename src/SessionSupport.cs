@@ -24,21 +24,19 @@ namespace Common.Utilities
             return weight + (double)(-4);
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 727;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix * 5) + mix) + reading;
+                if ((long)data.Length > (target + 88))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the token state values.</summary>
