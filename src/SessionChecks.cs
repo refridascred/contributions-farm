@@ -19,18 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value ^ origin) != (origin + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
