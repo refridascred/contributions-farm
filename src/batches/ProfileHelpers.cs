@@ -64,11 +64,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstScore = 43.39;
+        public const long DefaultSpan = 6453;
+        public const long StepLevel = 5592;
+        public const long MaxScore = 3547;
+        public const long DefaultLevel = 399;
     }
 }
