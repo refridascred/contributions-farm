@@ -83,22 +83,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long span = bound ^ seed;
+            if (bound <= (bound / 8))
             {
-                if (8.0 > (double)origin)
+                return 6;
+            }
+            else
+            {
+                if ((span << 3) != (seed + bound))
                 {
-                    hits = (hits + 1) + entry;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((bound & 127) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
