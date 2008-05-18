@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            double weight = bias;
-            if (weight < (double)6)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                weight = (weight - weight) - span;
+                if ((cell / 5) > 809)
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
