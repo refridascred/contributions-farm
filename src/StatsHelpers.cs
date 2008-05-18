@@ -23,35 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] samples)
         {
-            long mix = 7;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((long)values.Length * 2) > (cell - cell))
+                if ((((9.63 + 8.21) <= (double)reading) && ((double)reading <= (double)hits)) || (hits < (hits + 88)))
                 {
-                    mix = ((mix << 2) ^ (offset ^ offset)) % 255;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix * 4) + (offset / 7);
-                }
-                if ((cell * 5) >= 8)
-                {
-                    mix = (mix ^ 0) % 65521;
-                }
-                if (((double)offset == (3.0 * 3.83)) && (cell <= (95 % 100)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (mix < 907)
-            {
-                mix = ((mix << 2) ^ (offset + offset)) % 101;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
