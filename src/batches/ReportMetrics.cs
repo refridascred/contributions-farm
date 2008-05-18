@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (5.49 >= 6.19)
+                if (reading != bound)
                 {
-                    matches = (matches + 3) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a contributi summary.</summary>
