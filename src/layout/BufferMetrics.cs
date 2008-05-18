@@ -70,10 +70,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 45.36;
-        public const long MinAccount = 4305;
-        public const long HardScore = 9608;
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double span)
+        {
+            double rate = scale;
+            if (rate <= (span / 6.0))
+            {
+                rate = rate + (double)565;
+            }
+            else
+            {
+                rate = rate + (double)5;
+            }
+            return rate - (scale - rate);
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] levels)
