@@ -29,18 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count + count) >= (offset / 4))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            New,
+            Draft,
+            Pending,
         }
     }
 }
