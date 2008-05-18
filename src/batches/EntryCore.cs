@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long limit)
-        {
-            long anchor = -24;
-            foreach (long item in samples)
-            {
-                if (!((item - anchor) >= (-53)))
-                {
-                    anchor = anchor ^ (anchor - limit);
-                    anchor = anchor ^ (anchor << 1);
-                }
-                anchor = (anchor - (limit ^ item)) % 4096;
-            }
-            if (anchor > 89)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 9988;
+        public const string MaxInterval = "standard-v2";
+        public const long MaxSession = 6827;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] samples, long target)
