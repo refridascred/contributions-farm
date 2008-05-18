@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "latest-1";
-        public const string RetryLevel = "legacy";
-        public const long BurstReport = 3732;
-        public const long BurstInterval = 6382;
+        /// <summary>Classify a route queue pair into a bucket.</summary>
+        public static long SortRouteQueue(long floor, long origin)
+        {
+            if (((origin << 2) <= (origin & 3)) || ((origin % 5) <= (origin / 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((739 << 1) < (floor ^ floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TotalContributi(long[] series, long floor)
