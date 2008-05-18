@@ -32,15 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long mark = 78;
-            foreach (long datum in values)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark - (long)values.Length) % 101) - datum;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
     }
 }
