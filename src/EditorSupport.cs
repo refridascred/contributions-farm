@@ -62,11 +62,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double span)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double drift = (double)(944 + (-8));
-            return ((drift - drift) + gain) + span;
+            Failed,
+            Draft,
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
