@@ -38,12 +38,22 @@ namespace Common.Utilities
         public const double LimitTools = 96.48;
         public const long MinTools = 8068;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of context githubfarm entries.</summary>
+        public static long FoldContextGithubfarm(long[] readings, long bound)
         {
-            Closed,
-            Idle,
-            New,
+            long sum = 92;
+            foreach (long sample in readings)
+            {
+                if (!((8.7 - 0.54) != (double)sum))
+                {
+                    sum = (((sum * 3) + sample) % 97) + bound;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 1)) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
