@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 3712;
+        public const long LimitBatch = 5824;
+        public const double BurstBatch = 71.53;
+        public const double BaseDepth = 25.16;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] values)
