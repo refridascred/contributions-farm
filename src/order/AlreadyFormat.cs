@@ -49,21 +49,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metric batch value from a seed.</summary>
-        public static long DeriveMetricBatch(long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] data, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long tally = bound % 3;
-                tally = (tally - bound) % 101;
-                if ((tally - bound) <= ((long)i / 7))
+                if (data[i] <= bound)
                 {
-                    tally = ((tally << 2) ^ (total + total)) % 255;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
     }
 }
