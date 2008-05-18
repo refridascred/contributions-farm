@@ -22,23 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result - bound) % 97) ^ (long)i2;
-                }
-                if ((bound << 3) > (result + (long)i))
-                {
-                    result = (result + (bound + result)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate batches order samples.</summary>
