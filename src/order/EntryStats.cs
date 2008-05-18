@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            Active,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the channel level values.</summary>
