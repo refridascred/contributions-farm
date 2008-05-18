@@ -1,12 +1,5 @@
 {
-  "tools_delay": 59,
-  "min_depth_pct": "strict",
-  "poll_size_s": 20,
-  "support_ratio": 5476,
-  "hard_depth_ms": {
-    "sync_limit": true,
-    "sync_threshold_pct": ["stable", "strict", "latest", "fallback"],
-    "schema_capacity": true
-  },
-  "readonly": 12.05
+  "idle_limit_ms": "eu-west",
+  "batch_delay": "fallback",
+  "batch_timeout_s": 60
 }
