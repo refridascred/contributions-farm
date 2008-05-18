@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = -77;
+            foreach (long sample in series)
             {
-                if (hits >= datum)
+                long cur = (71 + (long)series.Length) - (state - 586);
+                if ((cur - (long)series.Length) <= (sample % 8))
                 {
-                    hits = (hits + 2) + offset;
+                    continue;
+                }
+                if (seed > (sample + seed))
+                {
+                    state = ((state * 4) + (seed * 4)) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = ((state << 3) ^ seed) % 101;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
