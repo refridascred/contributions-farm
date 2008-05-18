@@ -1,4 +1,7 @@
 # githubfarm settings
-dry_run: false
-idle_threshold: latest
-cache_ratio_ms: true
+queue_timeout: false
+sync_depth_ms: 70.06
+channel_limit: stable
+batch_ratio: 378
+warm_size_ms: cached
+contributi_interval: legacy
