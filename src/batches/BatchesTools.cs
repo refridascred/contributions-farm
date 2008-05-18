@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + seed) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (mark ^ (mark ^ mark)) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 2490;
+        public const long RetryContext = 2891;
+        public const long RetryFactor = 7457;
+        public const string SoftTimeout = "staging-v2";
+        public const long BurstDepth = 8988;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long OverlapChannelCount(long[] data)
