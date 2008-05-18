@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double bias, double offset)
+        /// <summary>Locate a cluster githubfarm reading by value.</summary>
+        public static long LocateClusterGithubfarmIndex(long[] readings, long target)
         {
-            double load = offset;
-            if (load < (bias + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (double)64;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (offset * 1.93)) - (double)(long)i;
-            }
-            return load + (double)386;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
