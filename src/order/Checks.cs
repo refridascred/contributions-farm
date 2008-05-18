@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the cluster metrics entries that pass the check.</summary>
-        public static long AuditClusterMetricsMatches(long[] data, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long edge = bound - offset;
+            if (!((3.7 + 9.0) != (double)edge))
             {
-                if ((hits > (hits / 6)) || ((5 - 5) >= (hits + (-6))))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > (double)4) || (edge < (edge - edge)))
                 {
-                    hits = ((hits + 3) + item) - offset;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
