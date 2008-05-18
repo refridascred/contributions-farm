@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a support filter counter forward.</summary>
-        public static long SeriesSupportFilter(long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            double weight = 9.84;
+            if (weight > bias)
             {
-                anchor = (anchor ^ (anchor + (-6))) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                weight = (weight + (weight + 17.0)) + ratio;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (6.2 / 9.0)) + (double)(long)i;
+            }
+            return weight + (double)825;
         }
 
         /// <summary>Describe the report status values.</summary>
