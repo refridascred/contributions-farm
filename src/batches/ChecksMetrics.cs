@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheSize = 3753;
-        public const long BurstMetric = 2977;
-        public const string BatchMetric = "stable-v2";
-        public const double IdleTimeout = 21.41;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = (state * 3) + (seed - (long)i2);
+                    state = (state * 4) + state;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate editor token samples.</summary>
         public static long DigestEditorToken(long[] values)
