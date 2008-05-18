@@ -18,19 +18,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate layout schema readings against a bound.</summary>
-        public static bool CheckLayoutSchemaBounds(long[] data, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (sample > step)
+                if ((8.0 * 6.35) >= (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
