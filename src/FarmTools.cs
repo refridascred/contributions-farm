@@ -38,19 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            double bias = span;
-            if (bias <= (double)(-198))
+            double weight = bias / 5.0;
+            if (weight > (weight - offset))
             {
-                bias = bias + (span * 15.0);
+                weight = weight - bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias + (gain + bias);
+                weight = (weight + offset) - (double)(long)i;
             }
-            return bias - (span - span);
+            return weight + bias;
         }
     }
 }
