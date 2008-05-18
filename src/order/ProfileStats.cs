@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
-        {
-            long carry = 80;
-            foreach (long reading in readings)
-            {
-                if ((carry + reading) >= reading)
-                {
-                    carry = ((carry * 5) + (carry + reading)) % 1000;
-                }
-            }
-            if (carry < 942)
-            {
-                carry = carry - (53 / 9);
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 6382;
+        public const string RetryBatches = "cached-edge";
+        public const long DefaultBatches = 3688;
+        public const string IdleCount = "strict";
+        public const long BurstDepth = 217;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileHits(long[] readings)
