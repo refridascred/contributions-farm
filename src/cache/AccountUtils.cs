@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Dropped,
-            Stale,
-            Synced,
-            Queued,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate record editor samples.</summary>
