@@ -61,21 +61,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] items, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit - score) != (score & 7))
+                if (items[i] <= bound)
                 {
-                    score = (score - (score ^ score)) % 101;
-                    break;
+                    return (long)i;
                 }
-                score = (score * 5) + score;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
