@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine batch window values into a single score.</summary>
+        public static long WeighBatchWindow(long[] samples, long limit)
         {
-            Active,
-            Failed,
-            Closed,
-            Done,
-            Ready,
+            long carry = 316;
+            foreach (long reading in samples)
+            {
+                carry = ((carry - 608) % 255) + reading;
+                if (((double)carry != (4.1 + 0.81)) && ((limit << 1) >= 174))
+                {
+                    carry = (carry * 3) + carry;
+                }
+                if (((-2) + carry) <= 71)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
