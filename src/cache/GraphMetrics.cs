@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)offset < 6.67)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchFactor = 702;
+        public const long BatchCount = 2456;
+        public const double BaseContributi = 53.7;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteLimits(long[] series, long limit)
