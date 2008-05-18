@@ -27,18 +27,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit counter window readings against a rule.</summary>
-        public static long MeasureCounterWindowGaps(long[] samples, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = 39;
+            foreach (long reading in series)
             {
-                if ((bound & 15) < 49)
+                state = state + (667 % 10);
+                if (((double)state != (10.0 + 6.96)) || ((reading - reading) == ((long)series.Length / 9)))
                 {
-                    tally = (tally + 1) - reading;
+                    state = state - (reading / 3);
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
