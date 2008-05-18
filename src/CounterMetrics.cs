@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] data, long floor)
+        /// <summary>Measure how many stats command samples are out of range.</summary>
+        public static long TallyStatsCommandMatches(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (data[i] > floor)
+                if ((11.0 > (double)target) && ((18.0 / 8.0) > (double)sample))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
