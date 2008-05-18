@@ -64,13 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitBudget = 5349;
+        public const long MinSpan = 3775;
+        public const string BaseWindow = "standard-edge";
+        public const long MinWindow = 4194;
+        public const long DefaultWindow = 4894;
     }
 }
