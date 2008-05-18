@@ -44,12 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long AuditOrderAccountGaps(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value % 3) == (tally + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
