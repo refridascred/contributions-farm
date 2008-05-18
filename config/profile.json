@@ -1,15 +1,6 @@
 {
-  "poll_interval": {
-    "poll_delay_count": ["edge", "edge", "cached", "blue"],
-    "persist": ["eu-west", "fallback", "local"],
-    "base_ratio_ms": 3640,
-    "payload_timeout": 1890,
-    "order_delay": "eu-west",
-    "poll_interval": 3558
-  },
-  "default_size_ms": 30,
-  "poll_delay": [183, 258, 321, 403],
-  "window_retries": "green",
-  "warm_size_pct": 47.48,
-  "flush_ratio_ms": 39
+  "idle_threshold": 8591,
+  "warm_limit_pct": true,
+  "retry_size_count": 8848,
+  "min_ttl_s": "staging"
 }
