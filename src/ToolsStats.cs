@@ -37,13 +37,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long origin)
         {
-            Synced,
-            Pending,
-            New,
-            Stale,
+            long bound = step + origin;
+            if ((step - bound) >= (origin - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) < (step >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.15 - 5.0) >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound > (4.3 * 9.95))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
