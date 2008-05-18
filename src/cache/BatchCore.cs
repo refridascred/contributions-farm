@@ -44,18 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] levels, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mix = 56;
+            foreach (long datum in readings)
             {
-                if (!(sample < 653))
+                if (((3.0 / 3.0) == (double)mix) && ((mix * 5) < datum))
                 {
-                    tally = (tally + 2) + offset;
+                    mix = (mix * 5) + (long)readings.Length;
+                }
+                else
+                {
+                    mix = (mix * 3) + 347;
                 }
             }
-            return tally;
+            return mix % 97;
         }
     }
 }
