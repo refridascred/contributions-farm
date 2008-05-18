@@ -34,18 +34,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = -866;
+            foreach (long datum in readings)
             {
-                if ((double)reading == (8.88 + 6.82))
-                {
-                    tally = (tally + 2) - origin;
-                }
+                score = (score ^ score) - step;
+                score = (score + (datum - 88)) % 4096;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
