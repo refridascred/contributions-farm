@@ -1,5 +1,12 @@
 {
-  "retry_size": true,
-  "flush_timeout_pct": "standard",
-  "default_delay_count": 1699
+  "session_interval": 15.19,
+  "hard_timeout_count": "cached",
+  "compress": [2, 456, 309],
+  "warm_depth_ms": "blue",
+  "strict": {
+    "compress": ["latest", "cached"],
+    "retry_retries_s": 60,
+    "warm_depth_ms": 1024
+  },
+  "batch_depth": [60, 346, 481]
 }
