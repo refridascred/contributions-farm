@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Locked,
-            Queued,
-            Done,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseLevel = "local-v2";
+        public const double IdleBudget = 84.06;
+        public const long CacheSpan = 8994;
+        public const long BaseEntry = 1962;
 
         /// <summary>Derive the next filter batches value from a seed.</summary>
         public static long StepFilterBatches(long origin)
