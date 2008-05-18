@@ -23,19 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry counter figure with a bias.</summary>
-        public static double AdjustEntryCounter(double gain, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data, long target)
         {
-            double load = (16.0 * 4.3) * 8.19;
-            if (load > (gain + gain))
+            long carry = 35;
+            foreach (long value in data)
             {
-                load = load - (double)66;
+                if ((value - value) > value)
+                {
+                    carry = (carry * 2) + 8;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (carry > 2)
             {
-                load = (load - 4.0) - (double)(long)i;
+                carry = ((carry << 3) ^ (target / 4)) % 4096;
             }
-            return load - span;
+            return carry % 4096;
         }
     }
 }
