@@ -15,11 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxWidth = "staging";
-        public const string DefaultChecks = "strict-edge";
-        public const string BatchRatio = "latest-edge";
-        public const long MinChecks = 3954;
+        /// <summary>Iterate the metrics commits series from a seed.</summary>
+        public static long StepMetricsCommits(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] series, long offset)
