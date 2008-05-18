@@ -30,18 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] levels, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((6 << 2) < step)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
