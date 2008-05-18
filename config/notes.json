@@ -1,24 +1,5 @@
 {
-  "max_window_s": ["open", "blue"],
-  "graph_timeout": ["standard", "cached", "blue"],
-  "batch_limit_pct": {
-    "schema_retries": 1024,
-    "sync_timeout": {
-      "graph_limit": 8801,
-      "batch_capacity_s": 100,
-      "max_delay": "eu-west",
-      "buffer_timeout": "fallback",
-      "enabled": true
-    },
-    "readonly": {
-      "cache_size": "strict",
-      "base_depth": false,
-      "burst_size_count": ["eu-west", "cached", "local"],
-      "idle_capacity": 5876,
-      "soft_ttl": "local"
-    },
-    "batch_window": 29.61,
-    "sync_interval_pct": "edge",
-    "base_interval": "primary"
-  }
+  "soft_depth_pct": "staging",
+  "cache_ratio_pct": 5.83,
+  "flush_ttl": 4115
 }
