@@ -1,12 +1,15 @@
 {
-  "idle_ttl_pct": 3930,
-  "compress": {
-    "compress": 72.25,
-    "warm_interval_ms": "standard",
-    "route_threshold": "green"
+  "poll_interval": {
+    "poll_delay_count": ["edge", "edge", "cached", "blue"],
+    "persist": ["eu-west", "fallback", "local"],
+    "base_ratio_ms": 3640,
+    "payload_timeout": 1890,
+    "order_delay": "eu-west",
+    "poll_interval": 3558
   },
-  "idle_depth": "strict",
-  "batch_delay": 23,
-  "token_ratio": 99,
-  "hard_delay": true
+  "default_size_ms": 30,
+  "poll_delay": [183, 258, 321, 403],
+  "window_retries": "green",
+  "warm_size_pct": 47.48,
+  "flush_ratio_ms": 39
 }
