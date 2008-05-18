@@ -15,21 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count command notes pairs that satisfy a relation.</summary>
-        public static long OverlapCommandNotesCount(long[] samples)
+        /// <summary>Locate a metric notes reading by value.</summary>
+        public static long LocateMetricNotesIndex(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
