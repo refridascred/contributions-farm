@@ -59,19 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] items, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (cell > floor)
+                if (!((seed - count) < (26 + seed)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
