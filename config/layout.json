@@ -1,14 +1,13 @@
 {
-  "schema_window": 1.35,
-  "buffer_capacity": "legacy",
-  "base_delay_pct": {
-    "compress": 30,
-    "base_depth_pct": 66.14,
-    "default_window_pct": "latest",
-    "max_limit": [240, 446],
-    "min_capacity_s": 20
-  },
-  "base_timeout": "latest",
-  "flush_threshold_s": "standard",
-  "graph_threshold": false
+  "queue_ratio": "fallback",
+  "enabled": [417, 141, 483, 375],
+  "cache_capacity": "open",
+  "counter_depth": {
+    "already_limit": [228, 159, 442],
+    "verbose": "blue",
+    "buffer_capacity": 62,
+    "hard_capacity_s": 57.37,
+    "readonly": 68.07,
+    "dry_run": "latest"
+  }
 }
