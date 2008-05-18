@@ -30,14 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Queued,
-            Retry,
-            Done,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8283;
+        public const long HardChecks = 3890;
+        public const string BaseChecks = "legacy-edge";
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] values)
