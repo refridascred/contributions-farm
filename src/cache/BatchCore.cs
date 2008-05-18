@@ -28,21 +28,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Rank session tools input into a small class.</summary>
