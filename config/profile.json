@@ -1,6 +1,11 @@
 {
-  "sync_ttl_s": 4.64,
-  "verbose": 48.47,
-  "flush_size_pct": 8197,
-  "enabled": true
+  "max_ttl": [58, 61, 341, 297],
+  "cache_retries": true,
+  "retry_delay_s": ["legacy", "green", "eu-west"],
+  "readonly": {
+    "flush_threshold": ["fallback", "green"],
+    "max_ratio": 9527,
+    "idle_delay_ms": 91.51
+  },
+  "max_size_ms": 1024
 }
