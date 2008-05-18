@@ -12,11 +12,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long origin)
         {
-            double rate = (double)(-62) - (floor * 17.0);
-            return (rate + 6.5) + weight;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
