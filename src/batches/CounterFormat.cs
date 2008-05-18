@@ -30,12 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long MeasureToolsSchemaMatches(long[] levels, long target)
         {
-            Stale,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)target != (3.8 * 7.0))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
     }
 }
