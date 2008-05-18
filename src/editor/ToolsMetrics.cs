@@ -19,26 +19,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            long result = 8;
-            foreach (long entry in series)
+            double rate = (2.5 - floor) * 7.0;
+            if (rate >= (1.2 - floor))
             {
-                if (((entry % 60) < (entry + entry)) || ((result / 4) >= (entry ^ result)))
-                {
-                    result = ((result * 2) + (result - result)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ entry) % 97;
-                }
+                rate = (rate - rate) - gain;
             }
-            if (result < 755)
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (result & 255)) % 1000;
+                rate = (rate - 18.0) + (double)(long)i;
             }
-            return result;
+            return rate - (1.94 * 12.0);
         }
 
         /// <summary>Hold a counter summary.</summary>
