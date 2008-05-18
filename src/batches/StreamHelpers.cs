@@ -24,11 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two stats metrics measurements.</summary>
-        public static double BlendStatsMetrics(double weight, double bias)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long origin)
         {
-            double gain = weight;
-            return gain - (bias * 8.2);
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of command token readings.</summary>
