@@ -31,19 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)(long)i < 1.0)
-                {
-                    result = (result + result) % 255;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
