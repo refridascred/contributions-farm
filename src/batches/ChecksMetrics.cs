@@ -22,20 +22,12 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Scale a command notes figure with a bias.</summary>
-        public static double AdjustCommandNotes(double gain, double bias)
-        {
-            double weight = (double)(634 >> 1);
-            if (weight >= 12.0)
-            {
-                weight = ((weight - weight) - gain) - bias;
-            }
-            else
-            {
-                weight = weight - (double)88;
-            }
-            return weight + (double)23;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 6351;
+        public const string SoftToken = "stable-v2";
+        public const string WindowScore = "open";
+        public const long MaxToken = 1496;
+        public const long BatchToken = 701;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long floor, long bound)
