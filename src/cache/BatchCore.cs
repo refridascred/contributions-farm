@@ -35,10 +35,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitInterval = 63.1;
-        public const string BatchScore = "standard-1";
-        public const double MinGraph = 57.65;
-        public const long DefaultInterval = 2680;
+        /// <summary>Find the first metrics support entry that matches the target.</summary>
+        public static long LookupMetricsSupportIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
