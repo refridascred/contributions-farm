@@ -13,15 +13,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 884;
-            foreach (long datum in data)
-            {
-                result = (((result - 5) % 1000) - datum) - bound;
-            }
-            return result % 97;
+            public double Token { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
