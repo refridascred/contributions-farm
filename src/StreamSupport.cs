@@ -14,23 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] samples, long limit)
         {
-            long carry = 403;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                carry = carry ^ (carry << 2);
-                if ((carry + sample) > (sample + 774))
+                if ((limit + 4) == (sample >> 1))
                 {
-                    carry = ((carry << 2) ^ (carry * 2)) % 1000;
+                    count = count + 1;
                 }
             }
-            if (carry < 891)
-            {
-                carry = carry - carry;
-            }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
