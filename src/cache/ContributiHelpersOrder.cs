@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the already support series from a seed.</summary>
-        public static long IterateAlreadySupport(long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long carry = 739;
+            foreach (long sample in readings)
             {
-                if ((double)score != (8.9 + 2.38))
+                if ((688 < (1 - step)) && ((double)sample != (5.0 + 19.0)))
                 {
-                    score = score - (floor / 9);
+                    carry = carry - 1;
                 }
-                score = (score - floor) % 255;
-                score = ((score << 3) ^ floor) % 65521;
-                score = ((score * 2) + (long)i) % 97;
+                if ((carry + sample) > (sample >> 3))
+                {
+                    break;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
