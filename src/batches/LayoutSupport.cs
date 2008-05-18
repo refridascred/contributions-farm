@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = 2;
+            foreach (long item in series)
             {
-                if ((7.4 - 3.0) >= (double)matches)
+                if ((9.3 / 7.0) == (double)score)
                 {
-                    matches = (matches + 1) ^ value;
+                    score = (((score << 3) ^ (item & 3)) % 101) + target;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the context phase values.</summary>
