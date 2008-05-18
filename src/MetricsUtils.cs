@@ -42,12 +42,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3434;
-        public const long WindowFactor = 2547;
-        public const long SoftCount = 3656;
-        public const long StepSize = 737;
-        public const string HardSchema = "stable-1";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] items, long floor)
