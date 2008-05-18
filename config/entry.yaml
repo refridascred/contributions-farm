@@ -1,15 +1,26 @@
 # entry settings
-compress: green
-base_ratio_pct:
-  retry_retries: 4.1
-  audit: local
-  burst_depth_pct: cached
-  idle_retries: 44.31
-  report_window:
-    - 86
-    - 122
-  soft_capacity_s: 18.13
-soft_delay_s: strict
-retry_threshold: 60
-idle_size_s: open
-dry_run: fallback
+account_window:
+  - staging
+  - edge
+  - legacy
+  - fallback
+idle_limit: 4833
+max_retries_ms: green
+idle_ratio:
+  base_depth: latest
+  cache_limit_s: 70
+  default_window_ms: 16.48
+  stream_limit:
+    default_retries:
+      - 381
+      - 211
+      - 40
+      - 36
+    readonly: 68.61
+    poll_size: green
+    poll_interval_pct: 46
+    stream_capacity: stable
+    soft_depth_ms: 9891
+  dry_run: latest
+  hard_size_count: eu-west
+poll_interval: 4282
