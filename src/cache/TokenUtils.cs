@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] levels, long seed)
         {
-            Queued,
-            Stale,
-            Retry,
-            Draft,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
