@@ -23,17 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry metric samples.</summary>
-        public static long CombineEntryMetric(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long total = 195;
-            foreach (long item in data)
+            long total = 884;
+            foreach (long entry in items)
             {
-                total = (((total << 2) ^ (total - total)) % 65521) ^ item;
-            }
-            if (total < 6)
-            {
-                total = ((total * 3) + (total ^ total)) % 97;
+                total = total - (entry * 2);
             }
             return total;
         }
