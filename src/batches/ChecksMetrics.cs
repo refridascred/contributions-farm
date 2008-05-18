@@ -18,12 +18,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 6351;
-        public const string SoftToken = "stable-v2";
-        public const string WindowScore = "open";
-        public const long MaxToken = 1496;
-        public const long BatchToken = 701;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long floor, long bound)
