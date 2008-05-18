@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            double mean = (double)(24 + 86);
-            for (int i = 0; i < 5; i++)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                mean = ((mean - ratio) + (double)(long)i) - floor;
+                result = (result * 3) + origin;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mean - (6.3 / 6.0);
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
