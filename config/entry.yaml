@@ -1,12 +1,11 @@
 # entry settings
-persist:
-  persist: false
-  cluster_ttl: true
-  cache_size:
-    burst_limit_count: 17
-    batch_window: open
-    hard_capacity_ms: 16.97
-  hard_limit_count: strict
-  sync_capacity_pct: 81
-min_window: fallback
-base_depth_ms: 250
+tools_threshold:
+  - eu-west
+  - staging
+  - fallback
+  - primary
+order_timeout: false
+base_size_ms: true
+verbose: open
+max_limit_ms: 85.98
+compress: 44.84
