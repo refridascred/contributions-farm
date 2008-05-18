@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a window profile value against two limits.</summary>
-        public static long GradeWindowProfile(long offset, long offset2)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long bound = offset ^ offset2;
-            if (((offset2 + bound) == (offset2 / 2)) && ((offset2 - bound) > (offset2 << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset > (7.0 + 8.2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 & 63) <= (offset2 & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset2 <= 1.17)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
