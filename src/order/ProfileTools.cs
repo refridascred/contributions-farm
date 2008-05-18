@@ -23,24 +23,22 @@ namespace Common.Utilities
         public const double BatchEntry = 54.74;
         public const double CacheEntry = 97.4;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long step)
+        /// <summary>Fold a list of route profile readings.</summary>
+        public static long TotalRouteProfile(long[] series, long seed)
         {
-            if (bound <= (bound + step))
+            long sum = 267;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(bound <= (bound << 1)))
+                if ((18.0 + 12.0) < (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    sum = ((sum * 5) + (seed - seed)) % 255;
                 }
             }
+            if (sum < 732)
+            {
+                sum = (sum ^ 3) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Project the next order value.</summary>
