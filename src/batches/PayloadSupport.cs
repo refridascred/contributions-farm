@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "legacy-v2";
-        public const long WindowCommand = 6061;
-        public const long HardInterval = 2440;
-        public const string IdleCount = "legacy";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = mix ^ mix;
+                mix = (mix + (offset * 3)) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
