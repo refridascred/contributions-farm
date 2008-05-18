@@ -19,11 +19,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Roll a graph channel counter forward.</summary>
+        public static long DeriveGraphChannel(long step)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((step + step) <= (long)i)
+                {
+                    carry = ((carry * 2) + (step - carry)) % 97;
+                }
+                carry = carry ^ (step >> 3);
+                carry = (carry ^ (carry << 3)) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
