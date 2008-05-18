@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowInterval = 37.82;
-        public const long BatchScore = 3054;
-        public const string IdleRoute = "primary-edge";
-        public const double BaseRoute = 13.69;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 4) + (25 ^ total)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] levels, long origin)
