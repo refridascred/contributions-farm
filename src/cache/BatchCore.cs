@@ -44,17 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metrics support entry that matches the target.</summary>
-        public static long LookupMetricsSupportIndex(long[] items, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] < offset)
+                if (!(sample < 653))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
