@@ -24,25 +24,21 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Grade a schema session value against two limits.</summary>
-        public static long GradeSchemaSession(long origin, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long lane = origin + offset;
-            if ((lane & 15) > lane)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 / 2.0) == (double)lane)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
