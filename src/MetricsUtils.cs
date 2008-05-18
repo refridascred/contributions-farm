@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2061;
+        public const long BatchWindow = 6847;
+        public const long LimitWidth = 5340;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
