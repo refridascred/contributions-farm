@@ -14,14 +14,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Draft,
-            Ready,
-            Idle,
-            Pending,
-            Retry,
+            Locked,
+            Paused,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Scale a counter batch figure with a bias.</summary>
