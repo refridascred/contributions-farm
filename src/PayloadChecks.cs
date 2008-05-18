@@ -41,18 +41,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many notes checks samples are out of range.</summary>
-        public static long MeasureNotesChecksOutliers(long[] levels)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double bias = (double)(92 + 2);
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.47 + 7.0) <= (double)item)
-                {
-                    count = count + 3;
-                }
+                bias = (((bias + 18.0) - (double)(long)i) - ratio) + span;
             }
-            return count;
+            return bias + bias;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
