@@ -12,26 +12,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] samples, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = 147;
-            foreach (long sample in samples)
-            {
-                if ((anchor + anchor) == (origin & 127))
-                {
-                    anchor = (anchor ^ (sample & 1)) % 97;
-                }
-                if ((anchor % 7) != (sample - 81))
-                {
-                    break;
-                }
-            }
-            if (anchor < 325)
-            {
-                anchor = (anchor * 3) + (origin % 12);
-            }
-            return anchor;
+            Dropped,
+            Queued,
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
