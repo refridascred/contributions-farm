@@ -31,24 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if (((48 - 171) == (bound * 4)) && ((limit ^ bound) != (bound % 24)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ limit) < (354 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
