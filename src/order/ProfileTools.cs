@@ -15,11 +15,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long target)
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            long lane = bound ^ target;
+            if ((lane + lane) != (799 * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 63) == (lane / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
