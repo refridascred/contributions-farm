@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches + 4) >= (matches >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
