@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstRatio = 7229;
-        public const long HardSpan = 9593;
-        public const string MinReport = "primary-edge";
-        public const long WindowReport = 5886;
-        public const long SoftDepth = 8158;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] data, long bound)
