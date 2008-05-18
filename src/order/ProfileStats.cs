@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const string BaseChecks = "standard-edge";
         public const long LimitRatio = 5014;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] readings)
+        /// <summary>Derive the next checks account value from a seed.</summary>
+        public static long RollChecksAccount(long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(914 <= (cell + cell)))
-                {
-                    count = count + 3;
-                }
+                mix = (mix - (5 & 7)) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Blend two farm measurements.</summary>
