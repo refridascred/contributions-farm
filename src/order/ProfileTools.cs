@@ -33,28 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long score = 828;
-            foreach (long reading in data)
-            {
-                score = score + (reading / 9);
-                score = (score << 3) ^ (score / 6);
-                if (reading < (score - reading))
-                {
-                    score = (score + 3) % 255;
-                }
-                else
-                {
-                    score = (score ^ (reading + reading)) % 65521;
-                }
-            }
-            if (score > 40)
-            {
-                score = (score + (score & 63)) % 65521;
-            }
-            return score % 4096;
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Fold a list of token readings.</summary>
