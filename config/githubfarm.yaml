@@ -1,10 +1,8 @@
 # githubfarm settings
-min_window_pct:
-  - 284
-  - 88
-  - 470
-  - 425
-hard_ratio_s: eu-west
-dry_run: 3230
-hard_ratio_ms: open
-base_ratio_count: green
+idle_delay: false
+flush_threshold_pct: eu-west
+hard_retries_pct:
+  - 59
+  - 165
+  - 44
+token_ratio: blue
