@@ -1,39 +1,6 @@
 # support settings
-idle_size:
-  enabled: eu-west
-  commits_interval: 1024
-  metrics_limit: 89
-  buffer_ratio: 30
-  stats_threshold:
-    cluster_depth: 6963
-    cache_window: 9567
-    batch_depth: 8949
-    hard_size_pct: 8015
-    soft_interval_ms: 4
-  burst_size_pct: local
-poll_timeout_count: strict
-audit: 60.92
-format_window:
-  idle_ratio:
-    - eu-west
-    - stable
-  readonly: green
-  sync_size: fallback
-strict:
-  editor_window:
-    retry_retries_pct: 50
-    readonly: false
-    batch_size_count:
-      - cached
-      - cached
-      - strict
-      - latest
-    strict: true
-  poll_depth_count:
-    - 99
-    - 215
-    - 274
-    - 217
-  warm_delay_pct: stable
-  command_ratio: 6
-  enabled: 51.39
+dry_run: false
+min_ttl_ms: staging
+poll_timeout_s: true
+retry_ttl: true
+default_ratio: 69.79
