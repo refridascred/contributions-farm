@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the batch notes entries that pass the check.</summary>
-        public static long CountBatchNotesHits(long[] items, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((floor + value) != (hits ^ 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
