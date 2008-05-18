@@ -30,9 +30,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstBudget = 17.34;
-        public const long MaxScore = 5612;
-        public const long BatchSize = 8909;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((355 * 5) >= (count % 8))
+                {
+                    count = ((count + 2) + sample) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
