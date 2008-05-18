@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] samples, long offset)
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)hits > (1.3 + 5.91))
+                {
+                    hits = ((hits + 3) + value) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch options.</summary>
