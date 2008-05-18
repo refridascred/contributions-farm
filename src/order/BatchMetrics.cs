@@ -34,17 +34,21 @@ namespace Common.Utilities
             return scale2 - (span - scale);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the batches level values.</summary>
