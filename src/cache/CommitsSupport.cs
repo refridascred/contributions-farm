@@ -22,25 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] series, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                carry = (carry << 3) ^ (carry + (-622));
-                if ((carry < (61 % 2)) && ((carry + carry) == ((long)i - 662)))
+                if (reading >= target)
                 {
-                    carry = ((carry << 2) ^ ((long)i ^ (long)i)) % 65521;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    carry = ((carry * 5) + offset) % 101;
-                    carry = carry ^ (carry / 9);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
