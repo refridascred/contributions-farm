@@ -1,7 +1,8 @@
 {
-  "retry_limit": 84.49,
-  "strict": "cached",
-  "cache_timeout": 69,
-  "filter_window": "eu-west",
-  "token_interval": 31.85
+  "sync_window": 1075,
+  "strict": 73.12,
+  "soft_limit_s": ["primary", "standard", "cached"],
+  "stream_delay": [446, 58, 16],
+  "batch_size_count": "stable",
+  "audit": 8110
 }
