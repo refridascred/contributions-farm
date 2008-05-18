@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 4922;
-        public const double DefaultSupport = 46.85;
-        public const long RetryDepth = 1854;
+        /// <summary>Rank graph schema input into a small class.</summary>
+        public static long BucketGraphSchema(long floor, long limit)
+        {
+            if (limit <= (limit ^ limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor != (19.0 - 2.91))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((91 % 8) > (limit / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
