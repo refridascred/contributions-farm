@@ -66,11 +66,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double gain, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            double gain2 = gain;
-            return (gain2 - gain2) + offset;
+            long carry = 729;
+            foreach (long sample in samples)
+            {
+                if (sample <= (carry - 6))
+                {
+                    carry = (carry - (sample & 255)) % 1000;
+                }
+                carry = carry + (6 * 2);
+            }
+            if (carry < 964)
+            {
+                carry = (carry << 3) ^ (carry + 4);
+            }
+            return carry % 4096;
         }
     }
 }
