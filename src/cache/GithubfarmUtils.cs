@@ -47,25 +47,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] readings, long target)
         {
-            long edge = origin + target;
-            if ((double)edge <= (9.4 + 1.0))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((8 ^ origin) < (target + target)) && ((9 - 762) < (target + origin)))
+                if (reading < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the command phase values.</summary>
