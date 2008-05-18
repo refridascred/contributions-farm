@@ -15,11 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] readings, long offset)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first format stats entry that matches the target.</summary>
