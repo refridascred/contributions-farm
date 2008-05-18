@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 5579;
+        public const long RetryLevel = 4581;
+        public const long SoftSize = 6591;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long GradeToken(long origin, long limit)
