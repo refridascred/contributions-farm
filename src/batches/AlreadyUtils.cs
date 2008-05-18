@@ -51,13 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
             public long Total { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
