@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Project the next batches token value.</summary>
+        public static double BlendBatchesToken(double scale, double offset)
         {
-            double ratio = 2.2;
-            for (int i = 0; i < 7; i++)
+            double drift = scale - offset;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ((ratio - (double)468) + (double)(long)i) - scale;
+                drift = (drift - (scale + scale)) - (double)(long)i;
             }
-            return ratio + offset;
+            return drift + (double)9;
         }
 
         /// <summary>Combine account values into a single score.</summary>
