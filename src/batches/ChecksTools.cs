@@ -19,25 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long seed2)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] samples, long origin)
         {
-            long diff = seed + seed2;
-            if ((2 - diff) == (seed ^ seed))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed2 > diff)
+                if ((seen << 1) < seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    seen = ((seen + 2) ^ item) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
