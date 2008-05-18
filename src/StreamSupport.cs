@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 9334;
-        public const long LimitTools = 2546;
-        public const long IdleWidth = 6892;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Closed,
+            Ready,
+            Failed,
+            Idle,
+            New,
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
