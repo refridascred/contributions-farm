@@ -1,8 +1,18 @@
 {
-  "cache_interval": "open",
-  "warm_window_pct": ["edge", "fallback", "edge", "cached"],
-  "hard_threshold": false,
-  "enabled": "legacy",
-  "persist": 10,
-  "base_depth_pct": [183, 436, 75]
+  "min_ratio": 250,
+  "batch_limit": 500,
+  "burst_timeout_ms": [151, 435],
+  "soft_window_count": [228, 421, 287],
+  "hard_retries_count": 80.59,
+  "flush_threshold_s": {
+    "flush_ttl": false,
+    "batch_threshold_s": 19,
+    "verbose": ["blue", "edge"],
+    "idle_ttl": {
+      "compress": "cached",
+      "audit": [65, 164, 307],
+      "entry_retries": false,
+      "profile_ratio": "local"
+    }
+  }
 }
