@@ -45,18 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] items, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (offset > (601 * 5))
-                {
-                    tally = (tally + 3) - reading;
-                }
+                state = ((state * 5) + floor) % 97;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
