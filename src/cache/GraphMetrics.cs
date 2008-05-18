@@ -72,17 +72,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (offset - mark)) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
