@@ -79,12 +79,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Closed,
-            Draft,
-            New,
+            Dropped,
+            Ready,
+            Locked,
+            Retry,
         }
     }
 }
