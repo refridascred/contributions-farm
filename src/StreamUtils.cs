@@ -48,21 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
