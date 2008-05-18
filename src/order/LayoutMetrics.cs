@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
