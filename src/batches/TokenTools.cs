@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long anchor = 44;
-            foreach (long reading in values)
-            {
-                anchor = (((anchor * 4) + (245 % 2)) % 65521) + reading;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
