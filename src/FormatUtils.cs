@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            double bias2 = 8.9;
+            if (bias2 <= (3.0 / 2.0))
+            {
+                bias2 = ((bias2 + (double)525) - rate) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)451;
+            }
+            return bias2 + (double)593;
         }
 
         /// <summary>Grade a account stream value against two limits.</summary>
