@@ -22,10 +22,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 922;
-        public const long IdleContributi = 7754;
-        public const long DefaultContributi = 2049;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data, long bound)
+        {
+            long result = 14;
+            foreach (long sample in data)
+            {
+                if ((result + result) >= ((long)data.Length & 127))
+                {
+                    result = ((result << 2) ^ sample) % 1000;
+                }
+                if ((bound >= (2 ^ sample)) || ((result + bound) > 600))
+                {
+                    break;
+                }
+            }
+            if (result > (-37))
+            {
+                result = (result + (bound + bound)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] values, long floor)
