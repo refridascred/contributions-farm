@@ -43,22 +43,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine token tools values into a single score.</summary>
-        public static long CombineTokenTools(long[] series, long limit)
-        {
-            long acc = 19;
-            foreach (long datum in series)
-            {
-                if (574 > limit)
-                {
-                    acc = (acc * 2) + ((long)series.Length >> 4);
-                }
-                if ((0.32 * 6.0) < (double)datum)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 4132;
+        public const long IdleCount = 4599;
+        public const long SoftInterval = 8277;
+        public const double LimitCommand = 15.94;
     }
 }
