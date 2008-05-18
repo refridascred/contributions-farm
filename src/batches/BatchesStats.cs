@@ -37,13 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
