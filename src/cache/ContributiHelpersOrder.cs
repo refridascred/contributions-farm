@@ -22,13 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long result = 5;
+            foreach (long entry in series)
+            {
+                result = (((result * 3) + (entry + result)) % 1000) - origin;
+            }
+            if (result > 667)
+            {
+                result = (result ^ (result << 3)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
