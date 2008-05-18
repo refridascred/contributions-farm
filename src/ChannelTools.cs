@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] samples)
         {
-            Ready,
-            Stale,
-            Pending,
-            Done,
-            New,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((242 - hits) != (value * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
