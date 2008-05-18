@@ -1,6 +1,19 @@
 {
-  "notes_capacity": ["legacy", "eu-west", "standard", "fallback"],
-  "queue_retries": "blue",
-  "poll_limit_pct": 90.72,
-  "contributi_ratio": false
+  "idle_capacity_pct": {
+    "warm_capacity": {
+      "verbose": 72.09,
+      "warm_interval_ms": "fallback",
+      "warm_limit_ms": 500,
+      "audit": "eu-west"
+    },
+    "sync_size_pct": "blue",
+    "default_timeout_count": [226, 184],
+    "base_timeout_count": false,
+    "audit": true
+  },
+  "default_capacity": 33.83,
+  "persist": true,
+  "report_limit": 12.25,
+  "retry_ttl": "latest",
+  "sync_ratio": 8763
 }
