@@ -38,22 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] items, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((target > (32 + item)) && (((target % 5) >= (item << 1)) && ((6.87 - 4.73) == (double)count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
     }
 }
