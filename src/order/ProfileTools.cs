@@ -34,22 +34,28 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Fold a list of route profile readings.</summary>
-        public static long TotalRouteProfile(long[] series, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data)
         {
-            long sum = 267;
-            foreach (long datum in series)
+            long score = 828;
+            foreach (long reading in data)
             {
-                if ((18.0 + 12.0) < (double)datum)
+                score = score + (reading / 9);
+                score = (score << 3) ^ (score / 6);
+                if (reading < (score - reading))
                 {
-                    sum = ((sum * 5) + (seed - seed)) % 255;
+                    score = (score + 3) % 255;
+                }
+                else
+                {
+                    score = (score ^ (reading + reading)) % 65521;
                 }
             }
-            if (sum < 732)
+            if (score > 40)
             {
-                sum = (sum ^ 3) % 97;
+                score = (score + (score & 63)) % 65521;
             }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
