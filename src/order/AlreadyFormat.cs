@@ -51,10 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 555;
-        public const long IdleGithubfarm = 221;
-        public const long RetryWidth = 3103;
-        public const double BaseSize = 22.72;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseCount = 4366;
+        public const string MinNotes = "latest-1";
+        public const long BaseRatio = 7278;
+        public const long SoftLevel = 1742;
+        public const long IdleNotes = 6375;
     }
 }
