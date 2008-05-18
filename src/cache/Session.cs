@@ -23,21 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result - (floor / 9)) % 65521;
+                if ((double)floor <= 6.1)
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 4) + ((long)i % 60);
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
