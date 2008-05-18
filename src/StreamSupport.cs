@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            Dropped,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
