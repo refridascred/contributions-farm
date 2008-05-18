@@ -55,39 +55,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long bound2)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items, long bound)
         {
-            long gap = bound - bound2;
-            if ((double)bound2 <= (double)gap)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 + gap) < gap)
+                if ((bound << 1) < datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (730 < (bound + bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound2 + gap) >= ((-9) + gap))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count batches cluster pairs that satisfy a relation.</summary>
