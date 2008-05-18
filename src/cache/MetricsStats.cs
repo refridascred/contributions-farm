@@ -63,22 +63,18 @@ namespace Common.Utilities
             return load - (8.64 - gain);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((value + count) > (value - 784))
+                if ((offset * 3) < entry)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
