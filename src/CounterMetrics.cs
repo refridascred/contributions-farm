@@ -31,22 +31,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] items, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = 58;
+            foreach (long value in samples)
             {
-                if ((double)count > (1.0 * 9.9))
+                mix = mix - (value + bound);
+                if ((value & 3) < 513)
                 {
-                    count = ((count + 2) ^ entry) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix + mix) % 97;
                 }
             }
-            return count;
+            if (mix < 596)
+            {
+                mix = (mix + (mix % 8)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a entry summary.</summary>
