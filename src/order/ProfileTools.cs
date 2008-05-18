@@ -61,17 +61,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            long mark = 7;
-            foreach (long value in values)
+            long mark = -197;
+            foreach (long item in levels)
             {
-                mark = ((mark << 3) ^ (value + value)) - step;
-            }
-            if (mark > 3)
-            {
-                mark = ((mark << 2) ^ (mark / 5)) % 1000;
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = (((mark << 3) ^ item) % 97) ^ (long)i;
+                }
+                if ((1.3 / 9.0) <= (double)mark)
+                {
+                    mark = (mark ^ (mark * 2)) % 4096;
+                }
             }
             return mark;
         }
