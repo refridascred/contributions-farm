@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a schema queue reading.</summary>
-        public static double ScaleSchemaQueue(double scale, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] values, long bound)
         {
-            double gain = (floor + 7.4) * 8.0;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                gain = (gain + scale) + (double)(long)i;
+                if (seen > (seen % 60))
+                {
+                    seen = ((seen + 2) + value) + bound;
+                }
             }
-            return gain + (double)25;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
