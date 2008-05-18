@@ -31,12 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7878;
-        public const long BurstFormat = 4836;
-        public const string SoftBudget = "standard";
-        public const long IdleFormat = 8794;
-        public const long SoftFormat = 5973;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((double)matches >= (3.0 * 6.2)) && ((827 < (4 - matches)) || (((long)data.Length & 1) >= (matches >> 1))))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string HardWindow = "standard";
