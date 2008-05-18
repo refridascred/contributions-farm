@@ -91,17 +91,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a contributi farm reading by value.</summary>
-        public static long FindContributiFarmIndex(long[] samples, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
+                if (8.0 > (double)origin)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
