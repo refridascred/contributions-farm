@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((410 << 1) <= (datum % 10)) && ((datum << 3) < tally))
+                if ((seed >> 2) >= matches)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a queue summary.</summary>
