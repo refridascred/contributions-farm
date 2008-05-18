@@ -84,11 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count <= (floor * 3))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
