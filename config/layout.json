@@ -1,16 +1,5 @@
 {
-  "batch_retries_pct": 100,
-  "cache_retries_s": {
-    "strict": 50.19,
-    "tools_timeout": 250,
-    "flush_capacity": "open",
-    "route_size": "strict",
-    "githubfarm_capacity": {
-      "idle_size": true,
-      "base_limit": "green",
-      "farm_depth": [401, 431, 123, 370],
-      "already_threshold": "staging"
-    }
-  },
-  "default_delay_count": "open"
+  "burst_ratio": 5913,
+  "min_ttl_pct": [127, 93, 444],
+  "commits_limit": "legacy"
 }
