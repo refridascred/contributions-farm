@@ -1,8 +1,6 @@
 # support settings
-default_ttl_pct: local
-burst_capacity_count: 55.32
-batch_retries_s:
-  - edge
-  - staging
-  - local
-  - open
+idle_timeout_ms: 60
+default_limit_ms: stable
+cache_depth: open
+warm_ratio_s: 27.93
+entry_timeout: true
