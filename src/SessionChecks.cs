@@ -19,14 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels, long origin)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Retry,
-            Done,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value ^ origin) != (origin + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
