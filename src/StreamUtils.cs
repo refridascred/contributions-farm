@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 60) != (seen - sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
