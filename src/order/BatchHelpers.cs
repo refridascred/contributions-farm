@@ -30,32 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long target, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long cur = target - floor;
-            if ((double)target == (double)3)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur / 8) <= (2 - (-10)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur * 2) >= cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
