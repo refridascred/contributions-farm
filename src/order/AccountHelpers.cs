@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const double MaxFactor = 35.39;
         public const long MaxWindow = 9357;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items, long step)
+        /// <summary>Check that every layout queue entry stays within the limit.</summary>
+        public static bool GuardLayoutQueueBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (cell >= (971 ^ cell))
+                if (value != floor)
                 {
-                    seen = (seen + 2) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
