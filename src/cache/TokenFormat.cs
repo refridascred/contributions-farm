@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate window account readings against a bound.</summary>
-        public static bool ValidateWindowAccountBounds(long[] levels, long limit)
+        /// <summary>Count the metric notes entries that pass the check.</summary>
+        public static long CountMetricNotesOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading > limit)
+                if (cell > (count - count))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Blend two commits measurements.</summary>
