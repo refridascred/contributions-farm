@@ -47,22 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long carry = 52;
-            foreach (long reading in levels)
-            {
-                if ((carry >= (carry - seed)) || (((long)levels.Length / 9) > (carry + reading)))
-                {
-                    carry = ((carry * 4) + (3 + seed)) % 255;
-                }
-                if ((1.04 < (double)carry) && (reading <= (seed >> 1)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
