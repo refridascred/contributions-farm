@@ -1,20 +1,5 @@
 {
-  "cache_size": 63,
-  "dry_run": {
-    "burst_depth": true,
-    "githubfarm_ttl": "legacy",
-    "persist": true,
-    "flush_ttl": 79,
-    "flush_ratio_count": "strict",
-    "base_interval_pct": {
-      "default_delay": true,
-      "hard_limit_ms": ["stable", "staging"],
-      "contributi_timeout": 500,
-      "cache_ttl_ms": false
-    }
-  },
-  "retry_capacity_ms": 70.8,
-  "persist": "open",
-  "editor_limit": "open",
-  "flush_delay": "primary"
+  "filter_limit": 71,
+  "soft_limit_pct": ["edge", "strict", "standard", "standard"],
+  "cache_size_ms": 100
 }
