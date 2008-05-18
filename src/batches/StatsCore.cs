@@ -61,19 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor account readings against a bound.</summary>
-        public static bool CheckEditorAccountLimits(long[] samples, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (cell != step)
+                if (!(sample >= floor))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
