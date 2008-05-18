@@ -41,21 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 819;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (reading & 1)) % 97;
+                anchor = (anchor - anchor) % 4096;
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Describe the batches level values.</summary>
