@@ -41,11 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultWidth = 62.27;
+        public const long SoftAccount = 5324;
+        public const long IdleSpan = 5506;
     }
 }
