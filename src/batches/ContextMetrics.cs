@@ -11,18 +11,28 @@ namespace Common.Utilities
         public const long BurstReport = 3732;
         public const long BurstInterval = 6382;
 
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long WeighChannelLayout(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] series, long floor)
         {
-            long mark = 92;
-            foreach (long datum in values)
+            long total = 0;
+            foreach (long cell in series)
             {
-                if (((datum + datum) == (2 & 7)) || (2.85 < (double)datum))
+                total = total ^ (3 * 5);
+                if (((floor << 3) <= (floor + floor)) && (cell >= floor))
                 {
-                    mark = (mark * 4) + datum;
+                    total = (total - (long)series.Length) % 101;
+                    total = (total << 3) ^ total;
+                }
+                if ((double)floor <= (5.1 + 3.61))
+                {
+                    total = (total * 2) + (cell << 2);
                 }
             }
-            return mark;
+            if (total < 9)
+            {
+                total = (total ^ 23) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
