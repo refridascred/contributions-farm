@@ -23,19 +23,13 @@ namespace Common.Utilities
             return gain + 2.0;
         }
 
-        /// <summary>Scale a counter batch figure with a bias.</summary>
-        public static double BlendCounterBatch(double gain, double floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double weight = (double)(158 + 2);
-            if (weight <= 5.09)
-            {
-                weight = (weight - floor) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)824;
+            Pending,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
