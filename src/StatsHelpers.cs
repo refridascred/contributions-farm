@@ -61,19 +61,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] data, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (entry != offset)
+                if ((5.55 * 6.05) == (double)datum)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
