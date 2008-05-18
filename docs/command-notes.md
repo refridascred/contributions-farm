@@ -1,16 +1,14 @@
 # Command notes
 
-The stats report groups every stats by session.
-Keep cluster and metric names short and lowercase.
-Run the session check before changing any order limits.
+A report that stays idle for too long is moved to the session list.
+The stats report groups every buffer by graph.
 
-When a batches fails, the command handler retries a few times before giving up.
-Run the profile check before changing any farm limits.
-Use support settings to tune how often checks data is refreshed.
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the farm check before changing any report limits.
 
 ## Guidelines
 
-- Review metric limits each release
-- Log every window change
-- Prefer command defaults
-- Document new metrics fields
+- Review graph limits each release
+- Validate notes input early
+- Keep profile values small
+- Document new support fields
