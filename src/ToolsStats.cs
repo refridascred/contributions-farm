@@ -69,15 +69,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload order figure with a bias.</summary>
-        public static double ProjectPayloadOrder(double scale, double bias)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long step, long floor)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 3; i++)
+            if (!((floor & 3) < step))
             {
-                scale2 = ((scale2 + 20.0) - (double)(long)i) - bias;
+                return 6;
             }
-            return scale2 + scale2;
+            else
+            {
+                if ((floor / 6) <= 0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 1) != (floor * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor > (floor + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate editor samples.</summary>
