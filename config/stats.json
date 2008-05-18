@@ -1,6 +1,20 @@
 {
-  "metric_timeout": [308, 451, 450],
-  "farm_threshold": 66.76,
-  "cache_interval_s": "strict",
-  "farm_size": false
+  "warm_limit": false,
+  "hard_ttl_count": true,
+  "readonly": true,
+  "hard_timeout_s": {
+    "buffer_size": {
+      "min_retries": 19.68,
+      "counter_capacity": ["staging", "open", "cached"],
+      "min_capacity_ms": 500
+    },
+    "enabled": 500,
+    "warm_timeout": {
+      "soft_threshold_ms": "standard",
+      "readonly": ["edge", "legacy", "eu-west", "edge"],
+      "retry_delay": "stable",
+      "poll_depth": 5027
+    },
+    "warm_delay_pct": "edge"
+  }
 }
