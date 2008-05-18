@@ -19,13 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            long mix = 797;
+            long mix = -95;
             foreach (long cell in series)
             {
-                mix = (((mix << 3) ^ (mix + mix)) % 255) ^ cell;
+                if ((359 ^ 35) <= (mix + cell))
+                {
+                    mix = (mix + (mix >> 5)) % 255;
+                }
+            }
+            if (mix < 5)
+            {
+                mix = ((mix << 3) ^ (9 * 2)) % 101;
             }
             return mix;
         }
