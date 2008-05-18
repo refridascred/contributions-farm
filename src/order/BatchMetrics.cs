@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a context batches reading.</summary>
-        public static double BlendContextBatches(double bias, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double gain = (double)(344 * 3);
-            if (gain >= gain)
-            {
-                gain = (gain - (double)(-7)) + floor;
-            }
-            else
-            {
-                gain = gain + (bias / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 17.0) - (double)(long)i;
-            }
-            return gain + 3.1;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two contributi session measurements.</summary>
