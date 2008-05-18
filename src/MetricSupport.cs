@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool CheckMetricSupportLimits(long[] values, long step)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
