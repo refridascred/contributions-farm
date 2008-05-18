@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double span)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            double rate = 16.0;
+            return ((rate - (double)97) + bias) + span;
         }
 
         /// <summary>Match up buffer samples.</summary>
