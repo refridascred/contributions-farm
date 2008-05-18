@@ -51,11 +51,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] series, long origin)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)tally != (14.0 - 4.52))
+                {
+                    tally = ((tally + 1) + reading) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
