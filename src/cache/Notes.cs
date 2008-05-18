@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 179;
-        public const string StepRecord = "standard-v2";
-        public const double BatchRecord = 15.37;
-        public const long MaxSize = 8092;
-        public const long HardRecord = 1875;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 68.01;
+        public const long WindowSize = 1971;
+        public const double BurstLayout = 35.43;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] samples, long floor)
