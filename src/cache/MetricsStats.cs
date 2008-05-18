@@ -13,24 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long target)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            if (!((limit & 63) <= (223 % 16)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit >= (54 - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
