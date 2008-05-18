@@ -1,9 +1,8 @@
 # support settings
-batches_capacity: false
-readonly: 85.48
-support_threshold: true
-order_ttl:
-  - 362
-  - 403
-  - 168
-  - 425
+default_ttl_pct: local
+burst_capacity_count: 55.32
+batch_retries_s:
+  - edge
+  - staging
+  - local
+  - open
