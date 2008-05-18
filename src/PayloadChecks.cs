@@ -32,19 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (step < (755 & 3))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowBudget = 6610;
+        public const double IdleStats = 33.09;
+        public const double LimitStats = 4.24;
+        public const string BaseScore = "primary-1";
 
         /// <summary>Adjust a payload reading.</summary>
         public static double BlendPayload(double ratio, double span)
