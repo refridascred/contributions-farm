@@ -65,25 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Scale a layout order figure with a bias.</summary>
+        public static double SmoothLayoutOrder(double rate, double offset)
         {
-            long anchor = 82;
-            foreach (long datum in items)
+            double bias = 5.6;
+            if (bias > rate)
             {
-                anchor = anchor + (anchor * 4);
-                anchor = (anchor - (2 + datum)) % 97;
-                anchor = ((anchor << 2) ^ (anchor + datum)) % 65521;
-                if ((datum & 15) != (datum + datum))
-                {
-                    break;
-                }
+                bias = bias + (offset / 3.0);
             }
-            if (anchor < 87)
-            {
-                anchor = anchor - (-5);
-            }
-            return anchor;
+            return bias + (double)8;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
