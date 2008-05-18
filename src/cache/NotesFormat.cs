@@ -33,20 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long anchor = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((anchor + sample) != (sample >> 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor ^ (sample ^ (long)values.Length);
-                    anchor = anchor ^ (anchor % 3);
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = (anchor ^ sample) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Blend two profile cache measurements.</summary>
