@@ -31,12 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading - matches) != (origin >> 4)) || !(((-62) % 64) >= (matches << 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
