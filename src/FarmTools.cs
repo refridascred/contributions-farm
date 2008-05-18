@@ -17,19 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((((double)matches > (double)entry) && ((double)entry < (8.25 - 6.4))) && (((double)entry != (8.7 * 5.0)) && ((matches + entry) >= matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstSize = 95.98;
+        public const double DefaultBudget = 13.06;
+        public const double BaseTimeout = 97.87;
+        public const long BurstStream = 4172;
+        public const double IdleBudget = 31.1;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
