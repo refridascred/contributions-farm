@@ -44,10 +44,20 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "open-v2";
-        public const string IdleBatches = "local";
-        public const long RetryBatches = 2411;
+        /// <summary>Digest a series of queue entry entries.</summary>
+        public static long TotalQueueEntry(long[] series, long offset)
+        {
+            long result = 48;
+            foreach (long entry in series)
+            {
+                result = (result * 4) + (entry ^ offset);
+            }
+            if (result < 8)
+            {
+                result = (result + (offset + result)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 1885;
