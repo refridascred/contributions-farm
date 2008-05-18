@@ -31,12 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long score = 15;
+            foreach (long entry in series)
+            {
+                score = (score + (entry >> 1)) % 101;
+            }
+            if (score < 1)
+            {
+                score = ((score * 3) + (score + score)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
