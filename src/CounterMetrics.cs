@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] readings)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + reading) > (tally - 302))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a session record.</summary>
