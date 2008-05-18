@@ -80,24 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long target)
+        /// <summary>Audit metrics counter readings against a rule.</summary>
+        public static long MeasureMetricsCounterOutliers(long[] items)
         {
-            if ((offset / 4) >= (46 + 3))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset << 1) != (target - target)) && (4 >= target))
+                if (count <= (1 ^ 7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 2) ^ value;
                 }
             }
+            return count;
         }
     }
 }
