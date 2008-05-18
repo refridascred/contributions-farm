@@ -35,13 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long origin)
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
