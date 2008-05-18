@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] values, long target)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((5.9 - 7.33) == (double)value)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Accumulate queue samples.</summary>
