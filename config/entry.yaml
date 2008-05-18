@@ -1,7 +1,8 @@
 # entry settings
-poll_timeout_pct:
-  dry_run: false
-  compress: 30
-  warm_depth: 8694
-batch_threshold_count: local
-warm_retries: 42.74
+default_retries_ms:
+  batches_retries: 250
+  audit: 49.85
+  readonly: 32
+  persist: 52
+idle_ttl: 1024
+sync_delay_pct: local
