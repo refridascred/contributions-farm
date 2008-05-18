@@ -1,14 +1,17 @@
 {
-  "max_delay_s": {
-    "audit": [408, 176, 336],
-    "verbose": false,
-    "compress": 100,
-    "max_ttl": 7477,
-    "support_retries": 25.0
+  "flush_retries_s": {
+    "strict": 30,
+    "base_ratio_pct": 100,
+    "batches_window": "standard",
+    "default_size_pct": true
   },
-  "farm_capacity": false,
-  "compress": 80.37,
-  "cluster_ratio": "edge",
-  "idle_limit_pct": "stable",
-  "burst_interval_s": "staging"
+  "min_window_count": [49, 431, 231, 88],
+  "burst_size_ms": {
+    "record_delay": 30.87,
+    "flush_window_pct": false,
+    "layout_depth": "eu-west",
+    "payload_size": ["standard", "edge"]
+  },
+  "min_limit_pct": 54.35,
+  "sync_size_pct": 84.56
 }
