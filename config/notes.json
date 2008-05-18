@@ -1,6 +1,5 @@
 {
-  "batch_depth": 12,
-  "metrics_ttl": true,
-  "window_interval": "local",
-  "soft_ratio_pct": 32.17
+  "readonly": "eu-west",
+  "support_size": [176, 177, 11],
+  "compress": 6.62
 }
