@@ -18,14 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples, long origin)
         {
-            Done,
-            Locked,
-            New,
-            Pending,
-            Paused,
+            long state = 1;
+            foreach (long datum in samples)
+            {
+                state = ((state - (state + state)) % 101) - origin;
+                state = state - (datum << 3);
+                if ((double)state > (20.0 - 7.3))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the tools mode values.</summary>
