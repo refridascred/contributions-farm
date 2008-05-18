@@ -28,19 +28,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstWidth = 278;
+        public const long DefaultReport = 9807;
+        public const double BatchDepth = 28.83;
     }
 }
