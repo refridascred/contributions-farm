@@ -49,13 +49,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long bound)
         {
-            Idle,
-            New,
-            Closed,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
