@@ -26,32 +26,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long seed, long target)
-        {
-            if ((target & 127) < seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(seed <= (seed * 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(target > (target % 64)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 63.6;
+        public const double DefaultWidth = 64.11;
+        public const long CacheFactor = 993;
+        public const long MinSpan = 4223;
+        public const long CacheMetric = 3972;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long SortCounter(long limit, long limit2)
