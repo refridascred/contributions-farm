@@ -45,20 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum ^ sum) % 101) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (origin + origin)) % 101;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
