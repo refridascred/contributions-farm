@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1095;
-        public const string MaxContributi = "cached";
-        public const long StepContributi = 9495;
-        public const double DefaultContributi = 95.4;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] samples)
