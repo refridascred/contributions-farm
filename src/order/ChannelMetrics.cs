@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            Paused,
-            Idle,
-            Pending,
+            double rate = (double)(6 / 4);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (((rate - (rate * 18.0)) + (double)(long)i) - gain) - floor;
+            }
+            return rate - (rate / 9.0);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
