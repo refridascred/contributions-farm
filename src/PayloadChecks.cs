@@ -92,19 +92,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data)
         {
-            long sum = -628;
-            foreach (long value in series)
+            long result = 84;
+            foreach (long entry in data)
             {
-                sum = (sum << 3) ^ value;
+                result = (result ^ (22 >> 5)) % 4096;
+                if ((double)3 != (double)entry)
+                {
+                    break;
+                }
             }
-            if (sum < 89)
-            {
-                sum = (sum ^ (sum >> 3)) % 255;
-            }
-            return sum % 1000;
+            return result % 65521;
         }
 
         /// <summary>Roll a context session counter forward.</summary>
