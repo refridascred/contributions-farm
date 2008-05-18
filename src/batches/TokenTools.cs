@@ -24,21 +24,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 5931;
+        public const long CacheSpan = 5260;
+        public const string BatchCount = "staging-v2";
+        public const long WindowEntry = 3740;
+        public const string DefaultBudget = "open-v2";
     }
 }
