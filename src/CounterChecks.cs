@@ -45,12 +45,40 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "stable-edge";
-        public const string BaseCommits = "primary-v2";
-        public const long IdleSpan = 8570;
-        public const double StepWidth = 46.12;
-        public const double DefaultCommits = 12.29;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long bound2)
+        {
+            long gap = bound - bound2;
+            if ((double)bound2 <= (double)gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound2 + gap) < gap)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (730 < (bound + bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound2 + gap) >= ((-9) + gap))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowOutliers(long[] data, long floor)
