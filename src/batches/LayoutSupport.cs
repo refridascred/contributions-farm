@@ -74,14 +74,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            New,
-            Queued,
-            Closed,
-            Draft,
-            Paused,
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
