@@ -48,14 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 3359;
+        public const double LimitOrder = 30.29;
+        public const long BurstOrder = 6960;
+        public const string WindowOrder = "stable-v2";
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long limit)
