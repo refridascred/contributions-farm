@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] > floor)
+                if ((reading - hits) >= 25)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
