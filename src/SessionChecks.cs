@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            double weight = 0.5;
+            for (int i = 0; i < 8; i++)
             {
-                total = total - offset;
-                long tally = ((long)i + (long)i) + (long)i;
-                total = total ^ (total + tally);
-                total = ((total * 4) + (long)i) % 97;
+                weight = ((weight + (offset + 14.0)) + (double)(long)i) - rate;
             }
-            return total;
+            return weight + (double)29;
         }
 
         /// <summary>Describe the batch status values.</summary>
