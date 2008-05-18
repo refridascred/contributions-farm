@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    weight REAL
+    weight REAL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
 
-INSERT INTO commits_records (count, rank, weight) VALUES (19, 63, 92.24);
-INSERT INTO commits_records (count, rank, weight) VALUES (52, 88, 51.44);
+INSERT INTO commits_records (count, weight, ratio) VALUES (60, 39.41, 15.77);
+INSERT INTO commits_records (count, weight, ratio) VALUES (3, 81.68, 1.31);
