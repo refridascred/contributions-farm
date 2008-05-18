@@ -12,21 +12,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 147;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor + anchor) == (origin & 127))
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor ^ (sample & 1)) % 97;
+                }
+                if ((anchor % 7) != (sample - 81))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < 325)
+            {
+                anchor = (anchor * 3) + (origin % 12);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the schema status values.</summary>
