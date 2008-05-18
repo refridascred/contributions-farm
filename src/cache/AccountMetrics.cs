@@ -52,15 +52,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a counter layout reading.</summary>
-        public static double BlendCounterLayout(double scale, double bias)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double ratio = 18.0;
-            if (ratio > (ratio * 9.8))
-            {
-                ratio = ((ratio + (double)87) - scale) + bias;
-            }
-            return ratio - ratio;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
