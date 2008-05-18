@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 9515;
         public const long CacheGithubfarm = 1804;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] series, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((double)sample <= (17.0 / 2.0))
+                if (item != seed)
                 {
-                    matches = (matches + 2) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
