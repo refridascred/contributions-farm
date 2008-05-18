@@ -27,10 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinCount = 30.36;
-        public const string BaseSize = "legacy-1";
-        public const long BurstEditor = 768;
+        /// <summary>Audit window support readings against a rule.</summary>
+        public static long MeasureWindowSupportMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - seen) > (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a buffer contributi pair into a bucket.</summary>
         public static long BucketBufferContributi(long floor, long bound)
