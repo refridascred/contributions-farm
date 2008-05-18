@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long floor)
         {
-            Synced,
-            Retry,
-            Stale,
-            Paused,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next route value.</summary>
