@@ -38,18 +38,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (47 + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first token route entry that matches the target.</summary>
