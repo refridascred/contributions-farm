@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            long anchor = 44;
+            foreach (long reading in values)
             {
-                sum = (sum ^ (sum + cell)) % 255;
-                if (cell < (cell % 7))
-                {
-                    sum = sum ^ cell;
-                }
+                anchor = (((anchor * 4) + (245 % 2)) % 65521) + reading;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Project the next schema value.</summary>
