@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 3386;
-        public const double MaxWidth = 90.13;
-        public const long BatchRatio = 3477;
+        /// <summary>Look up the position of a batch commits sample.</summary>
+        public static long FindBatchCommitsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] values, long bound)
