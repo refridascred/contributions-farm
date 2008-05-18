@@ -24,19 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long origin)
+        /// <summary>Audit report cluster readings against a rule.</summary>
+        public static long MeasureReportClusterOutliers(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (item <= origin)
+                if (((double)value <= (6.7 + 3.34)) && ((double)86 == (double)(long)levels.Length))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Compare every pair of command token readings.</summary>
