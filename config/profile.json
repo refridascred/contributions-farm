@@ -1,5 +1,6 @@
 {
-  "poll_ttl_ms": 100,
-  "base_size": 53,
-  "batch_timeout": true
+  "counter_capacity": true,
+  "retry_ratio_ms": 500,
+  "record_interval": [467, 223, 113],
+  "flush_ttl": 66.97
 }
