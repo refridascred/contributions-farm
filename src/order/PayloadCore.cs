@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] values)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches & 7) <= datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
