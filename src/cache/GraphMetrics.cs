@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long step)
         {
-            double rate = gain;
-            if (rate > (rate / 2.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - (span + rate);
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)7;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
