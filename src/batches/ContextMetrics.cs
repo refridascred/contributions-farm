@@ -27,18 +27,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] items, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double mean = (double)(12 + 78);
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry < hits) || (limit <= (limit + entry)))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean + (mean / 2.0)) + (double)(long)i) + ratio;
             }
-            return hits;
+            return mean + floor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
