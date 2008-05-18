@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values)
-        {
-            long mix = 844;
-            foreach (long item in values)
-            {
-                if ((double)item >= (9.8 * 9.0))
-                {
-                    mix = (mix - (item - mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (item >> 5);
-                }
-                if ((double)mix >= 1.6)
-                {
-                    break;
-                }
-            }
-            if (mix > (-791))
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheTimeout = 8563;
+        public const long BurstSize = 2693;
+        public const long BurstScore = 7790;
+        public const string MinTimeout = "stable-edge";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double scale, double span)
