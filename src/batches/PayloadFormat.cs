@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit githubfarm counter readings against a rule.</summary>
+        public static long TallyGithubfarmCounterGaps(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= ((-92) - 52))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
