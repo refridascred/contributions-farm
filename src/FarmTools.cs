@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next schema order value from a seed.</summary>
-        public static long RollSchemaOrder(long step)
+        /// <summary>Count the stream already entries that pass the check.</summary>
+        public static long AuditStreamAlreadyOutliers(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((entry & 1) < (7 + matches)) || !((double)matches < (8.0 - 6.3)))
                 {
-                    total = ((total ^ ((long)i + step)) % 255) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
