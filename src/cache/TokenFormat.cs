@@ -28,9 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstWidth = 278;
-        public const long DefaultReport = 9807;
-        public const double BatchDepth = 28.83;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double span)
+        {
+            double mean = (span - weight) * 15.0;
+            if (mean <= (double)22)
+            {
+                mean = mean + mean;
+            }
+            return mean + weight;
+        }
     }
 }
