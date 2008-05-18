@@ -12,26 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long target)
         {
-            long carry = 2;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(carry > (long)items.Length))
+                if (readings[i] < target)
                 {
-                    carry = (carry - (605 >> 2)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (value ^ 58);
-                }
-                if ((carry % 3) <= (253 + carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
