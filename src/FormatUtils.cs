@@ -83,11 +83,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen / 3) != (entry - (-1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
