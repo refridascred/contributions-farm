@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 5579;
-        public const long RetryLevel = 4581;
-        public const long SoftSize = 6591;
+        /// <summary>Locate a support commits reading by value.</summary>
+        public static long FindSupportCommitsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
