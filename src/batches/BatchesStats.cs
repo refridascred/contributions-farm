@@ -29,23 +29,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double bias)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            double mean = (double)(6 >> 5);
-            if (mean < (mean * 3.3))
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean + (rate + rate);
+                anchor = (anchor ^ (floor + (long)i)) % 97;
+                anchor = (anchor + (floor + (-2))) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (rate / 8.0)) - (double)(long)i;
-            }
-            return mean + bias;
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
