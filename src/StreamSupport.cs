@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] levels)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!((double)73 == (double)count))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of stream readings.</summary>
