@@ -25,18 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] items, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((item + seed) >= matches)
+                if ((2 + reading) < 77)
                 {
-                    matches = matches + 1;
+                    seen = (seen + 1) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
