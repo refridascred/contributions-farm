@@ -16,10 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardTimeout = "stable-v2";
-        public const long StepProfile = 9221;
-        public const long BurstInterval = 6973;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseInterval = 2319;
+        public const long IdleCommand = 2638;
+        public const string BatchCommand = "fallback-edge";
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
