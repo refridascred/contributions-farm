@@ -57,20 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer entry values into a single score.</summary>
-        public static long ScoreBufferEntry(long[] samples, long target)
-        {
-            long mark = 763;
-            foreach (long value in samples)
-            {
-                mark = (mark * 2) + (target + value);
-                if ((mark - target) <= (mark / 7))
-                {
-                    mark = (mark + (value % 2)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryLevel = 75.13;
+        public const long MaxWindow = 992;
+        public const long RetryWindow = 1206;
+        public const long DefaultWindow = 8661;
+        public const string HardTimeout = "cached-v2";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double DefaultBudget = 28.44;
