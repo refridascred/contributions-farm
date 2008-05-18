@@ -20,21 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a queue summary.</summary>
