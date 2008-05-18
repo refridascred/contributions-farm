@@ -66,17 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias * 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - drift) + (double)(long)i) - ratio;
             }
-            return -1;
+            return drift + bias;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
