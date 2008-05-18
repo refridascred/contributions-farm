@@ -13,15 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            double rate = bias2;
-            if (rate < (bias2 * 7.82))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - 7.58) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - (double)814;
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
