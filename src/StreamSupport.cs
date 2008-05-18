@@ -31,18 +31,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long TotalBatchesOrder(long[] items, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long total = 70;
-            foreach (long sample in items)
-            {
-                if (((10.0 / 6.0) > (double)origin) || ((double)(long)items.Length >= 5.0))
-                {
-                    total = ((total ^ (350 % 24)) % 1000) - sample;
-                }
-            }
-            return total;
+            Idle,
+            Dropped,
+            Active,
         }
     }
 }
