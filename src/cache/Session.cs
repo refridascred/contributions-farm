@@ -56,23 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes metric values into a single score.</summary>
-        public static long CombineNotesMetric(long[] levels, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] samples, long bound)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            long score = 0;
+            foreach (long entry in samples)
             {
-                if (bound < (sum + bound))
+                score = (score << 2) ^ (entry << 2);
+                if (!((3 >> 4) >= (score + score)))
                 {
-                    sum = sum - (sample - sum);
-                    break;
-                }
-                if ((double)sample == (8.1 + 3.29))
-                {
-                    sum = (sum * 4) + (bound << 1);
+                    score = (score - bound) % 4096;
                 }
             }
-            return sum;
+            return score;
         }
     }
 }
