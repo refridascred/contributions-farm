@@ -65,11 +65,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 45.13;
-        public const long SoftLevel = 5364;
-        public const long BatchWindow = 1155;
-        public const long MaxWindow = 8562;
-        public const long RetryWindow = 8905;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Locked,
+            Idle,
+            Active,
+            Queued,
+        }
     }
 }
