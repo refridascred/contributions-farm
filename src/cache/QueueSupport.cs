@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 3;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = ((sum - sum) % 101) + (long)i;
-                }
-                if ((5 >= (datum - datum)) || ((sum ^ datum) < (sum + 5)))
-                {
-                    sum = (sum * 2) + ((long)readings.Length ^ sum);
-                }
-            }
-            if (sum > (-5))
-            {
-                sum = sum - (sum + 1);
-            }
-            return sum;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
