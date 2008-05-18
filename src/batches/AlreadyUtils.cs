@@ -46,16 +46,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Check that every report profile entry stays within the limit.</summary>
+        public static bool GuardReportProfileLimits(long[] readings, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                mix = ((mix << 3) ^ (long)i) % 65521;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
