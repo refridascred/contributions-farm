@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=189
+RECORD_LIMIT=316
 log "limit is ${RECORD_LIMIT}"
 
-for item in stable cached legacy edge; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
