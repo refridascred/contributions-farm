@@ -48,38 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long offset, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] levels, long floor)
         {
-            if ((offset <= (3 * 3)) && ((offset & 63) != (target + target)))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (385 < offset)
+                if ((((tally << 2) < (reading & 15)) || ((floor * 2) > (tally + tally))) || ((tally >> 3) < floor))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.64 / 8.0) > (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + 0) == (offset ^ target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the format kind values.</summary>
