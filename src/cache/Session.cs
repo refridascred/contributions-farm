@@ -43,12 +43,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long step)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            long score = 270;
+            foreach (long item in items)
+            {
+                if (score < 5)
+                {
+                    score = (((score << 2) ^ score) % 255) + item;
+                }
+                if ((double)(long)items.Length < (double)91)
+                {
+                    score = score - (step * 5);
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine farm queue values into a single score.</summary>
