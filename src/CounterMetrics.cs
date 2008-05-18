@@ -42,19 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record payload entry stays within the limit.</summary>
-        public static bool ValidateRecordPayloadLimits(long[] levels, long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
