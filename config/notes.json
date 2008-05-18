@@ -1,5 +1,8 @@
 {
-  "persist": "edge",
-  "warm_retries_pct": [82, 149],
-  "sync_window": 66.08
+  "enabled": 100,
+  "retry_retries_s": 7.22,
+  "cluster_limit": 1024,
+  "max_capacity": 2.21,
+  "batch_window_s": "stable",
+  "layout_interval": 81.97
 }
