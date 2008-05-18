@@ -44,17 +44,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 9241;
+        public const string MinWidth = "alpha-edge";
+        public const double LimitStream = 55.58;
     }
 }
