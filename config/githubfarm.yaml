@@ -1,24 +1,6 @@
 # githubfarm settings
-min_delay_ms:
-  counter_interval: 3011
-  sync_ttl_count: 92
-  persist: 36.6
-strict: 2560
-base_depth_pct: stable
-notes_timeout:
-  persist:
-    persist:
-      - 289
-      - 81
-      - 273
-    retry_retries_count: stable
-    default_ttl_s: cached
-    audit: eu-west
-    enabled: 30
-  layout_ttl: 6878
-  dry_run: 500
-  default_timeout_s: true
-profile_capacity:
-  - staging
-  - strict
-warm_interval: false
+retry_threshold: edge
+batch_ttl: 7994
+flush_retries_pct: 55.5
+sync_threshold_ms: false
+schema_timeout: 100
