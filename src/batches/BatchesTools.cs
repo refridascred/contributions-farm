@@ -29,14 +29,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            Synced,
-            Done,
-            New,
-            Draft,
-            Pending,
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (4.5 < (double)state)
+                {
+                    break;
+                }
+                if ((double)state >= 4.74)
+                {
+                    state = (state * 3) + (140 << 3);
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
