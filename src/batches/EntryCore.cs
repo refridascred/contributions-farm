@@ -50,20 +50,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools schema entries.</summary>
-        public static long TallyToolsSchema(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long target)
         {
-            long mark = 613;
-            foreach (long reading in items)
+            long delta = origin + target;
+            if (((origin * 2) <= (404 + origin)) || (target > origin))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = ((mark * 4) + mark) + (long)i;
-                }
-                mark = ((mark << 2) ^ (reading + mark)) % 4096;
-                mark = (mark << 3) ^ (mark & 3);
+                return 2;
             }
-            return mark % 97;
+            else
+            {
+                if ((double)target == (2.4 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta / 7) == (5 / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin > (8.3 - 1.02)) && ((double)target < (2.5 * 9.1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
