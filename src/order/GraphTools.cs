@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a layout commits value against two limits.</summary>
-        public static long ClassifyLayoutCommits(long seed, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long prev = seed - bound;
-            if ((prev * 5) <= (seed ^ 705))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev / 9) >= (prev % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed & 255) < (seed + prev)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
