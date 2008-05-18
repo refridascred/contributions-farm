@@ -59,12 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Label { get; set; }
             public long Mode { get; set; }
-            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the report phase values.</summary>
