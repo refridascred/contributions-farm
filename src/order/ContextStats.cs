@@ -18,10 +18,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "cached-1";
-        public const double RetryCommits = 15.76;
-        public const string StepCommits = "standard-v2";
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Active,
+            Synced,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Accumulate already stats samples.</summary>
         public static long TotalAlreadyStats(long[] items, long offset)
