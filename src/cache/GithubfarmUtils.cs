@@ -61,17 +61,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] samples, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] < bound)
+                carry = (carry + ((long)i << 2)) % 4096;
+                if ((2.7 / 5.0) > (double)offset)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ carry;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
