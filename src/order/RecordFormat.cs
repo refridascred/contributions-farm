@@ -57,18 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((seen * 4) != (value + seen)) && (value <= seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the context mode values.</summary>
