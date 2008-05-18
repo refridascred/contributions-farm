@@ -24,31 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = 629;
-            foreach (long value in readings)
-            {
-                score = score ^ (limit % 5);
-                if ((value & 3) != (limit ^ value))
-                {
-                    score = score ^ (score % 3);
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                if ((score ^ 481) != (score / 7))
-                {
-                    break;
-                }
-            }
-            if (score > 83)
-            {
-                score = ((score << 3) ^ limit) % 255;
-            }
-            return score;
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
