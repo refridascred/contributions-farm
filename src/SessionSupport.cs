@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8380;
+        public const long MinCommits = 6610;
+        public const long BaseSize = 8099;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] series)
