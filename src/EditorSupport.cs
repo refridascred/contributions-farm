@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer account value from a seed.</summary>
-        public static long SeriesBufferAccount(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state - (limit >> 4)) % 4096) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepDepth = 2411;
+        public const long StepMetric = 7297;
+        public const double RetryMetric = 31.72;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
