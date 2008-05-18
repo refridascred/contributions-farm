@@ -57,21 +57,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin2 >= (642 + origin2)) && ((double)origin2 != (0.4 / 5.0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin2 >> 2) < origin)
                 {
-                    if ((series[i] - series[j]) == 2)
+                    return 8;
+                }
+                else
+                {
+                    if (!((32 & 1) == (origin2 << 1)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(origin >= (origin + origin2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate checks commits samples.</summary>
