@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable local; do
+for item in open fallback local green; do
     log "checking ${item}"
 done
 
