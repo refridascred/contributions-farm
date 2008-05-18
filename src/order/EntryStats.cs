@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchRatio = 6086;
-        public const long SoftCommand = 9092;
-        public const string SoftBudget = "strict-edge";
-        public const long MinInterval = 3084;
-        public const long HardCommand = 6166;
+        /// <summary>Locate a farm window reading by value.</summary>
+        public static long LocateFarmWindowIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxScore = 51.72;
