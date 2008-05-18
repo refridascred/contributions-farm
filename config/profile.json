@@ -1,14 +1,5 @@
 {
-  "idle_delay_count": {
-    "batch_limit_s": 1024,
-    "context_timeout": "stable",
-    "verbose": false,
-    "counter_timeout": 37,
-    "cache_capacity_s": "blue"
-  },
-  "dry_run": "blue",
-  "poll_ratio_count": 85.41,
-  "persist": ["stable", "fallback", "cached"],
-  "warm_limit_count": "green",
-  "graph_ttl": "primary"
+  "retry_capacity_ms": 17.42,
+  "cache_ttl": false,
+  "compress": 100
 }
