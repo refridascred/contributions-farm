@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "latest-1";
-        public const long LimitPayload = 3421;
-        public const long MaxSize = 8329;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long SortSupport(long limit, long seed)
