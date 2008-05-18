@@ -18,13 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up token account samples.</summary>
