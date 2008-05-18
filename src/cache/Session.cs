@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Iterate the layout queue series from a seed.</summary>
+        public static long SeriesLayoutQueue(long seed)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (435 <= (seed + 947))
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor ^ (seed + seed)) % 1000;
+                    anchor = (anchor ^ (73 >> 2)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Digest a series of record entries.</summary>
