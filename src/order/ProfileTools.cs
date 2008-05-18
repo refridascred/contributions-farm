@@ -77,17 +77,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long value in values)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (value + value)) - step;
             }
-            return -1;
+            if (mark > 3)
+            {
+                mark = ((mark << 2) ^ (mark / 5)) % 1000;
+            }
+            return mark;
         }
     }
 }
