@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-edge}"
+CHANNEL_LIMIT=423
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
