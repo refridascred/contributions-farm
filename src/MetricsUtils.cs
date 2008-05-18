@@ -30,12 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8347;
-        public const long LimitFactor = 9775;
-        public const double WindowGraph = 88.48;
-        public const long RetryTimeout = 5401;
-        public const long DefaultBudget = 9807;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
