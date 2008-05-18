@@ -40,19 +40,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
