@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long origin2)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if (origin2 > (origin + origin2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ 13) == (origin >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8 + 35) >= origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
