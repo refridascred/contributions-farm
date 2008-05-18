@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many support account samples are out of range.</summary>
-        public static long AuditSupportAccountHits(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long score = 88;
+            foreach (long value in data)
             {
-                if (((entry & 63) > (172 % 64)) && (((long)values.Length + entry) > entry))
-                {
-                    count = count + 1;
-                }
+                score = score ^ (4 + 59);
+                score = ((score << 2) ^ (value + value)) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count schema support pairs that satisfy a relation.</summary>
