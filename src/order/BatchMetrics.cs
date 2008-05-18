@@ -51,13 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long offset)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
