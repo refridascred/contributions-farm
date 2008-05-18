@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Pending,
-            Paused,
-            Active,
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
