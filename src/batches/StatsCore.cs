@@ -26,13 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            Pending,
+            Active,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
