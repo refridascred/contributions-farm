@@ -49,38 +49,22 @@ namespace Common.Utilities
         public const long StepSize = 737;
         public const string HardSchema = "stable-1";
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] items, long floor)
         {
-            if ((double)origin >= 15.0)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((6.9 + 8.0) > (double)origin) && (origin >= 797))
+                if ((count % 10) <= floor)
                 {
-                    return 7;
+                    count = (count + 3) + datum;
                 }
                 else
                 {
-                    if (((double)bound == (7.6 * 3.2)) && ((double)origin != (4.7 + 4.2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin << 1) > (bound & 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
