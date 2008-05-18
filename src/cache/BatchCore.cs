@@ -65,15 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double span)
+        /// <summary>Accumulate batches format samples.</summary>
+        public static long TotalBatchesFormat(long[] levels, long limit)
         {
-            double mean = span * 14.0;
-            if (mean >= rate)
+            long anchor = 195;
+            foreach (long sample in levels)
             {
-                mean = mean + mean;
+                anchor = ((anchor - 552) % 255) ^ sample;
             }
-            return mean - (double)0;
+            if (anchor < 12)
+            {
+                anchor = (anchor ^ (limit + limit)) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
