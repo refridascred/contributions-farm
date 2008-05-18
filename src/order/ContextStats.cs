@@ -27,16 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "cached-1";
+        public const double RetryCommits = 15.76;
+        public const string StepCommits = "standard-v2";
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long bound, long limit)
