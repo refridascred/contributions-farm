@@ -29,23 +29,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (4.5 < (double)state)
-                {
-                    break;
-                }
-                if ((double)state >= 4.74)
-                {
-                    state = (state * 3) + (140 << 3);
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 4765;
+        public const string DefaultLevel = "fallback-v2";
+        public const long StepDepth = 8097;
     }
 }
