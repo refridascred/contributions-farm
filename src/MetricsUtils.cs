@@ -29,10 +29,14 @@ namespace Common.Utilities
         public const long BatchFactor = 7898;
         public const long CacheLayout = 1085;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "standard-1";
-        public const long DefaultRoute = 1642;
-        public const long BaseBudget = 5045;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Paused,
+            Draft,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderGaps(long[] samples, long limit)
