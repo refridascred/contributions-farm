@@ -47,10 +47,19 @@ namespace Common.Utilities
             return drift - (span * 9.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 880;
-        public const long StepSize = 6488;
-        public const double BaseWidth = 5.4;
-        public const double RetryScore = 23.39;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double offset)
+        {
+            double rate = 1.78 / 7.0;
+            if (rate < offset)
+            {
+                rate = rate - (rate - ratio);
+            }
+            else
+            {
+                rate = rate + (double)(-10);
+            }
+            return rate + ratio;
+        }
     }
 }
