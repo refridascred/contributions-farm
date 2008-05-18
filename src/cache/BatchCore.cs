@@ -40,28 +40,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long bound, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            if ((1.2 - 2.0) >= (double)floor)
+            if ((bound - offset) <= bound)
             {
                 return 8;
             }
             else
             {
-                if ((7.0 - 2.0) == (double)bound)
+                if (!(offset <= 817))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (bound > floor)
+                    if ((bound > (bound ^ bound)) && (offset >= (offset + offset)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 4;
+                        return 5;
                     }
                 }
             }
