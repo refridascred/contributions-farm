@@ -34,17 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first format stats entry that matches the target.</summary>
-        public static long FindFormatStatsIndex(long[] items, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
