@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Validate filter layout readings against a bound.</summary>
+        public static bool ValidateFilterLayoutRange(long[] values, long step)
         {
-            long result = 3;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                result = (result ^ (result / 5)) ^ reading;
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
