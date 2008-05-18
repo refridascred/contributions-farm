@@ -14,13 +14,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            New,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheInterval = 1650;
+        public const long MinSpan = 3293;
+        public const long StepInterval = 2722;
+        public const long DefaultBudget = 9783;
+        public const long CacheSchema = 2268;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long seed)
