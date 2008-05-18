@@ -39,19 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (datum > target)
+                if (!((double)cell >= (3.3 * 13.0)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
