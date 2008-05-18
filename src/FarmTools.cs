@@ -23,19 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] samples, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total * 3) + total;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
