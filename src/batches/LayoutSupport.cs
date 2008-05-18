@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate checks tools readings against a bound.</summary>
-        public static bool VerifyChecksToolsBounds(long[] values, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != bound)
+                if (levels[i] > limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a profile record.</summary>
