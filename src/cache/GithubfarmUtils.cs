@@ -12,11 +12,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            if ((origin + origin) > origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.1 + 4.1) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 10) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
