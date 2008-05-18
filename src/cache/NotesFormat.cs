@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long CacheBudget = 1355;
         public const long BatchQueue = 9263;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] readings, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((seed ^ matches) <= 6))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - item;
                 }
             }
             return matches;
