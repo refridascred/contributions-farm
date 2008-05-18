@@ -62,19 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            double bias = (double)(812 + 84);
-            if (bias >= (weight * 3.0))
-            {
-                bias = bias - (span * 2.1);
-            }
-            else
-            {
-                bias = bias + (span / 5.0);
-            }
-            return bias - (weight / 4.0);
+            double drift = ratio;
+            return (drift + 9.0) + offset;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
