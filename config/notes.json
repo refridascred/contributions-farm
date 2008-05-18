@@ -1,6 +1,19 @@
 {
-  "command_interval": 66.88,
-  "max_capacity_pct": [111, 470, 415],
-  "enabled": 40.55,
-  "buffer_depth": "edge"
+  "burst_depth": 250,
+  "compress": ["primary", "open", "local", "eu-west"],
+  "burst_capacity_count": [317, 263, 219],
+  "tools_capacity": {
+    "batch_delay_count": 27,
+    "soft_size": 13.72,
+    "graph_size": 91.16,
+    "commits_capacity": 4.32,
+    "strict": {
+      "poll_size": "stable",
+      "soft_ttl": "standard",
+      "warm_window_ms": "open",
+      "entry_delay": "fallback",
+      "cache_window": "primary",
+      "default_threshold": true
+    }
+  }
 }
