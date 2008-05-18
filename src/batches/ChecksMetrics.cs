@@ -21,22 +21,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels, long seed)
         {
-            long carry = 66;
-            foreach (long datum in items)
+            long state = 390;
+            foreach (long entry in levels)
             {
-                if ((13.0 + 5.8) < (double)limit)
+                if (seed > state)
                 {
-                    carry = ((carry * 3) + (0 / 7)) - datum;
+                    state = (state + (seed - state)) % 4096;
+                }
+                if (((2.0 * 9.76) > (double)entry) && ((state ^ entry) == (seed % 100)))
+                {
+                    break;
                 }
             }
-            if (carry > (-1))
+            if (state < 1)
             {
-                carry = (carry ^ (carry & 1)) % 1000;
+                state = (state ^ seed) % 4096;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
