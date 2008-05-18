@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            double load = (offset + offset) / 9.0;
-            if (load <= load)
+            double rate = 14.0 * 7.9;
+            for (int i = 0; i < 8; i++)
             {
-                load = load + (rate - rate);
+                rate = (rate + (0.8 - bias)) + (double)(long)i;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - rate;
+            return rate + (gain + bias);
         }
 
         /// <summary>Fold a list of support readings.</summary>
