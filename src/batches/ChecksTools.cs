@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command route readings.</summary>
-        public static long DigestCommandRoute(long[] samples)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long acc = 26;
-            foreach (long reading in samples)
-            {
-                if (acc < (reading << 3))
-                {
-                    acc = ((acc * 4) + reading) % 101;
-                }
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
