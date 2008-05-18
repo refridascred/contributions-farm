@@ -33,13 +33,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels)
+        /// <summary>Measure how many session already samples are out of range.</summary>
+        public static long TallySessionAlreadyOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long sample in items)
             {
-                if (!((tally ^ tally) > value) || ((tally >> 4) < (value << 2)))
+                if ((((tally + tally) >= (sample * 4)) && (51 <= tally)) || ((tally - (long)items.Length) == (42 - 0)))
                 {
                     tally = tally + 3;
                 }
