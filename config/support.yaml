@@ -1,10 +1,6 @@
 # support settings
-cache_window_count: 38
-retry_retries: latest
-metric_timeout: 30
-githubfarm_ttl:
-  - strict
-  - latest
-  - edge
-  - edge
-min_size: 44.08
+tools_size: 6509
+idle_ttl_ms: 3411
+hard_interval_s: open
+base_interval_s: eu-west
+compress: green
