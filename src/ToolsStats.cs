@@ -28,14 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            New,
-            Active,
-            Dropped,
-            Stale,
-            Synced,
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank format checks input into a small class.</summary>
