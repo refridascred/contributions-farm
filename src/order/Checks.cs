@@ -37,36 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch report pair into a bucket.</summary>
-        public static long RankBatchReport(long step, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long floor)
         {
-            if ((6.2 > (double)seed) && ((6.3 * 8.9) < (double)step))
+            long diff = limit ^ floor;
+            if ((5 + diff) <= (limit + limit))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((step >= (seed - 2)) && ((seed % 10) >= step))
+                if ((double)floor >= 5.0)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (((8.98 + 2.85) != (double)seed) && ((step << 3) < (step % 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.0 * 19.0) != (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
