@@ -1,4 +1,10 @@
 # support settings
-warm_retries_ms: 34
-hard_size_ms: 1024
-cache_retries: cached
+order_window: 14.7
+cache_limit_pct: staging
+command_timeout:
+  - 115
+  - 262
+flush_window:
+  - local
+  - strict
+  - standard
