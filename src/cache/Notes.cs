@@ -25,23 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double bias2)
         {
-            double weight = floor;
-            if (weight >= (double)1)
+            double load = bias;
+            if (load < (double)3)
             {
-                weight = weight + (weight / 2.0);
+                load = (load - load) - bias2;
             }
-            else
-            {
-                weight = weight + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 7.4) + (double)(long)i;
-            }
-            return weight - scale;
+            return load + (bias - bias);
         }
 
         /// <summary>Digest a series of queue entry entries.</summary>
