@@ -35,11 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double scale, double span)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double load = scale;
-            return (load + 6.0) + span;
+            Ready,
+            Synced,
+            Active,
+            Paused,
+            Retry,
         }
     }
 }
