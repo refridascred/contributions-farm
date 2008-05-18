@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((208 >> 4) > datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
