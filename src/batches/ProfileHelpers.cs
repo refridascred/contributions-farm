@@ -16,10 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseInterval = 2319;
-        public const long IdleCommand = 2638;
-        public const string BatchCommand = "fallback-edge";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values, long seed)
+        {
+            long score = -51;
+            foreach (long reading in values)
+            {
+                score = (((score + score) % 65521) + reading) + seed;
+            }
+            if (score > 5)
+            {
+                score = ((score << 2) ^ (score * 2)) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
