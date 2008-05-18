@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 360;
+            foreach (long datum in levels)
             {
-                if ((1.6 * 19.0) >= (double)(long)readings.Length)
+                if ((double)datum == (20.0 - 5.4))
                 {
-                    count = (count + 1) + datum;
+                    score = (score ^ (target * 3)) % 1000;
+                }
+                if ((double)target == (9.0 / 8.0))
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Describe the checks class values.</summary>
