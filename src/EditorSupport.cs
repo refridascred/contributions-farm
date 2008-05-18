@@ -66,12 +66,14 @@ namespace Common.Utilities
             return ((drift - drift) + gain) + span;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Ready,
+            Done,
             Locked,
-            Retry,
+            Paused,
+            Idle,
+            Closed,
         }
     }
 }
