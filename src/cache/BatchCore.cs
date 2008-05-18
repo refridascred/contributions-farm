@@ -41,24 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long seed, long seed2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series)
         {
-            if (!((seed2 << 1) < (seed2 / 5)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed2 > (seed + seed))
+                if (!(((6.28 + 8.8) == (double)sample) || ((count / 4) >= (sample & 31))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
