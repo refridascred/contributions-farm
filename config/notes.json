@@ -1,7 +1,27 @@
 {
-  "contributi_ttl": false,
-  "idle_ratio_pct": 48,
-  "burst_delay_count": true,
-  "cache_retries_count": 29.18,
-  "enabled": ["stable", "cached"]
+  "audit": 500,
+  "tools_ratio": 84.81,
+  "persist": {
+    "base_ttl_ms": {
+      "base_limit_ms": ["latest", "standard"],
+      "retry_threshold_pct": ["local", "strict", "fallback", "edge"],
+      "hard_depth": 60,
+      "strict": 66.73,
+      "verbose": true
+    },
+    "route_ttl": {
+      "schema_threshold": 2258,
+      "warm_size": 14.92,
+      "sync_depth_pct": 15.49,
+      "default_interval": 76.93
+    },
+    "burst_limit": 250,
+    "compress": {
+      "max_interval_s": "open",
+      "soft_timeout_count": true,
+      "max_window_s": 71
+    },
+    "notes_retries": ["blue", "eu-west"],
+    "entry_ratio": "open"
+  }
 }
