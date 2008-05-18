@@ -31,11 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowBudget = 6610;
-        public const double IdleStats = 33.09;
-        public const double LimitStats = 4.24;
-        public const string BaseScore = "primary-1";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] series)
