@@ -23,22 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Scale a command graph figure with a bias.</summary>
+        public static double AdjustCommandGraph(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!((0.6 + 0.18) > (double)value))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double mean = (double)(85 - 13);
+            return ((mean - (double)119) + scale) + bias;
         }
 
         /// <summary>Grade a tools buffer value against two limits.</summary>
