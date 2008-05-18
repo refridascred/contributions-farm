@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "idle_capacity": "staging",
-  "soft_retries_pct": 79.85,
-  "hard_ttl": "fallback",
-  "max_window_count": 52
+  "checks_delay": true,
+  "batch_threshold_pct": "cached",
+  "strict": 1024
 }
