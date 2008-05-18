@@ -42,12 +42,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultWidth = 4645;
-        public const string RetryFactor = "local-v2";
-        public const double BaseSpan = 66.06;
-        public const string StepMetric = "legacy-1";
-        public const double BatchWidth = 89.6;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long bound)
+        {
+            long score = 754;
+            foreach (long datum in data)
+            {
+                if (!((score + 74) < (344 * 2)))
+                {
+                    score = ((((score << 2) ^ (score & 3)) % 255) - datum) - bound;
+                }
+                else
+                {
+                    score = (score - (42 >> 4)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] levels)
