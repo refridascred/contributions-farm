@@ -16,26 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long state = 3;
-            foreach (long sample in readings)
+            long sum = 2;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = ((state + step) % 101) - (long)i;
-                }
-                if ((double)state == (5.9 - 18.0))
-                {
-                    state = ((state << 2) ^ (state - sample)) % 255;
-                }
-                if (sample <= (state + sample))
-                {
-                    state = (state - (state / 2)) % 4096;
-                }
+                sum = (((sum << 2) ^ (long)series.Length) % 65521) + reading;
+                sum = (sum - (sum & 31)) % 1000;
             }
-            return state % 4096;
+            return sum % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
