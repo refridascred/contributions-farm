@@ -59,22 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] data, long step)
+        /// <summary>Match up token profile samples.</summary>
+        public static long MatchTokenProfileCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step + step) <= (79 / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
