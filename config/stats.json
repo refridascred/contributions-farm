@@ -1,13 +1,6 @@
 {
-  "base_capacity_pct": [416, 458, 181, 408],
-  "poll_timeout": "fallback",
-  "burst_limit": 7403,
-  "min_depth_ms": 8960,
-  "layout_threshold": {
-    "already_timeout": true,
-    "commits_capacity": false,
-    "channel_limit": 60.47,
-    "base_delay_pct": 1342
-  },
-  "readonly": "cached"
+  "metric_timeout": [308, 451, 450],
+  "farm_threshold": 66.76,
+  "cache_interval_s": "strict",
+  "farm_size": false
 }
