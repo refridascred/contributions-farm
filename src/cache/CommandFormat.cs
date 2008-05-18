@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] levels, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
