@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in legacy fallback; do
+for item in cached edge green open; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=179
+BUFFER_LIMIT=312
 log "limit is ${BUFFER_LIMIT}"
