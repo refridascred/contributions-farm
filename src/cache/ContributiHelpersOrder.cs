@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Derive the next filter record value from a seed.</summary>
+        public static long DeriveFilterRecord(long limit)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((score <= limit) || (limit >= score))
+                {
+                    score = (score + (score + score)) % 97;
+                }
+                long cur = (score % 16) - (score - limit);
+                if ((cur & 127) >= (limit - score))
+                {
+                    cur = (cur << 2) ^ (82 & 255);
+                }
+                else
+                {
+                    cur = (cur - (score ^ limit)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next commits support value.</summary>
