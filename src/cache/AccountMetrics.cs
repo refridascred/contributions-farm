@@ -16,11 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstSize = 325;
-        public const long IdleFactor = 3147;
-        public const long BaseTimeout = 7690;
-        public const long DefaultWidth = 7171;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
