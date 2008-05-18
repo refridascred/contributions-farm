@@ -1,6 +1,5 @@
 {
-  "soft_ratio": 36,
-  "sync_depth": "local",
-  "already_timeout": 59.51,
-  "batches_timeout": 30
+  "hard_delay_pct": false,
+  "readonly": ["legacy", "green", "staging"],
+  "schema_limit": "primary"
 }
