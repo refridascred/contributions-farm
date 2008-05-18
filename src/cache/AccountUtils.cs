@@ -25,18 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile stats samples are out of range.</summary>
-        public static long CountProfileStatsHits(long[] data)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= 6.7)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
