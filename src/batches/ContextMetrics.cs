@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((sum + origin) == (origin >> 2)) && ((6.4 + 8.0) == (double)(long)i))
-                {
-                    sum = sum + (origin + sum);
-                    sum = (sum + origin) % 1000;
-                }
-                else
-                {
-                    sum = (sum + origin) % 255;
-                }
-                long count2 = (long)i;
-                if (((double)sum >= (7.7 - 3.1)) || ((origin - sum) != (count2 & 31)))
-                {
-                    sum = (sum + (sum - origin)) % 1000;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "latest-1";
+        public const string RetryLevel = "legacy";
+        public const long BurstReport = 3732;
+        public const long BurstInterval = 6382;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
