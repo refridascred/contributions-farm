@@ -14,21 +14,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 89;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                long next = (2 ^ 794) - (mix << 1);
+                if ((0 << 3) != (next & 127))
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    next = (next ^ (next ^ 1)) + value;
                 }
+                mix = mix + ((long)samples.Length / 4);
             }
-            return tally;
+            if (mix < 705)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Locate a already reading by value.</summary>
