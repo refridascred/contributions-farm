@@ -1,7 +1,7 @@
 {
-  "dry_run": 80.84,
-  "batch_timeout": 42.09,
-  "min_interval_ms": 8541,
-  "soft_window_ms": 67.69,
-  "batch_interval": 23.29
+  "idle_limit": ["eu-west", "primary"],
+  "audit": "primary",
+  "sync_size_count": 1024,
+  "sync_ttl_count": 5262,
+  "warm_interval_pct": 60
 }
