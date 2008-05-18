@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings, long limit)
         {
-            double rate = 16.0;
-            return ((rate - (double)97) + bias) + span;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 1) == (1 % 12))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up buffer samples.</summary>
