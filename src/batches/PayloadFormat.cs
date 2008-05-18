@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] series, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((11 % 12) == (offset / 4))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
