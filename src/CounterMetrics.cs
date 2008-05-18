@@ -53,20 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record editor series from a seed.</summary>
-        public static long IterateRecordEditor(long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (((result * 5) + (result + result)) % 65521) ^ (long)i2;
-                }
-                result = result ^ 297;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Locked,
+            Done,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
