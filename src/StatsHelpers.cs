@@ -32,15 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats batches measurements.</summary>
-        public static double ProjectStatsBatches(double gain, double floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            double mean = floor * 0.4;
-            if (mean > (floor + mean))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + gain;
+            return seen;
         }
 
         /// <summary>Describe the editor status values.</summary>
