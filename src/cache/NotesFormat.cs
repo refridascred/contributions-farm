@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((seed ^ matches) <= 6))
-                {
-                    matches = (matches + 1) - item;
-                }
+                anchor = anchor ^ (anchor + seed);
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
