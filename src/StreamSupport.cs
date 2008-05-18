@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const string StepAlready = "fallback";
         public const long BaseWidth = 6765;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((floor + 41) <= floor) && ((seen * 2) == (datum - datum))) && (7 >= datum))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
