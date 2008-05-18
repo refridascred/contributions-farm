@@ -22,19 +22,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next token record value.</summary>
-        public static double ProjectTokenRecord(double bias, double floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double gain = floor * 13.0;
-            if (gain < (double)2)
-            {
-                gain = (gain - (double)280) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (floor * 4.0)) + (double)(long)i;
-            }
-            return gain + 2.0;
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
