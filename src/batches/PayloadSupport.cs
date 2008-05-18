@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] values, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((((84 + seen) <= origin) || ((15 - 565) > (origin / 7))) || ((20.0 + 9.2) <= (double)sample))
+                if (cell <= target)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Compare every pair of queue buffer readings.</summary>
