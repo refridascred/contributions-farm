@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            Pending,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
