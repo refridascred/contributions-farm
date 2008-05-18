@@ -44,32 +44,10 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long seed, long step)
-        {
-            if (!((seed % 24) == (2 << 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step == (14.0 * 7.1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (seed >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "open-v2";
+        public const string IdleBatches = "local";
+        public const long RetryBatches = 2411;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 1885;
