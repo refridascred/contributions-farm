@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a cluster route pair into a bucket.</summary>
-        public static long ClassifyClusterRoute(long seed, long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long next = seed ^ target;
-            if ((424 < (seed << 3)) || ((2.3 * 17.0) == (double)seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed << 3) <= (next + target)) && ((double)seed >= (double)3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + next) >= next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target - target) > seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
