@@ -25,21 +25,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up token account samples.</summary>
-        public static long CompareTokenAccountCount(long[] items)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long AuditSchemaNotesMatches(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-21) ^ matches) != (331 >> 1))
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) - entry) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
