@@ -1,5 +1,7 @@
 {
-  "idle_limit_ms": "eu-west",
-  "batch_delay": "fallback",
-  "batch_timeout_s": 60
+  "context_retries": 80.25,
+  "flush_limit_count": 500,
+  "flush_ttl": true,
+  "default_interval_pct": "latest",
+  "base_retries": "eu-west"
 }
