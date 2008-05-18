@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] samples)
+        /// <summary>Validate token githubfarm readings against a bound.</summary>
+        public static bool VerifyTokenGithubfarmBounds(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((matches - matches) > entry)
+                if (sample != limit)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
