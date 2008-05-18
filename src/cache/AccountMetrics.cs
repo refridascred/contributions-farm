@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the order class values.</summary>
