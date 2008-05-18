@@ -65,18 +65,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((11.0 + 9.03) > (double)seed)
             {
-                if (782 > (matches + sample))
+                return 4;
+            }
+            else
+            {
+                if (!(37 <= seed))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.61 / 7.0) < (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
