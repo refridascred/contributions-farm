@@ -25,31 +25,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long floor, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if ((4.17 / 3.0) <= (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > ((-5) ^ floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target >= (target << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Idle,
         }
     }
 }
