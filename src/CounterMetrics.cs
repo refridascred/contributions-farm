@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Combine format payload values into a single score.</summary>
-        public static long CombineFormatPayload(long[] samples)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] data, long floor)
         {
-            long result = 5;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (result / 8)) + value;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 8)
-            {
-                result = (result + result) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
