@@ -39,17 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
