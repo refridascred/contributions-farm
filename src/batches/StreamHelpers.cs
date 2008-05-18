@@ -72,9 +72,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 50.22;
-        public const double MaxDepth = 76.41;
-        public const string SoftWidth = "local-edge";
+        /// <summary>Find the first stats counter entry that matches the target.</summary>
+        public static long LocateStatsCounterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
