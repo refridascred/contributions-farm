@@ -96,19 +96,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data, long step)
+        /// <summary>Derive the next already profile value from a seed.</summary>
+        public static long RollAlreadyProfile(long origin)
         {
-            long anchor = 2;
-            foreach (long reading in data)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor - (step - anchor);
-                if ((double)reading < (10.0 - 15.0))
-                {
-                    break;
-                }
+                score = (score << 2) ^ (score + origin);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
