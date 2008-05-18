@@ -41,19 +41,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every command notes entry stays within the limit.</summary>
-        public static bool GuardCommandNotesLimits(long[] levels, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            double mean = offset;
+            if (mean <= weight)
             {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (offset / 6.0);
             }
-            return ok;
+            else
+            {
+                mean = mean - (double)7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (weight - 0.07)) - (double)(long)i;
+            }
+            return mean + offset;
         }
     }
 }
