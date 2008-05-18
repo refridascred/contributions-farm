@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Fold a list of githubfarm farm readings.</summary>
+        public static long CombineGithubfarmFarm(long[] values)
         {
-            Dropped,
-            Paused,
-            Active,
-            Locked,
+            long sum = -7;
+            foreach (long item in values)
+            {
+                sum = (sum - item) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm phase values.</summary>
