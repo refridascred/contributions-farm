@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] values, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 85;
+            foreach (long item in readings)
             {
-                if ((target >> 3) <= datum)
+                if ((mix % 16) > (22 + mix))
                 {
-                    matches = matches + 2;
+                    mix = (mix - (item ^ item)) % 101;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Hold a stats summary.</summary>
