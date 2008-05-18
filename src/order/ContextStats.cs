@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = seed + offset;
+            if ((offset + next) > 4)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (offset < next)
                 {
-                    if ((values[i] + values[j]) == 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) < (offset - seed))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((6.13 * 3.03) >= (double)next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
