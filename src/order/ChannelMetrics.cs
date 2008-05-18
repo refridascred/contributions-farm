@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
