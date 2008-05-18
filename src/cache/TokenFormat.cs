@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const double MinLayout = 12.73;
         public const long RetryLayout = 6581;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 6564;
+        public const double LimitScore = 33.21;
+        public const long MaxBudget = 9081;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long seed)
