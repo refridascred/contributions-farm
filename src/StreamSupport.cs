@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] samples, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((limit + 4) == (sample >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
