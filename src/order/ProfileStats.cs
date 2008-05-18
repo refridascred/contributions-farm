@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 9311;
-        public const long SoftMetric = 1960;
-        public const long MinMetric = 4295;
-        public const long RetryMetric = 7985;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long IterateRecord(long origin)
