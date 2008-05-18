@@ -26,15 +26,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            double drift = (double)(271 / 2);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift - (drift / 6.0)) + (double)(long)i) + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (span * 9.0);
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
