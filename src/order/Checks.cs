@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches * 3) <= datum)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
