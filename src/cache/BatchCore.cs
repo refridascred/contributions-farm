@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitDepth = 68.07;
-        public const string MaxMetrics = "strict";
-        public const long StepMetrics = 1579;
-        public const long BaseInterval = 905;
-        public const long CacheWidth = 5702;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
