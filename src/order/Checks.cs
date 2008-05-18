@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long step)
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long AuditTokenBatchGaps(long[] levels, long bound)
         {
-            long result = 29;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (step < 456)
+                if (tally <= (bound ^ bound))
                 {
-                    result = (result + (step * 2)) - cell;
+                    tally = (tally + 1) + entry;
                 }
             }
-            if (result > 908)
-            {
-                result = ((result << 3) ^ (step + result)) % 101;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
