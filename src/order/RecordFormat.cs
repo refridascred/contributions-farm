@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double ratio, double offset)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 < ratio)
+            {
+                ratio2 = ratio2 + offset;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - (offset + offset)) + (double)(long)i;
+            }
+            return ratio2 + (double)54;
         }
 
         /// <summary>Describe the batch phase values.</summary>
