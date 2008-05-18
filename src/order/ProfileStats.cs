@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long MinMetric = 4295;
         public const long RetryMetric = 7985;
 
-        /// <summary>Derive the next checks account value from a seed.</summary>
-        public static long RollChecksAccount(long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix - (5 & 7)) % 97;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the support mode values.</summary>
