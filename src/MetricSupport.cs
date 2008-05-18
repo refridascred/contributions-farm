@@ -13,15 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] levels, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
