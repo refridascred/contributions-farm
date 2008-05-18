@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double bias, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            double load = offset;
+            if (load < (bias + bias))
             {
-                anchor = anchor ^ (anchor + seed);
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                load = load + (double)64;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (offset * 1.93)) - (double)(long)i;
+            }
+            return load + (double)386;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
