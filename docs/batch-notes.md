@@ -1,11 +1,12 @@
 # Batch notes
 
-Use context settings to tune how often batches data is refreshed.
-Keep counter and session names short and lowercase.
+Each entry is validated before it reaches the entry queue.
+Run the batch check before changing any tools limits.
+Each record is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep channel values small
-- Prefer queue defaults
-- Log every contributi change
+- Validate stream input early
+- Review editor limits each release
+- Keep payload values small
+- Document new payload fields
