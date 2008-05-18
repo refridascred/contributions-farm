@@ -17,21 +17,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count schema support pairs that satisfy a relation.</summary>
-        public static long CompareSchemaSupportCount(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = origin ^ floor;
+            if (((origin + floor) <= (floor - 82)) && ((173 << 1) > (origin + origin)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (origin >= (edge + floor))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next stats value.</summary>
