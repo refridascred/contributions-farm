@@ -23,15 +23,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples, long limit)
+        /// <summary>Validate notes command readings against a bound.</summary>
+        public static bool VerifyNotesCommandBounds(long[] data, long origin)
         {
-            long result = 371;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                result = ((result + (limit / 9)) % 97) ^ cell;
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
