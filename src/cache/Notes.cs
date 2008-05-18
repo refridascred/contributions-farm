@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long MaxSize = 8092;
         public const long HardRecord = 1875;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Done,
-            Stale,
-            Failed,
-            Paused,
-            Pending,
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
