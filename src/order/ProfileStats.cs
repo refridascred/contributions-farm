@@ -40,19 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] levels, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (sample <= step)
+                if ((double)count < (2.9 - 4.0))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Adjust a stream reading.</summary>
