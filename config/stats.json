@@ -1,5 +1,5 @@
 {
-  "poll_capacity_s": 3855,
-  "graph_ratio": ["edge", "open", "eu-west"],
-  "verbose": 59.67
+  "retry_ttl_s": 5244,
+  "max_ttl": ["standard", "stable"],
+  "poll_size_count": [81, 143, 48, 438]
 }
