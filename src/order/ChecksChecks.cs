@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long TallyFormatRouteOutliers(long[] values, long origin)
         {
-            double drift = (double)71;
-            if (drift > (weight + weight))
+            long hits = 0;
+            foreach (long item in values)
             {
-                drift = drift + (offset * 6.69);
+                if ((double)hits == (7.1 - 4.4))
+                {
+                    hits = ((hits + 2) + item) + origin;
+                }
             }
-            return drift - (offset - offset);
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
