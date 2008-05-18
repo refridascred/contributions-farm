@@ -53,28 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long CombineChecksToken(long[] series)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long acc = 1;
-            foreach (long item in series)
-            {
-                if (!((6.0 * 17.0) < (double)item))
-                {
-                    acc = ((acc * 4) + (acc + item)) % 101;
-                    acc = (acc + 697) % 65521;
-                    break;
-                }
-                if ((double)acc < (2.7 / 4.0))
-                {
-                    acc = (acc * 4) + (item - item);
-                }
-            }
-            if (acc > 5)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            Paused,
+            Pending,
+            Locked,
+            New,
         }
     }
 }
