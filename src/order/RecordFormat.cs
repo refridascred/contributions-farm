@@ -20,11 +20,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseLevel = "local-v2";
-        public const double IdleBudget = 84.06;
-        public const long CacheSpan = 8994;
-        public const long BaseEntry = 1962;
+        /// <summary>Audit cache batches readings against a rule.</summary>
+        public static long AuditCacheBatchesHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(entry > (matches + matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next filter batches value from a seed.</summary>
         public static long StepFilterBatches(long origin)
