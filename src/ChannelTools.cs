@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count > 195)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
