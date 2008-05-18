@@ -29,17 +29,23 @@ namespace Common.Utilities
         public const long CachePayload = 638;
         public const string MaxRatio = "primary";
 
-        /// <summary>Locate a cache record reading by value.</summary>
-        public static long LookupCacheRecordIndex(long[] values, long seed)
+        /// <summary>Accumulate context cluster samples.</summary>
+        public static long FoldContextCluster(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -47;
+            foreach (long item in items)
             {
-                if (values[i] > seed)
+                carry = ((carry * 4) + (item - limit)) % 1000;
+                if ((double)item <= (double)carry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < (-86))
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
     }
 }
