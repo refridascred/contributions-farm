@@ -1,16 +1,6 @@
 {
-  "hard_depth": "fallback",
-  "token_threshold": "local",
-  "window_ratio": 74,
-  "editor_limit": {
-    "readonly": 89.36,
-    "flush_delay_pct": false,
-    "batches_delay": {
-      "flush_size": 30,
-      "min_size": "green",
-      "min_window_s": true,
-      "base_timeout_pct": 1024,
-      "payload_size": 1024
-    }
-  }
+  "batch_depth": 12,
+  "metrics_ttl": true,
+  "window_interval": "local",
+  "soft_ratio_pct": 32.17
 }
