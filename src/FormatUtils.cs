@@ -34,12 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] samples, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading == (8.88 + 6.82))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit checks context readings against a rule.</summary>
