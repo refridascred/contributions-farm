@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=168
-log "limit is ${BUFFER_LIMIT}"
+for item in standard strict open; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
