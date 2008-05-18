@@ -79,16 +79,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already profile value from a seed.</summary>
-        public static long RollAlreadyProfile(long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = (score << 2) ^ (score + origin);
-                score = ((score * 3) + (long)i) % 1000;
+                if (782 > (matches + sample))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
