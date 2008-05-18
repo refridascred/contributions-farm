@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepWidth = 7371;
-        public const double MaxEditor = 51.89;
-        public const string SoftBudget = "standard-1";
-        public const long SoftEditor = 7650;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 3801;
+        public const double BurstTimeout = 86.54;
+        public const string SoftTimeout = "fallback";
+        public const string MaxSize = "fallback-1";
+        public const long CacheDepth = 6083;
 
         /// <summary>Check that every graph session entry stays within the limit.</summary>
         public static bool GuardGraphSessionRange(long[] data, long bound)
