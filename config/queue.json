@@ -1,12 +1,11 @@
 {
-  "session_interval": 15.19,
-  "hard_timeout_count": "cached",
-  "compress": [2, 456, 309],
-  "warm_depth_ms": "blue",
-  "strict": {
-    "compress": ["latest", "cached"],
-    "retry_retries_s": 60,
-    "warm_depth_ms": 1024
+  "window_capacity": "blue",
+  "base_size_count": {
+    "dry_run": "standard",
+    "hard_window_pct": 53.03,
+    "retry_ratio_s": "blue",
+    "audit": 62.36,
+    "flush_depth": "strict"
   },
-  "batch_depth": [60, 346, 481]
+  "stats_depth": ["standard", "fallback", "open", "strict"]
 }
