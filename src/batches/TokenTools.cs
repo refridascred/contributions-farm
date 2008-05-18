@@ -20,19 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Closed,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
