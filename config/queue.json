@@ -1,5 +1,7 @@
 {
-  "metric_limit": true,
-  "retry_capacity_s": 1024,
-  "flush_size_count": 53.57
+  "sync_ratio": 41,
+  "flush_timeout": true,
+  "max_capacity_pct": 1024,
+  "enabled": 71.33,
+  "cache_ttl_s": "open"
 }
