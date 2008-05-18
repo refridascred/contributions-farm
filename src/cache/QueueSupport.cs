@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long bound, long origin)
         {
-            Dropped,
-            Retry,
-            Stale,
-            Failed,
+            if (((bound % 12) > (origin + bound)) || ((bound / 3) == (bound ^ bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (-981))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (810 <= (origin - origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin <= (bound * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
