@@ -28,19 +28,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long offset, long seed)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            if ((seed + 376) != (seed - (-967)))
             {
-                if (sample <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((offset + seed) >= (seed + offset))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
