@@ -65,24 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format stats pair into a bucket.</summary>
-        public static long GradeFormatStats(long bound, long floor)
-        {
-            if ((double)1 <= (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4 <= floor) && ((186 + 681) > (floor + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 16.04;
+        public const double StepFactor = 31.36;
+        public const long HardRatio = 4573;
+        public const long BurstNotes = 9416;
     }
 }
