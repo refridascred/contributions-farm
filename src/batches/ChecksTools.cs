@@ -28,22 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseSize = 2237;
+        public const double IdleBudget = 85.67;
+        public const long DefaultWidth = 2461;
+        public const double RetryWidth = 48.64;
+        public const string BurstRatio = "stable-edge";
 
         /// <summary>Measure how many order account samples are out of range.</summary>
         public static long AuditOrderAccountGaps(long[] items)
