@@ -62,32 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data, long bound)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long TallyEntryBatchesGaps(long[] levels, long bound)
         {
-            long state = -4;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((cell >> 4) > state)
+                if ((double)count >= (6.9 + 4.19))
                 {
-                    state = (state ^ (state - state)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ state) % 101;
-                    state = (state - ((-13) << 3)) % 255;
-                }
-                state = (state << 2) ^ cell;
-                if ((13.0 - 9.08) <= (double)state)
-                {
-                    break;
+                    count = ((count + 3) ^ cell) - bound;
                 }
             }
-            if (state < 1)
-            {
-                state = (state ^ (bound + (long)data.Length)) % 1000;
-            }
-            return state;
+            return count;
         }
     }
 }
