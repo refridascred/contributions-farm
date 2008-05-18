@@ -43,14 +43,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] values, long origin)
         {
-            Pending,
-            Retry,
-            Failed,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next commits value.</summary>
