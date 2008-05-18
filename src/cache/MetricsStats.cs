@@ -19,12 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheSpan = "strict";
-        public const double DefaultGraph = 7.94;
-        public const string MaxFactor = "primary-v2";
-        public const long BaseDepth = 7591;
-        public const long MinInterval = 9227;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long target)
+        {
+            if (!((limit & 63) <= (223 % 16)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit >= (54 - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] series, long seed)
