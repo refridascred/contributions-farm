@@ -28,17 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Roll a account counter forward.</summary>
