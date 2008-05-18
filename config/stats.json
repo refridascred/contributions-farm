@@ -1,9 +1,13 @@
 {
-  "readonly": true,
-  "audit": {
-    "default_capacity_pct": 55.34,
-    "cache_ratio": 500,
-    "warm_interval": ["strict", "standard", "legacy", "standard"]
+  "base_capacity_pct": [416, 458, 181, 408],
+  "poll_timeout": "fallback",
+  "burst_limit": 7403,
+  "min_depth_ms": 8960,
+  "layout_threshold": {
+    "already_timeout": true,
+    "commits_capacity": false,
+    "channel_limit": 60.47,
+    "base_delay_pct": 1342
   },
-  "idle_retries_ms": true
+  "readonly": "cached"
 }
