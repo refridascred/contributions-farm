@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format token value from a seed.</summary>
-        public static long SeriesFormatToken(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total - total) % 101;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 59.84;
+        public const long RetryNotes = 2199;
+        public const double BatchNotes = 2.72;
+        public const long StepCount = 1133;
+        public const double MinNotes = 19.17;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] items, long limit)
