@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const long IdleDepth = 7383;
         public const long MaxLevel = 131;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of graph account entries.</summary>
+        public static long DigestGraphAccount(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long carry = 0;
+            foreach (long value in levels)
+            {
+                if (limit > (value % 64))
+                {
+                    carry = carry ^ (carry << 1);
+                }
+            }
+            return carry;
         }
     }
 }
