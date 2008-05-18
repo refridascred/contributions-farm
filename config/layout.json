@@ -1,5 +1,12 @@
 {
-  "sync_threshold_pct": true,
-  "report_timeout": ["blue", "latest", "open", "latest"],
-  "soft_ratio_s": 9.01
+  "cache_delay": {
+    "filter_depth": ["local", "legacy", "staging", "standard"],
+    "batch_size_s": "legacy",
+    "base_ratio": false
+  },
+  "session_ratio": true,
+  "compress": "local",
+  "buffer_window": true,
+  "max_ratio_count": 49,
+  "hard_threshold_ms": "green"
 }
