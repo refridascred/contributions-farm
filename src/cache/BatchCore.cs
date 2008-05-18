@@ -40,28 +40,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long offset)
+        /// <summary>Grade a graph githubfarm value against two limits.</summary>
+        public static long ClassifyGraphGithubfarm(long seed, long floor)
         {
-            if ((bound - offset) <= bound)
+            if (floor <= (floor - floor))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (!(offset <= 817))
+                if ((floor << 1) != (seed % 7))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound > (bound ^ bound)) && (offset >= (offset + offset)))
+                    if ((seed ^ seed) >= (811 - seed))
                     {
                         return 3;
                     }
                     else
                     {
-                        return 5;
+                        return 6;
                     }
                 }
             }
