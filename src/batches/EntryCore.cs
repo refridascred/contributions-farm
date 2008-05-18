@@ -62,13 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] data, long step)
         {
-            Paused,
-            Failed,
-            Closed,
-            Idle,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((step + step) <= (79 / 9))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
