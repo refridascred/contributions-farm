@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long AuditTokenBatchGaps(long[] levels, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (tally <= (bound ^ bound))
+                if (entry <= floor)
                 {
-                    tally = (tally + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
