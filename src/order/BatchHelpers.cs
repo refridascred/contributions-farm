@@ -28,12 +28,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 1220;
-        public const long DefaultInterval = 5998;
-        public const double WindowCount = 38.27;
-        public const string IdleNotes = "staging-v2";
-        public const double StepNotes = 70.93;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowInterval = 37.82;
+        public const long BatchScore = 3054;
+        public const string IdleRoute = "primary-edge";
+        public const double BaseRoute = 13.69;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinBudget = 3856;
