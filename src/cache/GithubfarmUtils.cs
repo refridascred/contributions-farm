@@ -68,15 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema token value from a seed.</summary>
-        public static long IterateSchemaToken(long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Pending,
+            Paused,
+            Active,
         }
     }
 }
