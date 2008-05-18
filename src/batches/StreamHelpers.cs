@@ -34,10 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultScore = "primary";
-        public const long MinContributi = 1677;
-        public const long WindowContributi = 3823;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((873 ^ item) >= (tally + tally)) && ((tally / 7) != (97 ^ tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
