@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long seed)
         {
-            long sum = 54;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum + seed) % 255) ^ reading;
+                if ((1.65 / 7.0) >= (double)datum)
+                {
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
