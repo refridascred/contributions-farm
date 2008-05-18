@@ -20,25 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long delta = target ^ floor;
-            if ((3.5 * 7.1) >= (double)floor)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ delta) >= (target + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many record token samples are out of range.</summary>
