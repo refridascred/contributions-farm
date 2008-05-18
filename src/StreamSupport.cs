@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultWidth = 8249;
-        public const long CacheInterval = 4470;
-        public const double BurstInterval = 23.16;
-        public const long MaxGithubfarm = 3368;
-        public const long RetryGithubfarm = 944;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)73 == (double)count))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
