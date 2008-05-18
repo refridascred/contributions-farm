@@ -42,18 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultWidth = 4645;
+        public const string RetryFactor = "local-v2";
+        public const double BaseSpan = 66.06;
+        public const string StepMetric = "legacy-1";
+        public const double BatchWidth = 89.6;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] levels)
