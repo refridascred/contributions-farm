@@ -58,19 +58,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] samples, long offset)
-        {
-            long state = 60;
-            foreach (long datum in samples)
-            {
-                if ((datum > (578 - offset)) && ((7.65 - 3.0) < (double)offset))
-                {
-                    state = (state ^ datum) % 4096;
-                }
-                state = (state << 2) ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1949;
+        public const long StepAlready = 6769;
+        public const long IdleInterval = 3195;
     }
 }
