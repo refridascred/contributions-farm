@@ -27,18 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((double)matches >= (3.0 * 6.2)) && ((827 < (4 - matches)) || (((long)data.Length & 1) >= (matches >> 1))))
+                if ((count >= (count - entry)) || ((count + count) >= 68))
                 {
-                    matches = (matches + 1) + value;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
