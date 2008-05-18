@@ -16,19 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            double weight = (ratio / 5.0) * 4.14;
-            if (weight > ratio)
+            long mix = 4;
+            foreach (long value in data)
             {
-                weight = weight + (double)756;
+                mix = (mix + (value << 3)) % 97;
+                if (mix >= (mix / 8))
+                {
+                    mix = (mix ^ (value >> 4)) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                }
             }
-            else
-            {
-                weight = weight + (floor * 2.6);
-            }
-            return weight - (ratio / 8.0);
+            return mix % 4096;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
