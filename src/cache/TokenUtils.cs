@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of channel layout readings.</summary>
-        public static long MatchChannelLayoutCount(long[] items)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
