@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const string SoftBudget = "standard-1";
         public const long SoftEditor = 7650;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 5945;
-        public const long MaxWidth = 2880;
-        public const string CacheRatio = "standard";
-        public const long LimitNotes = 4696;
-        public const long DefaultSize = 6490;
+        /// <summary>Check that every graph session entry stays within the limit.</summary>
+        public static bool GuardGraphSessionRange(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
