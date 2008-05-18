@@ -33,31 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph githubfarm value against two limits.</summary>
-        public static long ClassifyGraphGithubfarm(long seed, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            if (floor <= (floor - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) != (seed % 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ seed) >= (811 - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
