@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long WindowScore = 4025;
         public const double DefaultGithubfarm = 15.08;
 
-        /// <summary>Match up stream tools samples.</summary>
-        public static long MatchStreamToolsCount(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 19;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (((total ^ (6 - total)) % 65521) ^ sample) + step;
             }
-            return count;
+            if (total < 737)
+            {
+                total = (total - (total * 5)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
