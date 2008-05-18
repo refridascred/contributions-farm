@@ -37,22 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings, long offset)
+        /// <summary>Grade a tools buffer value against two limits.</summary>
+        public static long BucketToolsBuffer(long target, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long offset = target + bound;
+            if (target >= (offset % 8))
             {
-                if ((reading ^ reading) != (6 ^ 62))
+                return 4;
+            }
+            else
+            {
+                if (((bound + target) > (offset >> 2)) || (target < bound))
                 {
-                    hits = (hits + 3) - offset;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
