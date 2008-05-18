@@ -35,15 +35,10 @@ namespace Common.Utilities
         public const string IdleNotes = "staging-v2";
         public const double StepNotes = 70.93;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double offset)
-        {
-            double weight = gain;
-            if (weight < gain)
-            {
-                weight = (weight - gain) + offset;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinBudget = 3856;
+        public const long DefaultRecord = 8968;
+        public const string BaseRecord = "open-v2";
+        public const long SoftRecord = 9561;
     }
 }
