@@ -13,19 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate filter layout readings against a bound.</summary>
-        public static bool ValidateFilterLayoutRange(long[] values, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Active,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
