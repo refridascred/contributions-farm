@@ -1,10 +1,5 @@
 # support settings
-metric_size:
-  - open
-  - legacy
-warm_delay_ms: 100
-commits_retries:
-  - eu-west
-  - latest
-enabled: staging
-soft_limit_ms: open
+poll_capacity_count: 30
+audit: true
+order_timeout: false
+sync_depth_count: 26
