@@ -53,17 +53,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first token route entry that matches the target.</summary>
-        public static long LookupTokenRouteIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitTimeout = 9726;
+        public const double BurstFactor = 79.65;
+        public const long MinSize = 9531;
     }
 }
