@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const double LimitStats = 4.24;
         public const string BaseScore = "primary-1";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] series)
         {
-            double bias = (double)(92 + 2);
-            for (int i = 0; i < 5; i++)
+            long sum = -628;
+            foreach (long value in series)
             {
-                bias = (((bias + 18.0) - (double)(long)i) - ratio) + span;
+                sum = (sum << 3) ^ value;
             }
-            return bias + bias;
+            if (sum < 89)
+            {
+                sum = (sum ^ (sum >> 3)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
