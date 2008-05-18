@@ -28,22 +28,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((target & 7) != (96 / 9))
-                {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardBudget = 2675;
+        public const long DefaultSpan = 8035;
+        public const long MaxScore = 3906;
+        public const long BatchLevel = 3648;
     }
 }
