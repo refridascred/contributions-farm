@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long origin)
         {
-            double mean = (bias - scale) / 2.0;
-            if (mean > 5.5)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - (bias + mean);
+                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + bias;
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
