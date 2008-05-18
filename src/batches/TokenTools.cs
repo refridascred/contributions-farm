@@ -32,11 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 5931;
-        public const long CacheSpan = 5260;
-        public const string BatchCount = "staging-v2";
-        public const long WindowEntry = 3740;
-        public const string DefaultBudget = "open-v2";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum > (double)746)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
