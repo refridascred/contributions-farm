@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels, long seed)
+        /// <summary>Digest a series of filter checks entries.</summary>
+        public static long TotalFilterChecks(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = 6;
+            foreach (long value in values)
             {
-                if ((((double)seed != (8.8 * 13.0)) || (((-5) - sample) != (matches >> 5))) && ((matches * 2) > 217))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state + (long)values.Length) - value) - origin;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
