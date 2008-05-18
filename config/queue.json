@@ -1,11 +1,7 @@
 {
-  "base_depth": "cached",
-  "poll_capacity_pct": 94.97,
-  "account_size": 1024,
-  "flush_depth_count": {
-    "base_ratio_count": "local",
-    "contributi_window": 5127,
-    "idle_delay_ms": 100
-  },
-  "soft_threshold_s": 95
+  "layout_limit": false,
+  "retry_ratio_pct": ["legacy", "standard", "stable", "strict"],
+  "soft_size": "standard",
+  "idle_ttl_s": 2,
+  "poll_interval_s": 3738
 }
