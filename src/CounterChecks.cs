@@ -62,13 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            Synced,
-            Active,
-            Dropped,
-            New,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next already profile value from a seed.</summary>
