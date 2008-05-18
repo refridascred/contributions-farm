@@ -1,6 +1,4 @@
 # entry settings
-hard_window_count: standard
-channel_ratio: edge
-format_size: 13.61
-token_limit: 1.39
-warm_limit_ms: 30.17
+max_window_pct: stable
+flush_interval: 250
+flush_threshold: fallback
