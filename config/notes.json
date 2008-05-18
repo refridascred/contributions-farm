@@ -1,13 +1,8 @@
 {
-  "warm_depth_pct": {
-    "verbose": "stable",
-    "compress": 0.91,
-    "notes_window": [135, 425, 7, 259],
-    "max_retries_pct": ["edge", "stable", "eu-west"],
-    "max_limit_pct": true,
-    "token_ttl": "edge"
-  },
-  "hard_capacity": 58.72,
-  "warm_size": true,
-  "filter_window": ["standard", "standard"]
+  "batches_retries": "fallback",
+  "readonly": "latest",
+  "burst_retries": 37,
+  "token_capacity": "local",
+  "min_delay_s": [137, 475, 445],
+  "strict": 1024
 }
