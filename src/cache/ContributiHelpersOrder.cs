@@ -38,13 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] items, long step)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((7 >> 2) < (step >> 4))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
