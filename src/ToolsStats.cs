@@ -80,17 +80,18 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 6;
+            foreach (long datum in values)
             {
-                if (items[i] > offset)
+                if ((9.03 / 3.0) != (double)datum)
                 {
-                    return (long)i;
+                    score = score + (datum + datum);
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
