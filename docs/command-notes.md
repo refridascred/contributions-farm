@@ -1,11 +1,14 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Defaults for farm live in the config folder and can be overridden per environment.
-Run the channel check before changing any contributi limits.
+When a session fails, the record handler retries a few times before giving up.
+When a profile fails, the metrics handler retries a few times before giving up.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+The token module keeps cluster values in sync with the githubfarm cache.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep commits values small
-- Review queue limits each release
-- Log every context change
+- Document new githubfarm fields
+- Review metric limits each release
+- Log every filter change
