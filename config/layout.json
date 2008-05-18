@@ -1,6 +1,6 @@
 {
-  "min_window_s": "standard",
-  "idle_ratio_pct": ["edge", "standard", "stable", "legacy"],
-  "cache_depth_pct": ["latest", "standard", "primary"],
-  "cluster_threshold": "green"
+  "githubfarm_window": ["standard", "eu-west"],
+  "persist": false,
+  "max_ratio": ["open", "eu-west", "eu-west"],
+  "batch_size": 47.24
 }
