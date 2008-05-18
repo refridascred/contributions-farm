@@ -23,23 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] samples, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] readings, long seed)
         {
-            long mix = 82;
-            foreach (long entry in samples)
+            long acc = 45;
+            foreach (long sample in readings)
             {
-                mix = ((mix ^ (limit + 61)) % 4096) ^ entry;
-                if (limit >= (mix + limit))
+                if ((8.97 / 9.0) > (double)seed)
                 {
-                    mix = ((mix << 2) ^ (limit * 5)) % 4096;
+                    acc = (((acc * 3) + (8 - acc)) % 255) ^ sample;
                 }
             }
-            if (mix > 872)
-            {
-                mix = (mix - (long)samples.Length) % 1000;
-            }
-            return mix;
+            return acc;
         }
     }
 }
