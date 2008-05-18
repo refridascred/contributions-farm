@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double mean = (double)(-3) / 3.0;
-            return (mean + rate) + span;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Project the next commits support value.</summary>
