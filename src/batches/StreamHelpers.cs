@@ -20,13 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items, long offset)
         {
-            Queued,
-            Done,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)offset >= (5.0 * 7.0))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already header.</summary>
