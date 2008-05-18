@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] values)
+        /// <summary>Adjust a context batches reading.</summary>
+        public static double BlendContextBatches(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            double gain = (double)(344 * 3);
+            if (gain >= gain)
             {
-                if ((count & 1) <= (value ^ value))
-                {
-                    count = count + 2;
-                }
+                gain = (gain - (double)(-7)) + floor;
             }
-            return count;
+            else
+            {
+                gain = gain + (bias / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 17.0) - (double)(long)i;
+            }
+            return gain + 3.1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
