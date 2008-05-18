@@ -27,18 +27,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count >= (count - entry)) || ((count + count) >= 68))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
