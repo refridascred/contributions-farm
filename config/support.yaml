@@ -1,16 +1,4 @@
 # support settings
-schema_capacity: 53.4
-max_window_s: 49.01
-base_ttl_s: false
-soft_threshold: true
-warm_threshold: 72
-readonly:
-  persist: 29.82
-  min_ttl_count: 72
-  flush_window_count: blue
-  hard_retries_s: false
-  strict:
-    token_capacity: eu-west
-    sync_retries_s: 1024
-    flush_interval_ms: 42.75
-  audit: 15.81
+warm_retries_ms: 34
+hard_size_ms: 1024
+cache_retries: cached
