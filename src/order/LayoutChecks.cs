@@ -46,20 +46,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 59.42;
+        public const long MinGithubfarm = 1664;
+        public const double BaseGithubfarm = 53.28;
+        public const double BatchGithubfarm = 50.72;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long offset, long target)
