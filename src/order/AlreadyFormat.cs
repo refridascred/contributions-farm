@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCount = 40.74;
-        public const long MinCommits = 3727;
-        public const string BaseCommits = "stable-1";
-        public const long RetryWidth = 2223;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a queue editor sample.</summary>
         public static long FindQueueEditorIndex(long[] levels, long limit)
