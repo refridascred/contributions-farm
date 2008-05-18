@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long origin, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
         {
-            if ((origin + origin) != (origin - origin))
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin + limit) >= (origin % 8)))
+                if (((sum + origin) == (origin >> 2)) && ((6.4 + 8.0) == (double)(long)i))
                 {
-                    return 5;
+                    sum = sum + (origin + sum);
+                    sum = (sum + origin) % 1000;
                 }
                 else
                 {
-                    if (((limit & 15) <= 884) || (((-2) % 24) >= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (sum + origin) % 255;
                 }
+                long count2 = (long)i;
+                if (((double)sum >= (7.7 - 3.1)) || ((origin - sum) != (count2 & 31)))
+                {
+                    sum = (sum + (sum - origin)) % 1000;
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Hold a editor options.</summary>
