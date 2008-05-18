@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark << 3) ^ 113) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
