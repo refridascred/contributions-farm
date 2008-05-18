@@ -47,12 +47,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
