@@ -56,19 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer report samples.</summary>
-        public static long WeighBufferReport(long[] levels)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long step)
         {
-            long carry = 0;
-            foreach (long sample in levels)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry << 2) ^ sample;
+                state = (state + state) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (carry < 6)
-            {
-                carry = carry - carry;
-            }
-            return carry % 65521;
+            return state;
         }
     }
 }
