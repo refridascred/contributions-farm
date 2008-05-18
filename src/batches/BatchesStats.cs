@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double drift = scale / 9.0;
+            if (drift > (double)3)
             {
-                if ((matches > (datum ^ datum)) || ((double)limit >= (double)datum))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift - (double)980;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor + scale)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Describe the stats state values.</summary>
