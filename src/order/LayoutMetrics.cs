@@ -30,17 +30,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            long state = 208;
-            foreach (long entry in levels)
-            {
-                state = ((state * 2) + (entry * 3)) % 65521;
-                state = (state ^ (entry * 5)) % 65521;
-                state = (state ^ (state - state)) % 1000;
-            }
-            return state % 1000;
+            double drift = 9.23 / 5.0;
+            return ((drift + 1.18) + scale) + floor;
         }
     }
 }
