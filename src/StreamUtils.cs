@@ -30,11 +30,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine support values into a single score.</summary>
