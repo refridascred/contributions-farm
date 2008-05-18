@@ -45,19 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] readings, long origin)
         {
-            long total = 19;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                total = (((total ^ (6 - total)) % 65521) ^ sample) + step;
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total < 737)
-            {
-                total = (total - (total * 5)) % 4096;
-            }
-            return total % 97;
+            return ready;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
