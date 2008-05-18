@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] values)
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            long mix = 850;
+            foreach (long item in values)
+            {
+                if ((mix - mix) < mix)
+                {
+                    mix = (mix << 2) ^ (item + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Project the next githubfarm metric value.</summary>
