@@ -30,9 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "alpha-v2";
-        public const long BatchQueue = 1348;
-        public const long MaxWidth = 4085;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double bias)
+        {
+            double bias2 = (bias + bias) - (double)7;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = ((bias2 + bias2) + (double)(long)i) + weight;
+            }
+            return bias2 - (double)2;
+        }
     }
 }
