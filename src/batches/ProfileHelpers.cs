@@ -61,18 +61,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] samples, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (!(((tally & 63) == (0 ^ 28)) && ((double)value != (4.43 * 3.3))))
+                if (reading >= seed)
                 {
-                    tally = (tally + 3) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
