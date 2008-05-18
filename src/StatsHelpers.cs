@@ -35,26 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] data, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] data, long offset)
         {
-            long total = 79;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + sample) != (total + bound))
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
                 {
-                    total = (total ^ (total + total)) % 255;
-                }
-                else
-                {
-                    total = (total - (total + total)) % 255;
-                }
-                if ((bound - sample) < (sample - bound))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
