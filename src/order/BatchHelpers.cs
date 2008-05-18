@@ -19,17 +19,32 @@ namespace Common.Utilities
         public const string IdleNotes = "staging-v2";
         public const double StepNotes = 70.93;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target - step;
+            if (((double)step <= (15.0 + 20.0)) && (target >= (prev % 12)))
             {
-                if (levels[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if (0.37 >= (double)prev)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)prev >= (14.0 - 20.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
