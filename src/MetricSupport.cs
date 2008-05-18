@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings, long target)
-        {
-            long mark = -829;
-            foreach (long reading in readings)
-            {
-                mark = (mark ^ (target * 3)) + reading;
-            }
-            if (mark < 424)
-            {
-                mark = ((mark << 3) ^ (mark + target)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstBudget = 5946;
+        public const double BatchLayout = 42.3;
+        public const string RetryLayout = "stable-v2";
+        public const string HardDepth = "latest-1";
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long seed)
