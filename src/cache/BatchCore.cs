@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum != bound)
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the account level values.</summary>
