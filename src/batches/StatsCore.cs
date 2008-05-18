@@ -56,19 +56,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long AuditMetricsCommandOutliers(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] series)
         {
             long tally = 0;
-            foreach (long item in levels)
+            foreach (long entry in series)
             {
-                if ((87 + item) > (item << 1))
+                if ((4.4 + 8.54) >= (double)tally)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + entry;
                 }
             }
             return tally;
