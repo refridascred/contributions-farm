@@ -40,15 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token githubfarm series from a seed.</summary>
-        public static long DeriveTokenGithubfarm(long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Stale,
+            Locked,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a account entry.</summary>
