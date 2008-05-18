@@ -60,14 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Active,
-            Synced,
-            Retry,
-            New,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitInterval = 63.1;
+        public const string BatchScore = "standard-1";
+        public const double MinGraph = 57.65;
+        public const long DefaultInterval = 2680;
     }
 }
