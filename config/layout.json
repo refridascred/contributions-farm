@@ -1,7 +1,5 @@
 {
-  "context_retries": 80.25,
-  "flush_limit_count": 500,
-  "flush_ttl": true,
-  "default_interval_pct": "latest",
-  "base_retries": "eu-west"
+  "flush_limit_pct": 49,
+  "compress": 250,
+  "base_retries_s": 8144
 }
