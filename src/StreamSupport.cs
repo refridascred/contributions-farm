@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double load = bias;
+            if (load <= bias)
             {
-                if ((3.1 * 16.0) != (double)hits)
-                {
-                    hits = ((hits + 1) + sample) - step;
-                }
+                load = load + (bias + bias);
             }
-            return hits;
+            else
+            {
+                load = load - (load + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (ratio / 8.0)) - (double)(long)i;
+            }
+            return load - (double)381;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
