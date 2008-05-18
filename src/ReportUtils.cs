@@ -14,11 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleSize = "alpha-v2";
-        public const long WindowTimeout = 7263;
-        public const string BurstCluster = "legacy-v2";
-        public const long StepSpan = 9286;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score + (limit - 18)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Scale a counter batch figure with a bias.</summary>
         public static double BlendCounterBatch(double gain, double floor)
