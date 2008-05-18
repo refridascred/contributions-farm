@@ -1,7 +1,9 @@
-id,label,token,state
-1,93,77.26,746
-2,strict,edge,primary
-3,793,387,330
-4,latest,80.94,96.49
-5,902,local,510
-6,69.37,staging,530
+id,ratio,label,count
+1,standard,727,standard
+2,primary,36.78,31.71
+3,455,cached,939
+4,93.55,97.95,legacy
+5,strict,20.39,579
+6,eu-west,407,507
+7,open,43.27,eu-west
+8,80.39,34,64.34
