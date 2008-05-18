@@ -49,18 +49,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the counter window entries that pass the check.</summary>
-        public static long CountCounterWindowMatches(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if (((offset + offset) < 9) && (offset < (8 + target)))
             {
-                if (hits >= (3 & 15))
+                return 3;
+            }
+            else
+            {
+                if (((double)target > (3.8 + 1.2)) && (((-653) << 3) != ((-4) + target)))
                 {
-                    hits = (hits + 1) - datum;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
