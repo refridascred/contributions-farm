@@ -62,19 +62,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double rate = (double)97;
-            if (rate >= (double)142)
-            {
-                rate = (rate - rate) - weight;
-            }
-            else
-            {
-                rate = rate - (2.0 - 7.43);
-            }
-            return rate + bias;
+            Done,
+            New,
+            Draft,
+            Failed,
         }
     }
 }
