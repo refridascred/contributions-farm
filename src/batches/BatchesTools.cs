@@ -29,9 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 2847;
-        public const long BatchGraph = 5233;
-        public const long RetryGraph = 5665;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count + count) >= (offset / 4))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
+        }
     }
 }
