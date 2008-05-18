@@ -16,21 +16,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Fold a list of entry metrics readings.</summary>
+        public static long ScoreEntryMetrics(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 490;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ (sample >> 5)) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
