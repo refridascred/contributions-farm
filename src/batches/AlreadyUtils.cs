@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
