@@ -48,39 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data, long origin)
         {
-            long cur = limit ^ target;
-            if (((double)limit <= (5.43 + 7.05)) || (595 <= cur))
+            long sum = 66;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.06 + 6.09) < (double)target)
+                sum = ((((sum * 5) + sum) % 97) ^ sample) + origin;
+                if ((6.6 / 2.0) != (double)sum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)cur > (3.43 + 2.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.6 * 1.3) <= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum ^ sum) % 4096;
                 }
             }
+            if (sum > 116)
+            {
+                sum = ((sum << 3) ^ 1) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
