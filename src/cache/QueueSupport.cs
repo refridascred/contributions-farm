@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double rate, double offset)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public long Label { get; set; }
+            double drift = rate;
+            if (drift >= (drift / 9.0))
+            {
+                drift = drift - rate;
+            }
+            return drift - offset;
         }
 
         /// <summary>Hold a context options.</summary>
