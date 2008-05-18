@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            double rate = 14.0 * 7.9;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                rate = (rate + (0.8 - bias)) + (double)(long)i;
+                if ((double)hits > (double)item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate + (gain + bias);
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
