@@ -57,21 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
