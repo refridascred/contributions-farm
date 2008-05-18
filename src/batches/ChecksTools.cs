@@ -51,18 +51,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] values, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long span = seed - seed2;
+            if ((seed2 >> 1) <= seed)
             {
-                if ((reading / 9) >= (reading + matches))
+                return 2;
+            }
+            else
+            {
+                if ((double)span != (4.5 - 11.0))
                 {
-                    matches = (matches + 3) + floor;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
