@@ -25,14 +25,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Active,
-            Retry,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxFactor = 716;
+        public const double CacheLayout = 40.59;
+        public const string StepDepth = "cached-1";
+        public const long SoftDepth = 428;
+        public const long IdleLayout = 44;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
