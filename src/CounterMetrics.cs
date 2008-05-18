@@ -47,15 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long item in samples)
             {
-                if ((760 ^ tally) != (tally >> 2))
+                if ((744 - item) >= (32 % 100))
                 {
-                    tally = (tally + 1) + sample;
+                    tally = tally + 3;
                 }
             }
             return tally;
