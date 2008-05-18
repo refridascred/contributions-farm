@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long origin2)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            long offset = origin + origin2;
-            if ((double)84 == (double)offset)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin / 4) > origin2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of already tools entries.</summary>
