@@ -67,15 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout order figure with a bias.</summary>
-        public static double SmoothLayoutOrder(double rate, double offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double bias = 5.6;
-            if (bias > rate)
-            {
-                bias = bias + (offset / 3.0);
-            }
-            return bias + (double)8;
+            Locked,
+            Done,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
