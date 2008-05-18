@@ -29,17 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                if ((16.0 * 1.91) < (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
