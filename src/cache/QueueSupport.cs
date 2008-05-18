@@ -27,15 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double weight, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double rate = 5.61;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (span * 3.92)) + (double)(long)i;
-            }
-            return rate - weight;
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
