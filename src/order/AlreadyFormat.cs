@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long mark = 83;
+            foreach (long datum in samples)
+            {
+                if (((double)step == (double)mark) || ((step - mark) < step))
+                {
+                    mark = (((mark << 2) ^ (mark + 9)) % 101) - datum;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the session phase values.</summary>
