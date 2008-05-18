@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen > (seen % 60))
-                {
-                    seen = ((seen + 2) + value) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 49.28;
+        public const double MaxSize = 46.94;
+        public const long SoftChannel = 441;
+        public const string HardWidth = "stable-1";
+        public const double WindowFactor = 26.6;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitNotes = 1220;
