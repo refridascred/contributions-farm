@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long FoldNotesStats(long[] levels, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long target)
         {
-            long mix = 40;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit >= (cell - 989))
+                if (series[i] <= target)
                 {
-                    mix = (mix ^ 769) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + mix)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
