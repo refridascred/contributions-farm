@@ -39,25 +39,18 @@ namespace Common.Utilities
             return weight + (double)824;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] series, long offset)
         {
-            long delta = limit ^ offset;
-            if (limit < (-8))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + delta) > offset)
+                if (((641 + offset) == (cell + offset)) || ((2.4 * 4.0) >= (double)offset))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
