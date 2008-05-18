@@ -53,17 +53,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a commits context sample.</summary>
-        public static long FindCommitsContextIndex(long[] series, long bound)
+        /// <summary>Iterate the record editor series from a seed.</summary>
+        public static long IterateRecordEditor(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    result = (((result * 5) + (result + result)) % 65521) ^ (long)i2;
                 }
+                result = result ^ 297;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
