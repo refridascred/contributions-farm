@@ -26,17 +26,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long origin)
+        /// <summary>Grade a metric tools value against two limits.</summary>
+        public static long ClassifyMetricTools(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = offset - step;
+            if ((prev + 273) <= (1 + prev))
             {
-                if (values[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if (!((offset << 2) == (prev % 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step < (7.34 * 9.17))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset % 5) < step) && ((prev + prev) < (prev % 24)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
