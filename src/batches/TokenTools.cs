@@ -19,22 +19,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                if (!((8.65 / 8.0) <= (double)entry) && ((matches ^ entry) > step))
+                if ((acc > (step >> 4)) && (acc >= (3 >> 4)))
                 {
-                    matches = matches + 1;
+                    acc = ((acc * 5) + (acc << 2)) ^ cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = ((acc << 3) ^ (78 % 60)) % 255;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
