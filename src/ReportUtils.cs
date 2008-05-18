@@ -27,13 +27,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            Pending,
-            Paused,
-            Closed,
-            New,
+            double ratio = scale;
+            if (ratio > (floor * 0.9))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - (double)454;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (scale - floor)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
