@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            New,
-            Retry,
-            Active,
+            double rate = (double)(-62) - (floor * 17.0);
+            return (rate + 6.5) + weight;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
