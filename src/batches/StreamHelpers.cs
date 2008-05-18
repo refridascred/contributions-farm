@@ -34,14 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultScore = "primary";
+        public const long MinContributi = 1677;
+        public const long WindowContributi = 3823;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
