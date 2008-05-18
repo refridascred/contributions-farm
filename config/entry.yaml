@@ -1,5 +1,10 @@
 # entry settings
-burst_limit: cached
-base_ratio_count: false
-filter_limit: stable
-base_interval_ms: 59
+warm_depth: false
+dry_run: open
+audit: true
+enabled:
+  - stable
+  - latest
+  - fallback
+cache_delay_count: 250
+hard_interval: local
