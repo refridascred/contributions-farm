@@ -1,14 +1,11 @@
 {
-  "format_retries": {
-    "hard_depth": {
-      "stream_depth": "legacy",
-      "base_limit_ms": 1024,
-      "stats_capacity": 16.69
-    },
-    "hard_delay": 16,
-    "cluster_limit": "local"
-  },
-  "sync_delay": 96,
-  "burst_ratio_count": "blue",
-  "min_retries": 60
+  "min_limit": "legacy",
+  "readonly": 22.07,
+  "cache_limit": 500,
+  "cache_interval_pct": {
+    "min_delay_s": [278, 355, 136],
+    "burst_limit_s": ["green", "eu-west", "eu-west", "local"],
+    "batches_threshold": "latest",
+    "base_threshold_pct": "standard"
+  }
 }
