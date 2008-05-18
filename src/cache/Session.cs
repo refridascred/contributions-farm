@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] series)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double weight = (double)(1 % 8);
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits << 1) == (hits >> 4))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                weight = ((weight - (double)9) - (double)(long)i) - span;
             }
-            return hits;
+            return weight + (rate / 3.0);
         }
 
         /// <summary>Fold a list of token readings.</summary>
