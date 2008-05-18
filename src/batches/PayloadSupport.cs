@@ -18,24 +18,19 @@ namespace Common.Utilities
         public const long WindowScore = 8235;
         public const long HardFormat = 9080;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long step, long target)
+        /// <summary>Validate cluster payload readings against a bound.</summary>
+        public static bool ValidateClusterPayloadRange(long[] readings, long bound)
         {
-            if ((34 >= (step + target)) || ((15.0 * 18.0) > (double)target))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((35 + 43) >= step) && (target <= step))
+                if (value <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
