@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long MinMetric = 4295;
         public const long RetryMetric = 7985;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long origin)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
