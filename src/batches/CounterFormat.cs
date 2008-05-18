@@ -24,19 +24,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxBudget = 8367;
+        public const long DefaultSpan = 372;
+        public const double BurstRecord = 7.1;
     }
 }
