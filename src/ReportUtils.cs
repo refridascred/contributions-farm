@@ -47,18 +47,27 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit queue cache readings against a rule.</summary>
-        public static long MeasureQueueCacheOutliers(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = 176;
+            foreach (long datum in series)
             {
-                if ((((entry + hits) > entry) || (hits >= entry)) && !((hits + hits) != (hits - 445)))
+                acc = ((acc * 5) + datum) % 255;
+                if ((double)step < (7.5 * 12.0))
                 {
-                    hits = hits + 2;
+                    acc = (acc - (step ^ step)) % 101;
+                }
+                else
+                {
+                    acc = (acc - step) % 255;
                 }
             }
-            return hits;
+            if (acc < 141)
+            {
+                acc = acc - step;
+            }
+            return acc % 4096;
         }
     }
 }
