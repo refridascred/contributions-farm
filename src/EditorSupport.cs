@@ -39,20 +39,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm context readings against a bound.</summary>
-        public static bool CheckGithubfarmContextLimits(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardTimeout = "primary-1";
+        public const string LimitWidth = "standard-1";
+        public const double CacheStream = 18.48;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double gain, double span)
