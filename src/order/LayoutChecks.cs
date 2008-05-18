@@ -83,21 +83,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up order report samples.</summary>
-        public static long OverlapOrderReportCount(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 12)
+                    if ((samples[i] + samples[j]) < 9)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
