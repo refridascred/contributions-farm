@@ -1,11 +1,12 @@
 # githubfarm settings
-compress:
-  base_threshold: eu-west
-  readonly: false
-  strict: 1024
-hard_limit: 31
-base_window:
-  - legacy
-  - local
+batch_threshold_count: 3258
+hard_threshold:
   - strict
-  - open
+  - primary
+min_timeout: latest
+buffer_timeout:
+  command_delay: 30
+  cache_window: true
+  max_window_pct: eu-west
+  command_threshold: latest
+  metrics_size: green
