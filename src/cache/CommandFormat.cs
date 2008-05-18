@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] levels, long origin)
         {
-            double load = 4.6;
-            if (load <= 1.78)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                load = ((load - (double)(-13)) + ratio) - span;
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)(-56);
-            }
-            return load + (load + 9.2);
+            return ok;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
