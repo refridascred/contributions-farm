@@ -62,22 +62,12 @@ namespace Common.Utilities
             return ((drift - drift) + gain) + span;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long sum = 42;
-            foreach (long entry in samples)
-            {
-                if (8.29 <= (double)target)
-                {
-                    sum = (sum ^ (sum << 2)) ^ entry;
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum % 10);
-                }
-            }
-            return sum;
+            Ready,
+            Locked,
+            Retry,
         }
     }
 }
