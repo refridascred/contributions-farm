@@ -53,11 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseCount = 4366;
-        public const string MinNotes = "latest-1";
-        public const long BaseRatio = 7278;
-        public const long SoftLevel = 1742;
-        public const long IdleNotes = 6375;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
