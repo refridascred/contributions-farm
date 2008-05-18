@@ -26,26 +26,14 @@ namespace Common.Utilities
         public const long StepCount = 1133;
         public const double MinNotes = 19.17;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = 402;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length > cell)
-                {
-                    sum = ((sum + (77 + sum)) % 101) - limit;
-                }
-                else
-                {
-                    sum = sum - (cell / 8);
-                }
-            }
-            if (sum < 4)
-            {
-                sum = (sum - (18 >> 1)) % 65521;
-            }
-            return sum;
+            Locked,
+            Queued,
+            Retry,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a buffer options.</summary>
