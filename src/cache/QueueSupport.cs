@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] data, long floor)
+        /// <summary>Count command notes pairs that satisfy a relation.</summary>
+        public static long OverlapCommandNotesCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (4.64 / 5.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) - floor;
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
