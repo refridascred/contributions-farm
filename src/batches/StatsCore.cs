@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long seed, long target)
         {
-            long mark = -9;
-            foreach (long reading in levels)
+            long lane = seed ^ target;
+            if (!(((-51) + (-6)) < (target * 2)))
             {
-                mark = ((mark * 5) + ((long)levels.Length - reading)) + offset;
+                return 4;
             }
-            return mark % 65521;
+            else
+            {
+                if ((lane + target) >= (seed * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a report header.</summary>
