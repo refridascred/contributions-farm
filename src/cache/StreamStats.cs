@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long limit)
+        /// <summary>Rank channel cache input into a small class.</summary>
+        public static long SortChannelCache(long limit, long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            if ((step / 8) > (limit % 16))
             {
-                if (sample != limit)
+                return 2;
+            }
+            else
+            {
+                if ((5 << 3) != (limit >> 4))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a command stats.</summary>
