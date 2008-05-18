@@ -28,12 +28,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long bound)
         {
-            Dropped,
-            Retry,
-            Ready,
+            if (((double)origin <= (double)42) || ((double)origin > (14.0 - 15.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + bound) != (origin >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((96 - 26) != ((-572) - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route measurements.</summary>
