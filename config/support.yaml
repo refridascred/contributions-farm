@@ -1,15 +1,39 @@
 # support settings
-channel_delay: false
-cache_ttl_ms: 68.53
-burst_limit_ms:
-  - standard
-  - open
-  - latest
-  - legacy
-compress: stable
-retry_ttl_ms:
-  max_limit_s: 58.21
-  soft_retries_pct: 13.38
-  verbose: cached
-  default_retries: 30
-poll_ttl_count: standard
+payload_ratio:
+  retry_size: 63
+  soft_retries_s: latest
+  order_delay:
+    poll_ratio_s: 73
+    cache_window_pct: 57
+    already_interval: 19
+    soft_threshold_s: eu-west
+    min_threshold: 30
+    cache_retries_s: legacy
+  already_capacity:
+    - local
+    - standard
+    - primary
+enabled: local
+audit: blue
+default_capacity:
+  account_ratio:
+    checks_ratio: 1024
+    hard_threshold_pct:
+      - 316
+      - 136
+      - 163
+    idle_capacity: 64.58
+  sync_limit_pct:
+    metrics_ttl:
+      - fallback
+      - blue
+    max_window_s: 9.79
+    support_limit: 6533
+  strict: 74.26
+  token_capacity: 500
+  persist:
+    compress: 100
+    batch_depth: false
+    warm_size_s: 54.52
+    retry_size_ms: eu-west
+support_capacity: 4.76
