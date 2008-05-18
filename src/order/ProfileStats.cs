@@ -23,17 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batch commits sample.</summary>
-        public static long FindBatchCommitsIndex(long[] readings, long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
