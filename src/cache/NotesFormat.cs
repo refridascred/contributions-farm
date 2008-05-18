@@ -49,17 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long bound)
+        /// <summary>Blend two profile cache measurements.</summary>
+        public static double ScaleProfileCache(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = rate;
+            if (weight >= bias)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + 6.0;
             }
-            return -1;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + (rate + 10.0);
         }
     }
 }
