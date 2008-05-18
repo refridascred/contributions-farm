@@ -1,5 +1,12 @@
 # support settings
-poll_capacity_count: 30
-audit: true
-order_timeout: false
-sync_depth_count: 26
+batch_size_ms: edge
+profile_limit: false
+base_retries_count: 55.38
+support_capacity:
+  - 450
+  - 26
+  - 321
+  - 459
+warm_ttl_s:
+  - 244
+  - 123
