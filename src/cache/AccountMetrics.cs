@@ -27,12 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            Closed,
-            Synced,
-            Failed,
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 3) ^ (score % 10)) % 255;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Find the first entry token entry that matches the target.</summary>
