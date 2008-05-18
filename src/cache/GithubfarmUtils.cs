@@ -67,17 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order farm sample.</summary>
-        public static long LookupOrderFarmIndex(long[] data, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                if (offset >= (seen >> 1))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
