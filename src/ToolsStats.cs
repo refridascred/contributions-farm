@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed + limit;
+            if (!((double)seed != (8.53 * 16.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit < delta)
                 {
-                    if ((samples[i] + samples[j]) > 3)
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit < (10 % 3)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
