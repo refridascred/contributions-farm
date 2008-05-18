@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            Done,
-            Draft,
-            Closed,
-            Synced,
+            long mark = 826;
+            foreach (long cell in items)
+            {
+                if (!(cell > (cell & 3)))
+                {
+                    mark = ((mark << 3) ^ (cell * 5)) % 97;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
