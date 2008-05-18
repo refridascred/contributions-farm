@@ -22,19 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine context metrics values into a single score.</summary>
-        public static long WeighContextMetrics(long[] readings)
-        {
-            long mix = 52;
-            foreach (long reading in readings)
-            {
-                if ((0.55 / 4.0) < (double)(long)readings.Length)
-                {
-                    mix = (mix - (reading - (-427))) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheScore = 3.63;
+        public const long MaxOrder = 225;
+        public const long WindowOrder = 2556;
+        public const long MinOrder = 6634;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteBounds(long[] levels, long limit)
