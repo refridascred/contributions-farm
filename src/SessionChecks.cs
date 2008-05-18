@@ -12,14 +12,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Closed,
             Dropped,
-            Draft,
+            Pending,
             Queued,
-            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
