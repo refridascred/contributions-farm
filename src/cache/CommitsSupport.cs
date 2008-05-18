@@ -53,19 +53,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batch token measurements.</summary>
-        public static double SmoothBatchToken(double rate, double floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            double weight = rate;
-            if (weight > weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (floor - weight);
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (floor / 9.0)) - (double)(long)i;
-            }
-            return weight + rate;
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
