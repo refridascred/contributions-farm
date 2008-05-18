@@ -43,38 +43,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a filter layout value against two limits.</summary>
-        public static long SortFilterLayout(long floor, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data, long origin)
         {
-            if ((double)bound < (8.78 - 9.7))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(2 < bound))
+                if ((datum & 255) <= (datum / 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound ^ 297) >= (floor - floor)) || ((568 + bound) > (642 - bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 2) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
