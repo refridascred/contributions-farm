@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            New,
-            Ready,
-            Closed,
+            Idle,
             Queued,
-            Draft,
+            Ready,
         }
 
         /// <summary>Describe the profile class values.</summary>
