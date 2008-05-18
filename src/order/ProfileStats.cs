@@ -16,15 +16,22 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = 80;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((carry + reading) >= reading)
+                {
+                    carry = ((carry * 5) + (carry + reading)) % 1000;
+                }
             }
-            return mix;
+            if (carry < 942)
+            {
+                carry = carry - (53 / 9);
+            }
+            return carry;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
