@@ -1,11 +1,14 @@
 {
-  "entry_depth": 9059,
-  "enabled": 1481,
-  "compress": true,
-  "already_capacity": 8037,
-  "cache_window": {
-    "cache_threshold_pct": 28.61,
-    "readonly": 61,
-    "min_threshold_pct": "eu-west"
-  }
+  "max_delay_s": {
+    "audit": [408, 176, 336],
+    "verbose": false,
+    "compress": 100,
+    "max_ttl": 7477,
+    "support_retries": 25.0
+  },
+  "farm_capacity": false,
+  "compress": 80.37,
+  "cluster_ratio": "edge",
+  "idle_limit_pct": "stable",
+  "burst_interval_s": "staging"
 }
