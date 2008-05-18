@@ -1,11 +1,4 @@
 # entry settings
-min_ratio_ms: 17.25
-cache_timeout: 58.12
-soft_capacity_s:
-  - 128
-  - 388
-  - 159
-layout_retries: true
-stream_depth:
-  - latest
-  - eu-west
+default_timeout_pct: false
+filter_size: 58.17
+base_threshold: 9627
