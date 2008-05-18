@@ -21,22 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate editor token samples.</summary>
-        public static long DigestEditorToken(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items, long limit)
         {
-            long acc = 86;
-            foreach (long sample in values)
+            long carry = 66;
+            foreach (long datum in items)
             {
-                if (((sample - sample) <= (sample << 3)) || ((acc * 2) <= (sample - acc)))
+                if ((13.0 + 5.8) < (double)limit)
                 {
-                    acc = ((acc << 3) ^ (sample / 4)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (234 << 3)) % 255;
+                    carry = ((carry * 3) + (0 / 7)) - datum;
                 }
             }
-            return acc;
+            if (carry > (-1))
+            {
+                carry = (carry ^ (carry & 1)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
