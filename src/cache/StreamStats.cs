@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != origin)
+                if ((22 - seed) == (acc % 24))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc << 2) ^ (long)i) % 101;
                 }
+                acc = (acc + (seed & 7)) % 97;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
