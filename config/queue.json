@@ -1,5 +1,5 @@
 {
-  "sync_threshold_count": 72,
-  "default_threshold_count": 95.62,
-  "filter_limit": 1599
+  "max_retries_count": 34.74,
+  "soft_delay": [437, 187, 65, 203],
+  "warm_delay": "standard"
 }
