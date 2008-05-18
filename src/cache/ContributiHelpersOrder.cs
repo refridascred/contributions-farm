@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] data)
         {
-            long result = 71;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                result = (((result * 4) + (floor + floor)) % 1000) + value;
+                if ((double)(long)data.Length < (0.2 - 13.0))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 681)
-            {
-                result = (result ^ (result * 3)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
