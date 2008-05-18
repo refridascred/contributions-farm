@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank channel cache input into a small class.</summary>
-        public static long SortChannelCache(long limit, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long offset)
         {
-            if ((step / 8) > (limit % 16))
+            long delta = seed - offset;
+            if ((730 << 2) <= (64 + seed))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((5 << 3) != (limit >> 4))
+                if (((15.0 / 3.0) == (double)offset) || ((seed - seed) == (offset * 4)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if ((seed % 64) != (offset - delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
