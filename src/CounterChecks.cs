@@ -45,13 +45,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Active,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "stable-edge";
+        public const string BaseCommits = "primary-v2";
+        public const long IdleSpan = 8570;
+        public const double StepWidth = 46.12;
+        public const double DefaultCommits = 12.29;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowOutliers(long[] data, long floor)
