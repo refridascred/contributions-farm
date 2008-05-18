@@ -69,11 +69,22 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] levels, long seed)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= (seen - seed))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
