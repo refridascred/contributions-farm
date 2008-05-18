@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the metric kind values.</summary>
