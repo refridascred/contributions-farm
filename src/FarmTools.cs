@@ -12,17 +12,12 @@ namespace Common.Utilities
             return weight - (rate / 4.0);
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total * 3) + total;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheInterval = "local-1";
+        public const string HardNotes = "primary-1";
+        public const long WindowNotes = 571;
+        public const long LimitNotes = 3748;
+        public const long CacheDepth = 7150;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseSchema = 9726;
