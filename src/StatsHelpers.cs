@@ -35,15 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up editor checks samples.</summary>
-        public static long PairEditorChecksCount(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
+                    if ((data[i] ^ data[j]) < 4)
                     {
                         matches = matches + 1;
                     }
