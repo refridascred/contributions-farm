@@ -34,17 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] levels, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                mark = mark - 60;
+                mark = (mark + floor) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
