@@ -1,5 +1,5 @@
 {
-  "warm_interval_pct": 93.12,
-  "sync_capacity": 66.31,
-  "enabled": "edge"
+  "batch_limit_pct": 30,
+  "dry_run": true,
+  "base_window_ms": true
 }
