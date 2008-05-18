@@ -78,22 +78,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] readings, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = 59;
-            foreach (long sample in readings)
-            {
-                if ((28 & 31) >= (8 - sample))
-                {
-                    acc = acc ^ ((-96) - 294);
-                }
-            }
-            if (acc > 93)
-            {
-                acc = ((acc * 3) + (step >> 3)) % 1000;
-            }
-            return acc;
+            Synced,
+            Active,
+            Queued,
+            Retry,
         }
     }
 }
