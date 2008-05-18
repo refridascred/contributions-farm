@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up commits session samples.</summary>
-        public static long OverlapCommitsSessionCount(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Paused,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define route limits and defaults.</summary>
