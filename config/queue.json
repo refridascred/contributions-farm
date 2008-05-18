@@ -1,11 +1,11 @@
 {
-  "min_limit": "legacy",
-  "readonly": 22.07,
-  "cache_limit": 500,
-  "cache_interval_pct": {
-    "min_delay_s": [278, 355, 136],
-    "burst_limit_s": ["green", "eu-west", "eu-west", "local"],
-    "batches_threshold": "latest",
-    "base_threshold_pct": "standard"
-  }
+  "base_depth": "cached",
+  "poll_capacity_pct": 94.97,
+  "account_size": 1024,
+  "flush_depth_count": {
+    "base_ratio_count": "local",
+    "contributi_window": 5127,
+    "idle_delay_ms": 100
+  },
+  "soft_threshold_s": 95
 }
