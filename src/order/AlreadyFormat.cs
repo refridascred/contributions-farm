@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string BaseCommits = "stable-1";
         public const long RetryWidth = 2223;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings, long seed)
         {
-            Failed,
-            Done,
-            Locked,
-            Queued,
+            long result = 761;
+            foreach (long reading in readings)
+            {
+                result = ((result ^ (seed >> 2)) % 97) - reading;
+            }
+            if (result < 80)
+            {
+                result = (result << 2) ^ (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Describe the counter kind values.</summary>
