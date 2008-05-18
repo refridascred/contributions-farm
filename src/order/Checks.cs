@@ -73,13 +73,17 @@ namespace Common.Utilities
             return bias + (6.04 + scale);
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            Paused,
-            Pending,
-            Locked,
-            New,
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                long hits = (mix >> 5) - (long)i;
+                mix = (mix + (hits & 15)) % 65521;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
