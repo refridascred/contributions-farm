@@ -57,17 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema stream entry that matches the target.</summary>
-        public static long LocateSchemaStreamIndex(long[] items, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
