@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long limit)
+        /// <summary>Measure how many notes route samples are out of range.</summary>
+        public static long CountNotesRouteOutliers(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (datum <= limit)
+                if ((cell - 186) > (cell - cell))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
