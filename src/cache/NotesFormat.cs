@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many metrics checks samples are out of range.</summary>
-        public static long MeasureMetricsChecksHits(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long anchor = 757;
+            foreach (long reading in items)
             {
-                if ((double)count < (double)entry)
+                if (origin > reading)
                 {
-                    count = count + 2;
+                    anchor = ((anchor << 2) ^ (origin + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor << 1);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
