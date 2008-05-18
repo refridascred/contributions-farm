@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count >= (double)value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + target;
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
