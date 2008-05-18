@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] values)
+        /// <summary>Count record editor pairs that satisfy a relation.</summary>
+        public static long MatchRecordEditorCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count >> 1) > (count >> 4)) && (value <= count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a batches graph reading.</summary>
