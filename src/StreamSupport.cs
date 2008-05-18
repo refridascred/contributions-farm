@@ -23,19 +23,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long step)
         {
-            long sum = 7;
-            foreach (long item in series)
+            long lane = origin + step;
+            if (7 < (step / 4))
             {
-                sum = sum - item;
+                return 2;
             }
-            if (sum > 27)
+            else
             {
-                sum = (sum + sum) % 1000;
+                if (!(5.2 < (double)lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step * 4) >= lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return sum;
         }
     }
 }
