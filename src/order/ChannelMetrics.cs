@@ -23,15 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            double rate = (double)(6 / 4);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (((rate - (rate * 18.0)) + (double)(long)i) - gain) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - (rate / 9.0);
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
