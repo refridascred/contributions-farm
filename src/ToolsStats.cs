@@ -80,38 +80,17 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long origin, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] items, long offset)
         {
-            if ((origin - 45) >= (step >> 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step >= (step / 8))
+                if (items[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((9 - origin) == (step + 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.9 + 6.64) > (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
