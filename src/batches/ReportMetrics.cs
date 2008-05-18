@@ -12,23 +12,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm support samples.</summary>
-        public static long ScoreGithubfarmSupport(long[] data, long bound)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = 3;
-            foreach (long sample in data)
-            {
-                mix = (mix * 2) + (bound - sample);
-                if (mix <= bound)
-                {
-                    mix = (mix << 3) ^ (mix + sample);
-                }
-                else
-                {
-                    mix = (mix ^ (61 * 5)) % 101;
-                }
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
