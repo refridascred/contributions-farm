@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = step ^ origin;
+            if (((offset - step) != (982 + 574)) && ((origin << 2) <= (step - origin)))
             {
-                if (readings[i] == step)
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) == (origin + 555))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + offset) < 373)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
