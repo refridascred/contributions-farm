@@ -19,27 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long sum = 86;
-            foreach (long datum in values)
-            {
-                if ((datum + sum) >= (limit / 2))
-                {
-                    sum = (sum << 2) ^ (905 + 105);
-                    sum = sum ^ (limit << 3);
-                }
-                if ((double)sum > (7.09 * 3.8))
-                {
-                    sum = sum + (limit + 8);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (datum + sum);
-                }
-            }
-            return sum % 1000;
+            Locked,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Describe the context status values.</summary>
