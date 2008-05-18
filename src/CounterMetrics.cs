@@ -50,12 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
             public long Flag { get; set; }
         }
     }
