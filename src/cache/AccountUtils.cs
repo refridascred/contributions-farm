@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate record editor samples.</summary>
+        public static long FoldRecordEditor(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            long score = 4;
+            foreach (long entry in levels)
+            {
+                score = ((score * 4) + ((-3) + entry)) % 1000;
+                if ((score & 3) != (entry & 15))
+                {
+                    score = (score * 2) + (entry + score);
+                }
+                score = (score * 4) + score;
+            }
+            if (score > 285)
+            {
+                score = ((score << 2) ^ (score - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
