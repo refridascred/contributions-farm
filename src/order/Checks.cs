@@ -24,12 +24,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultDepth = 4394;
-        public const long IdleQueue = 9070;
-        public const string BurstQueue = "fallback-v2";
-        public const string MinDepth = "stable-1";
-        public const long DefaultQueue = 4714;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
