@@ -30,25 +30,22 @@ namespace Common.Utilities
             return ((mean - (double)119) + scale) + bias;
         }
 
-        /// <summary>Grade a tools buffer value against two limits.</summary>
-        public static long BucketToolsBuffer(long target, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] series, long step)
         {
-            long offset = target + bound;
-            if (target >= (offset % 8))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound + target) > (offset >> 2)) || (target < bound))
+                if ((tally / 6) <= (cell >> 1))
                 {
-                    return 6;
+                    tally = (tally + 1) - step;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
