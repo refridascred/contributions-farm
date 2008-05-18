@@ -20,11 +20,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] series, long floor)
         {
-            double drift = 9.23 / 5.0;
-            return ((drift + 1.18) + scale) + floor;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) != (value / 4))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
