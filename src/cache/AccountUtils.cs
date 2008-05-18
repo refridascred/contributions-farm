@@ -25,19 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] items, long seed)
         {
-            long mark = -51;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mark = ((mark << 3) ^ (mark + mark)) % 97;
-                if ((cell <= (mark - cell)) && ((mark + mark) != (mark ^ mark)))
+                if ((item + seed) >= matches)
                 {
-                    mark = (mark + (cell - 82)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
