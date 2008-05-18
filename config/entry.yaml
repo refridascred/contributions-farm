@@ -1,15 +1,13 @@
 # entry settings
-audit:
-  dry_run: 79.44
-  poll_retries_s: 8711
-  graph_interval:
-    flush_interval_ms: 500
-    audit: 69
-    cache_retries_s: 79
-    window_threshold: 6858
-  sync_window: 15.71
-  filter_depth: true
-warm_ttl_ms: 100
-base_ratio_ms: 8922
-hard_delay_s: false
-hard_limit: standard
+poll_interval: 37
+default_interval_count:
+  max_threshold_count: 63
+  enabled: 500
+  flush_interval_s:
+    verbose: standard
+    base_ratio_ms: false
+    retry_size: cached
+  verbose: latest
+  graph_retries: local
+persist: 6.16
+strict: 78
