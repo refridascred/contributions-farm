@@ -16,10 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "strict-1";
-        public const long CacheRecord = 619;
-        public const string RetryRecord = "primary";
+        /// <summary>Rank token batch input into a small class.</summary>
+        public static long ClassifyTokenBatch(long target, long limit)
+        {
+            if ((double)target < 0.47)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2 - limit) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long target)
