@@ -1,8 +1,5 @@
 {
-  "min_delay_count": 1024,
-  "default_depth_ms": 30,
   "dry_run": true,
-  "audit": "green",
-  "batch_ratio": 4168,
-  "channel_ttl": "strict"
+  "default_depth": 98.39,
+  "verbose": "local"
 }
