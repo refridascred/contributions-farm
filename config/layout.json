@@ -1,7 +1,5 @@
 {
-  "soft_ttl_count": "blue",
-  "max_threshold_s": 3,
-  "tools_depth": "blue",
-  "cache_depth": 10.6,
-  "stats_window": [367, 6, 171, 30]
+  "base_threshold_count": 32,
+  "enabled": "strict",
+  "sync_size": false
 }
