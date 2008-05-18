@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((((double)seed != (8.8 * 13.0)) || (((-5) - sample) != (matches >> 5))) && ((matches * 2) > 217))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
