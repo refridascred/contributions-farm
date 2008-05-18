@@ -57,21 +57,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token profile samples.</summary>
-        public static long MatchTokenProfileCount(long[] samples)
+        /// <summary>Digest a series of tools schema entries.</summary>
+        public static long TallyToolsSchema(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 613;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 4) + mark) + (long)i;
                 }
+                mark = ((mark << 2) ^ (reading + mark)) % 4096;
+                mark = (mark << 3) ^ (mark & 3);
             }
-            return count;
+            return mark % 97;
         }
     }
 }
