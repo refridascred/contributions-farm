@@ -40,19 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] values, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long bound, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            if ((1.2 - 2.0) >= (double)floor)
             {
-                if (cell > offset)
+                return 8;
+            }
+            else
+            {
+                if ((7.0 - 2.0) == (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the cache kind values.</summary>
