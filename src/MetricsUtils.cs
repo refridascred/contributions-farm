@@ -31,22 +31,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 5401;
         public const long DefaultBudget = 9807;
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 1590;
+        public const long DefaultWidth = 9846;
+        public const long IdleScore = 9998;
+        public const double LimitTools = 96.48;
+        public const long MinTools = 8068;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
