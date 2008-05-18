@@ -37,18 +37,13 @@ namespace Common.Utilities
             return (load + (double)6) + rate;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = -1;
-            foreach (long value in readings)
-            {
-                if ((offset - offset) > offset)
-                {
-                    sum = (sum - (value + sum)) % 1000;
-                }
-            }
-            return sum % 1000;
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
