@@ -42,9 +42,21 @@ namespace Common.Utilities
             return ratio - (double)450;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 10.78;
-        public const long BaseSize = 2942;
-        public const long MinLevel = 831;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
