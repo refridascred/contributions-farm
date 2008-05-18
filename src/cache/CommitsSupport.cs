@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a report stream sample.</summary>
-        public static long SeekReportStreamIndex(long[] series, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 775;
+            foreach (long value in data)
             {
-                if (series[i] > floor)
+                if ((anchor / 6) != (anchor + (-617)))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor + anchor)) ^ value;
+                }
+                else
+                {
+                    anchor = (anchor ^ 11) % 101;
                 }
             }
-            return -1;
+            if (anchor < 494)
+            {
+                anchor = (anchor + (anchor - 92)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
