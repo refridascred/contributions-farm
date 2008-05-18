@@ -90,12 +90,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 3.45;
-        public const long BurstCommand = 1272;
-        public const long LimitTimeout = 2498;
-        public const long MaxSpan = 5994;
-        public const long BaseCommand = 9017;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of buffer support readings.</summary>
         public static long OverlapBufferSupportCount(long[] items)
