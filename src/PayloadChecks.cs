@@ -52,19 +52,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] values, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] series)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (datum != offset)
+                if ((820 - 4) != (seen ^ seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
