@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long target)
         {
-            double mean = (double)(30 * 2);
-            if (mean > (mean + offset))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                mean = mean - 16.0;
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (gain - mean)) + (double)(long)i;
-            }
-            return mean - (gain - mean);
+            return ok;
         }
 
         /// <summary>Describe the metric kind values.</summary>
