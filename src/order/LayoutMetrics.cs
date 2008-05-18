@@ -17,16 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 8943;
+        public const long CacheGraph = 2274;
+        public const string LimitGraph = "staging-1";
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] samples)
