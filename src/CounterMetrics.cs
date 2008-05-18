@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine format payload values into a single score.</summary>
+        public static long CombineFormatPayload(long[] samples)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
+            long result = 5;
+            foreach (long value in samples)
+            {
+                result = (result ^ (result / 8)) + value;
+            }
+            if (result < 8)
+            {
+                result = (result + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
