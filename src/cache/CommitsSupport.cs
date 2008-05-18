@@ -43,24 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long seed, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if ((bound >> 2) > seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound >= 17.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Blend two batch token measurements.</summary>
