@@ -31,12 +31,22 @@ namespace Common.Utilities
         public const long WindowScore = 4025;
         public const double DefaultGithubfarm = 15.08;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstBudget = 34.17;
-        public const string HardChannel = "open-1";
-        public const long DefaultFactor = 2404;
-        public const long MaxCount = 4197;
-        public const string CacheDepth = "fallback";
+        /// <summary>Match up stream tools samples.</summary>
+        public static long MatchStreamToolsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] series, long seed)
