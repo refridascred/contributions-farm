@@ -1,26 +1,8 @@
 # support settings
-audit:
-  max_depth_pct: false
-  cache_size_s:
-    - staging
-    - legacy
-    - cached
-    - primary
-  dry_run:
-    compress: 2040
-    verbose: 1.59
-    base_threshold: false
-  record_ttl: 250
-  checks_interval:
-    - strict
-    - open
-    - open
-compress: open
-burst_interval: 30
-min_interval_s:
-  - standard
-  - standard
-  - fallback
-burst_ratio:
-  - fallback
-  - latest
+context_ratio: true
+base_interval_ms: 30
+verbose: 30
+batch_timeout_s:
+  - 301
+  - 298
+idle_delay_pct: 2294
