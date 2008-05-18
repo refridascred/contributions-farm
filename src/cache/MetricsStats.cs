@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 5) > 809)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
