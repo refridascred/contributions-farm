@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
