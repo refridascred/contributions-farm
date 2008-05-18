@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long LimitNotes = 4696;
         public const long DefaultSize = 6490;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] data, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((tally % 8) <= (196 % 100)) || !((offset ^ offset) > (6 - offset)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit schema githubfarm readings against a rule.</summary>
