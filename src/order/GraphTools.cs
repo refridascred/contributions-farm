@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first record farm entry that matches the target.</summary>
-        public static long SeekRecordFarmIndex(long[] readings, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
