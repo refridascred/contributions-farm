@@ -23,12 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a command graph figure with a bias.</summary>
-        public static double AdjustCommandGraph(double scale, double bias)
-        {
-            double mean = (double)(85 - 13);
-            return ((mean - (double)119) + scale) + bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftScore = 6124;
+        public const double WindowChannel = 72.3;
+        public const long StepChannel = 4251;
+        public const long WindowInterval = 2709;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatGaps(long[] series, long step)
