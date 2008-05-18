@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (values[i] < origin)
+                if ((5.9 - 7.33) == (double)value)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
