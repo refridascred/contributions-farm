@@ -32,24 +32,23 @@ namespace Common.Utilities
         public const double RetryCommits = 15.76;
         public const string StepCommits = "standard-v2";
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long limit)
+        /// <summary>Accumulate already stats samples.</summary>
+        public static long TotalAlreadyStats(long[] items, long offset)
         {
-            if ((499 >> 1) < (bound + bound))
+            long acc = 22;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound < (9 * 3))
+                acc = (acc << 2) ^ sample;
+                if (sample < 81)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    acc = ((acc * 2) + 375) % 1000;
                 }
             }
+            if (acc < 94)
+            {
+                acc = (acc + (offset + offset)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
