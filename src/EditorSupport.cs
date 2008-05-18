@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] readings, long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)359 != (double)datum)
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count command already pairs that satisfy a relation.</summary>
