@@ -1,7 +1,6 @@
 {
-  "metric_window": [63, 301, 8, 488],
-  "enabled": 80,
-  "cache_window": ["legacy", "latest", "stable"],
-  "audit": "fallback",
-  "compress": 1024
+  "command_interval": 66.88,
+  "max_capacity_pct": [111, 470, 415],
+  "enabled": 40.55,
+  "buffer_depth": "edge"
 }
