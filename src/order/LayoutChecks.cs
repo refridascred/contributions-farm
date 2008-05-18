@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double DefaultSupport = 46.85;
         public const long RetryDepth = 1854;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit window support readings against a rule.</summary>
