@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Dropped,
-            Locked,
-            Active,
+            Synced,
             Stale,
-            Idle,
+            Draft,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
