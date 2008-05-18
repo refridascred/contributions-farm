@@ -22,12 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Project the next token record value.</summary>
+        public static double ProjectTokenRecord(double bias, double floor)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            double gain = floor * 13.0;
+            if (gain < (double)2)
+            {
+                gain = (gain - (double)280) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (floor * 4.0)) + (double)(long)i;
+            }
+            return gain + 2.0;
         }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
