@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
