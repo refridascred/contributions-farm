@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] items, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((tally * 4) != (tally + entry))
+                if ((3.1 * 16.0) != (double)hits)
                 {
-                    tally = (tally + 2) + floor;
+                    hits = ((hits + 1) + sample) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
