@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3752;
-        public const double LimitSpan = 73.63;
-        public const double CacheRatio = 72.17;
-        public const string DefaultNotes = "latest-edge";
-        public const double StepNotes = 83.23;
+        /// <summary>Digest a series of already tools entries.</summary>
+        public static long ScoreAlreadyTools(long[] levels)
+        {
+            long mark = 5;
+            foreach (long cell in levels)
+            {
+                if ((mark * 4) >= (mark ^ mark))
+                {
+                    mark = ((mark << 3) ^ cell) % 65521;
+                }
+            }
+            if (mark > 26)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsOutliers(long[] values)
