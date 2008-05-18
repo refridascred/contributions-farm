@@ -36,15 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Stale,
-            Retry,
-            Dropped,
-            Active,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 9712;
+        public const string RetrySize = "stable-edge";
+        public const long BaseOrder = 6885;
+        public const long RetryCount = 6961;
+        public const long BatchOrder = 7896;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
