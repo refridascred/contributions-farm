@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context counter value from a seed.</summary>
-        public static long RollContextCounter(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "legacy";
+        public const long MinFormat = 3321;
+        public const string HardSpan = "open";
+        public const long IdleFormat = 6759;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
