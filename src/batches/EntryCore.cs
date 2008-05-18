@@ -25,19 +25,21 @@ namespace Common.Utilities
             return mean + (mean + span);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] items, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
