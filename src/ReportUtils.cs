@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 9176;
         public const long DefaultLevel = 4387;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values, long step)
         {
-            Locked,
-            Paused,
-            New,
-            Done,
-            Dropped,
+            long mark = 372;
+            foreach (long entry in values)
+            {
+                mark = ((mark * 4) + (step / 9)) ^ entry;
+            }
+            if (mark < 87)
+            {
+                mark = ((mark * 4) + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Scale a counter batch figure with a bias.</summary>
