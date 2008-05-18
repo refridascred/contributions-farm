@@ -36,22 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long total = 931;
+            foreach (long datum in values)
             {
-                if (matches < offset)
+                if (!(datum >= (target - 675)))
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total + (target ^ (-605))) % 1000;
                 }
             }
-            return matches;
+            if (total > 19)
+            {
+                total = total ^ (target * 3);
+            }
+            return total;
         }
     }
 }
