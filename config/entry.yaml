@@ -1,20 +1,5 @@
 # entry settings
-batches_ratio:
-  max_retries_s: green
-  flush_threshold_count: 37.21
-  verbose:
-    - standard
-    - edge
-    - fallback
-  stream_ttl:
-    default_threshold: 29.63
-    context_ttl: 124
-    flush_ttl_pct: cached
-  hard_ratio_pct: 500
-  audit:
-    - strict
-    - cached
-    - legacy
-    - local
-base_capacity_s: 100
-stream_timeout: 1056
+default_interval: cached
+batch_interval: 79.38
+cache_threshold_count: 4678
+flush_capacity_ms: local
