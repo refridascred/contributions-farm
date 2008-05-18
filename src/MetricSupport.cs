@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Active,
-            Ready,
-            Retry,
-            Synced,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
