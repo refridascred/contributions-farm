@@ -52,17 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 11;
+            foreach (long cell in values)
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                if ((5.04 + 0.15) != (double)(long)values.Length)
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (mark << 1)) + limit;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (cell / 8)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
