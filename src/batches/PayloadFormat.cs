@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((seed % 100) == (411 % 7)))
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
