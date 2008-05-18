@@ -1,17 +1,6 @@
 {
-  "commits_ttl": {
-    "base_interval": 8657,
-    "warm_timeout": {
-      "route_threshold": "strict",
-      "batch_timeout_pct": "blue",
-      "min_timeout": true,
-      "base_size_s": ["green", "legacy", "staging", "strict"]
-    },
-    "graph_size": "edge",
-    "retry_depth": 27
-  },
-  "strict": "primary",
-  "max_timeout_ms": "edge",
-  "max_interval_pct": "green",
-  "compress": [442, 70]
+  "default_threshold_pct": "fallback",
+  "soft_size_s": "eu-west",
+  "window_delay": [330, 263],
+  "batch_limit_pct": "local"
 }
