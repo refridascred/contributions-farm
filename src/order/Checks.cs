@@ -30,23 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 63) >= (seen % 100))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 61.71;
+        public const long MinTools = 8471;
+        public const long MaxTools = 9315;
+        public const long RetryTools = 4231;
+        public const string HardWidth = "cached-1";
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double scale, double offset)
