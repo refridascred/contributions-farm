@@ -24,14 +24,24 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-1";
         public const long BurstEditor = 768;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
+        public static long BucketBufferContributi(long floor, long bound)
         {
-            Ready,
-            Closed,
-            Idle,
-            Done,
-            Locked,
+            if (((double)floor > (double)bound) && ((63 & 255) <= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound) != (floor + 37))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
