@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 3971;
-        public const long StepCounter = 8380;
-        public const double MaxSpan = 64.58;
+        /// <summary>Validate window account readings against a bound.</summary>
+        public static bool ValidateWindowAccountBounds(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstWidth = 278;
