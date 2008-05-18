@@ -1,9 +1,24 @@
 # entry settings
-strict: 13.71
-max_ratio_pct:
-  - 88
-  - 406
-poll_retries_pct: edge
-base_window_s: primary
-session_window: false
-min_ratio_pct: 53
+buffer_delay:
+  - 482
+  - 237
+filter_retries: 9.34
+commits_delay:
+  min_ttl: cached
+  notes_size:
+    - blue
+    - blue
+    - stable
+    - standard
+  hard_size_count: 60
+  already_retries:
+    sync_interval_s: 25.92
+    notes_interval: cached
+    poll_depth_count: 500
+    cache_ttl: standard
+    enabled: 24.29
+    graph_threshold: strict
+  retry_interval_ms: 5487
+retry_delay: primary
+default_delay_s: staging
+retry_retries_count: 87.13
