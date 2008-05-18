@@ -51,12 +51,23 @@ namespace Common.Utilities
             return bias - (weight / 4.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9957;
-        public const long SoftWidth = 1216;
-        public const double DefaultWindow = 74.14;
-        public const double MaxFactor = 35.39;
-        public const long MaxWindow = 9357;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((bound / 9) < (bound << 2))
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphHits(long[] items, long seed)
