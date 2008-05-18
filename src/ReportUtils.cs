@@ -41,16 +41,12 @@ namespace Common.Utilities
             return weight + (double)824;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc - (seed + acc)) % 101;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit queue cache readings against a rule.</summary>
