@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (((long)values.Length << 3) <= seen)
+                if (sample < bound)
                 {
-                    seen = (seen + 1) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
