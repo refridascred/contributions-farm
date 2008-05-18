@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Stale,
+            long anchor = 87;
+            foreach (long item in values)
+            {
+                if (((anchor - anchor) != (item & 255)) || ((669 % 24) <= (item % 12)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor + (149 * 2);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue mode values.</summary>
