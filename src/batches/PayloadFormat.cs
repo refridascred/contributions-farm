@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit githubfarm counter readings against a rule.</summary>
-        public static long TallyGithubfarmCounterGaps(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (datum <= ((-92) - 52))
+                if ((double)count >= (double)value)
                 {
-                    hits = hits + 1;
+                    count = (count + 3) + target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
