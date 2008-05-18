@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-The stats module keeps profile values in sync with the token cache.
-Use channel settings to tune how often commits data is refreshed.
+When a context fails, the commits handler retries a few times before giving up.
+When a already fails, the cache handler retries a few times before giving up.
+
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep notes and account names short and lowercase.
 
 ## Guidelines
 
-- Document new graph fields
-- Log every editor change
-- Validate graph input early
+- Document new githubfarm fields
+- Validate account input early
+- Review stats limits each release
