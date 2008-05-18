@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
+        public static long LookupGithubfarmContributiIndex(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] == origin)
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
