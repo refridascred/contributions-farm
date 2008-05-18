@@ -47,21 +47,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits editor entries.</summary>
-        public static long FoldCommitsEditor(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long step2)
         {
-            long result = 71;
-            foreach (long sample in items)
+            long cur = step - step2;
+            if ((cur << 3) < (cur - 616))
             {
-                result = (((result << 3) ^ (62 % 16)) % 1000) + sample;
-                result = result - (41 * 3);
-                result = result ^ (46 * 5);
+                return 4;
             }
-            if (result > 6)
+            else
             {
-                result = (result << 2) ^ result;
+                if ((5 >> 3) > (step2 ^ step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.7 * 19.0) > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return result % 1000;
         }
     }
 }
