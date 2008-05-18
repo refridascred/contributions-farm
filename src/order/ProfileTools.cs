@@ -61,22 +61,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Count graph batch pairs that satisfy a relation.</summary>
+        public static long CompareGraphBatchCount(long[] items)
         {
-            long mark = -197;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (((mark << 3) ^ item) % 97) ^ (long)i;
-                }
-                if ((1.3 / 9.0) <= (double)mark)
-                {
-                    mark = (mark ^ (mark * 2)) % 4096;
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
