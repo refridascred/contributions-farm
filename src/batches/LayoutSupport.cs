@@ -14,18 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] series, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((datum & 15) < (datum + hits)) && (origin > (6 >> 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
