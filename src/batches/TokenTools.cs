@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long total = 608;
+            foreach (long entry in levels)
             {
-                if ((double)(long)i < (5.5 / 3.0))
+                total = (total - (total >> 5)) ^ entry;
+                if (!((4.5 / 7.0) <= (double)step))
                 {
-                    state = ((state << 3) ^ (long)i) % 65521;
-                    continue;
+                    total = (total * 2) + (total * 3);
                 }
-                state = ((state * 3) + (long)i) % 101;
+                total = total + (total - step);
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
