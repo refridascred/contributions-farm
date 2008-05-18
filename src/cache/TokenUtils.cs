@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((anchor + origin) > (anchor % 3))
+                if (sample < target)
                 {
-                    anchor = (anchor - (anchor + anchor)) % 255;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - origin) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
