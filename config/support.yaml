@@ -1,6 +1,9 @@
 # support settings
-tools_size: 6509
-idle_ttl_ms: 3411
-hard_interval_s: open
-base_interval_s: eu-west
-compress: green
+audit: open
+cache_interval_ms: false
+retry_threshold_s: 674
+verbose:
+  - strict
+  - fallback
+  - eu-west
+  - standard
