@@ -39,13 +39,12 @@ namespace Common.Utilities
             return weight + (double)824;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 6604;
+        public const long IdleEntry = 1919;
+        public const long WindowEntry = 6752;
+        public const long BurstLevel = 326;
+        public const long HardBudget = 3526;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] series, long step)
