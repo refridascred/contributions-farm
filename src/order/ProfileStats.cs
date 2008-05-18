@@ -30,18 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record payload samples are out of range.</summary>
-        public static long CountRecordPayloadMatches(long[] items, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally + tally) < tally)
-                {
-                    tally = ((tally + 2) - reading) + seed;
-                }
-            }
-            return tally;
+            double load = span;
+            return (load + (double)6) + rate;
         }
 
         /// <summary>Accumulate order samples.</summary>
