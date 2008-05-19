@@ -37,17 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record notes reading by value.</summary>
-        public static long LocateRecordNotesIndex(long[] readings, long origin)
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long AuditFormatWindowMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] < origin)
+                if ((6 / 8) >= (reading & 15))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
