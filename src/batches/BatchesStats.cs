@@ -37,15 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record counter reading.</summary>
-        public static double SmoothRecordCounter(double scale, double bias)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double drift = (double)((-7) / 8);
-            if (drift <= (double)9)
-            {
-                drift = (drift + (bias + drift)) - scale;
-            }
-            return drift - (bias * 6.0);
+            Closed,
+            Queued,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
