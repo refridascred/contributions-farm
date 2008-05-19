@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long IdleBatches = 22;
         public const string MaxBatches = "staging-v2";
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
