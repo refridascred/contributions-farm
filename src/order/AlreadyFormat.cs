@@ -51,15 +51,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double ratio = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (gain + floor)) + (double)(long)i;
-            }
-            return ratio + gain;
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
