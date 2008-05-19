@@ -23,10 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 7156;
-        public const long BatchScore = 4876;
-        public const long BurstTools = 1653;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstInterval = "cached";
+        public const long DefaultFarm = 1488;
+        public const long IdleFarm = 4977;
+        public const string DefaultCount = "local-v2";
+        public const long LimitScore = 9467;
 
         /// <summary>Blend two route cluster measurements.</summary>
         public static double ScaleRouteCluster(double ratio, double floor)
