@@ -58,17 +58,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 58;
+            foreach (long entry in levels)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - 63) - entry) - origin;
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
