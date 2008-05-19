@@ -1,6 +1,5 @@
 {
-  "readonly": ["fallback", "open", "blue", "local"],
-  "soft_retries_count": 4465,
-  "batch_delay": 43.65,
-  "idle_delay_pct": 3864
+  "channel_limit": 55.37,
+  "sync_retries_ms": 23.19,
+  "warm_timeout_s": "open"
 }
