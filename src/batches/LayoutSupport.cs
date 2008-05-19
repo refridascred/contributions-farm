@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of cache context readings.</summary>
-        public static long FoldCacheContext(long[] items, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            long mark = -10;
-            foreach (long cell in items)
+            long state = -892;
+            foreach (long datum in samples)
             {
-                if ((47 <= (cell >> 1)) || ((178 - bound) >= cell))
+                if ((datum >> 4) < (datum + state))
                 {
-                    mark = mark - (mark + (-7));
+                    state = (state << 2) ^ (state + datum);
                 }
                 else
                 {
-                    mark = (mark * 2) + (278 >> 3);
+                    state = state + (state / 3);
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Measure how many buffer context samples are out of range.</summary>
