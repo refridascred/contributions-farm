@@ -56,11 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double scale = bias;
-            return scale + (offset * 7.1);
+            Dropped,
+            Failed,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the record state values.</summary>
