@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchCount = 10.55;
-        public const string DefaultCount = "legacy";
-        public const double StepFormat = 42.66;
-        public const double RetryFormat = 77.49;
-        public const long RetryInterval = 2182;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseTimeout = 2131;
+        public const double LimitCount = 28.43;
+        public const long RetryDepth = 6632;
+        public const long BatchRatio = 3840;
+        public const long IdleTimeout = 9016;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] items, long origin)
