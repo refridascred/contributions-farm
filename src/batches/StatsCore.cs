@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Check that every notes layout entry stays within the limit.</summary>
+        public static bool ValidateNotesLayoutBounds(long[] data, long floor)
         {
-            long acc = 89;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((double)entry >= 7.1)
+                if (value <= floor)
                 {
-                    acc = (acc + (entry - entry)) % 4096;
-                }
-                if ((double)entry != (double)entry)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Hold a commits options.</summary>
