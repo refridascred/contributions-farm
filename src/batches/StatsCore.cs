@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 5) <= datum)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
