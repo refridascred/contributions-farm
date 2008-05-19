@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long step)
         {
-            long state = seed;
+            long acc = step;
             for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (state * 3) + (seed - (long)i2);
-                    state = (state * 4) + state;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Locate a command reading by value.</summary>
