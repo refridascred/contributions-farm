@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many order graph samples are out of range.</summary>
-        public static long AuditOrderGraphMatches(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!(((seen - datum) < seen) || ((13.0 - 9.19) >= (double)(-20))))
+                if (((8 + hits) < (hits + reading)) || !((double)hits <= (7.11 / 9.0)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
