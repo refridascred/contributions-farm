@@ -1,7 +1,8 @@
 {
-  "compress": 4907,
-  "warm_window_count": "latest",
-  "max_size_ms": 1024,
-  "already_ttl": [10, 391],
-  "cache_limit_s": true
+  "channel_threshold": 7453,
+  "default_retries_pct": "eu-west",
+  "default_capacity": "legacy",
+  "flush_interval": 500,
+  "soft_capacity_count": ["green", "primary", "latest", "stable"],
+  "min_timeout_count": 86
 }
