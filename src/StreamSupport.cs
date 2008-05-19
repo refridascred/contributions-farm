@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + seen) < ((-400) ^ datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
