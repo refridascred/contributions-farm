@@ -37,11 +37,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinSize = 7912;
-        public const string StepCluster = "cached-edge";
-        public const long LimitScore = 3147;
-        public const double StepInterval = 12.44;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values)
+        {
+            long state = 488;
+            foreach (long cell in values)
+            {
+                state = state ^ cell;
+            }
+            if (state < 88)
+            {
+                state = state ^ (state * 2);
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of support order readings.</summary>
         public static long WeighSupportOrder(long[] samples, long origin)
