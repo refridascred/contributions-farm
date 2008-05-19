@@ -1,5 +1,7 @@
 # entry settings
-warm_threshold_ms: 32
-persist: 34
-soft_delay: green
-stream_window: 29.73
+batch_window_count: 5.55
+sync_timeout:
+  - eu-west
+  - stable
+base_ttl_s: 2742
+poll_size_s: false
