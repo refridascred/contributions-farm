@@ -1,8 +1,19 @@
 {
-  "base_depth": true,
-  "warm_timeout_ms": 26,
-  "compress": true,
-  "farm_window": true,
-  "profile_size": false,
-  "burst_threshold": "fallback"
+  "base_size": [460, 457, 175, 31],
+  "entry_threshold": {
+    "batch_limit_s": "stable",
+    "strict": 9,
+    "notes_ttl": 100,
+    "token_depth": {
+      "poll_depth": 97,
+      "filter_retries": 1748,
+      "readonly": 250,
+      "metric_size": "local",
+      "batch_interval": 48,
+      "notes_limit": "primary"
+    }
+  },
+  "verbose": "cached",
+  "strict": 1024,
+  "persist": false
 }
