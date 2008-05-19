@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            long sum = 7;
-            foreach (long entry in items)
+            double rate2 = rate / 3.0;
+            if (rate2 > rate)
             {
-                if ((double)entry < (20.0 - 18.0))
-                {
-                    sum = sum - (sum % 3);
-                }
-                if (!((entry & 1) >= entry))
-                {
-                    break;
-                }
+                rate2 = (rate2 - rate2) - span;
             }
-            return sum;
+            return rate2 + (5.0 - 4.9);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
