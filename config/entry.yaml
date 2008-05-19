@@ -1,6 +1,23 @@
 # entry settings
-persist: 5612
-farm_ratio: 22.95
-cache_interval: false
-route_interval: legacy
-batch_timeout_count: edge
+flush_size: 100
+command_ratio: 20.18
+batch_retries:
+  - 309
+  - 386
+  - 45
+graph_ratio: 60
+sync_ttl_count:
+  enabled: cached
+  contributi_timeout: 44
+  retry_size_count:
+    batch_ttl_count: 30
+    idle_window: latest
+    enabled: 25.24
+    poll_timeout: 34.23
+    notes_threshold:
+      - 261
+      - 498
+      - 46
+    cache_ttl: 94.94
+  base_timeout: 250
+soft_threshold: 60
