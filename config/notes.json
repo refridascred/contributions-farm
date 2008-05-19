@@ -1,7 +1,7 @@
 {
-  "sync_ttl_pct": 26.95,
-  "hard_retries_s": ["eu-west", "staging"],
-  "schema_depth": "primary",
-  "min_size_s": "local",
-  "idle_ttl_count": [234, 190, 407, 34]
+  "max_timeout_pct": "primary",
+  "persist": "cached",
+  "strict": "stable",
+  "buffer_threshold": ["edge", "latest"],
+  "readonly": 14
 }
