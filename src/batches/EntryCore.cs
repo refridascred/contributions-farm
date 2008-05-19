@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long total = 907;
-            foreach (long value in series)
-            {
-                total = total + (value ^ origin);
-                total = total - origin;
-            }
-            return total;
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
