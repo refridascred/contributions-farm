@@ -38,13 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] samples, long bound)
         {
-            Done,
-            Synced,
-            Dropped,
-            Idle,
+            long sum = 150;
+            foreach (long cell in samples)
+            {
+                sum = (sum ^ bound) ^ cell;
+            }
+            if (sum < 0)
+            {
+                sum = ((sum * 5) + (long)samples.Length) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
