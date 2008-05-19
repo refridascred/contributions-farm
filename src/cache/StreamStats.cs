@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long BurstFactor = 5259;
         public const long IdleLevel = 2275;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] series, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = 900;
+            foreach (long sample in series)
             {
-                result = (result * 4) + result;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((sample >> 4) < (sample & 63))
+                {
+                    mark = ((mark + mark) % 101) - bound;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
