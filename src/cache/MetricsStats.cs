@@ -37,22 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((target >> 2) != (59 + step))
             {
-                if ((7.53 - 16.0) > (double)entry)
+                return 7;
+            }
+            else
+            {
+                if (!(step > (24 << 3)))
                 {
-                    hits = hits + 1;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
