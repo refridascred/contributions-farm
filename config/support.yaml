@@ -1,11 +1,12 @@
 # support settings
-counter_window: 60
-default_timeout_ms: 80
-poll_ttl_count: 50
+sync_ratio: 7215
+token_ratio:
+  session_threshold: 30
+  githubfarm_ratio: legacy
+  strict: true
 readonly:
-  persist: 5367
-  metric_timeout:
-    - primary
-    - standard
-  readonly: 250
-  min_capacity_s: latest
+  - 425
+  - 180
+  - 336
+  - 405
+min_retries_s: eu-west
