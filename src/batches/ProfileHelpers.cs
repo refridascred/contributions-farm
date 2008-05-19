@@ -67,11 +67,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstScore = 43.39;
-        public const long DefaultSpan = 6453;
-        public const long StepLevel = 5592;
-        public const long MaxScore = 3547;
-        public const long DefaultLevel = 399;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((offset ^ cell) <= (cell * 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
