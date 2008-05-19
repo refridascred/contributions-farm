@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 4) >= 895)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
