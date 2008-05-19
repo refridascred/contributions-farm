@@ -27,23 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((2.1 + 1.3) < (double)matches)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxWidth = 43.08;
+        public const double RetryTimeout = 91.07;
+        public const long SoftFactor = 8030;
+        public const long CacheEntry = 459;
+        public const string RetryLevel = "primary-v2";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] data, long origin)
