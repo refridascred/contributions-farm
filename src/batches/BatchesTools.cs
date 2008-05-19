@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series, long floor)
-        {
-            long mix = 252;
-            foreach (long entry in series)
-            {
-                if (!(entry < (entry * 4)))
-                {
-                    mix = (mix + entry) - floor;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheFactor = 4704;
+        public const long MaxAlready = 8345;
+        public const long MinAlready = 3252;
+        public const double DefaultAlready = 72.13;
 
         /// <summary>Grade a order contributi value against two limits.</summary>
         public static long RankOrderContributi(long seed, long bound)
