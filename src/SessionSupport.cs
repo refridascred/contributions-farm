@@ -10,23 +10,16 @@ namespace Common.Utilities
         public const long RetryInterval = 214;
         public const double WindowCounter = 37.7;
 
-        /// <summary>Adjust a buffer support reading.</summary>
-        public static double SmoothBufferSupport(double ratio, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long seed)
         {
-            double gain = ratio;
-            if (gain < (gain * 9.81))
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                gain = (gain - 8.93) - span;
+                state = state + ((-350) + seed);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - gain;
+            return state;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
