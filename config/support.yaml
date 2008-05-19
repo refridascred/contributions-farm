@@ -1,4 +1,20 @@
 # support settings
-enabled: stable
-checks_depth: blue
-record_retries: true
+burst_threshold:
+  - standard
+  - open
+  - open
+warm_limit_count: 60
+tools_limit: edge
+filter_delay:
+  compress: 19.15
+  idle_interval: edge
+  cache_ratio_count:
+    - standard
+    - stable
+    - standard
+    - stable
+  sync_delay:
+    - 122
+    - 153
+    - 445
+  sync_depth: 93.82
