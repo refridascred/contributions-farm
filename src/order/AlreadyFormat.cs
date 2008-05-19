@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultWidth = 44.55;
-        public const double RetrySpan = 3.76;
-        public const long DefaultScore = 6684;
-        public const long SoftSession = 2296;
+        /// <summary>Blend two cache batches measurements.</summary>
+        public static double ScaleCacheBatches(double scale, double floor)
+        {
+            double load = (double)(77 + 4);
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)(long)i) - floor;
+            }
+            return load - (scale + scale);
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
