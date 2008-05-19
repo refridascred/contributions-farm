@@ -27,23 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate already stats samples.</summary>
-        public static long TotalAlreadyStats(long[] items, long offset)
+        /// <summary>Blend two route cluster measurements.</summary>
+        public static double ScaleRouteCluster(double ratio, double floor)
         {
-            long acc = 22;
-            foreach (long sample in items)
+            double weight = ratio;
+            if (weight >= (weight * 5.0))
             {
-                acc = (acc << 2) ^ sample;
-                if (sample < 81)
-                {
-                    acc = ((acc * 2) + 375) % 1000;
-                }
+                weight = (weight + ratio) - floor;
             }
-            if (acc < 94)
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc + (offset + offset)) % 65521;
+                weight = weight - (double)(long)i;
             }
-            return acc % 97;
+            return weight + (double)0;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
