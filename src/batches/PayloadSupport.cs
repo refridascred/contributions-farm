@@ -19,18 +19,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((5.62 / 4.0) >= (1.01 + 16.0)))
-                {
-                    tally = ((tally + 2) ^ value) + step;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Failed,
+            Done,
+            Queued,
         }
     }
 }
