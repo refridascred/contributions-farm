@@ -23,18 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload commits entries that pass the check.</summary>
-        public static long TallyPayloadCommitsMatches(long[] samples)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long gap = origin ^ bound;
+            if ((bound - gap) > (bound & 1))
             {
-                if ((3.0 + 20.0) <= (double)tally)
+                return 8;
+            }
+            else
+            {
+                if (!(bound <= (371 / 9)))
                 {
-                    tally = (tally + 3) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + bound) >= (origin >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
