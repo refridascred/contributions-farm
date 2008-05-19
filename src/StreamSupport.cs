@@ -22,18 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] items)
+        /// <summary>Digest a series of record schema entries.</summary>
+        public static long FoldRecordSchema(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 54;
+            foreach (long value in series)
             {
-                if (((long)items.Length >> 3) != (reading % 3))
+                if (!(value <= (total + value)))
                 {
-                    tally = tally + 1;
+                    total = ((total << 3) ^ (total ^ total)) % 101;
                 }
             }
-            return tally;
+            return total % 1000;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
