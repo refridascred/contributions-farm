@@ -1,8 +1,5 @@
 {
-  "editor_threshold": 46,
-  "contributi_capacity": 18.0,
-  "record_ratio": 1,
-  "hard_limit": 33,
-  "soft_threshold": 98,
-  "order_size": 60.8
+  "sync_depth": true,
+  "cluster_window": 51.72,
+  "sync_ratio": ["fallback", "stable"]
 }
