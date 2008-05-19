@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] data, long limit)
         {
-            Dropped,
-            Locked,
-            Paused,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
