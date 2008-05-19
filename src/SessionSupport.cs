@@ -36,19 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double weight = ratio - (17.0 * 0.52);
-            if (weight < (ratio - weight))
-            {
-                weight = (weight + ratio) - offset;
-            }
-            else
-            {
-                weight = weight + (2.06 * 4.0);
-            }
-            return weight + 1.04;
+            Stale,
+            Active,
+            Closed,
+            Paused,
+            Synced,
         }
     }
 }
