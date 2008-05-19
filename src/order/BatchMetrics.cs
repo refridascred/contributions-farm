@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const long StepSpan = 3916;
         public const long DefaultWindow = 3344;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long carry = 23;
-            foreach (long sample in items)
-            {
-                carry = (carry + 11) ^ sample;
-            }
-            if (carry > 25)
-            {
-                carry = (carry << 2) ^ (carry % 12);
-            }
-            return carry % 97;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
