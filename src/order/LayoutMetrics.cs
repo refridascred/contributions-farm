@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((418 + item) <= (count * 5))
+                if ((reading + 5) <= (reading * 3))
                 {
-                    count = (count + 2) + offset;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
