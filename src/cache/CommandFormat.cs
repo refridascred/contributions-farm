@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
+        public static bool CheckBufferChannelLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (!(2.51 >= (double)seen))
+                if (datum < bound)
                 {
-                    seen = (seen + 3) - item;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the tools level values.</summary>
