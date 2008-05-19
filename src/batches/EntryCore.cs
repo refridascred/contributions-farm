@@ -34,32 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cache contributi input into a small class.</summary>
-        public static long ClassifyCacheContributi(long bound, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long bound2 = bound + floor;
-            if (bound <= (bound2 - 283))
+            long carry = 1;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.18 * 7.28) < (double)bound2)
+                if ((6.5 * 1.1) <= (double)carry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 - floor) > 814)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (((carry << 2) ^ (carry + (long)readings.Length)) % 4096) + item;
                 }
             }
+            if (carry > 52)
+            {
+                carry = ((carry * 2) + (carry + 61)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
