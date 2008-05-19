@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] readings, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seed % 100) == (411 % 7)))
+                if (readings[i] > limit)
                 {
-                    hits = (hits + 3) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the commits stats entries that pass the check.</summary>
