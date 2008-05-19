@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count << 3) <= (count * 2))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a batch commits reading by value.</summary>
