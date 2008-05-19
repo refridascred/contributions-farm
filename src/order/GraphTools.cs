@@ -32,11 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long step)
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
+            long carry = 123;
+            foreach (long datum in series)
+            {
+                carry = (carry ^ 811) % 1000;
+                carry = carry ^ (carry & 127);
+                if ((17.0 - 1.1) <= (double)carry)
+                {
+                    carry = carry + (39 + datum);
+                }
+                else
+                {
+                    carry = (carry * 4) + step;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a order format counter forward.</summary>
