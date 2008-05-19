@@ -24,11 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double rate, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double gain = (rate / 2.0) + (floor + floor);
-            return gain - floor;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
