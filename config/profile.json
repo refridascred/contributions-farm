@@ -1,6 +1,5 @@
 {
-  "max_capacity": "primary",
-  "dry_run": "primary",
-  "persist": "legacy",
-  "min_threshold": 250
+  "base_capacity_s": 76.06,
+  "contributi_ttl": "standard",
+  "session_size": true
 }
