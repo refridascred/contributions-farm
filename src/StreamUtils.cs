@@ -64,11 +64,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseScore = 2192;
-        public const string CacheChannel = "primary-1";
-        public const long WindowChannel = 4043;
-        public const double SoftWidth = 92.96;
-        public const long DefaultChannel = 8460;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftBudget = "strict-v2";
+        public const string BatchStream = "fallback-edge";
+        public const double LimitStream = 71.7;
+        public const string IdleStream = "legacy-edge";
     }
 }
