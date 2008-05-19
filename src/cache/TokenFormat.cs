@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric cache entries that pass the check.</summary>
-        public static long TallyMetricCacheHits(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count % 100) == (reading + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
