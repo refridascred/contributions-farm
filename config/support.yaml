@@ -1,9 +1,30 @@
 # support settings
-editor_retries: legacy
-burst_ttl_count: strict
-stream_ttl:
-  - 404
-  - 100
-  - 134
-  - 247
-batches_timeout: strict
+soft_timeout_ms: false
+sync_ttl:
+  batch_depth:
+    - 229
+    - 500
+    - 124
+  sync_ttl_s:
+    dry_run: false
+    min_capacity_s: false
+    soft_timeout_pct: 5302
+    burst_capacity_pct:
+      - 435
+      - 92
+      - 397
+  retry_retries_pct: open
+  route_retries:
+    - legacy
+    - strict
+  channel_ratio:
+    retry_retries_pct: 23.01
+    max_threshold_pct: 14
+    cache_capacity: 22.99
+    metrics_interval: true
+    cluster_size: 34.35
+    tools_depth: 2.16
+schema_window: eu-west
+compress: false
+persist: eu-west
+cache_ttl: staging
