@@ -68,14 +68,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long step)
         {
-            Pending,
-            Locked,
-            Done,
-            Paused,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
