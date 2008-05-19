@@ -39,18 +39,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the notes commits entries that pass the check.</summary>
-        public static long TallyNotesCommitsMatches(long[] data)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)reading >= (6.89 + 13.0))
-                {
-                    hits = hits + 1;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
