@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (carry / 8)) % 101;
-                if ((473 - carry) < ((long)i - carry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ (carry & 255)) % 97;
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry ^ (carry + carry);
-                }
-                carry = (carry - (carry << 3)) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
