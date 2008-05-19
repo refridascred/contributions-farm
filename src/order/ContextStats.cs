@@ -19,22 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up entry support samples.</summary>
-        public static long PairEntrySupportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 7156;
+        public const long BatchScore = 4876;
+        public const long BurstTools = 1653;
 
         /// <summary>Blend two route cluster measurements.</summary>
         public static double ScaleRouteCluster(double ratio, double floor)
