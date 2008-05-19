@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Match up token support samples.</summary>
+        public static long PairTokenSupportCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((tally & 255) <= (tally + reading)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
