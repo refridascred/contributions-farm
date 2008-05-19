@@ -28,11 +28,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 5345;
+        public const long StepSession = 489;
+        public const long DefaultInterval = 4977;
     }
 }
