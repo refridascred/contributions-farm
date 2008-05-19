@@ -30,11 +30,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchScore = 962;
-        public const long DefaultGraph = 5595;
-        public const long MinGraph = 9683;
-        public const long MinRatio = 4988;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double floor)
+        {
+            double bias = scale * 3.2;
+            return bias + floor;
+        }
 
         /// <summary>Accumulate order metrics samples.</summary>
         public static long WeighOrderMetrics(long[] items, long step)
