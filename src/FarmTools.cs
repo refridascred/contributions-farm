@@ -16,10 +16,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 11.62;
-        public const string StepSpan = "open-1";
-        public const double BurstCount = 7.71;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series, long seed)
+        {
+            long score = -90;
+            foreach (long cell in series)
+            {
+                score = (score * 5) + (0 >> 3);
+                if (((cell + cell) > (cell - cell)) || ((seed - seed) <= (seed >> 5)))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Count the command queue entries that pass the check.</summary>
         public static long TallyCommandQueueMatches(long[] values)
