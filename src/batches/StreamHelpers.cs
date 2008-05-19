@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 55.07;
         public const long RetryCount = 9620;
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long TallyBatchesChecksMatches(long[] series, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = -748;
+            foreach (long reading in values)
             {
-                if (((datum * 5) < (seen + 51)) && ((seen + seen) == (datum % 5)))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                sum = ((sum - (sum * 3)) - reading) - limit;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
