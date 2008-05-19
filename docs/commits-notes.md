@@ -1,14 +1,11 @@
 # Commits notes
 
-Run the tools check before changing any checks limits.
-Each metrics is validated before it reaches the window queue.
-
-The filter helpers are pure functions, so they are safe to call from any thread.
-Run the batch check before changing any profile limits.
+A queue that stays idle for too long is moved to the batch list.
+When a already fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every route change
-- Keep support values small
-- Prefer commits defaults
-- Review command limits each release
+- Review format limits each release
+- Keep window values small
+- Prefer stream defaults
+- Log every report change
