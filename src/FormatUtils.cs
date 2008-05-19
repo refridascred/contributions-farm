@@ -71,13 +71,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long seed)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long sum = 321;
+            foreach (long sample in series)
+            {
+                if ((1.0 / 6.0) != (double)sum)
+                {
+                    sum = ((sum << 3) ^ (sample ^ sum)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 5) + ((long)series.Length << 3)) % 97;
+                }
+            }
+            if (sum < 409)
+            {
+                sum = (sum + (seed & 127)) % 101;
+            }
+            return sum;
         }
     }
 }
