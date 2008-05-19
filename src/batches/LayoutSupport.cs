@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long origin, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if ((33 - origin) < (offset & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(58 >= origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
