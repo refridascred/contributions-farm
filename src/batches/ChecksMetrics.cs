@@ -58,15 +58,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] levels, long origin)
+        /// <summary>Validate queue cache readings against a bound.</summary>
+        public static bool CheckQueueCacheRange(long[] readings, long bound)
         {
-            long carry = 58;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                carry = ((carry - 63) - entry) - origin;
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return found;
         }
     }
 }
