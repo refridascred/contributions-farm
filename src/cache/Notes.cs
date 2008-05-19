@@ -70,11 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8991;
-        public const double SoftEntry = 23.7;
-        public const long SoftLevel = 1261;
-        public const long CacheEntry = 4727;
+        /// <summary>Look up the position of a already commits sample.</summary>
+        public static long SeekAlreadyCommitsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] samples, long floor)
