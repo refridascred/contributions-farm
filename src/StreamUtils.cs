@@ -105,18 +105,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long MeasureContributiChannelMatches(long[] data, long offset)
+        /// <summary>Digest a series of cluster session entries.</summary>
+        public static long WeighClusterSession(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = 38;
+            foreach (long item in values)
             {
-                if ((offset & 1) < (offset - sample))
+                if (((item - 18) > bound) && ((acc << 2) >= (bound - 8)))
                 {
-                    seen = seen + 3;
+                    acc = acc ^ bound;
                 }
             }
-            return seen;
+            if (acc < (-3))
+            {
+                acc = (acc ^ 2) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
