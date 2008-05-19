@@ -22,39 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks entry value against two limits.</summary>
-        public static long BucketChecksEntry(long offset, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long cur = offset - floor;
-            if ((floor & 3) <= (offset % 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((cur << 1) >= (cur + floor)) && ((double)floor == (2.46 / 6.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor >= (cur * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((cur - offset) < (floor - offset)) || ((double)cur > (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
