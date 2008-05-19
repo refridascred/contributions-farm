@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] series, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double scale = 4.5;
+            if (scale < scale)
             {
-                if (!(347 < (tally % 10)))
-                {
-                    tally = ((tally + 1) + reading) + step;
-                }
+                scale = (scale + (double)62) - rate;
             }
-            return tally;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (scale - 2.4);
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
