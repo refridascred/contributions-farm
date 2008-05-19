@@ -64,19 +64,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of entry farm readings.</summary>
+        public static long MatchEntryFarmCount(long[] series)
         {
             long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item != (14.0 / 2.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
