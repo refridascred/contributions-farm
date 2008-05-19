@@ -30,15 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long mark = 2;
+            foreach (long datum in series)
             {
-                state = ((state * 3) + (long)i) % 97;
+                mark = (mark + (datum + datum)) % 4096;
             }
-            return state;
+            return mark % 1000;
         }
     }
 }
