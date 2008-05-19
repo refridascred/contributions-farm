@@ -19,10 +19,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 6275;
-        public const long BatchFactor = 4718;
-        public const long IdleScore = 953;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!!((acc >> 4) <= target))
+                {
+                    acc = (acc ^ (95 << 2)) % 255;
+                    acc = (acc * 4) + (target + target);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc ^ target) % 101) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordRange(long[] items, long origin)
