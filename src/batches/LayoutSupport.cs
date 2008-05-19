@@ -52,31 +52,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long step)
+        /// <summary>Project the next record payload value.</summary>
+        public static double BlendRecordPayload(double rate, double span)
         {
-            if ((2.3 + 3.0) >= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 * 9.6) > (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step <= (step - 862))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double bias = (double)1 + span;
+            return (bias + 3.59) + rate;
         }
     }
 }
