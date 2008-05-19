@@ -31,25 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long gap = origin ^ bound;
-            if (gap <= (bound - gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
