@@ -29,26 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] items, long bound)
         {
-            long anchor = 1;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (((double)seed >= (double)84) && ((double)7 <= (double)seed))
+                if (((bound + datum) > (hits + 7)) || ((-787) > (bound + datum)))
                 {
-                    anchor = (anchor * 5) + (seed - seed);
-                }
-                else
-                {
-                    anchor = (anchor - seed) % 1000;
-                }
-                if ((9 - cell) > (-289))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
