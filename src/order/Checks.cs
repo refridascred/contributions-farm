@@ -38,16 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double offset)
-        {
-            double drift = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift + 6.5;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 9080;
+        public const long HardSpan = 9295;
+        public const long HardContributi = 7481;
+        public const double StepSize = 20.5;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
