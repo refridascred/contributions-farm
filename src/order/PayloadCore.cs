@@ -19,19 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] readings, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the account mode values.</summary>
