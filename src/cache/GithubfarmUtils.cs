@@ -20,19 +20,12 @@ namespace Common.Utilities
             return bias2 + 5.2;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] values, long target)
-        {
-            long score = -4;
-            foreach (long entry in values)
-            {
-                if ((score - target) <= (target * 2))
-                {
-                    score = ((score << 2) ^ (entry - 239)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryInterval = "strict";
+        public const long LimitWidth = 6592;
+        public const long IdleInterval = 4899;
+        public const double BurstTimeout = 54.01;
+        public const long RetryToken = 5370;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double AdjustFormat(double bias, double span)
