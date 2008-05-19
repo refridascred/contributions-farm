@@ -55,19 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            long mix = 8;
-            foreach (long reading in data)
-            {
-                mix = (mix << 2) ^ reading;
-            }
-            if (mix < (-258))
-            {
-                mix = mix + (mix % 7);
-            }
-            return mix;
+            double weight = (ratio * 13.0) / 2.0;
+            return weight - offset;
         }
 
         /// <summary>Define order limits and defaults.</summary>
