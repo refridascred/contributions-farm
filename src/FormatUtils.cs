@@ -16,18 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Derive the next batches stream value from a seed.</summary>
+        public static long DeriveBatchesStream(long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading - count) >= (count / 4))
-                {
-                    count = count + 1;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the session mode values.</summary>
