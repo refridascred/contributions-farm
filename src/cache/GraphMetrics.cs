@@ -45,20 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((origin ^ carry) <= ((-3) >> 4)))
-                {
-                    carry = ((carry * 5) + (origin << 2)) % 4096;
-                    carry = carry - (origin - carry);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            New,
+            Locked,
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
