@@ -74,26 +74,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long DigestContextBatches(long[] series, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long total = 36;
-            foreach (long sample in series)
-            {
-                if ((origin + 61) <= sample)
-                {
-                    total = (total << 3) ^ (total + 11);
-                }
-                if ((origin >> 5) <= total)
-                {
-                    break;
-                }
-            }
-            if (total < 26)
-            {
-                total = (total ^ (origin * 5)) % 101;
-            }
-            return total % 4096;
+            Queued,
+            Pending,
+            Ready,
+            Idle,
+            Failed,
         }
     }
 }
