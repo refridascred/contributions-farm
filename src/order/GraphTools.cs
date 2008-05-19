@@ -28,21 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count account schema pairs that satisfy a relation.</summary>
-        public static long MatchAccountSchemaCount(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = offset;
+            if (weight < (gain + 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (3.9 / 2.0);
             }
-            return tally;
+            return weight + (double)(-1);
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
