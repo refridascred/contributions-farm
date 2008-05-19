@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string BaseReport = "primary-edge";
         public const double BurstReport = 72.24;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long state = 6;
+            foreach (long datum in values)
+            {
+                state = (state + (datum + datum)) % 101;
+            }
+            if (state < 30)
+            {
+                state = (state ^ (state % 5)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
