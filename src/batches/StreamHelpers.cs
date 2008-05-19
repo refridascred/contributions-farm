@@ -61,13 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
+        public static bool GuardPayloadMetricsBounds(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
