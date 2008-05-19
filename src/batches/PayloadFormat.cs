@@ -29,14 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long target)
         {
-            Ready,
-            Idle,
-            Paused,
-            Closed,
-            Synced,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
