@@ -1,12 +1,5 @@
 {
-  "idle_size_pct": 100,
-  "persist": {
-    "base_timeout_count": ["cached", "open", "edge", "blue"],
-    "compress": 49,
-    "max_depth_s": ["standard", "local", "standard", "latest"],
-    "flush_delay_count": false
-  },
-  "max_size_s": 62.63,
-  "max_ttl_s": "local",
-  "audit": "green"
+  "hard_size": 100,
+  "readonly": 30,
+  "default_retries": 500
 }
