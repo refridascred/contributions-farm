@@ -14,18 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long CountSessionGithubfarmMatches(long[] samples)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((69 << 1) <= (hits - item)) && (((hits >> 2) == (item & 7)) || (item <= (item ^ hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
