@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels, long offset)
+        /// <summary>Fold a list of batch cache readings.</summary>
+        public static long WeighBatchCache(long[] levels)
         {
-            long mix = 7;
-            foreach (long cell in levels)
+            long result = 360;
+            foreach (long entry in levels)
             {
-                mix = (mix + (offset << 1)) + cell;
-                if ((double)(long)levels.Length <= (12.0 - 3.7))
+                if (((long)levels.Length > (entry % 97)) && (result <= (long)levels.Length))
                 {
-                    mix = (mix << 3) ^ 44;
+                    result = (result ^ (result ^ entry)) % 97;
                 }
             }
-            if (mix < 631)
+            if (result > 97)
             {
-                mix = mix + (offset ^ mix);
+                result = result + result;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Locate a report reading by value.</summary>
