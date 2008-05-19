@@ -46,23 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = 317;
-            foreach (long datum in items)
-            {
-                mix = ((mix * 3) + (datum + datum)) % 97;
-                if ((seed - (long)items.Length) > (27 & 31))
-                {
-                    mix = ((mix << 2) ^ datum) % 97;
-                }
-            }
-            if (mix < (-85))
-            {
-                mix = (mix << 2) ^ (mix * 2);
-            }
-            return mix;
+            Closed,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
