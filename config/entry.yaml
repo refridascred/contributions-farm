@@ -1,7 +1,7 @@
 # entry settings
-cluster_threshold: 80.34
-retry_window: open
-batch_retries: 30
-warm_timeout_pct: strict
-default_timeout_count: edge
-max_ttl: 70.83
+default_limit_s: 300
+sync_timeout: green
+min_timeout: edge
+cache_retries: eu-west
+flush_limit_s: 30
+min_limit_ms: 1708
