@@ -22,25 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel profile value against two limits.</summary>
-        public static long BucketChannelProfile(long seed, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long slot = seed ^ bound;
-            if (((49 >> 2) < (bound * 3)) || (72 > (bound & 31)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0 <= (seed >> 4)) && ((double)slot != (4.2 - 4.1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
