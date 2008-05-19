@@ -54,17 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batch window entry that matches the target.</summary>
-        public static long LookupBatchWindowIndex(long[] values, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = span + (span / 2.0);
+            return weight - ratio;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
