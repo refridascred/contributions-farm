@@ -35,18 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "legacy";
+        public const long BatchTools = 2283;
+        public const double RetryBudget = 41.56;
+        public const long MinSize = 2161;
+        public const double StepCount = 24.37;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] series, long floor)
