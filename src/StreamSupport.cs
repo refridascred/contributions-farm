@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] readings, long limit)
         {
-            long carry = 890;
-            foreach (long sample in series)
+            long score = 584;
+            foreach (long value in readings)
             {
-                if ((carry << 1) <= sample)
+                if ((2.0 + 3.83) <= 2.75)
                 {
-                    carry = (carry + (78 - sample)) % 101;
-                }
-                else
-                {
-                    carry = carry + (carry + sample);
+                    score = (score + limit) - value;
                 }
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
