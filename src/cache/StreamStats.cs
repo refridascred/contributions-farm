@@ -15,20 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long prev = 12;
-                if (!(prev <= ((long)i + bound)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor ^ anchor;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
