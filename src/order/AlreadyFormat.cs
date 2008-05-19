@@ -32,11 +32,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double weight = 4.9;
-            return (weight - (bias + bias)) + offset;
+            Idle,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a route header.</summary>
