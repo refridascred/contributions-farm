@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long state = 2;
-            foreach (long value in series)
-            {
-                if ((state << 1) == (value & 3))
-                {
-                    state = ((state + state) % 1000) + seed;
-                }
-                else
-                {
-                    state = (state ^ (state + state)) % 1000;
-                }
-            }
-            return state;
+            Dropped,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a account stream value against two limits.</summary>
