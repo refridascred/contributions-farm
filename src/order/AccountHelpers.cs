@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long step)
         {
-            long sum = 831;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum * 4) + (sum << 1);
-                if (!((293 + datum) <= (datum % 5)))
+                if (readings[i] >= step)
                 {
-                    sum = sum ^ (datum % 3);
+                    return (long)i;
                 }
             }
-            if (sum < 44)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor metric sample.</summary>
