@@ -1,7 +1,4 @@
 # support settings
-flush_window_s:
-  - 301
-  - 66
-  - 234
-warm_size_ms: legacy
-default_timeout_ms: 100
+cache_size: 71
+flush_delay_s: 5681
+hard_capacity_count: latest
