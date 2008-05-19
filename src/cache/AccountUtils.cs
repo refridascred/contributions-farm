@@ -30,24 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long anchor = 9;
-            foreach (long datum in values)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor - (anchor ^ anchor)) % 4096) ^ datum;
-                anchor = anchor + (floor ^ 868);
-                if ((1.1 / 9.0) >= (double)floor)
-                {
-                    anchor = ((anchor * 2) + (anchor + floor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 1000;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
     }
 }
