@@ -51,9 +51,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 56.84;
-        public const double BatchEntry = 85.88;
-        public const string StepEntry = "standard";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
