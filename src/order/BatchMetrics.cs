@@ -29,40 +29,11 @@ namespace Common.Utilities
             return rate + (9.1 * 8.39);
         }
 
-        /// <summary>Rank batch window input into a small class.</summary>
-        public static long BucketBatchWindow(long seed, long limit)
-        {
-            long gap = seed ^ limit;
-            if ((gap + limit) <= (gap / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((49 / 2) >= (limit / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - seed) > (limit - gap))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap >= (limit + seed)) && ((limit - limit) < (seed - limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleSize = 59.48;
+        public const long StepMetric = 4549;
+        public const string RetryInterval = "latest-1";
+        public const long WindowDepth = 1424;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] readings, long origin)
