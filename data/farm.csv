@@ -1,6 +1,7 @@
-id,token,score
-1,fallback,primary
-2,staging,116
-3,primary,93
-4,158,836
-5,latest,standard
+id,score,weight,count
+1,290,cached,139
+2,latest,55.06,72.55
+3,20.94,46.33,170
+4,86.92,323,811
+5,32.22,607,55
+6,919,strict,open
