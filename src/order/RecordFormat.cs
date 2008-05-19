@@ -46,11 +46,13 @@ namespace Common.Utilities
         public const long RetryBudget = 2593;
         public const long CacheCounter = 5905;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
