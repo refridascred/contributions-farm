@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long floor)
         {
-            long carry = 33;
-            foreach (long value in readings)
+            if ((double)origin <= (6.0 / 8.0))
             {
-                if ((double)carry == (double)value)
+                return 3;
+            }
+            else
+            {
+                if (floor <= (1 * 2))
                 {
-                    carry = (carry << 3) ^ (value & 3);
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (carry < 272)
-            {
-                carry = (carry - (carry + carry)) % 97;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
