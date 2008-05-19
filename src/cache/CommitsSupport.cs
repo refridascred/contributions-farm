@@ -86,11 +86,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Adjust a notes account reading.</summary>
+        public static double AdjustNotesAccount(double rate, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            double bias = offset;
+            if (bias > offset)
+            {
+                bias = (bias - offset) - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (offset / 3.0)) - (double)(long)i;
+            }
+            return bias - (double)9;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
