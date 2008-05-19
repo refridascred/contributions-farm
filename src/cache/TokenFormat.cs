@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)tally != (double)41))
-                {
-                    tally = ((tally + 3) + reading) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftFactor = 42.79;
+        public const long DefaultTimeout = 5243;
+        public const long SoftWindow = 227;
+        public const long WindowInterval = 4256;
+        public const double BaseBudget = 68.9;
 
         /// <summary>Count the metrics context entries that pass the check.</summary>
         public static long TallyMetricsContextGaps(long[] samples)
