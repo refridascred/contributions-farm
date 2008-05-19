@@ -36,15 +36,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (!((double)92 < (double)(long)i))
+                {
+                    long prev = seed;
+                    state = (state + (seed - prev)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
     }
 }
