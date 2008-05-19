@@ -32,11 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 9080;
-        public const long HardSpan = 9295;
-        public const long HardContributi = 7481;
-        public const double StepSize = 20.5;
+        /// <summary>Roll a layout command counter forward.</summary>
+        public static long StepLayoutCommand(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
