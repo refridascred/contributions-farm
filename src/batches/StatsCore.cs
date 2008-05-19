@@ -38,20 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 1360;
+        public const long SoftWindow = 9532;
+        public const long BaseFactor = 2495;
+        public const long BaseScore = 417;
+        public const double BaseWindow = 62.28;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] series, long seed)
