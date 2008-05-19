@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series, long step)
         {
-            double bias2 = gain / 7.0;
-            if (bias2 >= bias)
+            long total = 45;
+            foreach (long reading in series)
             {
-                bias2 = bias2 + (bias2 / 5.0);
+                total = (((total ^ 47) % 101) ^ reading) - step;
             }
-            else
+            if (total < (-9))
             {
-                bias2 = bias2 - (double)970;
+                total = (total ^ (486 >> 3)) % 65521;
             }
-            return bias2 + 5.2;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
