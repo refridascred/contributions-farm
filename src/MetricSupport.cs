@@ -26,19 +26,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples, long floor)
         {
-            long mix = 2;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix - (sample << 1)) - target;
+                if (!!((hits + hits) >= floor))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix < 532)
-            {
-                mix = (mix << 3) ^ (mix * 3);
-            }
-            return mix % 97;
+            return hits;
         }
     }
 }
