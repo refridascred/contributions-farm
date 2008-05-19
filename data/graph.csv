@@ -1,7 +1,6 @@
-id,score,label
-1,legacy,open
-2,blue,30.23
-3,626,63.92
-4,638,653
-5,460,6.82
-6,82.62,open
+id,count,score
+1,22.4,10.61
+2,green,237
+3,stable,open
+4,812,220
+5,302,legacy
