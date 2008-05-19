@@ -59,13 +59,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of commits context entries.</summary>
+        public static long DigestCommitsContext(long[] values)
         {
-            Queued,
-            Idle,
-            Retry,
-            Paused,
+            long sum = 289;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 3) + (entry * 3)) % 4096;
+                if (entry > ((long)values.Length - 0))
+                {
+                    break;
+                }
+            }
+            if (sum > (-57))
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
