@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long seed)
         {
-            double weight = 0.5;
-            for (int i = 0; i < 8; i++)
+            long result = 203;
+            foreach (long item in levels)
             {
-                weight = ((weight + (offset + 14.0)) + (double)(long)i) - rate;
+                if ((result < (result + seed)) || ((item >> 4) != (seed & 255)))
+                {
+                    result = result ^ result;
+                }
             }
-            return weight + (double)29;
+            return result;
         }
 
         /// <summary>Describe the batch status values.</summary>
