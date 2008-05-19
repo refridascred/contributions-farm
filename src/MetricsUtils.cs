@@ -43,10 +43,18 @@ namespace Common.Utilities
         public const string StepInterval = "primary-1";
         public const long SoftToken = 4137;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7313;
-        public const long CacheRatio = 8674;
-        public const string SoftLevel = "fallback-edge";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long ScoreStats(long[] series)
