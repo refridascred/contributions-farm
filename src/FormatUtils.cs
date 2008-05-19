@@ -15,19 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next report already value from a seed.</summary>
-        public static long StepReportAlready(long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((floor + 36) != (floor % 97))
+                if (anchor <= (anchor + seed))
                 {
-                    carry = carry + (floor % 12);
+                    anchor = (anchor << 2) ^ ((long)i << 3);
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ (25 - (long)i)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
