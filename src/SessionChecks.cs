@@ -40,12 +40,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Stale,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstScore = "cached-1";
+        public const long DefaultCount = 5900;
+        public const double StepGraph = 42.26;
+        public const long RetryDepth = 4898;
+        public const long CacheDepth = 2123;
     }
 }
