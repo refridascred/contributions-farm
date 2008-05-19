@@ -44,9 +44,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxRatio = 4826;
-        public const long SoftFormat = 2075;
-        public const long DefaultRatio = 9432;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
     }
 }
