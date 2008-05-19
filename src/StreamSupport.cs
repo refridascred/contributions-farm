@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + seen) < ((-400) ^ datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
