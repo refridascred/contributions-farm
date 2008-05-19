@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits command samples are out of range.</summary>
-        public static long TallyCommitsCommandOutliers(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = 1;
+            foreach (long cell in values)
             {
-                if (((double)tally >= (17.0 / 8.0)) && ((tally ^ tally) <= (tally * 4)))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state - state) % 4096) - cell;
+                state = (state - ((long)values.Length << 3)) % 101;
             }
-            return tally;
+            if (state < 936)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a payload report reading.</summary>
