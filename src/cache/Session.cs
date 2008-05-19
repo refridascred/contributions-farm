@@ -51,11 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 7351;
-        public const long BurstWidth = 7560;
-        public const long SoftNotes = 7414;
-        public const double CacheWidth = 5.75;
-        public const string CacheTimeout = "legacy-1";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
