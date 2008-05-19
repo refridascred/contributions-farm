@@ -14,11 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
