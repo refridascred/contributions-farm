@@ -41,13 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine batch order values into a single score.</summary>
+        public static long ScoreBatchOrder(long[] readings, long seed)
         {
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long total = 751;
+            foreach (long item in readings)
+            {
+                total = ((total * 3) + (seed + total)) % 101;
+                if ((item % 60) < (item << 2))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
