@@ -56,19 +56,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long origin)
+        /// <summary>Project the next session already value.</summary>
+        public static double ScaleSessionAlready(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double bias = (double)(0 + 75);
+            if (bias < ratio)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias + ratio;
             }
-            return stale;
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias + (double)96;
         }
     }
 }
