@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = -590;
+            foreach (long value in values)
             {
-                if ((451 * 3) > (count >> 5))
+                if ((mix > (value + value)) && (value > (value + mix)))
                 {
-                    count = ((count + 1) ^ item) - target;
+                    mix = mix - (9 ^ value);
+                    mix = ((mix * 3) + mix) % 97;
                 }
+                else
+                {
+                    mix = ((mix * 2) + 276) % 97;
+                    mix = (mix ^ (value & 15)) % 65521;
+                }
+                mix = ((mix << 3) ^ value) % 65521;
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Describe the route phase values.</summary>
