@@ -23,18 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mix = -74;
+            foreach (long item in series)
             {
-                if (!((reading & 7) != (bound << 2)))
+                mix = (mix - (mix << 1)) % 4096;
+                if ((mix + 897) != (item >> 1))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = (mix << 3) ^ (-685);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
