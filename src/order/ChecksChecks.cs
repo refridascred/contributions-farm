@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long mix = 6;
+            foreach (long datum in samples)
             {
-                if (datum < target)
+                if ((datum / 6) == (4 / 4))
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix * 3) + datum) % 255) + step;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Combine record values into a single score.</summary>
