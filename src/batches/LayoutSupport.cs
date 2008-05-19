@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const string CacheBudget = "latest-v2";
         public const double BatchTimeout = 88.58;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long floor)
         {
-            Stale,
-            Idle,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
