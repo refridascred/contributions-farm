@@ -23,11 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFactor = 5108;
-        public const double MaxFilter = 42.92;
-        public const long LimitFilter = 7621;
-        public const double WindowFilter = 46.08;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading & 7) != (bound << 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] data, long floor)
