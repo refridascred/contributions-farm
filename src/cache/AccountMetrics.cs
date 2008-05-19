@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate tools samples.</summary>
