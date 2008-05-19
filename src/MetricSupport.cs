@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double scale, double bias)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            double mean = bias + (double)211;
+            return (mean - bias) + scale;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
