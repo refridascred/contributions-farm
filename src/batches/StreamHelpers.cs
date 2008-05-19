@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = bias;
+            return load - scale;
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
