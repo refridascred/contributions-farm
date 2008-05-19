@@ -44,12 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long state = 764;
+            foreach (long entry in samples)
+            {
+                state = (state ^ entry) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
