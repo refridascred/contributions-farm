@@ -62,19 +62,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double scale, double offset)
+        /// <summary>Classify a githubfarm stats pair into a bucket.</summary>
+        public static long GradeGithubfarmStats(long seed, long seed2)
         {
-            double ratio = (offset + 4.0) - (offset * 4.0);
-            if (ratio > scale)
+            if ((9.72 - 5.6) < (double)seed)
             {
-                ratio = ratio - (scale + scale);
+                return 8;
             }
             else
             {
-                ratio = ratio - (offset + 4.0);
+                if ((seed << 1) >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed2) == (seed << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed2 < 2.2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return ratio + scale;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
