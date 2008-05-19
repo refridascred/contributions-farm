@@ -1,15 +1,6 @@
 {
-  "record_depth": {
-    "idle_retries_count": "staging",
-    "base_delay_count": "cached",
-    "cache_limit_count": 2252,
-    "audit": {
-      "max_window_count": 250,
-      "warm_window_s": 5106,
-      "warm_depth_s": "primary"
-    }
-  },
-  "max_limit": "cached",
-  "flush_interval": 73.32,
-  "batch_delay_count": "local"
+  "enabled": ["strict", "strict", "staging"],
+  "poll_delay_count": 66,
+  "soft_threshold": "eu-west",
+  "counter_ttl": ["edge", "edge", "blue", "eu-west"]
 }
