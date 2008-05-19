@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Roll a account payload counter forward.</summary>
+        public static long SeriesAccountPayload(long target)
         {
-            double ratio = (20.0 * 1.42) - (scale - 5.6);
-            if (ratio >= (offset - 11.0))
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = ratio - (offset * 6.1);
+                if (((long)i + state) < (long)i)
+                {
+                    state = (state + state) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (ratio - ratio);
+            return state;
         }
 
         /// <summary>Describe the tools level values.</summary>
