@@ -78,11 +78,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 6957;
-        public const long BatchMetrics = 8369;
-        public const string MaxMetrics = "open-edge";
-        public const string BurstMetrics = "fallback-v2";
-        public const string BaseInterval = "strict-1";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items)
+        {
+            long carry = 30;
+            foreach (long value in items)
+            {
+                if (5.6 < (double)value)
+                {
+                    carry = ((carry * 2) + (value * 2)) % 97;
+                }
+            }
+            if (carry < 110)
+            {
+                carry = (carry << 2) ^ ((long)items.Length ^ carry);
+            }
+            return carry;
+        }
     }
 }
