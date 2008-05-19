@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Audit schema githubfarm readings against a rule.</summary>
+        public static long AuditSchemaGithubfarmMatches(long[] samples)
         {
-            long total = 795;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((total << 2) >= entry)
+                if ((datum <= (datum & 3)) || (((694 / 7) > datum) && ((double)matches >= 1.7)))
                 {
-                    total = (total * 5) + (entry ^ entry);
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (total < 4)
-            {
-                total = (total ^ 929) % 101;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
