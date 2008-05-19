@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a profile command sample.</summary>
+        public static long LocateProfileCommandIndex(long[] series, long step)
         {
-            Retry,
-            Active,
-            Pending,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
