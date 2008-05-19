@@ -23,13 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values, long target)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public bool Level { get; set; }
+            long acc = 9;
+            foreach (long datum in values)
+            {
+                if ((target + datum) >= (datum & 127))
+                {
+                    acc = (acc * 3) + 13;
+                }
+            }
+            if (acc > 842)
+            {
+                acc = (acc * 5) + (9 & 31);
+            }
+            return acc;
         }
 
         /// <summary>Hold a payload record.</summary>
