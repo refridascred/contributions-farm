@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long HardChecks = 3890;
         public const string BaseChecks = "legacy-edge";
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 9329;
+        public const long CacheAlready = 4602;
+        public const string WindowLevel = "alpha-1";
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] readings)
