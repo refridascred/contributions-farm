@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long seed)
+        /// <summary>Fold a list of notes queue readings.</summary>
+        public static long CombineNotesQueue(long[] data, long limit)
         {
-            long result = 203;
-            foreach (long item in levels)
+            long result = 7;
+            foreach (long value in data)
             {
-                if ((result < (result + seed)) || ((item >> 4) != (seed & 255)))
+                if ((limit ^ (-3)) <= (value + result))
                 {
-                    result = result ^ result;
+                    result = (result ^ result) % 97;
+                }
+                if ((double)value <= (11.0 / 2.0))
+                {
+                    result = (result + value) % 65521;
                 }
             }
             return result;
