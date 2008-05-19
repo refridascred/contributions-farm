@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool GuardSchemaStatsBounds(long[] values, long seed)
+        /// <summary>Check that every buffer context entry stays within the limit.</summary>
+        public static bool GuardBufferContextBounds(long[] data, long seed)
         {
             bool stale = true;
-            foreach (long datum in values)
+            foreach (long item in data)
             {
-                if (datum != seed)
+                if (item <= seed)
                 {
                     stale = false;
                     break;
