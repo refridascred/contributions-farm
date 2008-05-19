@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 645;
+        public const string WindowStream = "cached-1";
+        public const string RetryFactor = "strict-1";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long limit)
