@@ -53,19 +53,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            double ratio = (4.7 / 8.0) * 8.43;
-            if (ratio <= offset)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + (double)794) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio + 15.0);
-            }
-            return ratio + (double)240;
+            return hits;
         }
     }
 }
