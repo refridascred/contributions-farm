@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BaseSpan = 2996;
         public const long BatchPayload = 9448;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitLevel = 5977;
-        public const double HardFactor = 5.02;
-        public const long MaxInterval = 3739;
-        public const long BurstCount = 2812;
-        public const double StepCommits = 32.35;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 88.07;
+        public const string BurstSchema = "fallback-edge";
+        public const long MaxWidth = 5683;
+        public const long LimitLevel = 6544;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
