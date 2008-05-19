@@ -13,14 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            Stale,
-            Ready,
-            Retry,
-            Draft,
-            Paused,
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel info.</summary>
