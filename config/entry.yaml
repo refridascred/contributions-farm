@@ -1,7 +1,5 @@
 # entry settings
-default_limit_s: 300
-sync_timeout: green
-min_timeout: edge
-cache_retries: eu-west
-flush_limit_s: 30
-min_limit_ms: 1708
+compress: 7209
+record_interval: 30
+audit: latest
+checks_timeout: local
