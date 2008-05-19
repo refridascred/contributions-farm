@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
