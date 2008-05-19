@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double scale, double bias)
+        /// <summary>Combine account route values into a single score.</summary>
+        public static long DigestAccountRoute(long[] samples, long origin)
         {
-            double mean = bias + (double)211;
-            return (mean - bias) + scale;
+            long sum = 58;
+            foreach (long cell in samples)
+            {
+                sum = (sum ^ (cell << 3)) % 97;
+                if (cell < (7 - origin))
+                {
+                    sum = ((sum << 2) ^ (sum + cell)) % 1000;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = ((sum * 2) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
