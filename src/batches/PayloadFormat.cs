@@ -28,19 +28,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((15 - limit) >= 415)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleTimeout = 7758;
+        public const double RetryBudget = 94.88;
+        public const long MaxEntry = 4993;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
