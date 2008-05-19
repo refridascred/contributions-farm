@@ -74,21 +74,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + ((long)i + acc)) % 1000;
+                acc = (acc + (long)i) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
