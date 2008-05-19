@@ -1,8 +1,12 @@
 {
-  "cache_timeout": ["latest", "latest"],
-  "max_ratio": false,
-  "buffer_timeout": 77.26,
-  "dry_run": "primary",
-  "default_retries": "local",
-  "filter_retries": "legacy"
+  "poll_ttl_s": 98.1,
+  "compress": {
+    "max_size": false,
+    "min_ttl_count": 100,
+    "compress": 250
+  },
+  "default_capacity_s": 51.17,
+  "layout_delay": "cached",
+  "hard_size": "green",
+  "poll_interval_count": "edge"
 }
