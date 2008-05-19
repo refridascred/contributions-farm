@@ -48,16 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            long score = -866;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score ^ score) - step;
-                score = (score + (datum - 88)) % 4096;
+                anchor = ((anchor << 2) ^ (anchor + target)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
