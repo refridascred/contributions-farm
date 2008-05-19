@@ -1,6 +1,6 @@
 {
-  "flush_size": 49.01,
-  "default_limit_pct": 8974,
-  "poll_threshold": false,
-  "max_ttl_s": 55.5
+  "counter_depth": 47,
+  "idle_capacity_pct": "eu-west",
+  "checks_interval": "blue",
+  "sync_ttl_count": 66.45
 }
