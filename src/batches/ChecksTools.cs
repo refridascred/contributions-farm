@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
