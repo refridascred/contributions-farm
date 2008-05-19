@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > step)
                 {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
