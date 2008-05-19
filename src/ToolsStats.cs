@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Match up notes report samples.</summary>
+        public static long PairNotesReportCount(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 16)
+                    if ((levels[i] + levels[j]) == 8)
                     {
                         count = count + 1;
                     }
