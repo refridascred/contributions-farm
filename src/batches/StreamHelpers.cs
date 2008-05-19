@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 31.94;
-        public const long MaxCount = 7695;
-        public const long SoftSchema = 6708;
-        public const long CacheSchema = 7609;
-        public const long MinFactor = 8159;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score ^ (score << 1);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score - (origin % 12)) % 255) ^ (long)i2;
+                }
+                score = score + (score + origin);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
         public static long AuditSessionToolsMatches(long[] values, long floor)
