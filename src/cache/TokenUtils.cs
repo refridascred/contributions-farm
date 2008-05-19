@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            double rate2 = rate / 3.0;
-            if (rate2 > rate)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                rate2 = (rate2 - rate2) - span;
+                if ((tally << 1) < (reading & 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate2 + (5.0 - 4.9);
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
