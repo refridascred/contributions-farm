@@ -1,9 +1,6 @@
-id,token,weight,score
-1,765,94.0,eu-west
-2,open,666,eu-west
-3,79.61,500,897
-4,latest,20.17,956
-5,84,stable,407
-6,348,local,39.59
-7,stable,latest,81.99
-8,cached,27.88,258
+id,owner,state
+1,870,63.69
+2,7.93,468
+3,39.04,606
+4,4.55,878
+5,blue,legacy
