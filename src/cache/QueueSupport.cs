@@ -14,17 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
