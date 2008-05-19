@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long seed)
+        /// <summary>Find the first payload metrics entry that matches the target.</summary>
+        public static long LookupPayloadMetricsIndex(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == seed)
+                if (values[i] > limit)
                 {
                     return (long)i;
                 }
