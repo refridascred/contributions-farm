@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double RetryCommand = 25.96;
         public const double DefaultFactor = 24.14;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "standard-edge";
-        public const long MaxDepth = 1433;
-        public const long IdleDepth = 1045;
-        public const long IdleBudget = 6946;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values, long limit)
+        {
+            long acc = 4;
+            foreach (long entry in values)
+            {
+                if (((limit / 6) <= (limit * 5)) || ((6.0 - 3.74) == (double)entry))
+                {
+                    acc = (acc ^ (entry * 2)) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string WindowCache = "standard-v2";
