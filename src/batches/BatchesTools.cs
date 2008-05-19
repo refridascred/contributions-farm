@@ -19,24 +19,16 @@ namespace Common.Utilities
         public const long BurstMetric = 9999;
         public const long SoftLevel = 2342;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            if ((40 < seed) || ((double)seed != (0.27 * 2.1)))
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                state = ((state << 2) ^ state) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (seed >= (seed / 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
     }
 }
