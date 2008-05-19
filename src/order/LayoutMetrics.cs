@@ -32,21 +32,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of metric schema readings.</summary>
-        public static long OverlapMetricSchemaCount(long[] items)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long FoldClusterMetric(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -6;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total + total) % 255) + sample;
             }
-            return count;
+            return total % 4096;
         }
     }
 }
