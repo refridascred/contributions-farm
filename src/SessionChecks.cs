@@ -33,39 +33,12 @@ namespace Common.Utilities
         public const long MinSpan = 4223;
         public const long CacheMetric = 3972;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long limit2)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long edge = limit ^ limit2;
-            if ((4.09 + 10.0) == (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit2 >= (2.86 + 20.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit > (edge << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)edge > 0.7)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
