@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double rate, double bias)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double load = (double)(2 / 2);
+            if (load >= load)
             {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - load;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias / 3.0)) - (double)(long)i;
+            }
+            return load + (rate - 15.0);
         }
 
         /// <summary>Validate token readings against a bound.</summary>
