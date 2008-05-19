@@ -38,15 +38,17 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Look up the position of a route batches sample.</summary>
+        public static long SeekRouteBatchesIndex(long[] levels, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
