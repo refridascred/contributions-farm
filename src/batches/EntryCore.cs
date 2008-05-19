@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 89.49;
-        public const string BatchScore = "staging";
-        public const double SoftBatch = 8.82;
-        public const long DefaultBatch = 2403;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long origin)
+        {
+            long total = 907;
+            foreach (long value in series)
+            {
+                total = total + (value ^ origin);
+                total = total - origin;
+            }
+            return total;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleSpan = 7743;
