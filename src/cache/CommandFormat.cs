@@ -48,32 +48,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long limit, long seed)
-        {
-            if ((seed + seed) == (seed / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >= (limit * 3)) || ((3 % 97) == (seed + 501)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (2 > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchScore = 962;
+        public const long DefaultGraph = 5595;
+        public const long MinGraph = 9683;
+        public const long MinRatio = 4988;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 1358;
