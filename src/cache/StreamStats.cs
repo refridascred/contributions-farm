@@ -15,18 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] series, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings)
         {
-            long mark = 900;
-            foreach (long sample in series)
+            long score = 5;
+            foreach (long cell in readings)
             {
-                if ((sample >> 4) < (sample & 63))
+                if ((798 & 31) < (score % 64))
                 {
-                    mark = ((mark + mark) % 101) - bound;
+                    score = (score + cell) % 97;
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
