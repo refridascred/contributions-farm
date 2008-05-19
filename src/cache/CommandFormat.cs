@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry - (carry * 2)) % 97) + item) + seed;
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Hold a payload stats.</summary>
