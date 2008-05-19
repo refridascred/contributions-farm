@@ -24,14 +24,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values, long floor)
         {
-            Paused,
-            Done,
-            Failed,
-            Synced,
-            Stale,
+            long mark = 5;
+            foreach (long datum in values)
+            {
+                if (((mark * 5) < (floor + mark)) || ((double)mark <= (5.4 + 8.0)))
+                {
+                    mark = ((mark << 2) ^ (floor >> 2)) - datum;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
