@@ -52,18 +52,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] series, long offset)
+        /// <summary>Project the next already filter value.</summary>
+        public static double ScaleAlreadyFilter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double drift = (double)26 + (3.4 / 2.0);
+            if (drift > ratio)
             {
-                if ((double)seen == (double)offset)
-                {
-                    seen = (seen + 2) + item;
-                }
+                drift = (drift + 19.0) - span;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (drift + drift);
         }
     }
 }
