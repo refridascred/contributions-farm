@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] series)
+        /// <summary>Scale a account already figure with a bias.</summary>
+        public static double AdjustAccountAlready(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double bias = floor;
+            if (bias <= weight)
             {
-                if (value < (value + value))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias + (floor - floor);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + (10.0 * 1.93);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
