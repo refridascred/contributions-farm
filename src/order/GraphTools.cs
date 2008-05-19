@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long result = 5;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (((result + (target % 100)) % 65521) ^ (long)i) + sample;
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result - (target - result)) % 4096;
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
