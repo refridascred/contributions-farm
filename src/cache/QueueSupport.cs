@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cache format entries that pass the check.</summary>
-        public static long CountCacheFormatGaps(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((9.9 * 7.7) != (double)value) || ((count - count) >= (value << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
