@@ -57,11 +57,19 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 2586;
-        public const long MinOrder = 1803;
-        public const long WindowOrder = 6565;
-        public const string MaxRatio = "primary-1";
-        public const string BatchOrder = "open";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
