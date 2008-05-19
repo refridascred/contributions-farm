@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long bound)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Idle,
+            if ((double)bound >= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) <= (-482))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
