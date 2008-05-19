@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleBuffer = 9176;
         public const long DefaultLevel = 4387;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] items, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample >= bound)
+                if ((seed & 63) > (75 + seed))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - cell;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Blend two farm measurements.</summary>
