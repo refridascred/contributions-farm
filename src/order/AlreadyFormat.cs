@@ -37,23 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] readings)
         {
-            double scale = (offset + 8.6) / 8.0;
-            if (scale < scale)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                scale = (scale - scale) - rate;
+                if (item < (item >> 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (12.0 / 5.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            return matches;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
