@@ -61,18 +61,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] series, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((double)seed < (8.6 * 8.0))
             {
-                if (!((seed - count) < (26 + seed)))
+                return 4;
+            }
+            else
+            {
+                if (limit < (limit + limit))
                 {
-                    count = (count + 3) ^ cell;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
