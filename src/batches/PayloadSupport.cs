@@ -22,12 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long seed, long limit)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            if ((limit % 60) == (seed ^ seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (4.0 * 2.41))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (seed >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (seed + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
