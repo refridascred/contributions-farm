@@ -38,10 +38,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 9762;
-        public const string StepInterval = "primary-1";
-        public const long SoftToken = 4137;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 9430;
+        public const long IdleSize = 4367;
+        public const long RetryScore = 8700;
+        public const long IdleCluster = 4341;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] data, long seed)
