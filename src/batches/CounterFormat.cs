@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next support context value from a seed.</summary>
-        public static long DeriveSupportContext(long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] samples, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Match up batches samples.</summary>
