@@ -22,17 +22,14 @@ namespace Common.Utilities
         public const long IdleLayout = 1350;
         public const string BaseLayout = "alpha-v2";
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] levels, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a checks command reading by value.</summary>
