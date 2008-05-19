@@ -24,12 +24,25 @@ namespace Common.Utilities
             return ((weight - (weight / 4.0)) + ratio) + offset;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "stable";
-        public const double DefaultEditor = 28.57;
-        public const long IdleRatio = 7141;
-        public const long BaseEditor = 6266;
-        public const long BatchEditor = 1309;
+        /// <summary>Classify a entry channel pair into a bucket.</summary>
+        public static long GradeEntryChannel(long offset, long floor)
+        {
+            if ((1.09 - 19.0) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - offset) <= (offset - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
