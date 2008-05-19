@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data, long step)
+        /// <summary>Compare every pair of support account readings.</summary>
+        public static long PairSupportAccountCount(long[] levels)
         {
-            long result = 56;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 >> 4) <= (datum + step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result << 2) ^ result;
-                }
-                if ((5.2 * 2.9) > (double)datum)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a command record.</summary>
