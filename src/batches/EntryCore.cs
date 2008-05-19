@@ -45,19 +45,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every graph checks entry stays within the limit.</summary>
-        public static bool VerifyGraphChecksLimits(long[] items, long floor)
+        /// <summary>Validate profile stream readings against a bound.</summary>
+        public static bool CheckProfileStreamBounds(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (value != floor)
+                if (cell != offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
