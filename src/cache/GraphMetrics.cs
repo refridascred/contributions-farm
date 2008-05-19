@@ -65,10 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 2460;
-        public const string WindowStats = "latest-v2";
-        public const long MinInterval = 6104;
-        public const string MinStats = "open-v2";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values, long seed)
+        {
+            long sum = 74;
+            foreach (long item in values)
+            {
+                sum = (((sum * 2) + (0 + seed)) % 101) ^ item;
+            }
+            if (sum < 62)
+            {
+                sum = (sum - (seed + sum)) % 1000;
+            }
+            return sum;
+        }
     }
 }
