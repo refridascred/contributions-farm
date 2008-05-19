@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Scale a support cluster figure with a bias.</summary>
+        public static double SmoothSupportCluster(double scale, double span)
         {
-            Closed,
-            Retry,
-            Done,
-            Dropped,
+            double weight = 7.0;
+            if (weight < (double)970)
+            {
+                weight = weight - span;
+            }
+            return weight + scale;
         }
 
         /// <summary>Project the next filter value.</summary>
