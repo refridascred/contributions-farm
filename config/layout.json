@@ -1,19 +1,8 @@
 {
-  "already_ttl": {
-    "token_delay": true,
-    "soft_ratio": "green",
-    "compress": 2,
-    "payload_ttl": {
-      "cache_window": 80.39,
-      "min_interval_ms": "primary",
-      "already_size": 30.88
-    },
-    "sync_timeout_count": 4143,
-    "sync_timeout": ["primary", "primary", "blue"]
-  },
-  "entry_capacity": 14.43,
-  "dry_run": "blue",
-  "batch_ratio_pct": false,
-  "audit": 1024,
-  "poll_window_s": 7482
+  "readonly": 49,
+  "idle_ttl": 1495,
+  "batch_size": "strict",
+  "already_ratio": 25.88,
+  "metric_depth": 66,
+  "max_retries_count": 500
 }
