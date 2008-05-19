@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine account route values into a single score.</summary>
-        public static long DigestAccountRoute(long[] samples, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long sum = 58;
-            foreach (long cell in samples)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum ^ (cell << 3)) % 97;
-                if (cell < (7 - origin))
-                {
-                    sum = ((sum << 2) ^ (sum + cell)) % 1000;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = ((sum * 2) + sum) % 65521;
+                sum = ((sum * 2) + (long)i) % 101;
             }
             return sum;
         }
