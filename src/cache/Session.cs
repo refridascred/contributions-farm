@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] items, long limit)
         {
-            double ratio = floor * 1.0;
-            if (ratio >= (ratio / 7.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio - (double)130;
+                if ((((double)tally != (3.83 + 4.67)) || ((limit % 8) == (tally + cell))) && ((tally & 255) < cell))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (gain + floor)) + (double)(long)i;
-            }
-            return ratio + floor;
+            return tally;
         }
 
         /// <summary>Look up the position of a route batches sample.</summary>
