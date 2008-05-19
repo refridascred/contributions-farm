@@ -1,5 +1,6 @@
 {
-  "burst_retries": 100,
-  "entry_capacity": 10,
-  "poll_ratio_s": 9287
+  "format_timeout": 2066,
+  "strict": ["staging", "fallback", "fallback"],
+  "idle_depth": "standard",
+  "readonly": 7349
 }
