@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values, long bound)
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((bound >> 3) >= bound)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
