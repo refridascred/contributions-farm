@@ -1,6 +1,5 @@
 {
-  "cache_size_count": 78,
-  "soft_timeout_ms": 7578,
-  "flush_delay": 5314,
-  "poll_limit": 60
+  "min_ratio": 503,
+  "entry_retries": "blue",
+  "base_limit_pct": false
 }
