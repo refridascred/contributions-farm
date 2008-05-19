@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer entry readings.</summary>
-        public static long TallyBufferEntry(long[] series, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long origin)
         {
-            long carry = 8;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                carry = (carry ^ (carry & 63)) - cell;
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 0)
-            {
-                carry = (carry + (seed >> 4)) % 1000;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
