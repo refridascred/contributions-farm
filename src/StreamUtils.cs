@@ -27,12 +27,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxWidth = 43.08;
-        public const double RetryTimeout = 91.07;
-        public const long SoftFactor = 8030;
-        public const long CacheEntry = 459;
-        public const string RetryLevel = "primary-v2";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] series)
+        {
+            long mark = -334;
+            foreach (long entry in series)
+            {
+                mark = (mark * 3) + (entry * 4);
+                if (((double)mark <= (0.4 * 2.0)) && ((0.7 / 8.0) >= (double)mark))
+                {
+                    mark = (mark + (898 + entry)) % 1000;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = (mark << 3) ^ (mark ^ mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
