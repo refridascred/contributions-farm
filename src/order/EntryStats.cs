@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long step)
         {
-            Active,
-            Idle,
-            Paused,
-            Stale,
+            if ((step * 4) > offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset >= (5.0 + 13.0)) && ((offset & 127) != (step + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset * 3) <= (step % 100))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
