@@ -35,24 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long total = 289;
-            foreach (long entry in samples)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry >> 1) == (97 >> 5))
-                {
-                    total = (total << 2) ^ origin;
-                    continue;
-                }
-                total = total + (entry + total);
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (total < 895)
-            {
-                total = ((total * 2) + origin) % 1000;
-            }
-            return total;
+            return score;
         }
     }
 }
