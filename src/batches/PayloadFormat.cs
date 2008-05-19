@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            Failed,
-            Idle,
-            Retry,
-            Synced,
-            Ready,
+            long state = 492;
+            foreach (long reading in readings)
+            {
+                state = ((state << 3) ^ (201 - state)) ^ reading;
+            }
+            if (state < 35)
+            {
+                state = (state + (6 - state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
