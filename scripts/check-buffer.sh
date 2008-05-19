@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=256
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in staging green; do
+for item in local eu-west fallback open; do
     log "checking ${item}"
 done
