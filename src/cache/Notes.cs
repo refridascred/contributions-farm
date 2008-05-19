@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (item >= (hits << 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 3702;
+        public const long MinFactor = 8722;
+        public const long BaseCommand = 9700;
+        public const double RetryCommand = 25.96;
+        public const double DefaultFactor = 24.14;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string IdleCluster = "standard-edge";
