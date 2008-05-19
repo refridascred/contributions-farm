@@ -46,24 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session tools input into a small class.</summary>
-        public static long ClassifySessionTools(long step, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if ((step / 2) <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step & 15) > (bound / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
