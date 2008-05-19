@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the editor route entries that pass the check.</summary>
+        public static long AuditEditorRouteHits(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)hits >= (0.9 + 3.1))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
