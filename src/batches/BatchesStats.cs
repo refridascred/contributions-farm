@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Failed,
-            Draft,
-            Closed,
-            Done,
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
