@@ -33,13 +33,12 @@ namespace Common.Utilities
             return load - (scale + scale);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            New,
-            Queued,
-            Stale,
-            Ready,
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
