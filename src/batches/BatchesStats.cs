@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinDepth = 79.72;
-        public const double HardSchema = 80.11;
-        public const string BatchRatio = "fallback-edge";
-        public const long SoftSchema = 6605;
-        public const long DefaultBudget = 5058;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 13.88;
+        public const long MinSession = 6877;
+        public const long LimitCount = 1479;
+        public const long MinLevel = 7216;
 
         /// <summary>Adjust a record counter reading.</summary>
         public static double SmoothRecordCounter(double scale, double bias)
