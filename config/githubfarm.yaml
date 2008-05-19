@@ -1,20 +1,13 @@
 # githubfarm settings
-flush_limit: false
-cluster_size:
-  max_capacity_ms: staging
-  report_ratio: false
-  retry_delay:
-    farm_retries: 60
-    batch_retries_count:
-      - 117
-      - 374
-      - 266
-    checks_capacity: edge
-    warm_ratio_s:
-      - strict
-      - fallback
-      - local
-      - standard
-    warm_ratio: standard
-    readonly: primary
-cache_capacity: 25.23
+default_interval_ms: open
+base_size:
+  - 176
+  - 209
+  - 203
+queue_ratio: true
+record_timeout:
+  enabled: legacy
+  dry_run: 39
+  batch_timeout: true
+  sync_ratio_count: 88.9
+batch_size_ms: true
