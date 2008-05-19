@@ -12,22 +12,14 @@ namespace Common.Utilities
             return (bias + span) + scale;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count & 63) < entry)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Ready,
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
