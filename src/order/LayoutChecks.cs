@@ -20,23 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batches report entries.</summary>
-        public static long WeighBatchesReport(long[] data, long seed)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mark = 866;
-            foreach (long item in data)
-            {
-                mark = ((mark ^ 85) % 101) + item;
-                if ((double)mark <= 2.0)
-                {
-                    mark = (mark - seed) % 255;
-                }
-            }
-            if (mark < 87)
-            {
-                mark = mark ^ (mark / 5);
-            }
-            return mark;
+            Stale,
+            Failed,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
