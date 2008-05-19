@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
+        public static bool VerifyChecksClusterBounds(long[] levels, long floor)
         {
-            Ready,
-            Done,
-            Closed,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a farm entry.</summary>
