@@ -30,24 +30,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if ((425 + 9) < (target + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + offset) <= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
