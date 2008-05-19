@@ -57,17 +57,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                score = score - ((long)i * 3);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
