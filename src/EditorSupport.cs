@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Dropped,
-            Retry,
-            Closed,
             Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
