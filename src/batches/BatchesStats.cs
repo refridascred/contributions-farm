@@ -17,12 +17,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long seed, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            long edge = seed - target;
+            if (574 >= edge)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (19.0 - 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a record counter reading.</summary>
