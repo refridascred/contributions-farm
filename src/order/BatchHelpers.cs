@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double bias)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = ((rate2 - (double)35) + (double)(long)i) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate2 - rate;
+            return tally;
         }
 
         /// <summary>Grade a session record value against two limits.</summary>
