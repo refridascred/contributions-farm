@@ -71,12 +71,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCount = 7462;
-        public const double HardCache = 80.59;
-        public const string RetryCount = "alpha-1";
-        public const string BaseCache = "open-edge";
-        public const string IdleCache = "primary-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleTimeout = 7981;
+        public const long MaxCluster = 8099;
+        public const double BaseTimeout = 34.95;
+        public const double DefaultCluster = 7.78;
+        public const double BurstCluster = 30.85;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] items, long bound)
