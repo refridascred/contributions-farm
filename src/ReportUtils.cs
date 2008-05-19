@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            double ratio = (floor / 5.0) / 3.0;
-            if (ratio < (9.2 / 6.0))
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = (ratio + ratio) - gain;
+                acc = (acc * 2) + (acc + acc);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 9.11) + (double)(long)i;
-            }
-            return ratio + (5.8 - 6.0);
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
