@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftSpan = 16.1;
-        public const long WindowTimeout = 9008;
-        public const string CacheBudget = "latest-v2";
-        public const double BatchTimeout = 88.58;
+        /// <summary>Measure how many buffer context samples are out of range.</summary>
+        public static long TallyBufferContextMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((((-7) + matches) >= (matches >> 5)) && ((1 + reading) <= (matches * 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] data, long floor)
