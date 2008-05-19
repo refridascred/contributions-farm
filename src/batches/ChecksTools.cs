@@ -28,10 +28,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryInterval = 2146;
-        public const double BatchDepth = 35.67;
-        public const double DefaultScore = 2.26;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
