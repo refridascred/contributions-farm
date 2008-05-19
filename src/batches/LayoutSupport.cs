@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "staging-v2";
-        public const long DefaultBatch = 8263;
-        public const long MaxWidth = 7757;
-        public const long WindowBatch = 1866;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
