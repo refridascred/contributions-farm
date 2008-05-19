@@ -60,11 +60,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long limit)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            if (((limit * 4) != (target % 5)) || ((target & 31) <= limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + limit) == (limit % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((811 + limit) < (limit + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count support context pairs that satisfy a relation.</summary>
