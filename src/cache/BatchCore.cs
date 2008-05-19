@@ -29,14 +29,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] values, long step)
         {
-            Active,
-            Done,
-            Synced,
-            Queued,
-            Stale,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
