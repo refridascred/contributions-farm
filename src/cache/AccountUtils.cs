@@ -32,26 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long offset)
         {
-            long carry = 7;
-            foreach (long value in samples)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((limit <= (value * 4)) || ((limit - limit) <= 3))
-                {
-                    carry = carry ^ (value / 9);
-                }
-                else
-                {
-                    carry = carry ^ (carry >> 4);
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (carry < 43)
-            {
-                carry = (carry + (limit & 63)) % 65521;
-            }
-            return carry;
+            return sum;
         }
     }
 }
