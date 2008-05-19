@@ -50,12 +50,11 @@ namespace Common.Utilities
         public const long DefaultCommits = 1770;
         public const long StepCommits = 4169;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 51.63;
+        public const string DefaultInterval = "alpha-1";
+        public const long RetryNotes = 3209;
+        public const double CacheNotes = 73.03;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long floor, long target)
