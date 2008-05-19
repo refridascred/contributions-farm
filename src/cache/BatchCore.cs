@@ -34,13 +34,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long prev = bound - limit;
+            if ((3.8 + 4.77) >= (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound > (9.0 - 0.48))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound & 3) <= (prev % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)prev >= 9.02))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session tools input into a small class.</summary>
