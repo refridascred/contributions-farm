@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5717;
         public const long CacheRatio = 7222;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardInterval = 6173;
-        public const long LimitSize = 1849;
-        public const string SoftEntry = "legacy-v2";
-        public const long StepEntry = 1280;
-        public const double IdleEntry = 43.01;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
