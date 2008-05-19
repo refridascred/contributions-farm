@@ -1,5 +1,6 @@
 {
-  "sync_depth": true,
-  "cluster_window": 51.72,
-  "sync_ratio": ["fallback", "stable"]
+  "base_interval_ms": 5846,
+  "readonly": true,
+  "filter_ttl": 500,
+  "cache_timeout": "stable"
 }
