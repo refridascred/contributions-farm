@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitBudget = 8833;
-        public const long RetryTimeout = 9501;
-        public const long BurstFormat = 7669;
-        public const long LimitFormat = 4775;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double bias)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = ((rate2 - (double)35) + (double)(long)i) + bias;
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] readings)
