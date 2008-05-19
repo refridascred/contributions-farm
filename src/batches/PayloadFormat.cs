@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Failed,
+            Idle,
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
