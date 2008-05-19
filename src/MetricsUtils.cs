@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first session command entry that matches the target.</summary>
-        public static long LookupSessionCommandIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 28.54;
+        public const long IdleWidth = 339;
+        public const long BatchTimeout = 7751;
+        public const double BatchAlready = 42.7;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TallyChecks(long[] items)
