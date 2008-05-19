@@ -26,14 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Active,
             Locked,
-            Ready,
             Pending,
-            Failed,
+            Dropped,
         }
 
         /// <summary>Accumulate context samples.</summary>
