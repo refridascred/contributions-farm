@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >> 2) == (4 & 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Look up the position of a layout stats sample.</summary>
