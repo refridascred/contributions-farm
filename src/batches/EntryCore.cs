@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 8264;
-        public const long MaxSize = 8873;
-        public const string BatchRecord = "local-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 89.49;
+        public const string BatchScore = "staging";
+        public const double SoftBatch = 8.82;
+        public const long DefaultBatch = 2403;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleSpan = 7743;
