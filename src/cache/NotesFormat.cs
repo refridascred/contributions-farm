@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] series)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + hits) <= (long)series.Length)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate layout payload readings against a bound.</summary>
