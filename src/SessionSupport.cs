@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double rate, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            double weight = (double)(0 << 2);
-            if (weight >= (double)740)
+            long sum = 1;
+            foreach (long reading in readings)
             {
-                weight = (weight + 9.13) + floor;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum << 3) ^ (sum + 46)) ^ (long)i;
+                }
+                if ((long)readings.Length < (sum << 1))
+                {
+                    sum = sum - reading;
+                }
             }
-            return weight + (weight + rate);
+            if (sum < 4)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
