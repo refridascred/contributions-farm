@@ -43,18 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] series, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (!(((3 + value) > (floor / 8)) || (floor > count)))
+                if (value >= target)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
