@@ -23,18 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long bound)
         {
-            long mark = 5;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (((mark * 5) < (floor + mark)) || ((double)mark <= (5.4 + 8.0)))
+                if (item >= bound)
                 {
-                    mark = ((mark << 2) ^ (floor >> 2)) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return found;
         }
     }
 }
