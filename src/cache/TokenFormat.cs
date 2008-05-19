@@ -33,17 +33,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - (bound ^ total)) % 97;
-                total = ((total << 2) ^ ((long)i + total)) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
