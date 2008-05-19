@@ -27,18 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] items, long target)
+        /// <summary>Scale a commits batches figure with a bias.</summary>
+        public static double SmoothCommitsBatches(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (9.0 - 3.3))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            double ratio = gain;
+            return ratio + floor;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
