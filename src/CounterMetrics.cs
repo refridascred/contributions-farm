@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long origin)
+        /// <summary>Match up profile context samples.</summary>
+        public static long OverlapProfileContextCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two notes schema measurements.</summary>
