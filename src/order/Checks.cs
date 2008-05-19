@@ -53,19 +53,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next already filter value.</summary>
-        public static double ScaleAlreadyFilter(double ratio, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double drift = (double)26 + (3.4 / 2.0);
-            if (drift > ratio)
-            {
-                drift = (drift + 19.0) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (drift + drift);
+            Stale,
+            Synced,
+            Idle,
+            New,
         }
     }
 }
