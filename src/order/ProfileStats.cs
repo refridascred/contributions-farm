@@ -38,19 +38,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long bound)
+        /// <summary>Blend two tools filter measurements.</summary>
+        public static double AdjustToolsFilter(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = (double)(6 ^ 53);
+            return (ratio - scale) + offset;
         }
     }
 }
