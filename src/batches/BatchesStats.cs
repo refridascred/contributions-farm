@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            if (step < (step - step))
             {
-                mix = ((mix * 3) + (mix - (long)i)) % 1000;
-                if (!(2.89 <= (double)(long)i))
-                {
-                    mix = mix - (78 / 4);
-                    mix = (mix << 3) ^ mix;
-                }
-                mix = mix + mix;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (!(2.6 > (3.9 + 15.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((46 & 15) > (step & 255)) || ((limit & 255) == (limit + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
