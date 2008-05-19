@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string SoftLayout = "stable";
         public const double HardFactor = 85.58;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit token checks readings against a rule.</summary>
+        public static long MeasureTokenChecksHits(long[] values)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((long)values.Length < (tally & 31))
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
