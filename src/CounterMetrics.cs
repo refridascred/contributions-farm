@@ -34,16 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Look up the position of a command support sample.</summary>
+        public static long FindCommandSupportIndex(long[] levels, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (origin + (long)i)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
