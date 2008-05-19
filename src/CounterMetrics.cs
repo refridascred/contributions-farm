@@ -30,12 +30,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleTimeout = 7981;
-        public const long MaxCluster = 8099;
-        public const double BaseTimeout = 34.95;
-        public const double DefaultCluster = 7.78;
-        public const double BurstCluster = 30.85;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double span)
+        {
+            double rate = 12.0;
+            if (rate < (3.69 + rate))
+            {
+                rate = ((rate + (7.0 / 8.0)) - weight) - span;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long seed, long target)
