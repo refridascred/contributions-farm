@@ -48,16 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor << 2) ^ (anchor + target)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
