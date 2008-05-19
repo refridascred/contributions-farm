@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 1709;
-        public const string StepRecord = "stable";
-        public const long MaxScore = 1108;
-        public const long DefaultSpan = 1534;
-        public const long BurstRecord = 5;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "strict-v2";
+        public const string MaxEntry = "staging-1";
+        public const string IdleScore = "stable-1";
+        public const long WindowEntry = 5232;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
