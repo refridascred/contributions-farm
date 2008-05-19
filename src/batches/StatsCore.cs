@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 5) <= datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
