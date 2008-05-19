@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] items, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((1 + 702) > tally) || (((80 * 5) >= tally) && ((87 << 3) <= (step / 4))))
+                carry = (carry + (carry / 8)) % 101;
+                if ((473 - carry) < ((long)i - carry))
                 {
-                    tally = (tally + 1) + sample;
+                    carry = (carry ^ (carry & 255)) % 97;
                 }
+                else
+                {
+                    carry = carry ^ (carry + carry);
+                }
+                carry = (carry - (carry << 3)) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
