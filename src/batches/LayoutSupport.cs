@@ -43,23 +43,22 @@ namespace Common.Utilities
         public const long RetrySupport = 1102;
         public const double CacheRatio = 73.8;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long seed)
+        /// <summary>Classify a stats checks pair into a bucket.</summary>
+        public static long GradeStatsChecks(long origin, long offset)
         {
-            long prev = floor ^ seed;
-            if ((floor + seed) >= (prev & 31))
+            if (origin >= (origin + offset))
             {
                 return 1;
             }
             else
             {
-                if (seed >= (floor + floor))
+                if ((origin > (origin / 3)) && ((origin & 3) < (offset & 7)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
