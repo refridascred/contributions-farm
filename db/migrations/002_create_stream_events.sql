@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    created_at TIMESTAMP
+    rank INTEGER,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_owner ON stream_events (owner);
+
+INSERT INTO stream_events (owner, rank, weight) VALUES ('eu-west', 0, 39.48);
+INSERT INTO stream_events (owner, rank, weight) VALUES ('strict', 60, 40.71);
+INSERT INTO stream_events (owner, rank, weight) VALUES ('latest', 36, 65.18);
