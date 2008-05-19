@@ -20,17 +20,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] series, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)target == (double)target2)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((target >> 5) >= target)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
