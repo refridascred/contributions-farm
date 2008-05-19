@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = 64;
+            foreach (long cell in data)
             {
-                total = (total - ((long)i * 5)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
+                carry = (carry << 3) ^ (cell - floor);
+                carry = carry ^ (carry % 100);
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
