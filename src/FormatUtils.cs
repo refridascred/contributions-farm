@@ -89,18 +89,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((seen / 3) != (entry - (-1)))
+                if ((double)item != (14.0 / 2.0))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
