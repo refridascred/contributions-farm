@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFactor = 6741;
-        public const string BaseFormat = "cached-v2";
-        public const long CacheLevel = 7804;
-        public const string CacheSize = "primary-v2";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((6.65 / 7.0) > (double)tally)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long floor, long floor2)
