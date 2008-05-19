@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-open}"
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge blue cached green; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest strict; do
     log "checking ${item}"
 done
