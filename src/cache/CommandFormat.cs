@@ -29,24 +29,17 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long WeighOrderMetrics(long[] items, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long limit)
         {
-            long carry = 29;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((10 ^ step) != (step + datum))
+                if (readings[i] < limit)
                 {
-                    carry = ((carry * 5) + (datum + datum)) % 1000;
-                    carry = ((carry * 3) + carry) % 255;
-                }
-                carry = carry - carry;
-                if ((carry & 31) <= datum)
-                {
-                    carry = (carry + (92 >> 5)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
