@@ -41,18 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((double)matches <= (double)item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double bias2 = scale;
+            return (bias2 + 6.0) + bias;
         }
     }
 }
