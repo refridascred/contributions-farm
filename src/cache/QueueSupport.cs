@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Count payload report pairs that satisfy a relation.</summary>
+        public static long PairPayloadReportCount(long[] samples)
         {
-            double drift = (double)(49 + 30);
-            if (drift <= bias2)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (6.9 / 8.0)) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (2.0 * 1.6);
-            }
-            return drift + (1.65 + drift);
+            return matches;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
