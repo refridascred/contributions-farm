@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count layout already pairs that satisfy a relation.</summary>
-        public static long MatchLayoutAlreadyCount(long[] values)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 12)
+                    if ((values[i] + values[j]) > 15)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
