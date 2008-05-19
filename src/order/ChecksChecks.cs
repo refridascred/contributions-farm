@@ -35,21 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mark = 39;
-            foreach (long reading in data)
-            {
-                mark = (mark << 3) ^ (reading / 8);
-                mark = (mark - (6 - reading)) % 101;
-                mark = (mark + (reading + reading)) % 65521;
-            }
-            if (mark < 2)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark % 1000;
+            Closed,
+            Retry,
+            Dropped,
+            Done,
         }
     }
 }
