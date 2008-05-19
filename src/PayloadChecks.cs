@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 45;
+            foreach (long reading in values)
             {
-                if ((reading % 64) >= (6 - hits))
+                total = (total - (total & 15)) % 65521;
+                if (!((total * 4) == (total + (long)values.Length)))
                 {
-                    hits = hits + 3;
+                    total = ((total << 3) ^ (total ^ total)) % 97;
+                    total = (total * 2) + reading;
                 }
+                total = ((total << 3) ^ (487 + total)) % 255;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
