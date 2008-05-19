@@ -47,13 +47,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
