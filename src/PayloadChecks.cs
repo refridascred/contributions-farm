@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Synced,
-            Queued,
-            Stale,
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
