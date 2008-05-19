@@ -54,11 +54,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitSpan = "fallback-v2";
-        public const double StepCommand = 71.86;
-        public const double StepScore = 21.06;
-        public const long LimitCommand = 9062;
-        public const string MaxCommand = "open-1";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long limit, long step)
+        {
+            long next = limit ^ step;
+            if (((674 % 60) == (limit / 6)) && ((next - step) < (0 % 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (11.0 > (double)next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 4) <= (412 * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= (-611))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
