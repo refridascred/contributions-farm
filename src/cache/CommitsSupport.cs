@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((offset & 31) < (matches << 3))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "stable-edge";
+        public const long BatchTools = 8877;
+        public const long SoftTimeout = 1036;
+        public const long SoftTools = 9531;
+        public const double MaxTools = 89.62;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
