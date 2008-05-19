@@ -34,12 +34,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long bound)
         {
-            Done,
-            Pending,
-            Idle,
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((double)sum < (1.33 + 7.0)) || (bound >= (bound & 31)))
+                {
+                    sum = ((sum << 3) ^ 865) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ bound) % 4096;
+                    sum = (sum << 2) ^ bound;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (sum - ((long)i / 5)) + (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
