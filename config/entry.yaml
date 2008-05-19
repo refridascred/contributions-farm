@@ -1,4 +1,18 @@
 # entry settings
-max_delay_ms: green
-readonly: 500
-max_limit_s: 100
+batches_capacity: strict
+base_capacity_pct: staging
+retry_threshold_ms: standard
+tools_delay:
+  support_ratio: 500
+  hard_ratio_ms: false
+  sync_delay: 27
+metric_ratio:
+  - stable
+  - latest
+  - staging
+  - local
+max_delay_pct:
+  - eu-west
+  - staging
+  - stable
+  - edge
