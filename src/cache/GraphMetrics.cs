@@ -46,19 +46,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long seed)
         {
-            double load = (double)(693 << 2);
-            if (load >= load)
+            long mix = 317;
+            foreach (long datum in items)
             {
-                load = (load - (gain / 3.0)) + offset;
+                mix = ((mix * 3) + (datum + datum)) % 97;
+                if ((seed - (long)items.Length) > (27 & 31))
+                {
+                    mix = ((mix << 2) ^ datum) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mix < (-85))
             {
-                load = (load - (4.79 / 2.0)) + (double)(long)i;
+                mix = (mix << 2) ^ (mix * 2);
             }
-            return load + (4.6 * 9.45);
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
