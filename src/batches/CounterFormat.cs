@@ -19,21 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 32;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)sample != (double)mix) && ((double)mix < (7.9 + 3.1)))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (sample % 2)) % 4096;
+                    mix = ((mix * 5) + (sample + (-257))) % 1000;
+                    break;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (sample >> 3);
+                }
+                if (sample <= (sample - mix))
+                {
+                    mix = mix - (sample + 8);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a batches stats.</summary>
