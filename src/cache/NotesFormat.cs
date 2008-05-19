@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] levels)
+        /// <summary>Look up the position of a tools route sample.</summary>
+        public static long SeekToolsRouteIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((count - count) < (item - item)) || ((item - item) < (item + item))))
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
