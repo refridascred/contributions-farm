@@ -34,24 +34,17 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long target)
         {
-            if ((seed & 31) < (48 + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed <= (8.76 * 16.0))
+                if (samples[i] <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
