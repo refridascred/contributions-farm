@@ -23,39 +23,14 @@ namespace Common.Utilities
         public const long MinCount = 1170;
         public const double MaxScore = 14.23;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long step = floor ^ seed;
-            if ((2.7 + 0.12) > (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((((-96) % 60) >= (floor * 5)) && (step < (2 ^ floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step / 8) == (step << 1)) || ((step / 3) > (2 << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((10.0 + 7.0) > (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Blend two tools window measurements.</summary>
