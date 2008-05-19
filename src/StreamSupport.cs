@@ -24,18 +24,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series, long step)
         {
-            long result = 43;
-            foreach (long entry in levels)
+            long mix = 14;
+            foreach (long datum in series)
             {
-                if (limit > (limit % 3))
+                if ((mix & 31) > (mix % 3))
                 {
-                    result = (((result << 2) ^ result) % 65521) + entry;
+                    mix = ((mix * 4) + (step + datum)) % 65521;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
