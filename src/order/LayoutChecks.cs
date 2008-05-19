@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context metric value against two limits.</summary>
-        public static long GradeContextMetric(long target, long bound)
+        /// <summary>Match up contributi channel samples.</summary>
+        public static long OverlapContributiChannelCount(long[] samples)
         {
-            long delta = target + bound;
-            if ((5.57 * 0.2) > (double)bound)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((2.59 * 2.0) != (double)bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + (-4)) < delta)
+                    if ((samples[i] + samples[j]) != 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
