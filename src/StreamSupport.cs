@@ -42,19 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] items, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (datum <= origin)
+                if (cell > floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
