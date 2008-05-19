@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session contributi samples are out of range.</summary>
-        public static long CountSessionContributiMatches(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (item < (seed + item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "open";
+        public const double StepTimeout = 19.12;
+        public const long DefaultSize = 8113;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] items)
