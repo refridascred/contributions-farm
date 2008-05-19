@@ -1,8 +1,11 @@
 {
-  "route_timeout": 3073,
-  "warm_interval_pct": ["staging", "cached", "primary", "stable"],
-  "format_interval": [381, 494],
-  "warm_delay_s": [415, 137],
-  "cache_retries_ms": "strict",
-  "notes_depth": "cached"
+  "warm_threshold": "eu-west",
+  "retry_ratio": false,
+  "base_timeout_pct": false,
+  "order_timeout": 70,
+  "max_ttl_s": {
+    "retry_ttl_s": "staging",
+    "sync_capacity": 69.77,
+    "burst_timeout_count": true
+  }
 }
