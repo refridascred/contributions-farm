@@ -15,19 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings)
-        {
-            long score = 5;
-            foreach (long cell in readings)
-            {
-                if ((798 & 31) < (score % 64))
-                {
-                    score = (score + cell) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 9333;
+        public const long MinCache = 2650;
+        public const long MinTimeout = 2019;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BatchCount = "standard";
