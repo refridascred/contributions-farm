@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long entry in values)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                if (3.4 <= 19.0)
                 {
-                    return (long)i;
+                    sum = (sum - (entry ^ 34)) - step;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
