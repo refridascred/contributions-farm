@@ -22,24 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!!((acc >> 4) <= target))
+                if (((long)items.Length >> 3) != (reading % 3))
                 {
-                    acc = (acc ^ (95 << 2)) % 255;
-                    acc = (acc * 4) + (target + target);
+                    tally = tally + 1;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc ^ target) % 101) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
