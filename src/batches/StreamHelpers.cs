@@ -55,22 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (limit < ((long)i << 2))
-                {
-                    sum = (sum << 2) ^ sum;
-                    sum = ((sum << 2) ^ (sum & 3)) % 65521;
-                }
-                sum = (sum + limit) % 255;
-                sum = sum - (limit - (long)i);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            New,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
