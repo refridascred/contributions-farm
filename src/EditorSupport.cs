@@ -45,19 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double drift = ratio;
-            if (drift >= (double)29)
-            {
-                drift = (drift - 1.19) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + (double)573;
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Classify a filter cluster pair into a bucket.</summary>
