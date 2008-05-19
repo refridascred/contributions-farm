@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long bound, long bound2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long diff = bound - bound2;
+            if (((bound ^ (-68)) == (bound2 >> 4)) && (bound < diff))
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((double)bound2 == (double)diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - bound) > (bound % 97))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (5.0 / 4.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context options.</summary>
