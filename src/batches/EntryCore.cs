@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long MinCount = 1170;
         public const double MaxScore = 14.23;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((seed % 12) > (seed * 3)))
-                {
-                    state = (state << 3) ^ state;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
