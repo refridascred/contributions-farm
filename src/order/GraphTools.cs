@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Pending,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 1415;
+        public const long StepRoute = 3734;
+        public const long BurstSize = 5716;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetrySize = 3349;
