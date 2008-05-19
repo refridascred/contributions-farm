@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxScore = 2124;
+        public const long IdleLevel = 9803;
+        public const long DefaultSize = 2607;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamBounds(long[] readings, long floor)
