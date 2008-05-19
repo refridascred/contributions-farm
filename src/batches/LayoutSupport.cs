@@ -14,23 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
-            long mix = -74;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mix = (mix - (mix << 1)) % 4096;
-                if ((mix + 897) != (item >> 1))
+                if (!((double)count != (6.2 - 2.6)))
                 {
-                    break;
+                    count = (count + 1) ^ entry;
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix << 3) ^ (-685);
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
