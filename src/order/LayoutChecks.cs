@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] values, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
