@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long sum = 605;
-            foreach (long sample in samples)
+            double mean = (double)(1 ^ 62);
+            if (mean >= mean)
             {
-                sum = ((sum << 2) ^ sample) % 4096;
-                sum = (sum << 3) ^ 65;
-                sum = (sum + limit) % 97;
+                mean = (mean + rate) + bias;
             }
-            if (sum < 651)
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum - limit;
+                mean = (mean + (double)476) + (double)(long)i;
             }
-            return sum % 1000;
+            return mean - mean;
         }
 
         /// <summary>Describe the cluster level values.</summary>
