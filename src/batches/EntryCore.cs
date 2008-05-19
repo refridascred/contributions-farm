@@ -46,11 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the batch checks series from a seed.</summary>
+        public static long RollBatchChecks(long seed)
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
