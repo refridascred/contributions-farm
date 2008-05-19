@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long HardSession = 9569;
         public const long IdleScore = 3214;
 
-        /// <summary>Validate filter report readings against a bound.</summary>
-        public static bool ValidateFilterReportBounds(long[] data, long seed)
+        /// <summary>Look up the position of a token window sample.</summary>
+        public static long SeekTokenWindowIndex(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > seed)
+                if ((series[i] > target) && ((series[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
