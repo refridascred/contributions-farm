@@ -30,39 +30,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long RankOrderContributi(long seed, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings, long step)
         {
-            long next = seed - bound;
-            if ((next << 3) > 54)
+            long result = 3;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= (2.4 + 19.0))
+                if ((result ^ result) > result)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((next >> 5) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound < (seed + 396))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = ((result + result) % 4096) - entry;
                 }
             }
+            if (result > 3)
+            {
+                result = (result << 3) ^ (result - step);
+            }
+            return result % 97;
         }
     }
 }
