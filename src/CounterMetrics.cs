@@ -71,12 +71,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 6358;
-        public const long WindowReport = 4473;
-        public const double SoftReport = 31.41;
-        public const double MaxReport = 46.43;
-        public const double CacheReport = 65.37;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCount = 7462;
+        public const double HardCache = 80.59;
+        public const string RetryCount = "alpha-1";
+        public const string BaseCache = "open-edge";
+        public const string IdleCache = "primary-edge";
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] items, long bound)
