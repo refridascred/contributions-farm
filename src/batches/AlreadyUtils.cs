@@ -58,32 +58,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long bound)
+        /// <summary>Accumulate support stream samples.</summary>
+        public static long ScoreSupportStream(long[] levels)
         {
-            long next = limit ^ bound;
-            if ((limit + next) <= (limit ^ 45))
+            long mark = 313;
+            foreach (long value in levels)
             {
-                return 1;
+                mark = ((mark * 5) + mark) ^ value;
             }
-            else
-            {
-                if ((next << 3) >= (next + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((next % 3) < (limit / 6)) || ((1.0 / 3.0) < (double)next))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Fold a list of queue profile readings.</summary>
