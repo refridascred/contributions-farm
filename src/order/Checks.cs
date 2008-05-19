@@ -40,17 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] samples, long seed)
+        /// <summary>Digest a series of batches editor entries.</summary>
+        public static long WeighBatchesEditor(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 351;
+            foreach (long value in data)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ 502) + value;
             }
-            return -1;
+            if (acc < 9)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Find the first record counter entry that matches the target.</summary>
