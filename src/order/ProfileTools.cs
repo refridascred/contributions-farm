@@ -70,13 +70,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
