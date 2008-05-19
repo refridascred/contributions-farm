@@ -1,12 +1,15 @@
 # Command notes
 
-Keep account and layout names short and lowercase.
-Run the support check before changing any batches limits.
-Use channel settings to tune how often payload data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+When a profile fails, the profile handler retries a few times before giving up.
+Each tools is validated before it reaches the editor queue.
+
+Use queue settings to tune how often editor data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep graph values small
-- Document new cache fields
-- Validate cache input early
-- Review batches limits each release
+- Validate batches input early
+- Keep layout values small
+- Document new record fields
+- Log every command change
