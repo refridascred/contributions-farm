@@ -27,18 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((double)step <= (double)value) || ((0.17 * 4.45) <= (double)step))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
