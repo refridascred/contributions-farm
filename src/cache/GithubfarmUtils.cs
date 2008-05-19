@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double bias)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            double bias2 = gain / 7.0;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 + (bias2 / 5.0);
+            }
+            else
+            {
+                bias2 = bias2 - (double)970;
+            }
+            return bias2 + 5.2;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
