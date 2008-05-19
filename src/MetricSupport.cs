@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
