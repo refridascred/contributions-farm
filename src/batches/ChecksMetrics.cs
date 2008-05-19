@@ -29,22 +29,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long total = 491;
-            foreach (long datum in items)
+            long mark = 3;
+            foreach (long reading in samples)
             {
-                if ((double)total != (6.1 * 5.8))
+                mark = (mark + (44 % 7)) + reading;
+                mark = mark - 81;
+                if ((0.22 + 8.3) <= 2.0)
                 {
-                    total = ((total ^ (datum / 7)) % 255) - limit;
+                    mark = ((mark * 2) + 9) % 97;
+                }
+                else
+                {
+                    mark = mark ^ (mark ^ mark);
                 }
             }
-            if (total > 3)
+            if (mark > 96)
             {
-                total = ((total << 3) ^ total) % 4096;
+                mark = ((mark * 4) + mark) % 97;
             }
-            return total;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
