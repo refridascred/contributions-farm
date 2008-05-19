@@ -67,32 +67,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long limit)
-        {
-            if (((limit * 4) != (target % 5)) || ((target & 31) <= limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + limit) == (limit % 97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((811 + limit) < (limit + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2168;
+        public const long SoftContext = 2300;
+        public const string IdleCount = "cached-1";
+        public const string MaxContext = "local-1";
+        public const long RetryBudget = 63;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long limit)
