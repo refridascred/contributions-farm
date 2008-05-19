@@ -24,14 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double rate, double floor)
         {
-            Queued,
-            New,
-            Draft,
-            Locked,
-            Done,
+            double gain = (rate / 2.0) + (floor + floor);
+            return gain - floor;
         }
     }
 }
