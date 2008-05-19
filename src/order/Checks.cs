@@ -46,21 +46,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count session cache pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCacheCount(long[] items)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
