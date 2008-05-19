@@ -1,14 +1,15 @@
 # Command notes
 
-Each layout is validated before it reaches the graph queue.
-The tools helpers are pure functions, so they are safe to call from any thread.
-The channel module keeps stats values in sync with the payload cache.
+Run the report check before changing any window limits.
+When a schema fails, the graph handler retries a few times before giving up.
+Run the command check before changing any notes limits.
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The filter report groups every command by notes.
+A schema that stays idle for too long is moved to the order list.
+The already module keeps profile values in sync with the stream cache.
+The filter module keeps channel values in sync with the support cache.
 
 ## Guidelines
 
-- Log every checks change
-- Keep buffer values small
-- Review report limits each release
+- Prefer contributi defaults
+- Validate entry input early
+- Review command limits each release
