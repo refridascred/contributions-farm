@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two layout filter measurements.</summary>
-        public static double BlendLayoutFilter(double gain, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] series)
         {
-            double drift = span;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                drift = ((drift + drift) - (double)(long)i) - gain;
+                if (value < (value + value))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - (double)227;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
