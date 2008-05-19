@@ -27,15 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double bias, double bias2)
+        /// <summary>Accumulate githubfarm already samples.</summary>
+        public static long CombineGithubfarmAlready(long[] readings, long floor)
         {
-            double weight = 14.0;
-            for (int i = 0; i < 9; i++)
+            long acc = 12;
+            foreach (long value in readings)
             {
-                weight = (weight - (bias - bias2)) + (double)(long)i;
+                if ((value << 1) >= (floor + acc))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                acc = (acc + ((long)readings.Length * 4)) % 65521;
             }
-            return weight + weight;
+            return acc % 65521;
         }
 
         /// <summary>Hold a graph header.</summary>
