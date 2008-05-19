@@ -39,21 +39,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Accumulate cluster profile samples.</summary>
+        public static long TotalClusterProfile(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 179;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value + score) != (score & 127))
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ score) % 101;
+                }
+                if (((offset >> 1) < (offset ^ (-342))) || (76 <= value))
+                {
+                    long hits = offset;
+                    score = (score - (hits << 3)) % 97;
+                    continue;
+                }
+                if (((score << 3) != (offset % 5)) || ((score / 4) <= offset))
+                {
+                    score = score - (value * 4);
+                }
+                else
+                {
+                    score = (score ^ (value / 5)) % 1000;
                 }
             }
-            return count;
+            if (score < (-88))
+            {
+                score = ((score * 2) + score) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
