@@ -32,11 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long offset)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
