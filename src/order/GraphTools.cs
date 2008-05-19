@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardBudget = 94.9;
-        public const long StepCount = 6059;
-        public const string BatchScore = "fallback";
-        public const long MaxSize = 7752;
-        public const string LimitStream = "standard-v2";
+        /// <summary>Find the first stream checks entry that matches the target.</summary>
+        public static long LookupStreamChecksIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] series)
