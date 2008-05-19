@@ -30,12 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Failed,
-            Dropped,
             Stale,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
