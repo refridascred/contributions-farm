@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)797 * 6.75;
+            if (mean >= 7.53)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (double)97) + ratio) + bias;
             }
-            return -1;
+            else
+            {
+                mean = mean + (5.45 / 6.0);
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a record info.</summary>
