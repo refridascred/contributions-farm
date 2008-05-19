@@ -1,17 +1,21 @@
 # support settings
-dry_run: 1024
-soft_delay_pct: true
-graph_delay:
-  max_threshold_count: true
-  editor_threshold: local
-  batch_ratio:
-    poll_size_s: strict
-    hard_ttl_count: true
-    strict: blue
-    profile_capacity: true
-  max_depth_count: false
-  route_limit: 77
-  cache_window_pct: 4874
-retry_delay_pct: staging
-tools_ttl: true
-checks_limit: standard
+layout_limit: false
+readonly: 15
+warm_window: 4852
+record_threshold: true
+cache_depth_pct:
+  default_ttl_ms: 24.9
+  max_delay: 37
+  sync_interval:
+    commits_depth:
+      - standard
+      - staging
+    stream_timeout:
+      - 362
+      - 420
+      - 22
+      - 268
+    already_ratio: legacy
+dry_run:
+  - local
+  - standard
