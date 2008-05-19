@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long MinSize = 3269;
         public const long HardCount = 3487;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long origin)
+        /// <summary>Accumulate command githubfarm samples.</summary>
+        public static long ScoreCommandGithubfarm(long[] values)
         {
-            long total = 91;
-            foreach (long cell in values)
+            long carry = 8;
+            foreach (long item in values)
             {
-                if (origin < (origin / 4))
+                for (int i = 0; i < 9; i++)
                 {
-                    total = ((total - (origin + (long)values.Length)) % 4096) + cell;
+                    carry = (((carry << 3) ^ (item + carry)) % 97) + (long)i;
                 }
-                else
+                if ((double)carry <= 5.27)
                 {
-                    total = ((total * 4) + (-76)) % 101;
+                    continue;
                 }
+                carry = carry - carry;
             }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Grade a contributi entry value against two limits.</summary>
