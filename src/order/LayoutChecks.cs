@@ -61,19 +61,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] data, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long carry = 816;
-            foreach (long sample in data)
-            {
-                carry = (carry ^ 5) + sample;
-            }
-            if (carry > 7)
-            {
-                carry = (carry ^ limit) % 1000;
-            }
-            return carry % 65521;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
