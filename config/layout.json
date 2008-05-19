@@ -1,6 +1,21 @@
 {
-  "stats_retries": 5363,
-  "batch_size_s": ["legacy", "blue", "green", "open"],
-  "warm_threshold": "green",
-  "context_window": 39.66
+  "enabled": {
+    "strict": 28,
+    "base_limit": false,
+    "flush_size": [316, 57, 186],
+    "idle_window_ms": 20.32
+  },
+  "verbose": "legacy",
+  "dry_run": {
+    "base_ratio_count": [491, 432, 39],
+    "payload_depth": ["local", "strict", "eu-west", "edge"],
+    "persist": 1024
+  },
+  "min_size_pct": 73.83,
+  "counter_window": {
+    "burst_capacity_count": [451, 255, 96],
+    "contributi_threshold": ["stable", "primary"],
+    "dry_run": "blue"
+  },
+  "command_retries": 27.78
 }
