@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 60.97;
-        public const string CacheLevel = "open-edge";
-        public const string MinRecord = "alpha";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) < hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
         public static long TallyPayloadCommitsMatches(long[] samples)
