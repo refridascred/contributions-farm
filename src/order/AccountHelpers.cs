@@ -98,27 +98,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((step / 4) >= mix)
+                if ((seen + seen) <= (seen ^ seen))
                 {
-                    break;
+                    seen = (seen + 1) + value;
                 }
-                if (!((step - step) < (long)i))
-                {
-                    mix = mix ^ (step ^ mix);
-                }
-                if ((step + step) != (long)i)
-                {
-                    mix = (mix * 2) + step;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
     }
 }
