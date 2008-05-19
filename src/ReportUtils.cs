@@ -52,18 +52,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!(count > (long)data.Length))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitInterval = 1791;
+        public const string WindowSize = "primary-1";
+        public const long LimitGithubfarm = 9183;
+        public const string StepGithubfarm = "latest-v2";
     }
 }
