@@ -56,22 +56,19 @@ namespace Common.Utilities
         public const long HardTimeout = 5896;
         public const string MaxDepth = "strict-edge";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] items, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((count % 10) <= floor)
+                if (reading <= seed)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
