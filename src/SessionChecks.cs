@@ -19,11 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long bound)
         {
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
