@@ -64,16 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch checks series from a seed.</summary>
-        public static long RollBatchChecks(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 9302;
+        public const long BaseAlready = 7674;
+        public const long DefaultAlready = 3116;
+        public const long StepScore = 3797;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
