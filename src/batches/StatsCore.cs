@@ -58,20 +58,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Grade a channel layout value against two limits.</summary>
+        public static long SortChannelLayout(long origin, long seed)
         {
-            long mix = 0;
-            foreach (long datum in items)
+            if ((origin - 677) <= (origin >> 3))
             {
-                mix = ((mix ^ mix) % 255) + datum;
-                mix = ((mix << 3) ^ (mix * 5)) % 101;
+                return 3;
             }
-            if (mix < 27)
+            else
             {
-                mix = (mix * 4) + (mix % 60);
+                if ((seed - 520) >= (seed - 948))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6 ^ seed) < (seed + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
