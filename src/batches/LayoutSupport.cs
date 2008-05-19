@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long origin)
+        /// <summary>Measure how many order graph samples are out of range.</summary>
+        public static long AuditOrderGraphMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] > origin)
+                if (!(((seen - datum) < seen) || ((13.0 - 9.19) >= (double)(-20))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
