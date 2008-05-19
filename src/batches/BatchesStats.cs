@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((bound >> 3) >= bound)
+                if ((((double)seen <= (17.0 / 4.0)) && ((5.2 - 3.6) > (double)offset)) || ((offset + entry) < (entry - offset)))
                 {
-                    count = (count + 1) + cell;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
