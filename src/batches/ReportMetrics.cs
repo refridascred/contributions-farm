@@ -48,35 +48,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a record session value against two limits.</summary>
-        public static long GradeRecordSession(long bound, long bound2)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long limit)
         {
-            if (bound <= (bound + 3))
+            long cur = origin - limit;
+            if (((6 / 2) >= (origin * 3)) || ((limit + cur) <= cur))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (!(9.42 <= (double)bound))
+                if ((double)limit <= (7.0 / 3.0))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound2 << 3) > bound2)
+                    if (origin < (804 - cur))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound - 30) <= (bound2 << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 5;
                     }
                 }
             }
