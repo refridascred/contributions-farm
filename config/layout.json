@@ -1,6 +1,8 @@
 {
-  "burst_capacity_ms": false,
-  "retry_retries_pct": false,
-  "queue_depth": ["cached", "fallback"],
-  "batch_capacity": [364, 395, 126, 282]
+  "format_capacity": 44,
+  "filter_limit": "staging",
+  "readonly": ["strict", "latest"],
+  "max_depth_ms": "eu-west",
+  "batch_timeout": "primary",
+  "sync_interval_pct": 30
 }
