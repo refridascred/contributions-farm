@@ -1,5 +1,7 @@
 {
-  "min_ratio": 503,
-  "entry_retries": "blue",
-  "base_limit_pct": false
+  "compress": 4907,
+  "warm_window_count": "latest",
+  "max_size_ms": 1024,
+  "already_ttl": [10, 391],
+  "cache_limit_s": true
 }
