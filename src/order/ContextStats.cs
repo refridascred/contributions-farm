@@ -18,13 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Active,
-            Synced,
-            Paused,
+            Draft,
             Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Accumulate already stats samples.</summary>
