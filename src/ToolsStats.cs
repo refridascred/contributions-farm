@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long DefaultCommits = 1770;
         public const long StepCommits = 4169;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 5377;
-        public const string BaseAccount = "fallback-1";
-        public const string IdleAccount = "stable";
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyLimits(long[] values, long origin)
