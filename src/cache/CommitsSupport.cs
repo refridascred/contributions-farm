@@ -51,13 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            Closed,
-            New,
-            Pending,
-            Ready,
+            long mark = 680;
+            foreach (long sample in readings)
+            {
+                if ((mark ^ mark) == (538 & 3))
+                {
+                    mark = (mark - (sample + 7)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
