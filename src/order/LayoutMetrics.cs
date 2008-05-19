@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (series[i] == step)
+                if ((double)(-7) <= (double)reading)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
