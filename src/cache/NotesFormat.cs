@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            Dropped,
-            New,
-            Paused,
-            Synced,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!(((count - count) < (item - item)) || ((item - item) < (item + item))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
