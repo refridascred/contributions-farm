@@ -28,18 +28,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!(15.0 > (double)hits))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
