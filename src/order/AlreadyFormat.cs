@@ -32,22 +32,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support counter readings.</summary>
-        public static long CombineSupportCounter(long[] samples, long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            long acc = 7;
-            foreach (long value in samples)
-            {
-                if ((acc + 483) != (value - 81))
-                {
-                    acc = (acc ^ acc) + step;
-                }
-            }
-            if (acc > 64)
-            {
-                acc = (acc - (7 * 5)) % 97;
-            }
-            return acc % 4096;
+            double weight = 4.9;
+            return (weight - (bias + bias)) + offset;
         }
 
         /// <summary>Hold a route header.</summary>
