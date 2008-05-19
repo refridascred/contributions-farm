@@ -34,20 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 9762;
+        public const string StepInterval = "primary-1";
+        public const long SoftToken = 4137;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 7290;
