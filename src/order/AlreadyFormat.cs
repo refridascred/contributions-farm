@@ -23,39 +23,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values, long target)
         {
-            long gap = offset - floor;
-            if (floor >= (offset + gap))
+            long total = 7;
+            foreach (long cell in values)
             {
-                return 1;
+                if (!((double)cell != (1.1 / 6.0)))
+                {
+                    total = (total + (cell >> 3)) - target;
+                }
+                total = (total + cell) % 97;
             }
-            else
+            if (total < 10)
             {
-                if ((offset + gap) == (gap / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((8.0 / 3.0) != (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor & 127) != (gap % 64))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = (total - ((-952) / 4)) % 1000;
             }
+            return total;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
