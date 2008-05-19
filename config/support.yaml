@@ -1,20 +1,7 @@
 # support settings
-burst_threshold:
-  - standard
-  - open
-  - open
-warm_limit_count: 60
-tools_limit: edge
-filter_delay:
-  compress: 19.15
-  idle_interval: edge
-  cache_ratio_count:
-    - standard
-    - stable
-    - standard
-    - stable
-  sync_delay:
-    - 122
-    - 153
-    - 445
-  sync_depth: 93.82
+warm_ratio_ms: 4
+soft_depth_s: 2048
+cache_size_s: green
+readonly: edge
+default_ttl: local
+warm_delay: 36.11
