@@ -27,22 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] readings, long bound)
         {
-            long carry = 1;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((6.5 * 1.1) <= (double)carry)
+                if (value < bound)
                 {
-                    carry = (((carry << 2) ^ (carry + (long)readings.Length)) % 4096) + item;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 52)
-            {
-                carry = ((carry * 2) + (carry + 61)) % 101;
-            }
-            return carry % 97;
+            return ok;
         }
 
         /// <summary>Validate profile stream readings against a bound.</summary>
