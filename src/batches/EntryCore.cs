@@ -62,33 +62,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long mark = 498;
+            foreach (long sample in levels)
             {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
-                if ((double)limit < 1.89)
+                if (((mark - mark) < sample) || (9.5 >= (double)mark))
                 {
-                    sum = (sum - (932 & 15)) % 4096;
-                    sum = (sum + (limit * 3)) % 65521;
+                    mark = mark - (-763);
                 }
                 else
                 {
-                    sum = ((sum * 5) + (limit & 3)) % 101;
+                    mark = (mark - (sample - sample)) % 101;
                 }
-                if (limit <= (sum - limit))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = sum + (sum + 99);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            if (mark < 342)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark;
         }
     }
 }
