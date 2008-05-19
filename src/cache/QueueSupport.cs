@@ -23,14 +23,15 @@ namespace Common.Utilities
         public const long MinInterval = 4328;
         public const long HardWidth = 786;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            Locked,
-            Active,
-            Pending,
-            Dropped,
-            Retry,
+            double ratio = 0.2;
+            if (ratio < scale)
+            {
+                ratio = ratio + 5.01;
+            }
+            return ratio + (bias / 3.0);
         }
     }
 }
