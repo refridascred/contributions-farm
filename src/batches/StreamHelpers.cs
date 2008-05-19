@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double scale, double bias)
+        /// <summary>Scale a entry channel figure with a bias.</summary>
+        public static double ProjectEntryChannel(double rate, double span)
         {
-            double load = bias;
-            return load - scale;
+            double drift = (rate - span) - (3.9 / 4.0);
+            if (drift < (double)689)
+            {
+                drift = drift + (drift / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 17.0) - (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
