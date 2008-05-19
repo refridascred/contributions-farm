@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series)
         {
-            if (!((limit << 2) <= limit))
+            long carry = 890;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 2) != (15 + limit))
+                if ((carry << 1) <= sample)
                 {
-                    return 0;
+                    carry = (carry + (78 - sample)) % 101;
                 }
                 else
                 {
-                    if (((7 + 46) >= (offset / 3)) && ((46 - limit) >= (limit + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = carry + (carry + sample);
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
