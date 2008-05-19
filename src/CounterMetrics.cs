@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] series, long origin)
+        /// <summary>Measure how many session contributi samples are out of range.</summary>
+        public static long CountSessionContributiMatches(long[] series, long seed)
         {
-            bool found = true;
+            long count = 0;
             foreach (long item in series)
             {
-                if (item < origin)
+                if (item < (seed + item))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
