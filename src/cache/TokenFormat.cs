@@ -46,15 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] levels, long limit)
         {
-            double mean = (span - weight) * 15.0;
-            if (mean <= (double)22)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mean = mean + mean;
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + weight;
+            return flag;
         }
     }
 }
