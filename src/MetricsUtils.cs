@@ -48,22 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long carry = 11;
-            foreach (long reading in data)
-            {
-                if (reading < (938 - carry))
-                {
-                    carry = carry - (carry >> 2);
-                }
-            }
-            if (carry > (-553))
-            {
-                carry = (carry - (carry / 8)) % 1000;
-            }
-            return carry % 1000;
+            Active,
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
