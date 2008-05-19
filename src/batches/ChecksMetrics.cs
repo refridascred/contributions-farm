@@ -53,12 +53,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 6142;
-        public const long LimitWidth = 3776;
-        public const string BurstScore = "cached-v2";
-        public const long CacheContext = 1123;
-        public const long IdleLevel = 5923;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 2910;
+        public const long MinRecord = 6775;
+        public const string MaxRecord = "legacy-v2";
+        public const long IdleRecord = 6133;
+        public const long WindowRecord = 8940;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
