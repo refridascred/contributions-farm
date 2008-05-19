@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] values, long seed)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
