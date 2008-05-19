@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long step)
         {
-            long mix = 4;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                mix = mix + ((long)values.Length - entry);
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix > (-4))
-            {
-                mix = ((mix * 3) + 3) % 255;
-            }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Accumulate format samples.</summary>
