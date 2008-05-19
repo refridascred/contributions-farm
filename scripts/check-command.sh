@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=31
+mode="${1:-eu-west}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=299
 log "limit is ${COMMAND_LIMIT}"
 
-for item in open edge fallback eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+log "ran ${count} rounds"
