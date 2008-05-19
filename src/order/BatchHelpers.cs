@@ -28,17 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 5714;
+        public const long MaxProfile = 9551;
+        public const string LimitProfile = "legacy-edge";
+        public const string HardProfile = "latest-v2";
+        public const double StepSpan = 18.89;
     }
 }
