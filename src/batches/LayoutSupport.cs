@@ -34,12 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "latest-edge";
-        public const long BaseSize = 3267;
-        public const long SoftCount = 8471;
-        public const long WindowDepth = 2063;
-        public const long RetrySize = 1692;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Retry,
+            Closed,
+            Stale,
+            Idle,
+            Active,
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long limit, long step)
