@@ -30,21 +30,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings, long limit)
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long AuditToolsSessionGaps(long[] data, long origin)
         {
-            long score = 598;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                long lane = limit + (entry + entry);
-                if ((limit - lane) > (limit - score))
+                if (!((double)seen != (8.63 * 2.87)))
                 {
-                    score = ((score << 3) ^ (entry - limit)) % 1000;
-                    break;
+                    seen = ((seen + 3) + cell) + origin;
                 }
-                score = (score ^ (limit >> 3)) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
