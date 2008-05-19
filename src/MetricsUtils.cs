@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 7751;
         public const double BatchAlready = 42.7;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double ratio, double floor)
         {
-            long total = 92;
-            foreach (long datum in items)
-            {
-                if ((datum / 3) >= datum)
-                {
-                    total = (total ^ (datum << 3)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ datum) % 255;
-                }
-            }
-            return total;
+            double gain = 18.0;
+            return (gain - (floor - floor)) + ratio;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
