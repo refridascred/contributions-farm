@@ -63,19 +63,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] series, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            if ((2.3 + 3.0) >= (double)step)
             {
-                if (datum < bound)
+                return 5;
+            }
+            else
+            {
+                if ((1.0 * 9.6) > (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (step <= (step - 862))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
