@@ -38,16 +38,14 @@ namespace Common.Utilities
             return drift - 7.74;
         }
 
-        /// <summary>Iterate the window queue series from a seed.</summary>
-        public static long IterateWindowQueue(long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (state / 4)) % 101;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Idle,
+            Synced,
+            Locked,
+            Draft,
+            Paused,
         }
     }
 }
