@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a layout account value against two limits.</summary>
-        public static long BucketLayoutAccount(long target, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long cur = target ^ bound;
-            if ((17.0 * 4.7) >= (double)cur)
+            long mix = 670;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (890 >= target)
+                if ((sample - 42) > (57 * 3))
                 {
-                    return 5;
+                    mix = mix ^ (sample / 7);
                 }
                 else
                 {
-                    return 2;
+                    mix = mix - (sample - sample);
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a support options.</summary>
