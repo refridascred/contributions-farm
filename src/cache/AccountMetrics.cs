@@ -68,11 +68,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double offset)
+        /// <summary>Rank commits payload input into a small class.</summary>
+        public static long RankCommitsPayload(long offset, long floor)
         {
-            double gain = offset;
-            return (gain - (double)(-970)) + ratio;
+            long step = offset + floor;
+            if ((double)offset != (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - step) <= (floor / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((5.46 - 7.5) <= (6.1 + 4.1)) || ((-4) > (floor << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((419 + 445) < (floor + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
