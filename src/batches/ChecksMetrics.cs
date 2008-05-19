@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many commits command samples are out of range.</summary>
+        public static long TallyCommitsCommandOutliers(long[] levels)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)tally >= (17.0 / 8.0)) && ((tally ^ tally) <= (tally * 4)))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a payload report reading.</summary>
