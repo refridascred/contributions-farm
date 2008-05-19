@@ -20,12 +20,23 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 54.73;
-        public const long BurstSpan = 8522;
-        public const double HardSpan = 79.72;
-        public const long MinFactor = 199;
-        public const string BurstBudget = "latest-1";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (matches < (item / 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every stream checks entry stays within the limit.</summary>
         public static bool VerifyStreamChecksBounds(long[] series, long limit)
