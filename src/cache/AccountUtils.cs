@@ -24,23 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long step)
         {
-            long carry = 71;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                carry = (carry ^ (carry & 63)) % 1000;
-                if (cell <= (carry + carry))
+                if (datum > step)
                 {
-                    carry = carry - (carry + cell);
-                }
-                else
-                {
-                    carry = (carry + cell) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
     }
 }
