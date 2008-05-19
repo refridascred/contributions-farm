@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long origin)
         {
-            long score = -8;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + (origin * 3)) - entry;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 609)
-            {
-                score = (score - (origin & 127)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
