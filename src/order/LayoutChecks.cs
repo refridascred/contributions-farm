@@ -32,32 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long seed, long offset)
-        {
-            if (((-9) << 1) != (offset % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + offset) == (offset >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset <= (seed + 48))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "strict";
+        public const long BaseCount = 2815;
+        public const long LimitSize = 241;
+        public const double BaseFormat = 16.26;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
