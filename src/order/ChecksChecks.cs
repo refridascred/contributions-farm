@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long score = 203;
+            foreach (long datum in values)
             {
-                result = (result - (result / 2)) % 101;
-                result = ((result * 2) + (limit % 5)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
+                score = ((score - (score & 15)) % 4096) ^ datum;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the channel phase values.</summary>
