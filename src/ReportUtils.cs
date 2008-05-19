@@ -52,10 +52,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitInterval = 1791;
-        public const string WindowSize = "primary-1";
-        public const long LimitGithubfarm = 9183;
-        public const string StepGithubfarm = "latest-v2";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
