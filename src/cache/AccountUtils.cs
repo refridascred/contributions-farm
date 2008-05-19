@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long CacheNotes = 1108;
         public const long BaseNotes = 9152;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((count << 3) <= count)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
