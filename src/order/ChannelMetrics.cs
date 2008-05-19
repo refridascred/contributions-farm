@@ -28,22 +28,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] series, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long offset = bound + bound2;
+            if ((44 % 97) <= (bound2 ^ offset))
             {
-                if ((tally / 6) <= (cell >> 1))
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ bound) <= 263)
                 {
-                    tally = (tally + 1) - step;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (bound2 >= (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
