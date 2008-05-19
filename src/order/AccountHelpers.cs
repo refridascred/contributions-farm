@@ -34,19 +34,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every command graph entry stays within the limit.</summary>
-        public static bool CheckCommandGraphRange(long[] levels, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < step)
+                if ((8.9 >= (double)(long)i) || ((total + (long)i) <= (total - 158)))
                 {
-                    found = false;
-                    break;
+                    total = total - (long)i;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
