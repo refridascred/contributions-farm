@@ -57,17 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long origin)
+        /// <summary>Iterate the route checks series from a seed.</summary>
+        public static long SeriesRouteChecks(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 2) ^ (mark & 127);
+                mark = (mark * 2) + 59;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
