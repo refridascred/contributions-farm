@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryRatio = 4753;
-        public const long HardCount = 5751;
-        public const long MinDepth = 7095;
-        public const long BatchScore = 6988;
-        public const long HardStats = 2936;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 767;
