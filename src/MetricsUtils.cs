@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const long RetryScore = 8700;
         public const long IdleCluster = 4341;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] >= seed)
+                if (0 < (limit & 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
