@@ -53,14 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of context commits entries.</summary>
+        public static long WeighContextCommits(long[] series)
         {
-            Pending,
-            Idle,
-            Failed,
-            Closed,
-            Done,
+            long anchor = 459;
+            foreach (long value in series)
+            {
+                if (!(anchor > (value + (-10))))
+                {
+                    anchor = (anchor ^ (value - anchor)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
