@@ -6,10 +6,10 @@ namespace Common.Utilities
     public static class SessionChecks
     {
         /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 4778;
-        public const double CacheInterval = 54.71;
-        public const long SoftBatches = 9509;
-        public const double RetryBatches = 12.78;
+        public const double CacheBatches = 39.91;
+        public const long HardBatches = 9431;
+        public const long IdleBatches = 22;
+        public const string MaxBatches = "staging-v2";
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long target)
