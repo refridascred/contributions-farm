@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] samples, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((double)(long)i == (double)823)
+                if (((count ^ count) < count) && ((10.0 * 9.6) >= (double)bound))
                 {
-                    total = (total * 4) + (target - total);
-                    continue;
+                    count = (count + 1) ^ item;
                 }
-                else
-                {
-                    total = total ^ total;
-                    total = (total - ((long)i + total)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the format kind values.</summary>
