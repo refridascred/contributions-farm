@@ -31,21 +31,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
