@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many queue layout samples are out of range.</summary>
+        public static long MeasureQueueLayoutHits(long[] data)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 3) < (matches - matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
