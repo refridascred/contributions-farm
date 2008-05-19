@@ -1,14 +1,8 @@
 {
-  "stats_ratio": 21.96,
-  "sync_threshold_pct": {
-    "poll_threshold_count": "strict",
-    "strict": "latest",
-    "hard_threshold_s": "legacy",
-    "min_retries_s": "fallback",
-    "counter_retries": 73
-  },
-  "burst_size_pct": false,
-  "order_threshold": 4.26,
-  "sync_ratio_pct": 72.28,
-  "verbose": "strict"
+  "min_ratio_count": [22, 485, 108, 454],
+  "filter_window": "open",
+  "verbose": true,
+  "max_retries_pct": 1487,
+  "compress": 62,
+  "sync_depth_ms": 1472
 }
