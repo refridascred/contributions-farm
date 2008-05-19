@@ -1,25 +1,6 @@
 # githubfarm settings
-min_capacity: 1024
-already_window:
-  idle_ttl_s: primary
-  burst_ttl_s:
-    verbose: 250
-    record_size: 500
-    base_window_count: strict
-  buffer_depth:
-    - cached
-    - edge
-    - staging
-    - edge
-  buffer_size: 2205
-  githubfarm_capacity: true
-  flush_window_pct: legacy
-dry_run:
-  batch_timeout_count: false
-  min_limit_pct: 8209
-  max_timeout_pct: 5.81
-  cluster_window: 6662
-  burst_timeout: blue
-strict: 7910
-cache_window_pct: false
-hard_capacity_pct: 500
+audit: 60
+sync_limit: 94.7
+default_size_count: 51
+window_size: 1389
+format_timeout: latest
