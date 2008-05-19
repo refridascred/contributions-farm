@@ -1,6 +1,5 @@
 {
-  "soft_retries": "green",
-  "report_timeout": "blue",
-  "enabled": false,
-  "base_delay_s": 500
+  "base_ttl_s": 49.48,
+  "sync_ratio_s": 60.21,
+  "hard_limit_count": "open"
 }
