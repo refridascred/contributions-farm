@@ -33,22 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items, long floor)
         {
-            long acc = 56;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (value > (value + (-30)))
+                if (!(((long)items.Length % 3) >= ((-2) * 2)) && ((double)cell == (4.6 / 6.0)))
                 {
-                    acc = acc + seed;
-                }
-                else
-                {
-                    acc = acc ^ value;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
