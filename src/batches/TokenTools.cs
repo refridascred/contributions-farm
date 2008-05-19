@@ -30,10 +30,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 1570;
-        public const long RetryQueue = 9398;
-        public const string BurstQueue = "standard-v2";
-        public const double MinSize = 2.07;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "latest-v2";
+        public const string BaseCommits = "strict-edge";
+        public const long DefaultLevel = 1767;
+        public const long BurstCommits = 8382;
+        public const long MinCommits = 3767;
     }
 }
