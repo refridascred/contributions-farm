@@ -1,11 +1,6 @@
 {
-  "base_limit_pct": true,
-  "batch_window": 100,
-  "entry_limit": {
-    "min_interval": true,
-    "support_ratio": 62.94,
-    "stats_ttl": [125, 312, 375]
-  },
-  "min_limit_s": 30,
-  "persist": [153, 172]
+  "verbose": 59.99,
+  "hard_size_pct": "eu-west",
+  "min_ttl_ms": ["latest", "blue"],
+  "readonly": true
 }
