@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a route checks counter forward.</summary>
-        public static long StepRouteChecks(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((carry - carry) >= (carry - (long)i))
-                {
-                    carry = carry - offset;
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = carry - (6 ^ carry);
-                }
-                carry = (carry ^ ((long)i ^ offset)) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 7797;
+        public const double BatchSize = 45.36;
+        public const long RetryBudget = 5646;
+        public const double StepFactor = 93.49;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long target)
