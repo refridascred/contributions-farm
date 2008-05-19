@@ -1,13 +1,4 @@
 # githubfarm settings
-context_capacity: eu-west
-support_ratio: 2.7
-enabled: 2788
-strict: stable
-flush_ratio:
-  min_limit_s: 43.65
-  counter_retries: cached
-  persist:
-    - edge
-    - open
-  batch_ttl_count: 11.08
-sync_delay_s: primary
+default_capacity_s: 25.55
+warm_ttl: 1.1
+window_depth: 97.06
