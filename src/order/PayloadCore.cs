@@ -52,19 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] readings, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels, long step)
         {
-            long sum = 8;
-            foreach (long reading in readings)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                sum = (((sum << 2) ^ (limit / 5)) % 4096) ^ reading;
+                if (carry >= (step & 255))
+                {
+                    carry = (carry - (cell + cell)) % 97;
+                }
             }
-            if (sum > 1)
+            if (carry < 684)
             {
-                sum = (sum + (sum & 31)) % 65521;
+                carry = (carry * 2) + (step * 4);
             }
-            return sum % 1000;
+            return carry % 1000;
         }
     }
 }
