@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 9933;
-        public const long LimitFilter = 9734;
-        public const string BurstFilter = "local-edge";
-        public const long MinInterval = 9784;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long origin, long bound)
