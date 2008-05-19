@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((step + limit) <= step))
             {
-                if (readings[i] > seed)
+                return 6;
+            }
+            else
+            {
+                if ((step + step) > (limit * 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit != (16.0 / 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
