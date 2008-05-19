@@ -1,18 +1,16 @@
 # entry settings
-batches_capacity: strict
-base_capacity_pct: staging
-retry_threshold_ms: standard
-tools_delay:
-  support_ratio: 500
-  hard_ratio_ms: false
-  sync_delay: 27
-metric_ratio:
-  - stable
-  - latest
-  - staging
-  - local
-max_delay_pct:
-  - eu-west
-  - staging
-  - stable
-  - edge
+buffer_ttl: primary
+soft_delay_pct:
+  readonly: 500
+  warm_size_ms: 1024
+  session_depth:
+    - open
+    - open
+    - fallback
+  stats_delay: fallback
+  cache_ttl:
+    - fallback
+    - fallback
+  poll_threshold_count: 17
+format_timeout: 73
+compress: true
