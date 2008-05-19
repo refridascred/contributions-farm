@@ -33,12 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 9712;
-        public const string RetrySize = "stable-edge";
-        public const long BaseOrder = 6885;
-        public const long RetryCount = 6961;
-        public const long BatchOrder = 7896;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] data, long target)
