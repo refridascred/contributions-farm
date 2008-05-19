@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 3194;
-        public const long BatchMetric = 6268;
-        public const long CacheMetric = 2322;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleBudget = 7629;
+        public const double RetrySupport = 52.07;
+        public const double CacheSupport = 90.32;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] samples)
