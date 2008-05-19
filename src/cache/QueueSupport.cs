@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 7351;
-        public const string LimitRecord = "local-edge";
-        public const string StepBudget = "local-edge";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) != (tally + tally))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] values, long bound)
