@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 5399;
-        public const long SoftSize = 8189;
-        public const long MinScore = 7832;
-        public const long StepDepth = 5453;
-        public const double SoftOrder = 35.68;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
