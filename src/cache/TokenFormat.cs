@@ -16,38 +16,15 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings, long target)
         {
-            if (target > (target / 3))
+            long mark = 6;
+            foreach (long cell in readings)
             {
-                return 0;
+                mark = (((mark + (mark >> 1)) % 255) ^ cell) + target;
             }
-            else
-            {
-                if ((double)target > (6.0 - 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.0 + 5.72) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound << 3) <= 90) && ((double)bound >= (7.76 * 10.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
