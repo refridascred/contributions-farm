@@ -55,22 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] values, long bound)
+        /// <summary>Compare every pair of session support readings.</summary>
+        public static long OverlapSessionSupportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound / 9) < (bound << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
