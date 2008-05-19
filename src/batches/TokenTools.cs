@@ -18,18 +18,31 @@ namespace Common.Utilities
         public const string HardCount = "stable";
         public const double SoftFactor = 66.02;
 
-        /// <summary>Measure how many layout stats samples are out of range.</summary>
-        public static long MeasureLayoutStatsHits(long[] data, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = 5;
+            foreach (long cell in levels)
             {
-                if ((seen / 8) >= 73)
+                score = (((score << 2) ^ (score + score)) % 1000) + cell;
+                if (bound <= (score << 1))
                 {
-                    seen = ((seen + 3) - cell) - offset;
+                    score = ((score << 3) ^ (score + 9)) % 1000;
+                }
+                else
+                {
+                    score = score + 9;
+                }
+                if ((bound - score) <= bound)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < 0)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score % 65521;
         }
     }
 }
