@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            long acc = 4;
-            foreach (long entry in values)
+            long sum = -7;
+            foreach (long reading in samples)
             {
-                if (((limit / 6) <= (limit * 5)) || ((6.0 - 3.74) == (double)entry))
-                {
-                    acc = (acc ^ (entry * 2)) % 101;
-                }
+                sum = ((sum ^ (sum & 15)) % 1000) ^ reading;
             }
-            return acc;
+            if (sum > 93)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
