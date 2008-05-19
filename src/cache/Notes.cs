@@ -76,11 +76,17 @@ namespace Common.Utilities
         public const long SoftLevel = 1261;
         public const long CacheEntry = 4727;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long floor)
         {
-            double bias2 = scale;
-            return (bias2 + 6.0) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
