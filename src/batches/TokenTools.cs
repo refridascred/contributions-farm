@@ -30,12 +30,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
