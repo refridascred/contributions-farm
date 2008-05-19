@@ -48,11 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Accumulate report commits samples.</summary>
+        public static long CombineReportCommits(long[] series)
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long acc = 3;
+            foreach (long datum in series)
+            {
+                if ((datum + acc) == (datum / 7))
+                {
+                    acc = (acc - datum) % 255;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc - (acc + (long)series.Length)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
