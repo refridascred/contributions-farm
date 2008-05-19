@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] series)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (0.2 < (double)seen)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a record counter reading.</summary>
