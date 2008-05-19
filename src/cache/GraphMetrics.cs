@@ -47,14 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Closed,
-            Failed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 5943;
+        public const string StepOrder = "primary-1";
+        public const long SoftOrder = 8882;
+        public const long HardFactor = 9254;
+        public const long MaxSize = 4007;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] values, long seed)
