@@ -53,9 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheScore = 26.93;
-        public const string WindowFarm = "legacy-edge";
-        public const long DefaultInterval = 7897;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
