@@ -39,36 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster profile samples.</summary>
-        public static long TotalClusterProfile(long[] samples, long offset)
+        /// <summary>Rank channel order input into a small class.</summary>
+        public static long GradeChannelOrder(long step, long seed)
         {
-            long score = 179;
-            foreach (long value in samples)
+            if ((seed * 3) < (step + seed))
             {
-                if ((value + score) != (score & 127))
+                return 8;
+            }
+            else
+            {
+                if ((step << 2) == (seed - seed))
                 {
-                    score = (score ^ score) % 101;
-                }
-                if (((offset >> 1) < (offset ^ (-342))) || (76 <= value))
-                {
-                    long hits = offset;
-                    score = (score - (hits << 3)) % 97;
-                    continue;
-                }
-                if (((score << 3) != (offset % 5)) || ((score / 4) <= offset))
-                {
-                    score = score - (value * 4);
+                    return 1;
                 }
                 else
                 {
-                    score = (score ^ (value / 5)) % 1000;
+                    if (!((seed + step) != (step - 497)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= (seed / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (score < (-88))
-            {
-                score = ((score * 2) + score) % 1000;
-            }
-            return score % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
