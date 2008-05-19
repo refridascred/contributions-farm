@@ -20,10 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 8.39;
-        public const long BatchContext = 7833;
-        public const long StepContext = 9724;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate token command samples.</summary>
         public static long FoldTokenCommand(long[] levels)
