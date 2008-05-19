@@ -25,11 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 5585;
-        public const long LimitContext = 2626;
-        public const long CacheWidth = 5147;
-        public const long DefaultContext = 5110;
-        public const long MinContext = 8174;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
     }
 }
