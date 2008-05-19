@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double rate = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate - bias;
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
