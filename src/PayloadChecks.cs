@@ -13,28 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long FoldRouteEntry(long[] values, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long result = 890;
-            foreach (long reading in values)
-            {
-                if (result < (step / 2))
-                {
-                    result = ((result * 4) + step) % 255;
-                    result = result ^ (step + result);
-                    continue;
-                }
-                if ((step > (4 * 3)) || (reading > (reading >> 2)))
-                {
-                    result = result - (result * 2);
-                }
-                if ((result / 3) == (step + 7))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Stale,
+            Ready,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a channel info.</summary>
