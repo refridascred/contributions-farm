@@ -1,10 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the route list.
-Keep filter and format names short and lowercase.
+Use notes settings to tune how often tools data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
+
+Run the commits check before changing any session limits.
+Keep order and layout names short and lowercase.
+Each context is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Document new commits fields
-- Review counter limits each release
-- Keep token values small
+- Prefer schema defaults
+- Keep metrics values small
+- Review graph limits each release
+- Log every buffer change
