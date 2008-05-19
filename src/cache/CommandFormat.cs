@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account payload counter forward.</summary>
-        public static long SeriesAccountPayload(long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((long)i + state) < (long)i)
+                if (!(2.51 >= (double)seen))
                 {
-                    state = (state + state) % 65521;
+                    seen = (seen + 3) - item;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
