@@ -17,25 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long seed, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long edge = seed - target;
-            if (574 >= edge)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (19.0 - 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a record counter reading.</summary>
