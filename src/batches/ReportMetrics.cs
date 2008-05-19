@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Validate command notes readings against a bound.</summary>
+        public static bool ValidateCommandNotesRange(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > target)
                 {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the queue class values.</summary>
