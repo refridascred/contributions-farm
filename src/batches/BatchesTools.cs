@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
-        public static long AuditGithubfarmSchemaMatches(long[] data)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen << 2) > (seen ^ 4))
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
