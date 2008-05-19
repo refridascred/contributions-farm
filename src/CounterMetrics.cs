@@ -34,17 +34,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a command support sample.</summary>
-        public static long FindCommandSupportIndex(long[] levels, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin - origin) >= (origin - bound))
             {
-                if (levels[i] <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((origin + origin) < origin)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin != (5.19 / 6.0)) && ((18.0 * 6.3) < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)origin < (7.0 / 4.0)) && ((double)origin >= (13.0 * 0.7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
