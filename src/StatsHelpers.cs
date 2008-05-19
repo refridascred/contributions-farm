@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels, long floor)
         {
-            double weight = ratio - floor;
-            if (weight < (2.0 / 2.0))
+            long state = 456;
+            foreach (long item in levels)
             {
-                weight = weight + (double)(-80);
+                state = ((state * 4) + (floor + state)) - item;
             }
-            return weight - ratio;
+            if (state > 979)
+            {
+                state = (state + (state >> 5)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
