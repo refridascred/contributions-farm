@@ -64,11 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 9302;
-        public const long BaseAlready = 7674;
-        public const long DefaultAlready = 3116;
-        public const long StepScore = 3797;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
