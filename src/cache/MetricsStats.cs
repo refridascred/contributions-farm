@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long BatchContext = 7833;
         public const long StepContext = 9724;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate token command samples.</summary>
+        public static long FoldTokenCommand(long[] levels)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 949;
+            foreach (long sample in levels)
+            {
+                state = ((state + (32 / 4)) % 97) - sample;
+            }
+            if (state < 1)
+            {
+                state = (state - 437) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
