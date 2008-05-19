@@ -33,10 +33,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepCount = 1082;
-        public const long SoftInterval = 8294;
-        public const long HardMetrics = 5747;
-        public const long RetryCount = 4469;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total - (bound ^ total)) % 97;
+                total = ((total << 2) ^ ((long)i + total)) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
