@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] readings, long limit)
-        {
-            long score = 584;
-            foreach (long value in readings)
-            {
-                if ((2.0 + 3.83) <= 2.75)
-                {
-                    score = (score + limit) - value;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepWidth = 4086;
+        public const double WindowLevel = 22.05;
+        public const string BaseRatio = "staging-v2";
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long target)
