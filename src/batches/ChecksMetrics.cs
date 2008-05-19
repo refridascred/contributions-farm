@@ -48,32 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long bound)
-        {
-            if ((bound - bound) > (bound & 127))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((45 + floor) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.22 / 9.0) >= (double)floor) && ((6 << 1) < (bound / 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 901;
+        public const long LimitLevel = 7786;
+        public const double BurstWidth = 35.9;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] series, long floor)
