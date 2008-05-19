@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
+        public static long AuditGithubfarmSchemaMatches(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen << 2) > (seen ^ 4))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
