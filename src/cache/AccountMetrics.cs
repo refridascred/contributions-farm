@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 212;
-        public const string SoftSize = "fallback-v2";
-        public const long StepChannel = 4770;
-        public const string LimitChannel = "cached";
-        public const long CacheChannel = 22;
+        /// <summary>Roll a format payload counter forward.</summary>
+        public static long DeriveFormatPayload(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result << 3) ^ (bound * 3)) % 101;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsLimits(long[] series, long offset)
