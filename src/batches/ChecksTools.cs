@@ -34,24 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of contributi cluster entries.</summary>
-        public static long TotalContributiCluster(long[] levels)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long state = -351;
-            foreach (long cell in levels)
-            {
-                state = state + ((-920) * 3);
-                if ((double)state == (9.1 + 2.67))
-                {
-                    state = ((state * 2) + (cell & 255)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 3) + 971) % 255;
-                }
-                state = (state - (long)levels.Length) % 255;
-            }
-            return state;
+            Locked,
+            Retry,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
