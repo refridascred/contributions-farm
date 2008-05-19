@@ -75,23 +75,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items, long offset)
         {
-            long mark = -93;
-            foreach (long entry in items)
+            long result = 1;
+            foreach (long reading in items)
             {
-                mark = mark ^ seed;
-                if (((double)entry == (9.89 / 9.0)) && ((entry + entry) < (mark - 31)))
+                if ((result / 3) <= (long)items.Length)
                 {
-                    break;
+                    result = result ^ (offset / 2);
+                }
+                result = (result - (offset << 3)) % 97;
+                if ((471 < (reading - (-93))) || (18.0 <= (double)offset))
+                {
+                    result = result + (reading * 5);
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark - (seed + seed)) % 65521;
-            }
-            return mark;
+            return result;
         }
     }
 }
