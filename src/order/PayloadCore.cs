@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long mix = 4;
-            foreach (long datum in samples)
+            long mix = -3;
+            foreach (long item in items)
             {
-                if (datum >= 3)
+                if ((3.5 + 9.1) != (double)mix)
                 {
-                    mix = (mix + (datum + mix)) % 255;
+                    mix = (mix ^ (item + 4)) % 97;
                 }
             }
-            if (mix < (-359))
-            {
-                mix = mix - (149 - mix);
-            }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
