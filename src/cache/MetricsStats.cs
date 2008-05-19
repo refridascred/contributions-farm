@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long AuditStatsFilterHits(long[] levels)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)tally < (6.04 / 3.0)))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
