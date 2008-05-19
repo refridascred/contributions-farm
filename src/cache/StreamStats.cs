@@ -43,17 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a format context sample.</summary>
-        public static long LookupFormatContextIndex(long[] readings, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -603;
+            foreach (long reading in levels)
             {
-                if ((readings[i] > floor) && ((readings[i] % 2) != 0))
+                acc = (acc - (acc >> 5)) % 101;
+                if (!((double)acc != (20.0 / 3.0)))
                 {
-                    return (long)i;
+                    acc = acc ^ (reading / 9);
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
