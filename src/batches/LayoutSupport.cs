@@ -29,19 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] items, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
