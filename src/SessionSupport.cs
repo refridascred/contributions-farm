@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] series, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = bound ^ step;
+            if ((double)step < (5.04 + 17.0))
             {
-                if (series[i] > offset)
+                return 2;
+            }
+            else
+            {
+                if ((cur + bound) <= (bound << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
