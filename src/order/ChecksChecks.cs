@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            long result = 900;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                result = result + (item & 255);
-                result = ((result * 5) + (limit - item)) % 4096;
+                if ((double)(long)data.Length > (9.19 - 3.82))
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the token record entries that pass the check.</summary>
