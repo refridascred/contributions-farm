@@ -37,24 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile checks value against two limits.</summary>
-        public static long SortProfileChecks(long floor, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if (target <= (0 & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 3) > floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
