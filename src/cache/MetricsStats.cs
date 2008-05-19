@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length + sample) >= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the metric phase values.</summary>
