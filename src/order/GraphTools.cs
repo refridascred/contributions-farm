@@ -56,14 +56,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            New,
-            Closed,
-            Stale,
-            Done,
+            Paused,
             Idle,
+            Queued,
         }
     }
 }
