@@ -54,38 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] items, long step)
         {
-            if (!((floor & 3) < step))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 6) <= 0)
+                if (sample > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 1) != (floor * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor > (floor + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a support info.</summary>
