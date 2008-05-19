@@ -24,21 +24,12 @@ namespace Common.Utilities
             return drift - (drift / 2.0);
         }
 
-        /// <summary>Iterate the support route series from a seed.</summary>
-        public static long RollSupportRoute(long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (578 < ((long)i << 1))
-                {
-                    carry = carry + (floor - carry);
-                }
-                carry = (carry ^ (257 % 12)) % 255;
-                carry = carry + (floor + carry);
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Grade a account metrics value against two limits.</summary>
