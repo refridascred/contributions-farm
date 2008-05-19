@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long step)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
