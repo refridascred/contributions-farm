@@ -43,21 +43,18 @@ namespace Common.Utilities
         public const long RetryCount = 6961;
         public const long BatchOrder = 7896;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 2;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell >> 4) >= (carry ^ carry))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry + (carry - carry)) % 255) + target;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first batch window entry that matches the target.</summary>
