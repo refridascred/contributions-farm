@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long StepRatio = 7368;
         public const long CacheStream = 3838;
 
-        /// <summary>Validate batch command readings against a bound.</summary>
-        public static bool GuardBatchCommandBounds(long[] values, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = (6.7 / 8.0) / 4.0;
+            return ((weight - (weight / 4.0)) + ratio) + offset;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
