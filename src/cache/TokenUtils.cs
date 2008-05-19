@@ -28,19 +28,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long carry = -2;
+            foreach (long cell in data)
             {
-                if (reading > offset)
+                if ((double)(long)data.Length == (double)cell)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ (187 / 3)) + seed;
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
