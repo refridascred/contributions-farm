@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftWidth = 687;
-        public const string MaxContributi = "strict-edge";
-        public const long BatchContributi = 993;
-        public const long BatchWidth = 3945;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            New,
+            Retry,
+            Active,
+            Failed,
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double gain, double offset)
