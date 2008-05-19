@@ -1,5 +1,7 @@
 {
-  "record_interval": 30,
-  "farm_retries": "stable",
-  "entry_limit": 60
+  "flush_retries_count": 64,
+  "stats_capacity": 3669,
+  "max_interval": false,
+  "verbose": 100,
+  "window_interval": "standard"
 }
