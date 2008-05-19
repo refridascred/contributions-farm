@@ -55,11 +55,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 6124;
-        public const long MinPayload = 3295;
-        public const long WindowPayload = 2106;
-        public const long BaseCount = 5441;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Closed,
+            Active,
+            Done,
+            Ready,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MinFactor = 76.08;
