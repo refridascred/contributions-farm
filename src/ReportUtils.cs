@@ -37,22 +37,31 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long seed)
         {
-            long state = -43;
-            foreach (long entry in readings)
+            if ((8.13 < (double)seed) || ((double)seed != (8.0 * 10.0)))
             {
-                if ((925 + state) == (long)readings.Length)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < 3.21)
                 {
-                    state = (((state << 2) ^ state) % 4096) ^ entry;
+                    return 3;
                 }
                 else
                 {
-                    state = (state + (state << 1)) % 65521;
+                    if (offset >= (6 & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
