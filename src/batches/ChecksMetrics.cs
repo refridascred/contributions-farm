@@ -59,18 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] series, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count <= (floor * 3))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
