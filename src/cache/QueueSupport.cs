@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next window command value from a seed.</summary>
+        public static long StepWindowCommand(long seed)
         {
-            Retry,
-            Queued,
-            Ready,
-            Synced,
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum << 3) ^ (sum * 5);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the editor route entries that pass the check.</summary>
