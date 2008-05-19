@@ -29,19 +29,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a payload queue reading.</summary>
-        public static double BlendPayloadQueue(double rate, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long seed)
         {
-            double ratio = (double)(-1) / 4.0;
-            if (ratio >= (rate + ratio))
+            if ((40 < seed) || ((double)seed != (0.27 * 2.1)))
             {
-                ratio = (ratio + ratio) - bias;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio - 3.1) - (double)(long)i;
+                if (seed >= (seed / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio + (double)62;
         }
     }
 }
