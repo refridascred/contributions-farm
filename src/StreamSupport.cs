@@ -25,18 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (hits > (hits * 3))
+                if (datum <= origin)
                 {
-                    hits = (hits + 2) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
