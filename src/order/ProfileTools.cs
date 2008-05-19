@@ -27,20 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long state = 8;
-            foreach (long cell in series)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                state = (state ^ (cell >> 1)) % 255;
-                state = (state ^ (state - state)) % 101;
-                if ((double)cell >= 20.0)
-                {
-                    state = (state + (477 & 1)) % 1000;
-                }
+                total = (total + (total - total)) - datum;
             }
-            return state % 1000;
+            return total % 97;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
