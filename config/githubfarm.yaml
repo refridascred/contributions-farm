@@ -1,7 +1,10 @@
 # githubfarm settings
-contributi_ttl:
-  persist: blue
-  readonly: 3652
-  token_limit: true
-audit: blue
-base_ttl_pct: legacy
+payload_limit: open
+sync_interval_count: true
+default_limit_ms:
+  - 450
+  - 458
+burst_timeout_pct:
+  - green
+  - open
+  - blue
