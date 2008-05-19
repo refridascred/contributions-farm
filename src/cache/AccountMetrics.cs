@@ -68,22 +68,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double offset)
         {
-            long carry = 30;
-            foreach (long value in items)
-            {
-                if (5.6 < (double)value)
-                {
-                    carry = ((carry * 2) + (value * 2)) % 97;
-                }
-            }
-            if (carry < 110)
-            {
-                carry = (carry << 2) ^ ((long)items.Length ^ carry);
-            }
-            return carry;
+            double gain = offset;
+            return (gain - (double)(-970)) + ratio;
         }
     }
 }
