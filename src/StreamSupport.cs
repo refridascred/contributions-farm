@@ -24,30 +24,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long result = 43;
+            foreach (long entry in levels)
             {
-                if (((anchor * 4) < anchor) && ((limit + anchor) >= (limit ^ limit)))
+                if (limit > (limit % 3))
                 {
-                    anchor = (anchor + (limit * 3)) % 255;
-                    anchor = (anchor - (limit - (long)i)) % 97;
-                    break;
+                    result = (((result << 2) ^ result) % 65521) + entry;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor ^ anchor)) % 4096;
-                }
-                long prev = (long)i;
-                if (anchor < (anchor - prev))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
