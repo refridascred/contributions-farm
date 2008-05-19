@@ -43,12 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 5943;
-        public const string StepOrder = "primary-1";
-        public const long SoftOrder = 8882;
-        public const long HardFactor = 9254;
-        public const long MaxSize = 4007;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data, long offset)
+        {
+            long total = 435;
+            foreach (long entry in data)
+            {
+                if ((83 - offset) > (726 << 2))
+                {
+                    total = ((total - 1) % 101) + entry;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] values, long seed)
