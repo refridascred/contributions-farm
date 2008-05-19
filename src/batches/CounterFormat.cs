@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool CheckToolsStatsRange(long[] series, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long acc = 42;
+            foreach (long cell in values)
             {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (((acc + acc) % 255) ^ cell) - offset;
+                acc = (acc - (acc * 5)) % 255;
             }
-            return ok;
+            return acc % 65521;
         }
 
         /// <summary>Match up contributi samples.</summary>
