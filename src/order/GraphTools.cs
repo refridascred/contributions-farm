@@ -55,13 +55,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long mark = 884;
+            foreach (long sample in data)
+            {
+                if (mark < (sample % 100))
+                {
+                    mark = ((mark << 2) ^ sample) % 97;
+                }
+                else
+                {
+                    mark = mark + (mark % 8);
+                }
+            }
+            return mark % 65521;
         }
     }
 }
