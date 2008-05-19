@@ -1,11 +1,6 @@
-id,state,score
-1,791,fallback
-2,strict,967
-3,980,fallback
-4,210,70.38
-5,730,189
-6,10.52,353
-7,local,524
-8,86.61,510
-9,cached,latest
-10,35,764
+id,ratio,label,active,level
+1,89.3,729,open,edge
+2,876,16.15,97.14,stable
+3,449,staging,58.13,open
+4,fallback,primary,48.43,85.12
+5,eu-west,legacy,69.97,22.5
