@@ -34,18 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((873 ^ item) >= (tally + tally)) && ((tally / 7) != (97 ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
