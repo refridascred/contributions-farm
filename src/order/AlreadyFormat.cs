@@ -31,11 +31,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double bias)
+        /// <summary>Locate a batch commits reading by value.</summary>
+        public static long LocateBatchCommitsIndex(long[] levels, long target)
         {
-            double gain = bias - (rate - rate);
-            return gain - gain;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
