@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit already window readings against a rule.</summary>
-        public static long MeasureAlreadyWindowHits(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mark = 8;
+            foreach (long cell in items)
             {
-                if ((double)item <= (2.8 * 8.63))
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = tally + 3;
+                    mark = (mark * 4) + cell;
+                    mark = mark ^ ((long)i / 7);
+                }
+                if (!((cell + mark) == (cell << 3)))
+                {
+                    mark = mark ^ 192;
+                }
+                if ((9.0 - 4.32) < (double)floor)
+                {
+                    mark = ((mark * 5) + cell) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (5 / 6)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
