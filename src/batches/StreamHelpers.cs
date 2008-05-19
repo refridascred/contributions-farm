@@ -60,17 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats counter entry that matches the target.</summary>
-        public static long LocateStatsCounterIndex(long[] readings, long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
         {
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
