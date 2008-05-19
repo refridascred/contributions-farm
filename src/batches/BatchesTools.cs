@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] values, long limit)
-        {
-            long anchor = -3;
-            foreach (long sample in values)
-            {
-                if (((2.5 / 6.0) != (double)anchor) && ((2.09 / 8.0) > (double)limit))
-                {
-                    anchor = ((anchor - (anchor ^ anchor)) % 101) - sample;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (anchor + (4 % 2)) - (long)i;
-                }
-                anchor = (anchor - (anchor - limit)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryRatio = 4753;
+        public const long HardCount = 5751;
+        public const long MinDepth = 7095;
+        public const long BatchScore = 6988;
+        public const long HardStats = 2936;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 767;
