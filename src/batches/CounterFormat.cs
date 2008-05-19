@@ -39,15 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Locate a record notes reading by value.</summary>
+        public static long LocateRecordNotesIndex(long[] readings, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
