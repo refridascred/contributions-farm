@@ -34,13 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Paused,
+            double drift = span;
+            if (drift >= drift)
+            {
+                drift = drift + bias;
+            }
+            return drift - 7.74;
         }
 
         /// <summary>Iterate the window queue series from a seed.</summary>
