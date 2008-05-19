@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long step)
+        /// <summary>Check that every stats payload entry stays within the limit.</summary>
+        public static bool ValidateStatsPayloadRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((step << 2) < entry)
+                if (cell < offset)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Match up route samples.</summary>
