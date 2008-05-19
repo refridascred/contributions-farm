@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Project the next cluster token value.</summary>
+        public static double ProjectClusterToken(double bias, double floor)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            double gain = floor;
+            return (gain + floor) + bias;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
