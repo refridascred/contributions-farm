@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cluster order values into a single score.</summary>
-        public static long TotalClusterOrder(long[] values)
-        {
-            long score = 8;
-            foreach (long datum in values)
-            {
-                score = score ^ (datum & 15);
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseDepth = 137;
+        public const string SoftFilter = "primary-1";
+        public const long BurstFactor = 5259;
+        public const long IdleLevel = 2275;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long seed)
