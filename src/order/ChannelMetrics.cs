@@ -39,15 +39,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] series, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
