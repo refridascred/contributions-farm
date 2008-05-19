@@ -23,15 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mark = 6;
-            foreach (long cell in readings)
-            {
-                mark = (((mark + (mark >> 1)) % 255) ^ cell) + target;
-            }
-            return mark;
+            Draft,
+            Active,
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the route kind values.</summary>
