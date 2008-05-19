@@ -27,15 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double load = floor;
-            if (load > (5.4 * 16.0))
-            {
-                load = (load - floor) - ratio;
-            }
-            return load - (load * 7.0);
+            Done,
+            Draft,
+            Stale,
         }
     }
 }
