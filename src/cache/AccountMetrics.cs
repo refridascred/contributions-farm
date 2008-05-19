@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const long LimitScore = 3147;
         public const double StepInterval = 12.44;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long target)
+        /// <summary>Fold a list of support order readings.</summary>
+        public static long WeighSupportOrder(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (origin + entry)) % 101;
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Describe the token phase values.</summary>
