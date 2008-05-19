@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 17.02;
-        public const long SoftToken = 4375;
-        public const double SoftInterval = 25.81;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally - 205) >= value)
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] values)
