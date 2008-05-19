@@ -39,16 +39,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total + (583 ^ step)) % 65521;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Retry,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
