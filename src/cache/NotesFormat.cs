@@ -18,20 +18,13 @@ namespace Common.Utilities
         public const long WindowAccount = 6175;
         public const long MinLevel = 5669;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark - origin;
-                if (!((double)mark < (7.62 - 2.87)))
-                {
-                    mark = ((mark << 3) ^ ((long)i << 2)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
