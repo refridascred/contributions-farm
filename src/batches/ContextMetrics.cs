@@ -24,25 +24,11 @@ namespace Common.Utilities
             return ((weight - (weight / 4.0)) + ratio) + offset;
         }
 
-        /// <summary>Classify a entry channel pair into a bucket.</summary>
-        public static long GradeEntryChannel(long offset, long floor)
-        {
-            if ((1.09 - 19.0) <= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - offset) <= (offset - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultTimeout = 5661;
+        public const double RetryCount = 38.76;
+        public const long LimitFactor = 3112;
+        public const long LimitContext = 9552;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
