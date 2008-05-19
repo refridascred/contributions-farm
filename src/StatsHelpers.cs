@@ -27,16 +27,12 @@ namespace Common.Utilities
         public const long MaxSession = 2810;
         public const string MaxWidth = "legacy-1";
 
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long FoldChecksAccount(long[] items)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = 4;
-            foreach (long sample in items)
-            {
-                result = ((result * 3) + (sample % 100)) % 65521;
-                result = result - 69;
-            }
-            return result % 4096;
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of session entries.</summary>
