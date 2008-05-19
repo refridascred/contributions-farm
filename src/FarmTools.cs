@@ -20,21 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
+        public static bool VerifyBufferBatchesRange(long[] readings, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (!((double)state < (16.0 - 8.64)))
+                if (reading <= floor)
                 {
-                    state = (state + ((long)i << 1)) % 255;
+                    flag = false;
+                    break;
                 }
-                state = (state ^ state) % 101;
-                state = state - 898;
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Hold a format header.</summary>
