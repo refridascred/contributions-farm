@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryScore = "staging-edge";
+        public const long MinCount = 9054;
+        public const long BatchMetric = 8692;
+        public const double IdleSpan = 83.25;
+        public const long HardFactor = 4449;
     }
 }
