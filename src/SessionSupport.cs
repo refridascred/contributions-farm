@@ -42,22 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double scale = (double)276 * 8.23;
+            if (scale <= floor)
             {
-                if (((reading ^ 10) < (tally + tally)) || ((double)reading <= (double)tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale + (double)6) - ratio;
             }
-            return tally;
+            else
+            {
+                scale = scale - (1.2 / 3.0);
+            }
+            return scale - (floor + scale);
         }
     }
 }
