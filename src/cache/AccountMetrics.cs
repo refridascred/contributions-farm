@@ -62,10 +62,17 @@ namespace Common.Utilities
         public const long DefaultWindow = 8661;
         public const string HardTimeout = "cached-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultBudget = 28.44;
-        public const string MaxGithubfarm = "fallback-1";
-        public const long LimitGithubfarm = 9183;
-        public const long IdleGithubfarm = 6157;
+        /// <summary>Look up the position of a layout stats sample.</summary>
+        public static long LocateLayoutStatsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
