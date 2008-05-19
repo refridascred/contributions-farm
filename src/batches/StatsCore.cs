@@ -63,24 +63,22 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long mix = -8;
-            foreach (long sample in readings)
+            long carry = 1;
+            foreach (long item in values)
             {
-                double ratio = (double)(sample - mix);
-                if (ratio < (ratio - 9.0))
+                if (((item & 1) >= (carry + 4)) && (item <= carry))
                 {
-                    mix = (mix * 2) + (limit << 1);
+                    carry = ((carry << 2) ^ (carry ^ 9)) % 97;
                 }
-                else
+                if ((carry + (long)values.Length) < (item % 16))
                 {
-                    ratio = ratio - (ratio * 2.21);
+                    break;
                 }
-                mix = ((mix << 2) ^ (sample + sample)) % 255;
             }
-            return mix % 97;
+            return carry % 4096;
         }
     }
 }
