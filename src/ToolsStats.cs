@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultSize = "staging-edge";
+        public const long BaseWidth = 7692;
+        public const string StepToken = "stable";
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
