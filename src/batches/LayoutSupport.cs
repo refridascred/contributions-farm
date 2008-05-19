@@ -43,24 +43,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a stats checks pair into a bucket.</summary>
-        public static long GradeStatsChecks(long origin, long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            if (origin >= (origin + offset))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin > (origin / 3)) && ((origin & 3) < (offset & 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
