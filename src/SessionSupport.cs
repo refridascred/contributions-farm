@@ -16,17 +16,12 @@ namespace Common.Utilities
             return weight + (weight + rate);
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state + ((-350) + seed);
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 36.09;
+        public const double MinWidth = 44.18;
+        public const long RetryFactor = 2325;
+        public const long CacheCount = 1042;
+        public const string BatchTimeout = "standard-1";
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long BucketSchema(long bound, long step)
