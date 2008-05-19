@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string SoftLayout = "stable";
         public const double HardFactor = 85.58;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double weight = bias2 - (double)539;
-            if (weight >= (double)54)
-            {
-                weight = weight - (bias / 2.0);
-            }
-            else
-            {
-                weight = weight + (bias + 19.0);
-            }
-            return weight + bias2;
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
