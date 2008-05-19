@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] samples, long step)
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool CheckChannelMetricRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((matches << 3) == (step - item))
+                if (reading != bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
