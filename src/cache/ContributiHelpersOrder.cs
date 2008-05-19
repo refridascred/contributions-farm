@@ -16,12 +16,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long origin)
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long edge = offset - origin;
+            if ((double)88 != (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((edge + offset) <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
