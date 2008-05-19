@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7597;
-        public const long BaseCommits = 7339;
-        public const string LimitCommits = "alpha-1";
-        public const double IdleDepth = 8.13;
-        public const string BatchCommits = "open";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
