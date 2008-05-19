@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 2432;
-        public const long WindowSpan = 3113;
-        public const long IdleDepth = 1972;
-        public const string HardRatio = "alpha-1";
-        public const string HardFactor = "stable-1";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (63 < (833 + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
