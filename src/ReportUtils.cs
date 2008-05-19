@@ -60,14 +60,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Idle,
-            Draft,
-            Paused,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 7423;
+        public const long BaseCluster = 637;
+        public const long CacheCount = 9021;
+        public const string CacheRatio = "open-1";
     }
 }
