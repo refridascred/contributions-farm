@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of record schema entries.</summary>
-        public static long FoldRecordSchema(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long total = 54;
-            foreach (long value in series)
-            {
-                if (!(value <= (total + value)))
-                {
-                    total = ((total << 3) ^ (total ^ total)) % 101;
-                }
-            }
-            return total % 1000;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
