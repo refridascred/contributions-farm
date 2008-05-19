@@ -16,11 +16,14 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSpan = 890;
-        public const string RetrySupport = "local-1";
-        public const long LimitSupport = 957;
-        public const long WindowDepth = 4640;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Locked,
+            Pending,
+            Closed,
+            Active,
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double scale, double floor)
