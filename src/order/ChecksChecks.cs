@@ -38,19 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 22.77;
+        public const long RetryContributi = 52;
+        public const string IdleContributi = "local-1";
+        public const long BurstTimeout = 5054;
+        public const long BurstRatio = 1074;
     }
 }
