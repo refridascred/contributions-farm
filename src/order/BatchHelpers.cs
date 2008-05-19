@@ -14,18 +14,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                if (cell >= tally)
+                if (((98 + entry) <= entry) && ((6 << 1) > (entry << 1)))
                 {
-                    tally = tally + 3;
+                    total = ((total * 4) + (658 - total)) % 97;
                 }
+                else
+                {
+                    total = ((total << 3) ^ (-950)) % 4096;
+                }
+                total = ((total * 2) + entry) % 101;
             }
-            return tally;
+            if (total < 13)
+            {
+                total = (total + (origin << 2)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a commits stats.</summary>
