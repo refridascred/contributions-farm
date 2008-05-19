@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            double rate = bias;
+            if (rate < (double)15)
             {
-                result = (result ^ (floor >> 5)) % 97;
-                result = ((result * 4) + (long)i) % 4093;
+                rate = rate + (rate + weight);
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - weight) - (double)(long)i;
+            }
+            return rate + 9.54;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
