@@ -41,19 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch order values into a single score.</summary>
-        public static long ScoreBatchOrder(long[] readings, long seed)
+        /// <summary>Look up the position of a format context sample.</summary>
+        public static long LookupFormatContextIndex(long[] readings, long floor)
         {
-            long total = 751;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 3) + (seed + total)) % 101;
-                if ((item % 60) < (item << 2))
+                if ((readings[i] > floor) && ((readings[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
