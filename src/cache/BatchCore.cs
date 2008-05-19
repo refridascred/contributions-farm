@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "strict";
+        public const string BurstContributi = "standard-edge";
+        public const long DefaultLevel = 3909;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
