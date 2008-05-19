@@ -26,12 +26,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheSize = 2933;
-        public const long StepRatio = 8363;
-        public const long MinGithubfarm = 2720;
-        public const string DefaultInterval = "stable-v2";
-        public const string RetryGithubfarm = "legacy-v2";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Retry,
+            Locked,
+            Active,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 2910;
