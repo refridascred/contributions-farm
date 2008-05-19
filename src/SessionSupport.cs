@@ -24,21 +24,19 @@ namespace Common.Utilities
             return drift - (drift / 2.0);
         }
 
-        /// <summary>Compare every pair of profile notes readings.</summary>
-        public static long OverlapProfileNotesCount(long[] values)
+        /// <summary>Combine tools token values into a single score.</summary>
+        public static long TallyToolsToken(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 2;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = (score ^ (score * 4)) % 255;
+                if (((6.2 * 4.3) > (double)sample) || ((double)score == (7.0 + 0.35)))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score ^ (1 - sample);
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Accumulate channel samples.</summary>
