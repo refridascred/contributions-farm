@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] values)
         {
-            Pending,
-            Stale,
-            Synced,
+            long mark = 4;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((((mark * 3) + (0 >> 4)) % 101) + (long)i) + entry;
+                }
+                mark = (mark + (89 ^ (long)values.Length)) % 97;
+            }
+            if (mark < 0)
+            {
+                mark = mark ^ (mark % 7);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
