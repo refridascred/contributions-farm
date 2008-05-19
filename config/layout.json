@@ -1,5 +1,7 @@
 {
-  "flush_window_pct": 27.73,
-  "readonly": 1024,
-  "tools_threshold": 1
+  "dry_run": 67.42,
+  "base_timeout_s": "staging",
+  "min_capacity": "green",
+  "compress": false,
+  "hard_size": "primary"
 }
