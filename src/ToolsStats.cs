@@ -60,20 +60,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 5377;
+        public const string BaseAccount = "fallback-1";
+        public const string IdleAccount = "stable";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyLimits(long[] values, long origin)
