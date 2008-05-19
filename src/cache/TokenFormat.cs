@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long WindowInterval = 4256;
         public const double BaseBudget = 68.9;
 
-        /// <summary>Count the metrics context entries that pass the check.</summary>
-        public static long TallyMetricsContextGaps(long[] samples)
+        /// <summary>Check that every order buffer entry stays within the limit.</summary>
+        public static bool ValidateOrderBufferLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (((tally << 3) == (83 / 6)) || ((datum ^ datum) < datum))
+                if (reading != target)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Match up support samples.</summary>
