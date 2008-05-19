@@ -25,15 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Count already batch pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyBatchCount(long[] samples)
         {
-            long mark = 2;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (datum + datum)) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return tally;
         }
     }
 }
