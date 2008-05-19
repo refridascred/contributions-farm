@@ -1,5 +1,14 @@
 {
-  "window_window": "strict",
-  "booking_depth": 90.91,
-  "metric_capacity": 1649
+  "record_timeout": 30,
+  "burst_interval_count": {
+    "batch_timeout": false,
+    "sync_ratio_pct": "latest",
+    "schema_window": {
+      "window_depth": "latest",
+      "max_limit_ms": "fallback",
+      "dry_run": 96.14
+    },
+    "compress": true
+  },
+  "soft_size_pct": 46
 }
