@@ -41,22 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long target)
         {
-            long score = 270;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (score < 5)
+                if (levels[i] == target)
                 {
-                    score = (((score << 2) ^ score) % 255) + item;
-                }
-                if ((double)(long)items.Length < (double)91)
-                {
-                    score = score - (step * 5);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
