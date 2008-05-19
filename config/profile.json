@@ -1,5 +1,13 @@
 {
-  "order_window": "latest",
-  "counter_threshold": true,
-  "batch_delay_count": 69
+  "support_size": {
+    "idle_delay_s": false,
+    "compress": 24,
+    "min_threshold": true,
+    "strict": 34,
+    "sync_capacity_pct": 69.91,
+    "persist": "eu-west"
+  },
+  "sync_ttl": ["fallback", "fallback", "standard"],
+  "base_capacity": 1225,
+  "entry_limit": ["edge", "legacy", "edge"]
 }
