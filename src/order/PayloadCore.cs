@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long MinSize = 3269;
         public const long HardCount = 3487;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
