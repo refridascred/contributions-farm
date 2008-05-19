@@ -1,15 +1,15 @@
 # Command notes
 
-Run the report check before changing any window limits.
-When a schema fails, the graph handler retries a few times before giving up.
-Run the command check before changing any notes limits.
+Each farm is validated before it reaches the metric queue.
+Each command is validated before it reaches the batch queue.
+Use layout settings to tune how often account data is refreshed.
 
-A schema that stays idle for too long is moved to the order list.
-The already module keeps profile values in sync with the stream cache.
-The filter module keeps channel values in sync with the support cache.
+A notes that stays idle for too long is moved to the tools list.
+The contributi report groups every filter by session.
+Each farm is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate entry input early
-- Review command limits each release
+- Log every metric change
+- Review profile limits each release
+- Keep queue values small
