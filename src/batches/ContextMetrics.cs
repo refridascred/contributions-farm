@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate batch command readings against a bound.</summary>
+        public static bool GuardBatchCommandBounds(long[] values, long step)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Failed,
-            Locked,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two layout farm measurements.</summary>
