@@ -50,19 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route cluster measurements.</summary>
-        public static double ScaleRouteCluster(double ratio, double floor)
+        /// <summary>Rank metrics context input into a small class.</summary>
+        public static long BucketMetricsContext(long limit, long step)
         {
-            double weight = ratio;
-            if (weight >= (weight * 5.0))
+            if ((15.0 - 4.0) <= (double)limit)
             {
-                weight = (weight + ratio) - floor;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = weight - (double)(long)i;
+                if (((double)limit > (0.13 / 4.0)) && (step < (9 % 10)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return weight + (double)0;
         }
 
         /// <summary>Describe the checks state values.</summary>
