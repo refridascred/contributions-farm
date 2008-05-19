@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the stats entry entries that pass the check.</summary>
+        public static long TallyStatsEntryOutliers(long[] data, long step)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!(cell <= (step % 100)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
