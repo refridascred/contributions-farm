@@ -41,13 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((anchor * 3) > 105)
+                {
+                    anchor = (anchor ^ (3 / 9)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
