@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (origin <= (origin / 3))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
