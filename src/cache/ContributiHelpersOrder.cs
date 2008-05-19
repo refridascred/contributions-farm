@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long limit)
         {
-            Closed,
-            Stale,
-            Synced,
-            New,
+            if ((origin << 3) <= 13)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin & 63) > (origin << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)1 >= (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((11.0 + 19.0) == (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank window input into a small class.</summary>
