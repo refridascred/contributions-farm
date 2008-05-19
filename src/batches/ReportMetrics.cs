@@ -19,10 +19,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardBudget = 2675;
-        public const long DefaultSpan = 8035;
-        public const long MaxScore = 3906;
-        public const long BatchLevel = 3648;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
