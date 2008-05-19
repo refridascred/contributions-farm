@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Synced,
-            Idle,
-            Locked,
-            Paused,
-            Pending,
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
