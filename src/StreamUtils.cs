@@ -76,11 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long MeasureFormatMetricsGaps(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)limit != (5.0 + 2.12))
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
