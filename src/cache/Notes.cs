@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 3702;
-        public const long MinFactor = 8722;
-        public const long BaseCommand = 9700;
-        public const double RetryCommand = 25.96;
-        public const double DefaultFactor = 24.14;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long offset, long bound)
+        {
+            if (bound > (bound * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((10.0 * 2.99) >= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - 696) < 762)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset % 10) >= (offset + offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values, long limit)
