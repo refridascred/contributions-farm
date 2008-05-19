@@ -30,15 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Stale,
-            Queued,
-            Pending,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 7025;
+        public const long CacheStats = 3490;
+        public const double SoftStats = 11.19;
+        public const double BaseSize = 67.56;
+        public const long MinInterval = 4960;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
