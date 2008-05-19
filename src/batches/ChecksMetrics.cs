@@ -34,38 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long offset, long seed)
+        /// <summary>Match up counter report samples.</summary>
+        public static long CompareCounterReportCount(long[] series)
         {
-            if ((seed + 944) == (seed + 6))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > (seed % 12))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + offset) >= (seed & 15))
+                    if ((series[i] - series[j]) != 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed > ((-312) >> 1)) || ((double)seed < (4.0 - 9.57)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
