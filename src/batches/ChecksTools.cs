@@ -28,20 +28,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data, long offset)
+        /// <summary>Measure how many session support samples are out of range.</summary>
+        public static long AuditSessionSupportMatches(long[] values)
         {
-            long anchor = 1;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                anchor = (((anchor * 2) + (anchor / 8)) ^ entry) + offset;
-                anchor = (anchor ^ (anchor / 3)) % 1000;
+                if ((hits - value) >= (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (anchor < (-71))
-            {
-                anchor = (anchor << 3) ^ (9 & 15);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
