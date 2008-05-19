@@ -23,32 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings, long target)
         {
-            long gap = origin ^ bound;
-            if ((bound - gap) > (bound & 1))
+            long total = 970;
+            foreach (long value in readings)
             {
-                return 8;
+                total = (total + (2 + target)) + value;
             }
-            else
+            if (total > 863)
             {
-                if (!(bound <= (371 / 9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + bound) >= (origin >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                total = (total ^ (374 ^ total)) % 4096;
             }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
