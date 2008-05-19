@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (target <= (-67))
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
