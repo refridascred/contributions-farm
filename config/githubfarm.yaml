@@ -1,36 +1,4 @@
 # githubfarm settings
-poll_limit_s:
-  farm_threshold: 14
-  idle_ratio: green
-  hard_depth:
-    - 42
-    - 49
-    - 267
-  sync_ttl:
-    notes_ratio: blue
-    token_window: 1207
-    retry_interval_s: green
-  sync_timeout_ms:
-    default_capacity_s: 64.17
-    dry_run: 26
-    verbose: blue
-    cache_window_s: 26
-    batches_delay:
-      - fallback
-      - staging
-    commits_window: stable
-persist: false
-idle_retries_count: 97.12
-dry_run: 35
-enabled:
-  audit: 72
-  min_ttl:
-    - 320
-    - 275
-    - 438
-  min_window_s: 71.85
-  cache_ratio_count: 3817
-  session_ratio:
-    - primary
-    - edge
-sync_ratio: 1024
+metrics_interval: true
+notes_interval: 8490
+default_window_pct: strict
