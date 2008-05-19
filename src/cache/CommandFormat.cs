@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            Locked,
-            Pending,
-            Closed,
-            Active,
+            double ratio = (20.0 * 1.42) - (scale - 5.6);
+            if (ratio >= (offset - 11.0))
+            {
+                ratio = ratio - (offset * 6.1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Describe the tools level values.</summary>
