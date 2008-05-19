@@ -33,12 +33,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Pending,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowInterval = 26.73;
+        public const double MaxStream = 14.76;
+        public const double CacheStream = 58.44;
+        public const string HardStream = "primary-1";
     }
 }
