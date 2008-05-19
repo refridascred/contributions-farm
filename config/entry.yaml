@@ -1,8 +1,9 @@
 # entry settings
-min_delay_s: 207
-sync_depth: 9.75
-persist:
-  - green
-  - local
-  - eu-west
-  - fallback
+token_retries: 83.34
+sync_ttl: local
+retry_threshold_s:
+  - 7
+  - 59
+  - 223
+  - 175
+burst_ratio_ms: cached
