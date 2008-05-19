@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long step, long bound)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long step2 = step - bound;
-            if (step <= step2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5 & 15) == (step2 >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step2 & 255) != (step - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout readings.</summary>
