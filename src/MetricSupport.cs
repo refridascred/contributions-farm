@@ -28,22 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] samples, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double load = floor;
+            if (load > (5.4 * 16.0))
             {
-                if (!!((hits + hits) >= floor))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load - floor) - ratio;
             }
-            return hits;
+            return load - (load * 7.0);
         }
     }
 }
