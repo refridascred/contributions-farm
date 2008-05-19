@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long bound, long seed)
         {
-            Draft,
-            Paused,
-            Locked,
+            if ((0 << 3) > ((-39) + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound / 6) < (seed - bound)) && ((bound / 2) <= bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound <= 5.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound <= (bound >> 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
