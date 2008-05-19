@@ -53,18 +53,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 6142;
+        public const long LimitWidth = 3776;
+        public const string BurstScore = "cached-v2";
+        public const long CacheContext = 1123;
+        public const long IdleLevel = 5923;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
