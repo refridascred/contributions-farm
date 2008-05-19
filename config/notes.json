@@ -1,6 +1,5 @@
 {
-  "stream_timeout": false,
-  "retry_ttl_ms": 68,
-  "cache_size_ms": "primary",
-  "profile_depth": 1902
+  "cache_ratio_count": 98,
+  "persist": "primary",
+  "warm_limit": "eu-west"
 }
