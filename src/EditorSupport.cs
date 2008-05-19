@@ -74,10 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardRatio = "standard-v2";
-        public const string HardQueue = "local-edge";
-        public const double BurstFactor = 78.06;
-        public const string HardLevel = "local-v2";
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Active,
+            Paused,
+            Ready,
+            Idle,
+            Done,
+        }
     }
 }
