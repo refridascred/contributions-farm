@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long target)
-        {
-            if ((limit + target) == (limit + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((45 << 2) == (68 - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit != (18.0 + 20.0)) || (target > (0 - target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 338;
+        public const string WindowSize = "cached";
+        public const long IdleGithubfarm = 2053;
+        public const string StepGithubfarm = "staging-edge";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] items)
