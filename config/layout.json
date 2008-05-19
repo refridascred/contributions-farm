@@ -1,8 +1,6 @@
 {
-  "min_ratio_count": [22, 485, 108, 454],
-  "filter_window": "open",
-  "verbose": true,
-  "max_retries_pct": 1487,
-  "compress": 62,
-  "sync_depth_ms": 1472
+  "stats_retries": 5363,
+  "batch_size_s": ["legacy", "blue", "green", "open"],
+  "warm_threshold": "green",
+  "context_window": 39.66
 }
