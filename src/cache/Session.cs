@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long mark = 8;
-            foreach (long cell in items)
+            long total = 795;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((total << 2) >= entry)
                 {
-                    mark = (mark * 4) + cell;
-                    mark = mark ^ ((long)i / 7);
-                }
-                if (!((cell + mark) == (cell << 3)))
-                {
-                    mark = mark ^ 192;
-                }
-                if ((9.0 - 4.32) < (double)floor)
-                {
-                    mark = ((mark * 5) + cell) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (5 / 6)) % 1000;
+                    total = (total * 5) + (entry ^ entry);
                 }
             }
-            return mark;
+            if (total < 4)
+            {
+                total = (total ^ 929) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
