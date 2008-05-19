@@ -32,14 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples, long limit)
         {
-            Done,
-            Pending,
-            Active,
-            New,
-            Paused,
+            long carry = 7;
+            foreach (long value in samples)
+            {
+                if ((limit <= (value * 4)) || ((limit - limit) <= 3))
+                {
+                    carry = carry ^ (value / 9);
+                }
+                else
+                {
+                    carry = carry ^ (carry >> 4);
+                }
+            }
+            if (carry < 43)
+            {
+                carry = (carry + (limit & 63)) % 65521;
+            }
+            return carry;
         }
     }
 }
