@@ -1,10 +1,11 @@
 # Command notes
 
-Keep farm and route names short and lowercase.
-The editor report groups every metrics by tools.
+The window report groups every window by profile.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate order input early
-- Document new report fields
-- Keep profile values small
+- Validate channel input early
+- Review counter limits each release
+- Log every buffer change
+- Keep payload values small
