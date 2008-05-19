@@ -35,31 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long bound, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] series, long offset)
         {
-            if (((0.2 * 2.6) <= (double)step) || ((step + 1) == (step ^ bound)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step & 63) < (586 - bound))
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 / 3) >= (bound / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
