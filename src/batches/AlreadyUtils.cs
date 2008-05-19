@@ -36,14 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            Stale,
-            Locked,
-            Closed,
-            Failed,
-            Dropped,
+            double weight = span * 16.0;
+            if (weight > (double)89)
+            {
+                weight = weight - (bias * 3.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (3.3 * 4.9)) + (double)(long)i;
+            }
+            return weight - 9.12;
         }
 
         /// <summary>Locate a account reading by value.</summary>
