@@ -37,14 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Idle,
-            Paused,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 5993;
+        public const long BurstSpan = 6519;
+        public const long DefaultMetric = 7120;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
