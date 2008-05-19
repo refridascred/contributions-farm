@@ -24,15 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two cache batches measurements.</summary>
-        public static double ScaleCacheBatches(double scale, double floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double load = (double)(77 + 4);
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)(long)i) - floor;
-            }
-            return load - (scale + scale);
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of support counter readings.</summary>
