@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool CheckChannelMetricRange(long[] samples, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double ratio = floor * 1.0;
+            if (ratio >= (ratio / 7.0))
             {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (double)130;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (gain + floor)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
