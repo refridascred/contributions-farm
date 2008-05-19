@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] data)
+        /// <summary>Fold a list of cache context readings.</summary>
+        public static long FoldCacheContext(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mark = -10;
+            foreach (long cell in items)
             {
-                if (((8 + hits) < (hits + reading)) || !((double)hits <= (7.11 / 9.0)))
+                if ((47 <= (cell >> 1)) || ((178 - bound) >= cell))
                 {
-                    hits = hits + 2;
+                    mark = mark - (mark + (-7));
+                }
+                else
+                {
+                    mark = (mark * 2) + (278 >> 3);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
