@@ -14,15 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            long mark = 35;
-            foreach (long sample in data)
+            double rate = 7.9;
+            if (rate > rate)
             {
-                mark = ((mark - 581) - sample) - limit;
+                rate = (rate + 3.8) + ratio;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + (rate - floor);
         }
 
         /// <summary>Hold a queue options.</summary>
