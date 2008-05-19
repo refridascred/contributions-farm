@@ -58,10 +58,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchRatio = 883;
-        public const double IdleGithubfarm = 55.07;
-        public const long RetryCount = 9620;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long seed, long offset)
+        {
+            if (((offset ^ seed) >= seed) || (772 <= (seed - seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed > offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) != (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed / 9) != (offset & 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] values, long limit)
