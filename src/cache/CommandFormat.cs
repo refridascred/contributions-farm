@@ -44,19 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric checks readings against a bound.</summary>
-        public static bool GuardMetricChecksBounds(long[] series, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (value <= target)
+                if ((hits >= item) && (((hits ^ 20) <= (-5)) && ((double)item > (double)(-8))))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
