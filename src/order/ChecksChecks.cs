@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples, long step)
-        {
-            long mix = 6;
-            foreach (long datum in samples)
-            {
-                if ((datum / 6) == (4 / 4))
-                {
-                    mix = (((mix * 3) + datum) % 255) + step;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 330;
+        public const string HardGithubfarm = "strict-edge";
+        public const long IdleTimeout = 4966;
+        public const double MinGithubfarm = 64.9;
+        public const string MinTimeout = "stable-v2";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryLimits(long[] data, long floor)
