@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Done,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4778;
+        public const double CacheInterval = 54.71;
+        public const long SoftBatches = 9509;
+        public const double RetryBatches = 12.78;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long target)
