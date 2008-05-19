@@ -38,23 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values, long limit)
+        /// <summary>Digest a series of stream context entries.</summary>
+        public static long TallyStreamContext(long[] readings, long step)
         {
-            long result = 2;
-            foreach (long reading in values)
+            long score = 411;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((score + score) > (value + 4))
                 {
-                    result = ((((result << 3) ^ (limit + result)) % 1000) + (long)i) + reading;
+                    score = (score + 751) + step;
                 }
-                result = ((result * 4) + 970) % 101;
             }
-            if (result < 752)
-            {
-                result = ((result * 5) + (result + limit)) % 4096;
-            }
-            return result;
+            return score;
         }
     }
 }
