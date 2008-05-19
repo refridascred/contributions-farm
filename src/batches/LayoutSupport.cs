@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] readings)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)count != (6.2 - 2.6)))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
