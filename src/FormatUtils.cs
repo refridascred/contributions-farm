@@ -77,21 +77,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of entry farm readings.</summary>
-        public static long MatchEntryFarmCount(long[] series)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
