@@ -1,7 +1,11 @@
 {
-  "compress": ["staging", "open"],
-  "warm_ratio_pct": "edge",
-  "batch_capacity": 47,
-  "default_size_s": 15.02,
-  "hard_size_pct": "strict"
+  "window_size": 76.94,
+  "base_ratio_count": "staging",
+  "batch_size_ms": {
+    "batch_interval": 77.26,
+    "readonly": 16.89,
+    "notes_limit": "legacy",
+    "min_limit": "blue"
+  },
+  "batch_retries_count": [254, 271, 349, 3]
 }
