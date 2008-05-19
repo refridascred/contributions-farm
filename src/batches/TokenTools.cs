@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of support account readings.</summary>
-        public static long PairSupportAccountCount(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry >= (double)80)
                 {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
