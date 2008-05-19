@@ -38,16 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                sum = (sum ^ (offset << 3)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
