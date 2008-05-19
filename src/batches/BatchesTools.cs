@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] samples)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] data)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long reading in data)
             {
-                if ((cell + cell) < hits)
+                if ((reading << 2) < (hits % 100))
                 {
                     hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
