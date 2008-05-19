@@ -41,12 +41,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 13.09;
+        public const long IdleScore = 4018;
+        public const long BurstLevel = 6476;
+        public const long SoftSpan = 1531;
     }
 }
