@@ -1,15 +1,8 @@
 {
-  "audit": 80.34,
-  "schema_depth": "legacy",
-  "batch_retries_s": "stable",
-  "cache_capacity_count": {
-    "soft_size_pct": 3613,
-    "record_size": 26,
-    "session_size": false,
-    "enabled": "strict",
-    "stats_size": 5,
-    "soft_threshold": "primary"
-  },
-  "default_timeout": [422, 121],
-  "batch_window_ms": "eu-west"
+  "compress": false,
+  "record_delay": "latest",
+  "account_ttl": 6880,
+  "max_interval": 65.84,
+  "max_limit_pct": true,
+  "checks_timeout": true
 }
