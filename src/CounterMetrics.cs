@@ -48,24 +48,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long target)
+        /// <summary>Look up the position of a notes token sample.</summary>
+        public static long FindNotesTokenIndex(long[] data, long offset)
         {
-            if ((7.4 + 7.0) <= (6.0 * 18.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (4.93 + 19.0))
+                if (data[i] < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
