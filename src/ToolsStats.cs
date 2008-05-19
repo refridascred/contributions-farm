@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] items, long origin)
+        /// <summary>Check that every graph record entry stays within the limit.</summary>
+        public static bool GuardGraphRecordLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (items[i] > origin)
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a contributi entry.</summary>
