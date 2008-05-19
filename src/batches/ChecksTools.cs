@@ -49,21 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (4.7 / 8.0) * 8.43;
+            if (ratio <= offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + (double)794) + bias;
             }
-            return tally;
+            else
+            {
+                ratio = ratio + (ratio + 15.0);
+            }
+            return ratio + (double)240;
         }
     }
 }
