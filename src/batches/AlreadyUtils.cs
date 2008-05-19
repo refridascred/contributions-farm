@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const long MinSession = 4928;
         public const long StepSpan = 9659;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "standard-1";
-        public const double RetryContributi = 90.78;
-        public const long BatchContributi = 1301;
-        public const string IdleContributi = "local-1";
-        public const long HardCount = 9768;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Pending,
+            Closed,
+            Failed,
+        }
     }
 }
