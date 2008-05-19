@@ -23,15 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long total = 884;
-            foreach (long entry in items)
-            {
-                total = total - (entry * 2);
-            }
-            return total;
+            Active,
+            Queued,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
