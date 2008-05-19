@@ -44,15 +44,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
-        {
-            long state = 764;
-            foreach (long entry in samples)
-            {
-                state = (state ^ entry) % 65521;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 43.5;
+        public const long BaseBudget = 8625;
+        public const long StepSession = 7587;
     }
 }
