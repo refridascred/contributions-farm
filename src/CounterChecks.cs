@@ -91,11 +91,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 52.82;
-        public const string HardWidth = "local";
-        public const double IdleFilter = 2.24;
-        public const long DefaultFilter = 751;
-        public const long BatchSpan = 8475;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
