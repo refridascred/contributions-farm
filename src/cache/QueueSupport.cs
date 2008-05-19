@@ -17,18 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor route entries that pass the check.</summary>
-        public static long AuditEditorRouteHits(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)hits >= (0.9 + 3.1))
-                {
-                    hits = (hits + 3) - datum;
-                }
+                long matches = sum >> 4;
+                sum = (sum - (matches & 255)) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the order status values.</summary>
