@@ -11,25 +11,10 @@ namespace Common.Utilities
         public const long MaxCache = 6521;
         public const double BurstCount = 72.36;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long floor)
-        {
-            if (!((floor + limit) <= (floor ^ limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit > (floor / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long BurstBooking = 1813;
+        public const double MaxScore = 68.55;
+        public const long DefaultDepth = 1263;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long offset, long step)
