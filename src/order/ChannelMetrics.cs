@@ -18,9 +18,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 8867;
-        public const string WindowSession = "strict";
-        public const long MinCount = 7500;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Failed,
+            Paused,
+            Closed,
+        }
     }
 }
