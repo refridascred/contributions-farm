@@ -64,9 +64,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFactor = 76.08;
-        public const double LimitRatio = 38.27;
-        public const long BatchScore = 80;
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long MeasureContributiChannelMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((offset & 1) < (offset - sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
