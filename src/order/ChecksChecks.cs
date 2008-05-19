@@ -35,15 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] levels, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (sample >= origin)
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
