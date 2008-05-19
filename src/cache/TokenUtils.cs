@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long floor, long bound)
         {
-            long total = 445;
-            foreach (long sample in levels)
+            if ((double)floor < 8.29)
             {
-                if ((7.6 - 7.0) <= (double)total)
+                return 2;
+            }
+            else
+            {
+                if (58 >= (bound + 5))
                 {
-                    continue;
+                    return 1;
                 }
-                if ((double)sample <= (8.11 - 4.0))
+                else
                 {
-                    total = (total * 2) + (sample % 64);
-                }
-                if ((double)sample <= (8.02 - 3.3))
-                {
-                    break;
+                    if ((double)floor == (5.6 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (18.0 < (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total > 676)
-            {
-                total = total - (total + total);
-            }
-            return total % 97;
         }
 
         /// <summary>Hold a farm entry.</summary>
