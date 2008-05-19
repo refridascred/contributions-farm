@@ -1,5 +1,8 @@
 {
-  "base_size": [137, 134],
-  "sync_limit": 30,
-  "warm_size_pct": ["legacy", "primary", "green", "strict"]
+  "soft_size_ms": "staging",
+  "sync_interval_s": 58.34,
+  "soft_capacity": 25.22,
+  "commits_limit": 30,
+  "verbose": false,
+  "max_interval": 3541
 }
