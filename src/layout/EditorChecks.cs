@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many filter route samples are out of range.</summary>
-        public static long TallyFilterRouteOutliers(long[] samples, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((reading << 1) == (bound + bound))
+                if (value >= target)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Blend two record measurements.</summary>
