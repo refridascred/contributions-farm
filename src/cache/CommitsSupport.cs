@@ -68,19 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes account reading.</summary>
-        public static double AdjustNotesAccount(double rate, double offset)
+        /// <summary>Project the next context support value.</summary>
+        public static double AdjustContextSupport(double ratio, double bias)
         {
-            double bias = offset;
-            if (bias > offset)
+            double gain = bias;
+            if (gain >= (double)45)
             {
-                bias = (bias - offset) - rate;
+                gain = gain + ratio;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (offset / 3.0)) - (double)(long)i;
-            }
-            return bias - (double)9;
+            return gain + (double)32;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
