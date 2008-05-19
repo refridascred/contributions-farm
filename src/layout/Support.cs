@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            long score = 360;
-            foreach (long datum in levels)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)datum == (20.0 - 5.4))
+                if (((double)carry >= 3.4) && ((long)i < ((long)i % 60)))
                 {
-                    score = (score ^ (target * 3)) % 1000;
+                    carry = (carry + offset) % 65521;
                 }
-                if ((double)target == (9.0 / 8.0))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Blend two command measurements.</summary>
