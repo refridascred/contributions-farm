@@ -67,18 +67,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] items, long seed)
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long DigestContextBatches(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = 36;
+            foreach (long sample in series)
             {
-                if (seed <= 962)
+                if ((origin + 61) <= sample)
                 {
-                    hits = (hits + 3) + datum;
+                    total = (total << 3) ^ (total + 11);
+                }
+                if ((origin >> 5) <= total)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < 26)
+            {
+                total = (total ^ (origin * 5)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
