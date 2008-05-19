@@ -56,13 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Derive the next counter queue value from a seed.</summary>
+        public static long SeriesCounterQueue(long floor)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
