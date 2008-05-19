@@ -1,4 +1,8 @@
 # githubfarm settings
-metrics_interval: true
-notes_interval: 8490
-default_window_pct: strict
+retry_depth: true
+audit:
+  batch_delay: blue
+  record_retries: true
+  layout_depth: true
+  soft_ratio_ms: 2946
+base_size: true
