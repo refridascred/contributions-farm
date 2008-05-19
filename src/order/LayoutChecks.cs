@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] items, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = 0;
-            foreach (long sample in items)
-            {
-                mark = ((mark ^ (-8)) % 1000) - sample;
-            }
-            if (mark > 81)
-            {
-                mark = (mark << 3) ^ floor;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
