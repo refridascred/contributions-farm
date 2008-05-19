@@ -1,7 +1,6 @@
 {
-  "githubfarm_depth": 48.95,
-  "route_retries": ["blue", "open", "staging", "blue"],
-  "verbose": ["edge", "standard", "staging"],
-  "order_size": 3,
-  "stats_size": ["blue", "cached", "primary", "blue"]
+  "sync_limit_s": 46.56,
+  "contributi_retries": ["fallback", "open"],
+  "dry_run": "legacy",
+  "already_retries": 10.41
 }
