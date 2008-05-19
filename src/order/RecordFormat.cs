@@ -46,14 +46,11 @@ namespace Common.Utilities
         public const long RetryBudget = 2593;
         public const long CacheCounter = 5905;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Synced,
-            New,
-            Failed,
-            Stale,
-            Pending,
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
