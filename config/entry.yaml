@@ -1,29 +1,32 @@
 # entry settings
-max_retries_s:
-  - 267
-  - 325
-sync_capacity_s:
-  payload_limit: 19.59
-  persist:
-    idle_limit:
-      - 47
-      - 383
-    cache_depth_pct:
-      - 444
-      - 352
-    cache_interval: 30
-  stream_window:
-    batch_retries_count: false
-    graph_ttl: 8229
-    cache_ttl: 18
-    cache_window_count: blue
-  tools_depth: 2.21
-  min_size_ms:
-    poll_limit_pct: 12
-    counter_threshold: 60
-    window_ratio: eu-west
-    batch_depth_ms: 60
-    idle_threshold_pct: 61.96
-    dry_run: green
-  sync_limit_count: 1024
-strict: local
+burst_size: 7875
+order_retries: false
+hard_retries:
+  base_depth_pct:
+    - 19
+    - 430
+    - 181
+  hard_delay_s:
+    persist: false
+    warm_interval:
+      - 226
+      - 491
+      - 407
+    base_delay_pct: green
+    soft_ratio_count: legacy
+    dry_run: 76.2
+    warm_retries_ms:
+      - 258
+      - 168
+      - 249
+  default_capacity_pct:
+    - 23
+    - 61
+  cache_timeout:
+    - legacy
+    - legacy
+    - stable
+  verbose: 30
+base_threshold: blue
+min_size_ms: 2367
+persist: 30
