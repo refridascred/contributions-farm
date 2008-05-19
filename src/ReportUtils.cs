@@ -45,18 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            long carry = 0;
-            foreach (long item in samples)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item - carry) < carry)
-                {
-                    carry = ((carry << 2) ^ carry) % 65521;
-                }
+                mix = mix ^ (mix >> 1);
+                mix = ((mix * 2) + step) % 1000;
+                mix = (mix * 3) + (step + mix);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
     }
 }
