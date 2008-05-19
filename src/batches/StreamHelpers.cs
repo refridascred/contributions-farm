@@ -41,18 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchRatio = 883;
+        public const double IdleGithubfarm = 55.07;
+        public const long RetryCount = 9620;
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
         public static long TallyBatchesChecksMatches(long[] series, long offset)
