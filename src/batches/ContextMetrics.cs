@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series)
         {
-            double rate = bias;
-            if (rate < (double)15)
+            long mix = 7;
+            foreach (long item in series)
             {
-                rate = rate + (rate + weight);
+                mix = mix + (item + item);
+                if ((item - mix) <= item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - weight) - (double)(long)i;
-            }
-            return rate + 9.54;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
