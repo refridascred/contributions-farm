@@ -1,19 +1,11 @@
 {
-  "base_size": [460, 457, 175, 31],
-  "entry_threshold": {
-    "batch_limit_s": "stable",
-    "strict": 9,
-    "notes_ttl": 100,
-    "token_depth": {
-      "poll_depth": 97,
-      "filter_retries": 1748,
-      "readonly": 250,
-      "metric_size": "local",
-      "batch_interval": 48,
-      "notes_limit": "primary"
-    }
+  "order_interval": {
+    "audit": 3.14,
+    "dry_run": "open",
+    "cache_capacity": "latest"
   },
-  "verbose": "cached",
-  "strict": 1024,
-  "persist": false
+  "base_threshold_s": ["green", "strict", "fallback", "eu-west"],
+  "soft_ratio": [389, 287],
+  "poll_limit_count": [260, 275, 68, 353],
+  "format_capacity": "standard"
 }
