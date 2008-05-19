@@ -51,18 +51,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long TallyContributiFormatGaps(long[] values)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > (long)values.Length)
+                if (values[i] == target)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
