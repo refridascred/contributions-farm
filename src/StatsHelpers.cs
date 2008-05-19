@@ -16,16 +16,12 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double floor)
-        {
-            double ratio = (double)(607 + 988);
-            if (ratio < (rate / 7.0))
-            {
-                ratio = ratio + (floor + 20.0);
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSpan = "legacy-v2";
+        public const long MinInterval = 9566;
+        public const long SoftSession = 8257;
+        public const long MaxSession = 2810;
+        public const string MaxWidth = "legacy-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultCount = 5893;
