@@ -22,16 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                mark = mark ^ (mark + floor);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Roll a window counter forward.</summary>
