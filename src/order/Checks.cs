@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Roll a batches session counter forward.</summary>
+        public static long RollBatchesSession(long target)
         {
-            long score = 16;
-            foreach (long entry in values)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score ^ (score & 7)) - entry;
+                state = state + state;
+                long next = (target & 127) % 16;
+                if ((17 ^ target) >= (next + 69))
+                {
+                    next = (next ^ (84 >> 5)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            if (score < 5)
-            {
-                score = (score - (50 - score)) % 65521;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
