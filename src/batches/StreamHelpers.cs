@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a entry channel figure with a bias.</summary>
-        public static double ProjectEntryChannel(double rate, double span)
-        {
-            double drift = (rate - span) - (3.9 / 4.0);
-            if (drift < (double)689)
-            {
-                drift = drift + (drift / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 17.0) - (double)(long)i;
-            }
-            return drift - rate;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 31.94;
+        public const long MaxCount = 7695;
+        public const long SoftSchema = 6708;
+        public const long CacheSchema = 7609;
+        public const long MinFactor = 8159;
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
         public static long AuditSessionToolsMatches(long[] values, long floor)
