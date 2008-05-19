@@ -51,18 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items, long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!(((long)items.Length % 3) >= ((-2) * 2)) && ((double)cell == (4.6 / 6.0)))
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
