@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!(matches >= (floor - floor)))
+                if ((cell - cell) <= (-1))
                 {
-                    matches = (matches + 2) ^ cell;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
