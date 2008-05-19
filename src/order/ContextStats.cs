@@ -22,31 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long limit, long origin)
+        /// <summary>Iterate the farm githubfarm series from a seed.</summary>
+        public static long StepFarmGithubfarm(long origin)
         {
-            if ((double)origin < (14.0 / 7.0))
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                carry = (carry ^ (carry & 15)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((2.42 + 5.43) <= (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (origin + 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
