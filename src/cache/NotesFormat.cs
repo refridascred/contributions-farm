@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
