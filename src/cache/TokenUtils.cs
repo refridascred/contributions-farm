@@ -21,19 +21,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate channel batches readings against a bound.</summary>
-        public static bool VerifyChannelBatchesBounds(long[] readings, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (value < bound)
+                if (!(15.0 > (double)hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
