@@ -58,38 +58,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a channel layout value against two limits.</summary>
-        public static long SortChannelLayout(long origin, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if ((origin - 677) <= (origin >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - 520) >= (seed - 948))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 ^ seed) < (seed + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Describe the metric state values.</summary>
