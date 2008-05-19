@@ -71,22 +71,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long MeasureFormatMetricsGaps(long[] readings, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (((37 - origin2) <= (origin - origin2)) || ((549 << 1) >= (origin - origin)))
             {
-                if ((double)limit != (5.0 + 2.12))
+                return 6;
+            }
+            else
+            {
+                if ((1.2 >= (double)origin) && ((origin - (-389)) != (origin2 + origin)))
                 {
-                    seen = (seen + 1) - entry;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((double)916 >= (double)origin) || (46 > (origin >> 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((origin - origin2) == (origin2 - origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
