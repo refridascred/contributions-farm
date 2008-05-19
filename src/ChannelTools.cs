@@ -21,21 +21,24 @@ namespace Common.Utilities
         public const double MaxCommits = 0.11;
         public const long BaseCommits = 3923;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound >> 2) < (bound2 + bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((-11) / 2) > bound)
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
