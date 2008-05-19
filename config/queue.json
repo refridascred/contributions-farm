@@ -1,6 +1,9 @@
 {
-  "warm_ratio_count": "stable",
-  "idle_ttl": ["stable", "blue", "open"],
-  "soft_size": [56, 209],
-  "batches_capacity": 40.12
+  "hard_ratio": {
+    "min_delay": false,
+    "retry_interval": 91.1,
+    "order_ratio": false
+  },
+  "batch_capacity_count": true,
+  "burst_limit": [346, 48, 324]
 }
