@@ -55,17 +55,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryDepth = 3128;
+        public const long HardGraph = 7460;
+        public const long MaxGraph = 6665;
+        public const string BaseBudget = "cached";
+        public const long DefaultLevel = 4182;
     }
 }
