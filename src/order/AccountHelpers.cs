@@ -76,18 +76,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] items, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((11.0 > (double)seen) && ((double)entry == (2.35 * 9.3)))
+                if ((step / 4) >= mix)
                 {
-                    seen = (seen + 1) + seed;
+                    break;
                 }
+                if (!((step - step) < (long)i))
+                {
+                    mix = mix ^ (step ^ mix);
+                }
+                if ((step + step) != (long)i)
+                {
+                    mix = (mix * 2) + step;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
     }
 }
