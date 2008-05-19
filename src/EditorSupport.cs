@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate editor farm samples.</summary>
-        public static long FoldEditorFarm(long[] values)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = 6;
-            foreach (long item in values)
-            {
-                total = ((total * 2) + (60 + item)) % 101;
-            }
-            if (total < 1)
-            {
-                total = ((total * 3) + (total * 3)) % 4096;
-            }
-            return total % 4096;
+            Dropped,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
