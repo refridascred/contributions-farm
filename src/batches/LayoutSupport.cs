@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Adjust a channel commits reading.</summary>
+        public static double ScaleChannelCommits(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (scale / 6.0) + (double)938;
+            if (gain < (double)215)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)92) - (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
