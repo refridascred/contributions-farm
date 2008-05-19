@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
