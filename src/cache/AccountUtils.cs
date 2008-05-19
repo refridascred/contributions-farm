@@ -16,13 +16,21 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            Paused,
-            Ready,
-            Failed,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
