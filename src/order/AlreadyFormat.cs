@@ -60,32 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long slot = seed ^ step;
-            if (((slot * 3) < (0 / 8)) || ((double)step != (double)slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((slot - slot) <= (step + slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2 & 3) >= (slot & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
