@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitDepth = "primary-v2";
+        public const double HardDepth = 36.59;
+        public const long RetryScore = 2709;
+        public const long StepContext = 8999;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
