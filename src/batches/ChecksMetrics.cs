@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many record batch samples are out of range.</summary>
-        public static long AuditRecordBatchMatches(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data, long floor)
         {
             long count = 0;
             foreach (long datum in data)
             {
-                if (!((double)count != (14.0 * 0.6)))
+                if (((double)datum <= (10.0 + 8.8)) || (((966 / 3) >= floor) && (5 < count)))
                 {
-                    count = (count + 3) - datum;
+                    count = count + 2;
                 }
             }
             return count;
