@@ -1,4 +1,6 @@
 # githubfarm settings
-strict: strict
-hard_capacity_count: 77.73
-readonly: false
+default_window_s: 70.24
+cache_interval_ms: staging
+hard_timeout_pct: stable
+order_ratio: latest
+channel_size: legacy
