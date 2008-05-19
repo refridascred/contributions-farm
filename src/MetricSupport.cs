@@ -28,18 +28,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((double)count <= (double)item) || ((double)count <= 5.3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 61.62;
+        public const long IdleInterval = 6375;
+        public const string StepNotes = "latest-v2";
     }
 }
