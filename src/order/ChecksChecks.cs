@@ -34,23 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long floor)
         {
-            long mix = -615;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long value in data)
             {
-                mix = (mix << 3) ^ 47;
-                if (0.6 < (double)entry)
+                if (value <= floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mix > 919)
-            {
-                mix = ((mix << 2) ^ (930 / 7)) % 65521;
-            }
-            return mix;
+            return ok;
         }
     }
 }
