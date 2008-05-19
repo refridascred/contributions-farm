@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] data)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((seen * 2) >= (seen + value)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
