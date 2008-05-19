@@ -56,22 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] data, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((3 - seen) != (31 >> 4))
+                if (sample != floor)
                 {
-                    seen = ((seen + 2) ^ item) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
