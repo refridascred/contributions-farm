@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Level { get; set; }
+            public string Owner { get; set; } = "";
             public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
