@@ -49,18 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit report commits readings against a rule.</summary>
-        public static long AuditReportCommitsOutliers(long[] values, long step)
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long CountChannelRouteHits(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((step + tally) >= (cell >> 4))
+                if (reading < (reading - reading))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
