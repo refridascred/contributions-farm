@@ -59,17 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload window reading by value.</summary>
-        public static long FindPayloadWindowIndex(long[] values, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] == floor)
+                if ((double)offset > (6.35 * 15.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
