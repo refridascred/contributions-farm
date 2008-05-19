@@ -23,13 +23,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] items, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] items, long origin)
         {
             bool stale = true;
-            foreach (long datum in items)
+            foreach (long reading in items)
             {
-                if (datum <= target)
+                if (reading <= origin)
                 {
                     stale = false;
                     break;
