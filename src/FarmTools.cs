@@ -20,26 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series, long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] values, long origin)
         {
-            long score = 358;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((score >> 5) == (seed + sample)) && ((score ^ 4) == (44 & 15)))
+                if (values[i] > origin)
                 {
-                    score = score ^ (sample + 946);
-                }
-                if ((double)sample != (double)score)
-                {
-                    score = (score ^ 768) % 255;
+                    return (long)i;
                 }
             }
-            if (score < 82)
-            {
-                score = (score << 3) ^ (score % 64);
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a format header.</summary>
