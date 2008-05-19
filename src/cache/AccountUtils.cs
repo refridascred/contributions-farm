@@ -16,21 +16,38 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (origin2 > (origin2 - origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin2 % 12) <= (origin2 ^ origin))
                 {
-                    if ((samples[i] - samples[j]) > 16)
+                    return 2;
+                }
+                else
+                {
+                    if (origin2 < (553 - origin))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((19.0 - 0.1) >= (double)origin2) && ((double)origin > (double)origin2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
