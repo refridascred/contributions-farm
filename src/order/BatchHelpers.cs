@@ -39,19 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command support entry stays within the limit.</summary>
-        public static bool ValidateCommandSupportLimits(long[] series, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != bound)
+                if (samples[i] <= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
