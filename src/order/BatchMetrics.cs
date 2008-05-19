@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi session measurements.</summary>
-        public static double ScaleContributiSession(double gain, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double ratio = (double)(187 % 5);
-            if (ratio < (floor / 5.0))
-            {
-                ratio = ratio + gain;
-            }
-            else
-            {
-                ratio = ratio + (floor + gain);
-            }
-            return ratio + gain;
+            Done,
+            Active,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Project the next entry value.</summary>
