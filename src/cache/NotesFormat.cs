@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools route sample.</summary>
-        public static long SeekToolsRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 3322;
+        public const long RetryCluster = 8099;
+        public const double MaxScore = 78.7;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
