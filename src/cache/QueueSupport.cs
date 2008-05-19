@@ -40,13 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long offset = limit - bound;
+            if ((double)offset > (3.79 * 3.92))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset & 1) == (limit >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + limit) < (limit + 723))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
