@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] levels, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Locked,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
