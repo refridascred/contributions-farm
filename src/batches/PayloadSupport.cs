@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count record editor pairs that satisfy a relation.</summary>
-        public static long MatchRecordEditorCount(long[] readings)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 2.7;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain - scale) + (double)(long)i) - bias;
             }
-            return hits;
+            return gain + (9.0 + gain);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
