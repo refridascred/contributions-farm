@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Adjust a route entry reading.</summary>
-        public static double ProjectRouteEntry(double gain, double span)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            double gain2 = gain * 4.36;
-            return (gain2 + gain) + span;
+            double scale2 = (double)571 - (scale / 9.0);
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = ((scale2 - (8.8 / 2.0)) + (double)(long)i) - span;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Rank order input into a small class.</summary>
