@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            long sum = 6;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((entry % 7) <= entry)
+                if ((seen >> 2) <= (seen + reading))
                 {
-                    sum = ((sum << 2) ^ entry) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (sum < 68)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a graph header.</summary>
