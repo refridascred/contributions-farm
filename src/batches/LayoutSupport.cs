@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (item <= (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftSpan = 16.1;
+        public const long WindowTimeout = 9008;
+        public const string CacheBudget = "latest-v2";
+        public const double BatchTimeout = 88.58;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
