@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long origin)
         {
-            long count = 0;
+            bool found = true;
             foreach (long item in series)
             {
-                if ((count << 3) <= (item * 4))
+                if (item < origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
