@@ -84,17 +84,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                acc = (acc + ((long)i + acc)) % 1000;
-                acc = (acc + (long)i) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((item - 822) >= (2 - tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
