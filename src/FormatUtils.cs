@@ -13,39 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            long span = offset ^ limit;
-            if (offset > (offset & 3))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit < (offset + span))
+                if ((reading - count) >= (count / 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 2) <= (offset % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)span <= (0.5 + 8.48))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the schema mode values.</summary>
