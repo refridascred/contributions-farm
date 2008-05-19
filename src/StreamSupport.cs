@@ -17,18 +17,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] values, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)matches < (3.4 - 5.95))
-                {
-                    matches = ((matches + 3) ^ datum) + seed;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
