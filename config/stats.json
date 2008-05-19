@@ -1,6 +1,6 @@
 {
-  "sync_timeout": 2997,
-  "cache_window": 100,
-  "hard_ttl": 70,
-  "default_delay_ms": [411, 482, 48, 447]
+  "soft_retries_ms": 1024,
+  "idle_capacity": "latest",
+  "retry_limit": [481, 39, 317, 39],
+  "strict": "eu-west"
 }
