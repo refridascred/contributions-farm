@@ -28,18 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + 5) <= (reading * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
