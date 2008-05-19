@@ -37,19 +37,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up report samples.</summary>
