@@ -74,21 +74,13 @@ namespace Common.Utilities
         public const string MaxContext = "local-1";
         public const long RetryBudget = 63;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                long gap = mark;
-                if (gap > limit)
-                {
-                    mark = mark + limit;
-                    gap = (gap + (limit + mark)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
