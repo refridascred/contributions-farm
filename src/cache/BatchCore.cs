@@ -20,10 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "strict";
-        public const string BurstContributi = "standard-edge";
-        public const long DefaultLevel = 3909;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] items)
