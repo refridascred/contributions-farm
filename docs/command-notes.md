@@ -1,13 +1,12 @@
 # Command notes
 
-Keep session and metrics names short and lowercase.
-The editor module keeps metric values in sync with the farm cache.
-
-Use report settings to tune how often notes data is refreshed.
-Run the token check before changing any stats limits.
+When a farm fails, the session handler retries a few times before giving up.
+When a already fails, the filter handler retries a few times before giving up.
+Each profile is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Validate window input early
-- Review order limits each release
+- Prefer buffer defaults
+- Keep batch values small
+- Validate farm input early
+- Document new farm fields
