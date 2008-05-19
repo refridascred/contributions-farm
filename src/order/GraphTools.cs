@@ -20,17 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first stream checks entry that matches the target.</summary>
-        public static long LookupStreamChecksIndex(long[] readings, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count account schema pairs that satisfy a relation.</summary>
