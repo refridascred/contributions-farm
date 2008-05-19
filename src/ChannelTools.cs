@@ -25,16 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor ^ (146 + 33);
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 5585;
+        public const long LimitContext = 2626;
+        public const long CacheWidth = 5147;
+        public const long DefaultContext = 5110;
+        public const long MinContext = 8174;
     }
 }
