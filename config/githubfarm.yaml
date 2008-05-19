@@ -1,19 +1,18 @@
 # githubfarm settings
-compress: true
-graph_ttl:
-  format_retries: 6234
-  poll_ttl:
-    - stable
-    - staging
-    - latest
-  default_timeout_s: 32.75
-  audit: 52.37
-  strict:
-    - blue
-    - staging
-  retry_threshold_count:
-    - primary
-    - fallback
-    - staging
-counter_limit: 78.37
-retry_interval_s: local
+persist:
+  window_ratio:
+    - 204
+    - 343
+  editor_interval: 45
+  soft_ttl_count: 10.39
+  idle_depth_ms: edge
+poll_timeout_ms: 1024
+cache_ttl_s:
+  batch_capacity_s: eu-west
+  enabled: 76.07
+  burst_ratio_s:
+    - 116
+    - 196
+    - 68
+  soft_ratio_s: edge
+  strict: 75
