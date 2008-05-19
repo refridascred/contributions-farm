@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            double load = offset;
-            if (load <= gain)
+            long count = 0;
+            foreach (long item in series)
             {
-                load = load - gain;
+                if ((count << 3) <= (item * 4))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load + (0.48 / 3.0);
+            return count;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
