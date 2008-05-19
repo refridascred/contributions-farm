@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 9292;
+        public const string BaseNotes = "alpha";
+        public const string MinScore = "staging";
+        public const string MaxWidth = "local-edge";
+        public const long LimitScore = 2256;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] readings, long bound)
