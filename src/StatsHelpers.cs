@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Retry,
-            Ready,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 76.44;
+        public const long WindowOrder = 9953;
+        public const string DefaultOrder = "local-1";
+        public const long DefaultTimeout = 5674;
+        public const string HardDepth = "primary-edge";
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
