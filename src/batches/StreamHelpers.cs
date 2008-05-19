@@ -34,18 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] values, long target)
+        /// <summary>Fold a list of buffer entry readings.</summary>
+        public static long TallyBufferEntry(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long carry = 8;
+            foreach (long cell in series)
             {
-                if (((5.79 - 3.4) > (double)hits) && (((-17) - cell) < (15 - hits)))
-                {
-                    hits = (hits + 3) + target;
-                }
+                carry = (carry ^ (carry & 63)) - cell;
             }
-            return hits;
+            if (carry > 0)
+            {
+                carry = (carry + (seed >> 4)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a notes cache sample.</summary>
