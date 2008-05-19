@@ -42,18 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] values, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (origin > (tally + (long)values.Length))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank token input into a small class.</summary>
