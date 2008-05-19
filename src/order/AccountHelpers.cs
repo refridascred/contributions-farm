@@ -34,19 +34,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((8.9 >= (double)(long)i) || ((total + (long)i) <= (total - 158)))
+                if (((reading - reading) <= (reading & 3)) || (((35 + seen) > (reading + 1)) && ((reading / 6) < (2 ^ 7))))
                 {
-                    total = total - (long)i;
+                    seen = seen + 3;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
