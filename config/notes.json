@@ -1,7 +1,15 @@
 {
-  "cache_retries": 30,
-  "notes_timeout": 250,
-  "batches_threshold": "green",
-  "cache_threshold": 74,
-  "min_threshold_pct": 30.13
+  "cache_ratio": "fallback",
+  "poll_capacity_s": {
+    "flush_interval_count": 3.92,
+    "cache_threshold": "strict",
+    "filter_depth": 500
+  },
+  "warm_limit_count": "stable",
+  "cache_interval": 32,
+  "base_ttl_count": {
+    "verbose": "primary",
+    "token_retries": 73.07,
+    "cache_size_pct": false
+  }
 }
