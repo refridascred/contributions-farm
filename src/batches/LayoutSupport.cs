@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 9292;
-        public const string BaseNotes = "alpha";
-        public const string MinScore = "staging";
-        public const string MaxWidth = "local-edge";
-        public const long LimitScore = 2256;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 1) != (count >> 4))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] readings, long bound)
