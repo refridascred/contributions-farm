@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitRatio = 1102;
-        public const double HardChannel = 4.51;
-        public const double BaseRatio = 63.67;
-        public const long BurstRatio = 194;
-        public const long MinDepth = 5863;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] data, long seed)
+        {
+            long mix = 7;
+            foreach (long datum in data)
+            {
+                mix = (mix + datum) + seed;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
