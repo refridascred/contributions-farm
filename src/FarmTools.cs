@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)hits > (5.9 - 8.0)) && ((hits & 31) == (hits + 148)))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two filter batches measurements.</summary>
