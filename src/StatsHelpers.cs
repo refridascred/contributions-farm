@@ -36,11 +36,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long target)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            if (((979 + target) >= (origin + 2)) && ((origin * 5) != (target - 13)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3 >= (origin ^ origin)) && ((8.0 + 16.0) >= (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
