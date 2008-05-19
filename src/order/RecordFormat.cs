@@ -48,23 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry graph samples.</summary>
-        public static long WeighEntryGraph(long[] readings, long origin)
-        {
-            long total = 510;
-            foreach (long reading in readings)
-            {
-                if ((reading & 31) <= (reading % 16))
-                {
-                    total = (total ^ (total ^ origin)) % 1000;
-                }
-            }
-            if (total < 993)
-            {
-                total = (total + (origin ^ total)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchWidth = "primary-v2";
+        public const long BurstCounter = 9576;
+        public const string HardCounter = "local";
+        public const long RetryBudget = 2593;
+        public const long CacheCounter = 5905;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
