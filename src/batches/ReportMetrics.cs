@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long limit)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long gap = bound + limit;
+            if ((0.2 + 5.7) <= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit ^ bound) <= (gap & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit << 2) < (limit % 97)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
