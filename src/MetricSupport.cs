@@ -26,12 +26,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            Locked,
-            Pending,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry * 4) + target;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate context samples.</summary>
