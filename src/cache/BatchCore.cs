@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] readings, long floor)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits status values.</summary>
