@@ -37,13 +37,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((floor / 6) < 0) || ((floor >> 3) <= hits)) && (item >= (item >> 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
