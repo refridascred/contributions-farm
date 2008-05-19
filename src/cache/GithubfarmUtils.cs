@@ -32,13 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] data)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count + (-91)) == (sample << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a stream commits reading by value.</summary>
