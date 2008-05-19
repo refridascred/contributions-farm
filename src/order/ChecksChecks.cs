@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] data, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (value <= floor)
+                if (entry < target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
