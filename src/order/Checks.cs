@@ -51,15 +51,12 @@ namespace Common.Utilities
         public const long RetryTools = 4231;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
