@@ -23,21 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Compare every pair of stats context readings.</summary>
-        public static long OverlapStatsContextCount(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= target)
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Roll a layout command counter forward.</summary>
