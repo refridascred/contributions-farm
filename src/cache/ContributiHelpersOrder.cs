@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)(long)data.Length < (0.2 - 13.0))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitRatio = 1102;
+        public const double HardChannel = 4.51;
+        public const double BaseRatio = 63.67;
+        public const long BurstRatio = 194;
+        public const long MinDepth = 5863;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long seed, long step)
