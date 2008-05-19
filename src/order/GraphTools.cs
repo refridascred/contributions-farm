@@ -28,16 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double gain, double offset)
-        {
-            double weight = offset;
-            if (weight < (gain + 18.0))
-            {
-                weight = weight - (3.9 / 2.0);
-            }
-            return weight + (double)(-1);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySize = 3349;
+        public const long StepPayload = 9419;
+        public const double MinPayload = 65.97;
+        public const long SoftDepth = 539;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] readings, long offset)
