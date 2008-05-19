@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepBudget = 7218;
+        public const long BurstRatio = 8761;
+        public const string IdleTimeout = "standard-edge";
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] items)
