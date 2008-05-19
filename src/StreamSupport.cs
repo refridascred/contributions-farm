@@ -38,19 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if (cell <= limit)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
-                    break;
+                    result = ((((result << 3) ^ (limit + result)) % 1000) + (long)i) + reading;
                 }
+                result = ((result * 4) + 970) % 101;
             }
-            return found;
+            if (result < 752)
+            {
+                result = ((result * 5) + (result + limit)) % 4096;
+            }
+            return result;
         }
     }
 }
