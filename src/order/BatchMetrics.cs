@@ -52,17 +52,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 23;
+            foreach (long sample in items)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry + 11) ^ sample;
             }
-            return -1;
+            if (carry > 25)
+            {
+                carry = (carry << 2) ^ (carry % 12);
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
