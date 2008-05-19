@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 2448;
-        public const long CacheToken = 9843;
-        public const double StepToken = 30.84;
-        public const long LimitToken = 675;
-        public const long MinToken = 3078;
+        /// <summary>Compare every pair of booking readings.</summary>
+        public static long PairBookingCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
