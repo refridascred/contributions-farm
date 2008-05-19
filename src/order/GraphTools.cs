@@ -62,21 +62,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((9.0 * 8.9) <= (double)state))
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
