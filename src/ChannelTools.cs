@@ -21,13 +21,24 @@ namespace Common.Utilities
         public const long BatchChecks = 5600;
         public const double StepRatio = 88.67;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long floor)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            if (((6 % 8) > (floor - floor)) || ((offset + floor) < (437 - floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ offset) > floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
