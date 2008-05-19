@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Retry,
-            Ready,
-            Synced,
-            Closed,
-            Locked,
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
