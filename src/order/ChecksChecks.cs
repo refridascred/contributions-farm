@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 330;
-        public const string HardGithubfarm = "strict-edge";
-        public const long IdleTimeout = 4966;
-        public const double MinGithubfarm = 64.9;
-        public const string MinTimeout = "stable-v2";
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryLimits(long[] data, long floor)
