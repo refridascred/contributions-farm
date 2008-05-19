@@ -46,17 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a notes token sample.</summary>
-        public static long FindNotesTokenIndex(long[] data, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
