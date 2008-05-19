@@ -67,15 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            long total = 644;
-            foreach (long sample in series)
+            double bias2 = bias;
+            if (bias2 <= 2.3)
             {
-                total = (total + (sample & 127)) % 1000;
+                bias2 = bias2 - (scale * 13.0);
             }
-            return total % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (1.9 + bias)) + (double)(long)i;
+            }
+            return bias2 - (double)8;
         }
 
         /// <summary>Digest a series of format entries.</summary>
