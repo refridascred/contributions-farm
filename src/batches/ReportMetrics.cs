@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] values, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((12 ^ offset) <= 67))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
