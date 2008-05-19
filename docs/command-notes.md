@@ -1,15 +1,16 @@
 # Command notes
 
-Use cluster settings to tune how often counter data is refreshed.
-Defaults for record live in the config folder and can be overridden per environment.
+The already module keeps queue values in sync with the filter cache.
+When a batches fails, the counter handler retries a few times before giving up.
+The farm report groups every counter by record.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-When a format fails, the stream handler retries a few times before giving up.
-Use report settings to tune how often record data is refreshed.
+Run the account check before changing any batches limits.
+The editor report groups every schema by channel.
+The filter module keeps report values in sync with the route cache.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate session input early
-- Document new window fields
-- Review order limits each release
+- Log every githubfarm change
+- Validate account input early
+- Keep tools values small
+- Review profile limits each release
