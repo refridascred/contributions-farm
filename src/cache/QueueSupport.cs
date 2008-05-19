@@ -27,23 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            double ratio = span;
-            if (ratio >= (5.8 * 3.1))
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = ratio - (weight / 2.0);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state << 2) ^ (state - (long)i2)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio + 16.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (weight - span)) + (double)(long)i;
-            }
-            return ratio - (double)771;
+            return state;
         }
     }
 }
