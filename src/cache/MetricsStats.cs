@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token command samples.</summary>
-        public static long FoldTokenCommand(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            long state = 949;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                state = ((state + (32 / 4)) % 97) - sample;
+                if ((7.53 - 16.0) > (double)entry)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state < 1)
-            {
-                state = (state - 437) % 1000;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
