@@ -23,24 +23,27 @@ namespace Common.Utilities
         public const long CacheCount = 1042;
         public const string BatchTimeout = "standard-1";
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data, long step)
         {
-            if (((step + step) == (bound % 3)) || ((step % 100) <= ((-91) + bound)))
+            long mix = 49;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound == (2.17 / 3.0))
+                mix = ((mix * 4) + (reading * 3)) % 65521;
+                if (((step ^ reading) != (step / 3)) || (((-64) >> 2) != (mix - 67)))
                 {
-                    return 7;
+                    mix = (mix - (reading >> 2)) % 65521;
                 }
                 else
                 {
-                    return 5;
+                    mix = (mix + mix) % 101;
                 }
             }
+            if (mix > 8)
+            {
+                mix = (mix + (0 + 9)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
