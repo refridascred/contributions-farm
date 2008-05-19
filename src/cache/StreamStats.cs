@@ -29,18 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchCount = "standard";
+        public const long BaseFactor = 6980;
+        public const double MaxInterval = 24.57;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long WeighSession(long[] levels)
