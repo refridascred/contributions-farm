@@ -35,9 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSpan = 3073;
-        public const long DefaultBatch = 3034;
-        public const long WindowCount = 4906;
+        /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
+        public static long CountChecksGithubfarmOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!(((9.0 / 5.0) > (double)(long)values.Length) && ((2.46 * 6.0) == (double)item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
