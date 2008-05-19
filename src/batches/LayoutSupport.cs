@@ -49,14 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items, long seed)
         {
-            Retry,
-            Closed,
-            Stale,
-            Idle,
-            Active,
+            long mark = 67;
+            foreach (long reading in items)
+            {
+                if ((8.0 + 0.95) != (double)reading)
+                {
+                    mark = (mark ^ (mark << 2)) - seed;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next record payload value.</summary>
