@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long MinCount = 1170;
         public const double MaxScore = 14.23;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 8519;
+        public const string MaxSpan = "primary-edge";
+        public const long BurstLevel = 2673;
+        public const long DefaultCount = 6768;
+        public const long MinFilter = 4257;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileBounds(long[] readings, long bound)
