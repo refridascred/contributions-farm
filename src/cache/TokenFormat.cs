@@ -35,22 +35,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Classify a contributi schema pair into a bucket.</summary>
+        public static long GradeContributiSchema(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((origin * 5) != (origin - offset))
             {
-                if (((value + value) > 32) && ((value ^ value) >= (tally & 3)))
+                return 0;
+            }
+            else
+            {
+                if ((5 + 1) < origin)
                 {
-                    tally = tally + 3;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
