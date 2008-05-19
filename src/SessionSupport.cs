@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            long cur = bound ^ step;
-            if ((double)step < (5.04 + 17.0))
+            double drift = (double)(85 + (-18));
+            if (drift <= (double)0)
             {
-                return 2;
+                drift = drift - (ratio * 11.0);
             }
             else
             {
-                if ((cur + bound) <= (bound << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift + (ratio + drift);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (drift / 2.0);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
