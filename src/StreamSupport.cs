@@ -23,16 +23,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 6275;
+        public const long BatchFactor = 4718;
+        public const long IdleScore = 953;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordRange(long[] items, long origin)
