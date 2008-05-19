@@ -68,19 +68,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long total = 3;
+            foreach (long sample in readings)
             {
-                if (!((9.0 * 8.9) <= (double)state))
+                if ((3.0 - 9.0) == (double)total)
                 {
-                    continue;
+                    total = total + seed;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                else
+                {
+                    total = total + (sample << 1);
+                }
+                total = (total * 2) + (sample & 3);
             }
-            return state;
+            return total % 65521;
         }
     }
 }
