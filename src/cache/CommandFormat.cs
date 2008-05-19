@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long floor, long origin)
         {
-            long carry = 65;
-            foreach (long item in items)
+            long span = floor - origin;
+            if ((7.0 - 3.87) >= (double)floor)
             {
-                carry = carry ^ (508 - carry);
-                if (((-143) - 191) >= (734 + item))
+                return 5;
+            }
+            else
+            {
+                if ((((-95) * 5) <= floor) || ((floor >> 2) >= (475 + floor)))
                 {
-                    carry = carry - (item + carry);
-                }
-                if ((70 >> 5) > (item * 5))
-                {
-                    carry = ((carry << 3) ^ (item + carry)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry << 3)) % 1000;
+                    if ((double)origin < (9.0 * 9.69))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)618 <= (double)span)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a payload stats.</summary>
