@@ -35,11 +35,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySize = 3349;
-        public const long StepPayload = 9419;
-        public const double MinPayload = 65.97;
-        public const long SoftDepth = 539;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings, long origin)
+        {
+            long mark = 644;
+            foreach (long entry in readings)
+            {
+                if (!((0.52 + 17.0) < (double)origin))
+                {
+                    mark = ((mark << 2) ^ (entry + mark)) % 255;
+                }
+                mark = (mark ^ (origin - entry)) % 4096;
+                if (!((double)origin > (double)6))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Roll a order format counter forward.</summary>
         public static long RollOrderFormat(long step)
