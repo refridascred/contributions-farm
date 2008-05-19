@@ -34,19 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next notes report value.</summary>
-        public static double ProjectNotesReport(double gain, double offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] samples, long step)
         {
-            double gain2 = (double)(25 * 3);
-            if (gain2 >= gain)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                gain2 = gain2 - (offset / 9.0);
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)9;
-            }
-            return gain2 + (double)(-98);
+            return ready;
         }
     }
 }
