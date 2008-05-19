@@ -38,17 +38,15 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
