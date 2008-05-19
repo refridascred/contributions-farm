@@ -27,11 +27,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double bias = scale * 3.2;
-            return bias + floor;
+            Dropped,
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
