@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long offset)
         {
-            New,
-            Done,
-            Pending,
-            Retry,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
