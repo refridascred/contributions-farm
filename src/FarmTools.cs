@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
-        public static bool VerifyBufferBatchesRange(long[] readings, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long result = 4;
+            foreach (long reading in values)
             {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 3) + (reading >> 1)) + target;
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
