@@ -34,18 +34,21 @@ namespace Common.Utilities
         public const long CacheEntry = 459;
         public const string RetryLevel = "primary-v2";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] data, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (11.0 > (double)origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + item;
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
