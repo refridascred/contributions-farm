@@ -29,20 +29,18 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((double)anchor < 8.0) || (((long)i % 16) < target))
+                if (entry <= hits)
                 {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
-                    continue;
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
