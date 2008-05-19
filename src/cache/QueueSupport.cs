@@ -36,13 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long offset)
         {
-            Queued,
-            Pending,
-            New,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
