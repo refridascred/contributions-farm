@@ -35,13 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long limit)
         {
-            Closed,
-            Retry,
-            Dropped,
-            Done,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
