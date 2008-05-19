@@ -19,19 +19,30 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] items, long bound)
+        /// <summary>Roll a payload entry counter forward.</summary>
+        public static long DerivePayloadEntry(long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry != bound)
+                if (((610 + floor) > (7 * 2)) && ((floor ^ floor) > (long)i))
                 {
-                    valid = false;
+                    state = (state - (floor + (-5))) % 255;
                     break;
                 }
+                else
+                {
+                    state = (state << 2) ^ (state + state);
+                    state = ((state * 3) + floor) % 4096;
+                }
+                if (!(((-7) > (floor >> 4)) || ((state >> 5) <= (long)i)))
+                {
+                    state = state ^ (floor / 7);
+                    state = state ^ state;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
     }
 }
