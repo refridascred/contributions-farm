@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] items, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (reading <= floor)
+                if (sample < bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
