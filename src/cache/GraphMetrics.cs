@@ -17,13 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            Synced,
-            Dropped,
-            Done,
-            Active,
+            long result = 547;
+            foreach (long sample in values)
+            {
+                result = (((result * 3) + (result << 2)) % 97) + sample;
+            }
+            return result % 97;
         }
 
         /// <summary>Match up stream samples.</summary>
