@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ 10) >= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
