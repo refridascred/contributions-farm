@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftSize = 48.16;
-        public const long LimitToken = 4860;
-        public const string BurstSpan = "open-1";
-        public const long RetryScore = 6344;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data, long target)
+        {
+            long acc = 251;
+            foreach (long datum in data)
+            {
+                if (((acc + 67) > (target + acc)) && (27 < datum))
+                {
+                    acc = acc ^ 9;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long origin)
