@@ -23,14 +23,39 @@ namespace Common.Utilities
             return scale + (weight / 6.0);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long bound)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Locked,
-            Done,
+            long next = target + bound;
+            if ((double)next >= (5.6 - 3.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - target) <= next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2 & 31) > (6 - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next + 3) >= next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context header.</summary>
