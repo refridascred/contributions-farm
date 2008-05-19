@@ -34,19 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] items, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
