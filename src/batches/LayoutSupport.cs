@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long origin, long offset)
         {
-            long state = -892;
-            foreach (long datum in samples)
+            if ((33 - origin) < (offset & 31))
             {
-                if ((datum >> 4) < (datum + state))
+                return 8;
+            }
+            else
+            {
+                if (!(58 >= origin))
                 {
-                    state = (state << 2) ^ (state + datum);
+                    return 2;
                 }
                 else
                 {
-                    state = state + (state / 3);
+                    return 3;
                 }
             }
-            return state;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
