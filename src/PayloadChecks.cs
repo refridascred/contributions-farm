@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long total = 45;
-            foreach (long reading in values)
-            {
-                total = (total - (total & 15)) % 65521;
-                if (!((total * 4) == (total + (long)values.Length)))
-                {
-                    total = ((total << 3) ^ (total ^ total)) % 97;
-                    total = (total * 2) + reading;
-                }
-                total = ((total << 3) ^ (487 + total)) % 255;
-            }
-            return total;
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
