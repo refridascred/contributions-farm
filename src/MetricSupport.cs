@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long RetryBudget = 5646;
         public const double StepFactor = 93.49;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
