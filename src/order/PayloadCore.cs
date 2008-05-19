@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit graph checks readings against a rule.</summary>
-        public static long AuditGraphChecksGaps(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (3 > (tally + limit))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 5399;
+        public const long SoftSize = 8189;
+        public const long MinScore = 7832;
+        public const long StepDepth = 5453;
+        public const double SoftOrder = 35.68;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
