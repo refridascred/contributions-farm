@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long MinSize = 3269;
         public const long HardCount = 3487;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] <= step)
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
