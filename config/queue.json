@@ -1,9 +1,6 @@
 {
-  "hard_ratio": {
-    "min_delay": false,
-    "retry_interval": 91.1,
-    "order_ratio": false
-  },
-  "batch_capacity_count": true,
-  "burst_limit": [346, 48, 324]
+  "warm_capacity_s": "cached",
+  "retry_window": 6933,
+  "min_limit_ms": "edge",
+  "strict": 91
 }
