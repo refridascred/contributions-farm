@@ -1,7 +1,17 @@
 {
-  "retry_limit": 57,
-  "retry_threshold_count": "standard",
-  "soft_size_pct": [11, 198],
-  "schema_depth": 67.75,
-  "min_window_ms": 568
+  "context_retries": false,
+  "default_size": {
+    "warm_ttl": 21.12,
+    "contributi_depth": {
+      "metric_ttl": "primary",
+      "window_timeout": 83.53,
+      "session_limit": [431, 450, 4],
+      "hard_ratio_count": 71.87,
+      "cache_delay": "stable",
+      "base_limit": "legacy"
+    },
+    "batch_timeout": true
+  },
+  "hard_size_ms": 9,
+  "poll_window_count": true
 }
