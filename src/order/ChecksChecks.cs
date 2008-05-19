@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a contributi context value against two limits.</summary>
-        public static long SortContributiContext(long target, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long slot = target ^ step;
-            if (!((double)slot >= (double)37))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target >= (slot + slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)slot < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
