@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetrySize = 20.31;
-        public const long BurstPayload = 4172;
-        public const long BasePayload = 12;
-        public const long HardPayload = 8667;
-        public const string StepLevel = "latest";
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Label { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 1570;
