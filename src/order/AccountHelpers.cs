@@ -74,14 +74,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] items, long seed)
         {
-            Queued,
-            Pending,
-            Ready,
-            Idle,
-            Failed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((11.0 > (double)seen) && ((double)entry == (2.35 * 9.3)))
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
