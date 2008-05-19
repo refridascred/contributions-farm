@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            Pending,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
