@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] series, long origin)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the report notes series from a seed.</summary>
