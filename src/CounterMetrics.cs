@@ -19,14 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double gain, double offset)
         {
-            Idle,
-            Dropped,
-            Done,
-            New,
-            Closed,
+            double load = offset;
+            if (load <= gain)
+            {
+                load = load - gain;
+            }
+            return load + (0.48 / 3.0);
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
