@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes stats pairs that satisfy a relation.</summary>
-        public static long CompareNotesStatsCount(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != offset)
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a queue summary.</summary>
