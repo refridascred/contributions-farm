@@ -42,26 +42,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long origin)
         {
-            long anchor = 391;
-            foreach (long item in samples)
+            long mix = 320;
+            foreach (long item in series)
             {
-                if (anchor <= (item * 3))
+                if ((origin < (mix + mix)) || (mix < (item / 2)))
                 {
-                    anchor = (anchor + (floor & 31)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ 152) % 4096;
+                    mix = (mix * 5) + (28 * 4);
                 }
             }
-            if (anchor < (-38))
-            {
-                anchor = (anchor - floor) % 97;
-            }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
