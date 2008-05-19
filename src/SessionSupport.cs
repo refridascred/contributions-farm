@@ -41,24 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account metrics value against two limits.</summary>
-        public static long ClassifyAccountMetrics(long step, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings, long target)
         {
-            if ((step - limit) <= (step ^ step))
+            long score = 556;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((17.0 / 7.0) > (double)step)
+                if ((entry <= (target + entry)) || ((double)entry > (2.99 * 6.3)))
                 {
-                    return 2;
+                    score = ((score * 4) + (entry + 809)) % 255;
                 }
-                else
+                if ((target + target) <= (target & 255))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return score;
         }
     }
 }
