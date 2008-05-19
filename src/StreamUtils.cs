@@ -53,39 +53,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long step = seed - offset;
-            if ((seed + offset) >= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - 684) < (165 >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((776 >> 5) <= (step ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 5) < (4 + seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Match up filter samples.</summary>
