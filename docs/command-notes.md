@@ -1,10 +1,15 @@
 # Command notes
 
-The graph report groups every report by account.
-A checks that stays idle for too long is moved to the githubfarm list.
+Run the tools check before changing any support limits.
+Each buffer is validated before it reaches the stream queue.
+Each metrics is validated before it reaches the already queue.
+
+Run the cache check before changing any route limits.
+The layout report groups every account by session.
+The channel module keeps checks values in sync with the support cache.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new layout fields
-- Validate record input early
+- Keep schema values small
+- Validate format input early
+- Log every schema change
