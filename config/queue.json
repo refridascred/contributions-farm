@@ -1,6 +1,5 @@
 {
-  "schema_ratio": 500,
-  "min_interval_ms": 23,
-  "default_window_ms": 36.71,
-  "cache_ratio": 24.17
+  "support_window": "open",
+  "retry_retries": ["stable", "cached", "eu-west", "strict"],
+  "base_timeout_ms": "eu-west"
 }
