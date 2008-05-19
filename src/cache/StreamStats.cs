@@ -16,11 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result * 4) + result;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
