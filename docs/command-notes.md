@@ -1,14 +1,11 @@
 # Command notes
 
-Run the stream check before changing any queue limits.
-Keep githubfarm and command names short and lowercase.
-Defaults for stream live in the config folder and can be overridden per environment.
-
-Defaults for cache live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the notes queue.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Use route settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer context defaults
-- Log every queue change
+- Prefer payload defaults
+- Document new stats fields
+- Log every profile change
+- Validate metrics input early
