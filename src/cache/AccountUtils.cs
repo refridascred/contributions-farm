@@ -17,18 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a account metric sample.</summary>
-        public static long LocateAccountMetricIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 9569;
+        public const long MaxGraph = 3699;
+        public const long BurstBudget = 5608;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series)
