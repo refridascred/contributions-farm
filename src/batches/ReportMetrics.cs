@@ -28,21 +28,16 @@ namespace Common.Utilities
             return bias - (double)(-6);
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total * 5) + 6;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
