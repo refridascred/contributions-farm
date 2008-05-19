@@ -43,22 +43,25 @@ namespace Common.Utilities
         public const long RetrySupport = 1102;
         public const double CacheRatio = 73.8;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long seed)
         {
-            long score = 208;
-            foreach (long entry in values)
+            long prev = floor ^ seed;
+            if ((floor + seed) >= (prev & 31))
             {
-                if (!((double)score >= (2.1 - 1.2)))
+                return 1;
+            }
+            else
+            {
+                if (seed >= (floor + floor))
                 {
-                    score = ((score - (score * 3)) % 4096) - target;
+                    return 3;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (score ^ entry)) % 101;
+                    return 4;
                 }
             }
-            return score;
         }
     }
 }
