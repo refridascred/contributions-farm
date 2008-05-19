@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] values)
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ 10) >= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many tools commits samples are out of range.</summary>
