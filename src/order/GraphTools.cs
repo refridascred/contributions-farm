@@ -67,12 +67,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Paused,
-            Idle,
-            Queued,
+            Active,
+            Dropped,
+            Draft,
         }
     }
 }
