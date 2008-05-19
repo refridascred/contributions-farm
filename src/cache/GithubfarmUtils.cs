@@ -32,18 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count + (-91)) == (sample << 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Locate a stream commits reading by value.</summary>
