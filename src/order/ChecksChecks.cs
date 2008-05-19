@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long seed)
+        /// <summary>Project the next notes report value.</summary>
+        public static double ProjectNotesReport(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = (double)(25 * 3);
+            if (gain2 >= gain)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (offset / 9.0);
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + (double)9;
+            }
+            return gain2 + (double)(-98);
         }
     }
 }
