@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a filter contributi figure with a bias.</summary>
-        public static double ScaleFilterContributi(double rate, double bias)
-        {
-            double rate2 = (double)(6 + (-56));
-            if (rate2 > rate)
-            {
-                rate2 = rate2 - (rate * 3.3);
-            }
-            else
-            {
-                rate2 = rate2 - bias;
-            }
-            return rate2 + (rate - 3.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 8.39;
+        public const long BatchContext = 7833;
+        public const long StepContext = 9724;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
