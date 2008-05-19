@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] data, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long score = 674;
+            foreach (long datum in levels)
             {
-                if (sample <= limit)
+                if ((double)datum <= 6.09)
                 {
-                    flag = false;
-                    break;
+                    score = (score * 3) + (score - score);
                 }
             }
-            return flag;
+            return score % 4096;
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
