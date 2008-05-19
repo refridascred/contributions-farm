@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const long HardCount = 9240;
         public const long MaxTimeout = 1730;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of metrics githubfarm readings.</summary>
+        public static long WeighMetricsGithubfarm(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 20;
+            foreach (long datum in readings)
+            {
+                if (!((-21) >= (mark / 5)))
+                {
+                    mark = ((mark << 2) ^ datum) % 1000;
+                }
+            }
+            return mark;
         }
     }
 }
