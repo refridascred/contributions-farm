@@ -1,40 +1,8 @@
 # support settings
-enabled:
-  strict: fallback
-  audit: 85
-  report_size: 40.68
-  retry_timeout_count: blue
-  context_timeout: 65
-  min_depth_s: strict
-verbose: false
-strict:
-  batch_interval_ms:
-    audit: local
-    token_depth: 30
-    burst_retries_count: true
-    verbose: 250
-    warm_retries_s: edge
-    cluster_threshold: 1522
-  warm_threshold: 1024
-  burst_interval_ms:
-    - 8
-    - 139
-  soft_timeout:
-    readonly: blue
-    base_ratio_s: 87.59
-    strict:
-      - 340
-      - 339
-      - 249
-      - 172
-    buffer_delay: local
-  idle_window_s: 93.06
-batch_retries_count: 76.07
-retry_interval_count:
-  flush_limit_count: 64.25
-  schema_capacity: 80
-  cache_depth_pct:
-    - 213
-    - 354
-  retry_timeout_s: 44
-buffer_ttl: 30
+flush_depth_ms: primary
+order_depth: false
+persist:
+  - 208
+  - 489
+base_ratio_s: 80
+retry_ratio_ms: cached
