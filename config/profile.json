@@ -1,27 +1,6 @@
 {
-  "compress": ["local", "eu-west", "green", "strict"],
-  "flush_limit_ms": {
-    "sync_interval_ms": "stable",
-    "cluster_ratio": "edge",
-    "readonly": ["green", "cached"],
-    "verbose": {
-      "poll_size": [201, 27],
-      "warm_window_ms": [266, 94, 451, 450],
-      "cache_timeout_pct": [17, 473, 482, 361],
-      "window_depth": "strict",
-      "batch_delay_s": 29.42,
-      "dry_run": "blue"
-    },
-    "burst_capacity": {
-      "max_ttl_count": "cached",
-      "flush_interval": false,
-      "payload_size": [257, 94, 215, 180],
-      "persist": "open",
-      "default_delay_ms": 30
-    }
-  },
-  "hard_ratio_count": "eu-west",
-  "metrics_window": 5.31,
-  "context_ttl": "open",
-  "default_retries_s": "standard"
+  "max_capacity": "primary",
+  "dry_run": "primary",
+  "persist": "legacy",
+  "min_threshold": 250
 }
