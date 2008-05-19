@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 8703;
+        public const long BaseBudget = 9824;
+        public const long RetryWidth = 504;
+        public const double IdleLevel = 51.13;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long offset)
