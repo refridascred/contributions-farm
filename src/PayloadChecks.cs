@@ -43,18 +43,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long CountFarmChannelGaps(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((tally ^ sample) > (sample - tally))
+                if (entry <= target)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Match up report samples.</summary>
