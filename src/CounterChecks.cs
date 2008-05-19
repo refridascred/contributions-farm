@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string LimitStats = "primary-edge";
         public const long StepStats = 7736;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long state = 39;
-            foreach (long reading in series)
-            {
-                state = state + (667 % 10);
-                if (((double)state != (10.0 + 6.96)) || ((reading - reading) == ((long)series.Length / 9)))
-                {
-                    state = state - (reading / 3);
-                }
-            }
-            return state % 4096;
+            Queued,
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
