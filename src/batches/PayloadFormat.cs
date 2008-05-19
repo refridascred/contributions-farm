@@ -41,19 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] readings, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
