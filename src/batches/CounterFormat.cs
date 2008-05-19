@@ -33,13 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
