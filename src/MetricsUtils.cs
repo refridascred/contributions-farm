@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long anchor = -291;
-            foreach (long sample in values)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor - (sample ^ step)) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (anchor < 862)
-            {
-                anchor = ((anchor << 3) ^ (5 * 5)) % 1000;
-            }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
