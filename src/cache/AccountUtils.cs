@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long CacheNotes = 1108;
         public const long BaseNotes = 9152;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            double bias = (double)(28 % 7);
-            if (bias >= bias)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                bias = bias - (ratio / 8.0);
+                state = ((state * 2) + (long)i) % 97;
             }
-            return bias - (floor * 3.0);
+            return state;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
