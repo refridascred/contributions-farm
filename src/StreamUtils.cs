@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] levels, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((((-3) << 3) == (cell - (-331))) && ((origin & 15) > 91))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
