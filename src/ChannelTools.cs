@@ -25,13 +25,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            Failed,
-            Retry,
-            Locked,
-            Idle,
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = anchor ^ (146 + 33);
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
