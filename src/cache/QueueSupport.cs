@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count payload report pairs that satisfy a relation.</summary>
-        public static long PairPayloadReportCount(long[] samples)
+        /// <summary>Match up layout stream samples.</summary>
+        public static long MatchLayoutStreamCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
+                    if ((readings[i] - readings[j]) > 3)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
