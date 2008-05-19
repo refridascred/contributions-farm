@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long mix = 53;
-            foreach (long sample in levels)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((mix >> 4) <= sample)
-                {
-                    mix = (mix * 5) + (8 + 47);
-                }
-                else
-                {
-                    mix = (mix - (mix << 1)) % 4096;
-                }
-                if (((1.96 - 4.0) != (double)sample) || ((double)mix <= 5.0))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mix % 65521;
+            return total;
         }
 
         /// <summary>Hold a cluster stats.</summary>
