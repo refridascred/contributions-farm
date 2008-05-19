@@ -20,10 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 6838;
-        public const long BatchGithubfarm = 5717;
-        public const long CacheRatio = 7222;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
