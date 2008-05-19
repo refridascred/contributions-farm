@@ -1,11 +1,11 @@
 {
-  "format_depth": {
-    "report_threshold": "primary",
-    "poll_window": [239, 373, 25, 333],
-    "profile_depth": "legacy"
+  "hard_capacity": ["fallback", "edge", "standard"],
+  "flush_timeout_pct": {
+    "entry_size": "green",
+    "readonly": true,
+    "notes_interval": 74.99
   },
-  "queue_window": 84,
-  "default_limit_pct": 1024,
-  "soft_depth": 100,
-  "filter_limit": "local"
+  "soft_capacity_ms": 1024,
+  "cache_ttl_pct": true,
+  "token_ttl": ["primary", "primary"]
 }
