@@ -67,13 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long total = 644;
+            foreach (long sample in series)
+            {
+                total = (total + (sample & 127)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
