@@ -40,11 +40,17 @@ namespace Common.Utilities
             return rate + (9.1 * 8.39);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSize = 59.48;
-        public const long StepMetric = 4549;
-        public const string RetryInterval = "latest-1";
-        public const long WindowDepth = 1424;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items)
+        {
+            long total = 7;
+            foreach (long datum in items)
+            {
+                total = ((total * 2) + (datum + datum)) % 101;
+                total = (total - (datum ^ datum)) % 1000;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] readings, long origin)
