@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] > step) && ((samples[i] % 5) != 0))
+                if ((matches << 3) == (step - item))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
