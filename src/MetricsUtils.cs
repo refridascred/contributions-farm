@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const string StepInterval = "primary-1";
         public const long SoftToken = 4137;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] readings, long limit)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= limit)
+                if (data[i] >= seed)
                 {
                     return (long)i;
                 }
