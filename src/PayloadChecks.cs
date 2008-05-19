@@ -43,18 +43,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data, long origin)
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long CountFarmChannelGaps(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((datum & 255) <= (datum / 5))
+                if ((tally ^ sample) > (sample - tally))
                 {
-                    count = (count + 2) + origin;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
