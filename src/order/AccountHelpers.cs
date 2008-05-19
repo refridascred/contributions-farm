@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a batches record counter forward.</summary>
-        public static long IterateBatchesRecord(long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] items, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (!((acc + step) == ((long)i % 12)))
+                if ((seen & 63) <= (seen + bound))
                 {
-                    acc = acc ^ (478 - acc);
+                    seen = (seen + 3) ^ sample;
                 }
-                acc = (acc ^ (5 + (long)i)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
