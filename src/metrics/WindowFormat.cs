@@ -60,21 +60,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up session graph samples.</summary>
-        public static long PairSessionGraphCount(long[] data)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Draft,
+            Idle,
+            Closed,
         }
 
         /// <summary>Project the next filter value.</summary>
