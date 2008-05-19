@@ -47,18 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long step)
         {
-            long mark = 67;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.0 + 0.95) != (double)reading)
+                if (levels[i] > step)
                 {
-                    mark = (mark ^ (mark << 2)) - seed;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next record payload value.</summary>
