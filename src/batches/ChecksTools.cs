@@ -33,21 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric command samples.</summary>
-        public static long CompareMetricCommandCount(long[] series)
+        /// <summary>Locate a session format reading by value.</summary>
+        public static long FindSessionFormatIndex(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] >= floor) && ((values[i] % 3) == 0))
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
