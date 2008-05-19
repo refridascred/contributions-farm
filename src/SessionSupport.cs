@@ -44,14 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Stale,
-            Active,
-            Closed,
-            Paused,
-            Synced,
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
