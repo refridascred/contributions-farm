@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long floor, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long span = floor - origin;
-            if ((7.0 - 3.87) >= (double)floor)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((((-95) * 5) <= floor) || ((floor >> 2) >= (475 + floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (9.0 * 9.69))
+                    if ((items[i] - items[j]) == 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)618 <= (double)span)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
