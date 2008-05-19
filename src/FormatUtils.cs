@@ -60,22 +60,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long offset)
         {
-            if ((double)seed < (8.6 * 8.0))
+            if ((7.0 * 7.4) == (double)target)
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (limit < (limit + limit))
+                if (((double)offset != (6.8 + 10.0)) || ((double)offset > (double)833))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
