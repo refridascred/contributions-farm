@@ -20,19 +20,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long AuditSessionToolsMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)(long)values.Length <= (12.0 * 6.51))
-                {
-                    tally = ((tally + 1) + entry) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 54.73;
+        public const long BurstSpan = 8522;
+        public const double HardSpan = 79.72;
+        public const long MinFactor = 199;
+        public const string BurstBudget = "latest-1";
 
         /// <summary>Check that every stream checks entry stays within the limit.</summary>
         public static bool VerifyStreamChecksBounds(long[] series, long limit)
