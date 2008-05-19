@@ -23,17 +23,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a batch commits reading by value.</summary>
-        public static long LocateBatchCommitsIndex(long[] levels, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = offset - floor;
+            if (floor >= (offset + gap))
             {
-                if (levels[i] <= target)
+                return 1;
+            }
+            else
+            {
+                if ((offset + gap) == (gap / 7))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((8.0 / 3.0) != (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor & 127) != (gap % 64))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
