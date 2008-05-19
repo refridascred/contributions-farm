@@ -1,5 +1,8 @@
 # entry settings
-compress: 7209
-record_interval: 30
-audit: latest
-checks_timeout: local
+strict: 6213
+batch_window_s: 1193
+tools_capacity:
+  - 442
+  - 195
+  - 414
+  - 389
