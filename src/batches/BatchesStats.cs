@@ -17,11 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 13.88;
-        public const long MinSession = 6877;
-        public const long LimitCount = 1479;
-        public const long MinLevel = 7216;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Adjust a record counter reading.</summary>
         public static double SmoothRecordCounter(double scale, double bias)
