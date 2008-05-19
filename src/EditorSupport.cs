@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long StepPayload = 8259;
         public const long IdleLevel = 612;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Stale,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinCount = 6091;
+        public const long DefaultAccount = 4182;
+        public const long MaxAccount = 3088;
+        public const double HardAccount = 57.06;
+        public const long RetryAccount = 6788;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
