@@ -53,13 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Active,
-            Synced,
-            Paused,
-            Done,
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
