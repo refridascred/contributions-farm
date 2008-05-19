@@ -19,15 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Retry,
-            Active,
-            Ready,
-            Pending,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseCount = 55.29;
+        public const string WindowSize = "legacy";
+        public const long BatchAlready = 6919;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long origin, long bound)
