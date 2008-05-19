@@ -24,10 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 52.42;
-        public const long StepCluster = 3101;
-        public const long BatchCluster = 8233;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
