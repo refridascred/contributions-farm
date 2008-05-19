@@ -17,38 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long origin2)
+        /// <summary>Look up the position of a account metric sample.</summary>
+        public static long LocateAccountMetricIndex(long[] samples, long offset)
         {
-            if (origin2 > (origin2 - origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 % 12) <= (origin2 ^ origin))
+                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin2 < (553 - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((19.0 - 0.1) >= (double)origin2) && ((double)origin > (double)origin2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
