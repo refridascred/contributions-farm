@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metrics checks figure with a bias.</summary>
-        public static double ScaleMetricsChecks(double bias, double bias2)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double ratio = bias2 - (9.4 * 18.0);
-            if (ratio > (double)0)
-            {
-                ratio = (ratio + (double)6) + bias;
-            }
-            return ratio + ratio;
+            Idle,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
