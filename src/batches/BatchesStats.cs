@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((((double)seen <= (17.0 / 4.0)) && ((5.2 - 3.6) > (double)offset)) || ((offset + entry) < (entry - offset)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 94.58;
+        public const long StepCount = 6618;
+        public const long MinBudget = 3606;
+        public const long WindowCommand = 9276;
+        public const long IdleSize = 923;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportOutliers(long[] items)
