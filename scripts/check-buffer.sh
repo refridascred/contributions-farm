@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local staging green; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-green}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=319
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
