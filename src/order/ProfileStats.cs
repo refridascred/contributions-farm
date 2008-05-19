@@ -48,22 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long result = 93;
-            foreach (long item in data)
-            {
-                if (item < result)
-                {
-                    result = (result - (result % 60)) % 97;
-                }
-                if ((2 % 2) >= result)
-                {
-                    break;
-                }
-            }
-            return result;
+            Retry,
+            Paused,
+            Active,
+            Synced,
         }
     }
 }
