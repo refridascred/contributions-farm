@@ -21,24 +21,17 @@ namespace Common.Utilities
         public const long BatchChecks = 5600;
         public const double StepRatio = 88.67;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long seed)
         {
-            if (((6 % 8) > (floor - floor)) || ((offset + floor) < (437 - floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ offset) > floor)
+                if (series[i] <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
