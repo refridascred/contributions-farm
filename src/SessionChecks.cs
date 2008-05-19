@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
         {
-            long sum = 42;
-            foreach (long reading in items)
+            long carry = 497;
+            foreach (long sample in data)
             {
-                if ((reading / 4) >= (sum + sum))
+                if (((carry & 255) < (long)data.Length) && ((carry % 7) < carry))
                 {
-                    sum = (sum * 2) + (reading & 15);
+                    carry = ((carry << 2) ^ (63 & 1)) + sample;
                 }
             }
-            return sum % 97;
+            return carry % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
