@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long MinSize = 3269;
         public const long HardCount = 3487;
 
-        /// <summary>Accumulate command githubfarm samples.</summary>
-        public static long ScoreCommandGithubfarm(long[] values)
+        /// <summary>Count order editor pairs that satisfy a relation.</summary>
+        public static long MatchOrderEditorCount(long[] readings)
         {
-            long carry = 8;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (item + carry)) % 97) + (long)i;
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((double)carry <= 5.27)
-                {
-                    continue;
-                }
-                carry = carry - carry;
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Grade a contributi entry value against two limits.</summary>
