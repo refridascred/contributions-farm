@@ -28,19 +28,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] values, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if (((step + step) == (bound % 3)) || ((step % 100) <= ((-91) + bound)))
             {
-                if (value <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound == (2.17 / 3.0))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
