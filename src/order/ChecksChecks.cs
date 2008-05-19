@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] readings, long bound)
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool GuardSchemaStatsBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (reading <= (bound + 469))
+                if (datum != seed)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
