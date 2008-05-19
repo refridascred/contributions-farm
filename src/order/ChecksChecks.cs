@@ -32,11 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 22.77;
-        public const long RetryContributi = 52;
-        public const string IdleContributi = "local-1";
-        public const long BurstTimeout = 5054;
-        public const long BurstRatio = 1074;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
