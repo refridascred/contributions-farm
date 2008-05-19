@@ -1,8 +1,15 @@
 {
-  "batch_size_count": false,
-  "base_delay": 30,
-  "idle_delay": "fallback",
-  "payload_delay": 50.82,
-  "hard_depth_count": 40.43,
-  "max_limit_count": 77.81
+  "enabled": 17.93,
+  "cache_delay_pct": {
+    "idle_limit_s": {
+      "profile_window": 7819,
+      "burst_threshold_s": 500,
+      "max_capacity_ms": 60,
+      "base_depth": 83,
+      "session_depth": 8844
+    },
+    "soft_threshold": ["stable", "blue", "latest", "latest"],
+    "warm_capacity_ms": 99
+  },
+  "flush_threshold": 9748
 }
