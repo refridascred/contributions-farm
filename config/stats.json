@@ -1,7 +1,6 @@
 {
-  "hard_capacity_pct": 3204,
-  "max_threshold": [167, 445, 53],
-  "batch_ratio_pct": 6116,
-  "retry_interval_ms": 2256,
-  "already_size": 59.29
+  "compress": "green",
+  "githubfarm_window": "staging",
+  "sync_ratio_count": ["standard", "staging", "cached"],
+  "stream_interval": "open"
 }
