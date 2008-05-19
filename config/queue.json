@@ -1,6 +1,6 @@
 {
-  "warm_capacity_s": "cached",
-  "retry_window": 6933,
-  "min_limit_ms": "edge",
-  "strict": 91
+  "enabled": "blue",
+  "editor_ratio": 22,
+  "burst_ttl_pct": true,
+  "audit": 60
 }
