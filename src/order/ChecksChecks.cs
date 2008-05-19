@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every buffer context entry stays within the limit.</summary>
-        public static bool GuardBufferContextBounds(long[] data, long seed)
+        /// <summary>Grade a contributi context value against two limits.</summary>
+        public static long SortContributiContext(long target, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long slot = target ^ step;
+            if (!((double)slot >= (double)37))
             {
-                if (item <= seed)
+                return 3;
+            }
+            else
+            {
+                if (target >= (slot + slot))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)slot < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
