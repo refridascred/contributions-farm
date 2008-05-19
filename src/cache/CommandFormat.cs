@@ -44,18 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] data, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double mean = offset;
+            if (mean >= (offset - mean))
             {
-                if ((hits >= item) && (((hits ^ 20) <= (-5)) && ((double)item > (double)(-8))))
-                {
-                    hits = (hits + 2) + floor;
-                }
+                mean = (mean + (mean - offset)) + weight;
             }
-            return hits;
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean - (offset / 4.0);
         }
     }
 }
