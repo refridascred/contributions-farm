@@ -1,15 +1,14 @@
 # Command notes
 
-Use notes settings to tune how often tools data is refreshed.
-Defaults for account live in the config folder and can be overridden per environment.
+Keep editor and commits names short and lowercase.
+Use window settings to tune how often metric data is refreshed.
+The support module keeps account values in sync with the schema cache.
 
-Run the commits check before changing any session limits.
-Keep order and layout names short and lowercase.
-Each context is validated before it reaches the payload queue.
+Defaults for session live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep metrics values small
-- Review graph limits each release
-- Log every buffer change
+- Log every editor change
+- Keep payload values small
+- Review record limits each release
