@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long total = 202;
-            foreach (long item in series)
-            {
-                total = ((total << 3) ^ total) + item;
-                if (!((total & 31) > (total / 9)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
