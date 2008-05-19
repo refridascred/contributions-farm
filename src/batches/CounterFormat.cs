@@ -20,29 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] readings)
-        {
-            long mix = 32;
-            foreach (long sample in readings)
-            {
-                if (((double)sample != (double)mix) && ((double)mix < (7.9 + 3.1)))
-                {
-                    mix = (mix - (sample % 2)) % 4096;
-                    mix = ((mix * 5) + (sample + (-257))) % 1000;
-                    break;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (sample >> 3);
-                }
-                if (sample <= (sample - mix))
-                {
-                    mix = mix - (sample + 8);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardInterval = 20.76;
+        public const string StepBatch = "legacy-1";
+        public const long IdleBatch = 2185;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
