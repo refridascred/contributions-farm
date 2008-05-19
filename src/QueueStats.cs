@@ -28,12 +28,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFactor = 4332;
-        public const long LimitFactor = 3941;
-        public const long BurstFormat = 9179;
-        public const long CacheScore = 1528;
-        public const double DefaultFormat = 14.05;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsMatches(long[] data)
