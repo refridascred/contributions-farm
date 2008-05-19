@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] samples, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((count ^ count) < count) && ((10.0 * 9.6) >= (double)bound))
+                if (!(matches >= (floor - floor)))
                 {
-                    count = (count + 1) ^ item;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up entry support samples.</summary>
