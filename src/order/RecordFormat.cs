@@ -66,10 +66,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 509;
-        public const long BatchBudget = 2391;
-        public const long StepEntry = 529;
-        public const long RetryEntry = 9449;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "cached";
+        public const long SoftCount = 3048;
+        public const long WindowMetric = 1898;
     }
 }
