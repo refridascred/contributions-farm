@@ -65,22 +65,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long step)
         {
-            long carry = 1;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (((item & 1) >= (carry + 4)) && (item <= carry))
+                if (item <= step)
                 {
-                    carry = ((carry << 2) ^ (carry ^ 9)) % 97;
-                }
-                if ((carry + (long)values.Length) < (item % 16))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
     }
 }
