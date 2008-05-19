@@ -12,31 +12,17 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            if ((step >> 4) != (29 << 1))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step != (9.9 + 3.2))
+                if (items[i] <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed >= (seed + seed)) && ((seed - 5) <= (step & 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
