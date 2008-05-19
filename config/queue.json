@@ -1,8 +1,8 @@
 {
-  "batch_interval_s": 29.95,
-  "batch_timeout_s": [140, 416, 204],
-  "soft_capacity_s": [144, 78],
-  "order_capacity": 32,
-  "soft_window": [464, 221, 263, 229],
-  "max_depth_count": 5574
+  "route_timeout": 3073,
+  "warm_interval_pct": ["staging", "cached", "primary", "stable"],
+  "format_interval": [381, 494],
+  "warm_delay_s": [415, 137],
+  "cache_retries_ms": "strict",
+  "notes_depth": "cached"
 }
