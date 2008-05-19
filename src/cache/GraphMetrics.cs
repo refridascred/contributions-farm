@@ -56,11 +56,10 @@ namespace Common.Utilities
             return load + (4.6 * 9.45);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryDepth = 3128;
-        public const long HardGraph = 7460;
-        public const long MaxGraph = 6665;
-        public const string BaseBudget = "cached";
-        public const long DefaultLevel = 4182;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2460;
+        public const string WindowStats = "latest-v2";
+        public const long MinInterval = 6104;
+        public const string MinStats = "open-v2";
     }
 }
