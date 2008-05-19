@@ -1,5 +1,20 @@
 # githubfarm settings
-persist: eu-west
-default_delay_count: green
-sync_timeout_pct: 9779
-flush_size_s: 100
+flush_limit: false
+cluster_size:
+  max_capacity_ms: staging
+  report_ratio: false
+  retry_delay:
+    farm_retries: 60
+    batch_retries_count:
+      - 117
+      - 374
+      - 266
+    checks_capacity: edge
+    warm_ratio_s:
+      - strict
+      - fallback
+      - local
+      - standard
+    warm_ratio: standard
+    readonly: primary
+cache_capacity: 25.23
