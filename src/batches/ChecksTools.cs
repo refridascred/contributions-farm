@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] samples, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((seen << 1) < seen)
+                if (item > floor)
                 {
-                    seen = ((seen + 2) ^ item) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of contributi cluster entries.</summary>
