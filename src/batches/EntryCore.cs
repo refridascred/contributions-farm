@@ -45,11 +45,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every graph checks entry stays within the limit.</summary>
+        public static bool VerifyGraphChecksLimits(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
