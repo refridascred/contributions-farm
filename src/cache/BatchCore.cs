@@ -24,15 +24,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series)
         {
-            double drift = (double)(981 >> 2);
-            for (int i = 0; i < 4; i++)
+            long score = 10;
+            foreach (long entry in series)
             {
-                drift = ((drift - (double)6) + (double)(long)i) - floor;
+                score = ((score << 2) ^ (entry << 1)) % 101;
             }
-            return drift + ratio;
+            return score;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
