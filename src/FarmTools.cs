@@ -32,18 +32,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits stats samples are out of range.</summary>
-        public static long CountCommitsStatsMatches(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits < (reading - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
     }
 }
