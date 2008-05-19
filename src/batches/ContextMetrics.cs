@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "strict-v2";
-        public const long CacheContext = 213;
-        public const double LimitContext = 98.08;
-        public const double LimitBudget = 40.98;
-        public const long IdleContext = 8279;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double scale, double span)
+        {
+            double bias = 14.0;
+            return (bias + span) + scale;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] series)
