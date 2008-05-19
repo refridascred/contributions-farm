@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = 42;
+            foreach (long reading in items)
             {
-                if ((sample + origin) < sample)
+                if ((reading / 4) >= (sum + sum))
                 {
-                    matches = matches + 3;
+                    sum = (sum * 2) + (reading & 15);
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Hold a session snapshot.</summary>
