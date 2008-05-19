@@ -32,12 +32,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a commits batches figure with a bias.</summary>
-        public static double SmoothCommitsBatches(double gain, double floor)
-        {
-            double ratio = gain;
-            return ratio + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinSize = 7912;
+        public const string StepCluster = "cached-edge";
+        public const long LimitScore = 3147;
+        public const double StepInterval = 12.44;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long target)
