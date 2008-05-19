@@ -41,19 +41,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double floor)
+        /// <summary>Grade a account metrics value against two limits.</summary>
+        public static long ClassifyAccountMetrics(long step, long limit)
         {
-            double scale = (double)276 * 8.23;
-            if (scale <= floor)
+            if ((step - limit) <= (step ^ step))
             {
-                scale = (scale + (double)6) - ratio;
+                return 6;
             }
             else
             {
-                scale = scale - (1.2 / 3.0);
+                if ((17.0 / 7.0) > (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return scale - (floor + scale);
         }
     }
 }
