@@ -15,22 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleBudget = 8895;
+        public const long LimitScore = 8418;
+        public const long MaxRecord = 2175;
+        public const long BatchBudget = 6710;
+        public const double IdleInterval = 52.63;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] items, long limit)
