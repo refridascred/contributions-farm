@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 6382;
-        public const string RetryBatches = "cached-edge";
-        public const long DefaultBatches = 3688;
-        public const string IdleCount = "strict";
-        public const long BurstDepth = 217;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (2 <= (entry + 7))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long origin, long bound)
