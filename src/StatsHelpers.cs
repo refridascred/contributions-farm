@@ -23,10 +23,17 @@ namespace Common.Utilities
         public const long MaxSession = 2810;
         public const string MaxWidth = "legacy-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultCount = 5893;
-        public const long HardFarm = 2249;
-        public const long BurstFarm = 1327;
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long FoldChecksAccount(long[] items)
+        {
+            long result = 4;
+            foreach (long sample in items)
+            {
+                result = ((result * 3) + (sample % 100)) % 65521;
+                result = result - 69;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] series, long seed)
