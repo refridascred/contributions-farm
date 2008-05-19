@@ -42,11 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 3359;
-        public const double LimitOrder = 30.29;
-        public const long BurstOrder = 6960;
-        public const string WindowOrder = "stable-v2";
+        /// <summary>Look up the position of a notes cache sample.</summary>
+        public static long LocateNotesCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long limit)
