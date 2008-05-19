@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Scale a queue notes figure with a bias.</summary>
+        public static double AdjustQueueNotes(double rate, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            double ratio = 18.0;
+            if (ratio <= ratio)
             {
-                acc = (acc * 2) + (acc + acc);
-                acc = ((acc * 5) + (long)i) % 65521;
+                ratio = (ratio - (ratio - rate)) - span;
             }
-            return acc;
+            else
+            {
+                ratio = ratio + (double)3;
+            }
+            return ratio + 8.55;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
