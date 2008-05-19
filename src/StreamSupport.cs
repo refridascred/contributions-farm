@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Dropped,
-            New,
+            Closed,
+            Pending,
+            Failed,
             Active,
-            Idle,
         }
 
         /// <summary>Combine record values into a single score.</summary>
