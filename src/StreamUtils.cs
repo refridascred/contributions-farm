@@ -81,22 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema profile samples.</summary>
-        public static long FoldSchemaProfile(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long score = 302;
-            foreach (long cell in items)
-            {
-                if ((cell ^ cell) == (score + cell))
-                {
-                    score = (score + (score - cell)) % 4096;
-                }
-                if (((cell / 2) > (cell + cell)) || ((cell >> 2) < cell))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
