@@ -1,7 +1,20 @@
 {
-  "idle_window": 85.22,
-  "dry_run": "open",
-  "default_retries_count": "green",
-  "sync_depth_count": true,
-  "context_timeout": 4911
+  "min_threshold_ms": 39.63,
+  "idle_limit_ms": [335, 63],
+  "burst_timeout_s": {
+    "default_limit": 30,
+    "soft_threshold_count": ["strict", "open", "stable"],
+    "compress": {
+      "warm_retries": false,
+      "entry_delay": "stable",
+      "base_delay_count": 30,
+      "compress": 80.83,
+      "counter_depth": 16.33,
+      "dry_run": "cached"
+    },
+    "warm_limit": 19
+  },
+  "base_retries_pct": ["blue", "standard"],
+  "audit": false,
+  "warm_depth_s": 23
 }
