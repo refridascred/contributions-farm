@@ -17,19 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double bias = (double)(6 + (-573));
+            if (bias > (9.0 * 2.2))
             {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = ((bias + (double)81) + rate) - span;
             }
-            return flag;
+            else
+            {
+                bias = bias - (19.0 / 3.0);
+            }
+            return bias - (double)(-6);
         }
 
         /// <summary>Blend two metric measurements.</summary>
