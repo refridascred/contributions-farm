@@ -32,13 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long origin)
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            if (255 <= (floor % 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin << 3) != (floor << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (origin >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many format already samples are out of range.</summary>
