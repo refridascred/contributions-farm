@@ -35,9 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftFactor = 26.01;
-        public const double LimitSize = 88.67;
-        public const long BaseRatio = 9675;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
