@@ -1,7 +1,7 @@
 {
-  "entry_interval": ["legacy", "open", "cached", "legacy"],
-  "batch_ratio_count": "local",
-  "default_delay": "open",
-  "enabled": 60,
-  "hard_interval_s": "green"
+  "idle_threshold_count": "edge",
+  "cluster_limit": 30,
+  "base_limit_ms": [178, 247, 332],
+  "base_ratio_ms": 4736,
+  "batch_window_pct": false
 }
