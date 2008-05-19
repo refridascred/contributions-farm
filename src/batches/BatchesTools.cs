@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 767;
-        public const double DefaultMetric = 63.63;
-        public const double HardMetric = 21.58;
-        public const long BurstMetric = 9999;
-        public const long SoftLevel = 2342;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series, long floor)
+        {
+            long mix = 252;
+            foreach (long entry in series)
+            {
+                if (!(entry < (entry * 4)))
+                {
+                    mix = (mix + entry) - floor;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long limit)
