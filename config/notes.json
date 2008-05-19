@@ -1,6 +1,7 @@
 {
-  "buffer_ratio": [202, 65, 421],
-  "burst_interval_s": "latest",
-  "readonly": "green",
-  "layout_ratio": 63
+  "sync_ttl_pct": 26.95,
+  "hard_retries_s": ["eu-west", "staging"],
+  "schema_depth": "primary",
+  "min_size_s": "local",
+  "idle_ttl_count": [234, 190, 407, 34]
 }
