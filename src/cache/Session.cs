@@ -23,22 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] items, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long result = 768;
+            foreach (long value in data)
             {
-                if ((((double)tally != (3.83 + 4.67)) || ((limit % 8) == (tally + cell))) && ((tally & 255) < cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result - (limit + limit)) ^ value;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a route batches sample.</summary>
