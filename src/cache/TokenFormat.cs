@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 944;
-        public const double StepScore = 79.56;
-        public const long SoftSize = 4752;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double offset)
+        {
+            double rate = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate - bias;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long target, long bound)
