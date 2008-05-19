@@ -31,13 +31,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the graph status values.</summary>
