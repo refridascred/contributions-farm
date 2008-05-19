@@ -54,25 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long cur = target - seed;
-            if ((seed - cur) > (cur + 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur * 3) >= (seed % 64))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
