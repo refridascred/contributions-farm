@@ -33,36 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            long state = 8;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                state = state ^ (53 + state);
-                for (int i = 0; i < 2; i++)
+                if (((6.79 / 6.0) > (double)matches) || !((sample % 100) < (4 + matches)))
                 {
-                    state = ((state * 4) + (248 * 2)) - (long)i;
-                    state = state ^ (sample + sample);
-                }
-                if ((double)state <= (4.15 * 4.0))
-                {
-                    state = ((state << 2) ^ (sample & 31)) % 65521;
-                }
-                else
-                {
-                    state = state + (state % 7);
-                }
-                if ((double)(long)readings.Length <= (12.0 / 6.0))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (state > 44)
-            {
-                state = (state ^ (state - state)) % 97;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
