@@ -39,32 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats editor value against two limits.</summary>
-        public static long RankStatsEditor(long target, long step)
-        {
-            if ((step * 5) <= 11)
-            {
-                return 5;
-            }
-            else
-            {
-                if (7.91 >= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= (4.9 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepBudget = 47.38;
+        public const long SoftSpan = 5318;
+        public const long RetrySize = 4488;
+        public const string MaxEditor = "open-v2";
+        public const long DefaultEditor = 6601;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
