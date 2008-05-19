@@ -46,19 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            if (((-9) << 1) != (offset % 7))
             {
-                if (entry > offset)
+                return 0;
+            }
+            else
+            {
+                if (!((offset + offset) == (offset >> 3)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= (seed + 48))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a batch stats.</summary>
