@@ -24,12 +24,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Grade a account cache value against two limits.</summary>
+        public static long BucketAccountCache(long floor, long bound)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            if ((floor <= bound) && ((110 - floor) < (bound - 199)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > 7.53)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
