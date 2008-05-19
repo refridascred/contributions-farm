@@ -61,19 +61,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            Retry,
+            Paused,
         }
     }
 }
