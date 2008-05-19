@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 3322;
-        public const long RetryCluster = 8099;
-        public const double MaxScore = 78.7;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 95.03;
+        public const long MinEntry = 6304;
+        public const long StepSpan = 1;
+        public const string BurstTimeout = "fallback";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long origin)
