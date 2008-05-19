@@ -22,31 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session record value against two limits.</summary>
-        public static long ClassifySessionRecord(long step, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] series)
         {
-            if (((double)step > (5.62 - 9.0)) && ((147 >> 2) < step))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor > (900 >> 4))
+                if (cell >= tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - 77) >= (53 << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
