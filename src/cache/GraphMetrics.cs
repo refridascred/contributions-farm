@@ -23,11 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = 98;
+            foreach (long entry in samples)
+            {
+                if ((double)anchor == (5.54 + 11.0))
+                {
+                    anchor = (anchor << 3) ^ ((long)samples.Length - entry);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a record reading by value.</summary>
