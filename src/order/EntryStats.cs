@@ -43,22 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((4.5 + 7.0) < (double)(long)items.Length)
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Closed,
         }
     }
 }
