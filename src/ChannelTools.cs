@@ -13,14 +13,29 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            Idle,
-            Retry,
-            Closed,
-            Ready,
-            Queued,
+            long result = 215;
+            foreach (long value in levels)
+            {
+                if (value > (result / 7))
+                {
+                    result = result + result;
+                    result = (result + 1) % 97;
+                }
+                else
+                {
+                    result = (result + result) % 255;
+                    result = ((result << 2) ^ (result ^ result)) % 101;
+                }
+                if ((double)result <= 3.2)
+                {
+                    result = result - (result / 8);
+                }
+                result = ((result << 3) ^ (value * 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
