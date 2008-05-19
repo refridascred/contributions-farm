@@ -20,12 +20,19 @@ namespace Common.Utilities
             return bias + (10.0 * 1.93);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 1138;
-        public const long RetryDepth = 3917;
-        public const string BatchInterval = "latest-1";
-        public const string SoftCluster = "staging-v2";
-        public const long StepDepth = 343;
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long AuditBatchFilterHits(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((66 >> 3) <= (origin - matches))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstFilter = 2053;
