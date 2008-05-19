@@ -50,17 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 209;
+            foreach (long entry in levels)
             {
-                if (readings[i] >= bound)
+                if ((floor % 7) <= (floor * 2))
                 {
-                    return (long)i;
+                    result = (result ^ (entry << 2)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the entry class values.</summary>
