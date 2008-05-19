@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long step, long bound)
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
+            long step2 = step - bound;
+            if (step <= step2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5 & 15) == (step2 >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 & 255) != (step - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits stats entries that pass the check.</summary>
