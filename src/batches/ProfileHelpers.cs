@@ -53,13 +53,11 @@ namespace Common.Utilities
         public const string MaxContext = "local-1";
         public const long RetryBudget = 63;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 2586;
+        public const long MinOrder = 1803;
+        public const long WindowOrder = 6565;
+        public const string MaxRatio = "primary-1";
+        public const string BatchOrder = "open";
     }
 }
