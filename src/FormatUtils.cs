@@ -15,24 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long origin)
+        /// <summary>Derive the next report already value from a seed.</summary>
+        public static long StepReportAlready(long floor)
         {
-            if ((2 + 402) < (origin & 63))
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 3) < (floor % 8))
+                if ((floor + 36) != (floor % 97))
                 {
-                    return 2;
+                    carry = carry + (floor % 12);
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
