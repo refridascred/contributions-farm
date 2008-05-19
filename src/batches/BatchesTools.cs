@@ -42,10 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxDepth = 21.57;
-        public const string MaxRatio = "legacy-1";
-        public const string MinContext = "latest";
-        public const long HardWidth = 4153;
+        /// <summary>Adjust a payload queue reading.</summary>
+        public static double BlendPayloadQueue(double rate, double bias)
+        {
+            double ratio = (double)(-1) / 4.0;
+            if (ratio >= (rate + ratio))
+            {
+                ratio = (ratio + ratio) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - 3.1) - (double)(long)i;
+            }
+            return ratio + (double)62;
+        }
     }
 }
