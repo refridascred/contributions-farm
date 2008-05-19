@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of batch cache readings.</summary>
-        public static long WeighBatchCache(long[] levels)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = 360;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length > (entry % 97)) && (result <= (long)levels.Length))
-                {
-                    result = (result ^ (result ^ entry)) % 97;
-                }
-            }
-            if (result > 97)
-            {
-                result = result + result;
-            }
-            return result;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit token readings against a rule.</summary>
