@@ -22,10 +22,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "cached";
-        public const double SoftScore = 12.85;
-        public const string MaxAlready = "standard-1";
+        /// <summary>Blend two layout farm measurements.</summary>
+        public static double ProjectLayoutFarm(double scale, double offset)
+        {
+            double rate = (scale + offset) * 6.29;
+            if (rate > offset)
+            {
+                rate = rate - (rate + scale);
+            }
+            return rate - (offset / 4.0);
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
