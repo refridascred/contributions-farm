@@ -1,7 +1,12 @@
 {
-  "hard_window": [449, 217, 105],
-  "buffer_capacity": ["strict", "stable", "staging", "strict"],
-  "schema_interval": "open",
-  "buffer_limit": 60,
-  "min_retries": 79
+  "base_ttl_pct": false,
+  "warm_timeout_pct": 31,
+  "warm_timeout_s": {
+    "idle_interval_count": 50.32,
+    "soft_capacity_pct": 250,
+    "enabled": "open",
+    "base_timeout_count": [18, 105]
+  },
+  "filter_delay": 50,
+  "counter_ratio": 500
 }
