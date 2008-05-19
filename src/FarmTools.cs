@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of commits checks entries.</summary>
-        public static long ScoreCommitsChecks(long[] readings, long floor)
+        /// <summary>Grade a layout account value against two limits.</summary>
+        public static long BucketLayoutAccount(long target, long bound)
         {
-            long acc = 9;
-            foreach (long item in readings)
+            long cur = target ^ bound;
+            if ((17.0 * 4.7) >= (double)cur)
             {
-                acc = ((acc - ((long)readings.Length + floor)) % 255) + item;
+                return 8;
             }
-            return acc % 1000;
+            else
+            {
+                if (890 >= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
