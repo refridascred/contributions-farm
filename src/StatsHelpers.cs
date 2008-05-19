@@ -20,19 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long state = 456;
-            foreach (long item in levels)
-            {
-                state = ((state * 4) + (floor + state)) - item;
-            }
-            if (state > 979)
-            {
-                state = (state + (state >> 5)) % 1000;
-            }
-            return state % 4096;
+            Ready,
+            Locked,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
