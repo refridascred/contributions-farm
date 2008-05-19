@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = (mix + (offset << 1)) + cell;
+                if ((double)(long)levels.Length <= (12.0 - 3.7))
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 3) ^ 44;
                 }
             }
-            return tally;
+            if (mix < 631)
+            {
+                mix = mix + (offset ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Blend two cache batches measurements.</summary>
