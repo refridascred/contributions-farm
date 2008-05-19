@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Check that every metric tools entry stays within the limit.</summary>
+        public static bool VerifyMetricToolsBounds(long[] data, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (item >= limit)
                 {
-                    carry = (carry ^ 7) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Check that every buffer batches entry stays within the limit.</summary>
