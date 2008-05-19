@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)seen >= (8.0 + 17.0))
+                if (item <= (hits + hits))
                 {
-                    seen = (seen + 2) ^ reading;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
