@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 5224;
-        public const long CacheFactor = 7445;
-        public const long SoftChannel = 9227;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] readings, long limit)
