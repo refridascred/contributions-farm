@@ -27,13 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Dropped,
-            Retry,
-            Done,
-            Failed,
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
