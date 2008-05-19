@@ -32,10 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchCount = "standard";
-        public const long BaseFactor = 6980;
-        public const double MaxInterval = 24.57;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long WeighSession(long[] levels)
