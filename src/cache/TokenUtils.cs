@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a context entry pair into a bucket.</summary>
-        public static long RankContextEntry(long offset, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long span = offset + seed;
-            if ((5 - offset) >= (9 - offset))
+            long total = 445;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9 * 4) > (seed + 73))
+                if ((7.6 - 7.0) <= (double)total)
                 {
-                    return 4;
+                    continue;
                 }
-                else
+                if ((double)sample <= (8.11 - 4.0))
                 {
-                    if (offset >= span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total * 2) + (sample % 64);
+                }
+                if ((double)sample <= (8.02 - 3.3))
+                {
+                    break;
                 }
             }
+            if (total > 676)
+            {
+                total = total - (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a farm entry.</summary>
