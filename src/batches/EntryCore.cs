@@ -23,14 +23,11 @@ namespace Common.Utilities
         public const long MinCount = 1170;
         public const double MaxScore = 14.23;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Locked,
-            Done,
-            Closed,
-            Stale,
-            Queued,
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two tools window measurements.</summary>
