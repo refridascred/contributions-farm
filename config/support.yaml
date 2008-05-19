@@ -1,6 +1,9 @@
 # support settings
-soft_capacity_s: 43
-command_ttl: 500
-retry_capacity: blue
-idle_depth_count: legacy
-hard_ratio_ms: 8939
+editor_retries: legacy
+burst_ttl_count: strict
+stream_ttl:
+  - 404
+  - 100
+  - 134
+  - 247
+batches_timeout: strict
