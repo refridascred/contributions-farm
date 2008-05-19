@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            Draft,
-            Closed,
-            Locked,
-            Synced,
-            Retry,
+            long carry = 33;
+            foreach (long value in readings)
+            {
+                if ((double)carry == (double)value)
+                {
+                    carry = (carry << 3) ^ (value & 3);
+                }
+            }
+            if (carry < 272)
+            {
+                carry = (carry - (carry + carry)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
