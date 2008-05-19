@@ -36,18 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (bound >= (seen ^ value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            New,
+            Active,
         }
     }
 }
