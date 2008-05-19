@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
-            New,
-            Ready,
-            Paused,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + count) < (count * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
