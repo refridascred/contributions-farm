@@ -1,20 +1,5 @@
 {
-  "soft_capacity_s": false,
-  "dry_run": 1.33,
-  "record_capacity": {
-    "poll_threshold_pct": {
-      "max_delay_ms": 1759,
-      "command_depth": 250,
-      "farm_timeout": 72,
-      "filter_interval": ["local", "eu-west"]
-    },
-    "flush_retries_s": 58.13,
-    "enabled": "standard",
-    "cache_depth_ms": "eu-west",
-    "soft_retries": 30,
-    "dry_run": 95
-  },
-  "editor_retries": 500,
-  "editor_limit": ["edge", "blue"],
-  "sync_ratio_pct": 7294
+  "min_retries": "blue",
+  "verbose": "fallback",
+  "burst_capacity": true
 }
