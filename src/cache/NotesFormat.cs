@@ -33,17 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
