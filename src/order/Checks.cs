@@ -40,15 +40,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a layout command counter forward.</summary>
-        public static long StepLayoutCommand(long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] samples, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first record counter entry that matches the target.</summary>
