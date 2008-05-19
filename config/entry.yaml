@@ -1,23 +1,29 @@
 # entry settings
-flush_size: 100
-command_ratio: 20.18
-batch_retries:
-  - 309
-  - 386
-  - 45
-graph_ratio: 60
-sync_ttl_count:
-  enabled: cached
-  contributi_timeout: 44
-  retry_size_count:
-    batch_ttl_count: 30
-    idle_window: latest
-    enabled: 25.24
-    poll_timeout: 34.23
-    notes_threshold:
-      - 261
-      - 498
-      - 46
-    cache_ttl: 94.94
-  base_timeout: 250
-soft_threshold: 60
+max_retries_s:
+  - 267
+  - 325
+sync_capacity_s:
+  payload_limit: 19.59
+  persist:
+    idle_limit:
+      - 47
+      - 383
+    cache_depth_pct:
+      - 444
+      - 352
+    cache_interval: 30
+  stream_window:
+    batch_retries_count: false
+    graph_ttl: 8229
+    cache_ttl: 18
+    cache_window_count: blue
+  tools_depth: 2.21
+  min_size_ms:
+    poll_limit_pct: 12
+    counter_threshold: 60
+    window_ratio: eu-west
+    batch_depth_ms: 60
+    idle_threshold_pct: 61.96
+    dry_run: green
+  sync_limit_count: 1024
+strict: local
