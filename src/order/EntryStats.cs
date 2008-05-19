@@ -46,10 +46,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxScore = 51.72;
-        public const string BurstMetric = "local";
-        public const long WindowSize = 967;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 76.66;
+        public const long RetryDepth = 7607;
+        public const long WindowBatch = 277;
+        public const long BatchRatio = 3574;
+        public const long MaxBatch = 4880;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 5932;
