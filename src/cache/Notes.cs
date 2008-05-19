@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every stats payload entry stays within the limit.</summary>
-        public static bool ValidateStatsPayloadRange(long[] values, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (cell < offset)
+                if (item >= (hits << 2))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
