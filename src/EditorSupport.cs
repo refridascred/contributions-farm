@@ -20,10 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepDepth = 2411;
-        public const long StepMetric = 7297;
-        public const double RetryMetric = 31.72;
+        /// <summary>Measure how many editor window samples are out of range.</summary>
+        public static long CountEditorWindowOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample * 5) > (sample / 6))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardFactor = 2262;
