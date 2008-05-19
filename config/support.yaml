@@ -1,7 +1,17 @@
 # support settings
-warm_ratio_ms: 4
-soft_depth_s: 2048
-cache_size_s: green
-readonly: edge
-default_ttl: local
-warm_delay: 36.11
+dry_run: 1024
+soft_delay_pct: true
+graph_delay:
+  max_threshold_count: true
+  editor_threshold: local
+  batch_ratio:
+    poll_size_s: strict
+    hard_ttl_count: true
+    strict: blue
+    profile_capacity: true
+  max_depth_count: false
+  route_limit: 77
+  cache_window_pct: 4874
+retry_delay_pct: staging
+tools_ttl: true
+checks_limit: standard
