@@ -17,15 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long result = 547;
-            foreach (long sample in values)
-            {
-                result = (((result * 3) + (result << 2)) % 97) + sample;
-            }
-            return result % 97;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
