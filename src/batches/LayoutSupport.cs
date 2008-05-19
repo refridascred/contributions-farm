@@ -55,26 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long MeasureStreamEditorOutliers(long[] samples, long target)
         {
-            long total = 917;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((sample + sample) <= (410 * 4)) && ((double)total != (4.92 / 5.0)))
+                if ((3.0 > (double)item) || !(item > (matches % 12)))
                 {
-                    total = (total ^ (total - total)) % 97;
-                }
-                else
-                {
-                    total = total - (total - 8);
+                    matches = (matches + 1) - target;
                 }
             }
-            if (total > (-73))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
