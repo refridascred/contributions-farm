@@ -39,18 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many counter stream samples are out of range.</summary>
-        public static long AuditCounterStreamOutliers(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] series, long bound)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long value in series)
             {
-                if ((404 & 1) >= hits)
+                if (value != bound)
                 {
-                    hits = (hits + 3) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
