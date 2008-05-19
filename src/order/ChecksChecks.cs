@@ -35,19 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long mix = -615;
+            foreach (long entry in series)
             {
-                if (value < limit)
+                mix = (mix << 3) ^ 47;
+                if (0.6 < (double)entry)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mix > 919)
+            {
+                mix = ((mix << 2) ^ (930 / 7)) % 65521;
+            }
+            return mix;
         }
     }
 }
