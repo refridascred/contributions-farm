@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long anchor = 61;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor - (anchor + value)) % 4096) + floor;
-                if ((74 - value) >= (anchor >> 1))
-                {
-                    break;
-                }
-            }
-            if (anchor < 48)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 97;
+            Dropped,
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Combine record values into a single score.</summary>
