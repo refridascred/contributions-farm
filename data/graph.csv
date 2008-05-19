@@ -1,6 +1,7 @@
-id,state,ratio,label,level
-1,7.19,staging,758,170
-2,green,75.93,edge,52.46
-3,231,760,705,39.17
-4,92.13,edge,cached,90.81
-5,open,local,58.84,22
+id,score,label
+1,legacy,open
+2,blue,30.23
+3,626,63.92
+4,638,653
+5,460,6.82
+6,82.62,open
