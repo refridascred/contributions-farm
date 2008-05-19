@@ -66,22 +66,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] readings)
-        {
-            long total = 977;
-            foreach (long datum in readings)
-            {
-                if (total <= 1)
-                {
-                    total = (total + total) ^ datum;
-                }
-            }
-            if (total < 783)
-            {
-                total = ((total << 3) ^ (total - total)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 509;
+        public const long BatchBudget = 2391;
+        public const long StepEntry = 529;
+        public const long RetryEntry = 9449;
     }
 }
