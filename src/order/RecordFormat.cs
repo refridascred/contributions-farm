@@ -19,13 +19,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            Done,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
