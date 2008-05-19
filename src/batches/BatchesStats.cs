@@ -14,17 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if (((cell << 1) < 6) && !((2.64 - 7.0) < (double)count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a filter options.</summary>
