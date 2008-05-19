@@ -64,12 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Blend two tools window measurements.</summary>
+        public static double AdjustToolsWindow(double scale, double floor)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            double weight = (double)((-555) * 3);
+            if (weight >= scale)
+            {
+                weight = (weight + (double)34) - floor;
+            }
+            return weight + scale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
