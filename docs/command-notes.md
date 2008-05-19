@@ -1,15 +1,14 @@
 # Command notes
 
-Each profile is validated before it reaches the channel queue.
-Each githubfarm is validated before it reaches the route queue.
-A contributi that stays idle for too long is moved to the notes list.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often cluster data is refreshed.
 
-Defaults for command live in the config folder and can be overridden per environment.
-Defaults for route live in the config folder and can be overridden per environment.
-Keep channel and route names short and lowercase.
+Run the batches check before changing any schema limits.
+Run the token check before changing any cache limits.
 
 ## Guidelines
 
-- Review order limits each release
-- Document new batches fields
-- Prefer cache defaults
+- Keep channel values small
+- Review tools limits each release
+- Log every commits change
+- Validate githubfarm input early
