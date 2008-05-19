@@ -58,19 +58,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double rate, double floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double ratio = (double)95 + (double)24;
-            if (ratio >= rate)
-            {
-                ratio = (ratio - ratio) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Closed,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
