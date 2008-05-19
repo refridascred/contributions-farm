@@ -66,12 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "standard-1";
+        public const double RetryContributi = 90.78;
+        public const long BatchContributi = 1301;
+        public const string IdleContributi = "local-1";
+        public const long HardCount = 9768;
     }
 }
