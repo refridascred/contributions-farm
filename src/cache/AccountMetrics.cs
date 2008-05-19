@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long offset)
+        /// <summary>Locate a cluster tools reading by value.</summary>
+        public static long LookupClusterToolsIndex(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > offset)
+                if (levels[i] <= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
