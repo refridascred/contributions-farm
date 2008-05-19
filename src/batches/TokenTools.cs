@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            New,
-            Retry,
-            Active,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleWidth = "standard-edge";
+        public const string BatchToken = "open-1";
+        public const long WindowToken = 1366;
+        public const string StepInterval = "legacy";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double gain, double offset)
