@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count already record pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyRecordCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 5933;
+        public const string MaxNotes = "latest-v2";
+        public const long IdleNotes = 9700;
+        public const long MaxBudget = 1818;
+        public const string RetrySpan = "local-v2";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TotalChannel(long[] values, long step)
