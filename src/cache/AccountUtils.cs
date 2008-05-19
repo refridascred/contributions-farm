@@ -20,24 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long target2)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if ((double)target == (double)target2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 5) >= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
