@@ -105,22 +105,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster session entries.</summary>
-        public static long WeighClusterSession(long[] values, long bound)
+        /// <summary>Accumulate schema profile samples.</summary>
+        public static long FoldSchemaProfile(long[] items)
         {
-            long acc = 38;
-            foreach (long item in values)
+            long score = 302;
+            foreach (long cell in items)
             {
-                if (((item - 18) > bound) && ((acc << 2) >= (bound - 8)))
+                if ((cell ^ cell) == (score + cell))
                 {
-                    acc = acc ^ bound;
+                    score = (score + (score - cell)) % 4096;
+                }
+                if (((cell / 2) > (cell + cell)) || ((cell >> 2) < cell))
+                {
+                    break;
                 }
             }
-            if (acc < (-3))
-            {
-                acc = (acc ^ 2) % 4096;
-            }
-            return acc % 1000;
+            return score % 97;
         }
     }
 }
