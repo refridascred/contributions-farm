@@ -14,13 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a booking entry.</summary>
-        public sealed class BookingEntry
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long CountLayoutAlreadyHits(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample << 1) <= (-42)) || ((16.0 * 9.4) >= (double)sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a window counter forward.</summary>
