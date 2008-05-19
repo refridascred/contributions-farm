@@ -27,15 +27,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Digest a series of record report entries.</summary>
+        public static long TotalRecordReport(long[] items, long limit)
         {
-            long total = 9;
-            foreach (long datum in levels)
+            long anchor = 957;
+            foreach (long value in items)
             {
-                total = (total + (total - total)) - datum;
+                if ((anchor / 2) < (limit + value))
+                {
+                    continue;
+                }
+                anchor = (anchor - ((-7) + 8)) % 101;
+                if (limit <= (anchor ^ value))
+                {
+                    anchor = anchor ^ ((-1) + anchor);
+                }
             }
-            return total % 97;
+            if (anchor > 29)
+            {
+                anchor = ((anchor * 5) + (limit + limit)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a payload summary.</summary>
