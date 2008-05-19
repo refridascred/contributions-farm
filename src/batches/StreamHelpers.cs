@@ -55,19 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor commits series from a seed.</summary>
-        public static long RollEditorCommits(long origin)
+        /// <summary>Match up schema metrics samples.</summary>
+        public static long MatchSchemaMetricsCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mix < (18.0 / 4.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix ^ 337;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
