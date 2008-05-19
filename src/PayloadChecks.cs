@@ -44,14 +44,12 @@ namespace Common.Utilities
         public const double RetryAccount = 46.13;
         public const long WindowAccount = 9785;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 2363;
+        public const long CacheToken = 6583;
+        public const long SoftRatio = 6895;
+        public const long HardCount = 9240;
+        public const long MaxTimeout = 1730;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
