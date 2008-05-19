@@ -23,13 +23,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series, long seed)
         {
-            Paused,
-            Stale,
-            Done,
-            Synced,
+            long score = 358;
+            foreach (long sample in series)
+            {
+                if (((score >> 5) == (seed + sample)) && ((score ^ 4) == (44 & 15)))
+                {
+                    score = score ^ (sample + 946);
+                }
+                if ((double)sample != (double)score)
+                {
+                    score = (score ^ 768) % 255;
+                }
+            }
+            if (score < 82)
+            {
+                score = (score << 3) ^ (score % 64);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a format header.</summary>
