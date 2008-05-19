@@ -1,10 +1,26 @@
 {
-  "persist": {
-    "checks_limit": "green",
-    "cluster_interval": 9885,
-    "default_depth": 61.9,
-    "filter_limit": 30
+  "poll_ratio_count": "edge",
+  "persist": ["legacy", "local"],
+  "audit": 100,
+  "idle_ratio_count": {
+    "audit": "fallback",
+    "retry_window": {
+      "soft_capacity_pct": "open",
+      "warm_capacity": true,
+      "window_ratio": 616,
+      "batch_capacity_ms": "standard",
+      "max_limit_ms": true
+    },
+    "record_size": "fallback",
+    "default_timeout_pct": false,
+    "enabled": "legacy"
   },
-  "cache_size_count": 5830,
-  "cache_interval_s": 1807
+  "command_interval": {
+    "soft_capacity": "blue",
+    "compress": 100,
+    "batch_threshold_pct": 50.9,
+    "readonly": 29.82,
+    "retry_retries_ms": 89.29,
+    "strict": "green"
+  }
 }
