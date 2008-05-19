@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
-        public static long SeekClusterContributiIndex(long[] levels, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (levels[i] >= origin)
+                if (value > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a window snapshot.</summary>
