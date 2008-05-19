@@ -46,19 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a order format counter forward.</summary>
-        public static long RollOrderFormat(long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((99 < acc) && ((double)(-27) >= (double)step))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
