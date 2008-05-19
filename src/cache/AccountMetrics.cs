@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cluster tools reading by value.</summary>
-        public static long LookupClusterToolsIndex(long[] levels, long offset)
+        /// <summary>Iterate the farm record series from a seed.</summary>
+        public static long DeriveFarmRecord(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
