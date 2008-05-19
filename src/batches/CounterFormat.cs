@@ -19,31 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            if (1 < (offset & 1))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.0 + 4.68) <= (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= 8.5)
+                    if ((readings[i] - readings[j]) == 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batches stats.</summary>
