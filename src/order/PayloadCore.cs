@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] items)
-        {
-            long mix = -3;
-            foreach (long item in items)
-            {
-                if ((3.5 + 9.1) != (double)mix)
-                {
-                    mix = (mix ^ (item + 4)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 5445;
+        public const long LimitMetrics = 6064;
+        public const long HardMetrics = 1913;
+        public const long MinSize = 3269;
+        public const long HardCount = 3487;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long bound)
