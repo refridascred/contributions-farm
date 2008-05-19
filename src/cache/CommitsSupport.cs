@@ -66,15 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double drift = bias * 4.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - ratio;
-            }
-            return drift + bias;
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
