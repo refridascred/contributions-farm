@@ -28,24 +28,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long carry = 123;
-            foreach (long datum in series)
+            long anchor = 900;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ 811) % 1000;
-                carry = carry ^ (carry & 127);
-                if ((17.0 - 1.1) <= (double)carry)
+                if ((anchor << 1) < anchor)
                 {
-                    carry = carry + (39 + datum);
-                }
-                else
-                {
-                    carry = (carry * 4) + step;
+                    anchor = ((anchor << 3) ^ (cell + cell)) % 65521;
                 }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
