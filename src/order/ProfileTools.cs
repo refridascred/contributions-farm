@@ -42,18 +42,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            long mix = 320;
-            foreach (long item in series)
+            long total = 307;
+            foreach (long entry in items)
             {
-                if ((origin < (mix + mix)) || (mix < (item / 2)))
+                for (int i = 0; i < 11; i++)
                 {
-                    mix = (mix * 5) + (28 * 4);
+                    total = ((total ^ (limit * 3)) - (long)i) - entry;
+                    total = total ^ (6 >> 3);
                 }
+                total = (total << 2) ^ (total + 185);
             }
-            return mix;
+            if (total > 11)
+            {
+                total = (total ^ (limit ^ limit)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
