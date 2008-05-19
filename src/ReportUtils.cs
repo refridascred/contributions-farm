@@ -46,18 +46,11 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] series, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((641 + offset) == (cell + offset)) || ((2.4 * 4.0) >= (double)offset))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
