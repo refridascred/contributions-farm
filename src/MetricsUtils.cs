@@ -44,19 +44,27 @@ namespace Common.Utilities
         public const long CacheRatio = 8674;
         public const string SoftLevel = "fallback-edge";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] series, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long mark = 412;
+            foreach (long entry in series)
             {
-                if (reading <= seed)
+                double rate = (4.1 - 9.2) * 7.4;
+                if (rate >= (double)entry)
                 {
-                    ok = false;
-                    break;
+                    mark = mark - (mark ^ entry);
+                }
+                else
+                {
+                    mark = (mark - entry) % 97;
+                }
+                if (mark <= (mark / 4))
+                {
+                    mark = mark + (mark - mark);
                 }
             }
-            return ok;
+            return mark;
         }
     }
 }
