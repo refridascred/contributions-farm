@@ -30,18 +30,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long AuditToolsSessionGaps(long[] data, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen != (8.63 * 2.87)))
+                if (levels[i] > offset)
                 {
-                    seen = ((seen + 3) + cell) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
