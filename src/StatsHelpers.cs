@@ -32,24 +32,21 @@ namespace Common.Utilities
         public const long HardFarm = 2249;
         public const long BurstFarm = 1327;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] series, long seed)
         {
-            if (((979 + target) >= (origin + 2)) && ((origin * 5) != (target - 13)))
+            long mix = 187;
+            foreach (long cell in series)
             {
-                return 6;
+                long slot = mix;
+                mix = (((mix ^ (slot * 5)) % 4096) ^ cell) - seed;
+                mix = (mix + (mix & 255)) % 255;
             }
-            else
+            if (mix > 72)
             {
-                if ((3 >= (origin ^ origin)) && ((8.0 + 16.0) >= (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                mix = (mix - (4 - mix)) % 101;
             }
+            return mix % 1000;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
