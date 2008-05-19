@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long bound, long bound2)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] data, long seed)
         {
-            long diff = bound - bound2;
-            if (((bound ^ (-68)) == (bound2 >> 4)) && (bound < diff))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound2 == (double)diff)
+                if ((datum ^ seed) == (seed >> 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - bound) > (bound % 97))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (5.0 / 4.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
