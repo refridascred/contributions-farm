@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long origin)
         {
-            double gain = 2.7;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = ((gain - scale) + (double)(long)i) - bias;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (9.0 + gain);
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
