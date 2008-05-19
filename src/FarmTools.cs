@@ -20,17 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] values, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] > origin)
+                if (!((double)state < (16.0 - 8.64)))
                 {
-                    return (long)i;
+                    state = (state + ((long)i << 1)) % 255;
                 }
+                state = (state ^ state) % 101;
+                state = state - 898;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a format header.</summary>
