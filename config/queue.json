@@ -1,8 +1,6 @@
 {
-  "soft_size_ms": "staging",
-  "sync_interval_s": 58.34,
-  "soft_capacity": 25.22,
-  "commits_limit": 30,
-  "verbose": false,
-  "max_interval": 3541
+  "schema_ratio": 500,
+  "min_interval_ms": 23,
+  "default_window_ms": 36.71,
+  "cache_ratio": 24.17
 }
