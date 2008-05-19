@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long seed)
+        /// <summary>Measure how many batch channel samples are out of range.</summary>
+        public static long MeasureBatchChannelHits(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (sample > seed)
+                if ((1.6 - 8.06) == (double)step)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the profile mode values.</summary>
