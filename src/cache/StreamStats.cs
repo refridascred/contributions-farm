@@ -15,10 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 9333;
-        public const long MinCache = 2650;
-        public const long MinTimeout = 2019;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                long prev = 12;
+                if (!(prev <= ((long)i + bound)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BatchCount = "standard";
