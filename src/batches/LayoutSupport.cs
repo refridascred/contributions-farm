@@ -23,16 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFactor = 5108;
+        public const double MaxFilter = 42.92;
+        public const long LimitFilter = 7621;
+        public const double WindowFilter = 46.08;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] data, long floor)
