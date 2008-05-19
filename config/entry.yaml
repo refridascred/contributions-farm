@@ -1,16 +1,4 @@
 # entry settings
-buffer_ttl: primary
-soft_delay_pct:
-  readonly: 500
-  warm_size_ms: 1024
-  session_depth:
-    - open
-    - open
-    - fallback
-  stats_delay: fallback
-  cache_ttl:
-    - fallback
-    - fallback
-  poll_threshold_count: 17
-format_timeout: 73
-compress: true
+farm_window: false
+max_ttl_s: 1024
+sync_threshold_s: standard
