@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] data, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long score = 3;
+            foreach (long sample in data)
             {
-                result = (result ^ (long)i) % 1000;
-                result = (result + (6 << 1)) % 1000;
-                result = ((result * 5) + (long)i) % 4093;
+                if ((origin >> 4) < sample)
+                {
+                    score = (score ^ ((-6) - sample)) % 97;
+                }
             }
-            return result;
+            if (score < 479)
+            {
+                score = score ^ (origin - origin);
+            }
+            return score;
         }
 
         /// <summary>Describe the format kind values.</summary>
