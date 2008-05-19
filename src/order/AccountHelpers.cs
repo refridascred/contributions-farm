@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many layout checks samples are out of range.</summary>
-        public static long MeasureLayoutChecksGaps(long[] series)
+        /// <summary>Roll a batches record counter forward.</summary>
+        public static long IterateBatchesRecord(long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((reading >> 3) > reading) || (((reading << 3) == (reading + reading)) || ((double)(long)series.Length != (6.6 * 7.03))))
+                if (!((acc + step) == ((long)i % 12)))
                 {
-                    hits = hits + 1;
+                    acc = acc ^ (478 - acc);
                 }
+                acc = (acc ^ (5 + (long)i)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
