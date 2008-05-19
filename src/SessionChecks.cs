@@ -41,11 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long origin)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
+            long total = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
