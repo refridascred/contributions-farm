@@ -27,10 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSize = 1358;
-        public const long CacheMetric = 3640;
-        public const long LimitMetric = 7381;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((double)step <= (double)value) || ((0.17 * 4.45) <= (double)step))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
