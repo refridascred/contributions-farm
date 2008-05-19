@@ -36,9 +36,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 61.62;
-        public const long IdleInterval = 6375;
-        public const string StepNotes = "latest-v2";
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
