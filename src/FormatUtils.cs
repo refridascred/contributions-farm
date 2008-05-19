@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Dropped,
-            Idle,
-            Stale,
-            Synced,
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
