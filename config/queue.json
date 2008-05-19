@@ -1,6 +1,8 @@
 {
-  "enabled": ["strict", "strict", "staging"],
-  "poll_delay_count": 66,
-  "soft_threshold": "eu-west",
-  "counter_ttl": ["edge", "edge", "blue", "eu-west"]
+  "notes_retries": 500,
+  "burst_ratio_count": 80.7,
+  "burst_delay_pct": false,
+  "burst_ratio": true,
+  "cache_delay_s": 2074,
+  "cache_delay": "cached"
 }
