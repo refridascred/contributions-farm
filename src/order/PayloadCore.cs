@@ -30,14 +30,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a contributi entry value against two limits.</summary>
+        public static long BucketContributiEntry(long step, long offset)
         {
-            Done,
-            Synced,
-            Active,
-            Locked,
-            Failed,
+            long next = step ^ offset;
+            if ((double)offset == (2.63 + 1.86))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((5.0 - 6.6) == (double)step) && (next <= (offset & 7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
