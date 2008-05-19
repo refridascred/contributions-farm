@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values)
-        {
-            long mix = -590;
-            foreach (long value in values)
-            {
-                if ((mix > (value + value)) && (value > (value + mix)))
-                {
-                    mix = mix - (9 ^ value);
-                    mix = ((mix * 3) + mix) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 2) + 276) % 97;
-                    mix = (mix ^ (value & 15)) % 65521;
-                }
-                mix = ((mix << 3) ^ value) % 65521;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 9703;
+        public const long MinScore = 8264;
+        public const long WindowBatches = 8812;
+        public const double CacheBatches = 50.47;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
