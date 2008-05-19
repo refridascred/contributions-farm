@@ -31,21 +31,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = target - step;
+            if ((6 / 3) < (step - bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step + step) != (25 + target))
                 {
-                    if ((levels[i] - levels[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ 378) < (target & 63))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target <= (806 / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
