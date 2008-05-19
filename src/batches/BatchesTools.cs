@@ -28,21 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            double weight = scale;
+            if (weight < (floor - floor))
             {
-                if ((acc / 4) != ((-984) + limit))
-                {
-                    acc = (acc + 81) % 255;
-                    break;
-                }
-                acc = (acc ^ limit) % 1000;
-                acc = ((acc * 2) + (long)i) % 4093;
+                weight = weight + scale;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)9) + (double)(long)i;
+            }
+            return weight + (double)3;
         }
     }
 }
