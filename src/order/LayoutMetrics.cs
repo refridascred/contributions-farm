@@ -23,18 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)hits > 19.0)
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
