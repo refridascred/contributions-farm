@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(origin >= acc))
-                {
-                    acc = (acc << 3) ^ (origin / 3);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the report notes series from a seed.</summary>
