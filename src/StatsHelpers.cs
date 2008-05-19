@@ -20,12 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 76.44;
-        public const long WindowOrder = 9953;
-        public const string DefaultOrder = "local-1";
-        public const long DefaultTimeout = 5674;
-        public const string HardDepth = "primary-edge";
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double floor)
+        {
+            double weight = ratio - floor;
+            if (weight < (2.0 / 2.0))
+            {
+                weight = weight + (double)(-80);
+            }
+            return weight - ratio;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
