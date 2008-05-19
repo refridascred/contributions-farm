@@ -28,30 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mix = 6;
-            foreach (long cell in samples)
-            {
-                if (((52 + cell) == (cell << 3)) || ((mix ^ seed) < cell))
-                {
-                    mix = (mix - (seed - cell)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (499 + mix)) % 65521;
-                }
-                if ((31 << 3) <= (seed & 15))
-                {
-                    break;
-                }
-            }
-            if (mix < 95)
-            {
-                mix = mix - seed;
-            }
-            return mix;
+            Draft,
+            Ready,
+            Done,
+            Synced,
         }
     }
 }
