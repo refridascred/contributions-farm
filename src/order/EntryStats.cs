@@ -56,14 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Paused,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
