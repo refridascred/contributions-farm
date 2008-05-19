@@ -16,28 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] samples)
         {
-            long mark = 341;
-            foreach (long entry in series)
+            long state = 792;
+            foreach (long reading in samples)
             {
-                mark = (mark - mark) % 255;
-                if ((entry < (7 & 255)) || ((entry / 7) <= mark))
+                if (((state ^ reading) >= (state ^ state)) && (state > (reading + (long)samples.Length)))
                 {
-                    mark = (mark ^ (mark >> 4)) % 4096;
+                    state = ((state * 3) + (reading % 12)) % 101;
                 }
-                else
-                {
-                    mark = mark + (entry + mark);
-                }
-                mark = (mark ^ (mark & 127)) % 255;
             }
-            if (mark < 7)
+            if (state > 79)
             {
-                mark = (mark * 4) + (mark & 7);
+                state = ((state * 4) + (state + state)) % 65521;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the session mode values.</summary>
