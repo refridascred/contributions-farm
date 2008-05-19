@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const long DefaultDepth = 7469;
         public const long IdleBudget = 8773;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items)
-        {
-            long total = 7;
-            foreach (long datum in items)
-            {
-                total = ((total * 2) + (datum + datum)) % 101;
-                total = (total - (datum ^ datum)) % 1000;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultBudget = 74.59;
+        public const long BaseWindow = 3588;
+        public const long StepSpan = 3916;
+        public const long DefaultWindow = 3344;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] items)
