@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long limit, long bound)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            if ((limit + bound) >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - limit) < (51 - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
