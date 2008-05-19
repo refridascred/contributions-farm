@@ -1,12 +1,7 @@
 {
-  "hard_window_ms": [453, 410],
-  "max_interval_pct": {
-    "idle_interval_count": "green",
-    "flush_retries": 3371,
-    "verbose": ["blue", "latest"],
-    "burst_depth_ms": "edge",
-    "cache_ratio": "edge"
-  },
-  "min_threshold_s": 32,
-  "dry_run": 500
+  "compress": ["staging", "open"],
+  "warm_ratio_pct": "edge",
+  "batch_capacity": 47,
+  "default_size_s": 15.02,
+  "hard_size_pct": "strict"
 }
