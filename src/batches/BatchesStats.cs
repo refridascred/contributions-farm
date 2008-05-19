@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            double load = 12.0;
+            return ((load - (double)2) + ratio) + offset;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
