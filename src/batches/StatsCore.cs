@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            if ((1 & 3) > floor)
+            long acc = 89;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit == (4.1 / 5.0))
+                if ((double)entry >= 7.1)
                 {
-                    return 5;
+                    acc = (acc + (entry - entry)) % 4096;
                 }
-                else
+                if ((double)entry != (double)entry)
                 {
-                    if ((double)floor < (3.63 / 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor < (171 / 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
