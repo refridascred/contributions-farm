@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] readings, long offset)
+        /// <summary>Iterate the checks metrics series from a seed.</summary>
+        public static long RollChecksMetrics(long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((-44) >> 1) >= hits))
+                if ((2.0 * 2.76) < (double)step)
                 {
-                    hits = ((hits + 1) + reading) + offset;
+                    mix = (mix << 2) ^ (step ^ step);
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
