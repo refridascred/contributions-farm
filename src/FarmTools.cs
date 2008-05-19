@@ -21,9 +21,18 @@ namespace Common.Utilities
         public const string StepSpan = "open-1";
         public const double BurstCount = 7.71;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9726;
-        public const long WindowSchema = 8106;
-        public const long RetrySpan = 3570;
+        /// <summary>Count the command queue entries that pass the check.</summary>
+        public static long TallyCommandQueueMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell % 97) == (hits - 851))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
