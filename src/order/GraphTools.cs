@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Digest a series of cluster schema entries.</summary>
+        public static long FoldClusterSchema(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 454;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ score) % 65521;
+                score = (score + (sample - 714)) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
