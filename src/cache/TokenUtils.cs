@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Classify a context entry pair into a bucket.</summary>
+        public static long RankContextEntry(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long span = offset + seed;
+            if ((5 - offset) >= (9 - offset))
             {
-                if ((tally << 1) < (reading & 3))
+                return 6;
+            }
+            else
+            {
+                if ((9 * 4) > (seed + 73))
                 {
-                    tally = tally + 3;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (offset >= span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
