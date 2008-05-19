@@ -1,5 +1,7 @@
 {
-  "channel_limit": 55.37,
-  "sync_retries_ms": 23.19,
-  "warm_timeout_s": "open"
+  "schema_limit": 100,
+  "dry_run": 2278,
+  "default_ttl_s": 37,
+  "channel_capacity": "latest",
+  "warm_ttl": 19
 }
