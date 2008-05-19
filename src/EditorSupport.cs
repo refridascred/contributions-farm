@@ -30,36 +30,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a filter cluster pair into a bucket.</summary>
-        public static long RankFilterCluster(long target, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            if ((bound << 3) <= (target - target))
+            if ((425 + 9) < (target + target))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((57 % 3) < target)
+                if ((target + offset) <= target)
                 {
                     return 7;
                 }
                 else
                 {
-                    if (((target + 34) < target) && ((95 - target) > bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= (bound * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
