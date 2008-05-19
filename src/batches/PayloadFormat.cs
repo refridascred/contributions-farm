@@ -47,10 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleTimeout = 7758;
-        public const double RetryBudget = 94.88;
-        public const long MaxEntry = 4993;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Ready,
+            Idle,
+            Paused,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxRatio = 4826;
