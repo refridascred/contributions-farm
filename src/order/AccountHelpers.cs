@@ -24,38 +24,14 @@ namespace Common.Utilities
         public const string WindowSize = "legacy";
         public const long BatchAlready = 6919;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if (((double)origin <= (double)42) || ((double)origin > (14.0 - 15.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + bound) != (origin >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((96 - 26) != ((-572) - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Check that every command graph entry stays within the limit.</summary>
