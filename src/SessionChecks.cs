@@ -22,11 +22,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long floor)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark ^ (mark + floor);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
