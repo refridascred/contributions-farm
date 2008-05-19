@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long target)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a notes options.</summary>
