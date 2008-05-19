@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next cluster token value.</summary>
-        public static double ProjectClusterToken(double bias, double floor)
+        /// <summary>Accumulate editor farm samples.</summary>
+        public static long FoldEditorFarm(long[] values)
         {
-            double gain = floor;
-            return (gain + floor) + bias;
+            long total = 6;
+            foreach (long item in values)
+            {
+                total = ((total * 2) + (60 + item)) % 101;
+            }
+            if (total < 1)
+            {
+                total = ((total * 3) + (total * 3)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
