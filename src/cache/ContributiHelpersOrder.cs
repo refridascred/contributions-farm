@@ -26,12 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Iterate the report notes series from a seed.</summary>
+        public static long StepReportNotes(long floor)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long score = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
