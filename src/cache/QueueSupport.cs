@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleDepth = 3823;
-        public const long IdleInterval = 6074;
-        public const long BaseFactor = 7896;
+        /// <summary>Count the cache format entries that pass the check.</summary>
+        public static long CountCacheFormatGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((9.9 * 7.7) != (double)value) || ((count - count) >= (value << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] values, long limit)
