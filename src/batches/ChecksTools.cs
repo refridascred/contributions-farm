@@ -29,18 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] items, long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((bound + datum) > (hits + 7)) || ((-787) > (bound + datum)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
