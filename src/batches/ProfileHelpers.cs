@@ -47,12 +47,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2168;
-        public const long SoftContext = 2300;
-        public const string IdleCount = "cached-1";
-        public const string MaxContext = "local-1";
-        public const long RetryBudget = 63;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
+        {
+            long mix = 8;
+            foreach (long reading in data)
+            {
+                mix = (mix << 2) ^ reading;
+            }
+            if (mix < (-258))
+            {
+                mix = mix + (mix % 7);
+            }
+            return mix;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 2586;
