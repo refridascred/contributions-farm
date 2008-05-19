@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 9703;
-        public const long MinScore = 8264;
-        public const long WindowBatches = 8812;
-        public const double CacheBatches = 50.47;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (target > (long)i)
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
