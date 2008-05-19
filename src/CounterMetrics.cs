@@ -48,13 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long target)
         {
-            Queued,
-            Locked,
-            Synced,
-            Paused,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
