@@ -23,17 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token window sample.</summary>
-        public static long SeekTokenWindowIndex(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 35;
+            foreach (long sample in data)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - 581) - sample) - limit;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
