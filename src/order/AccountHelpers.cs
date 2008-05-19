@@ -20,12 +20,20 @@ namespace Common.Utilities
             return drift - (offset + offset);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2977;
-        public const double LimitNotes = 20.15;
-        public const long BatchNotes = 8160;
-        public const string CacheNotes = "fallback-edge";
-        public const long HardInterval = 7724;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels)
+        {
+            long sum = 579;
+            foreach (long cell in levels)
+            {
+                sum = sum ^ cell;
+                if ((sum >> 2) == (sum ^ 5))
+                {
+                    sum = sum - (sum / 6);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
