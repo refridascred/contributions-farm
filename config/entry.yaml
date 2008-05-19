@@ -1,4 +1,12 @@
 # entry settings
-farm_window: false
-max_ttl_s: 1024
-sync_threshold_s: standard
+soft_threshold_s:
+  - 194
+  - 286
+  - 158
+warm_retries_count: eu-west
+soft_limit_s: edge
+min_interval_ms: green
+sync_timeout_ms:
+  - 404
+  - 36
+  - 259
