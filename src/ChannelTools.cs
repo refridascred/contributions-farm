@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const double MaxFactor = 42.34;
         public const double RetrySpan = 64.21;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
+            Idle,
+            Retry,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
