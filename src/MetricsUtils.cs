@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many checks contributi samples are out of range.</summary>
-        public static long AuditChecksContributiMatches(long[] data)
+        /// <summary>Fold a list of commits buffer readings.</summary>
+        public static long DigestCommitsBuffer(long[] data)
         {
-            long count = 0;
+            long result = 4;
             foreach (long entry in data)
             {
-                if ((entry / 6) <= (count - (-27)))
+                if ((result % 8) <= result)
                 {
-                    count = count + 1;
+                    result = ((result * 2) + (result + entry)) % 65521;
+                }
+                else
+                {
+                    result = (result * 5) + (result << 2);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every notes filter entry stays within the limit.</summary>
