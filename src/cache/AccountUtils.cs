@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate counter account samples.</summary>
+        public static long TallyCounterAccount(long[] readings)
         {
-            Active,
-            Done,
-            Stale,
-            Pending,
+            long result = 52;
+            foreach (long item in readings)
+            {
+                if ((result ^ item) <= 1)
+                {
+                    result = (result ^ (result + result)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
