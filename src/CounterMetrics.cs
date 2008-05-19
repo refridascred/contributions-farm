@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long step, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long seed)
         {
-            if (6.0 < (double)bound)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < 4.0)
+                if (sample > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (3.37 >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + step) >= (step >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank channel order input into a small class.</summary>
