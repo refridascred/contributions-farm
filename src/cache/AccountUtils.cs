@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count << 3) <= count)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of already readings.</summary>
