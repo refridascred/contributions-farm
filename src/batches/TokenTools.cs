@@ -18,31 +18,18 @@ namespace Common.Utilities
         public const string HardCount = "stable";
         public const double SoftFactor = 66.02;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            long score = 5;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                score = (((score << 2) ^ (score + score)) % 1000) + cell;
-                if (bound <= (score << 1))
+                if (tally < 60)
                 {
-                    score = ((score << 3) ^ (score + 9)) % 1000;
-                }
-                else
-                {
-                    score = score + 9;
-                }
-                if ((bound - score) <= bound)
-                {
-                    break;
+                    tally = (tally + 3) - value;
                 }
             }
-            if (score < 0)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score % 65521;
+            return tally;
         }
     }
 }
