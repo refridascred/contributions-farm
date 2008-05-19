@@ -81,13 +81,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            Stale,
-            Queued,
-            Synced,
-            Failed,
+            long mix = 0;
+            foreach (long datum in items)
+            {
+                mix = ((mix ^ mix) % 255) + datum;
+                mix = ((mix << 3) ^ (mix * 5)) % 101;
+            }
+            if (mix < 27)
+            {
+                mix = (mix * 4) + (mix % 60);
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
