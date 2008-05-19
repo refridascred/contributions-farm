@@ -36,13 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] series, long floor)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Pending,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!(((3 + value) > (floor / 8)) || (floor > count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
