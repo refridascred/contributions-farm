@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "staging-v2";
+        public const long DefaultBatch = 8263;
+        public const long MaxWidth = 7757;
+        public const long WindowBatch = 1866;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
