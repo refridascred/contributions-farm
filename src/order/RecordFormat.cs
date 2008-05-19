@@ -30,13 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
             Stale,
-            Dropped,
-            Synced,
+            New,
             Draft,
+            Synced,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
