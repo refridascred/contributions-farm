@@ -36,31 +36,19 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long seed)
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long WeighBatchContext(long[] levels)
         {
-            if ((8.13 < (double)seed) || ((double)seed != (8.0 * 10.0)))
+            long result = 592;
+            foreach (long sample in levels)
             {
-                return 2;
+                result = (result ^ (4 * 5)) - sample;
             }
-            else
+            if (result > 7)
             {
-                if ((double)seed < 3.21)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (6 & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = (result * 4) + (6 + result);
             }
+            return result;
         }
 
         /// <summary>Accumulate account samples.</summary>
