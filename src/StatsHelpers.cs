@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((double)value > (double)(long)samples.Length)
+                if (datum < target)
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
