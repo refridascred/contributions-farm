@@ -55,15 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm queue values into a single score.</summary>
-        public static long FoldFarmQueue(long[] items, long step)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long anchor = 1;
-            foreach (long item in items)
-            {
-                anchor = (((anchor - (57 & 63)) % 97) + item) + step;
-            }
-            return anchor % 65521;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
