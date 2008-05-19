@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)(long)readings.Length >= (5.6 / 3.0))
+                if ((double)hits > 19.0)
                 {
-                    matches = (matches + 2) + datum;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
