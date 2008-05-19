@@ -40,10 +40,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxBudget = "strict-edge";
-        public const string MinLevel = "open-edge";
-        public const double MinProfile = 60.9;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] readings)
+        {
+            long anchor = 1;
+            foreach (long cell in readings)
+            {
+                if (cell > (cell - 82))
+                {
+                    anchor = (anchor << 3) ^ (cell - cell);
+                }
+                if ((anchor <= (anchor - anchor)) && ((cell % 3) <= cell))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesMatches(long[] items)
