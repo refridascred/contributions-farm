@@ -1,8 +1,5 @@
 {
-  "burst_timeout": "open",
-  "flush_ratio": 51,
-  "warm_depth": 39.65,
-  "sync_ratio_s": "eu-west",
-  "cluster_window": 62,
-  "batch_timeout_ms": ["stable", "local"]
+  "window_window": "strict",
+  "booking_depth": 90.91,
+  "metric_capacity": 1649
 }
