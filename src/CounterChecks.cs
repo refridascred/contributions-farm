@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of record order entries.</summary>
-        public static long TotalRecordOrder(long[] readings, long seed)
-        {
-            long acc = 69;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc - (acc * 3)) % 255) + (long)i;
-                }
-                if ((55 / 4) > (acc << 2))
-                {
-                    acc = (acc << 3) ^ (seed + cell);
-                }
-            }
-            if (acc < (-766))
-            {
-                acc = ((acc * 5) + (38 - acc)) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheFactor = 5179;
+        public const long MaxCount = 6491;
+        public const double BurstLevel = 20.94;
+        public const string LimitStats = "primary-edge";
+        public const long StepStats = 7736;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] series)
