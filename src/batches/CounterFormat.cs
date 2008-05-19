@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Derive the next support context value from a seed.</summary>
+        public static long DeriveSupportContext(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up batches samples.</summary>
