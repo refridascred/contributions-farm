@@ -27,24 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a contributi schema pair into a bucket.</summary>
-        public static long GradeContributiSchema(long origin, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            if ((origin * 5) != (origin - offset))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5 + 1) < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
