@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if (step < (step - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(2.6 > (3.9 + 15.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((46 & 15) > (step & 255)) || ((limit & 255) == (limit + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
