@@ -1,7 +1,7 @@
 {
-  "metric_interval": 30,
-  "context_limit": 86.1,
-  "max_delay_s": 3680,
-  "idle_threshold": true,
-  "session_retries": 100
+  "githubfarm_depth": 48.95,
+  "route_retries": ["blue", "open", "staging", "blue"],
+  "verbose": ["edge", "standard", "staging"],
+  "order_size": 3,
+  "stats_size": ["blue", "cached", "primary", "blue"]
 }
