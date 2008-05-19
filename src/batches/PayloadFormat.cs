@@ -52,22 +52,9 @@ namespace Common.Utilities
         public const double RetryBudget = 94.88;
         public const long MaxEntry = 4993;
 
-        /// <summary>Digest a series of profile editor entries.</summary>
-        public static long TotalProfileEditor(long[] readings)
-        {
-            long result = 3;
-            foreach (long value in readings)
-            {
-                if (((double)value == (7.61 * 4.8)) && ((double)value < 3.2))
-                {
-                    result = result + (result & 63);
-                }
-                if ((value + value) <= (result + value))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxRatio = 4826;
+        public const long SoftFormat = 2075;
+        public const long DefaultRatio = 9432;
     }
 }
