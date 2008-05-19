@@ -73,9 +73,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "alpha-1";
-        public const long MinTimeout = 9235;
-        public const long IdlePayload = 4668;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] readings, long limit)
+        {
+            long mix = -8;
+            foreach (long sample in readings)
+            {
+                double ratio = (double)(sample - mix);
+                if (ratio < (ratio - 9.0))
+                {
+                    mix = (mix * 2) + (limit << 1);
+                }
+                else
+                {
+                    ratio = ratio - (ratio * 2.21);
+                }
+                mix = ((mix << 2) ^ (sample + sample)) % 255;
+            }
+            return mix % 97;
+        }
     }
 }
