@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] items, long origin)
         {
-            double scale2 = (double)571 - (scale / 9.0);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                scale2 = ((scale2 - (8.8 / 2.0)) + (double)(long)i) - span;
+                if ((seen + datum) == (origin / 6))
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale2 - scale2;
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
