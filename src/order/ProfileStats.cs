@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
