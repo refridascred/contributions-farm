@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "staging";
-        public const long StepRatio = 7368;
-        public const long CacheStream = 3838;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result ^ (floor >> 5)) % 97;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double ratio, double offset)
