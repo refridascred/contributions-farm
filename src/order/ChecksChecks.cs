@@ -28,11 +28,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleCount = "standard";
-        public const long MaxSchema = 2748;
-        public const double HardRatio = 89.13;
-        public const long SoftSchema = 8593;
-        public const double MinSchema = 60.17;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
