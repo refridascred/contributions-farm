@@ -24,12 +24,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            Paused,
+            Done,
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
