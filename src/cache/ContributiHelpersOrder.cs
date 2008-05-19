@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] data, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long mix = 7;
-            foreach (long datum in data)
-            {
-                mix = (mix + datum) + seed;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Rank window input into a small class.</summary>
