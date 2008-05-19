@@ -27,15 +27,14 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.01;
         public const long RetryToken = 5370;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Failed,
+            Draft,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the graph status values.</summary>
