@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate command profile samples.</summary>
-        public static long WeighCommandProfile(long[] readings, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long seed)
         {
-            long acc = 58;
+            long mix = 924;
             foreach (long cell in readings)
             {
-                if (acc > (cell + 59))
-                {
-                    acc = ((acc << 3) ^ (limit & 1)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ 31)) % 101;
-                }
-                if (!((acc * 3) <= (acc % 2)))
-                {
-                    break;
-                }
+                mix = ((mix + 473) + cell) + seed;
             }
-            return acc;
+            if (mix > 807)
+            {
+                mix = (mix ^ 0) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate report samples.</summary>
