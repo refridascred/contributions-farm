@@ -37,15 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] readings, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
     }
 }
