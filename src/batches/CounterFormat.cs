@@ -37,12 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Synced,
-            Draft,
-            Pending,
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
