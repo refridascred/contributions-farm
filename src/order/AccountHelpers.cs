@@ -21,24 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of account command entries.</summary>
-        public static long TotalAccountCommand(long[] readings)
-        {
-            long total = 36;
-            foreach (long entry in readings)
-            {
-                long matches = total & 127;
-                if (!((matches + matches) <= (entry * 5)))
-                {
-                    total = (total + (entry ^ entry)) % 97;
-                }
-                if (((total + entry) < (entry + 51)) && (entry <= (76 - 9)))
-                {
-                    total = total ^ ((long)readings.Length & 127);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2977;
+        public const double LimitNotes = 20.15;
+        public const long BatchNotes = 8160;
+        public const string CacheNotes = "fallback-edge";
+        public const long HardInterval = 7724;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
