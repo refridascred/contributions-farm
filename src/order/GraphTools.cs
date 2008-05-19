@@ -62,22 +62,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long mark = 884;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mark < (sample % 100))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 2) ^ sample) % 97;
-                }
-                else
-                {
-                    mark = mark + (mark % 8);
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return count;
         }
     }
 }
