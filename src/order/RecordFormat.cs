@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long BaseSpan = 2996;
         public const long BatchPayload = 9448;
 
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long AuditCacheBatchesHits(long[] data)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(entry > (matches + matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
