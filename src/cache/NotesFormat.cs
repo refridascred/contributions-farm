@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data, long target)
-        {
-            long acc = 251;
-            foreach (long datum in data)
-            {
-                if (((acc + 67) > (target + acc)) && (27 < datum))
-                {
-                    acc = acc ^ 9;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 245;
+        public const long MaxScore = 1125;
+        public const long WindowAccount = 6175;
+        public const long MinLevel = 5669;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long origin)
