@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] values, long target)
         {
-            Dropped,
-            Locked,
-            Idle,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((5.79 - 3.4) > (double)hits) && (((-17) - cell) < (15 - hits)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a notes cache sample.</summary>
