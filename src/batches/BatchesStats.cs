@@ -27,17 +27,15 @@ namespace Common.Utilities
             return ((load - (double)2) + ratio) + offset;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Adjust a record counter reading.</summary>
+        public static double SmoothRecordCounter(double scale, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)((-7) / 8);
+            if (drift <= (double)9)
             {
-                anchor = (anchor ^ (floor + (long)i)) % 97;
-                anchor = (anchor + (floor + (-2))) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                drift = (drift + (bias + drift)) - scale;
             }
-            return anchor;
+            return drift - (bias * 6.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
