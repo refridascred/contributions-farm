@@ -55,12 +55,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryLevel = 75.13;
-        public const long MaxWindow = 992;
-        public const long RetryWindow = 1206;
-        public const long DefaultWindow = 8661;
-        public const string HardTimeout = "cached-v2";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long seed, long bound)
+        {
+            if (bound > (bound / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((17 * 3) == (bound ^ seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a layout stats sample.</summary>
         public static long LocateLayoutStatsIndex(long[] levels, long origin)
