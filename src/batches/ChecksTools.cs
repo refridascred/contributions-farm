@@ -33,17 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session format reading by value.</summary>
-        public static long FindSessionFormatIndex(long[] values, long floor)
+        /// <summary>Digest a series of contributi cluster entries.</summary>
+        public static long TotalContributiCluster(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = -351;
+            foreach (long cell in levels)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                state = state + ((-920) * 3);
+                if ((double)state == (9.1 + 2.67))
                 {
-                    return (long)i;
+                    state = ((state * 2) + (cell & 255)) % 4096;
                 }
+                else
+                {
+                    state = ((state * 3) + 971) % 255;
+                }
+                state = (state - (long)levels.Length) % 255;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
