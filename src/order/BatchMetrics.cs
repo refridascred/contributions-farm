@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const string SoftLayout = "stable";
         public const double HardFactor = 85.58;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            Done,
-            Active,
-            Draft,
-            Dropped,
-            Locked,
+            double weight = bias2 - (double)539;
+            if (weight >= (double)54)
+            {
+                weight = weight - (bias / 2.0);
+            }
+            else
+            {
+                weight = weight + (bias + 19.0);
+            }
+            return weight + bias2;
         }
 
         /// <summary>Project the next entry value.</summary>
