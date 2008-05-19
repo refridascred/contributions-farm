@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowRatio = 1172;
-        public const long MaxPayload = 8495;
-        public const string SoftRatio = "latest";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Locked,
+            Paused,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Hold a booking entry.</summary>
         public sealed class BookingEntry
