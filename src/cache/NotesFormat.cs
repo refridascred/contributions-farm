@@ -46,16 +46,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a account channel counter forward.</summary>
-        public static long SeriesAccountChannel(long offset)
+        /// <summary>Rank batch context input into a small class.</summary>
+        public static long BucketBatchContext(long step, long step2)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long step3 = step + step2;
+            if ((step2 <= (step2 / 5)) || (step2 <= (step - step)))
             {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (step > (step2 * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step3 & 7) < (step + step)) && (step2 <= 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step2 > (9.95 * 2.9)) && ((step & 31) < (step2 * 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
