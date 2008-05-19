@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Ready,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Accumulate format samples.</summary>
