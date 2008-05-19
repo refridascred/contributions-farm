@@ -23,23 +23,19 @@ namespace Common.Utilities
         public const double StepTimeout = 19.12;
         public const long DefaultSize = 8113;
 
-        /// <summary>Derive the next metrics editor value from a seed.</summary>
-        public static long DeriveMetricsEditor(long step)
+        /// <summary>Check that every counter stats entry stays within the limit.</summary>
+        public static bool CheckCounterStatsRange(long[] samples, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (step > mix)
+                if (cell < bound)
                 {
-                    mix = mix + (mix % 8);
+                    flag = false;
+                    break;
                 }
-                if (((long)i & 127) > (mix << 2))
-                {
-                    mix = ((mix * 4) + (step + mix)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the farm status values.</summary>
