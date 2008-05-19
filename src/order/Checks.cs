@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a batches session counter forward.</summary>
-        public static long RollBatchesSession(long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                state = state + state;
-                long next = (target & 127) % 16;
-                if ((17 ^ target) >= (next + 69))
-                {
-                    next = (next ^ (84 >> 5)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Draft,
+            Closed,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
