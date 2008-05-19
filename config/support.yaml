@@ -1,9 +1,4 @@
 # support settings
-audit: open
-cache_interval_ms: false
-retry_threshold_s: 674
-verbose:
-  - strict
-  - fallback
-  - eu-west
-  - standard
+audit: 250
+persist: legacy
+dry_run: primary
