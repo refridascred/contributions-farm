@@ -41,19 +41,17 @@ namespace Common.Utilities
             return mean + 2.0;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] items, long floor)
+        /// <summary>Locate a checks command reading by value.</summary>
+        public static long LocateChecksCommandIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= floor)
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
