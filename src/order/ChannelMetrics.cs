@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record githubfarm reading by value.</summary>
-        public static long LookupRecordGithubfarmIndex(long[] series, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a session counter forward.</summary>
