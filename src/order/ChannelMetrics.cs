@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 8270;
+        public const long RetrySchema = 3277;
+        public const double DefaultRatio = 68.89;
+        public const long BatchInterval = 6004;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
