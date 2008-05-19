@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long limit)
-        {
-            if (!((step + limit) <= step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > (limit * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit != (16.0 / 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 8755;
+        public const string HardInterval = "alpha-1";
+        public const string BatchFarm = "open-edge";
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
