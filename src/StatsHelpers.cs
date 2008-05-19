@@ -30,12 +30,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 7025;
-        public const long CacheStats = 3490;
-        public const double SoftStats = 11.19;
-        public const double BaseSize = 67.56;
-        public const long MinInterval = 4960;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxRatio = 5031;
+        public const long MinDepth = 3635;
+        public const long MinProfile = 859;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 1150;
