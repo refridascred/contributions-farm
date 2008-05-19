@@ -28,14 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            Done,
-            Synced,
-            Active,
-            Failed,
-            Draft,
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
