@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (0.2 < (double)seen)
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
