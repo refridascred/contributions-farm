@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of metrics session entries.</summary>
-        public static long CombineMetricsSession(long[] values)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = 52;
-            foreach (long item in values)
-            {
-                total = total - (item + 2);
-                total = (total - item) % 255;
-            }
-            return total % 65521;
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
