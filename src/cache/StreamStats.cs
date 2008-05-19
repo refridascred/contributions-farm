@@ -38,19 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] series, long floor)
         {
-            long acc = -603;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                acc = (acc - (acc >> 5)) % 101;
-                if (!((double)acc != (20.0 / 3.0)))
+                if ((value + floor) >= (52 + 8))
                 {
-                    acc = acc ^ (reading / 9);
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
