@@ -70,13 +70,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings, long origin)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long acc = 444;
+            foreach (long value in readings)
+            {
+                if ((3.3 - 8.0) >= (double)origin)
+                {
+                    acc = ((acc << 3) ^ (origin + acc)) ^ value;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
