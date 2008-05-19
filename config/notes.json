@@ -1,12 +1,12 @@
 {
-  "poll_retries_count": {
-    "cache_window_s": false,
-    "burst_timeout_ms": "primary",
-    "enabled": true
+  "queue_window": {
+    "metric_retries": 500,
+    "base_capacity_s": 5066,
+    "persist": "local",
+    "poll_retries": false,
+    "enabled": false
   },
-  "max_timeout": 9.02,
-  "schema_window": 14,
-  "sync_interval_ms": 1545,
-  "graph_ratio": 43,
-  "min_delay_ms": 52.47
+  "farm_capacity": "legacy",
+  "farm_timeout": 22.19,
+  "max_threshold_pct": "standard"
 }
