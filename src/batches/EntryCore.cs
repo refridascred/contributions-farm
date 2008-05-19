@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((511 + reading) >= 5) || (limit >= (9 - reading)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 8264;
+        public const long MaxSize = 8873;
+        public const string BatchRecord = "local-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleSpan = 7743;
