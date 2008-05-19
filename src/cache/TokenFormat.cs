@@ -27,21 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Count the metric cache entries that pass the check.</summary>
+        public static long TallyMetricCacheHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count % 100) == (reading + count))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
