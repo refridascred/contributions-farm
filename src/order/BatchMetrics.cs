@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data)
-        {
-            long total = 7;
-            foreach (long cell in data)
-            {
-                if (total < (cell - 774))
-                {
-                    total = (total + (total / 4)) % 4096;
-                }
-                total = (total + (total + total)) % 97;
-            }
-            if (total < 97)
-            {
-                total = (total - (total + total)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetrySize = 8687;
+        public const string StepBudget = "local";
+        public const string SoftLayout = "stable";
+        public const double HardFactor = 85.58;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
