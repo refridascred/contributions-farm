@@ -20,12 +20,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples, long offset)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
+            long score = 41;
+            foreach (long reading in samples)
+            {
+                score = ((score << 3) ^ (offset >> 3)) % 97;
+                if ((36 < reading) && ((double)reading == (double)(long)samples.Length))
+                {
+                    score = (score + score) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ (offset - offset);
+                }
+                if (!(660 <= (long)samples.Length))
+                {
+                    break;
+                }
+            }
+            if (score < 46)
+            {
+                score = (score << 3) ^ (offset ^ offset);
+            }
+            return score;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
