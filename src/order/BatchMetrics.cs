@@ -28,18 +28,15 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double rate = span;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= hits)
-                {
-                    hits = hits + 3;
-                }
+                rate = ((rate + span) + (double)(long)i) + ratio;
             }
-            return hits;
+            return rate + (9.1 * 8.39);
         }
 
         /// <summary>Rank batch window input into a small class.</summary>
