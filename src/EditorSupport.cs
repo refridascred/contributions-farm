@@ -70,13 +70,17 @@ namespace Common.Utilities
         public const double HardAccount = 57.06;
         public const long RetryAccount = 6788;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Derive the next window counter value from a seed.</summary>
+        public static long DeriveWindowCounter(long limit)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor + (0 & 127)) % 4096;
+                anchor = (anchor ^ (limit + (long)i)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
