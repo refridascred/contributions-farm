@@ -42,18 +42,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] levels, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((((tally << 2) < (reading & 15)) || ((floor * 2) > (tally + tally))) || ((tally >> 3) < floor))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next counter queue value from a seed.</summary>
