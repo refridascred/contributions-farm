@@ -75,19 +75,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool ValidateReportSessionRange(long[] values, long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double weight = (double)(851 + 71);
+            if (weight < rate)
             {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (floor + 6.8);
             }
-            return valid;
+            return weight - floor;
         }
     }
 }
