@@ -41,15 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context queue series from a seed.</summary>
-        public static long StepContextQueue(long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
     }
 }
