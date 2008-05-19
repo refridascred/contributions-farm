@@ -45,10 +45,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 5655;
-        public const long CacheEntry = 1657;
-        public const long RetryEntry = 6;
-        public const string MaxFactor = "stable-edge";
+        /// <summary>Iterate the checks context series from a seed.</summary>
+        public static long DeriveChecksContext(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
