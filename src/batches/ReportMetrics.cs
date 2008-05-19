@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] levels, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
