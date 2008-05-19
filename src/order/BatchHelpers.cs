@@ -28,16 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command entry value from a seed.</summary>
-        public static long DeriveCommandEntry(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark << 3) ^ offset) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxInterval = 1416;
+        public const long RetrySession = 7548;
+        public const long BurstInterval = 783;
+        public const long WindowSize = 3924;
+        public const long IdleCount = 5665;
     }
 }
