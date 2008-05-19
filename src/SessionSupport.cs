@@ -44,12 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((reading ^ 10) < (tally + tally)) || ((double)reading <= (double)tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
