@@ -24,11 +24,12 @@ namespace Common.Utilities
             return scale - (3.5 + 0.88);
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
