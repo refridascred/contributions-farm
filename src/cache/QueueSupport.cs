@@ -22,33 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long bound)
-        {
-            long offset = limit - bound;
-            if ((double)offset > (3.79 * 3.92))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 1) == (limit >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + limit) < (limit + 723))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 7351;
+        public const string LimitRecord = "local-edge";
+        public const string StepBudget = "local-edge";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] values, long bound)
