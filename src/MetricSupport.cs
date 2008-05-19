@@ -39,14 +39,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            New,
-            Queued,
-            Ready,
-            Pending,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
