@@ -23,14 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long step)
         {
-            Active,
-            Queued,
-            Pending,
-            Paused,
-            Stale,
+            if ((step >> 4) != (29 << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step != (9.9 + 3.2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed >= (seed + seed)) && ((seed - 5) <= (step & 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
