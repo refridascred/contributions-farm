@@ -1,5 +1,18 @@
 {
-  "batch_capacity_count": "latest",
-  "idle_ttl_s": 2526,
-  "window_window": 0.53
+  "retry_ratio": 86,
+  "batch_interval_ms": 5207,
+  "soft_size_ms": 368,
+  "verbose": {
+    "soft_delay_pct": 8304,
+    "soft_threshold_s": {
+      "default_retries_count": "green",
+      "idle_ttl_pct": "local",
+      "flush_timeout_s": "eu-west",
+      "flush_ttl_pct": "standard"
+    },
+    "strict": ["green", "edge", "blue", "open"],
+    "enabled": [478, 126],
+    "retry_threshold_pct": 409
+  },
+  "readonly": "green"
 }
