@@ -1,8 +1,5 @@
 {
-  "hard_capacity": 5163,
-  "metrics_ratio": "cached",
-  "notes_capacity": ["legacy", "primary", "green"],
-  "counter_interval": true,
-  "soft_timeout_count": "staging",
-  "hard_interval": false
+  "min_retries": "local",
+  "channel_depth": 84.89,
+  "window_retries": 55.07
 }
