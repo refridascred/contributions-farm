@@ -1,5 +1,5 @@
 {
-  "base_ttl_s": 49.48,
-  "sync_ratio_s": 60.21,
-  "hard_limit_count": "open"
+  "base_size": [137, 134],
+  "sync_limit": 30,
+  "warm_size_pct": ["legacy", "primary", "green", "strict"]
 }
