@@ -1,13 +1,6 @@
 # githubfarm settings
-layout_depth:
-  audit: 96
-  burst_ratio_ms: 500
-  soft_depth_s: 68
-  enabled: 34
-  context_window: staging
-  hard_depth_ms: local
-max_ttl_s: true
-cache_size: cached
-sync_delay:
-  - 14
-  - 306
+warm_ratio: true
+max_interval_pct: false
+default_retries_ms: 26
+dry_run: 2394
+hard_threshold: 8061
