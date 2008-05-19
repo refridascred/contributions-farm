@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] readings, long offset)
         {
-            if ((double)bound >= (double)offset)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= (-482))
+                if ((offset ^ datum) <= (seen + 4))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
