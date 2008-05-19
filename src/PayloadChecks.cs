@@ -44,14 +44,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] readings, long origin)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Failed,
-            New,
+            long carry = 233;
+            foreach (long reading in readings)
+            {
+                carry = (((carry << 3) ^ (4 << 1)) % 255) ^ reading;
+            }
+            if (carry > 0)
+            {
+                carry = (carry * 3) + (origin & 3);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metrics githubfarm readings.</summary>
