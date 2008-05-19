@@ -1,12 +1,11 @@
 # Command notes
 
-Keep githubfarm and batch names short and lowercase.
-Run the editor check before changing any report limits.
-The schema report groups every checks by githubfarm.
+Keep window and batches names short and lowercase.
+The buffer report groups every stream by support.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep checks values small
-- Validate stream input early
-- Log every batch change
+- Document new notes fields
+- Prefer layout defaults
+- Review already limits each release
+- Keep notes values small
