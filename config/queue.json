@@ -1,12 +1,22 @@
 {
-  "batch_timeout": {
-    "tools_depth": 4774,
-    "session_depth": 1024,
-    "compress": "staging",
-    "record_ttl": 7,
-    "profile_window": 16.1,
-    "strict": true
-  },
-  "flush_ratio_s": "primary",
-  "warm_threshold": 69.96
+  "compress": 59.56,
+  "base_threshold_pct": 60,
+  "format_capacity": ["staging", "latest", "latest"],
+  "idle_threshold_ms": {
+    "entry_timeout": false,
+    "dry_run": {
+      "strict": "blue",
+      "verbose": ["eu-west", "eu-west"],
+      "hard_limit": "primary",
+      "commits_retries": "legacy",
+      "flush_ratio_count": ["eu-west", "primary", "legacy", "open"],
+      "warm_interval": "green"
+    },
+    "soft_ratio_ms": "legacy",
+    "cache_window_pct": {
+      "window_delay": 1646,
+      "verbose": "staging",
+      "max_interval_pct": true
+    }
+  }
 }
