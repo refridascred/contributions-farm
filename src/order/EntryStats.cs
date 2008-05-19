@@ -56,13 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            double scale = bias;
+            return scale + (offset * 7.1);
         }
 
         /// <summary>Describe the record state values.</summary>
