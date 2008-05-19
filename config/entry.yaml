@@ -1,21 +1,6 @@
 # entry settings
-audit:
-  soft_size:
-    batches_ttl: local
-    strict: 1024
-    default_depth: false
-    schema_window: 40.8
-  soft_interval: 72.26
-  retry_retries:
-    - 116
-    - 103
-    - 87
-  soft_ttl:
-    - 295
-    - 211
-    - 117
-    - 394
-flush_ttl_s: 9582
-strict: 59.54
-warm_ratio_count: blue
-default_window_count: 30.07
+persist: 5612
+farm_ratio: 22.95
+cache_interval: false
+route_interval: legacy
+batch_timeout_count: edge
