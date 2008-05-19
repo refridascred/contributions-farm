@@ -32,19 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] levels, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!((limit % 97) >= (long)i))
+                if ((418 + item) <= (count * 5))
                 {
-                    carry = (carry - limit) % 97;
+                    count = (count + 2) + offset;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
     }
 }
