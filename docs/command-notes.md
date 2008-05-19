@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-The cache report groups every profile by contributi.
+Keep session and metrics names short and lowercase.
+The editor module keeps metric values in sync with the farm cache.
+
+Use report settings to tune how often notes data is refreshed.
+Run the token check before changing any stats limits.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep already values small
-- Prefer batch defaults
-- Document new report fields
+- Prefer stats defaults
+- Validate window input early
+- Review order limits each release
