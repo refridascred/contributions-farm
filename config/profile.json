@@ -1,13 +1,15 @@
 {
-  "support_size": {
-    "idle_delay_s": false,
-    "compress": 24,
-    "min_threshold": true,
-    "strict": 34,
-    "sync_capacity_pct": 69.91,
-    "persist": "eu-west"
+  "stats_interval": {
+    "max_capacity_pct": 92,
+    "githubfarm_retries": {
+      "base_ratio": false,
+      "max_capacity_pct": 100,
+      "dry_run": 250,
+      "sync_timeout_count": 4279,
+      "min_depth_s": 3946
+    },
+    "poll_ttl_ms": false
   },
-  "sync_ttl": ["fallback", "fallback", "standard"],
-  "base_capacity": 1225,
-  "entry_limit": ["edge", "legacy", "edge"]
+  "sync_retries_count": 9121,
+  "batch_threshold_pct": [385, 497, 351, 124]
 }
