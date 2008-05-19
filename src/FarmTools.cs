@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two filter batches measurements.</summary>
-        public static double BlendFilterBatches(double scale, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] values, long step)
         {
-            double ratio = offset - offset;
-            if (ratio < (scale * 12.0))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                ratio = ratio + offset;
+                if ((cell ^ cell) > (4 + 1))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (20.0 - offset);
+            return matches;
         }
 
         /// <summary>Describe the session phase values.</summary>
