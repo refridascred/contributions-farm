@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCount = 7561;
-        public const long RetryInterval = 214;
-        public const double WindowCounter = 37.7;
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double rate, double floor)
+        {
+            double weight = (double)(0 << 2);
+            if (weight >= (double)740)
+            {
+                weight = (weight + 9.13) + floor;
+            }
+            return weight + (weight + rate);
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long seed)
