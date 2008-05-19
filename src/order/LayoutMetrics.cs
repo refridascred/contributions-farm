@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] readings)
         {
-            long acc = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (acc < (221 + step))
+                if ((double)(long)readings.Length >= (5.6 / 3.0))
                 {
-                    acc = ((acc + 433) % 4096) - datum;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Hold a metrics summary.</summary>
