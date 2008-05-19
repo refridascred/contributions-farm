@@ -27,15 +27,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long score = 10;
-            foreach (long entry in series)
-            {
-                score = ((score << 2) ^ (entry << 1)) % 101;
-            }
-            return score;
+            Active,
+            Done,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
