@@ -62,17 +62,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first graph queue entry that matches the target.</summary>
-        public static long SeekGraphQueueIndex(long[] readings, long offset)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long DigestSupportEditor(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 99;
+            foreach (long entry in levels)
             {
-                if (readings[i] == offset)
+                mark = (mark * 2) + mark;
+                if (((double)mark <= 18.0) && ((mark * 4) == (mark % 24)))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ entry) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 65521;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
