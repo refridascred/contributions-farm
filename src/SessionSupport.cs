@@ -24,13 +24,12 @@ namespace Common.Utilities
             return drift - (drift / 2.0);
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Synced,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstInterval = 6145;
+        public const double MaxAlready = 64.67;
+        public const string WindowAlready = "alpha-v2";
+        public const string CacheAlready = "alpha";
+        public const string IdleWidth = "open-1";
 
         /// <summary>Grade a account metrics value against two limits.</summary>
         public static long ClassifyAccountMetrics(long step, long limit)
