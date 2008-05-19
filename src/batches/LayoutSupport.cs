@@ -60,17 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
+                if (datum < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
