@@ -29,21 +29,39 @@ namespace Common.Utilities
         public const long MinCount = 1170;
         public const double MaxScore = 14.23;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = floor ^ seed;
+            if ((2.7 + 0.12) > (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((((-96) % 60) >= (floor * 5)) && (step < (2 ^ floor)))
                 {
-                    if ((values[i] - values[j]) == 16)
+                    return 5;
+                }
+                else
+                {
+                    if (((step / 8) == (step << 1)) || ((step / 3) > (2 << 2)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((10.0 + 7.0) > (double)step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the batch checks series from a seed.</summary>
