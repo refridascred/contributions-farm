@@ -46,12 +46,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardSpan = 84.03;
-        public const double BurstInterval = 47.18;
-        public const string BatchCount = "standard";
-        public const long MinDepth = 6338;
-        public const double SoftSpan = 2.96;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Draft,
+            Synced,
+            Done,
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] values)
