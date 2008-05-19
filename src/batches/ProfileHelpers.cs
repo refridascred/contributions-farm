@@ -62,13 +62,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double scale, double offset)
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            double ratio = (offset + 4.0) - (offset * 4.0);
+            if (ratio > scale)
+            {
+                ratio = ratio - (scale + scale);
+            }
+            else
+            {
+                ratio = ratio - (offset + 4.0);
+            }
+            return ratio + scale;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
