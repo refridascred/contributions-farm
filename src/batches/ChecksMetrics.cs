@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long state = 1;
-            foreach (long cell in values)
-            {
-                state = ((state - state) % 4096) - cell;
-                state = (state - ((long)values.Length << 3)) % 101;
-            }
-            if (state < 936)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 65521;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a payload report reading.</summary>
