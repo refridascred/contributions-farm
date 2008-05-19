@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long score = 674;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum <= 6.09)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score * 3) + (score - score);
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
