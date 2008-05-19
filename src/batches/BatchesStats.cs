@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((offset - 13) <= seen)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
