@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token support samples.</summary>
-        public static long PairTokenSupportCount(long[] samples)
+        /// <summary>Count notes stats pairs that satisfy a relation.</summary>
+        public static long CompareNotesStatsCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
+                    if ((data[i] ^ data[j]) < 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a queue summary.</summary>
