@@ -35,11 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double bias, double floor)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            double drift = bias * 9.72;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)69) + (double)(long)i;
+            }
+            return drift + (floor * 8.5);
         }
     }
 }
