@@ -52,17 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches graph entry that matches the target.</summary>
-        public static long SeekBatchesGraphIndex(long[] series, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 8;
+            foreach (long reading in readings)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (limit / 5)) % 4096) ^ reading;
             }
-            return -1;
+            if (sum > 1)
+            {
+                sum = (sum + (sum & 31)) % 65521;
+            }
+            return sum % 1000;
         }
     }
 }
