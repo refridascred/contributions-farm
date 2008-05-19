@@ -33,23 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (1 <= ((long)i - 43))
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
                 {
-                    mark = ((mark << 2) ^ (mark << 3)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - (mark - (long)i)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
