@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 8703;
-        public const long BaseBudget = 9824;
-        public const long RetryWidth = 504;
-        public const double IdleLevel = 51.13;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Paused,
+            Ready,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] values, long floor)
