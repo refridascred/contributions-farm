@@ -37,13 +37,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next command entry value from a seed.</summary>
+        public static long DeriveCommandEntry(long offset)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark << 3) ^ offset) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
