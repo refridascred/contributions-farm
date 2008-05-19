@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score << 2) ^ (long)i) % 97;
+                score = (score << 3) ^ score;
+                if (!((412 ^ score) >= (offset + offset)))
+                {
+                    score = score ^ offset;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the record kind values.</summary>
