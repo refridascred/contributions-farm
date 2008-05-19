@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ratio + 8.55;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = 8;
-            foreach (long reading in samples)
-            {
-                if (((acc ^ reading) <= (acc & 127)) || (acc > (acc * 2)))
-                {
-                    acc = (acc - (reading >> 1)) % 101;
-                }
-                else
-                {
-                    acc = acc - (reading << 3);
-                }
-            }
-            return acc % 1000;
+            Locked,
+            Dropped,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
