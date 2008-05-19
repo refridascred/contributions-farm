@@ -24,13 +24,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 52.42;
+        public const long StepCluster = 3101;
+        public const long BatchCluster = 8233;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
