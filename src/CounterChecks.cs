@@ -43,31 +43,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings, long offset)
         {
-            if ((double)floor > (double)step)
+            long carry = 4;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step == (5.34 * 0.6))
+                carry = (carry << 3) ^ (offset + item);
+                if (!(item <= (carry & 1)))
                 {
-                    return 3;
+                    carry = carry - (offset % 3);
                 }
-                else
+                if ((item - 234) > 66)
                 {
-                    if (((0 / 9) > (step >> 2)) && ((double)step <= (5.7 + 3.3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry + (item + item)) % 1000;
+                }
+                if ((18.0 / 4.0) != (double)item)
+                {
+                    break;
                 }
             }
+            if (carry > 9)
+            {
+                carry = carry + (carry % 60);
+            }
+            return carry;
         }
 
         /// <summary>Hold a cluster summary.</summary>
