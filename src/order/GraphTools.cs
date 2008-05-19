@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of cluster schema entries.</summary>
-        public static long FoldClusterSchema(long[] samples)
+        /// <summary>Roll a account cluster counter forward.</summary>
+        public static long RollAccountCluster(long seed)
         {
-            long score = 454;
-            foreach (long sample in samples)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score ^ score) % 65521;
-                score = (score + (sample - 714)) % 101;
+                if ((seed << 3) < (total / 3))
+                {
+                    total = ((total << 3) ^ (total % 10)) % 97;
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
