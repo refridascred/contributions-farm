@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Stale,
-            Done,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 7664;
+        public const long CacheCount = 1524;
+        public const string RetryBatches = "fallback";
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
         public static long TallyPayloadCommitsMatches(long[] samples)
