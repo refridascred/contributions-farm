@@ -14,35 +14,35 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account stream value against two limits.</summary>
-        public static long SortAccountStream(long bound, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long limit)
         {
-            long slot = bound ^ step;
-            if ((20.0 - 16.0) <= (double)bound)
+            long span = offset ^ limit;
+            if (offset > (offset & 3))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((step + slot) < (slot + slot))
+                if (limit < (offset + span))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)slot < (2.8 / 4.0))
+                    if ((limit << 2) <= (offset % 100))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if (414 < (step + 462))
+                        if ((double)span <= (0.5 + 8.48))
                         {
-                            return 3;
+                            return 0;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
