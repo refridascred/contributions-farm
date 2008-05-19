@@ -53,10 +53,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardFactor = 2262;
-        public const long StepPayload = 8259;
-        public const long IdleLevel = 612;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinCount = 6091;
