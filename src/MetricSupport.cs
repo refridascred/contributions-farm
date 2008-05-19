@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Synced,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 570;
+        public const long MaxInterval = 5226;
+        public const long SoftFactor = 25;
+        public const long LimitBudget = 8536;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] levels, long target)
