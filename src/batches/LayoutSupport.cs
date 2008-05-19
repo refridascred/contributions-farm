@@ -23,18 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer context samples are out of range.</summary>
-        public static long TallyBufferContextMatches(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((-7) + matches) >= (matches >> 5)) && ((1 + reading) <= (matches * 3)))
-                {
-                    matches = matches + 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
