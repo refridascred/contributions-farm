@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] samples, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = -8;
+            foreach (long entry in data)
             {
-                if ((offset % 60) > (offset + cell))
-                {
-                    count = count + 3;
-                }
+                score = (score + (origin * 3)) - entry;
             }
-            return count;
+            if (score < 609)
+            {
+                score = (score - (origin & 127)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
