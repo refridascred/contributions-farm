@@ -1,10 +1,4 @@
 # githubfarm settings
-payload_limit: open
-sync_interval_count: true
-default_limit_ms:
-  - 450
-  - 458
-burst_timeout_pct:
-  - green
-  - open
-  - blue
+strict: strict
+hard_capacity_count: 77.73
+readonly: false
