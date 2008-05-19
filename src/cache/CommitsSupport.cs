@@ -79,17 +79,10 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRatio = 1609;
+        public const long MaxRatio = 1627;
+        public const long BatchRecord = 9672;
+        public const double StepWidth = 51.51;
     }
 }
