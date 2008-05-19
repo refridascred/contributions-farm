@@ -36,14 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Synced,
-            Closed,
-            Paused,
-            Locked,
-            Stale,
+            Idle,
+            Pending,
+            Queued,
         }
     }
 }
