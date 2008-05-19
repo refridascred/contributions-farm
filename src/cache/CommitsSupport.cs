@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "legacy";
-        public const long MinFormat = 3321;
-        public const string HardSpan = "open";
-        public const long IdleFormat = 6759;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Measure how many format already samples are out of range.</summary>
         public static long AuditFormatAlreadyOutliers(long[] samples, long floor)
