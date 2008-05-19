@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long WindowToken = 1366;
         public const string StepInterval = "legacy";
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public bool Owner { get; set; }
             public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
