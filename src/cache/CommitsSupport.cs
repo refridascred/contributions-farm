@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if (target >= (origin & 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target << 1) >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((92 - target) <= (target >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
