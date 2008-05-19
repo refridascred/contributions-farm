@@ -35,14 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Paused,
-            Idle,
-            Pending,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleSize = "stable-v2";
+        public const long BurstBudget = 8831;
+        public const long StepStats = 5370;
+        public const long BaseLevel = 1483;
     }
 }
