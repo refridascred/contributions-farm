@@ -49,19 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitSpan = "fallback-v2";
+        public const double StepCommand = 71.86;
+        public const double StepScore = 21.06;
+        public const long LimitCommand = 9062;
+        public const string MaxCommand = "open-1";
     }
 }
