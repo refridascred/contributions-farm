@@ -28,13 +28,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long origin)
         {
-            Draft,
-            Pending,
-            Failed,
-            Synced,
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (1 <= ((long)i - 43))
+                {
+                    mark = ((mark << 2) ^ (mark << 3)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (mark - (long)i)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
