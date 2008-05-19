@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 39.91;
-        public const long HardBatches = 9431;
-        public const long IdleBatches = 22;
-        public const string MaxBatches = "staging-v2";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + origin) < sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
