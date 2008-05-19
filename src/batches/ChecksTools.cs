@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
