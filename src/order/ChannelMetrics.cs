@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] readings, long target)
         {
-            Draft,
-            Closed,
-            Failed,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a session counter forward.</summary>
