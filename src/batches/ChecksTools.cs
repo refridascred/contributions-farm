@@ -33,20 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                long span = sum + (500 * 5);
-                if ((sum - span) < sum)
-                {
-                    sum = (sum - ((long)i + span)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
