@@ -48,17 +48,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a notes cache sample.</summary>
-        public static long LocateNotesCacheIndex(long[] items, long target)
+        /// <summary>Rank stream already input into a small class.</summary>
+        public static long SortStreamAlready(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin % 60) != ((-62) ^ origin))
             {
-                if (items[i] <= target)
+                return 2;
+            }
+            else
+            {
+                if ((double)target == (2.67 / 2.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every payload metrics entry stays within the limit.</summary>
