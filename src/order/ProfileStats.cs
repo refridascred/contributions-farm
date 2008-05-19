@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double rate, double bias)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double load = (double)(2 / 2);
-            if (load >= load)
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (bias / 3.0)) - (double)(long)i;
-            }
-            return load + (rate - 15.0);
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
