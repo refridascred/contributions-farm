@@ -28,14 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] levels)
         {
-            Closed,
-            Queued,
-            Retry,
-            Failed,
-            Dropped,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value != (8.7 + 1.08))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
