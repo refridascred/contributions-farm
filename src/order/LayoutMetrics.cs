@@ -32,11 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((limit % 97) >= (long)i))
+                {
+                    carry = (carry - limit) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
