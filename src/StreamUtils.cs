@@ -32,10 +32,20 @@ namespace Common.Utilities
         public const long HardChecks = 3890;
         public const string BaseChecks = "legacy-edge";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 9329;
-        public const long CacheAlready = 4602;
-        public const string WindowLevel = "alpha-1";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] readings)
