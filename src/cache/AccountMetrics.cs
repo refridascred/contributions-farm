@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a window entry.</summary>
