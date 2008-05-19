@@ -1,6 +1,25 @@
 # githubfarm settings
-audit: 60
-sync_limit: 94.7
-default_size_count: 51
-window_size: 1389
-format_timeout: latest
+filter_ttl: 27.05
+idle_threshold_count:
+  poll_timeout_ms:
+    readonly: legacy
+    retry_ttl_s: false
+    sync_size: 8465
+    batch_ratio_s: open
+    default_limit_count: 60
+    strict: primary
+  cache_window_pct: standard
+  batches_delay:
+    audit: edge
+    session_ratio: 37
+    stats_ratio: 100
+    poll_interval_pct: 18
+    readonly: 13.41
+    strict: stable
+cluster_retries: true
+default_window:
+  - 321
+  - 268
+  - 1
+base_capacity_pct: false
+retry_ratio_ms: false
