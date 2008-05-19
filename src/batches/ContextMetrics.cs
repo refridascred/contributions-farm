@@ -39,15 +39,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the checks context series from a seed.</summary>
-        public static long DeriveChecksContext(long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] levels, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((matches & 255) != (matches >> 5))
+                {
+                    matches = ((matches + 2) + entry) + origin;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
