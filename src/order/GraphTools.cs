@@ -61,12 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Active,
-            Dropped,
-            Draft,
+            New,
+            Stale,
+            Closed,
         }
     }
 }
