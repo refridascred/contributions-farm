@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine notes stats values into a single score.</summary>
-        public static long DigestNotesStats(long[] series)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = 309;
-            foreach (long entry in series)
-            {
-                total = (total << 2) ^ total;
-                total = ((total * 5) + (entry - total)) % 4096;
-                if ((double)total == (double)entry)
-                {
-                    break;
-                }
-            }
-            return total;
+            Done,
+            Paused,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
