@@ -12,15 +12,30 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long mark = offset;
+            long anchor = limit;
             for (int i = 0; i < 19; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (((anchor * 4) < anchor) && ((limit + anchor) >= (limit ^ limit)))
+                {
+                    anchor = (anchor + (limit * 3)) % 255;
+                    anchor = (anchor - (limit - (long)i)) % 97;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 4096;
+                }
+                long prev = (long)i;
+                if (anchor < (anchor - prev))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
