@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] series, long origin)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the report notes series from a seed.</summary>
