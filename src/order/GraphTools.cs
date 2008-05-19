@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const double MinPayload = 65.97;
         public const long SoftDepth = 539;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long offset)
+        /// <summary>Roll a order format counter forward.</summary>
+        public static long RollOrderFormat(long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample >= offset)
+                if ((99 < acc) && ((double)(-27) >= (double)step))
                 {
-                    ready = false;
                     break;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the batches state values.</summary>
