@@ -42,15 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            double bias2 = (double)(154 * 2);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                if (datum <= (81 ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias2 - (scale - bias);
+            return hits;
         }
     }
 }
