@@ -1,20 +1,5 @@
 {
-  "min_threshold_ms": 39.63,
-  "idle_limit_ms": [335, 63],
-  "burst_timeout_s": {
-    "default_limit": 30,
-    "soft_threshold_count": ["strict", "open", "stable"],
-    "compress": {
-      "warm_retries": false,
-      "entry_delay": "stable",
-      "base_delay_count": 30,
-      "compress": 80.83,
-      "counter_depth": 16.33,
-      "dry_run": "cached"
-    },
-    "warm_limit": 19
-  },
-  "base_retries_pct": ["blue", "standard"],
-  "audit": false,
-  "warm_depth_s": 23
+  "idle_timeout_ms": true,
+  "max_threshold_count": 11.26,
+  "cache_ratio_s": 47.91
 }
