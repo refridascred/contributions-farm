@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items, long limit)
         {
-            long score = 203;
-            foreach (long datum in values)
+            long result = 900;
+            foreach (long item in items)
             {
-                score = ((score - (score & 15)) % 4096) ^ datum;
+                result = result + (item & 255);
+                result = ((result * 5) + (limit - item)) % 4096;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count the token record entries that pass the check.</summary>
