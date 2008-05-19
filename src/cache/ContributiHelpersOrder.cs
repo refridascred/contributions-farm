@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6.65 / 7.0) > (double)tally)
+                if (!(origin >= acc))
                 {
-                    tally = (tally + 3) + item;
+                    acc = (acc << 3) ^ (origin / 3);
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the report notes series from a seed.</summary>
