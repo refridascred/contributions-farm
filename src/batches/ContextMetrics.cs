@@ -47,18 +47,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] levels, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches & 255) != (matches >> 5))
-                {
-                    matches = ((matches + 2) + entry) + origin;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Queued,
+            Retry,
+            Stale,
         }
     }
 }
