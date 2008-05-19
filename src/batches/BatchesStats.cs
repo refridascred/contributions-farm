@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long WindowCommand = 9276;
         public const long IdleSize = 923;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            Stale,
+            Idle,
+            Queued,
+            Closed,
         }
 
         /// <summary>Project the next farm value.</summary>
