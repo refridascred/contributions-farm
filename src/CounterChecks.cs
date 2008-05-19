@@ -51,12 +51,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseLevel = 78.32;
-        public const double StepSize = 37.82;
-        public const double LimitAlready = 55.79;
-        public const long SoftAlready = 3189;
-        public const long WindowTimeout = 7167;
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long TallyContributiFormatGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (long)values.Length)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long limit, long seed)
