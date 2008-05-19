@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepBudget = 47.38;
-        public const long SoftSpan = 5318;
-        public const long RetrySize = 4488;
-        public const string MaxEditor = "open-v2";
-        public const long DefaultEditor = 6601;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
