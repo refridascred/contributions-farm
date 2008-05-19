@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits <= (hits / 2))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
