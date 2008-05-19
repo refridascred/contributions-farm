@@ -57,19 +57,12 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Closed,
+            Failed,
         }
     }
 }
