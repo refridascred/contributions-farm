@@ -27,19 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double bias2 = (bias - bias) + (scale + 8.0);
-            if (bias2 >= bias2)
-            {
-                bias2 = bias2 + (double)(-762);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - 7.0) + (double)(long)i;
-            }
-            return bias2 - (bias2 - bias2);
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
