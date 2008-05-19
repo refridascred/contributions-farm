@@ -28,32 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long bound2)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            long offset = bound + bound2;
-            if ((44 % 97) <= (bound2 ^ offset))
+            double gain = (offset * 2.18) * 4.6;
+            if (gain >= offset)
             {
-                return 6;
+                gain = gain + 4.28;
             }
-            else
-            {
-                if ((offset ^ bound) <= 263)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound2 >= (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain - ratio;
         }
     }
 }
