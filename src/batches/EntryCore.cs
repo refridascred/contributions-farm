@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] data, long step)
         {
-            Stale,
-            Pending,
-            Idle,
+            long score = 167;
+            foreach (long entry in data)
+            {
+                if ((entry % 5) > step)
+                {
+                    score = (score << 3) ^ (entry ^ score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
