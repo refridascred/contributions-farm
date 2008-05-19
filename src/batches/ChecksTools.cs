@@ -33,13 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Match up metric command samples.</summary>
+        public static long CompareMetricCommandCount(long[] series)
         {
-            Locked,
-            Active,
-            Done,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
