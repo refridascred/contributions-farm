@@ -29,12 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 63.6;
-        public const double DefaultWidth = 64.11;
-        public const long CacheFactor = 993;
-        public const long MinSpan = 4223;
-        public const long CacheMetric = 3972;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Closed,
+            Ready,
+            Draft,
+            Active,
+            Done,
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
