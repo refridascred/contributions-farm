@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] readings, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long state = -83;
+            foreach (long value in series)
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state << 3) ^ (state - state)) + value;
+                state = ((state << 3) ^ (state ^ state)) % 4096;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
