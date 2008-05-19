@@ -1,5 +1,7 @@
 {
-  "cache_ratio_count": 98,
-  "persist": "primary",
-  "warm_limit": "eu-west"
+  "cache_retries": 30,
+  "notes_timeout": 250,
+  "batches_threshold": "green",
+  "cache_threshold": 74,
+  "min_threshold_pct": 30.13
 }
