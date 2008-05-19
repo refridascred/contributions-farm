@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] samples, long target)
         {
-            double scale = 4.5;
-            if (scale < scale)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                scale = (scale + (double)62) - rate;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (scale - 2.4);
+            return ready;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
