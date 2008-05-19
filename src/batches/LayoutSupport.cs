@@ -50,18 +50,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long mark = 319;
-            foreach (long datum in levels)
+            long total = 917;
+            foreach (long sample in samples)
             {
-                if (((datum + mark) <= datum) && ((long)levels.Length <= (mark * 2)))
+                if (((sample + sample) <= (410 * 4)) && ((double)total != (4.92 / 5.0)))
                 {
-                    mark = (mark << 2) ^ (mark ^ datum);
+                    total = (total ^ (total - total)) % 97;
+                }
+                else
+                {
+                    total = total - (total - 8);
                 }
             }
-            return mark % 1000;
+            if (total > (-73))
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Locate a account reading by value.</summary>
