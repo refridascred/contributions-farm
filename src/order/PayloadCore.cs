@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long MinSize = 3269;
         public const long HardCount = 3487;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 91;
+            foreach (long cell in values)
             {
-                if (readings[i] <= step)
+                if (origin < (origin / 4))
                 {
-                    return (long)i;
+                    total = ((total - (origin + (long)values.Length)) % 4096) + cell;
+                }
+                else
+                {
+                    total = ((total * 4) + (-76)) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the account mode values.</summary>
