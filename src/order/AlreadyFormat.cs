@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count << 3) <= (count * 2))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxLevel = 328;
+        public const long CacheScore = 1751;
+        public const long BaseReport = 2470;
+        public const long SoftReport = 8295;
+        public const double RetryReport = 22.16;
 
         /// <summary>Locate a batch commits reading by value.</summary>
         public static long LocateBatchCommitsIndex(long[] levels, long target)
