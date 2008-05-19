@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] values, long limit)
         {
-            long mix = 924;
-            foreach (long cell in readings)
+            long anchor = -3;
+            foreach (long sample in values)
             {
-                mix = ((mix + 473) + cell) + seed;
+                if (((2.5 / 6.0) != (double)anchor) && ((2.09 / 8.0) > (double)limit))
+                {
+                    anchor = ((anchor - (anchor ^ anchor)) % 101) - sample;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (anchor + (4 % 2)) - (long)i;
+                }
+                anchor = (anchor - (anchor - limit)) % 101;
             }
-            if (mix > 807)
-            {
-                mix = (mix ^ 0) % 65521;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
