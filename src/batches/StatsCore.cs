@@ -23,17 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
