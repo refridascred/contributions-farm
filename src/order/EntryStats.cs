@@ -14,11 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
