@@ -17,32 +17,19 @@ namespace Common.Utilities
         public const long StepMetric = 7297;
         public const double RetryMetric = 31.72;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long target)
         {
-            long score = 6;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((item ^ 7) < (item + 4))
+                if (datum != target)
                 {
-                    score = score + (score * 4);
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 3) + item) % 65521;
-                }
-                score = (score ^ seed) % 255;
-                if (((seed ^ 216) >= 6) || ((seed - 8) > score))
-                {
-                    score = score ^ (840 * 5);
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 8)
-            {
-                score = score ^ (seed + seed);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Describe the buffer state values.</summary>
