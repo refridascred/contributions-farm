@@ -42,19 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
