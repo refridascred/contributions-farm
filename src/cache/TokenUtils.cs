@@ -41,24 +41,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a account cache value against two limits.</summary>
-        public static long BucketAccountCache(long floor, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long offset)
         {
-            if ((floor <= bound) && ((110 - floor) < (bound - 199)))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > 7.53)
+                if (reading > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
