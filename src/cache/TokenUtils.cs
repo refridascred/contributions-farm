@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long limit)
         {
-            long state = 1;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = ((state - (state + state)) % 101) - origin;
-                state = state - (datum << 3);
-                if ((double)state > (20.0 - 7.3))
+                if ((entry - seen) <= entry)
                 {
-                    break;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
