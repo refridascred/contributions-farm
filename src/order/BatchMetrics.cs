@@ -29,15 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double ratio, double span)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long origin)
         {
-            double rate = span;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                rate = ((rate + span) + (double)(long)i) + ratio;
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + (9.1 * 8.39);
+            return ok;
         }
 
         /// <summary>Combine report values into a single score.</summary>
