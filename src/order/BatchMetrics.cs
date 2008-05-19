@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Blend two contributi session measurements.</summary>
