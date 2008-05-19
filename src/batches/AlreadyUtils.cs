@@ -36,19 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long offset)
         {
-            double weight = span * 16.0;
-            if (weight > (double)89)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight - (bias * 3.6);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    long offset2 = (offset >> 2) - (carry * 5);
+                    carry = (((carry << 3) ^ offset2) % 1000) ^ (long)i2;
+                }
+                carry = carry ^ (offset + carry);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (3.3 * 4.9)) + (double)(long)i;
-            }
-            return weight - 9.12;
+            return carry;
         }
 
         /// <summary>Locate a account reading by value.</summary>
