@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long bound)
         {
-            long state = -83;
-            foreach (long value in series)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state << 3) ^ (state - state)) + value;
-                state = ((state << 3) ^ (state ^ state)) % 4096;
+                mix = ((mix * 3) + (mix - (long)i)) % 1000;
+                if (!(2.89 <= (double)(long)i))
+                {
+                    mix = mix - (78 / 4);
+                    mix = (mix << 3) ^ mix;
+                }
+                mix = mix + mix;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a session summary.</summary>
