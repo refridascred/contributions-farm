@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token record entries that pass the check.</summary>
-        public static long AuditTokenRecordOutliers(long[] levels, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)89 >= (double)hits) && ((double)hits == (0.61 + 9.3)))
-                {
-                    hits = ((hits + 3) - cell) - limit;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
