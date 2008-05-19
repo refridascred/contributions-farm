@@ -13,14 +13,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Failed,
-            New,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 742;
+        public const double SoftInterval = 73.39;
+        public const long CacheFarm = 9782;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheDepth = 3027;
