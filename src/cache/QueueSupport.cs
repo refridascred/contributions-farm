@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values, long bound)
         {
-            long carry = 35;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((value - value) > value)
+                if (bound >= (seen ^ value))
                 {
-                    carry = (carry * 2) + 8;
+                    seen = seen + 2;
                 }
             }
-            if (carry > 2)
-            {
-                carry = ((carry << 3) ^ (target / 4)) % 4096;
-            }
-            return carry % 4096;
+            return seen;
         }
     }
 }
