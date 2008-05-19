@@ -20,38 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank channel order input into a small class.</summary>
-        public static long GradeChannelOrder(long step, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((seed * 3) < (step + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step << 2) == (seed - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed + step) != (step - 497)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step >= (seed / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
