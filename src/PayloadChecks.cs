@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
