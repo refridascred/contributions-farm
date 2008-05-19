@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a profile stats reading.</summary>
-        public static double ScaleProfileStats(double scale, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] samples, long floor)
         {
-            double gain = scale;
-            if (gain > floor)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                gain = gain + (floor / 6.0);
+                if ((double)value > (double)(long)samples.Length)
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain + (gain / 8.0);
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
