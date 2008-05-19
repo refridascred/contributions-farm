@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a metric header.</summary>
