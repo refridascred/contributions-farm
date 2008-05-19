@@ -19,30 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items, long floor)
+        /// <summary>Blend two contributi layout measurements.</summary>
+        public static double ProjectContributiLayout(double rate, double span)
         {
-            long score = 542;
-            foreach (long item in items)
-            {
-                if ((score > (score * 5)) || ((-2) < floor))
-                {
-                    score = ((score * 2) + (floor + item)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 4) + (13 * 5)) % 101;
-                }
-                if ((double)score == (double)floor)
-                {
-                    break;
-                }
-            }
-            if (score < 9)
-            {
-                score = score + ((long)items.Length % 2);
-            }
-            return score;
+            double weight = (double)(6 - 7);
+            return (weight + (6.2 - rate)) + span;
         }
 
         /// <summary>Rank batch context input into a small class.</summary>
