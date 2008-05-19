@@ -71,28 +71,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long step)
         {
-            if ((11.0 + 9.03) > (double)seed)
+            if ((double)floor > (double)step)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (!(37 <= seed))
+                if ((double)step == (5.34 * 0.6))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((2.61 / 7.0) < (double)seed)
+                    if (((0 / 9) > (step >> 2)) && ((double)step <= (5.7 + 3.3)))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
