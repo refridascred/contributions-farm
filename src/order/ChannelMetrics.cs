@@ -22,10 +22,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2592;
-        public const long DefaultNotes = 8332;
-        public const long MaxNotes = 3858;
-        public const double BaseInterval = 74.99;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 8867;
+        public const string WindowSession = "strict";
+        public const long MinCount = 7500;
     }
 }
