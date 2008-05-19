@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultTimeout = 93.18;
-        public const long WindowGraph = 3395;
-        public const double MaxFactor = 42.34;
-        public const double RetrySpan = 64.21;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
