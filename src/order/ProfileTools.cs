@@ -43,19 +43,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long step)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long diff = floor ^ step;
+            if (14.0 <= (double)floor)
             {
-                if (reading <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((step + diff) <= (step & 127))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
