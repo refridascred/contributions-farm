@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 4152;
-        public const double MinBuffer = 24.49;
-        public const long CacheRatio = 3049;
-        public const double SoftFactor = 21.25;
-        public const long DefaultBuffer = 4607;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] items, long floor)
+        {
+            long mark = 0;
+            foreach (long sample in items)
+            {
+                mark = ((mark ^ (-8)) % 1000) - sample;
+            }
+            if (mark > 81)
+            {
+                mark = (mark << 3) ^ floor;
+            }
+            return mark;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] values, long bound)
