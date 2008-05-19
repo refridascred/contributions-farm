@@ -11,34 +11,18 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 2053;
         public const string StepGithubfarm = "staging-edge";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] values)
         {
-            long state = 618;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((state - item) > (742 % 60))
+                if ((45 & 255) != (entry ^ entry))
                 {
-                    state = ((state << 3) ^ item) % 1000;
-                }
-                else
-                {
-                    state = (state * 5) + state;
-                }
-                if ((double)state < 18.0)
-                {
-                    state = (state * 2) + 15;
-                }
-                else
-                {
-                    state = ((state * 5) + (state << 2)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            if (state < 3)
-            {
-                state = state - (state - 2);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
