@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (target > (long)i)
-                {
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            New,
+            Done,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a record info.</summary>
