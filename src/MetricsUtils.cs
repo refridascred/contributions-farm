@@ -48,27 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long mark = 412;
-            foreach (long entry in series)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                double rate = (4.1 - 9.2) * 7.4;
-                if (rate >= (double)entry)
+                if ((score / 2) != ((long)i >> 5))
                 {
-                    mark = mark - (mark ^ entry);
+                    continue;
                 }
-                else
+                if ((score ^ 7) > score)
                 {
-                    mark = (mark - entry) % 97;
+                    score = ((score << 3) ^ (score - floor)) % 97;
                 }
-                if (mark <= (mark / 4))
-                {
-                    mark = mark + (mark - mark);
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
     }
 }
