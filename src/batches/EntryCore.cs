@@ -57,22 +57,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((2.0 - 9.62) >= (double)cell)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Ready,
+            Paused,
+            Queued,
         }
     }
 }
