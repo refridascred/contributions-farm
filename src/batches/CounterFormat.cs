@@ -13,18 +13,25 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] samples)
+        /// <summary>Grade a channel profile value against two limits.</summary>
+        public static long BucketChannelProfile(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long slot = seed ^ bound;
+            if (((49 >> 2) < (bound * 3)) || (72 > (bound & 31)))
             {
-                if ((double)tally != (17.0 + 9.1))
+                return 3;
+            }
+            else
+            {
+                if ((0 <= (seed >> 4)) && ((double)slot != (4.2 - 4.1)))
                 {
-                    tally = (tally + 3) + item;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
