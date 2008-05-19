@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseTimeout = 2131;
-        public const double LimitCount = 28.43;
-        public const long RetryDepth = 6632;
-        public const long BatchRatio = 3840;
-        public const long IdleTimeout = 9016;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count % 64) <= 8)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] items, long origin)
