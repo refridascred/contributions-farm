@@ -30,22 +30,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            long result = 3;
-            foreach (long entry in readings)
-            {
-                if ((result ^ result) > result)
-                {
-                    result = ((result + result) % 4096) - entry;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result << 3) ^ (result - step);
-            }
-            return result % 97;
+            double gain = (double)(360 + 2);
+            return ((gain + (double)9) + weight) + bias;
         }
     }
 }
