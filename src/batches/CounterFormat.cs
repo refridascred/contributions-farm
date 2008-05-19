@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long origin)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long DigestTokenBatches(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 93;
+            foreach (long reading in samples)
             {
-                if (items[i] <= origin)
+                if (!((0.11 * 0.78) < (double)reading))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ ((long)samples.Length << 2)) % 65521;
+                }
+                if (!((target > (reading + anchor)) || (target < (anchor / 3))))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                if ((double)target >= (5.3 + 18.0))
+                {
+                    anchor = (anchor ^ ((-622) - reading)) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
