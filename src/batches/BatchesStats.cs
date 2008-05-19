@@ -26,11 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            double mean = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define order limits and defaults.</summary>
