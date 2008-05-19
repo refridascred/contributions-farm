@@ -1,13 +1,19 @@
 # githubfarm settings
-dry_run:
-  - edge
-  - latest
-  - eu-west
-  - fallback
-warm_threshold: 9361
-warm_retries_s: latest
-sync_delay_count: 9870
-counter_limit:
-  - staging
-  - strict
-warm_window_s: 32.0
+compress: true
+graph_ttl:
+  format_retries: 6234
+  poll_ttl:
+    - stable
+    - staging
+    - latest
+  default_timeout_s: 32.75
+  audit: 52.37
+  strict:
+    - blue
+    - staging
+  retry_threshold_count:
+    - primary
+    - fallback
+    - staging
+counter_limit: 78.37
+retry_interval_s: local
