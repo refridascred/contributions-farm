@@ -19,17 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long sum = 579;
-            foreach (long cell in levels)
+            long sum = 831;
+            foreach (long datum in data)
             {
-                sum = sum ^ cell;
-                if ((sum >> 2) == (sum ^ 5))
+                sum = (sum * 4) + (sum << 1);
+                if (!((293 + datum) <= (datum % 5)))
                 {
-                    sum = sum - (sum / 6);
+                    sum = sum ^ (datum % 3);
                 }
+            }
+            if (sum < 44)
+            {
+                sum = (sum * 5) + sum;
             }
             return sum % 4096;
         }
