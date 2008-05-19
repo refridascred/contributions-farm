@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a support commits reading by value.</summary>
-        public static long FindSupportCommitsIndex(long[] values, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (values[i] > seed)
+                if (!((seen * 2) >= (seen + value)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
