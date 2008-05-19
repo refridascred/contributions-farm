@@ -50,24 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics context input into a small class.</summary>
-        public static long BucketMetricsContext(long limit, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if ((15.0 - 4.0) <= (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit > (0.13 / 4.0)) && (step < (9 % 10)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
