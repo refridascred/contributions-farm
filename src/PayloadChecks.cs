@@ -37,18 +37,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] readings, long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((((floor / 6) < 0) || ((floor >> 3) <= hits)) && (item >= (item >> 5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
