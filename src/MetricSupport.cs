@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 570;
-        public const long MaxInterval = 5226;
-        public const long SoftFactor = 25;
-        public const long LimitBudget = 8536;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] levels, long target)
