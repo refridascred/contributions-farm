@@ -34,19 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate githubfarm already samples.</summary>
-        public static long CombineGithubfarmAlready(long[] readings, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] items, long floor)
         {
-            long acc = 12;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((value << 1) >= (floor + acc))
+                if (entry >= floor)
                 {
-                    acc = (acc ^ acc) % 1000;
+                    ready = false;
+                    break;
                 }
-                acc = (acc + ((long)readings.Length * 4)) % 65521;
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Hold a graph header.</summary>
