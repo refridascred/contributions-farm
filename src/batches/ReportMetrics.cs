@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] levels, long origin)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two farm measurements.</summary>
