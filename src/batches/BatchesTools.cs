@@ -51,13 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxDepth = 21.57;
+        public const string MaxRatio = "legacy-1";
+        public const string MinContext = "latest";
+        public const long HardWidth = 4153;
     }
 }
