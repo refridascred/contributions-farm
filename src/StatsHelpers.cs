@@ -48,23 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long DigestSupportEditor(long[] levels)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long mark = 99;
-            foreach (long entry in levels)
-            {
-                mark = (mark * 2) + mark;
-                if (((double)mark <= 18.0) && ((mark * 4) == (mark % 24)))
-                {
-                    mark = ((mark << 3) ^ entry) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-            }
-            return mark % 1000;
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
