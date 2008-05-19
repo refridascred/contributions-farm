@@ -55,13 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Queued,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleLevel = 2375;
+        public const double WindowDepth = 30.28;
+        public const long StepFarm = 1379;
+        public const long MaxFarm = 1545;
+        public const long BatchFactor = 1652;
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
         public static long LocateStatsCounterIndex(long[] readings, long floor)
