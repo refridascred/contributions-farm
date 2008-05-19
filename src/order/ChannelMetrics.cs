@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 8270;
-        public const long RetrySchema = 3277;
-        public const double DefaultRatio = 68.89;
-        public const long BatchInterval = 6004;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 5018;
+        public const double BaseEntry = 33.48;
+        public const long BaseSize = 2027;
+        public const string HardCount = "standard-1";
+        public const string DefaultEntry = "local-edge";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
