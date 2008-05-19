@@ -78,12 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool ValidateReportSessionRange(long[] values, long offset)
         {
-            Done,
-            Paused,
-            Closed,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
