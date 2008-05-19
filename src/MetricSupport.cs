@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long offset)
+        /// <summary>Roll a route checks counter forward.</summary>
+        public static long StepRouteChecks(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                if ((carry - carry) >= (carry - (long)i))
                 {
-                    return (long)i;
+                    carry = carry - offset;
+                    carry = carry + carry;
                 }
+                else
+                {
+                    carry = carry - (6 ^ carry);
+                }
+                carry = (carry ^ ((long)i ^ offset)) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the filter phase values.</summary>
