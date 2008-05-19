@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the notes commits entries that pass the check.</summary>
