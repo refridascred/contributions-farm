@@ -39,22 +39,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings, long target)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long AuditAccountCommandMatches(long[] levels)
         {
-            long score = 556;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((entry <= (target + entry)) || ((double)entry > (2.99 * 6.3)))
+                if (((3.51 * 1.0) > (double)reading) || !((16.0 * 15.0) < (double)reading))
                 {
-                    score = ((score * 4) + (entry + 809)) % 255;
+                    tally = tally + 2;
                 }
-                if ((target + target) <= (target & 255))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
