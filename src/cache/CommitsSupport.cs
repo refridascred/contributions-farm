@@ -54,17 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] == origin)
+                if ((double)target <= 16.0)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a notes account reading.</summary>
