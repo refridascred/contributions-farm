@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a batch stats sample.</summary>
-        public static long SeekBatchStatsIndex(long[] series, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                if (((1 + 702) > tally) || (((80 * 5) >= tally) && ((87 << 3) <= (step / 4))))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
