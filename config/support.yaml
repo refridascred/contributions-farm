@@ -1,14 +1,8 @@
 # support settings
-warm_interval: false
-hard_limit_count:
-  idle_size_s: false
-  verbose:
-    audit: open
-    strict: 7161
-    retry_depth_pct: 90
-    persist: 21.86
-    metric_limit: 4245
-    warm_size: false
-  idle_interval_s: green
-cache_threshold: 39
-metrics_delay: 4997
+retry_ratio_ms:
+  - standard
+  - standard
+  - standard
+verbose: 18.71
+queue_window: true
+strict: true
