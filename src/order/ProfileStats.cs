@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] series, long step)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(347 < (tally % 10)))
+                {
+                    tally = ((tally + 1) + reading) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
