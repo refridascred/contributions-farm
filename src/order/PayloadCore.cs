@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxScore = 2124;
-        public const long IdleLevel = 9803;
-        public const long DefaultSize = 2607;
+        /// <summary>Scale a metrics checks figure with a bias.</summary>
+        public static double ScaleMetricsChecks(double bias, double bias2)
+        {
+            double ratio = bias2 - (9.4 * 18.0);
+            if (ratio > (double)0)
+            {
+                ratio = (ratio + (double)6) + bias;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamBounds(long[] readings, long floor)
