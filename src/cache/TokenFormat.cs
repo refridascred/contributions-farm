@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double IdleDepth = 8.13;
         public const string BatchCommits = "open";
 
-        /// <summary>Check that every order buffer entry stays within the limit.</summary>
-        public static bool ValidateOrderBufferLimits(long[] items, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Match up support samples.</summary>
