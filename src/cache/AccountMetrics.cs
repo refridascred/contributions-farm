@@ -73,17 +73,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout stats sample.</summary>
-        public static long LocateLayoutStatsIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 6957;
+        public const long BatchMetrics = 8369;
+        public const string MaxMetrics = "open-edge";
+        public const string BurstMetrics = "fallback-v2";
+        public const string BaseInterval = "strict-1";
     }
 }
