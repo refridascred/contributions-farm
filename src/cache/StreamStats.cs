@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseDepth = 137;
-        public const string SoftFilter = "primary-1";
-        public const long BurstFactor = 5259;
-        public const long IdleLevel = 2275;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            New,
+            Failed,
+            Retry,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] series, long bound)
