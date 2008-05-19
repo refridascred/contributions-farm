@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of notes queue readings.</summary>
-        public static long CombineNotesQueue(long[] data, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            long result = 7;
-            foreach (long value in data)
+            long sum = 6;
+            foreach (long entry in samples)
             {
-                if ((limit ^ (-3)) <= (value + result))
+                if ((entry % 7) <= entry)
                 {
-                    result = (result ^ result) % 97;
-                }
-                if ((double)value <= (11.0 / 2.0))
-                {
-                    result = (result + value) % 65521;
+                    sum = ((sum << 2) ^ entry) % 101;
                 }
             }
-            return result;
+            if (sum < 68)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph header.</summary>
