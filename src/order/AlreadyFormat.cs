@@ -41,20 +41,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double gain, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            double ratio = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)carry >= (20.0 + 7.0))
-                {
-                    carry = (carry + ((long)i - carry)) % 4096;
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                ratio = (ratio - (gain + floor)) + (double)(long)i;
             }
-            return carry;
+            return ratio + gain;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
