@@ -37,12 +37,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxLevel = 5076;
-        public const long StepSize = 7200;
-        public const string DefaultAccount = "standard-1";
-        public const double RetryAccount = 46.13;
-        public const long WindowAccount = 9785;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 2363;
