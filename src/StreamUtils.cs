@@ -53,13 +53,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            Done,
-            Paused,
-            Ready,
-            Retry,
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Match up filter samples.</summary>
