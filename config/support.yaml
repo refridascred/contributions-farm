@@ -1,8 +1,7 @@
 # support settings
-retry_ratio_ms:
-  - standard
-  - standard
-  - standard
-verbose: 18.71
-queue_window: true
-strict: true
+base_ratio: 60
+profile_ttl: 30
+base_retries_pct: 60
+poll_capacity_pct: staging
+batch_limit_ms: stable
+enabled: true
