@@ -65,12 +65,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            long acc = 983;
+            foreach (long entry in items)
+            {
+                if (!((acc - entry) > (acc % 97)))
+                {
+                    acc = (acc << 3) ^ step;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 1000;
+                }
+            }
+            if (acc > 430)
+            {
+                acc = (acc + (step - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
