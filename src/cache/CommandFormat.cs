@@ -42,22 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] levels)
+        /// <summary>Validate metric checks readings against a bound.</summary>
+        public static bool GuardMetricChecksBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (datum <= (81 ^ hits))
+                if (value <= target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
