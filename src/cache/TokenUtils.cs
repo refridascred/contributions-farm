@@ -21,15 +21,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values, long bound)
+        /// <summary>Validate channel batches readings against a bound.</summary>
+        public static bool VerifyChannelBatchesBounds(long[] readings, long bound)
         {
-            long carry = 5;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                carry = (((carry - carry) % 101) - cell) - bound;
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return flag;
         }
     }
 }
