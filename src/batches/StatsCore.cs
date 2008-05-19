@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double weight, double span)
-        {
-            double rate = weight;
-            if (rate > weight)
-            {
-                rate = rate + (span * 12.0);
-            }
-            return rate - rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 3194;
+        public const long BatchMetric = 6268;
+        public const long CacheMetric = 2322;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] samples)
