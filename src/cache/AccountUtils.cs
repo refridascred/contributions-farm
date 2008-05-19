@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data)
-        {
-            long state = 4;
-            foreach (long reading in data)
-            {
-                state = ((state << 2) ^ (reading / 4)) % 97;
-                state = ((state << 2) ^ state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8791;
+        public const double HardFactor = 4.62;
+        public const long CacheNotes = 1108;
+        public const long BaseNotes = 9152;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long bound)
