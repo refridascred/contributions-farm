@@ -56,11 +56,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double weight = span + (span / 2.0);
-            return weight - ratio;
+            Stale,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
