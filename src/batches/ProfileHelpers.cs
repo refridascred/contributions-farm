@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 2053;
         public const string StepGithubfarm = "staging-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((45 & 255) != (entry ^ entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 1138;
+        public const long RetryDepth = 3917;
+        public const string BatchInterval = "latest-1";
+        public const string SoftCluster = "staging-v2";
+        public const long StepDepth = 343;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstFilter = 2053;
