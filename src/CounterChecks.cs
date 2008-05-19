@@ -43,31 +43,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long limit)
         {
-            long carry = 4;
-            foreach (long item in readings)
+            if ((double)target <= (8.5 * 0.96))
             {
-                carry = (carry << 3) ^ (offset + item);
-                if (!(item <= (carry & 1)))
+                return 5;
+            }
+            else
+            {
+                if ((limit < (target - limit)) && ((double)target > (double)543))
                 {
-                    carry = carry - (offset % 3);
+                    return 8;
                 }
-                if ((item - 234) > 66)
+                else
                 {
-                    carry = (carry + (item + item)) % 1000;
-                }
-                if ((18.0 / 4.0) != (double)item)
-                {
-                    break;
+                    if ((9 % 12) <= (limit + 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target * 5) <= (27 << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > 9)
-            {
-                carry = carry + (carry % 60);
-            }
-            return carry;
         }
 
         /// <summary>Hold a cluster summary.</summary>
