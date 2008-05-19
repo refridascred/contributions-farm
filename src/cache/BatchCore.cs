@@ -41,17 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account entry counter forward.</summary>
-        public static long SeriesAccountEntry(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = acc + offset;
-                acc = acc - ((long)i % 2);
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((double)seen <= (9.7 + 11.0))
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
