@@ -34,19 +34,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] samples, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long total = 289;
+            foreach (long entry in samples)
             {
-                if (value >= step)
+                if ((entry >> 1) == (97 >> 5))
                 {
-                    ready = false;
-                    break;
+                    total = (total << 2) ^ origin;
+                    continue;
                 }
+                total = total + (entry + total);
             }
-            return ready;
+            if (total < 895)
+            {
+                total = ((total * 2) + origin) % 1000;
+            }
+            return total;
         }
     }
 }
