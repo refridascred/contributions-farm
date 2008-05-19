@@ -63,22 +63,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)offset > (6.35 * 15.0))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 56.84;
+        public const double BatchEntry = 85.88;
+        public const string StepEntry = "standard";
     }
 }
