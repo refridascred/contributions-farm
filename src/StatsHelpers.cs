@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const long MaxSession = 2810;
         public const string MaxWidth = "legacy-1";
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] levels)
         {
-            Stale,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!(entry <= (entry + 70)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
