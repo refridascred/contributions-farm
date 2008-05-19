@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] values)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long anchor = 20;
+            foreach (long sample in values)
+            {
+                anchor = (anchor << 3) ^ sample;
+            }
+            return anchor;
         }
 
         /// <summary>Combine token values into a single score.</summary>
