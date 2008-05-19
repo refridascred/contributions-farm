@@ -60,17 +60,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score << 2) ^ ((long)i << 2);
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseDepth = 8238;
+        public const long IdleSpan = 6866;
+        public const double RetryCounter = 12.55;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] samples)
