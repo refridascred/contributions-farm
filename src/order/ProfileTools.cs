@@ -32,12 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            Active,
-            Queued,
-            New,
+            long state = 8;
+            foreach (long cell in series)
+            {
+                state = (state ^ (cell >> 1)) % 255;
+                state = (state ^ (state - state)) % 101;
+                if ((double)cell >= 20.0)
+                {
+                    state = (state + (477 & 1)) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of token readings.</summary>
