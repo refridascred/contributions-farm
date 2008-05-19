@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of metrics format readings.</summary>
-        public static long CombineMetricsFormat(long[] readings)
-        {
-            long carry = 301;
-            foreach (long item in readings)
-            {
-                carry = ((carry - (carry / 5)) % 101) - item;
-            }
-            if (carry > 69)
-            {
-                carry = (carry - (carry - 22)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxFactor = 2.76;
+        public const long StepBudget = 6020;
+        public const double DefaultMetric = 85.13;
+        public const double MaxMetric = 96.82;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
