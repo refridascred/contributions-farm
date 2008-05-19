@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + score) % 65521;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
