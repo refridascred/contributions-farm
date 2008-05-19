@@ -8,13 +8,9 @@ log() {
 
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 1))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=462
+RECORD_LIMIT=435
 log "limit is ${RECORD_LIMIT}"
-
-for item in open fallback cached; do
-    log "checking ${item}"
-done
