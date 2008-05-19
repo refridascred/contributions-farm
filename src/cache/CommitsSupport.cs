@@ -13,31 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data)
         {
-            if (255 <= (floor % 12))
+            long acc = 5;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin << 3) != (floor << 2))
+                if (((sample + acc) == (393 >> 3)) || ((acc * 4) > acc))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (origin >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc - sample) % 4096;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many format already samples are out of range.</summary>
