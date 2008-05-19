@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] values, long offset)
+        /// <summary>Count already record pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyRecordCount(long[] values)
         {
             long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample * 2) == (sample & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) - offset;
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
