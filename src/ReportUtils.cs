@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ratio + 8.55;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long acc = 8;
+            foreach (long reading in samples)
             {
-                if ((seed & 63) > (75 + seed))
+                if (((acc ^ reading) <= (acc & 127)) || (acc > (acc * 2)))
                 {
-                    count = (count + 2) - cell;
+                    acc = (acc - (reading >> 1)) % 101;
+                }
+                else
+                {
+                    acc = acc - (reading << 3);
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
