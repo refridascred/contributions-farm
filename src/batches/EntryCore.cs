@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-v2";
         public const long MaxSession = 6827;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double span)
-        {
-            double mean = span + span;
-            if (mean <= span)
-            {
-                mean = (mean + span) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (mean + span);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleSpan = 7743;
+        public const long BatchFarm = 9003;
+        public const long MinCount = 1170;
+        public const double MaxScore = 14.23;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] values)
