@@ -1,5 +1,25 @@
 {
-  "hard_size": 100,
-  "readonly": 30,
-  "default_retries": 500
+  "warm_size_ms": {
+    "batches_window": {
+      "batches_delay": "green",
+      "stream_retries": "local",
+      "batch_depth_count": "edge"
+    },
+    "audit": 75.96,
+    "flush_interval": false,
+    "retry_limit": {
+      "cache_timeout": ["fallback", "eu-west", "primary"],
+      "max_delay_s": "strict",
+      "burst_size": "fallback",
+      "enabled": false
+    }
+  },
+  "soft_depth_pct": "stable",
+  "max_interval": {
+    "retry_retries": 5652,
+    "idle_capacity_s": 1024,
+    "cache_ttl": ["stable", "cached", "fallback", "standard"],
+    "stream_interval": "latest"
+  },
+  "route_ttl": "eu-west"
 }
