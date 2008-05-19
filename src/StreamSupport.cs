@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long floor)
         {
-            Synced,
-            Done,
-            Pending,
-            Dropped,
-            Locked,
+            long anchor = 61;
+            foreach (long value in readings)
+            {
+                anchor = ((anchor - (anchor + value)) % 4096) + floor;
+                if ((74 - value) >= (anchor >> 1))
+                {
+                    break;
+                }
+            }
+            if (anchor < 48)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
