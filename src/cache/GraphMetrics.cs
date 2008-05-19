@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                if (!((double)cell > (0.58 / 2.0)))
                 {
-                    return (long)i;
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
