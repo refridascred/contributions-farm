@@ -29,19 +29,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long AuditAccountCommandMatches(long[] levels)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((3.51 * 1.0) > (double)reading) || !((16.0 * 15.0) < (double)reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
