@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] readings)
+        /// <summary>Audit already window readings against a rule.</summary>
+        public static long MeasureAlreadyWindowHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((long)readings.Length > (seen & 63))
+                if ((double)item <= (2.8 * 8.63))
                 {
-                    seen = (seen + 2) + datum;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
