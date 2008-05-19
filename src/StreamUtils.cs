@@ -46,12 +46,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long origin)
         {
-            Draft,
-            Synced,
-            Done,
+            long mark = 9;
+            foreach (long datum in values)
+            {
+                if ((1 - mark) >= mark)
+                {
+                    mark = mark ^ (datum + origin);
+                }
+                if (mark >= datum)
+                {
+                    break;
+                }
+            }
+            if (mark < 644)
+            {
+                mark = (mark - (mark + 248)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Match up filter samples.</summary>
