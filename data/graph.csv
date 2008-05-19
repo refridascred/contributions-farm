@@ -1,6 +1,7 @@
-id,count,score
-1,22.4,10.61
-2,green,237
-3,stable,open
-4,812,220
-5,302,legacy
+id,ratio,active
+1,legacy,336
+2,5,71.44
+3,13.7,622
+4,574,516
+5,local,473
+6,392,34.21
