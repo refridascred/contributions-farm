@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next cache stream value.</summary>
-        public static double SmoothCacheStream(double scale, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            double drift = scale;
-            if (drift <= (drift - offset))
+            long tally = 0;
+            foreach (long item in series)
             {
-                drift = drift - (19.0 - offset);
+                if (!((tally >= (item / 4)) && ((double)tally >= (8.32 / 8.0))))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                drift = drift - (scale * 5.2);
-            }
-            return drift - (offset + offset);
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
