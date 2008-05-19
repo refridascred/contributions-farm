@@ -28,23 +28,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many session support samples are out of range.</summary>
-        public static long AuditSessionSupportMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits - value) >= (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryInterval = 2146;
+        public const double BatchDepth = 35.67;
+        public const double DefaultScore = 2.26;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] levels)
