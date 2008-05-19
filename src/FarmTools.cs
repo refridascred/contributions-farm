@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long mix = 670;
-            foreach (long sample in readings)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample - 42) > (57 * 3))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    mix = mix ^ (sample / 7);
+                    carry = (carry ^ 7) ^ (long)i2;
                 }
-                else
-                {
-                    mix = mix - (sample - sample);
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
