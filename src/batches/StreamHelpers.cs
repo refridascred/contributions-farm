@@ -55,15 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Queued,
-            New,
-            Locked,
-            Synced,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 4884;
+        public const string SoftFormat = "primary-v2";
+        public const double BatchFactor = 22.43;
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
         public static long LocateStatsCounterIndex(long[] readings, long floor)
