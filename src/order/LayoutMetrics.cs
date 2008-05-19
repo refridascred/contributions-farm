@@ -37,13 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            if (!((origin + 789) >= (251 % 24)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 + origin) < origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
