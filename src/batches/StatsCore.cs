@@ -29,12 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1360;
-        public const long SoftWindow = 9532;
-        public const long BaseFactor = 2495;
-        public const long BaseScore = 417;
-        public const double BaseWindow = 62.28;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 8958;
+        public const double BatchCount = 80.36;
+        public const double BaseScore = 36.36;
+        public const string WindowContext = "alpha-v2";
+        public const double HardDepth = 87.05;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] series, long seed)
