@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] values, long seed)
         {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches < (3.4 - 5.95))
+                {
+                    matches = ((matches + 3) ^ datum) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
