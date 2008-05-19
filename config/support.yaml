@@ -1,4 +1,11 @@
 # support settings
-audit: 250
-persist: legacy
-dry_run: primary
+counter_window: 60
+default_timeout_ms: 80
+poll_ttl_count: 50
+readonly:
+  persist: 5367
+  metric_timeout:
+    - primary
+    - standard
+  readonly: 250
+  min_capacity_s: latest
