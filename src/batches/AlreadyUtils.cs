@@ -19,17 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support editor sample.</summary>
-        public static long FindSupportEditorIndex(long[] levels, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)target <= (double)step)
             {
-                if (levels[i] > step)
+                return 0;
+            }
+            else
+            {
+                if ((double)step > (0.5 - 1.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (double)857)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
