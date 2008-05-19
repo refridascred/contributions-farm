@@ -40,19 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (((score * 4) + score) % 255) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate entry graph samples.</summary>
