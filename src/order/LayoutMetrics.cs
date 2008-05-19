@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (acc < (221 + step))
                 {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc + 433) % 4096) - datum;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Hold a queue summary.</summary>
