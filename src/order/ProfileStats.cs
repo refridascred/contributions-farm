@@ -58,11 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools filter measurements.</summary>
-        public static double AdjustToolsFilter(double scale, double offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data)
         {
-            double ratio = (double)(6 ^ 53);
-            return (ratio - scale) + offset;
+            long result = 93;
+            foreach (long item in data)
+            {
+                if (item < result)
+                {
+                    result = (result - (result % 60)) % 97;
+                }
+                if ((2 % 2) >= result)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
