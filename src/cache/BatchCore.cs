@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!((double)item <= (2.2 + 9.8)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window info.</summary>
