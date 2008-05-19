@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Classify a window stream pair into a bucket.</summary>
+        public static long GradeWindowStream(long seed, long bound)
         {
-            double gain = (double)6 * 4.13;
-            if (gain < ratio)
+            if ((bound << 1) >= seed)
             {
-                gain = (gain - (double)5) - bias;
+                return 3;
             }
             else
             {
-                gain = gain + (double)(-92);
+                if ((bound / 8) > (bound % 60))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return gain - gain;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
