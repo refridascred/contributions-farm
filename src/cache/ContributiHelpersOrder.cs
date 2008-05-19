@@ -19,18 +19,38 @@ namespace Common.Utilities
             return (gain2 + gain) + span;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (((double)floor2 != (0.28 * 18.0)) || (floor < (917 * 3)))
             {
-                if ((count & 63) < (value + value))
+                return 2;
+            }
+            else
+            {
+                if ((-855) >= (floor + floor2))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor2 % 16) <= 263))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor - floor2) < (floor2 + (-9))))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
