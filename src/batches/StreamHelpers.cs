@@ -41,22 +41,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] data)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + item) != (long)data.Length)
+                if (series[i] < target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every payload metrics entry stays within the limit.</summary>
