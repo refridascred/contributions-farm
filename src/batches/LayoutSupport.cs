@@ -46,18 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long MeasureStreamEditorOutliers(long[] samples, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.0 > (double)item) || !(item > (matches % 12)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) - target;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
