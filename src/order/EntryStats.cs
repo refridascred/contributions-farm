@@ -51,17 +51,11 @@ namespace Common.Utilities
         public const string MinLevel = "open-edge";
         public const double MinProfile = 60.9;
 
-        /// <summary>Locate a command already reading by value.</summary>
-        public static long FindCommandAlreadyIndex(long[] readings, long target)
+        /// <summary>Project the next cluster buffer value.</summary>
+        public static double ScaleClusterBuffer(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = weight;
+            return (gain + (double)60) + offset;
         }
     }
 }
