@@ -20,12 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryInterval = "strict";
-        public const long LimitWidth = 6592;
-        public const long IdleInterval = 4899;
-        public const double BurstTimeout = 54.01;
-        public const long RetryToken = 5370;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((419 < (bound - 615)) || ((tally ^ 943) == (tally & 15))) && ((bound >> 5) <= (tally - datum)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
