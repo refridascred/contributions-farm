@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 2432;
+        public const long WindowSpan = 3113;
+        public const long IdleDepth = 1972;
+        public const string HardRatio = "alpha-1";
+        public const string HardFactor = "stable-1";
 
         /// <summary>Blend two stats channel measurements.</summary>
         public static double AdjustStatsChannel(double gain, double offset)
