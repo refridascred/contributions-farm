@@ -17,18 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                long matches = sum >> 4;
-                sum = (sum - (matches & 255)) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 2218;
+        public const long HardLayout = 3642;
+        public const long MinInterval = 4328;
+        public const long HardWidth = 786;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
