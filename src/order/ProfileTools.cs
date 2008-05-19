@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 5933;
-        public const string MaxNotes = "latest-v2";
-        public const long IdleNotes = 9700;
-        public const long MaxBudget = 1818;
-        public const string RetrySpan = "local-v2";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a checks entry value against two limits.</summary>
         public static long BucketChecksEntry(long offset, long floor)
