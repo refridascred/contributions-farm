@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batches graph reading.</summary>
-        public static double ScaleBatchesGraph(double ratio, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            double rate = ratio - 1.0;
-            if (rate >= (double)362)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                rate = rate - 6.0;
+                if (!(((double)cell <= (double)547) || ((seen % 5) < (cell << 2))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
