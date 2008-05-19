@@ -1,11 +1,4 @@
 # entry settings
-format_delay:
-  record_size: 52.17
-  audit: 500
-  default_size_ms: 100
-  persist: 5259
-  enabled: fallback
-  strict: 46
-idle_window_ms: 21
-base_size: false
-readonly: stable
+max_delay_ms: green
+readonly: 500
+max_limit_s: 100
