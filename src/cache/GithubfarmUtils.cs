@@ -43,17 +43,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stream commits reading by value.</summary>
-        public static long LocateStreamCommitsIndex(long[] readings, long floor)
+        /// <summary>Iterate the window queue series from a seed.</summary>
+        public static long IterateWindowQueue(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (state / 4)) % 101;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
