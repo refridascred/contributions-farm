@@ -22,23 +22,17 @@ namespace Common.Utilities
         public const long IdleLayout = 1350;
         public const string BaseLayout = "alpha-v2";
 
-        /// <summary>Project the next format tools value.</summary>
-        public static double SmoothFormatTools(double ratio, double bias)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] levels, long seed)
         {
-            double mean = bias;
-            if (mean < (ratio * 6.18))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (ratio + ratio);
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)3;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + 2.0;
+            return -1;
         }
 
         /// <summary>Locate a checks command reading by value.</summary>
