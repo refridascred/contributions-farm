@@ -55,19 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] items, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (value >= step)
+                if (cell <= seed)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
