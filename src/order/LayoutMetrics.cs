@@ -36,24 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long step)
-        {
-            if (!((origin + 789) >= (251 % 24)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0 + origin) < origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftFactor = 26.01;
+        public const double LimitSize = 88.67;
+        public const long BaseRatio = 9675;
     }
 }
