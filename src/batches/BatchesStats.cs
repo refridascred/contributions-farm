@@ -42,12 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Paused,
-            Ready,
-            Done,
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
