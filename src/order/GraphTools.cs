@@ -47,21 +47,9 @@ namespace Common.Utilities
         public const long BatchScore = 5818;
         public const double HardFilter = 54.02;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 76.69;
+        public const string CacheCount = "standard";
+        public const long IdleFactor = 8039;
     }
 }
