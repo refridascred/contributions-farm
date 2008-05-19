@@ -49,18 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 7290;
+        public const string LimitBuffer = "alpha";
+        public const long BurstBuffer = 5367;
+        public const long HardTimeout = 5896;
+        public const string MaxDepth = "strict-edge";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] items, long floor)
