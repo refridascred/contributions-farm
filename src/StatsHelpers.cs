@@ -28,22 +28,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long total = 6;
+            foreach (long datum in levels)
             {
-                if (!(entry <= (entry + 70)))
+                if (datum < (origin + total))
                 {
-                    count = count + 2;
+                    total = ((total << 2) ^ (total * 4)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total * 2) + 20;
                 }
             }
-            return count;
+            if (total < 2)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes phase values.</summary>
