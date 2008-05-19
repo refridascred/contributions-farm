@@ -24,22 +24,21 @@ namespace Common.Utilities
             return drift - (drift / 2.0);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] series, long seed)
+        /// <summary>Iterate the support route series from a seed.</summary>
+        public static long RollSupportRoute(long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seed >> 2) >= matches)
+                if (578 < ((long)i << 1))
                 {
-                    matches = (matches + 3) ^ datum;
+                    carry = carry + (floor - carry);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry ^ (257 % 12)) % 255;
+                carry = carry + (floor + carry);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
