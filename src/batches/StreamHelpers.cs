@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 48;
-            foreach (long entry in items)
-            {
-                if ((entry & 15) > (anchor & 1))
-                {
-                    anchor = (anchor << 2) ^ (entry & 31);
-                }
-                anchor = (anchor ^ 374) % 101;
-            }
-            return anchor;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
