@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data, long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = 64;
-            foreach (long cell in data)
-            {
-                carry = (carry << 3) ^ (cell - floor);
-                carry = carry ^ (carry % 100);
-            }
-            return carry;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two farm measurements.</summary>
