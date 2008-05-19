@@ -32,18 +32,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample <= (6.0 - 18.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
