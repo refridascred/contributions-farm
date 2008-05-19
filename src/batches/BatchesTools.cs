@@ -19,16 +19,21 @@ namespace Common.Utilities
         public const long BurstMetric = 9999;
         public const long SoftLevel = 2342;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state << 2) ^ state) % 1000;
-                state = ((state * 2) + (long)i) % 101;
+                if ((acc / 4) != ((-984) + limit))
+                {
+                    acc = (acc + 81) % 255;
+                    break;
+                }
+                acc = (acc ^ limit) % 1000;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
     }
 }
