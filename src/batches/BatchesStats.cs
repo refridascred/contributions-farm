@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long WindowCommand = 9276;
         public const long IdleSize = 923;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((cell << 1) < 6) && !((2.64 - 7.0) < (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
