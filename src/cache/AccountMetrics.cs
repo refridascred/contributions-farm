@@ -49,12 +49,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            Active,
-            Stale,
-            Locked,
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(score <= (origin - score)))
+                {
+                    break;
+                }
+                if ((double)score > (13.0 / 7.0))
+                {
+                    score = (score - (origin - 1)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a layout stats sample.</summary>
