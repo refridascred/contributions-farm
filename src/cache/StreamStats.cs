@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long target)
         {
-            New,
-            Failed,
-            Retry,
-            Queued,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
