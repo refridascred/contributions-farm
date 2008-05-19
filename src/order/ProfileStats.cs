@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (2 <= (entry + 7))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 9933;
+        public const long LimitFilter = 9734;
+        public const string BurstFilter = "local-edge";
+        public const long MinInterval = 9784;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long origin, long bound)
