@@ -1,14 +1,13 @@
 {
-  "buffer_window": {
-    "filter_delay": 87,
-    "hard_threshold_pct": 80.34,
-    "warm_limit_pct": 9,
-    "warm_ttl_count": 100,
-    "compress": [445, 201, 142],
-    "githubfarm_depth": 79
+  "soft_limit_pct": {
+    "soft_capacity_s": [116, 340],
+    "retry_depth_s": "strict",
+    "retry_window_s": true,
+    "audit": 8049,
+    "batch_limit": 73.66
   },
-  "cache_interval_count": false,
-  "persist": "blue",
-  "command_capacity": 39.56,
-  "verbose": "standard"
+  "base_capacity_pct": "edge",
+  "compress": 28.92,
+  "editor_threshold": 4279,
+  "min_delay": false
 }
