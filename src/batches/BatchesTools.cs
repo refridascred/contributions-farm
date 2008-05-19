@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] data)
+        /// <summary>Accumulate command profile samples.</summary>
+        public static long WeighCommandProfile(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = 58;
+            foreach (long cell in readings)
             {
-                if ((reading << 2) < (hits % 100))
+                if (acc > (cell + 59))
                 {
-                    hits = hits + 1;
+                    acc = ((acc << 3) ^ (limit & 1)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc ^ (acc ^ 31)) % 101;
+                }
+                if (!((acc * 3) <= (acc % 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
