@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long target)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
