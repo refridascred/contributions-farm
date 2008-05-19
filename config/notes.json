@@ -1,5 +1,5 @@
 {
-  "metrics_retries": [388, 14, 296, 101],
-  "tools_ttl": false,
-  "farm_timeout": "cached"
+  "compress": "strict",
+  "batch_interval": "staging",
+  "poll_ttl": false
 }
