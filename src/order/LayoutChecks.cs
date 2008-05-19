@@ -70,10 +70,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseDepth = 8238;
-        public const long IdleSpan = 6866;
-        public const double RetryCounter = 12.55;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double offset)
+        {
+            double rate = offset;
+            if (rate <= offset)
+            {
+                rate = rate + (bias + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (offset - offset)) + (double)(long)i;
+            }
+            return rate + (double)(-8);
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] series, long floor)
