@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples)
-        {
-            long state = 167;
-            foreach (long value in samples)
-            {
-                if (((state & 3) >= (240 - state)) && (state >= (3 + value)))
-                {
-                    state = ((state * 3) + (value + value)) % 1000;
-                }
-                if ((value * 4) <= (state + state))
-                {
-                    state = (state << 3) ^ state;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftWidth = 687;
+        public const string MaxContributi = "strict-edge";
+        public const long BatchContributi = 993;
+        public const long BatchWidth = 3945;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] values)
