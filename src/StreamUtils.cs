@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] items, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (datum > offset)
+                if (11.0 > (double)origin)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + item;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
