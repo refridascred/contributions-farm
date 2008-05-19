@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
