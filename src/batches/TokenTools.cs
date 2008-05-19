@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits - hits) == (sample * 4))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
