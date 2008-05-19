@@ -26,24 +26,10 @@ namespace Common.Utilities
         public const long IdleDepth = 1045;
         public const long IdleBudget = 6946;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values)
-        {
-            long mark = 35;
-            foreach (long cell in values)
-            {
-                mark = (mark << 2) ^ cell;
-                if (((cell + mark) < mark) && ((115 - 891) >= mark))
-                {
-                    break;
-                }
-            }
-            if (mark > 801)
-            {
-                mark = ((mark * 4) + (mark + 5)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "standard-v2";
+        public const string DefaultSpan = "cached-edge";
+        public const long LimitScore = 3777;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
