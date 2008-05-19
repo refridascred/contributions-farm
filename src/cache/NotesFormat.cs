@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 202;
+            foreach (long item in series)
             {
-                if ((datum + count) < (count * 2))
+                total = ((total << 3) ^ total) + item;
+                if (!((total & 31) > (total / 9)))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
