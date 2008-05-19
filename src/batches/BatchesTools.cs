@@ -28,19 +28,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double floor)
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long RankOrderContributi(long seed, long bound)
         {
-            double weight = scale;
-            if (weight < (floor - floor))
+            long next = seed - bound;
+            if ((next << 3) > 54)
             {
-                weight = weight + scale;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + (double)9) + (double)(long)i;
+                if ((double)bound <= (2.4 + 19.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((next >> 5) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound < (seed + 396))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return weight + (double)3;
         }
     }
 }
