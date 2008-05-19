@@ -1,8 +1,5 @@
 {
-  "format_capacity": 44,
-  "filter_limit": "staging",
-  "readonly": ["strict", "latest"],
-  "max_depth_ms": "eu-west",
-  "batch_timeout": "primary",
-  "sync_interval_pct": 30
+  "flush_window_pct": 27.73,
+  "readonly": 1024,
+  "tools_threshold": 1
 }
