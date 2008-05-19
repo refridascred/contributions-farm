@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Pending,
-            Idle,
-            New,
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
