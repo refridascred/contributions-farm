@@ -52,19 +52,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double drift = bias;
-            if (drift >= rate)
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift - (bias - drift);
-            }
-            return drift - rate;
+            Idle,
+            Draft,
+            Done,
         }
     }
 }
