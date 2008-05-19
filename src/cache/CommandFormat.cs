@@ -43,19 +43,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean >= (offset - mean))
-            {
-                mean = (mean + (mean - offset)) + weight;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean - (offset / 4.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRatio = 15.28;
+        public const double CacheRoute = 17.9;
+        public const long HardRatio = 7460;
     }
 }
