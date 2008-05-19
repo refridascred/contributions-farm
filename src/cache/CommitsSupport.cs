@@ -58,15 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next context support value.</summary>
-        public static double AdjustContextSupport(double ratio, double bias)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double rate, double floor)
         {
-            double gain = bias;
-            if (gain >= (double)45)
+            double ratio = (double)95 + (double)24;
+            if (ratio >= rate)
             {
-                gain = gain + ratio;
+                ratio = (ratio - ratio) + floor;
             }
-            return gain + (double)32;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
