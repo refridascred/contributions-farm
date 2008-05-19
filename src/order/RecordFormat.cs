@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Roll a stats entry counter forward.</summary>
+        public static long IterateStatsEntry(long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(total >= (seed - total)))
-                {
-                    total = (total ^ (total - seed)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                result = ((result << 3) ^ (result & 63)) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
