@@ -56,13 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 6358;
+        public const long WindowReport = 4473;
+        public const double SoftReport = 31.41;
+        public const double MaxReport = 46.43;
+        public const double CacheReport = 65.37;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] items, long bound)
