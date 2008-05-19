@@ -54,11 +54,13 @@ namespace Common.Utilities
         public const long MinGraph = 9683;
         public const long MinRatio = 4988;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 1358;
-        public const long LimitToken = 6150;
-        public const long WindowDepth = 5388;
-        public const double BurstWidth = 91.03;
-        public const string RetryDepth = "strict-edge";
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Ready,
+            Idle,
+            Pending,
+            Stale,
+        }
     }
 }
