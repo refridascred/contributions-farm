@@ -18,12 +18,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the notes commits entries that pass the check.</summary>
+        public static long TallyNotesCommitsMatches(long[] data)
         {
-            Failed,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading >= (6.89 + 13.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
