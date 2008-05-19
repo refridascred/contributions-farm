@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a format payload counter forward.</summary>
-        public static long DeriveFormatPayload(long bound)
+        /// <summary>Count layout already pairs that satisfy a relation.</summary>
+        public static long MatchLayoutAlreadyCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 3) ^ (bound * 3)) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
