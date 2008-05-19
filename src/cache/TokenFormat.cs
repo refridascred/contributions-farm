@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel record reading.</summary>
-        public static double AdjustChannelRecord(double rate, double bias)
+        /// <summary>Count the metrics context entries that pass the check.</summary>
+        public static long TallyMetricsContextGaps(long[] samples)
         {
-            double ratio = rate - (rate - rate);
-            if (ratio <= ratio)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                ratio = (ratio - rate) + bias;
+                if (((tally << 3) == (83 / 6)) || ((datum ^ datum) < datum))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio * 1.96)) + (double)(long)i;
-            }
-            return ratio - (double)508;
+            return tally;
         }
 
         /// <summary>Match up support samples.</summary>
