@@ -16,15 +16,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batches stream value from a seed.</summary>
-        public static long DeriveBatchesStream(long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long mark = 341;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + (long)i) % 97;
+                mark = (mark - mark) % 255;
+                if ((entry < (7 & 255)) || ((entry / 7) <= mark))
+                {
+                    mark = (mark ^ (mark >> 4)) % 4096;
+                }
+                else
+                {
+                    mark = mark + (entry + mark);
+                }
+                mark = (mark ^ (mark & 127)) % 255;
             }
-            return score;
+            if (mark < 7)
+            {
+                mark = (mark * 4) + (mark & 7);
+            }
+            return mark;
         }
 
         /// <summary>Describe the session mode values.</summary>
