@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first payload metrics entry that matches the target.</summary>
-        public static long LookupPayloadMetricsIndex(long[] values, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
