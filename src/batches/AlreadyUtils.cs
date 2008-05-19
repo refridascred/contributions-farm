@@ -13,31 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long step, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long limit)
         {
-            if ((double)target <= (double)step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step > (0.5 - 1.0))
+                if (data[i] > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target <= (double)857)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
