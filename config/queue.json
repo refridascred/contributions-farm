@@ -1,11 +1,12 @@
 {
-  "warm_threshold": "eu-west",
-  "retry_ratio": false,
-  "base_timeout_pct": false,
-  "order_timeout": 70,
-  "max_ttl_s": {
-    "retry_ttl_s": "staging",
-    "sync_capacity": 69.77,
-    "burst_timeout_count": true
-  }
+  "batch_timeout": {
+    "tools_depth": 4774,
+    "session_depth": 1024,
+    "compress": "staging",
+    "record_ttl": 7,
+    "profile_window": 16.1,
+    "strict": true
+  },
+  "flush_ratio_s": "primary",
+  "warm_threshold": 69.96
 }
