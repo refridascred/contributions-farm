@@ -24,11 +24,19 @@ namespace Common.Utilities
             return ((weight - (weight / 4.0)) + ratio) + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultTimeout = 5661;
-        public const double RetryCount = 38.76;
-        public const long LimitFactor = 3112;
-        public const long LimitContext = 9552;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 1) != (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
