@@ -1,10 +1,15 @@
 # Payload notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The metric module keeps graph values in sync with the entry cache.
+Run the support check before changing any context limits.
+Keep format and graph names short and lowercase.
+When a checks fails, the booking handler retries a few times before giving up.
+
+A batch that stays idle for too long is moved to the already list.
+When a support fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every graph change
-- Keep batches values small
-- Validate token input early
+- Log every cache change
+- Review session limits each release
+- Validate booking input early
+- Keep order values small
