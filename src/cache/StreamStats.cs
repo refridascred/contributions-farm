@@ -23,18 +23,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] samples, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (!!(seen >= (seen + cell)))
+                if (!((count < (count + 878)) || ((double)count != (8.11 * 1.1))))
                 {
-                    seen = (seen + 3) - origin;
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a metrics header.</summary>
