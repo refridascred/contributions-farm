@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Retry,
-            Idle,
-            Done,
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
