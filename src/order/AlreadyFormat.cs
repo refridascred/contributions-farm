@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + score) % 65521;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
