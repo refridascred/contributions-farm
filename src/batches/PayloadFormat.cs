@@ -41,19 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (sample > target)
+                if (datum <= floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
