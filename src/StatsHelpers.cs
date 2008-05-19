@@ -38,13 +38,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            Active,
             Pending,
-            Retry,
-            Idle,
-            Dropped,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate support editor samples.</summary>
