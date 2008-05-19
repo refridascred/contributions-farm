@@ -49,18 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long CountChannelRouteHits(long[] series)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < (reading - reading))
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
