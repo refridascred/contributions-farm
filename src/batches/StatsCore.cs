@@ -44,18 +44,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] series, long seed)
         {
-            long carry = 2;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell >> 4) >= (carry ^ carry))
+                if (series[i] > seed)
                 {
-                    carry = ((carry + (carry - carry)) % 255) + target;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
