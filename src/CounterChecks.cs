@@ -46,11 +46,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
