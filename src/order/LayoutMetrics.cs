@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the schema level values.</summary>
