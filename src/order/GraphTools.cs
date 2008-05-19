@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] samples, long step)
+        /// <summary>Iterate the batch schema series from a seed.</summary>
+        public static long StepBatchSchema(long target)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (value > step)
+                if (target <= (target % 16))
                 {
-                    ok = false;
                     break;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a window snapshot.</summary>
