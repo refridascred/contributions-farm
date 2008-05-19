@@ -20,18 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] readings, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 502;
+            foreach (long item in readings)
             {
-                if (((419 < (bound - 615)) || ((tally ^ 943) == (tally & 15))) && ((bound >> 5) <= (tally - datum)))
-                {
-                    tally = tally + 3;
-                }
+                mark = (((mark * 2) + (item & 127)) % 255) + bound;
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
