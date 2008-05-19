@@ -27,15 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            double gain = (offset * 2.18) * 4.6;
-            if (gain >= offset)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain + 4.28;
+                if ((((long)i ^ floor) != (long)i) || (mix < (4 + mix)))
+                {
+                    mix = (mix + (long)i) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return gain - ratio;
+            return mix;
         }
     }
 }
