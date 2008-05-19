@@ -66,9 +66,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "cached";
-        public const long SoftCount = 3048;
-        public const long WindowMetric = 1898;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Synced,
+            New,
+            Failed,
+            Stale,
+            Pending,
+        }
     }
 }
