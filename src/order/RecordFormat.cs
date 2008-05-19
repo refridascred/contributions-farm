@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 4536;
+        public const string CachePayload = "alpha-edge";
+        public const long BaseSpan = 2996;
+        public const long BatchPayload = 9448;
 
         /// <summary>Audit cache batches readings against a rule.</summary>
         public static long AuditCacheBatchesHits(long[] data)
