@@ -50,12 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally - datum) == (850 / 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
