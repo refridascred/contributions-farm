@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Check that every metric format entry stays within the limit.</summary>
+        public static bool VerifyMetricFormatRange(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
