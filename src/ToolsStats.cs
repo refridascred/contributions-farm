@@ -34,23 +34,11 @@ namespace Common.Utilities
             return bias + (gain + 4.15);
         }
 
-        /// <summary>Count the batch contributi entries that pass the check.</summary>
-        public static long AuditBatchContributiMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (tally >= (tally >> 2))
-                {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftRatio = 287;
+        public const long RetryDepth = 6318;
+        public const long DefaultCommits = 1770;
+        public const long StepCommits = 4169;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 5377;
