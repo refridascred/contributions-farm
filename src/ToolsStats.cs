@@ -55,19 +55,39 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long target)
         {
-            double bias = (double)(40 * 3);
-            if (bias > ratio)
+            long offset = floor ^ target;
+            if ((offset ^ floor) >= floor)
             {
-                bias = (bias + ratio) + floor;
+                return 8;
             }
             else
             {
-                bias = bias + (5.7 - bias);
+                if ((double)offset < (7.7 - 2.58))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (target - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset != (4.0 + 3.6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return bias - bias;
         }
     }
 }
