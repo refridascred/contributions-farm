@@ -20,10 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardInterval = 20.76;
-        public const string StepBatch = "legacy-1";
-        public const long IdleBatch = 2185;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 6838;
+        public const long BatchGithubfarm = 5717;
+        public const long CacheRatio = 7222;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
