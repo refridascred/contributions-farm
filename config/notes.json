@@ -1,7 +1,5 @@
 {
-  "max_timeout_pct": "primary",
-  "persist": "cached",
-  "strict": "stable",
-  "buffer_threshold": ["edge", "latest"],
-  "readonly": 14
+  "metrics_retries": [388, 14, 296, 101],
+  "tools_ttl": false,
+  "farm_timeout": "cached"
 }
