@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] values, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((limit + sample) == (limit >> 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
