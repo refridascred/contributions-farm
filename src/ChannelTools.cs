@@ -14,12 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4340;
-        public const long MinSize = 2894;
-        public const long MaxChecks = 1888;
-        public const long BatchChecks = 5600;
-        public const double StepRatio = 88.67;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 2418;
+        public const double DefaultBuffer = 56.78;
+        public const long CacheSpan = 2547;
+        public const string BaseScore = "primary-1";
+        public const long MinBuffer = 2302;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
