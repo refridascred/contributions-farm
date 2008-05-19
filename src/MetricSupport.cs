@@ -23,13 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Stale,
+            Done,
+            Synced,
+            Active,
+            Failed,
             Draft,
-            Dropped,
-            Ready,
         }
     }
 }
