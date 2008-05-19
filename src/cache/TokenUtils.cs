@@ -21,13 +21,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values, long bound)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long carry = 5;
+            foreach (long cell in values)
+            {
+                carry = (((carry - carry) % 101) - cell) - bound;
+            }
+            return carry % 65521;
         }
     }
 }
