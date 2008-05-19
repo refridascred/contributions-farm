@@ -55,12 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleLevel = 2375;
-        public const double WindowDepth = 30.28;
-        public const long StepFarm = 1379;
-        public const long MaxFarm = 1545;
-        public const long BatchFactor = 1652;
+        /// <summary>Iterate the editor commits series from a seed.</summary>
+        public static long RollEditorCommits(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)mix < (18.0 / 4.0))
+                {
+                    mix = mix ^ 337;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
         public static long LocateStatsCounterIndex(long[] readings, long floor)
