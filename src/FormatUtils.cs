@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Roll a tools window counter forward.</summary>
+        public static long DeriveToolsWindow(long offset)
         {
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
