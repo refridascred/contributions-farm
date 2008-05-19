@@ -40,14 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] values, long step)
         {
-            Pending,
-            Draft,
-            Locked,
-            Stale,
-            Ready,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
