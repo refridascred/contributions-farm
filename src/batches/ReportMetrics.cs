@@ -48,19 +48,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate report entry samples.</summary>
-        public static long TallyReportEntry(long[] readings, long floor)
+        /// <summary>Grade a record session value against two limits.</summary>
+        public static long GradeRecordSession(long bound, long bound2)
         {
-            long carry = 22;
-            foreach (long reading in readings)
+            if (bound <= (bound + 3))
             {
-                carry = ((carry + (0 ^ floor)) % 1000) ^ reading;
-                if ((floor * 2) == (146 ^ floor))
+                return 6;
+            }
+            else
+            {
+                if (!(9.42 <= (double)bound))
                 {
-                    carry = carry ^ carry;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound2 << 3) > bound2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - 30) <= (bound2 << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
