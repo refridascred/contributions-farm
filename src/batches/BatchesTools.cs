@@ -23,11 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheFactor = 4704;
-        public const long MaxAlready = 8345;
-        public const long MinAlready = 3252;
-        public const double DefaultAlready = 72.13;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Grade a order contributi value against two limits.</summary>
         public static long RankOrderContributi(long seed, long bound)
