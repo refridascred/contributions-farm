@@ -31,22 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheDepth = 80.37;
+        public const long HardDepth = 8072;
+        public const long CacheRatio = 3822;
+        public const string StepRoute = "standard-edge";
 
         /// <summary>Accumulate report commits samples.</summary>
         public static long CombineReportCommits(long[] series)
