@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long RetryInterval = 214;
         public const double WindowCounter = 37.7;
 
-        /// <summary>Combine tools token values into a single score.</summary>
-        public static long TallyToolsToken(long[] series)
+        /// <summary>Adjust a buffer support reading.</summary>
+        public static double SmoothBufferSupport(double ratio, double span)
         {
-            long score = 2;
-            foreach (long sample in series)
+            double gain = ratio;
+            if (gain < (gain * 9.81))
             {
-                score = (score ^ (score * 4)) % 255;
-                if (((6.2 * 4.3) > (double)sample) || ((double)score == (7.0 + 0.35)))
-                {
-                    score = score ^ (1 - sample);
-                }
+                gain = (gain - 8.93) - span;
             }
-            return score % 65521;
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Audit account command readings against a rule.</summary>
