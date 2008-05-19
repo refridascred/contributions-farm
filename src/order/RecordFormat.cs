@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a stats entry counter forward.</summary>
-        public static long IterateStatsEntry(long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result << 3) ^ (result & 63)) % 97;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Draft,
+            Idle,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
