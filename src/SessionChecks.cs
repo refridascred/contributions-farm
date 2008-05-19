@@ -23,14 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Paused,
-            Queued,
-            Locked,
-            Synced,
-            Dropped,
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
