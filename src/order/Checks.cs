@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long bound)
         {
-            long score = 48;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((double)score != (15.0 / 9.0))
+                if (entry < bound)
                 {
-                    score = score + (-2);
-                }
-                else
-                {
-                    score = (score - (datum + datum)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 2)
-            {
-                score = (score << 3) ^ ((long)levels.Length ^ score);
-            }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
