@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series, long offset)
         {
-            Closed,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((offset & 31) < (matches << 3))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
