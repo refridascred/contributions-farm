@@ -58,11 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Check that every command graph entry stays within the limit.</summary>
+        public static bool CheckCommandGraphRange(long[] levels, long step)
         {
-            double drift = ratio;
-            return (drift + 9.0) + offset;
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
