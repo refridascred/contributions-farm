@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardSize = 6271;
-        public const long RetryMetric = 729;
-        public const long MinMetric = 630;
-        public const long BaseMetric = 3612;
-        public const long IdleMetric = 3637;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
         public static long AuditCacheBatchesHits(long[] data)
