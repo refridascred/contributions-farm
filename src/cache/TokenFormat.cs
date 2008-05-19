@@ -26,21 +26,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
