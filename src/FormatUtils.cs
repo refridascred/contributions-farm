@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a tools window counter forward.</summary>
-        public static long DeriveToolsWindow(long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            New,
+            Locked,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate token samples.</summary>
