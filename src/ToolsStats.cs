@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 8755;
-        public const string HardInterval = "alpha-1";
-        public const string BatchFarm = "open-edge";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long seed)
+        {
+            long edge = origin - seed;
+            if ((33 << 2) <= (edge + edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed / 7) == (3 / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + seed) >= (20 + 20))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge >= (origin + origin)) && ((edge & 1) >= 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
