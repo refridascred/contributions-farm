@@ -1,8 +1,11 @@
 # support settings
-flush_depth_ms: primary
-order_depth: false
-persist:
-  - 208
-  - 489
-base_ratio_s: 80
-retry_ratio_ms: cached
+strict: 2164
+flush_timeout_s: 76
+dry_run:
+  - fallback
+  - stable
+  - staging
+  - edge
+cache_depth_count: 100
+format_ratio: 86
+persist: true
