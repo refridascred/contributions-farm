@@ -11,11 +11,39 @@ namespace Common.Utilities
         public const long BatchTimeout = 7751;
         public const double BatchAlready = 42.7;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double ratio, double floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long origin)
         {
-            double gain = 18.0;
-            return (gain - (floor - floor)) + ratio;
+            long gap = floor + origin;
+            if ((gap % 100) < (floor >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((177 - gap) == (676 >> 1)) || ((double)gap >= (5.9 / 6.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor << 3) > gap) || ((9.0 * 2.66) > (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor * 4) == (gap << 1)) && (((-36) - origin) > (origin << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of window commits readings.</summary>
