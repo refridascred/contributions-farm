@@ -14,12 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 2418;
-        public const double DefaultBuffer = 56.78;
-        public const long CacheSpan = 2547;
-        public const string BaseScore = "primary-1";
-        public const long MinBuffer = 2302;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 54.94;
+        public const string RetryFactor = "standard-v2";
+        public const long MaxPayload = 4878;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
