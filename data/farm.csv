@@ -1,6 +1,11 @@
-id,label,weight
-1,blue,staging
-2,80.56,open
-3,208,fallback
-4,542,latest
-5,22.14,0.83
+id,rank,weight
+1,5.36,933
+2,9.69,4.75
+3,18.34,primary
+4,497,72.7
+5,815,cached
+6,109,8.13
+7,edge,staging
+8,16.9,36.59
+9,779,95.24
+10,483,230
