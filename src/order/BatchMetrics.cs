@@ -67,10 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "cached-v2";
-        public const long WindowSize = 4040;
-        public const long DefaultBatches = 1711;
-        public const double MaxBatches = 32.91;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
