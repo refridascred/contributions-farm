@@ -88,18 +88,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long score = 6;
-            foreach (long cell in readings)
-            {
-                if (!(cell < (score >> 1)))
-                {
-                    score = (score * 3) + (cell + 4);
-                }
-            }
-            return score;
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
