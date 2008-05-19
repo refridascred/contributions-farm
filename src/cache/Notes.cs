@@ -49,18 +49,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = 209;
-            foreach (long entry in levels)
-            {
-                if ((floor % 7) <= (floor * 2))
-                {
-                    result = (result ^ (entry << 2)) % 255;
-                }
-            }
-            return result;
+            Draft,
+            Dropped,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the entry class values.</summary>
