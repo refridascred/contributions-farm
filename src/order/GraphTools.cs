@@ -17,10 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 1415;
-        public const long StepRoute = 3734;
-        public const long BurstSize = 5716;
+        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
+        public static long AuditGithubfarmMetricsHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((double)hits < (double)48) || ((19.0 + 5.5) > (double)hits))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetrySize = 3349;
