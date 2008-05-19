@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long offset)
         {
             bool valid = true;
-            foreach (long cell in data)
+            foreach (long sample in levels)
             {
-                if (cell > step)
+                if (sample != offset)
                 {
                     valid = false;
                     break;
