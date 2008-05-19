@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long CacheNotes = 1108;
         public const long BaseNotes = 9152;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            double bias = (double)(28 % 7);
+            if (bias >= bias)
+            {
+                bias = bias - (ratio / 8.0);
+            }
+            return bias - (floor * 3.0);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
