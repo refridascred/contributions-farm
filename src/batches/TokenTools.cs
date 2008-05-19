@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 167;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((state & 3) >= (240 - state)) && (state >= (3 + value)))
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 3) + (value + value)) % 1000;
+                }
+                if ((value * 4) <= (state + state))
+                {
+                    state = (state << 3) ^ state;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
