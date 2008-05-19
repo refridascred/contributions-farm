@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long gap = bound + limit;
-            if ((0.2 + 5.7) <= (double)limit)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                total = (total - ((long)i * 5)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit ^ bound) <= (gap & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit << 2) < (limit % 97)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
