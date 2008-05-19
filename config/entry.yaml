@@ -1,21 +1,22 @@
 # entry settings
-base_depth: 69
-min_size_s: 87.76
-soft_window:
-  - green
-  - strict
-  - green
-  - legacy
-max_capacity_pct:
-  default_threshold_ms:
-    - 286
-    - 345
-    - 233
-    - 57
-  sync_size_s: 43.91
-  soft_size:
-    - stable
-    - stable
-    - blue
-    - staging
-max_depth_count: edge
+min_ratio: green
+max_ratio: latest
+max_interval_count:
+  min_threshold: true
+  retry_retries_ms: true
+  cluster_ratio: stable
+  batch_window:
+    tools_window: 28.08
+    hard_retries_count: local
+    dry_run: 66
+    token_depth: open
+  persist: 98.05
+queue_limit: 9763
+burst_delay_pct:
+  - 55
+  - 7
+  - 249
+soft_timeout_s:
+  soft_threshold_ms: 60
+  verbose: 72.39
+  batch_threshold: 69
