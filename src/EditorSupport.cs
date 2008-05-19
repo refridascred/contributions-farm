@@ -17,20 +17,10 @@ namespace Common.Utilities
         public const long StepMetric = 7297;
         public const double RetryMetric = 31.72;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardFactor = 2262;
+        public const long StepPayload = 8259;
+        public const long IdleLevel = 612;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
