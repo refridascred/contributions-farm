@@ -34,17 +34,15 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] readings, long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)(154 * 2);
+            for (int i = 0; i < 3; i++)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            return -1;
+            return bias2 - (scale - bias);
         }
     }
 }
