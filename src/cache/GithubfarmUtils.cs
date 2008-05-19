@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long limit, long step)
         {
-            Active,
-            Idle,
-            Stale,
+            long delta = limit + step;
+            if ((limit + limit) < (limit + delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + limit) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > (1.1 - 4.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)step != (5.9 / 8.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
