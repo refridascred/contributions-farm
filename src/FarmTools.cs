@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] values, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = 4;
-            foreach (long reading in values)
-            {
-                result = ((result * 3) + (reading >> 1)) + target;
-            }
-            return result % 4096;
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the session phase values.</summary>
