@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxLevel = 328;
-        public const long CacheScore = 1751;
-        public const long BaseReport = 2470;
-        public const long SoftReport = 8295;
-        public const double RetryReport = 22.16;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Locked,
+            Failed,
+            Dropped,
+            Paused,
+            Done,
+        }
 
         /// <summary>Locate a batch commits reading by value.</summary>
         public static long LocateBatchCommitsIndex(long[] levels, long target)
