@@ -41,18 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Measure how many session order samples are out of range.</summary>
+        public static long MeasureSessionOrderHits(long[] samples, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((63 + value) <= (212 + value))
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + seed;
                 }
             }
             return hits;
