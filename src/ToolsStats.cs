@@ -27,13 +27,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Blend two stats channel measurements.</summary>
+        public static double AdjustStatsChannel(double gain, double offset)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            double bias = (gain * 17.0) + (gain + offset);
+            if (bias >= (bias / 4.0))
+            {
+                bias = bias + (bias - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (offset + offset)) - (double)(long)i;
+            }
+            return bias + (gain + 4.15);
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
