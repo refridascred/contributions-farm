@@ -1,6 +1,7 @@
 # githubfarm settings
-warm_ratio: true
-max_interval_pct: false
-default_retries_ms: 26
-dry_run: 2394
-hard_threshold: 8061
+base_size: cached
+min_window_count: false
+dry_run:
+  - cached
+  - primary
+buffer_limit: eu-west
