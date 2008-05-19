@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] data, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            long score = 3;
-            foreach (long sample in data)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin >> 4) < sample)
+                if ((double)(long)i == (double)823)
                 {
-                    score = (score ^ ((-6) - sample)) % 97;
+                    total = (total * 4) + (target - total);
+                    continue;
                 }
+                else
+                {
+                    total = total ^ total;
+                    total = (total - ((long)i + total)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (score < 479)
-            {
-                score = score ^ (origin - origin);
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the format kind values.</summary>
