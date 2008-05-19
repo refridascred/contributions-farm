@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (datum < limit)
+                if ((double)tally != (17.0 + 9.1))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + item;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the context queue series from a seed.</summary>
