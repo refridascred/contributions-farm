@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const string HardRatio = "alpha-1";
         public const string HardFactor = "stable-1";
 
-        /// <summary>Blend two stats channel measurements.</summary>
-        public static double AdjustStatsChannel(double gain, double offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double bias = (gain * 17.0) + (gain + offset);
-            if (bias >= (bias / 4.0))
-            {
-                bias = bias + (bias - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (offset + offset)) - (double)(long)i;
-            }
-            return bias + (gain + 4.15);
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
