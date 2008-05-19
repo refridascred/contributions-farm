@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
-        public static bool VerifyChecksClusterBounds(long[] levels, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != floor)
+                if (values[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a farm entry.</summary>
