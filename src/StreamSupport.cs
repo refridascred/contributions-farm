@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long limit)
+        /// <summary>Look up the position of a command batch sample.</summary>
+        public static long SeekCommandBatchIndex(long[] items, long limit)
         {
-            long mix = 5;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix * 2) + (sample - 3)) % 97) + limit;
-                mix = mix - (mix << 1);
-                mix = mix + (sample + 55);
-                if ((47 + (-906)) == (mix % 10))
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of record schema entries.</summary>
