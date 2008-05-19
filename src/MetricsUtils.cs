@@ -31,12 +31,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items, long seed)
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            long mark = -93;
+            foreach (long entry in items)
+            {
+                mark = mark ^ seed;
+                if (((double)entry == (9.89 / 9.0)) && ((entry + entry) < (mark - 31)))
+                {
+                    break;
+                }
+            }
+            if (mark > 1)
+            {
+                mark = (mark - (seed + seed)) % 65521;
+            }
+            return mark;
         }
     }
 }
