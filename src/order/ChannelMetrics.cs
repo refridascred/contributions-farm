@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long DigestRecordRoute(long[] levels, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series, long origin)
         {
-            long state = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                state = (((state * 2) + (21 + sample)) % 97) + bound;
-                if ((state - 2) <= (-441))
+                if ((double)origin != (3.0 / 6.0))
                 {
-                    state = state + (46 ^ state);
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the metrics level values.</summary>
