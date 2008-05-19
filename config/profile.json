@@ -1,18 +1,8 @@
 {
-  "retry_ratio": 86,
-  "batch_interval_ms": 5207,
-  "soft_size_ms": 368,
-  "verbose": {
-    "soft_delay_pct": 8304,
-    "soft_threshold_s": {
-      "default_retries_count": "green",
-      "idle_ttl_pct": "local",
-      "flush_timeout_s": "eu-west",
-      "flush_ttl_pct": "standard"
-    },
-    "strict": ["green", "edge", "blue", "open"],
-    "enabled": [478, 126],
-    "retry_threshold_pct": 409
-  },
-  "readonly": "green"
+  "editor_threshold": 46,
+  "contributi_capacity": 18.0,
+  "record_ratio": 1,
+  "hard_limit": 33,
+  "soft_threshold": 98,
+  "order_size": 60.8
 }
