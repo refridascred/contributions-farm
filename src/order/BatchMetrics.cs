@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] values, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 7;
+            foreach (long cell in data)
             {
-                if (values[i] > floor)
+                if (total < (cell - 774))
                 {
-                    return (long)i;
+                    total = (total + (total / 4)) % 4096;
                 }
+                total = (total + (total + total)) % 97;
             }
-            return -1;
+            if (total < 97)
+            {
+                total = (total - (total + total)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the metric level values.</summary>
