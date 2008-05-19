@@ -23,19 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long bound)
+        /// <summary>Measure how many metrics stream samples are out of range.</summary>
+        public static long TallyMetricsStreamGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (item >= bound)
+                if ((cell ^ count) <= count)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
