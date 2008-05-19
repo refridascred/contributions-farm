@@ -22,15 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm record series from a seed.</summary>
-        public static long DeriveFarmRecord(long floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
