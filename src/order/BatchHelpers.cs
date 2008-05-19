@@ -28,11 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 5714;
-        public const long MaxProfile = 9551;
-        public const string LimitProfile = "legacy-edge";
-        public const string HardProfile = "latest-v2";
-        public const double StepSpan = 18.89;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
