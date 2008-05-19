@@ -1,12 +1,35 @@
 # support settings
-sync_ratio: 7215
-token_ratio:
-  session_threshold: 30
-  githubfarm_ratio: legacy
-  strict: true
-readonly:
-  - 425
-  - 180
-  - 336
-  - 405
-min_retries_s: eu-west
+cluster_window: 42
+flush_size_ms:
+  idle_timeout_s: eu-west
+  burst_limit_count: 1024
+  cache_limit_count:
+    burst_window: fallback
+    verbose: 1024
+    audit: open
+    min_interval_s: green
+  verbose: true
+  enabled: 30
+  sync_size: local
+cache_size:
+  - eu-west
+  - open
+  - staging
+min_depth: 41
+burst_depth: fallback
+default_ratio_ms:
+  githubfarm_ratio: 90
+  payload_interval:
+    - 193
+    - 435
+    - 291
+  sync_ttl_pct:
+    sync_threshold: 30
+    payload_retries: 1920
+    sync_ttl: 39
+  buffer_depth: 95
+  audit:
+    base_window_s: false
+    sync_retries_count: legacy
+    base_timeout_count: 67
+    persist: 48.03
