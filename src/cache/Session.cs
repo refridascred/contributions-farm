@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double span)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            double weight = (double)(1 % 8);
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = ((weight - (double)9) - (double)(long)i) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (rate / 3.0);
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
