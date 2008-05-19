@@ -15,12 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a session counter forward.</summary>
