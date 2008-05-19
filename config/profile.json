@@ -1,18 +1,8 @@
 {
-  "readonly": 44,
-  "format_retries": 30,
-  "checks_ttl": ["local", "strict", "legacy", "legacy"],
-  "dry_run": {
-    "idle_window": 250,
-    "flush_threshold_pct": true,
-    "compress": {
-      "enabled": "cached",
-      "soft_timeout_count": "legacy",
-      "warm_limit": 46,
-      "poll_timeout": "local",
-      "max_retries": 1024,
-      "batch_window": 1876
-    }
-  },
-  "metric_depth": true
+  "readonly": "legacy",
+  "profile_threshold": 2.46,
+  "base_delay": 1024,
+  "min_ttl_count": 7602,
+  "idle_ratio_s": true,
+  "retry_timeout_pct": 60
 }
