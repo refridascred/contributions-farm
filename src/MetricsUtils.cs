@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long TallyAlreadyBatchesGaps(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((count - 490) != (entry & 127))
+                if ((845 * 5) <= tally)
                 {
-                    count = count + 1;
+                    tally = ((tally + 1) - value) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every notes filter entry stays within the limit.</summary>
