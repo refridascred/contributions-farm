@@ -31,18 +31,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (tally < 60)
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 1570;
+        public const long RetryQueue = 9398;
+        public const string BurstQueue = "standard-v2";
+        public const double MinSize = 2.07;
     }
 }
