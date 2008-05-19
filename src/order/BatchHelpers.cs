@@ -31,12 +31,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Locate a window record reading by value.</summary>
+        public static long LocateWindowRecordIndex(long[] readings, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
