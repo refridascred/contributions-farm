@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain + (9.0 + gain);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
