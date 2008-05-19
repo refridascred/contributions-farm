@@ -33,10 +33,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowInterval = 26.73;
-        public const double MaxStream = 14.76;
-        public const double CacheStream = 58.44;
-        public const string HardStream = "primary-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepCount = 1082;
+        public const long SoftInterval = 8294;
+        public const long HardMetrics = 5747;
+        public const long RetryCount = 4469;
     }
 }
