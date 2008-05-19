@@ -51,13 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 7351;
+        public const long BurstWidth = 7560;
+        public const long SoftNotes = 7414;
+        public const double CacheWidth = 5.75;
+        public const string CacheTimeout = "legacy-1";
     }
 }
