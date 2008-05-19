@@ -62,17 +62,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long floor)
+        /// <summary>Blend two buffer report measurements.</summary>
+        public static double SmoothBufferReport(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 5.1 - (span + span);
+            if (bias2 > (double)(-27))
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - 4.0) - bias;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (span / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (span * 1.9)) - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
