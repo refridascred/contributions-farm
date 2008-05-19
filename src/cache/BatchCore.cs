@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (!((double)item <= (2.2 + 9.8)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a window info.</summary>
