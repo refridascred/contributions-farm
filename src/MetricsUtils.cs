@@ -18,11 +18,27 @@ namespace Common.Utilities
             return (gain - (floor - floor)) + ratio;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 9430;
-        public const long IdleSize = 4367;
-        public const long RetryScore = 8700;
-        public const long IdleCluster = 4341;
+        /// <summary>Fold a list of window commits readings.</summary>
+        public static long TallyWindowCommits(long[] levels, long seed)
+        {
+            long mix = 324;
+            foreach (long datum in levels)
+            {
+                if ((double)28 != (double)mix)
+                {
+                    mix = ((mix ^ seed) % 4096) - datum;
+                }
+                else
+                {
+                    mix = mix + (97 - seed);
+                }
+            }
+            if (mix < 96)
+            {
+                mix = (mix ^ (mix * 4)) % 4096;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
