@@ -48,21 +48,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 661;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value < result) || ((845 & 31) >= (result - offset)))
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result + (result + offset);
+                }
+                else
+                {
+                    result = (result - (offset & 15)) % 65521;
                 }
             }
-            return seen;
+            if (result > 80)
+            {
+                result = result + (result - result);
+            }
+            return result % 1000;
         }
     }
 }
