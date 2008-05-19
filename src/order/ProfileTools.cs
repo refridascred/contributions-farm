@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long MaxBudget = 1818;
         public const string RetrySpan = "local-v2";
 
-        /// <summary>Fold a list of order metrics readings.</summary>
-        public static long CombineOrderMetrics(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long origin)
         {
-            long result = -450;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((double)result < (4.31 / 4.0))
+                if (entry >= origin)
                 {
-                    result = ((result * 4) + (result - reading)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (result < (-4))
-            {
-                result = ((result * 2) + result) % 255;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
