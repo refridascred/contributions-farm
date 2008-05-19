@@ -47,17 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route checks series from a seed.</summary>
-        public static long SeriesRouteChecks(long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            long state = 23;
+            foreach (long datum in values)
             {
-                mark = (mark << 2) ^ (mark & 127);
-                mark = (mark * 2) + 59;
-                mark = ((mark * 2) + (long)i) % 1000;
+                state = (((state ^ (state << 2)) % 255) - datum) - seed;
             }
-            return mark;
+            return state % 1000;
         }
     }
 }
