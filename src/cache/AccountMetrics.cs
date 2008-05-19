@@ -16,19 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long result = 94;
+            foreach (long entry in samples)
             {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result + (result / 9)) % 4096) - entry;
             }
-            return ready;
+            if (result < 386)
+            {
+                result = ((result * 5) + (target >> 1)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
