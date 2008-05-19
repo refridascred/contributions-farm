@@ -26,10 +26,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "standard-v2";
-        public const string DefaultSpan = "cached-edge";
-        public const long LimitScore = 3777;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((-132) + count) == (item >> 4))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
