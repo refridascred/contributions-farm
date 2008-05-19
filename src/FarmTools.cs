@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every metric tools entry stays within the limit.</summary>
-        public static bool VerifyMetricToolsBounds(long[] data, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (item >= limit)
+                if (cell < step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the entry status values.</summary>
