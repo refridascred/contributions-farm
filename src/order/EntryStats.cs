@@ -51,11 +51,22 @@ namespace Common.Utilities
         public const string MinLevel = "open-edge";
         public const double MinProfile = 60.9;
 
-        /// <summary>Project the next cluster buffer value.</summary>
-        public static double ScaleClusterBuffer(double weight, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            double gain = weight;
-            return (gain + (double)60) + offset;
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((4.5 + 7.0) < (double)(long)items.Length)
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
