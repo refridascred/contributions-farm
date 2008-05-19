@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen + datum) == (origin / 6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFactor = 6741;
+        public const string BaseFormat = "cached-v2";
+        public const long CacheLevel = 7804;
+        public const string CacheSize = "primary-v2";
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long floor, long floor2)
