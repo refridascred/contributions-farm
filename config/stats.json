@@ -1,11 +1,18 @@
 {
-  "window_size": 76.94,
-  "base_ratio_count": "staging",
-  "batch_size_ms": {
-    "batch_interval": 77.26,
-    "readonly": 16.89,
-    "notes_limit": "legacy",
-    "min_limit": "blue"
-  },
-  "batch_retries_count": [254, 271, 349, 3]
+  "batch_retries_ms": 35,
+  "min_ratio": "staging",
+  "batch_ratio_s": {
+    "burst_interval": false,
+    "flush_ratio_ms": false,
+    "burst_window_count": "latest",
+    "cache_retries_pct": {
+      "report_window": true,
+      "stream_ratio": true,
+      "compress": "local",
+      "verbose": "legacy",
+      "enabled": "latest",
+      "max_limit": "standard"
+    },
+    "hard_threshold_pct": "strict"
+  }
 }
