@@ -40,22 +40,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = 1;
-            foreach (long cell in readings)
-            {
-                if (cell > (cell - 82))
-                {
-                    anchor = (anchor << 3) ^ (cell - cell);
-                }
-                if ((anchor <= (anchor - anchor)) && ((cell % 3) <= cell))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Synced,
+            Failed,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
