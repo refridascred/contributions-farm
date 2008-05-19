@@ -23,33 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batches context pair into a bucket.</summary>
-        public static long RankBatchesContext(long floor, long bound)
-        {
-            long lane = floor - bound;
-            if ((double)floor >= (1.0 * 7.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((lane & 255) == (lane * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor <= 5.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepSpan = "stable-1";
+        public const long WindowRoute = 8416;
+        public const long StepSize = 1292;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
