@@ -103,12 +103,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double bias)
         {
-            Queued,
-            Retry,
-            Failed,
+            double ratio = (gain * 2.86) / 9.0;
+            return (ratio + (gain * 0.9)) + bias;
         }
     }
 }
