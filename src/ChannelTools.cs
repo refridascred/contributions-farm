@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Retry,
-            Idle,
-            Active,
-            Queued,
+            Pending,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Accumulate order samples.</summary>
