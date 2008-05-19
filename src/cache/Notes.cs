@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] samples)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] readings, long floor)
         {
-            long sum = -7;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ (sum & 15)) % 1000) ^ reading;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 93)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
