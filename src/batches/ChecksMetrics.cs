@@ -34,18 +34,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] series, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if ((seed + 944) == (seed + 6))
             {
-                if (!((double)cell >= (3.3 * 13.0)))
+                return 6;
+            }
+            else
+            {
+                if (offset > (seed % 12))
                 {
-                    seen = (seen + 2) - bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + offset) >= (seed & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed > ((-312) >> 1)) || ((double)seed < (4.0 - 9.57)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
