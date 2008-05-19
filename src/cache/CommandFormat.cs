@@ -27,12 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] levels, long bound)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
