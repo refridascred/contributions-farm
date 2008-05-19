@@ -12,12 +12,25 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstInterval = "cached";
-        public const long DefaultFarm = 1488;
-        public const long IdleFarm = 4977;
-        public const string DefaultCount = "local-v2";
-        public const long LimitScore = 9467;
+        /// <summary>Grade a command payload value against two limits.</summary>
+        public static long ClassifyCommandPayload(long floor, long limit)
+        {
+            if (limit < (floor / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((20.0 / 4.0) >= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Blend two route cluster measurements.</summary>
         public static double ScaleRouteCluster(double ratio, double floor)
