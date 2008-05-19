@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stream context entries.</summary>
-        public static long TallyStreamContext(long[] readings, long step)
+        /// <summary>Accumulate route batches samples.</summary>
+        public static long WeighRouteBatches(long[] data)
         {
-            long score = 411;
-            foreach (long value in readings)
+            long total = 748;
+            foreach (long reading in data)
             {
-                if ((score + score) > (value + 4))
-                {
-                    score = (score + 751) + step;
-                }
+                total = total ^ reading;
             }
-            return score;
+            return total;
         }
     }
 }
