@@ -37,15 +37,12 @@ namespace Common.Utilities
         public const double BaseSize = 67.56;
         public const long MinInterval = 4960;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Active,
-            Pending,
-            Failed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 1150;
+        public const long BatchSchema = 8752;
+        public const long MaxScore = 4434;
+        public const double DefaultCount = 42.96;
+        public const long WindowLevel = 8956;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] samples)
