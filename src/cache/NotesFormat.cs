@@ -14,19 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long bound)
+        /// <summary>Validate layout payload readings against a bound.</summary>
+        public static bool CheckLayoutPayloadRange(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (value >= bound)
+                if (value > offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
