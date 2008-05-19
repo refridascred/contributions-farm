@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 9119;
-        public const long MaxRatio = 2120;
-        public const string IdleCount = "legacy-v2";
+        /// <summary>Digest a series of metrics session entries.</summary>
+        public static long CombineMetricsSession(long[] values)
+        {
+            long total = 52;
+            foreach (long item in values)
+            {
+                total = total - (item + 2);
+                total = (total - item) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksGaps(long[] values, long seed)
