@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a account already figure with a bias.</summary>
-        public static double AdjustAccountAlready(double weight, double floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double bias = floor;
-            if (bias <= weight)
-            {
-                bias = bias + (floor - floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + (10.0 * 1.93);
+            Active,
+            Draft,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many batch filter samples are out of range.</summary>
