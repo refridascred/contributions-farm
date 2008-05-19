@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] levels, long seed)
         {
-            double rate2 = (double)(43 >> 3);
-            if (rate2 >= (double)409)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                rate2 = ((rate2 - (double)3) + rate) - floor;
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - (rate2 * 7.97);
+            return stale;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
