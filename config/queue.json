@@ -1,7 +1,8 @@
 {
-  "min_interval_count": "legacy",
-  "default_threshold": 11,
-  "poll_size": ["edge", "local", "standard", "eu-west"],
-  "dry_run": [92, 215, 26, 71],
-  "farm_limit": true
+  "base_depth": true,
+  "warm_timeout_ms": 26,
+  "compress": true,
+  "farm_window": true,
+  "profile_size": false,
+  "burst_threshold": "fallback"
 }
