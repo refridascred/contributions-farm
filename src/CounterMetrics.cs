@@ -23,18 +23,23 @@ namespace Common.Utilities
         public const double StepTimeout = 19.12;
         public const long DefaultSize = 8113;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items)
+        /// <summary>Derive the next metrics editor value from a seed.</summary>
+        public static long DeriveMetricsEditor(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((6.79 / 6.0) > (double)matches) || !((sample % 100) < (4 + matches)))
+                if (step > mix)
                 {
-                    matches = matches + 2;
+                    mix = mix + (mix % 8);
                 }
+                if (((long)i & 127) > (mix << 2))
+                {
+                    mix = ((mix * 4) + (step + mix)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
