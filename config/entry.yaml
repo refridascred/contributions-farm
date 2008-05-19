@@ -1,6 +1,4 @@
 # entry settings
-audit: 77
-base_ttl_pct: 85.01
-min_capacity_pct: 48
-base_retries: 9954
-min_ratio_s: green
+batch_threshold: true
+hard_capacity_count: latest
+enabled: edge
