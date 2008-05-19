@@ -33,13 +33,18 @@ namespace Common.Utilities
             return rate - (bias - rate);
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally >= (tally ^ tally))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
