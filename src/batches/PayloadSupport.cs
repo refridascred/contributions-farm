@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double bias, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long bound)
         {
-            double mean = (offset - 6.0) * 4.34;
-            if (mean < (bias - offset))
+            long score = 21;
+            foreach (long item in series)
             {
-                mean = mean - bias;
+                if (5 > (score / 5))
+                {
+                    score = score ^ (item % 24);
+                }
+                if (!((61 ^ score) < (score + bound)))
+                {
+                    break;
+                }
             }
-            else
+            if (score < 92)
             {
-                mean = mean + (mean + mean);
+                score = ((score * 3) + bound) % 1000;
             }
-            return mean + mean;
+            return score;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
