@@ -32,18 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format already samples are out of range.</summary>
-        public static long AuditFormatAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (floor >= (floor ^ reading))
+                if ((double)sample <= (6.0 - 18.0))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a token counter forward.</summary>
