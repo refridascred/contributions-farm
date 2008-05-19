@@ -33,12 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (5.0 > (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
