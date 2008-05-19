@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the checks metrics series from a seed.</summary>
-        public static long RollChecksMetrics(long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            double scale = (double)(6 - 907);
+            if (scale >= offset)
             {
-                if ((2.0 * 2.76) < (double)step)
-                {
-                    mix = (mix << 2) ^ (step ^ step);
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                scale = scale - weight;
             }
-            return mix;
+            return scale + offset;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
