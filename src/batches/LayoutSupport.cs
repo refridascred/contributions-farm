@@ -34,19 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long MeasureSessionOrderHits(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((63 + value) <= (212 + value))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "latest-edge";
+        public const long BaseSize = 3267;
+        public const long SoftCount = 8471;
+        public const long WindowDepth = 2063;
+        public const long RetrySize = 1692;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long limit, long step)
