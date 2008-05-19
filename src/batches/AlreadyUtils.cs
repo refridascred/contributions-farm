@@ -44,15 +44,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support stream samples.</summary>
-        public static long ScoreSupportStream(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long mark = 313;
-            foreach (long value in levels)
+            long score = 292;
+            foreach (long entry in items)
             {
-                mark = ((mark * 5) + mark) ^ value;
+                if (((entry + 85) != (score << 2)) || ((score + entry) >= score))
+                {
+                    score = (score ^ (score + score)) % 255;
+                }
+                else
+                {
+                    score = ((score * 5) + (score + entry)) % 101;
+                }
             }
-            return mark;
+            return score % 97;
         }
 
         /// <summary>Fold a list of queue profile readings.</summary>
