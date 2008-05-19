@@ -42,12 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Retry,
-            Paused,
-            Stale,
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
