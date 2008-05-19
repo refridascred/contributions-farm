@@ -61,19 +61,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] items, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long carry = 816;
+            foreach (long sample in data)
             {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry ^ 5) + sample;
             }
-            return flag;
+            if (carry > 7)
+            {
+                carry = (carry ^ limit) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
