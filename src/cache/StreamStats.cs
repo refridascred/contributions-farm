@@ -29,22 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((count < (count + 878)) || ((double)count != (8.11 * 1.1))))
+                if ((data[i] >= limit) && ((data[i] % 5) != 0))
                 {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
