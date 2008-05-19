@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double bias, double bias2)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series, long seed)
         {
-            double drift = bias2;
-            return (drift + (double)9) + bias;
+            long state = 2;
+            foreach (long value in series)
+            {
+                if ((state << 1) == (value & 3))
+                {
+                    state = ((state + state) % 1000) + seed;
+                }
+                else
+                {
+                    state = (state ^ (state + state)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Grade a account stream value against two limits.</summary>
