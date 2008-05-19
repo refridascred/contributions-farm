@@ -32,24 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long step, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            if (((9.0 / 4.0) < (double)origin) || ((double)step > (1.8 - 6.0)))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - step) > (origin + step))
+                if ((item ^ seen) < (item >> 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a order format counter forward.</summary>
