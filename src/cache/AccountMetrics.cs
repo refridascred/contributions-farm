@@ -39,19 +39,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] series, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            if ((seed & 31) < (48 + origin))
             {
-                if (value != bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed <= (8.76 * 16.0))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
