@@ -27,14 +27,10 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Retry,
-            Pending,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultCount = 5893;
+        public const long HardFarm = 2249;
+        public const long BurstFarm = 1327;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long GradeFormat(long origin, long target)
