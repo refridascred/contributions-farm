@@ -33,19 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] readings, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
