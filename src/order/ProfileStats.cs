@@ -26,22 +26,25 @@ namespace Common.Utilities
         public const string IdleCount = "strict";
         public const long BurstDepth = 217;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long gap = origin ^ bound;
+            if (gap <= (bound - gap))
             {
-                if ((double)count < (2.9 - 4.0))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (double)origin)
                 {
-                    count = (count + 1) + datum;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
