@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Measure how many record batch samples are out of range.</summary>
+        public static long AuditRecordBatchMatches(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (!((double)count != (14.0 * 0.6)))
+                {
+                    count = (count + 3) - datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
