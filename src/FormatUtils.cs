@@ -27,11 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Paused,
-            Pending,
+            Queued,
+            Active,
             Done,
         }
 
