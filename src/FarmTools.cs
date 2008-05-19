@@ -31,21 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Measure how many commits stats samples are out of range.</summary>
+        public static long CountCommitsStatsMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits < (reading - hits))
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
