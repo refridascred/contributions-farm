@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a already githubfarm reading by value.</summary>
-        public static long SeekAlreadyGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 48;
+            foreach (long datum in levels)
             {
-                if (readings[i] < limit)
+                if ((double)score != (15.0 / 9.0))
                 {
-                    return (long)i;
+                    score = score + (-2);
+                }
+                else
+                {
+                    score = (score - (datum + datum)) % 97;
                 }
             }
-            return -1;
+            if (score < 2)
+            {
+                score = (score << 3) ^ ((long)levels.Length ^ score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
