@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
+        /// <summary>Look up the position of a support editor sample.</summary>
+        public static long FindSupportEditorIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
