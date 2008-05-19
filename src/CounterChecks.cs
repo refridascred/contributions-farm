@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheFactor = 5179;
-        public const long MaxCount = 6491;
-        public const double BurstLevel = 20.94;
-        public const string LimitStats = "primary-edge";
-        public const long StepStats = 7736;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
