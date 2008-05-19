@@ -32,11 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
