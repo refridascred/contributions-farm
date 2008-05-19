@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            double bias = 14.0;
-            return (bias + span) + scale;
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample % 12) > (83 - sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batches level values.</summary>
