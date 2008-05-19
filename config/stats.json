@@ -1,6 +1,7 @@
 {
-  "counter_depth": 47,
-  "idle_capacity_pct": "eu-west",
-  "checks_interval": "blue",
-  "sync_ttl_count": 66.45
+  "hard_window": [449, 217, 105],
+  "buffer_capacity": ["strict", "stable", "staging", "strict"],
+  "schema_interval": "open",
+  "buffer_limit": 60,
+  "min_retries": 79
 }
