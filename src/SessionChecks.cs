@@ -22,11 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
