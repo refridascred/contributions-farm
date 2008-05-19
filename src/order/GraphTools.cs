@@ -46,12 +46,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 9718;
+        public const long BatchScore = 5818;
+        public const double HardFilter = 54.02;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] items)
