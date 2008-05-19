@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long total = 92;
+            foreach (long datum in items)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if ((datum / 3) >= datum)
+                {
+                    total = (total ^ (datum << 3)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ datum) % 255;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
