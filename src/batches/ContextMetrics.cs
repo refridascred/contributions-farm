@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "staging";
+        public const long StepRatio = 7368;
+        public const long CacheStream = 3838;
 
         /// <summary>Validate batch command readings against a bound.</summary>
         public static bool GuardBatchCommandBounds(long[] values, long step)
