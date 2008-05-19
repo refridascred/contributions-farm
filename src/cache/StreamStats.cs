@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleBudget = 8895;
-        public const long LimitScore = 8418;
-        public const long MaxRecord = 2175;
-        public const long BatchBudget = 6710;
-        public const double IdleInterval = 52.63;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] items, long limit)
