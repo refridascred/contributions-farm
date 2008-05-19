@@ -28,17 +28,21 @@ namespace Common.Utilities
             return bias - (double)(-6);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
