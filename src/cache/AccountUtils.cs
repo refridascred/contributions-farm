@@ -26,21 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already batch pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyBatchCount(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 71;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry ^ (carry & 63)) % 1000;
+                if (cell <= (carry + carry))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - (carry + cell);
+                }
+                else
+                {
+                    carry = (carry + cell) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
