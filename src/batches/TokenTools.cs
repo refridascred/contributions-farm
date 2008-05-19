@@ -28,13 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many layout stats samples are out of range.</summary>
+        public static long MeasureLayoutStatsHits(long[] data, long offset)
         {
-            Draft,
-            Ready,
-            Done,
-            Synced,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen / 8) >= 73)
+                {
+                    seen = ((seen + 3) - cell) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
