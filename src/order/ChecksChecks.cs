@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] data)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
         {
             long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)data.Length > (9.19 - 3.82))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + sample;
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
