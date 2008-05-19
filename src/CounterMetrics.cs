@@ -61,17 +61,24 @@ namespace Common.Utilities
         public const double DefaultCluster = 7.78;
         public const double BurstCluster = 30.85;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((7.4 + 7.0) <= (6.0 * 18.0))
             {
-                if (items[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (4.93 + 19.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
