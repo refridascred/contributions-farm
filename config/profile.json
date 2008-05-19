@@ -1,6 +1,5 @@
 {
-  "verbose": 59.99,
-  "hard_size_pct": "eu-west",
-  "min_ttl_ms": ["latest", "blue"],
-  "readonly": true
+  "burst_retries": 100,
+  "entry_capacity": 10,
+  "poll_ratio_s": 9287
 }
