@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Done,
-            Draft,
-            Idle,
-            New,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 17.02;
+        public const long SoftToken = 4375;
+        public const double SoftInterval = 25.81;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] samples, long floor)
