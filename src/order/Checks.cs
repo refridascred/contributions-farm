@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long bound)
+        /// <summary>Combine notes stats values into a single score.</summary>
+        public static long DigestNotesStats(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long total = 309;
+            foreach (long entry in series)
             {
-                if (entry < bound)
+                total = (total << 2) ^ total;
+                total = ((total * 5) + (entry - total)) % 4096;
+                if ((double)total == (double)entry)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
