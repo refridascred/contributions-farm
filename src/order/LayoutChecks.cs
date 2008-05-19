@@ -65,26 +65,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long acc = 983;
-            foreach (long entry in items)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((acc - entry) > (acc % 97)))
-                {
-                    acc = (acc << 3) ^ step;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 1000;
-                }
+                score = (score << 2) ^ ((long)i << 2);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (acc > 430)
-            {
-                acc = (acc + (step - acc)) % 65521;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
