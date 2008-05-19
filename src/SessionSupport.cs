@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double span)
-        {
-            double drift = (double)(85 + (-18));
-            if (drift <= (double)0)
-            {
-                drift = drift - (ratio * 11.0);
-            }
-            else
-            {
-                drift = drift + (ratio + drift);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (drift / 2.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCount = 7561;
+        public const long RetryInterval = 214;
+        public const double WindowCounter = 37.7;
 
         /// <summary>Combine tools token values into a single score.</summary>
         public static long TallyToolsToken(long[] series)
