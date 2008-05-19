@@ -52,10 +52,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 7423;
-        public const long BaseCluster = 637;
-        public const long CacheCount = 9021;
-        public const string CacheRatio = "open-1";
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!(count > (long)data.Length))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
     }
 }
