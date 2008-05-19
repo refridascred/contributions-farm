@@ -16,19 +16,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series, long seed)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long score = -90;
-            foreach (long cell in series)
-            {
-                score = (score * 5) + (0 >> 3);
-                if (((cell + cell) > (cell - cell)) || ((seed - seed) <= (seed >> 5)))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the command queue entries that pass the check.</summary>
