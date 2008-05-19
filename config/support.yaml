@@ -1,7 +1,10 @@
 # support settings
-notes_threshold: 379
-max_threshold: 100
-base_threshold: 8.49
-flush_depth_ms: 500
-min_threshold_ms: 4522
-batch_retries_s: 65.93
+poll_threshold_s: true
+dry_run:
+  - 454
+  - 97
+  - 101
+  - 497
+strict:
+  - primary
+  - primary
