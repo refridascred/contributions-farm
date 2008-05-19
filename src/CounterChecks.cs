@@ -57,17 +57,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (values[i] == target)
+                if (origin > (tally + (long)values.Length))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
