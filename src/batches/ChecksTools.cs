@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] samples, long target)
+        /// <summary>Validate format contributi readings against a bound.</summary>
+        public static bool VerifyFormatContributiBounds(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (value >= target)
+                if (datum > seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
