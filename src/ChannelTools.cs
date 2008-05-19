@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Pending,
-            Done,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultTimeout = 93.18;
+        public const long WindowGraph = 3395;
+        public const double MaxFactor = 42.34;
+        public const double RetrySpan = 64.21;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCount = 135;
