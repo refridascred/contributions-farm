@@ -1,14 +1,11 @@
 # Command notes
 
-When a entry fails, the batches handler retries a few times before giving up.
-Run the layout check before changing any githubfarm limits.
-Keep cluster and cluster names short and lowercase.
-
-The entry helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every command by account.
+When a session fails, the layout handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps farm values in sync with the context cache.
 
 ## Guidelines
 
-- Document new command fields
-- Log every tools change
-- Review filter limits each release
+- Validate account input early
+- Document new session fields
+- Log every context change
