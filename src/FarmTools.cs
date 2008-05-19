@@ -16,18 +16,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 11.62;
+        public const string StepSpan = "open-1";
+        public const double BurstCount = 7.71;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseSchema = 9726;
