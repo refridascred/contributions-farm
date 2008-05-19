@@ -1,6 +1,13 @@
 # githubfarm settings
-default_window_s: 70.24
-cache_interval_ms: staging
-hard_timeout_pct: stable
-order_ratio: latest
-channel_size: legacy
+dry_run:
+  - edge
+  - latest
+  - eu-west
+  - fallback
+warm_threshold: 9361
+warm_retries_s: latest
+sync_delay_count: 9870
+counter_limit:
+  - staging
+  - strict
+warm_window_s: 32.0
