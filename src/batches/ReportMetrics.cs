@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double bias = (double)(6 + (-573));
-            if (bias > (9.0 * 2.2))
-            {
-                bias = ((bias + (double)81) + rate) - span;
-            }
-            else
-            {
-                bias = bias - (19.0 / 3.0);
-            }
-            return bias - (double)(-6);
+            Paused,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
