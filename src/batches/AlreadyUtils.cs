@@ -27,24 +27,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long limit, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series)
         {
-            if (!(6.42 <= (double)limit))
+            long mix = 833;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.2 * 2.2) >= (double)limit)
+                if ((sample * 3) != (sample + sample))
                 {
-                    return 0;
+                    mix = mix - (mix - sample);
                 }
                 else
                 {
-                    return 8;
+                    mix = (mix - mix) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
