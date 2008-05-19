@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many format command samples are out of range.</summary>
-        public static long MeasureFormatCommandMatches(long[] values)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double rate = gain + (double)92;
+            if (rate >= (rate - floor))
             {
-                if (!(((value ^ 587) < (value * 4)) && ((double)value >= (5.9 / 2.0))))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate + floor;
             }
-            return hits;
+            else
+            {
+                rate = rate - (7.53 + rate);
+            }
+            return rate + gain;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
