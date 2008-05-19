@@ -89,21 +89,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools order samples.</summary>
-        public static long OverlapToolsOrderCount(long[] samples)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 17)
+                    if ((samples[i] + samples[j]) != 8)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
