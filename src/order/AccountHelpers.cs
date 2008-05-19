@@ -98,18 +98,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((seen + seen) <= (seen ^ seen))
+                if (reading != target)
                 {
-                    seen = (seen + 1) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
