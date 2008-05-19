@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] series, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < offset)
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a schema record.</summary>
