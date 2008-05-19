@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank graph schema input into a small class.</summary>
-        public static long BucketGraphSchema(long floor, long limit)
+        /// <summary>Audit editor stats readings against a rule.</summary>
+        public static long AuditEditorStatsGaps(long[] readings)
         {
-            if (limit <= (limit ^ limit))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (19.0 - 2.91))
+                if (((cell + count) != (count + 694)) && (cell > (cell + cell)))
                 {
-                    return 8;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((91 % 8) > (limit / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
