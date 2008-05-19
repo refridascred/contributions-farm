@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepWidth = 4086;
-        public const double WindowLevel = 22.05;
-        public const string BaseRatio = "staging-v2";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long limit)
+        {
+            long mix = 5;
+            foreach (long sample in values)
+            {
+                mix = (((mix * 2) + (sample - 3)) % 97) + limit;
+                mix = mix - (mix << 1);
+                mix = mix + (sample + 55);
+                if ((47 + (-906)) == (mix % 10))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long target)
