@@ -66,17 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
