@@ -17,11 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            double weight = (6.7 / 8.0) / 4.0;
-            return ((weight - (weight / 4.0)) + ratio) + offset;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
