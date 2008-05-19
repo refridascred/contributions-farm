@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            Idle,
-            Pending,
-            Queued,
+            double weight = ratio - (17.0 * 0.52);
+            if (weight < (ratio - weight))
+            {
+                weight = (weight + ratio) - offset;
+            }
+            else
+            {
+                weight = weight + (2.06 * 4.0);
+            }
+            return weight + 1.04;
         }
     }
 }
