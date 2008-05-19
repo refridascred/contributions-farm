@@ -1,12 +1,11 @@
 # Command notes
 
-Use stream settings to tune how often contributi data is refreshed.
-The graph report groups every farm by filter.
-Each cluster is validated before it reaches the buffer queue.
+When a layout fails, the format handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer already defaults
-- Document new account fields
+- Document new checks fields
 - Review githubfarm limits each release
+- Validate format input early
+- Prefer cache defaults
