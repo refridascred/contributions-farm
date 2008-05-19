@@ -1,12 +1,8 @@
 # entry settings
-soft_threshold_s:
-  - 194
-  - 286
-  - 158
-warm_retries_count: eu-west
-soft_limit_s: edge
-min_interval_ms: green
-sync_timeout_ms:
-  - 404
-  - 36
-  - 259
+min_delay_s: 207
+sync_depth: 9.75
+persist:
+  - green
+  - local
+  - eu-west
+  - fallback
