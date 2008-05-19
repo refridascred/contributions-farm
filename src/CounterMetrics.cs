@@ -47,21 +47,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Grade a profile checks value against two limits.</summary>
+        public static long SortProfileChecks(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (target <= (0 & 31))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target << 3) > floor)
                 {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
