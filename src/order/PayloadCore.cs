@@ -52,18 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Find the first batches graph entry that matches the target.</summary>
+        public static long SeekBatchesGraphIndex(long[] series, long limit)
         {
-            long result = 816;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample - result) > 434)
+                if (series[i] <= limit)
                 {
-                    result = (result ^ (result - result)) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
