@@ -26,18 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long MeasureGraphChecksOutliers(long[] values, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = 2;
+            foreach (long sample in data)
             {
-                if (((reading - tally) < (reading + seed)) || ((seed + 53) >= tally))
-                {
-                    tally = tally + 2;
-                }
+                mix = (mix - (sample << 1)) - target;
             }
-            return tally;
+            if (mix < 532)
+            {
+                mix = (mix << 3) ^ (mix * 3);
+            }
+            return mix % 97;
         }
     }
 }
