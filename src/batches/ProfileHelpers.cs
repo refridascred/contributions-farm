@@ -90,21 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support context pairs that satisfy a relation.</summary>
-        public static long OverlapSupportContextCount(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long gap = mark;
+                if (gap > limit)
                 {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark + limit;
+                    gap = (gap + (limit + mark)) % 65521;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
