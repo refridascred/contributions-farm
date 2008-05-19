@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Queued,
-            New,
-            Active,
+            Dropped,
+            Done,
+            Draft,
+            Closed,
         }
     }
 }
