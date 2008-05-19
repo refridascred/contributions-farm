@@ -1,6 +1,15 @@
 {
-  "persist": "green",
-  "context_window": "cached",
-  "format_retries": 100,
-  "base_window": "green"
+  "cache_retries": 61.71,
+  "poll_delay_s": {
+    "graph_capacity": 8.36,
+    "tools_depth": ["fallback", "strict", "stable"],
+    "hard_retries_s": {
+      "format_window": [365, 344, 25],
+      "schema_depth": 1024,
+      "idle_size": 30,
+      "retry_window_count": "latest",
+      "persist": "legacy"
+    }
+  },
+  "cache_limit_pct": ["latest", "legacy"]
 }
