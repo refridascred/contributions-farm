@@ -26,15 +26,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two tools window measurements.</summary>
-        public static double AdjustToolsWindow(double scale, double floor)
+        /// <summary>Rank cache contributi input into a small class.</summary>
+        public static long ClassifyCacheContributi(long bound, long floor)
         {
-            double weight = (double)((-555) * 3);
-            if (weight >= scale)
+            long bound2 = bound + floor;
+            if (bound <= (bound2 - 283))
             {
-                weight = (weight + (double)34) - floor;
+                return 7;
             }
-            return weight + scale;
+            else
+            {
+                if ((4.18 * 7.28) < (double)bound2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 - floor) > 814)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
