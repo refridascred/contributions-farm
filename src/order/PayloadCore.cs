@@ -38,12 +38,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Pending,
-            Idle,
-            New,
+            Done,
+            Synced,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Match up farm samples.</summary>
