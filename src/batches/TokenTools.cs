@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a payload entry counter forward.</summary>
