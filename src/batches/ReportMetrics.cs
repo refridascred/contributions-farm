@@ -32,32 +32,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double rate, double bias)
         {
-            long cur = origin - limit;
-            if (((6 / 2) >= (origin * 3)) || ((limit + cur) <= cur))
+            double ratio = bias / 4.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                ratio = ((ratio - (double)875) + (double)(long)i) + rate;
             }
-            else
-            {
-                if ((double)limit <= (7.0 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < (804 - cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return ratio + bias;
         }
     }
 }
