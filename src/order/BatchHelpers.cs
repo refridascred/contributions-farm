@@ -31,11 +31,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxInterval = 1416;
-        public const long RetrySession = 7548;
-        public const long BurstInterval = 783;
-        public const long WindowSize = 3924;
-        public const long IdleCount = 5665;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
