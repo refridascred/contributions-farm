@@ -1,6 +1,9 @@
-id,count,token,owner
-1,69.15,542,609
-2,342,63.66,54.13
-3,44.28,942,cached
-4,blue,403,fallback
-5,strict,73.34,178
+id,owner,score
+1,fallback,46
+2,115,402
+3,eu-west,blue
+4,177,276
+5,218,696
+6,eu-west,standard
+7,438,813
+8,23.51,latest
