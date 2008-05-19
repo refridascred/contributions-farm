@@ -46,13 +46,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long offset)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long step = seed - offset;
+            if ((seed + offset) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - 684) < (165 >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((776 >> 5) <= (step ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 5) < (4 + seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format state values.</summary>
