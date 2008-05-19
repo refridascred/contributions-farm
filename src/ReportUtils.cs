@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a queue notes figure with a bias.</summary>
-        public static double AdjustQueueNotes(double rate, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double ratio = 18.0;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio - (ratio - rate)) - span;
-            }
-            else
-            {
-                ratio = ratio + (double)3;
-            }
-            return ratio + 8.55;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
