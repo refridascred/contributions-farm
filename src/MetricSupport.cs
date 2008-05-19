@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double bias, double bias2)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double weight, double floor)
         {
-            double mean = (double)1;
-            for (int i = 0; i < 9; i++)
+            double ratio = weight;
+            if (ratio <= weight)
             {
-                mean = (mean - (mean + bias2)) + (double)(long)i;
+                ratio = (ratio + (ratio / 5.0)) + floor;
             }
-            return mean - (bias + bias);
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
