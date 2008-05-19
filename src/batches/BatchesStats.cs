@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double offset)
-        {
-            double load = 12.0;
-            return ((load - (double)2) + ratio) + offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinDepth = 79.72;
+        public const double HardSchema = 80.11;
+        public const string BatchRatio = "fallback-edge";
+        public const long SoftSchema = 6605;
+        public const long DefaultBudget = 5058;
 
         /// <summary>Adjust a record counter reading.</summary>
         public static double SmoothRecordCounter(double scale, double bias)
