@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] levels, long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < limit)
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
