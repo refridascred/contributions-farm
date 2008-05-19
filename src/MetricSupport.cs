@@ -23,20 +23,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels, long floor)
-        {
-            long state = 428;
-            foreach (long item in levels)
-            {
-                if (((99 - state) > ((-670) & 255)) || ((item * 3) >= (floor + item)))
-                {
-                    state = (state << 3) ^ floor;
-                }
-                state = (state * 4) + (state % 2);
-                state = state + floor;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 9084;
+        public const long StepCommits = 6956;
+        public const double MaxCommits = 37.03;
     }
 }
