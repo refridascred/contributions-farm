@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            Pending,
+            Closed,
+            Idle,
         }
     }
 }
