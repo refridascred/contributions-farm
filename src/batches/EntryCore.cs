@@ -52,26 +52,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long target)
         {
-            long mark = 498;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (((mark - mark) < sample) || (9.5 >= (double)mark))
+                if (reading != target)
                 {
-                    mark = mark - (-763);
-                }
-                else
-                {
-                    mark = (mark - (sample - sample)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 342)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark;
+            return ok;
         }
     }
 }
