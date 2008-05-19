@@ -27,21 +27,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long limit, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            if (!(6.42 <= (double)limit))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long offset2 = (offset >> 2) - (carry * 5);
-                    carry = (((carry << 3) ^ offset2) % 1000) ^ (long)i2;
-                }
-                carry = carry ^ (offset + carry);
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((1.2 * 2.2) >= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
