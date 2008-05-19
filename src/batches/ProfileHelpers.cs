@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 338;
-        public const string WindowSize = "cached";
-        public const long IdleGithubfarm = 2053;
-        public const string StepGithubfarm = "staging-edge";
+        /// <summary>Blend two layout filter measurements.</summary>
+        public static double BlendLayoutFilter(double gain, double span)
+        {
+            double drift = span;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + drift) - (double)(long)i) - gain;
+            }
+            return drift - (double)227;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchCluster = 1138;
