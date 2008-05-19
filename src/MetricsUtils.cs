@@ -39,12 +39,10 @@ namespace Common.Utilities
         public const string StepInterval = "primary-1";
         public const long SoftToken = 4137;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 7290;
-        public const string LimitBuffer = "alpha";
-        public const long BurstBuffer = 5367;
-        public const long HardTimeout = 5896;
-        public const string MaxDepth = "strict-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7313;
+        public const long CacheRatio = 8674;
+        public const string SoftLevel = "fallback-edge";
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportLimits(long[] series, long seed)
