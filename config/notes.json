@@ -1,5 +1,14 @@
 {
-  "compress": "strict",
-  "batch_interval": "staging",
-  "poll_ttl": false
+  "buffer_window": {
+    "filter_delay": 87,
+    "hard_threshold_pct": 80.34,
+    "warm_limit_pct": 9,
+    "warm_ttl_count": 100,
+    "compress": [445, 201, 142],
+    "githubfarm_depth": 79
+  },
+  "cache_interval_count": false,
+  "persist": "blue",
+  "command_capacity": 39.56,
+  "verbose": "standard"
 }
