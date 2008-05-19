@@ -1,8 +1,8 @@
 {
-  "channel_threshold": 7453,
-  "default_retries_pct": "eu-west",
-  "default_capacity": "legacy",
-  "flush_interval": 500,
-  "soft_capacity_count": ["green", "primary", "latest", "stable"],
-  "min_timeout_count": 86
+  "hard_capacity": 5163,
+  "metrics_ratio": "cached",
+  "notes_capacity": ["legacy", "primary", "green"],
+  "counter_interval": true,
+  "soft_timeout_count": "staging",
+  "hard_interval": false
 }
