@@ -64,19 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] series, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long carry = 0;
+            foreach (long item in samples)
             {
-                if (cell <= seed)
+                if ((item - carry) < carry)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 2) ^ carry) % 65521;
                 }
             }
-            return ready;
+            return carry;
         }
     }
 }
