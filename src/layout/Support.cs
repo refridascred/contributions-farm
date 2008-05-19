@@ -23,13 +23,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double floor)
         {
-            New,
-            Idle,
-            Closed,
-            Ready,
+            double ratio = scale;
+            if (ratio < (double)96)
+            {
+                ratio = ratio - 0.8;
+            }
+            else
+            {
+                ratio = ratio - (9.4 / 2.0);
+            }
+            return ratio + floor;
         }
 
         /// <summary>Validate checks metrics readings against a bound.</summary>
