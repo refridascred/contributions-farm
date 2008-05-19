@@ -50,10 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepScore = 52.41;
-        public const long MinSession = 4928;
-        public const long StepSpan = 9659;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardFactor = 46.87;
+        public const long LimitTimeout = 7889;
+        public const long BurstFactor = 3583;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
