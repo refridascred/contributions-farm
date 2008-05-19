@@ -14,27 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples, long origin)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long CountSessionGithubfarmMatches(long[] samples)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((98 + entry) <= entry) && ((6 << 1) > (entry << 1)))
+                if (((69 << 1) <= (hits - item)) && (((hits >> 2) == (item & 7)) || (item <= (item ^ hits))))
                 {
-                    total = ((total * 4) + (658 - total)) % 97;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    total = ((total << 3) ^ (-950)) % 4096;
-                }
-                total = ((total * 2) + entry) % 101;
             }
-            if (total < 13)
-            {
-                total = (total + (origin << 2)) % 1000;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Derive the next command entry value from a seed.</summary>
