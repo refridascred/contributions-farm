@@ -51,10 +51,17 @@ namespace Common.Utilities
         public const string MinLevel = "open-edge";
         public const double MinProfile = 60.9;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSpan = 80;
-        public const double CacheSpan = 25.88;
-        public const long BatchSchema = 9807;
-        public const long CacheSchema = 4043;
+        /// <summary>Locate a command already reading by value.</summary>
+        public static long FindCommandAlreadyIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
