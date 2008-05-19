@@ -58,10 +58,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardFactor = 46.87;
-        public const long LimitTimeout = 7889;
-        public const long BurstFactor = 3583;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long bound)
+        {
+            long next = limit ^ bound;
+            if ((limit + next) <= (limit ^ 45))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next << 3) >= (next + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((next % 3) < (limit / 6)) || ((1.0 / 3.0) < (double)next))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of queue profile readings.</summary>
         public static long TotalQueueProfile(long[] readings, long seed)
