@@ -25,12 +25,25 @@ namespace Common.Utilities
         public const long MinCount = 1170;
         public const double MaxScore = 14.23;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 8519;
-        public const string MaxSpan = "primary-edge";
-        public const long BurstLevel = 2673;
-        public const long DefaultCount = 6768;
-        public const long MinFilter = 4257;
+        /// <summary>Classify a command window pair into a bucket.</summary>
+        public static long GradeCommandWindow(long seed, long limit)
+        {
+            if ((7.74 + 6.98) == (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed < (seed - 912))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileBounds(long[] readings, long bound)
