@@ -53,11 +53,10 @@ namespace Common.Utilities
         public const long BatchRatio = 3574;
         public const long MaxBatch = 4880;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5932;
-        public const double StepBudget = 48.27;
-        public const long CacheEntry = 3952;
-        public const double LimitEntry = 57.8;
-        public const long SoftFactor = 4133;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSpan = 80;
+        public const double CacheSpan = 25.88;
+        public const long BatchSchema = 9807;
+        public const long CacheSchema = 4043;
     }
 }
