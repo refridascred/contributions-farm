@@ -1,4 +1,10 @@
 # support settings
-cache_size: 71
-flush_delay_s: 5681
-hard_capacity_count: latest
+base_retries_pct: fallback
+schema_timeout: false
+enabled:
+  dry_run: blue
+  max_threshold_count: blue
+  flush_window_count: 100
+  channel_threshold: green
+layout_capacity: strict
+notes_delay: latest
