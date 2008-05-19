@@ -14,10 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 54.94;
-        public const string RetryFactor = "standard-v2";
-        public const long MaxPayload = 4878;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCount = 135;
+        public const long CacheCommits = 8341;
+        public const long BaseFactor = 9308;
+        public const double MaxCommits = 0.11;
+        public const long BaseCommits = 3923;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] series, long seed)
