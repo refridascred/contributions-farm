@@ -20,13 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Digest a series of batches report entries.</summary>
+        public static long WeighBatchesReport(long[] data, long seed)
         {
-            Ready,
-            Paused,
-            Dropped,
-            New,
+            long mark = 866;
+            foreach (long item in data)
+            {
+                mark = ((mark ^ 85) % 101) + item;
+                if ((double)mark <= 2.0)
+                {
+                    mark = (mark - seed) % 255;
+                }
+            }
+            if (mark < 87)
+            {
+                mark = mark ^ (mark / 5);
+            }
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
