@@ -26,13 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every command support entry stays within the limit.</summary>
+        public static bool ValidateCommandSupportLimits(long[] series, long bound)
         {
-            Dropped,
-            Done,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
