@@ -1,7 +1,6 @@
 {
-  "flush_retries_count": 64,
-  "stats_capacity": 3669,
-  "max_interval": false,
-  "verbose": 100,
-  "window_interval": "standard"
+  "sync_timeout": 2997,
+  "cache_window": 100,
+  "hard_ttl": 70,
+  "default_delay_ms": [411, 482, 48, 447]
 }
