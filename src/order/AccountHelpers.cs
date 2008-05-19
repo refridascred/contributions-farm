@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] items, long bound)
+        /// <summary>Project the next cache stream value.</summary>
+        public static double SmoothCacheStream(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double drift = scale;
+            if (drift <= (drift - offset))
             {
-                if ((seen & 63) <= (seen + bound))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift - (19.0 - offset);
             }
-            return seen;
+            else
+            {
+                drift = drift - (scale * 5.2);
+            }
+            return drift - (offset + offset);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
