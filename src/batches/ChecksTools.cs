@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
             Locked,
             Active,
-            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
