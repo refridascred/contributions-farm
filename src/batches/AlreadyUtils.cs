@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
