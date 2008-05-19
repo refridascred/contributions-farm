@@ -29,19 +29,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] values, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long sum = 209;
+            foreach (long datum in items)
             {
-                if (item <= step)
+                if ((double)sum < (double)23)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum ^ ((-73) >> 3)) % 1000;
+                    sum = ((sum * 4) + (floor % 2)) % 97;
+                }
+                if ((double)datum <= 7.5)
+                {
+                    sum = (sum ^ (sum / 3)) % 255;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
