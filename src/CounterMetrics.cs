@@ -33,19 +33,13 @@ namespace Common.Utilities
             return rate - (bias - rate);
         }
 
-        /// <summary>Check that every counter stats entry stays within the limit.</summary>
-        public static bool CheckCounterStatsRange(long[] samples, long bound)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
