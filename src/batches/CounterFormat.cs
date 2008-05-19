@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5717;
         public const long CacheRatio = 7222;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 6173;
+        public const long LimitSize = 1849;
+        public const string SoftEntry = "legacy-v2";
+        public const long StepEntry = 1280;
+        public const double IdleEntry = 43.01;
     }
 }
