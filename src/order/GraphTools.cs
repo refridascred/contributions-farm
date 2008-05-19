@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a account cluster counter forward.</summary>
-        public static long RollAccountCluster(long seed)
+        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
+        public static long SeekClusterContributiIndex(long[] levels, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed << 3) < (total / 3))
+                if (levels[i] >= origin)
                 {
-                    total = ((total << 3) ^ (total % 10)) % 97;
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
