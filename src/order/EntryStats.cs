@@ -51,22 +51,11 @@ namespace Common.Utilities
         public const string BurstMetric = "local";
         public const long WindowSize = 967;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((7.32 * 5.4) > (double)matches) && (datum >= (datum ^ datum)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5932;
+        public const double StepBudget = 48.27;
+        public const long CacheEntry = 3952;
+        public const double LimitEntry = 57.8;
+        public const long SoftFactor = 4133;
     }
 }
