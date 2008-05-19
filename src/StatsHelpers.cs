@@ -45,21 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] series, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mix = 187;
-            foreach (long cell in series)
-            {
-                long slot = mix;
-                mix = (((mix ^ (slot * 5)) % 4096) ^ cell) - seed;
-                mix = (mix + (mix & 255)) % 255;
-            }
-            if (mix > 72)
-            {
-                mix = (mix - (4 - mix)) % 101;
-            }
-            return mix % 1000;
+            Pending,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Accumulate support editor samples.</summary>
