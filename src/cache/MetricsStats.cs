@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate stream record samples.</summary>
-        public static long DigestStreamRecord(long[] readings, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
-            long result = -7;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((result * 2) == (result - 87))
+                if (((long)data.Length + sample) >= count)
                 {
-                    result = (result * 5) + (item * 4);
-                }
-                else
-                {
-                    result = (result * 2) + (item + result);
+                    count = count + 1;
                 }
             }
-            if (result < 746)
-            {
-                result = (result - (limit * 4)) % 1000;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the metric phase values.</summary>
