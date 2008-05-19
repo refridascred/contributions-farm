@@ -14,20 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double floor)
-        {
-            double rate = 7.9;
-            if (rate > rate)
-            {
-                rate = (rate + 3.8) + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + (rate - floor);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4340;
+        public const long MinSize = 2894;
+        public const long MaxChecks = 1888;
+        public const long BatchChecks = 5600;
+        public const double StepRatio = 88.67;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
