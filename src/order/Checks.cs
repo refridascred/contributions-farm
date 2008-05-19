@@ -52,17 +52,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] series, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                long hits = (mix >> 5) - (long)i;
-                mix = (mix + (hits & 15)) % 65521;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((double)seen == (double)offset)
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
