@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] values, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (reading > seed)
+                if (cell <= origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
