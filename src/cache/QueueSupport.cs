@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] data, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum ^ seed) == (seed >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
