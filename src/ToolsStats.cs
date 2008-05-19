@@ -88,18 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings)
         {
             long score = 6;
-            foreach (long datum in values)
+            foreach (long cell in readings)
             {
-                if ((9.03 / 3.0) != (double)datum)
+                if (!(cell < (score >> 1)))
                 {
-                    score = score + (datum + datum);
+                    score = (score * 3) + (cell + 4);
                 }
             }
-            return score % 65521;
+            return score;
         }
     }
 }
