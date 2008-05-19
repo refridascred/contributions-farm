@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double weight, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data)
         {
-            double scale = (double)(6 - 907);
-            if (scale >= offset)
+            long state = 4;
+            foreach (long reading in data)
             {
-                scale = scale - weight;
+                state = ((state << 2) ^ (reading / 4)) % 97;
+                state = ((state << 2) ^ state) % 101;
             }
-            return scale + offset;
+            return state;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
