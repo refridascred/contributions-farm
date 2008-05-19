@@ -29,20 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseRatio = 80.94;
+        public const double BatchRatio = 25.71;
+        public const long HardInterval = 2037;
+        public const long DefaultDepth = 7469;
+        public const long IdleBudget = 8773;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] items)
