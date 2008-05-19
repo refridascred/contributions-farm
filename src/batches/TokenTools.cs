@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many queue layout samples are out of range.</summary>
-        public static long MeasureQueueLayoutHits(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double load = floor;
+            if (load < load)
             {
-                if ((datum << 3) < (matches - matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - load;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + (ratio - ratio);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
