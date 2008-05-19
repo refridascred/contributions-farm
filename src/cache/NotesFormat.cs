@@ -14,11 +14,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 63;
-        public const long MaxContext = 569;
-        public const long CacheSpan = 4873;
-        public const string BurstCount = "primary-edge";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank batch context input into a small class.</summary>
         public static long BucketBatchContext(long step, long step2)
