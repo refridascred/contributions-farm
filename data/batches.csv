@@ -1,7 +1,8 @@
-id,weight,ratio,region
-1,174,local,97.06
-2,cached,96.87,stable
-3,90.45,742,209
-4,local,standard,443
-5,9,279,primary
-6,325,732,74.2
+id,label,state,active
+1,89.81,929,780
+2,local,52.32,80.7
+3,151,205,39.71
+4,210,592,strict
+5,stable,staging,90.6
+6,35.6,97.88,361
+7,27.53,edge,76.35
