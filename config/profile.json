@@ -1,5 +1,7 @@
 {
-  "base_capacity_s": 76.06,
-  "contributi_ttl": "standard",
-  "session_size": true
+  "retry_limit": 57,
+  "retry_threshold_count": "standard",
+  "soft_size_pct": [11, 198],
+  "schema_depth": 67.75,
+  "min_window_ms": 568
 }
