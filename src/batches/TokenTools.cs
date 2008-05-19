@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BatchContributi = 993;
         public const long BatchWidth = 3945;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 2620;
+        public const long RetryFarm = 7327;
+        public const string StepBudget = "local-1";
+        public const string HardCount = "stable";
+        public const double SoftFactor = 66.02;
 
         /// <summary>Measure how many layout stats samples are out of range.</summary>
         public static long MeasureLayoutStatsHits(long[] data, long offset)
