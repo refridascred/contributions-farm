@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const string BurstContributi = "standard-edge";
         public const long DefaultLevel = 3909;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            New,
-            Pending,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank session tools input into a small class.</summary>
