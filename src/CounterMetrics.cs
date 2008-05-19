@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many batch channel samples are out of range.</summary>
-        public static long MeasureBatchChannelHits(long[] items, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.6 - 8.06) == (double)step)
+                if (levels[i] > origin)
                 {
-                    matches = (matches + 3) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many session contributi samples are out of range.</summary>
