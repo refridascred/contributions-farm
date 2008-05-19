@@ -20,11 +20,31 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 245;
-        public const long MaxScore = 1125;
-        public const long WindowAccount = 6175;
-        public const long MinLevel = 5669;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items, long floor)
+        {
+            long score = 542;
+            foreach (long item in items)
+            {
+                if ((score > (score * 5)) || ((-2) < floor))
+                {
+                    score = ((score * 2) + (floor + item)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 4) + (13 * 5)) % 101;
+                }
+                if ((double)score == (double)floor)
+                {
+                    break;
+                }
+            }
+            if (score < 9)
+            {
+                score = score + ((long)items.Length % 2);
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
