@@ -27,10 +27,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8283;
-        public const long HardChecks = 3890;
-        public const string BaseChecks = "legacy-edge";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((2.1 + 1.3) < (double)matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] items, long offset)
