@@ -1,15 +1,5 @@
 # route settings
-support_threshold:
-  dry_run:
-    retry_window: true
-    sync_threshold: legacy
-    max_timeout_s: eu-west
-    filter_ttl: standard
-  counter_timeout: blue
-  filter_window: false
-  default_window_s: 12.34
-  retry_timeout_count: 2486
-  verbose: false
-sync_threshold_pct: local
-warm_limit_ms: false
-route_retries: true
+soft_window_pct: standard
+retry_delay_ms: true
+batch_capacity_count: 73.37
+base_threshold_ms: blue
