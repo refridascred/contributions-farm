@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string IdleScore = "stable-1";
         public const long WindowEntry = 5232;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Blend two filter batches measurements.</summary>
+        public static double BlendFilterBatches(double scale, double offset)
         {
-            Retry,
-            Synced,
-            Active,
+            double ratio = offset - offset;
+            if (ratio < (scale * 12.0))
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (20.0 - offset);
         }
 
         /// <summary>Describe the session phase values.</summary>
