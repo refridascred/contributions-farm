@@ -33,13 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            Failed,
-            Stale,
-            Idle,
-            Queued,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)matches <= (double)item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
