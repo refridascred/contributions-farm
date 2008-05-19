@@ -34,38 +34,36 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            if ((origin - origin) >= (origin - bound))
+            long state = 8;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) < origin)
+                state = state ^ (53 + state);
+                for (int i = 0; i < 2; i++)
                 {
-                    return 8;
+                    state = ((state * 4) + (248 * 2)) - (long)i;
+                    state = state ^ (sample + sample);
+                }
+                if ((double)state <= (4.15 * 4.0))
+                {
+                    state = ((state << 2) ^ (sample & 31)) % 65521;
                 }
                 else
                 {
-                    if (((double)origin != (5.19 / 6.0)) && ((18.0 * 6.3) < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)origin < (7.0 / 4.0)) && ((double)origin >= (13.0 * 0.7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = state + (state % 7);
+                }
+                if ((double)(long)readings.Length <= (12.0 / 6.0))
+                {
+                    break;
                 }
             }
+            if (state > 44)
+            {
+                state = (state ^ (state - state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
