@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 12); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in fallback blue latest; do
+for item in local edge; do
     log "checking ${item}"
 done
