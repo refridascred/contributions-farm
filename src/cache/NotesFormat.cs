@@ -28,9 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 5345;
-        public const long StepSession = 489;
-        public const long DefaultInterval = 4977;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Draft,
+            Pending,
+            Failed,
+            Synced,
+        }
     }
 }
