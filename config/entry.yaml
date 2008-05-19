@@ -1,32 +1,10 @@
 # entry settings
-burst_size: 7875
-order_retries: false
-hard_retries:
-  base_depth_pct:
-    - 19
-    - 430
-    - 181
-  hard_delay_s:
-    persist: false
-    warm_interval:
-      - 226
-      - 491
-      - 407
-    base_delay_pct: green
-    soft_ratio_count: legacy
-    dry_run: 76.2
-    warm_retries_ms:
-      - 258
-      - 168
-      - 249
-  default_capacity_pct:
-    - 23
-    - 61
-  cache_timeout:
-    - legacy
-    - legacy
-    - stable
-  verbose: 30
-base_threshold: blue
-min_size_ms: 2367
-persist: 30
+layout_size: blue
+githubfarm_ttl:
+  - 148
+  - 463
+  - 29
+burst_size_count:
+  - 187
+  - 235
+  - 482
