@@ -1,12 +1,7 @@
 {
-  "base_ttl_pct": false,
-  "warm_timeout_pct": 31,
-  "warm_timeout_s": {
-    "idle_interval_count": 50.32,
-    "soft_capacity_pct": 250,
-    "enabled": "open",
-    "base_timeout_count": [18, 105]
-  },
-  "filter_delay": 50,
-  "counter_ratio": 500
+  "max_retries_pct": true,
+  "idle_ttl": [78, 337, 192, 460],
+  "command_ttl": false,
+  "poll_depth": 250,
+  "sync_delay_s": "stable"
 }
