@@ -69,12 +69,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 7889;
         public const long BurstFactor = 3583;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of queue profile readings.</summary>
+        public static long TotalQueueProfile(long[] readings, long seed)
         {
-            Pending,
-            Closed,
-            Failed,
+            long total = -370;
+            foreach (long entry in readings)
+            {
+                total = (total + (seed - 650)) + entry;
+            }
+            if (total < 69)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
     }
 }
