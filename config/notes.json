@@ -1,6 +1,14 @@
 {
-  "flush_threshold": "green",
-  "warm_interval_count": true,
-  "compress": 88,
-  "batch_window_ms": [293, 183, 431]
+  "buffer_delay": {
+    "flush_retries_ms": "latest",
+    "layout_interval": false,
+    "default_ttl_count": 19,
+    "idle_limit_s": 94.86,
+    "editor_threshold": 39.98
+  },
+  "compress": [218, 359],
+  "base_limit_pct": "open",
+  "stream_ratio": 250,
+  "poll_delay_count": 57.97,
+  "warm_threshold": "latest"
 }
