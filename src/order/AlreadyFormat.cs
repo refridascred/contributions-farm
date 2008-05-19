@@ -46,15 +46,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            double scale = (offset + 8.6) / 8.0;
+            if (scale < scale)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                scale = (scale - scale) - rate;
             }
-            return mix;
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (12.0 / 5.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
