@@ -35,15 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double bias, double floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double drift = bias * 9.72;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)69) + (double)(long)i;
-            }
-            return drift + (floor * 8.5);
+            Paused,
+            Idle,
+            Pending,
+            Draft,
+            Stale,
         }
     }
 }
