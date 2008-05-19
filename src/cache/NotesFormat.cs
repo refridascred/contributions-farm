@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double rate = gain + (double)92;
-            if (rate >= (rate - floor))
-            {
-                rate = rate + floor;
-            }
-            else
-            {
-                rate = rate - (7.53 + rate);
-            }
-            return rate + gain;
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
