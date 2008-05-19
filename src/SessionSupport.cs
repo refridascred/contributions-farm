@@ -22,13 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
