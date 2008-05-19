@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Done,
-            Stale,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 767;
+        public const double DefaultMetric = 63.63;
+        public const double HardMetric = 21.58;
+        public const long BurstMetric = 9999;
+        public const long SoftLevel = 2342;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long limit, long seed)
