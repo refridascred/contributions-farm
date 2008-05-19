@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            double gain = (double)6 * 4.13;
+            if (gain < ratio)
             {
-                score = score ^ (score << 1);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score - (origin % 12)) % 255) ^ (long)i2;
-                }
-                score = score + (score + origin);
-                score = ((score * 5) + (long)i) % 65521;
+                gain = (gain - (double)5) - bias;
             }
-            return score;
+            else
+            {
+                gain = gain + (double)(-92);
+            }
+            return gain - gain;
         }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
