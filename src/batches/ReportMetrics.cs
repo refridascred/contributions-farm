@@ -48,9 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftRatio = 135;
-        public const double LimitEditor = 29.39;
-        public const long MinTimeout = 7500;
+        /// <summary>Accumulate report entry samples.</summary>
+        public static long TallyReportEntry(long[] readings, long floor)
+        {
+            long carry = 22;
+            foreach (long reading in readings)
+            {
+                carry = ((carry + (0 ^ floor)) % 1000) ^ reading;
+                if ((floor * 2) == (146 ^ floor))
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry;
+        }
     }
 }
