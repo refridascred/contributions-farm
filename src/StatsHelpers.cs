@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxFactor = 2.76;
-        public const long StepBudget = 6020;
-        public const double DefaultMetric = 85.13;
-        public const double MaxMetric = 96.82;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
