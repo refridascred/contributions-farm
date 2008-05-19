@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Count commits context pairs that satisfy a relation.</summary>
+        public static long PairCommitsContextCount(long[] values)
         {
-            long anchor = 8;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(sample > (anchor & 15)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor ^ (anchor + (-4));
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 697)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
