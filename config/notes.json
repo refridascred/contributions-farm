@@ -1,13 +1,13 @@
 {
-  "hard_window_ms": "green",
-  "notes_capacity": false,
-  "dry_run": false,
-  "order_depth": {
-    "min_capacity_ms": false,
-    "compress": "green",
-    "max_capacity_ms": false,
-    "token_size": 61.12,
-    "max_delay_pct": "local"
-  },
-  "tools_capacity": 39.93
+  "hard_ratio_ms": "eu-west",
+  "max_interval": "blue",
+  "contributi_size": 47.87,
+  "readonly": "eu-west",
+  "persist": {
+    "retry_window_s": 37,
+    "tools_ratio": 20.73,
+    "compress": false,
+    "default_capacity": 80.14,
+    "soft_capacity": [434, 254]
+  }
 }
