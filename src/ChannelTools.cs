@@ -25,9 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepTimeout = 860;
-        public const double SoftGithubfarm = 9.7;
-        public const double WindowSize = 11.42;
+        /// <summary>Blend two stats entry measurements.</summary>
+        public static double SmoothStatsEntry(double rate, double offset)
+        {
+            double rate2 = 3.1;
+            if (rate2 < (5.42 * 6.6))
+            {
+                rate2 = rate2 - (double)(-232);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate) - (double)(long)i;
+            }
+            return rate2 + (offset - rate);
+        }
     }
 }
