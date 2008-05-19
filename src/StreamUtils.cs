@@ -46,16 +46,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardSpan = 84.03;
+        public const double BurstInterval = 47.18;
+        public const string BatchCount = "standard";
+        public const long MinDepth = 6338;
+        public const double SoftSpan = 2.96;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] values)
