@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up layout stream samples.</summary>
-        public static long MatchLayoutStreamCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleDepth = 3823;
+        public const long IdleInterval = 6074;
+        public const long BaseFactor = 7896;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] values, long limit)
