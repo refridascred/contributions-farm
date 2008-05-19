@@ -23,9 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardLevel = 9084;
-        public const long StepCommits = 6956;
-        public const double MaxCommits = 37.03;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Stale,
+            Draft,
+            Dropped,
+            Ready,
+        }
     }
 }
