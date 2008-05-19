@@ -12,12 +12,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSpan = 9757;
+        public const long BatchMetric = 6704;
+        public const long CacheMetric = 127;
 
         /// <summary>Blend two route cluster measurements.</summary>
         public static double ScaleRouteCluster(double ratio, double floor)
