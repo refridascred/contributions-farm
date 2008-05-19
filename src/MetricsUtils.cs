@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of commits buffer readings.</summary>
-        public static long DigestCommitsBuffer(long[] data)
+        /// <summary>Find the first session command entry that matches the target.</summary>
+        public static long LookupSessionCommandIndex(long[] levels, long limit)
         {
-            long result = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result % 8) <= result)
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    result = ((result * 2) + (result + entry)) % 65521;
-                }
-                else
-                {
-                    result = (result * 5) + (result << 2);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
