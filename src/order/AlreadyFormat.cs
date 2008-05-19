@@ -33,12 +33,22 @@ namespace Common.Utilities
             return load - (scale + scale);
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of support counter readings.</summary>
+        public static long CombineSupportCounter(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long acc = 7;
+            foreach (long value in samples)
+            {
+                if ((acc + 483) != (value - 81))
+                {
+                    acc = (acc ^ acc) + step;
+                }
+            }
+            if (acc > 64)
+            {
+                acc = (acc - (7 * 5)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
