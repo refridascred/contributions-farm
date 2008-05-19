@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] values, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] samples, long offset)
         {
-            long acc = 42;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                acc = (((acc + acc) % 255) ^ cell) - offset;
-                acc = (acc - (acc * 5)) % 255;
+                if ((offset % 60) > (offset + cell))
+                {
+                    count = count + 3;
+                }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
