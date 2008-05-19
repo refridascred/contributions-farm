@@ -52,11 +52,22 @@ namespace Common.Utilities
         public const double RetryBudget = 94.88;
         public const long MaxEntry = 4993;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Digest a series of profile editor entries.</summary>
+        public static long TotalProfileEditor(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
+            long result = 3;
+            foreach (long value in readings)
+            {
+                if (((double)value == (7.61 * 4.8)) && ((double)value < 3.2))
+                {
+                    result = result + (result & 63);
+                }
+                if ((value + value) <= (result + value))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
