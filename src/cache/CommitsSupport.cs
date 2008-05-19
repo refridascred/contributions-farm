@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const string HardSpan = "open";
         public const long IdleFormat = 6759;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] levels, long floor)
+        /// <summary>Measure how many format already samples are out of range.</summary>
+        public static long AuditFormatAlreadyOutliers(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (sample <= floor)
+                if (floor >= (floor ^ reading))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
