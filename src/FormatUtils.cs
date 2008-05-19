@@ -15,22 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long origin)
         {
-            long state = 792;
-            foreach (long reading in samples)
+            if ((2 + 402) < (origin & 63))
             {
-                if (((state ^ reading) >= (state ^ state)) && (state > (reading + (long)samples.Length)))
+                return 8;
+            }
+            else
+            {
+                if ((floor * 3) < (floor % 8))
                 {
-                    state = ((state * 3) + (reading % 12)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (state > 79)
-            {
-                state = ((state * 4) + (state + state)) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
