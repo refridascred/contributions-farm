@@ -55,19 +55,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next session already value.</summary>
-        public static double ScaleSessionAlready(double ratio, double offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            double bias = (double)(0 + 75);
-            if (bias < ratio)
+            double bias = (double)(40 * 3);
+            if (bias > ratio)
             {
-                bias = bias + ratio;
+                bias = (bias + ratio) + floor;
             }
             else
             {
-                bias = bias + offset;
+                bias = bias + (5.7 - bias);
             }
-            return bias + (double)96;
+            return bias - bias;
         }
     }
 }
