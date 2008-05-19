@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Dropped,
-            Retry,
-            Ready,
+            Paused,
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many commits stats samples are out of range.</summary>
