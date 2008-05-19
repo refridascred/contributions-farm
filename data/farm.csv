@@ -1,11 +1,6 @@
-id,count
-1,245
-2,legacy
-3,edge
-4,cached
-5,blue
-6,21.6
-7,250
-8,eu-west
-9,203
-10,131
+id,label,weight
+1,blue,staging
+2,80.56,open
+3,208,fallback
+4,542,latest
+5,22.14,0.83
