@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Scale a filter contributi figure with a bias.</summary>
+        public static double ScaleFilterContributi(double rate, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            double rate2 = (double)(6 + (-56));
+            if (rate2 > rate)
             {
-                total = ((total * 5) + (long)i) % 101;
+                rate2 = rate2 - (rate * 3.3);
             }
-            return total;
+            else
+            {
+                rate2 = rate2 - bias;
+            }
+            return rate2 + (rate - 3.0);
         }
 
         /// <summary>Hold a cluster stats.</summary>
