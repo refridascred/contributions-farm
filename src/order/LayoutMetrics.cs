@@ -32,15 +32,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long FoldClusterMetric(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = -6;
-            foreach (long sample in levels)
-            {
-                total = ((total + total) % 255) + sample;
-            }
-            return total % 4096;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
