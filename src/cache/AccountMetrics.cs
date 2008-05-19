@@ -55,24 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long seed, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] values)
         {
-            if (bound > (bound / 7))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((17 * 3) == (bound ^ seed))
+                if ((datum >> 2) == (4 & 7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a layout stats sample.</summary>
