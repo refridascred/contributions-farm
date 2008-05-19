@@ -29,14 +29,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series, long seed)
         {
-            Locked,
-            Done,
-            Dropped,
-            Ready,
-            Closed,
+            long anchor = 1;
+            foreach (long cell in series)
+            {
+                if (((double)seed >= (double)84) && ((double)7 <= (double)seed))
+                {
+                    anchor = (anchor * 5) + (seed - seed);
+                }
+                else
+                {
+                    anchor = (anchor - seed) % 1000;
+                }
+                if ((9 - cell) > (-289))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
