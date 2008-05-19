@@ -51,16 +51,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter queue value from a seed.</summary>
-        public static long SeriesCounterQueue(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseLevel = 78.32;
+        public const double StepSize = 37.82;
+        public const double LimitAlready = 55.79;
+        public const long SoftAlready = 3189;
+        public const long WindowTimeout = 7167;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long limit, long seed)
