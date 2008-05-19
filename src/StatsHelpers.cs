@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a support cluster figure with a bias.</summary>
-        public static double SmoothSupportCluster(double scale, double span)
+        /// <summary>Adjust a profile stats reading.</summary>
+        public static double ScaleProfileStats(double scale, double floor)
         {
-            double weight = 7.0;
-            if (weight < (double)970)
+            double gain = scale;
+            if (gain > floor)
             {
-                weight = weight - span;
+                gain = gain + (floor / 6.0);
             }
-            return weight + scale;
+            return gain + (gain / 8.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
