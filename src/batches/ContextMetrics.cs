@@ -20,21 +20,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = scale * 2.0;
+            if (ratio <= (double)(-218))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + (span + scale);
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (4.9 / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (scale / 9.0)) - (double)(long)i;
+            }
+            return ratio - (double)55;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
