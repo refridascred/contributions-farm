@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] levels, long origin)
         {
             long count = 0;
-            foreach (long entry in readings)
+            foreach (long cell in levels)
             {
-                if ((count % 64) <= 8)
+                if ((((-3) << 3) == (cell - (-331))) && ((origin & 15) > 91))
                 {
-                    count = (count + 3) ^ entry;
+                    count = count + 2;
                 }
             }
             return count;
