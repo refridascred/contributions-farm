@@ -16,21 +16,31 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Grade a session record value against two limits.</summary>
+        public static long ClassifySessionRecord(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)step > (5.62 - 9.0)) && ((147 >> 2) < step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor > (900 >> 4))
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - 77) >= (53 << 3))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
