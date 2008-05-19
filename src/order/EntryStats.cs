@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long mark = 504;
+            foreach (long item in data)
             {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (((mark << 2) ^ seed) % 101) + item;
             }
-            return valid;
+            if (mark > 4)
+            {
+                mark = (mark ^ seed) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
