@@ -34,14 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Locked,
-            Retry,
-            Paused,
-            Draft,
-            Failed,
+            Stale,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
