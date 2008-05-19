@@ -29,39 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream schema value against two limits.</summary>
-        public static long RankStreamSchema(long origin, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long limit)
         {
-            long diff = origin ^ floor;
-            if ((origin << 1) <= (diff + origin))
+            long total = 491;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 1) < (floor % 12))
+                if ((double)total != (6.1 * 5.8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((867 + floor) < (origin * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor <= (63 ^ diff)) || ((diff & 1) < origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = ((total ^ (datum / 7)) % 255) - limit;
                 }
             }
+            if (total > 3)
+            {
+                total = ((total << 3) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
