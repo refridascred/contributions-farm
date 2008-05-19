@@ -40,16 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total * 5) + 6;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Ready,
+            Synced,
+            Failed,
+            Dropped,
         }
     }
 }
