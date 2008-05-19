@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Use route settings to tune how often support data is refreshed.
+The graph report groups every report by account.
+A checks that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Document new stats fields
-- Log every profile change
-- Validate metrics input early
+- Review stats limits each release
+- Document new layout fields
+- Validate record input early
