@@ -44,11 +44,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 8557;
-        public const long StepGraph = 9945;
-        public const long BatchSpan = 6128;
-        public const long MinBudget = 3125;
-        public const string DefaultGraph = "cached-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 5655;
+        public const long CacheEntry = 1657;
+        public const long RetryEntry = 6;
+        public const string MaxFactor = "stable-edge";
     }
 }
