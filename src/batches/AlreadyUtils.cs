@@ -40,19 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] values, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (sample < step)
+                if (bound >= tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
