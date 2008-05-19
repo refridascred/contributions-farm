@@ -34,15 +34,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
         {
-            double rate = 12.0;
-            if (rate < (3.69 + rate))
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                rate = ((rate + (7.0 / 8.0)) - weight) - span;
+                sum = ((sum * 3) + (origin + (long)i)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return rate - rate;
+            return sum;
         }
 
         /// <summary>Look up the position of a notes token sample.</summary>
