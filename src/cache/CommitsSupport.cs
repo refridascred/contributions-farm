@@ -41,18 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] readings, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)target <= 16.0)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                total = (total + (583 ^ step)) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Project the next context support value.</summary>
