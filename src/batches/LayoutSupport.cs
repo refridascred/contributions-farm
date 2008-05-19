@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long origin)
         {
-            Idle,
-            Stale,
-            Pending,
-            Draft,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
