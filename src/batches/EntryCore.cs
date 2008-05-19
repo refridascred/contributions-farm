@@ -52,19 +52,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
