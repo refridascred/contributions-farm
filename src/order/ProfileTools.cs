@@ -47,27 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record report entries.</summary>
-        public static long TotalRecordReport(long[] items, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long origin)
         {
-            long anchor = 957;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((anchor / 2) < (limit + value))
+                if (origin <= (origin / 3))
                 {
-                    continue;
-                }
-                anchor = (anchor - ((-7) + 8)) % 101;
-                if (limit <= (anchor ^ value))
-                {
-                    anchor = anchor ^ ((-1) + anchor);
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            if (anchor > 29)
-            {
-                anchor = ((anchor * 5) + (limit + limit)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
