@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] data, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < (11.0 * 5.6))
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate order samples.</summary>
