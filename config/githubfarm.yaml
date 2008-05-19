@@ -1,4 +1,30 @@
 # githubfarm settings
-default_capacity_s: 25.55
-warm_ttl: 1.1
-window_depth: 97.06
+commits_delay: 30
+counter_ratio: 500
+hard_threshold:
+  - 357
+  - 5
+  - 264
+batches_ttl:
+  burst_interval:
+    - 483
+    - 296
+    - 280
+    - 437
+  metric_delay:
+    retry_ratio_count: stable
+    min_depth_pct:
+      - eu-west
+      - green
+      - cached
+    tools_delay: 41.32
+  default_depth_ms: edge
+  persist: latest
+  payload_limit: true
+  farm_retries: 4.23
+hard_retries:
+  - latest
+  - cached
+  - standard
+  - stable
+schema_ratio: 10.81
