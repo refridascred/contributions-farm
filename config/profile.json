@@ -1,11 +1,5 @@
 {
-  "flush_retries_count": {
-    "dry_run": "legacy",
-    "idle_timeout_pct": 2002,
-    "retry_ratio_pct": 92
-  },
-  "flush_capacity_pct": false,
-  "retry_ratio_ms": 63.91,
-  "retry_ttl_s": 43,
-  "dry_run": ["eu-west", "staging", "standard", "green"]
+  "strict": "primary",
+  "batch_ratio_count": 35.01,
+  "readonly": 48
 }
