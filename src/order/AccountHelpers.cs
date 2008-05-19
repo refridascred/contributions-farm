@@ -34,14 +34,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Look up the position of a editor metric sample.</summary>
+        public static long LocateEditorMetricIndex(long[] levels, long step)
         {
-            Queued,
-            Idle,
-            Closed,
-            Pending,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank metric commits input into a small class.</summary>
