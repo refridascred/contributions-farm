@@ -69,14 +69,33 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            Closed,
-            Retry,
-            Ready,
-            Paused,
-            Queued,
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+                if ((double)limit < 1.89)
+                {
+                    sum = (sum - (932 & 15)) % 4096;
+                    sum = (sum + (limit * 3)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (limit & 3)) % 101;
+                }
+                if (limit <= (sum - limit))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum + (sum + 99);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
