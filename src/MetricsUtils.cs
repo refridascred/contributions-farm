@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every notes filter entry stays within the limit.</summary>
-        public static bool GuardNotesFilterLimits(long[] levels, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long anchor = -291;
+            foreach (long sample in values)
             {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor - (sample ^ step)) % 97;
             }
-            return ready;
+            if (anchor < 862)
+            {
+                anchor = ((anchor << 3) ^ (5 * 5)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
