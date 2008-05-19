@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits stats entries that pass the check.</summary>
-        public static long CountCommitsStatsOutliers(long[] items, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 5;
+            foreach (long entry in data)
             {
-                if ((((double)item != (6.17 * 18.0)) || ((count * 2) >= (count - count))) && !(seed > (item / 3)))
+                if (!((entry - mark) < 504))
                 {
-                    count = count + 3;
+                    mark = (mark - (-148)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
