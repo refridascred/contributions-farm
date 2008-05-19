@@ -36,13 +36,10 @@ namespace Common.Utilities
         public const long MinGraph = 9683;
         public const long MinRatio = 4988;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Ready,
-            Idle,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitFactor = 9443;
+        public const long WindowCache = 9200;
+        public const long HardFactor = 7339;
+        public const long HardCache = 9525;
     }
 }
