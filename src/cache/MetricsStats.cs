@@ -71,15 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long state = 23;
-            foreach (long datum in values)
+            long sum = 126;
+            foreach (long entry in items)
             {
-                state = (((state ^ (state << 2)) % 255) - datum) - seed;
+                if ((535 + sum) == (entry >> 3))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
             }
-            return state % 1000;
+            return sum;
         }
     }
 }
