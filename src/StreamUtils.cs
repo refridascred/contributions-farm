@@ -43,18 +43,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 6124;
+        public const long MinPayload = 3295;
+        public const long WindowPayload = 2106;
+        public const long BaseCount = 5441;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long seed, long offset)
