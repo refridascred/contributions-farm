@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const double MaxFactor = 42.34;
         public const double RetrySpan = 64.21;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCount = 135;
-        public const long CacheCommits = 8341;
-        public const long BaseFactor = 9308;
-        public const double MaxCommits = 0.11;
-        public const long BaseCommits = 3923;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long bound, long bound2)
