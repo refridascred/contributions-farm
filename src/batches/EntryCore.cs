@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 9988;
-        public const string MaxInterval = "standard-v2";
-        public const long MaxSession = 6827;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((511 + reading) >= 5) || (limit >= (9 - reading)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleSpan = 7743;
