@@ -23,10 +23,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSpan = 9757;
-        public const long BatchMetric = 6704;
-        public const long CacheMetric = 127;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long limit, long origin)
+        {
+            if ((double)origin < (14.0 / 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.42 + 5.43) <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (origin + 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two route cluster measurements.</summary>
         public static double ScaleRouteCluster(double ratio, double floor)
