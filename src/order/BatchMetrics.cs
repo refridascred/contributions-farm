@@ -42,16 +42,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Rank batch window input into a small class.</summary>
+        public static long BucketBatchWindow(long seed, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long gap = seed ^ limit;
+            if ((gap + limit) <= (gap / 3))
             {
-                mark = (mark ^ (seed & 63)) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((49 / 2) >= (limit / 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - seed) > (limit - gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap >= (limit + seed)) && ((limit - limit) < (seed - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
