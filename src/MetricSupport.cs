@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double weight, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            double ratio = weight;
-            if (ratio <= weight)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + (ratio / 5.0)) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + weight;
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
