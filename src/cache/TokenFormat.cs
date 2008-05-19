@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long mark = 4;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((((mark * 3) + (0 >> 4)) % 101) + (long)i) + entry;
-                }
-                mark = (mark + (89 ^ (long)values.Length)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (mark < 0)
-            {
-                mark = mark ^ (mark % 7);
-            }
-            return mark % 1000;
+            return anchor;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
