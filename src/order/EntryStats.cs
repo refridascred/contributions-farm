@@ -31,19 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long score = 15;
-            foreach (long entry in series)
-            {
-                score = (score + (entry >> 1)) % 101;
-            }
-            if (score < 1)
-            {
-                score = ((score * 3) + (score + score)) % 101;
-            }
-            return score % 65521;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
