@@ -1,6 +1,5 @@
 {
-  "base_interval_ms": 5846,
-  "readonly": true,
-  "filter_ttl": 500,
-  "cache_timeout": "stable"
+  "order_window": "latest",
+  "counter_threshold": true,
+  "batch_delay_count": 69
 }
