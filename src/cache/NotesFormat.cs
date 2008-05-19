@@ -46,13 +46,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Roll a account channel counter forward.</summary>
+        public static long SeriesAccountChannel(long offset)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
