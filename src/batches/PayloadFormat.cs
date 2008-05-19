@@ -15,18 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mark = 5;
-            foreach (long entry in data)
-            {
-                if (!((entry - mark) < 504))
-                {
-                    mark = (mark - (-148)) % 255;
-                }
-            }
-            return mark;
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
