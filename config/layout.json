@@ -1,10 +1,15 @@
 {
-  "base_size_count": 30,
-  "burst_timeout_count": 41.77,
-  "enabled": {
-    "verbose": "primary",
-    "flush_depth_count": [141, 495],
-    "readonly": "eu-west",
-    "window_depth": [386, 105]
-  }
+  "audit": 80.34,
+  "schema_depth": "legacy",
+  "batch_retries_s": "stable",
+  "cache_capacity_count": {
+    "soft_size_pct": 3613,
+    "record_size": 26,
+    "session_size": false,
+    "enabled": "strict",
+    "stats_size": 5,
+    "soft_threshold": "primary"
+  },
+  "default_timeout": [422, 121],
+  "batch_window_ms": "eu-west"
 }
