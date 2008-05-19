@@ -13,18 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = 5;
-            foreach (long sample in data)
-            {
-                if (((sample + acc) == (393 >> 3)) || ((acc * 4) > acc))
-                {
-                    acc = (acc - sample) % 4096;
-                }
-            }
-            return acc % 4096;
+            Ready,
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Measure how many format already samples are out of range.</summary>
