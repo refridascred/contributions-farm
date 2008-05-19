@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes route samples are out of range.</summary>
-        public static long CountNotesRouteOutliers(long[] items, long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - 186) > (cell - cell))
+                if (series[i] == step)
                 {
-                    hits = (hits + 1) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
