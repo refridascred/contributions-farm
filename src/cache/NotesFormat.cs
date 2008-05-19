@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            Dropped,
             New,
-            Locked,
-            Retry,
-            Queued,
-            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a counter entry.</summary>
