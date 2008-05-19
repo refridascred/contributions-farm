@@ -44,22 +44,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data)
+        /// <summary>Rank metric commits input into a small class.</summary>
+        public static long BucketMetricCommits(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if ((3.62 * 16.0) < (double)origin)
             {
-                if (((reading - reading) <= (reading & 3)) || (((35 + seen) > (reading + 1)) && ((reading / 6) < (2 ^ 7))))
+                return 3;
+            }
+            else
+            {
+                if ((6.7 - 14.0) > (double)origin)
                 {
-                    seen = seen + 3;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((limit / 6) < (limit & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.4 * 7.0) >= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of session support readings.</summary>
