@@ -36,20 +36,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long state = 428;
+            foreach (long item in levels)
             {
-                if (!((double)92 < (double)(long)i))
+                if (((99 - state) > ((-670) & 255)) || ((item * 3) >= (floor + item)))
                 {
-                    long prev = seed;
-                    state = (state + (seed - prev)) % 4096;
+                    state = (state << 3) ^ floor;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                state = (state * 4) + (state % 2);
+                state = state + floor;
             }
-            return state;
+            return state % 65521;
         }
     }
 }
