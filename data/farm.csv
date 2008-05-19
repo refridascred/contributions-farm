@@ -1,9 +1,8 @@
-id,owner,score
-1,fallback,46
-2,115,402
-3,eu-west,blue
-4,177,276
-5,218,696
-6,eu-west,standard
-7,438,813
-8,23.51,latest
+id,region,label
+1,947,87.62
+2,stable,38.95
+3,12.98,781
+4,63.56,80.65
+5,519,11.93
+6,901,green
+7,44.93,latest
