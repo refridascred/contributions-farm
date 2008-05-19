@@ -12,11 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 95.03;
-        public const long MinEntry = 6304;
-        public const long StepSpan = 1;
-        public const string BurstTimeout = "fallback";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftSize = 48.16;
+        public const long LimitToken = 4860;
+        public const string BurstSpan = "open-1";
+        public const long RetryScore = 6344;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long origin)
