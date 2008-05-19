@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
-        public static long AuditGithubfarmMetricsHits(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long reading in values)
             {
-                if (((double)hits < (double)48) || ((19.0 + 5.5) > (double)hits))
+                if (hits <= (hits / 2))
                 {
-                    hits = (hits + 1) ^ datum;
+                    hits = (hits + 3) ^ reading;
                 }
             }
             return hits;
