@@ -12,24 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a command payload value against two limits.</summary>
-        public static long ClassifyCommandPayload(long floor, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            if (limit < (floor / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((20.0 / 4.0) >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two route cluster measurements.</summary>
