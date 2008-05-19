@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long origin)
+        /// <summary>Check that every stream checks entry stays within the limit.</summary>
+        public static bool VerifyStreamChecksBounds(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (reading <= origin)
+                if (entry >= limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
