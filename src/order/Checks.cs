@@ -62,12 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public double Region { get; set; }
+            Locked,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
