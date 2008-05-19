@@ -1,18 +1,8 @@
 {
-  "burst_retries_count": "green",
-  "readonly": 136,
-  "farm_delay": {
-    "min_ttl_count": {
-      "idle_delay": 2443,
-      "metrics_ratio": 34.07,
-      "retry_size": 42,
-      "layout_capacity": "staging",
-      "verbose": 88.29
-    },
-    "strict": false,
-    "burst_depth_pct": 8570,
-    "hard_interval_s": 55.96,
-    "readonly": "latest",
-    "max_depth_ms": 1606
-  }
+  "max_ttl_count": 14,
+  "default_threshold_pct": 43.26,
+  "persist": 22,
+  "readonly": 19.1,
+  "compress": 250,
+  "default_ttl": 98.87
 }
