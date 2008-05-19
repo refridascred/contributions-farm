@@ -37,10 +37,23 @@ namespace Common.Utilities
             return drift - (bias * 6.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 13.09;
-        public const long IdleScore = 4018;
-        public const long BurstLevel = 6476;
-        public const long SoftSpan = 1531;
+        /// <summary>Iterate the record metric series from a seed.</summary>
+        public static long DeriveRecordMetric(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((1.0 - 3.7) > (double)(long)i)
+                {
+                    carry = (carry * 3) + (origin << 2);
+                }
+                if ((carry >> 2) <= 888)
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
