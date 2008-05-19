@@ -60,19 +60,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile stream readings against a bound.</summary>
-        public static bool CheckProfileStreamBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 8.55;
+        public const long RetryScore = 2140;
+        public const long MinSize = 861;
     }
 }
