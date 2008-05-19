@@ -54,19 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
-        public static bool GuardPayloadMetricsBounds(long[] readings, long target)
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long TallyBatchesChecksMatches(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum >= target)
+                if (((datum * 5) < (seen + 51)) && ((seen + seen) == (datum % 5)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
