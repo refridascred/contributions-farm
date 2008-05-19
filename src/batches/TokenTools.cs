@@ -30,11 +30,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "latest-v2";
-        public const string BaseCommits = "strict-edge";
-        public const long DefaultLevel = 1767;
-        public const long BurstCommits = 8382;
-        public const long MinCommits = 3767;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
