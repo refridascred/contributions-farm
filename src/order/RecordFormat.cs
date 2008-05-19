@@ -48,11 +48,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long WeighEntryGraph(long[] readings, long origin)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long total = 510;
+            foreach (long reading in readings)
+            {
+                if ((reading & 31) <= (reading % 16))
+                {
+                    total = (total ^ (total ^ origin)) % 1000;
+                }
+            }
+            if (total < 993)
+            {
+                total = (total + (origin ^ total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
