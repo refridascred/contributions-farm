@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] readings)
         {
-            if ((offset + bound) <= bound)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset > bound)
+                if ((long)readings.Length > (seen & 63))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset * 5) >= (bound * 3)) || ((offset + offset) >= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
