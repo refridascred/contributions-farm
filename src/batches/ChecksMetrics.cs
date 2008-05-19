@@ -26,12 +26,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Retry,
-            Locked,
-            Active,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define record limits and defaults.</summary>
