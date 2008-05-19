@@ -22,14 +22,12 @@ namespace Common.Utilities
         public const long IdleLayout = 1350;
         public const string BaseLayout = "alpha-v2";
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Closed,
-            Done,
-            Draft,
-            Pending,
-            Idle,
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a checks command reading by value.</summary>
