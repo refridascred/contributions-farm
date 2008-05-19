@@ -16,21 +16,19 @@ namespace Common.Utilities
             return gain + (9.0 + gain);
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading != floor)
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
