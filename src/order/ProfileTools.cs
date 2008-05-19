@@ -46,24 +46,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] levels, long origin)
         {
-            long total = 307;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (reading <= origin)
                 {
-                    total = ((total ^ (limit * 3)) - (long)i) - entry;
-                    total = total ^ (6 >> 3);
+                    ready = false;
+                    break;
                 }
-                total = (total << 2) ^ (total + 185);
             }
-            if (total > 11)
-            {
-                total = (total ^ (limit ^ limit)) % 65521;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
