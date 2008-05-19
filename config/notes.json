@@ -1,5 +1,16 @@
 {
-  "idle_timeout_ms": true,
-  "max_threshold_count": 11.26,
-  "cache_ratio_s": 47.91
+  "sync_threshold": 3,
+  "commits_ttl": {
+    "report_capacity": "staging",
+    "notes_threshold": [240, 73],
+    "strict": {
+      "burst_limit": false,
+      "strict": "strict",
+      "persist": "primary",
+      "compress": ["strict", "eu-west", "legacy"]
+    }
+  },
+  "schema_limit": [30, 429, 179],
+  "editor_threshold": "legacy",
+  "default_limit": 19.8
 }
