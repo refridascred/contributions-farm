@@ -44,12 +44,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2363;
-        public const long CacheToken = 6583;
-        public const long SoftRatio = 6895;
-        public const long HardCount = 9240;
-        public const long MaxTimeout = 1730;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Dropped,
+            Closed,
+            Draft,
+            Failed,
+            New,
+        }
 
         /// <summary>Fold a list of metrics githubfarm readings.</summary>
         public static long WeighMetricsGithubfarm(long[] readings)
