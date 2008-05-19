@@ -1,7 +1,11 @@
 # support settings
-base_ratio: 60
-profile_ttl: 30
-base_retries_pct: 60
-poll_capacity_pct: staging
-batch_limit_ms: stable
-enabled: true
+hard_retries:
+  - 186
+  - 9
+  - 55
+counter_limit: 500
+context_ratio: false
+retry_retries_pct: strict
+idle_depth_count:
+  - staging
+  - eu-west
