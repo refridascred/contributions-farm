@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long WindowToken = 1366;
         public const string StepInterval = "legacy";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double mean = 6.2;
-            return (mean + gain) + offset;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
