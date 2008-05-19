@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long BaseSpan = 2996;
         public const long BatchPayload = 9448;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 88.07;
-        public const string BurstSchema = "fallback-edge";
-        public const long MaxWidth = 5683;
-        public const long LimitLevel = 6544;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Idle,
+            Synced,
+            Active,
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
