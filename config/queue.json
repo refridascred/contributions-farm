@@ -1,8 +1,13 @@
 {
-  "notes_retries": 500,
-  "burst_ratio_count": 80.7,
-  "burst_delay_pct": false,
-  "burst_ratio": true,
-  "cache_delay_s": 2074,
-  "cache_delay": "cached"
+  "hard_capacity_ms": {
+    "poll_ratio": 6458,
+    "payload_limit": 2370,
+    "command_capacity": "standard",
+    "burst_ttl": "latest"
+  },
+  "burst_interval_pct": false,
+  "graph_timeout": "latest",
+  "idle_capacity_ms": "fallback",
+  "buffer_capacity": "fallback",
+  "batches_threshold": "edge"
 }
