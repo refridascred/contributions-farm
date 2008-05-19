@@ -44,17 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter token reading by value.</summary>
-        public static long FindCounterTokenIndex(long[] levels, long floor)
+        /// <summary>Validate cache tools readings against a bound.</summary>
+        public static bool ValidateCacheToolsRange(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                if (value >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the report phase values.</summary>
