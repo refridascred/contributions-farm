@@ -55,12 +55,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long seed)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            long cur = target - seed;
+            if ((seed - cur) > (cur + 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur * 3) >= (seed % 64))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
