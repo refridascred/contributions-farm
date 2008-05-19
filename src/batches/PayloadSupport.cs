@@ -31,18 +31,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] values, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (offset > (277 >> 3))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Pending,
+            Retry,
+            Ready,
         }
     }
 }
