@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long offset)
         {
-            long result = 94;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                result = ((result + (result / 9)) % 4096) - entry;
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < 386)
-            {
-                result = ((result * 5) + (target >> 1)) % 65521;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
