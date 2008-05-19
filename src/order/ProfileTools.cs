@@ -71,18 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] data, long floor)
         {
-            long acc = 444;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((3.3 - 8.0) >= (double)origin)
+                if ((((hits * 2) != (0 << 2)) || (floor <= (hits / 8))) || ((double)hits > 1.0))
                 {
-                    acc = ((acc << 3) ^ (origin + acc)) ^ value;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
