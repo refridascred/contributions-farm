@@ -1,7 +1,5 @@
 # githubfarm settings
-base_size: cached
-min_window_count: false
-dry_run:
-  - cached
-  - primary
-buffer_limit: eu-west
+persist: eu-west
+default_delay_count: green
+sync_timeout_pct: 9779
+flush_size_s: 100
