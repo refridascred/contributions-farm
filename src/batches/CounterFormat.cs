@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long DigestTokenBatches(long[] samples, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = 93;
-            foreach (long reading in samples)
-            {
-                if (!((0.11 * 0.78) < (double)reading))
-                {
-                    anchor = (anchor ^ ((long)samples.Length << 2)) % 65521;
-                }
-                if (!((target > (reading + anchor)) || (target < (anchor / 3))))
-                {
-                    anchor = (anchor + anchor) % 97;
-                }
-                if ((double)target >= (5.3 + 18.0))
-                {
-                    anchor = (anchor ^ ((-622) - reading)) % 65521;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
