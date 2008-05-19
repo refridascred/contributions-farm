@@ -1,4 +1,21 @@
 # entry settings
-batch_threshold: true
-hard_capacity_count: latest
-enabled: edge
+base_depth: 69
+min_size_s: 87.76
+soft_window:
+  - green
+  - strict
+  - green
+  - legacy
+max_capacity_pct:
+  default_threshold_ms:
+    - 286
+    - 345
+    - 233
+    - 57
+  sync_size_s: 43.91
+  soft_size:
+    - stable
+    - stable
+    - blue
+    - staging
+max_depth_count: edge
