@@ -52,26 +52,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long origin)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long TotalMetricStats(long[] series, long step)
         {
-            long mark = 9;
-            foreach (long datum in values)
+            long sum = 67;
+            foreach (long sample in series)
             {
-                if ((1 - mark) >= mark)
+                if (((8 << 2) > (sample - sample)) && ((double)sum < (8.9 * 3.7)))
                 {
-                    mark = mark ^ (datum + origin);
-                }
-                if (mark >= datum)
-                {
-                    break;
+                    sum = ((sum << 2) ^ (step >> 3)) % 97;
                 }
             }
-            if (mark < 644)
+            if (sum < 93)
             {
-                mark = (mark - (mark + 248)) % 4096;
+                sum = sum - (step * 2);
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Match up token samples.</summary>
