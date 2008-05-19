@@ -26,38 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long floor2)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if (((double)floor2 != (0.28 * 18.0)) || (floor < (917 * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((-855) >= (floor + floor2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor2 % 16) <= 263))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor - floor2) < (floor2 + (-9))))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
