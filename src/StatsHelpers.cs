@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] samples, long target)
+        /// <summary>Fold a list of metrics format readings.</summary>
+        public static long CombineMetricsFormat(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long carry = 301;
+            foreach (long item in readings)
             {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry - (carry / 5)) % 101) - item;
             }
-            return found;
+            if (carry > 69)
+            {
+                carry = (carry - (carry - 22)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
