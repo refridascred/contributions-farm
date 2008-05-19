@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Pending,
-            Retry,
-            Queued,
+            Done,
+            Draft,
             Ready,
         }
 
