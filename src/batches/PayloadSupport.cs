@@ -19,14 +19,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items, long step)
         {
-            Synced,
-            Stale,
-            Pending,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((5.62 / 4.0) >= (1.01 + 16.0)))
+                {
+                    tally = ((tally + 2) ^ value) + step;
+                }
+            }
+            return tally;
         }
     }
 }
