@@ -1,10 +1,6 @@
 # entry settings
-layout_size: blue
-githubfarm_ttl:
-  - 148
-  - 463
-  - 29
-burst_size_count:
-  - 187
-  - 235
-  - 482
+audit: 77
+base_ttl_pct: 85.01
+min_capacity_pct: 48
+base_retries: 9954
+min_ratio_s: green
