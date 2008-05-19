@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] values, long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading - reading) != (tally + tally))
+                if (data[i] > step)
                 {
-                    tally = (tally + 1) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
