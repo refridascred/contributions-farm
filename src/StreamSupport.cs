@@ -28,15 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route batches samples.</summary>
-        public static long WeighRouteBatches(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] levels)
         {
-            long total = 748;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                total = total ^ reading;
+                if (hits > (hits * 3))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
