@@ -33,11 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryScore = "staging-edge";
-        public const long MinCount = 9054;
-        public const long BatchMetric = 8692;
-        public const double IdleSpan = 83.25;
-        public const long HardFactor = 4449;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double span)
+        {
+            double ratio = span;
+            if (ratio >= (5.8 * 3.1))
+            {
+                ratio = ratio - (weight / 2.0);
+            }
+            else
+            {
+                ratio = ratio + 16.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (weight - span)) + (double)(long)i;
+            }
+            return ratio - (double)771;
+        }
     }
 }
