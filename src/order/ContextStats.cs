@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = 8;
+            foreach (long sample in values)
+            {
+                if (!(sample > (anchor & 15)))
+                {
+                    anchor = anchor ^ (anchor + (-4));
+                }
+            }
+            if (anchor < 697)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
