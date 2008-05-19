@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] series, long target)
         {
-            long state = 492;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                state = ((state << 3) ^ (201 - state)) ^ reading;
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state < 35)
-            {
-                state = (state + (6 - state)) % 101;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
