@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long CountCommitsStatsOutliers(long[] items, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((((double)item != (6.17 * 18.0)) || ((count * 2) >= (count - count))) && !(seed > (item / 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
