@@ -1,5 +1,7 @@
 {
-  "verbose": "green",
-  "flush_limit_pct": "green",
-  "enabled": 8399
+  "flush_depth_count": 43.18,
+  "already_interval": 77.31,
+  "max_window_ms": 8.84,
+  "retry_delay": 86.0,
+  "cache_timeout_s": "strict"
 }
