@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long BurstRatio = 194;
         public const long MinDepth = 5863;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] items, long target)
+        /// <summary>Adjust a route entry reading.</summary>
+        public static double ProjectRouteEntry(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = gain * 4.36;
+            return (gain2 + gain) + span;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
