@@ -35,22 +35,11 @@ namespace Common.Utilities
         public const long RetryScore = 8700;
         public const long IdleCluster = 4341;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] readings, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (0 < (limit & 3))
-                {
-                    seen = (seen + 1) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
