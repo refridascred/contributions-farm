@@ -48,23 +48,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long total = 3;
-            foreach (long sample in readings)
-            {
-                if ((3.0 - 9.0) == (double)total)
-                {
-                    total = total + seed;
-                }
-                else
-                {
-                    total = total + (sample << 1);
-                }
-                total = (total * 2) + (sample & 3);
-            }
-            return total % 65521;
+            New,
+            Closed,
+            Stale,
+            Done,
+            Idle,
         }
     }
 }
