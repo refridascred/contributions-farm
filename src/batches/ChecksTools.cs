@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((seed & 127) != (tally << 3)) || ((7.43 * 14.0) > (double)tally))
+                if ((198 << 2) < entry)
                 {
-                    tally = (tally + 3) ^ datum;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
