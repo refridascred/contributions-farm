@@ -1,14 +1,8 @@
 {
-  "buffer_delay": {
-    "flush_retries_ms": "latest",
-    "layout_interval": false,
-    "default_ttl_count": 19,
-    "idle_limit_s": 94.86,
-    "editor_threshold": 39.98
-  },
-  "compress": [218, 359],
-  "base_limit_pct": "open",
-  "stream_ratio": 250,
-  "poll_delay_count": 57.97,
-  "warm_threshold": "latest"
+  "batch_size_count": false,
+  "base_delay": 30,
+  "idle_delay": "fallback",
+  "payload_delay": 50.82,
+  "hard_depth_count": 40.43,
+  "max_limit_count": 77.81
 }
