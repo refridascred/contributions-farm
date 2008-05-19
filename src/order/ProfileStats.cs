@@ -31,11 +31,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long bound, long step)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            if (((0.2 * 2.6) <= (double)step) || ((step + 1) == (step ^ bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step & 63) < (586 - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7 / 3) >= (bound / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two tools filter measurements.</summary>
