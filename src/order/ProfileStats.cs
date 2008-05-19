@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] data, long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
