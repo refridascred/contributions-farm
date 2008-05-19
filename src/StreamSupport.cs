@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long offset)
         {
-            Closed,
-            Pending,
-            Failed,
-            Active,
+            if (!((limit << 2) <= limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 2) != (15 + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((7 + 46) >= (offset / 3)) && ((46 - limit) >= (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
