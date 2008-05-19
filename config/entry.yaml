@@ -1,7 +1,7 @@
 # entry settings
-batch_window_count: 5.55
-sync_timeout:
-  - eu-west
-  - stable
-base_ttl_s: 2742
-poll_size_s: false
+cluster_threshold: 80.34
+retry_window: open
+batch_retries: 30
+warm_timeout_pct: strict
+default_timeout_count: edge
+max_ttl: 70.83
