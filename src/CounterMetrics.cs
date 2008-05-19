@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "open";
-        public const double StepTimeout = 19.12;
-        public const long DefaultSize = 8113;
+        /// <summary>Blend two notes schema measurements.</summary>
+        public static double ScaleNotesSchema(double bias, double offset)
+        {
+            double rate = (offset + offset) / 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (bias - rate);
+        }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
         public static bool CheckCounterStatsRange(long[] samples, long bound)
