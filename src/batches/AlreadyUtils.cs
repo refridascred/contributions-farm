@@ -53,20 +53,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepScore = 52.41;
+        public const long MinSession = 4928;
+        public const long StepSpan = 9659;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string CacheContributi = "standard-1";
