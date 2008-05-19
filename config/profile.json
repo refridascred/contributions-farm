@@ -1,5 +1,5 @@
 {
-  "strict": "primary",
-  "batch_ratio_count": 35.01,
-  "readonly": 48
+  "poll_delay_ms": [8, 211, 239],
+  "retry_capacity_s": "open",
+  "compress": "green"
 }
