@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] readings, long target)
+        /// <summary>Locate a record githubfarm reading by value.</summary>
+        public static long LookupRecordGithubfarmIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < target)
+                if (series[i] < offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
