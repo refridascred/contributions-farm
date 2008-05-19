@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            Idle,
-            Failed,
-            Queued,
-            Done,
+            long mix = 4;
+            foreach (long datum in samples)
+            {
+                if (datum >= 3)
+                {
+                    mix = (mix + (datum + mix)) % 255;
+                }
+            }
+            if (mix < (-359))
+            {
+                mix = mix - (149 - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
