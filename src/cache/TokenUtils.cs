@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long limit)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - seen) <= entry)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a account cache value against two limits.</summary>
