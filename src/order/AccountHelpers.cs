@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
             Retry,
+            Active,
+            Ready,
+            Pending,
             New,
-            Synced,
-            Dropped,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
