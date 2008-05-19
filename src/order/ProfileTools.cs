@@ -38,25 +38,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long diff = floor ^ step;
-            if (14.0 <= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + diff) <= (step & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
