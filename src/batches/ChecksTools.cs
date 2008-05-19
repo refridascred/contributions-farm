@@ -34,13 +34,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data, long offset)
         {
-            Stale,
-            Pending,
-            Active,
-            Done,
+            long anchor = 1;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor * 2) + (anchor / 8)) ^ entry) + offset;
+                anchor = (anchor ^ (anchor / 3)) % 1000;
+            }
+            if (anchor < (-71))
+            {
+                anchor = (anchor << 3) ^ (9 & 15);
+            }
+            return anchor;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
