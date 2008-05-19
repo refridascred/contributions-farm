@@ -26,15 +26,24 @@ namespace Common.Utilities
         public const long RetryWidth = 504;
         public const double IdleLevel = 51.13;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = 9;
+            foreach (long datum in values)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                anchor = ((anchor - (anchor ^ anchor)) % 4096) ^ datum;
+                anchor = anchor + (floor ^ 868);
+                if ((1.1 / 9.0) >= (double)floor)
+                {
+                    anchor = ((anchor * 2) + (anchor + floor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
