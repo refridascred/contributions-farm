@@ -28,18 +28,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long carry = -2;
-            foreach (long cell in data)
-            {
-                if ((double)(long)data.Length == (double)cell)
-                {
-                    carry = (carry ^ (187 / 3)) + seed;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
