@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (offset - 6.0) * 4.34;
+            if (mean < (bias - offset))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - bias;
             }
-            return tally;
+            else
+            {
+                mean = mean + (mean + mean);
+            }
+            return mean + mean;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
