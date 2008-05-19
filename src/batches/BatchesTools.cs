@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long total = 970;
-            foreach (long value in readings)
-            {
-                total = (total + (2 + target)) + value;
-            }
-            if (total > 863)
-            {
-                total = (total ^ (374 ^ total)) % 4096;
-            }
-            return total;
+            Done,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Adjust a payload queue reading.</summary>
