@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double bias, double bias2)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            double mean = (double)1;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                mean = (mean - (mean + bias2)) + (double)(long)i;
             }
-            return sum;
+            return mean - (bias + bias);
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
