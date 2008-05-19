@@ -30,17 +30,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a checks command reading by value.</summary>
-        public static long LocateChecksCommandIndex(long[] values, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                if (((5.25 / 7.0) > (double)cell) && ((tally + tally) < (tally / 5)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
