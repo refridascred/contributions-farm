@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] series)
+        /// <summary>Measure how many format command samples are out of range.</summary>
+        public static long MeasureFormatCommandMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (!((923 + cell) == (seen + seen)))
+                if (!(((value ^ 587) < (value * 4)) && ((double)value >= (5.9 / 2.0))))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
