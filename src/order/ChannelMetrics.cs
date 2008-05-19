@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 5018;
-        public const double BaseEntry = 33.48;
-        public const long BaseSize = 2027;
-        public const string HardCount = "standard-1";
-        public const string DefaultEntry = "local-edge";
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long limit)
+        {
+            if ((limit > (limit & 255)) && ((origin & 127) > (limit / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin <= limit) && ((limit + limit) < (limit & 15)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >> 1) >= (origin - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
