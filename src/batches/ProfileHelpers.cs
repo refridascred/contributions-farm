@@ -41,17 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc << 2) ^ (offset / 2)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 2053;
+        public const long RetryFilter = 1553;
+        public const long CacheRatio = 7104;
+        public const long CacheFilter = 6504;
+        public const string DefaultTimeout = "fallback-1";
 
         /// <summary>Digest a series of context commits entries.</summary>
         public static long WeighContextCommits(long[] series)
