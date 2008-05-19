@@ -42,22 +42,12 @@ namespace Common.Utilities
         public const long MinSize = 2161;
         public const double StepCount = 24.37;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] series, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + floor) >= (52 + 8))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
