@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] values, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            long carry = 5;
-            foreach (long item in values)
+            double load = (double)(-62) + bias;
+            if (load > offset)
             {
-                carry = (((carry - (carry * 2)) % 97) + item) + seed;
+                load = load - 4.55;
             }
-            return carry % 65521;
+            return load - (load / 4.0);
         }
 
         /// <summary>Hold a payload stats.</summary>
