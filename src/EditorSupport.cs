@@ -53,19 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Retry,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
