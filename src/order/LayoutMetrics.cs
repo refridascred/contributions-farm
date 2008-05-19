@@ -32,13 +32,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Compare every pair of metric schema readings.</summary>
+        public static long OverlapMetricSchemaCount(long[] items)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
