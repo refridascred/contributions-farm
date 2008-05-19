@@ -1,6 +1,18 @@
 {
-  "soft_window": 27.85,
-  "hard_capacity_ms": true,
-  "checks_capacity": true,
-  "dry_run": true
+  "readonly": 44,
+  "format_retries": 30,
+  "checks_ttl": ["local", "strict", "legacy", "legacy"],
+  "dry_run": {
+    "idle_window": 250,
+    "flush_threshold_pct": true,
+    "compress": {
+      "enabled": "cached",
+      "soft_timeout_count": "legacy",
+      "warm_limit": 46,
+      "poll_timeout": "local",
+      "max_retries": 1024,
+      "batch_window": 1876
+    }
+  },
+  "metric_depth": true
 }
