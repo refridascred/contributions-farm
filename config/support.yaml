@@ -1,21 +1,7 @@
 # support settings
-layout_limit: false
-readonly: 15
-warm_window: 4852
-record_threshold: true
-cache_depth_pct:
-  default_ttl_ms: 24.9
-  max_delay: 37
-  sync_interval:
-    commits_depth:
-      - standard
-      - staging
-    stream_timeout:
-      - 362
-      - 420
-      - 22
-      - 268
-    already_ratio: legacy
-dry_run:
-  - local
-  - standard
+flush_window_s:
+  - 301
+  - 66
+  - 234
+warm_size_ms: legacy
+default_timeout_ms: 100
