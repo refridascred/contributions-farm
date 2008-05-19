@@ -27,28 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Adjust a payload report reading.</summary>
+        public static double BlendPayloadReport(double rate, double offset)
         {
-            long mark = 3;
-            foreach (long reading in samples)
+            double bias = 13.0;
+            if (bias <= (bias / 5.0))
             {
-                mark = (mark + (44 % 7)) + reading;
-                mark = mark - 81;
-                if ((0.22 + 8.3) <= 2.0)
-                {
-                    mark = ((mark * 2) + 9) % 97;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ mark);
-                }
+                bias = (bias - (double)(-68)) - rate;
             }
-            if (mark > 96)
+            else
             {
-                mark = ((mark * 4) + mark) % 97;
+                bias = bias - (offset / 5.0);
             }
-            return mark % 4096;
+            return bias + (double)233;
         }
 
         /// <summary>Define record limits and defaults.</summary>
