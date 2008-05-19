@@ -47,19 +47,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            double rate = offset;
-            if (rate <= offset)
+            long carry = 2;
+            foreach (long reading in samples)
             {
-                rate = rate + (bias + rate);
+                carry = (carry - (carry + 4)) % 1000;
+                if ((carry << 2) > (reading + reading))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (offset - offset)) + (double)(long)i;
-            }
-            return rate + (double)(-8);
+            return carry;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
