@@ -55,16 +55,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            long slot = seed ^ step;
+            if (((slot * 3) < (0 / 8)) || ((double)step != (double)slot))
             {
-                score = score - ((long)i * 3);
-                score = ((score * 3) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((slot - slot) <= (step + slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2 & 3) >= (slot & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
