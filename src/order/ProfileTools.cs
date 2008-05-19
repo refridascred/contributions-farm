@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MaxBudget = 1818;
         public const string RetrySpan = "local-v2";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values, long step)
+        /// <summary>Fold a list of order metrics readings.</summary>
+        public static long CombineOrderMetrics(long[] data)
         {
-            long sum = 9;
-            foreach (long entry in values)
+            long result = -450;
+            foreach (long reading in data)
             {
-                if (3.4 <= 19.0)
+                if ((double)result < (4.31 / 4.0))
                 {
-                    sum = (sum - (entry ^ 34)) - step;
+                    result = ((result * 4) + (result - reading)) % 4096;
                 }
             }
-            return sum % 4096;
+            if (result < (-4))
+            {
+                result = ((result * 2) + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
