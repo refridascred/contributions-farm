@@ -1,22 +1,14 @@
 # support settings
-hard_delay:
-  readonly:
-    enabled: green
-    idle_ratio_pct: fallback
-    base_ratio_s: stable
-    cache_ttl: 21
-  persist: 5158
-  retry_delay_ms: 1024
-  compress:
-    sync_threshold: 36.45
-    record_interval: false
-    idle_retries_count: 8597
-    warm_window_count: 5721
-    soft_ratio_count: edge
-  idle_threshold_ms: 9430
-  account_retries: 97
-contributi_limit: 13.26
-compress:
-  - 404
-  - 172
-persist: edge
+batch_ttl_s: 30
+compress: 4061
+notes_window:
+  - latest
+  - local
+default_ttl_s: 19
+base_window_s:
+  metric_delay: 38.3
+  support_size: 72.66
+  commits_window: 60
+  account_ttl: staging
+  min_ratio: 4.88
+window_capacity: strict
