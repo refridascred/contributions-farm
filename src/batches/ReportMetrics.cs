@@ -27,19 +27,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftRatio = 135;
+        public const double LimitEditor = 29.39;
+        public const long MinTimeout = 7500;
     }
 }
