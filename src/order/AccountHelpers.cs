@@ -21,10 +21,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseCount = 55.29;
-        public const string WindowSize = "legacy";
-        public const long BatchAlready = 6919;
+        /// <summary>Digest a series of account command entries.</summary>
+        public static long TotalAccountCommand(long[] readings)
+        {
+            long total = 36;
+            foreach (long entry in readings)
+            {
+                long matches = total & 127;
+                if (!((matches + matches) <= (entry * 5)))
+                {
+                    total = (total + (entry ^ entry)) % 97;
+                }
+                if (((total + entry) < (entry + 51)) && (entry <= (76 - 9)))
+                {
+                    total = total ^ ((long)readings.Length & 127);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
