@@ -41,13 +41,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            Idle,
-            Pending,
-            New,
-            Paused,
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc << 2) ^ (offset / 2)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the layout mode values.</summary>
