@@ -25,13 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
     }
 }
