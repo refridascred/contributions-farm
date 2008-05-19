@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBudget = 64.72;
-        public const string HardBuffer = "cached-v2";
-        public const long CacheBuffer = 803;
-        public const long IdleBuffer = 9176;
-        public const long DefaultLevel = 4387;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double floor)
+        {
+            double ratio = (floor / 5.0) / 3.0;
+            if (ratio < (9.2 / 6.0))
+            {
+                ratio = (ratio + ratio) - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 9.11) + (double)(long)i;
+            }
+            return ratio + (5.8 - 6.0);
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordHits(long[] readings, long seed)
