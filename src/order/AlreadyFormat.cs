@@ -36,14 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double rate, double bias)
         {
-            Dropped,
-            Stale,
-            Done,
-            Retry,
-            Closed,
+            double gain = bias - (rate - rate);
+            return gain - gain;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
