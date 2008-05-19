@@ -24,21 +24,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(981 >> 2);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift - (double)6) + (double)(long)i) - floor;
             }
-            return matches;
+            return drift + ratio;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
