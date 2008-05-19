@@ -35,18 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = 39;
+            foreach (long reading in data)
             {
-                if (sample >= origin)
-                {
-                    seen = seen + 3;
-                }
+                mark = (mark << 3) ^ (reading / 8);
+                mark = (mark - (6 - reading)) % 101;
+                mark = (mark + (reading + reading)) % 65521;
             }
-            return seen;
+            if (mark < 2)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark % 1000;
         }
     }
 }
