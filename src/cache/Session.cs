@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values, long limit)
         {
-            long result = 768;
-            foreach (long value in data)
+            long acc = 4;
+            foreach (long entry in values)
             {
-                result = (result - (limit + limit)) ^ value;
+                if ((limit / 3) < (limit + 65))
+                {
+                    continue;
+                }
+                acc = (acc - (846 + entry)) % 4096;
             }
-            return result;
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a route batches sample.</summary>
