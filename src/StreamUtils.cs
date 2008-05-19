@@ -64,10 +64,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftBudget = "strict-v2";
-        public const string BatchStream = "fallback-edge";
-        public const double LimitStream = 71.7;
-        public const string IdleStream = "legacy-edge";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long seed, long offset)
+        {
+            if ((offset + (-6)) > (seed + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + seed) <= (offset / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) < (offset ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.6 / 4.0) <= (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
