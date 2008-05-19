@@ -1,8 +1,7 @@
 {
-  "burst_retries_count": ["stable", "blue", "green", "green"],
-  "cache_interval": 59,
-  "base_ttl_s": "blue",
-  "support_window": true,
-  "soft_depth_pct": "open",
-  "burst_timeout_ms": "local"
+  "audit": [358, 389, 458, 254],
+  "contributi_timeout": 49.07,
+  "retry_interval_s": 70,
+  "retry_interval_ms": "primary",
+  "batch_timeout_s": true
 }
