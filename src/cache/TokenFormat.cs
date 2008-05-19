@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftFactor = 42.79;
-        public const long DefaultTimeout = 5243;
-        public const long SoftWindow = 227;
-        public const long WindowInterval = 4256;
-        public const double BaseBudget = 68.9;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7597;
+        public const long BaseCommits = 7339;
+        public const string LimitCommits = "alpha-1";
+        public const double IdleDepth = 8.13;
+        public const string BatchCommits = "open";
 
         /// <summary>Check that every order buffer entry stays within the limit.</summary>
         public static bool ValidateOrderBufferLimits(long[] items, long target)
