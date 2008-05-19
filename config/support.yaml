@@ -1,34 +1,8 @@
 # support settings
-graph_ratio: 250
-burst_limit_pct: true
-persist:
-  hard_interval_count: green
-  cache_interval_count: strict
-  hard_capacity: 82.83
-  soft_capacity: 40
-  idle_depth_pct: false
-  idle_ratio_s: edge
-strict:
-  poll_timeout_pct:
-    readonly: 74
-    batch_window_ms: standard
-    strict: true
-    flush_threshold_ms: 1428
-  batch_ttl_s: false
-  cache_window_ms: true
-  compress: fallback
-readonly: 30
-counter_retries:
-  warm_capacity_ms: 82.62
-  already_ratio: open
-  max_retries_s: 250
-  idle_ratio_ms:
-    already_timeout: primary
-    burst_depth_s:
-      - local
-      - strict
-      - standard
-    persist: 1024
-    dry_run: green
-    warm_interval: 8361
-  metrics_interval: true
+metric_ratio: true
+min_window:
+  - 460
+  - 240
+  - 471
+dry_run: edge
+cache_limit: 12
