@@ -50,22 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long offset)
         {
-            long state = 6;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((bound ^ bound) >= (reading + state))
+                if (sample >= offset)
                 {
-                    state = state ^ (state / 4);
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 3)
-            {
-                state = state + (bound ^ state);
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Accumulate stream samples.</summary>
