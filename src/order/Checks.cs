@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values)
         {
-            Done,
-            Paused,
-            Idle,
-            Synced,
-            Dropped,
+            long score = 16;
+            foreach (long entry in values)
+            {
+                score = (score ^ (score & 7)) - entry;
+            }
+            if (score < 5)
+            {
+                score = (score - (50 - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of stats context readings.</summary>
