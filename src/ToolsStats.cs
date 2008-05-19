@@ -22,10 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultSize = "staging-edge";
-        public const long BaseWidth = 7692;
-        public const string StepToken = "stable";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
