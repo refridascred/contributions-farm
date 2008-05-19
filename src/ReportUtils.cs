@@ -37,22 +37,22 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Accumulate report commits samples.</summary>
-        public static long CombineReportCommits(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            long acc = 3;
-            foreach (long datum in series)
+            long state = -43;
+            foreach (long entry in readings)
             {
-                if ((datum + acc) == (datum / 7))
+                if ((925 + state) == (long)readings.Length)
                 {
-                    acc = (acc - datum) % 255;
+                    state = (((state << 2) ^ state) % 4096) ^ entry;
+                }
+                else
+                {
+                    state = (state + (state << 1)) % 65521;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc - (acc + (long)series.Length)) % 4096;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
