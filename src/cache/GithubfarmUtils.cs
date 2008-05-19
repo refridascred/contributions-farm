@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.01;
         public const long RetryToken = 5370;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            double drift = span;
-            if (drift >= drift)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                drift = drift + bias;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return drift - 7.74;
+            return total;
         }
 
         /// <summary>Describe the graph status values.</summary>
