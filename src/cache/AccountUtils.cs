@@ -17,10 +17,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 9569;
-        public const long MaxGraph = 3699;
-        public const long BurstBudget = 5608;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((mix / 9) > mix) && ((405 >> 3) >= (bound + bound)))
+                {
+                    mix = ((mix * 4) + (bound - bound)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (long)i) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series)
