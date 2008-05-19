@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 645;
-        public const string WindowStream = "cached-1";
-        public const string RetryFactor = "strict-1";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
+        {
+            long sum = 7;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (20.0 - 18.0))
+                {
+                    sum = sum - (sum % 3);
+                }
+                if (!((entry & 1) >= entry))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long limit)
