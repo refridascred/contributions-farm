@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] items, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((seed << 1) > (seed * 5))
+                if (!((double)tally != (double)41))
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 3) + reading) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the counter class values.</summary>
