@@ -25,16 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two layout farm measurements.</summary>
-        public static double ProjectLayoutFarm(double scale, double offset)
-        {
-            double rate = (scale + offset) * 6.29;
-            if (rate > offset)
-            {
-                rate = rate - (rate + scale);
-            }
-            return rate - (offset / 4.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "stable";
+        public const double DefaultEditor = 28.57;
+        public const long IdleRatio = 7141;
+        public const long BaseEditor = 6266;
+        public const long BatchEditor = 1309;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
