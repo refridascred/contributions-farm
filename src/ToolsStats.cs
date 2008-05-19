@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long edge = origin - seed;
-            if ((33 << 2) <= (edge + edge))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 7) == (3 / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + seed) >= (20 + 20))
+                    if ((series[i] - series[j]) == 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge >= (origin + origin)) && ((edge & 1) >= 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
