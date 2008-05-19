@@ -29,14 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Synced,
-            Active,
-            Failed,
-            Done,
-            Queued,
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
