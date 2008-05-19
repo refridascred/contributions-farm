@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] values)
-        {
-            long anchor = 20;
-            foreach (long sample in values)
-            {
-                anchor = (anchor << 3) ^ sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 5224;
+        public const long CacheFactor = 7445;
+        public const long SoftChannel = 9227;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] readings, long limit)
