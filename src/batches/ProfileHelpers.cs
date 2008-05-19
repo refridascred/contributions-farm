@@ -67,18 +67,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples, long offset)
+        /// <summary>Count support context pairs that satisfy a relation.</summary>
+        public static long OverlapSupportContextCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset ^ cell) <= (cell * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
