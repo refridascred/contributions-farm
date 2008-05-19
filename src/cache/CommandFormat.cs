@@ -16,13 +16,11 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSpan = 890;
+        public const string RetrySupport = "local-1";
+        public const long LimitSupport = 957;
+        public const long WindowDepth = 4640;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double scale, double floor)
