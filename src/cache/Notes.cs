@@ -20,22 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "standard-edge";
+        public const long MaxDepth = 1433;
+        public const long IdleDepth = 1045;
+        public const long IdleBudget = 6946;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] data, long offset)
