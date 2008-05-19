@@ -44,21 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 816;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample - result) > 434)
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (result - result)) % 97;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
