@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            New,
-            Pending,
-            Synced,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((17 >= (value >> 3)) && ((count - count) == (value + value)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
