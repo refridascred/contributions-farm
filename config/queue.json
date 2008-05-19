@@ -1,21 +1,5 @@
 {
-  "strict": [491, 197],
-  "contributi_threshold": {
-    "min_size": [133, 481],
-    "channel_retries": 4714,
-    "filter_window": 7131,
-    "idle_size_count": "standard",
-    "schema_size": true,
-    "dry_run": "stable"
-  },
-  "idle_delay": {
-    "batches_ttl": "local",
-    "context_threshold": "blue",
-    "batch_size": "edge",
-    "retry_limit_ms": "stable",
-    "base_depth_s": "eu-west"
-  },
-  "readonly": 250,
-  "burst_threshold_s": 18,
-  "warm_ratio_s": "staging"
+  "base_delay_pct": "blue",
+  "readonly": [220, 54, 360, 348],
+  "idle_delay_ms": "open"
 }
