@@ -15,12 +15,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 2.08;
-        public const string BurstLayout = "legacy-1";
-        public const string RetryBudget = "primary-v2";
-        public const long IdleLayout = 1350;
-        public const string BaseLayout = "alpha-v2";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels)
+        {
+            long mix = 53;
+            foreach (long sample in levels)
+            {
+                if ((mix >> 4) <= sample)
+                {
+                    mix = (mix * 5) + (8 + 47);
+                }
+                else
+                {
+                    mix = (mix - (mix << 1)) % 4096;
+                }
+                if (((1.96 - 4.0) != (double)sample) || ((double)mix <= 5.0))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
