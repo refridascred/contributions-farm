@@ -22,21 +22,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 598;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                long lane = limit + (entry + entry);
+                if ((limit - lane) > (limit - score))
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ (entry - limit)) % 1000;
+                    break;
                 }
+                score = (score ^ (limit >> 3)) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Adjust a farm reading.</summary>
