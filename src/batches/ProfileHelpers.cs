@@ -96,32 +96,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long offset = bound - origin;
-            if ((double)origin == (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound > 17.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (94 < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a editor info.</summary>
