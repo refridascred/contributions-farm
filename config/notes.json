@@ -1,5 +1,12 @@
 {
-  "idle_size": "stable",
-  "poll_size_ms": 61.59,
-  "compress": true
+  "window_delay": {
+    "sync_interval_s": false,
+    "window_ratio": 68.09,
+    "default_depth_ms": "green",
+    "session_threshold": 86.06
+  },
+  "poll_ratio_s": "staging",
+  "route_threshold": false,
+  "min_interval": 43,
+  "support_ratio": "eu-west"
 }
