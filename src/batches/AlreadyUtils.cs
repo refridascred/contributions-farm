@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long CountToolsCommitsOutliers(long[] levels, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (9 > item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
