@@ -1,13 +1,13 @@
 # githubfarm settings
-default_interval_ms: open
-base_size:
-  - 176
-  - 209
-  - 203
-queue_ratio: true
-record_timeout:
-  enabled: legacy
-  dry_run: 39
-  batch_timeout: true
-  sync_ratio_count: 88.9
-batch_size_ms: true
+context_capacity: eu-west
+support_ratio: 2.7
+enabled: 2788
+strict: stable
+flush_ratio:
+  min_limit_s: 43.65
+  counter_retries: cached
+  persist:
+    - edge
+    - open
+  batch_ttl_count: 11.08
+sync_delay_s: primary
