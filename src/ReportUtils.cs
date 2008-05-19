@@ -31,23 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            double ratio = scale;
-            if (ratio > (floor * 0.9))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (double)454;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (scale - floor)) + (double)(long)i;
-            }
-            return ratio + floor;
+            return seen;
         }
 
         /// <summary>Hold a channel info.</summary>
