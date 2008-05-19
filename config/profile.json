@@ -1,10 +1,7 @@
 {
-  "layout_size": 1024,
-  "session_ttl": 60,
-  "graph_window": {
-    "audit": 6.86,
-    "base_depth": "legacy",
-    "default_retries_pct": 32.39
-  },
-  "flush_depth_pct": 53
+  "max_depth_s": 1.93,
+  "entry_window": 68.32,
+  "compress": 250,
+  "farm_ttl": 250,
+  "cache_depth": true
 }
