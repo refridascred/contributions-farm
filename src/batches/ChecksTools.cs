@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((198 << 2) < entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 4073;
+        public const string DefaultDepth = "latest-v2";
+        public const string BaseReport = "primary-edge";
+        public const double BurstReport = 72.24;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
