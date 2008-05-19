@@ -22,19 +22,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state << 2) ^ (state - (long)i2)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Locked,
+            Active,
+            Pending,
+            Dropped,
+            Retry,
         }
     }
 }
