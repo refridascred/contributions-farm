@@ -1,19 +1,6 @@
 {
-  "graph_retries": {
-    "filter_capacity": "latest",
-    "sync_interval": {
-      "support_delay": 61,
-      "readonly": "cached",
-      "retry_capacity": 95.53,
-      "enabled": "standard",
-      "batch_window_count": true,
-      "burst_delay_count": [77, 281, 285, 194]
-    },
-    "sync_limit": 16.78,
-    "warm_timeout": 21.71,
-    "retry_retries_ms": [68, 487, 342],
-    "soft_retries": ["strict", "stable", "open", "blue"]
-  },
-  "strict": 1,
-  "default_threshold_count": true
+  "cache_size_count": 78,
+  "soft_timeout_ms": 7578,
+  "flush_delay": 5314,
+  "poll_limit": 60
 }
