@@ -62,38 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a githubfarm stats pair into a bucket.</summary>
-        public static long GradeGithubfarmStats(long seed, long seed2)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if ((9.72 - 5.6) < (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 1) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed2) == (seed << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed2 < 2.2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the layout mode values.</summary>
