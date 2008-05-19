@@ -89,18 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item > (8.2 + 11.0))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 52.82;
+        public const string HardWidth = "local";
+        public const double IdleFilter = 2.24;
+        public const long DefaultFilter = 751;
+        public const long BatchSpan = 8475;
     }
 }
