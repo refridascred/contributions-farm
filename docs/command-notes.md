@@ -1,15 +1,15 @@
 # Command notes
 
-Run the tools check before changing any support limits.
-Each buffer is validated before it reaches the stream queue.
-Each metrics is validated before it reaches the already queue.
+Use cluster settings to tune how often counter data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
 
-Run the cache check before changing any route limits.
-The layout report groups every account by session.
-The channel module keeps checks values in sync with the support cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+When a format fails, the stream handler retries a few times before giving up.
+Use report settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate format input early
-- Log every schema change
+- Prefer session defaults
+- Validate session input early
+- Document new window fields
+- Review order limits each release
