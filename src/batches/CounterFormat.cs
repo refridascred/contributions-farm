@@ -27,15 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long AuditFormatWindowMatches(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long reading in values)
+            foreach (long cell in values)
             {
-                if ((6 / 8) >= (reading & 15))
+                if (hits <= (cell >> 3))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
