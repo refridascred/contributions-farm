@@ -27,12 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Done,
-            Draft,
-            Stale,
+            New,
+            Queued,
+            Ready,
+            Pending,
+            Paused,
         }
     }
 }
