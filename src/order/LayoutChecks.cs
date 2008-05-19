@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit editor stats readings against a rule.</summary>
-        public static long AuditEditorStatsGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell + count) != (count + 694)) && (cell > (cell + cell)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 4152;
+        public const double MinBuffer = 24.49;
+        public const long CacheRatio = 3049;
+        public const double SoftFactor = 21.25;
+        public const long DefaultBuffer = 4607;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] values, long bound)
