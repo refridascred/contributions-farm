@@ -22,16 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total ^ ((long)i * 5)) % 255;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a buffer header.</summary>
