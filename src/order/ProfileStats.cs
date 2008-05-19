@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] readings, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((double)bound >= (double)seen)
+                if (item <= step)
                 {
-                    seen = (seen + 2) - value;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
