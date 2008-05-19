@@ -25,18 +25,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the command queue entries that pass the check.</summary>
-        public static long TallyCommandQueueMatches(long[] values)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell % 97) == (hits - 851))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
