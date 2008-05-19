@@ -23,19 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command notes readings against a bound.</summary>
-        public static bool ValidateCommandNotesRange(long[] series, long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the queue class values.</summary>
