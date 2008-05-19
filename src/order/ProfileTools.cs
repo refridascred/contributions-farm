@@ -12,19 +12,39 @@ namespace Common.Utilities
         public const long MaxBudget = 1818;
         public const string RetrySpan = "local-v2";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long origin)
+        /// <summary>Grade a checks entry value against two limits.</summary>
+        public static long BucketChecksEntry(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long cur = offset - floor;
+            if ((floor & 3) <= (offset % 7))
             {
-                if (entry >= origin)
+                return 7;
+            }
+            else
+            {
+                if (((cur << 1) >= (cur + floor)) && ((double)floor == (2.46 / 6.0)))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!(floor >= (cur * 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((cur - offset) < (floor - offset)) || ((double)cur > (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of record report entries.</summary>
