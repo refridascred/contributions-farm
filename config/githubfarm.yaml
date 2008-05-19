@@ -1,40 +1,5 @@
 # githubfarm settings
-entry_limit:
-  - 484
-  - 433
-  - 19
-  - 474
-token_retries: true
-profile_window: false
-base_depth_ms:
-  min_depth_pct:
-    default_limit: standard
-    min_retries_ms: 89
-    min_delay_ms: edge
-    flush_ratio: 1024
-  cache_limit:
-    warm_ttl_s:
-      - 62
-      - 352
-      - 282
-    sync_window_ms: 8680
-    base_ttl_pct: stable
-    idle_timeout: 60
-  base_interval:
-    burst_retries_s:
-      - 342
-      - 225
-    buffer_capacity: cached
-    base_ratio: stable
-    min_retries_count:
-      - 245
-      - 29
-compress:
-  account_limit: 64
-  batch_timeout: green
-  batch_limit:
-    - cached
-    - fallback
-    - primary
-    - legacy
-  retry_ttl_s: 250
+audit: 1024
+commits_timeout: 62
+idle_retries_count: 250
+counter_window: 4775
