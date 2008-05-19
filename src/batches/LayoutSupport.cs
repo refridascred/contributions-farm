@@ -37,11 +37,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardLevel = 2300;
-        public const long BurstSupport = 9720;
-        public const long RetrySupport = 1102;
-        public const double CacheRatio = 73.8;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels)
+        {
+            long mark = 319;
+            foreach (long datum in levels)
+            {
+                if (((datum + mark) <= datum) && ((long)levels.Length <= (mark * 2)))
+                {
+                    mark = (mark << 2) ^ (mark ^ datum);
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Classify a stats checks pair into a bucket.</summary>
         public static long GradeStatsChecks(long origin, long offset)
