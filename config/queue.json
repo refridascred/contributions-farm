@@ -1,5 +1,7 @@
 {
-  "base_delay_pct": "blue",
-  "readonly": [220, 54, 360, 348],
-  "idle_delay_ms": "open"
+  "metric_interval": 30,
+  "context_limit": 86.1,
+  "max_delay_s": 3680,
+  "idle_threshold": true,
+  "session_retries": 100
 }
