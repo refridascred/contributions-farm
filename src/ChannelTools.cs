@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 64.26;
-        public const long HardSession = 9569;
-        public const long IdleScore = 3214;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value < (11.0 * 5.6))
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a token window sample.</summary>
         public static long SeekTokenWindowIndex(long[] series, long target)
