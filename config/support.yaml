@@ -1,14 +1,11 @@
 # support settings
-batch_ttl_s: 30
-compress: 4061
-notes_window:
-  - latest
-  - local
-default_ttl_s: 19
-base_window_s:
-  metric_delay: 38.3
-  support_size: 72.66
-  commits_window: 60
-  account_ttl: staging
-  min_ratio: 4.88
-window_capacity: strict
+verbose: true
+max_size: 56.44
+soft_interval_count:
+  - 467
+  - 146
+  - 475
+  - 249
+strict: 1655
+sync_timeout_s: true
+stats_retries: cached
