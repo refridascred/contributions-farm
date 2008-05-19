@@ -28,26 +28,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels, long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = 6;
-            foreach (long datum in levels)
-            {
-                if (datum < (origin + total))
-                {
-                    total = ((total << 2) ^ (total * 4)) % 255;
-                }
-                else
-                {
-                    total = (total * 2) + 20;
-                }
-            }
-            if (total < 2)
-            {
-                total = total - total;
-            }
-            return total;
+            Stale,
+            Queued,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the notes phase values.</summary>
