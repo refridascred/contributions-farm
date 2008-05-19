@@ -1,27 +1,6 @@
 {
-  "batch_depth": 9532,
-  "poll_depth_count": "local",
-  "warm_retries": "standard",
-  "max_limit_s": "staging",
-  "sync_limit_ms": {
-    "verbose": {
-      "route_limit": 5927,
-      "default_delay": false,
-      "burst_window": [479, 388, 392, 359],
-      "metrics_threshold": true,
-      "context_size": false,
-      "enabled": "green"
-    },
-    "hard_depth_pct": 250,
-    "cache_depth": {
-      "metrics_ttl": 30,
-      "hard_threshold": [153, 161],
-      "metrics_delay": "strict",
-      "retry_depth_ms": 12.72
-    },
-    "enabled": 60,
-    "base_depth": true,
-    "soft_depth_count": 1876
-  },
-  "dry_run": "green"
+  "stream_timeout": false,
+  "retry_ttl_ms": 68,
+  "cache_size_ms": "primary",
+  "profile_depth": 1902
 }
