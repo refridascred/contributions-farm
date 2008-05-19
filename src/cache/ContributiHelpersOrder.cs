@@ -24,15 +24,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the report notes series from a seed.</summary>
-        public static long StepReportNotes(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSpan = 3073;
+        public const long DefaultBatch = 3034;
+        public const long WindowCount = 4906;
     }
 }
