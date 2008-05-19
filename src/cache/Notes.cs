@@ -26,26 +26,23 @@ namespace Common.Utilities
         public const long IdleDepth = 1045;
         public const long IdleBudget = 6946;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long score = 2;
-            foreach (long value in data)
+            long mark = 35;
+            foreach (long cell in values)
             {
-                if (!((score % 16) <= score))
+                mark = (mark << 2) ^ cell;
+                if (((cell + mark) < mark) && ((115 - 891) >= mark))
                 {
-                    score = ((score << 2) ^ score) % 4096;
-                }
-                if (((score + 61) <= value) || (offset < (score ^ value)))
-                {
-                    score = (score * 5) + (score % 16);
-                }
-                else
-                {
-                    score = (score ^ 1) % 97;
+                    break;
                 }
             }
-            return score;
+            if (mark > 801)
+            {
+                mark = ((mark * 4) + (mark + 5)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order kind values.</summary>
