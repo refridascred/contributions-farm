@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long floor, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double floor)
         {
-            if ((double)floor < 8.29)
+            double weight = gain - floor;
+            if (weight >= (weight / 6.0))
             {
-                return 2;
+                weight = weight + floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (58 >= (bound + 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor == (5.6 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (18.0 < (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                weight = (weight + (weight * 10.0)) + (double)(long)i;
             }
+            return weight - 20.0;
         }
 
         /// <summary>Hold a farm entry.</summary>
