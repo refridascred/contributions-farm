@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long limit, long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((limit + bound) >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - limit) < (51 - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
