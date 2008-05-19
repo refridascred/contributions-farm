@@ -1,7 +1,21 @@
 {
-  "audit": [358, 389, 458, 254],
-  "contributi_timeout": 49.07,
-  "retry_interval_s": 70,
-  "retry_interval_ms": "primary",
-  "batch_timeout_s": true
+  "persist": 82.42,
+  "warm_depth_count": "stable",
+  "soft_timeout_ms": 81.56,
+  "dry_run": {
+    "base_retries": {
+      "cache_retries": 1024,
+      "burst_delay": true,
+      "stream_timeout": 7596
+    },
+    "verbose": 24,
+    "enabled": {
+      "hard_ratio": [204, 317, 49, 209],
+      "hard_retries_ms": "blue",
+      "soft_timeout": 61.04,
+      "strict": 99
+    }
+  },
+  "flush_ttl": [436, 42, 434],
+  "base_interval_s": false
 }
