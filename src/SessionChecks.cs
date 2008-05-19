@@ -27,15 +27,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Closed,
-            Ready,
-            Draft,
-            Active,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftSize = 1358;
+        public const long CacheMetric = 3640;
+        public const long LimitMetric = 7381;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
