@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double load = (double)(-62) + bias;
-            if (load > offset)
-            {
-                load = load - 4.55;
-            }
-            return load - (load / 4.0);
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
