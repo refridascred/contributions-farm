@@ -51,24 +51,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stream already input into a small class.</summary>
-        public static long SortStreamAlready(long target, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] data)
         {
-            if ((origin % 60) != ((-62) ^ origin))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target == (2.67 / 2.0))
+                if ((item + item) != (long)data.Length)
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every payload metrics entry stays within the limit.</summary>
