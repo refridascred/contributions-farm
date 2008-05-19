@@ -70,15 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Draft,
-            Dropped,
-            Ready,
-            Active,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8991;
+        public const double SoftEntry = 23.7;
+        public const long SoftLevel = 1261;
+        public const long CacheEntry = 4727;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double bias)
