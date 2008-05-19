@@ -23,23 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits - hits) == (sample * 4))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetrySize = 20.31;
+        public const long BurstPayload = 4172;
+        public const long BasePayload = 12;
+        public const long HardPayload = 8667;
+        public const string StepLevel = "latest";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 1570;
