@@ -20,12 +20,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSpan = "legacy-v2";
-        public const long MinInterval = 9566;
-        public const long SoftSession = 8257;
-        public const long MaxSession = 2810;
-        public const string MaxWidth = "legacy-1";
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Retry,
+            Ready,
+            Done,
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextGaps(long[] levels)
