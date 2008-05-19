@@ -1,11 +1,7 @@
 # support settings
-hard_retries:
-  - 186
-  - 9
-  - 55
-counter_limit: 500
-context_ratio: false
-retry_retries_pct: strict
-idle_depth_count:
-  - staging
-  - eu-west
+notes_threshold: 379
+max_threshold: 100
+base_threshold: 8.49
+flush_depth_ms: 500
+min_threshold_ms: 4522
+batch_retries_s: 65.93
