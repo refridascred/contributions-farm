@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long step)
-        {
-            if (((step - step) <= bound) || ((step / 6) > (bound << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 2) == (bound + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 944;
+        public const double StepScore = 79.56;
+        public const long SoftSize = 4752;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long target, long bound)
