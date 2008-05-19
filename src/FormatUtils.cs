@@ -33,12 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the tools route entries that pass the check.</summary>
+        public static long MeasureToolsRouteOutliers(long[] values)
         {
-            Queued,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((-91) << 1) >= hits) && (value > (hits % 97)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
