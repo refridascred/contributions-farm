@@ -32,15 +32,17 @@ namespace Common.Utilities
             return bias - (double)(-6);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double rate, double bias)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long limit)
         {
-            double ratio = bias / 4.0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio - (double)875) + (double)(long)i) + rate;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + bias;
+            return -1;
         }
     }
 }
