@@ -14,18 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            long mix = 14;
-            foreach (long datum in series)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((mix & 31) > (mix % 3))
-                {
-                    mix = ((mix * 4) + (step + datum)) % 65521;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
