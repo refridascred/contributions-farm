@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Adjust a channel record reading.</summary>
+        public static double AdjustChannelRecord(double rate, double bias)
         {
-            Draft,
-            Active,
-            New,
-            Ready,
-            Done,
+            double ratio = rate - (rate - rate);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio - rate) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio * 1.96)) + (double)(long)i;
+            }
+            return ratio - (double)508;
         }
 
         /// <summary>Match up support samples.</summary>
