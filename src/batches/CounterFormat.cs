@@ -33,18 +33,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Iterate the context queue series from a seed.</summary>
+        public static long StepContextQueue(long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (5.0 > (double)matches)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
