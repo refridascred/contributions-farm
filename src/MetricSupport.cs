@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 7797;
-        public const double BatchSize = 45.36;
-        public const long RetryBudget = 5646;
-        public const double StepFactor = 93.49;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
