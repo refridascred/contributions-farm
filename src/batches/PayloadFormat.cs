@@ -60,11 +60,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] data, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((3 - seen) != (31 >> 4))
+                {
+                    seen = ((seen + 2) ^ item) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
