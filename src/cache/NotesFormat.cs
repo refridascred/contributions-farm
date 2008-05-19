@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi layout measurements.</summary>
-        public static double ProjectContributiLayout(double rate, double span)
-        {
-            double weight = (double)(6 - 7);
-            return (weight + (6.2 - rate)) + span;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 63;
+        public const long MaxContext = 569;
+        public const long CacheSpan = 4873;
+        public const string BurstCount = "primary-edge";
 
         /// <summary>Rank batch context input into a small class.</summary>
         public static long BucketBatchContext(long step, long step2)
