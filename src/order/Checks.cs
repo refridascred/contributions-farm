@@ -38,12 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 61.71;
-        public const long MinTools = 8471;
-        public const long MaxTools = 9315;
-        public const long RetryTools = 4231;
-        public const string HardWidth = "cached-1";
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double offset)
+        {
+            double drift = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift + 6.5;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
