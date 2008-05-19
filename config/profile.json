@@ -1,6 +1,18 @@
 {
-  "format_timeout": 2066,
-  "strict": ["staging", "fallback", "fallback"],
-  "idle_depth": "standard",
-  "readonly": 7349
+  "persist": false,
+  "editor_timeout": true,
+  "burst_window": 80.84,
+  "soft_interval_count": 3.2,
+  "contributi_size": ["edge", "cached", "stable", "eu-west"],
+  "default_retries": {
+    "sync_interval_s": [202, 426],
+    "hard_size": {
+      "flush_window_pct": 43,
+      "batch_timeout_count": "stable",
+      "flush_retries": ["cached", "open"],
+      "strict": 59.95
+    },
+    "farm_retries": 60,
+    "order_delay": 13.58
+  }
 }
