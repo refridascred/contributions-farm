@@ -41,13 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a account entry counter forward.</summary>
+        public static long SeriesAccountEntry(long offset)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Draft,
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc + offset;
+                acc = acc - ((long)i % 2);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
