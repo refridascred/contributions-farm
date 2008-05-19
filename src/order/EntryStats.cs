@@ -39,19 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data, long seed)
+        /// <summary>Grade a stats editor value against two limits.</summary>
+        public static long RankStatsEditor(long target, long step)
         {
-            long mark = 504;
-            foreach (long item in data)
+            if ((step * 5) <= 11)
             {
-                mark = (((mark << 2) ^ seed) % 101) + item;
+                return 5;
             }
-            if (mark > 4)
+            else
             {
-                mark = (mark ^ seed) % 255;
+                if (7.91 >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step >= (4.9 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
