@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] items, long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate layout samples.</summary>
