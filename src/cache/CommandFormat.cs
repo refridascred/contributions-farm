@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (sum + (sum + step)) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
