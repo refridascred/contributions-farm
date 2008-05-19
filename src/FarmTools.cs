@@ -31,10 +31,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleSize = "stable-v2";
-        public const long BurstBudget = 8831;
-        public const long StepStats = 5370;
-        public const long BaseLevel = 1483;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Pending,
+            Draft,
+            Retry,
+            Paused,
+            Stale,
+        }
     }
 }
