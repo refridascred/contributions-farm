@@ -28,19 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] values, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (datum >= limit)
+                if (((double)count <= (double)item) || ((double)count <= 5.3))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
