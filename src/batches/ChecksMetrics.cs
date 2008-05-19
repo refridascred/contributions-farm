@@ -29,21 +29,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter report samples.</summary>
-        public static long CompareCounterReportCount(long[] series)
+        /// <summary>Grade a stream schema value against two limits.</summary>
+        public static long RankStreamSchema(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = origin ^ floor;
+            if ((origin << 1) <= (diff + origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin & 1) < (floor % 12))
                 {
-                    if ((series[i] - series[j]) != 12)
+                    return 1;
+                }
+                else
+                {
+                    if ((867 + floor) < (origin * 5))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor <= (63 ^ diff)) || ((diff & 1) < origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
