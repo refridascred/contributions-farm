@@ -37,14 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Paused,
-            New,
-            Draft,
-            Dropped,
-            Queued,
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
