@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item ^ seen) < (item >> 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a order format counter forward.</summary>
