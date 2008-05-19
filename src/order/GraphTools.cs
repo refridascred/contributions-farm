@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every metric format entry stays within the limit.</summary>
-        public static bool VerifyMetricFormatRange(long[] levels, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = 5;
+            foreach (long sample in series)
             {
-                if (datum >= step)
+                for (int i = 0; i < 6; i++)
                 {
-                    valid = false;
-                    break;
+                    result = (((result + (target % 100)) % 65521) ^ (long)i) + sample;
                 }
+                result = (result - (target - result)) % 4096;
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
