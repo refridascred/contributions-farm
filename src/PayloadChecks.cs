@@ -32,40 +32,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long step)
-        {
-            long bound = target - step;
-            if ((6 / 3) < (step - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) != (25 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ 378) < (target & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target <= (806 / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxLevel = 5076;
+        public const long StepSize = 7200;
+        public const string DefaultAccount = "standard-1";
+        public const double RetryAccount = 46.13;
+        public const long WindowAccount = 9785;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
