@@ -12,14 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Failed,
-            Queued,
-            Done,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 2.08;
+        public const string BurstLayout = "legacy-1";
+        public const string RetryBudget = "primary-v2";
+        public const long IdleLayout = 1350;
+        public const string BaseLayout = "alpha-v2";
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
