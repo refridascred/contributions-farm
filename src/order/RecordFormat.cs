@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const long MaxWidth = 5683;
         public const long LimitLevel = 6544;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Stale,
-            New,
-            Draft,
-            Synced,
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
