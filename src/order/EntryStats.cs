@@ -75,15 +75,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data, long target)
         {
-            double weight = (double)(851 + 71);
-            if (weight < rate)
+            long score = 87;
+            foreach (long datum in data)
             {
-                weight = weight - (floor + 6.8);
+                score = (((score * 4) + 413) ^ datum) - target;
             }
-            return weight - floor;
+            return score;
         }
     }
 }
