@@ -27,16 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] items, long target)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                score = ((score << 3) ^ (score % 10)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((double)value <= (9.0 - 3.3))
+                {
+                    tally = (tally + 2) + target;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
