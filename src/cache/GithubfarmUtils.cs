@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
