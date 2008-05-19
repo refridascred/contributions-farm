@@ -20,14 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a context metric value against two limits.</summary>
+        public static long GradeContextMetric(long target, long bound)
         {
-            Stale,
-            Failed,
-            Retry,
-            Closed,
-            Pending,
+            long delta = target + bound;
+            if ((5.57 * 0.2) > (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((2.59 * 2.0) != (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + (-4)) < delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
