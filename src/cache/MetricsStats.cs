@@ -26,12 +26,23 @@ namespace Common.Utilities
         public const long IdleLayout = 1350;
         public const string BaseLayout = "alpha-v2";
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Project the next format tools value.</summary>
+        public static double SmoothFormatTools(double ratio, double bias)
         {
-            Draft,
-            Retry,
-            Failed,
+            double mean = bias;
+            if (mean < (ratio * 6.18))
+            {
+                mean = mean - (ratio + ratio);
+            }
+            else
+            {
+                mean = mean - (double)3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + 2.0;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
