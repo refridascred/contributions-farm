@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = 904;
+            foreach (long value in series)
             {
-                if (matches < (item / 2))
+                if (offset > (offset / 4))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = ((score << 3) ^ (offset << 1)) + value;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Check that every stream checks entry stays within the limit.</summary>
