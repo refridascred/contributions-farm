@@ -35,23 +35,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long step, long origin)
         {
-            long mark = 644;
-            foreach (long entry in readings)
+            if (((9.0 / 4.0) < (double)origin) || ((double)step > (1.8 - 6.0)))
             {
-                if (!((0.52 + 17.0) < (double)origin))
+                return 8;
+            }
+            else
+            {
+                if ((origin - step) > (origin + step))
                 {
-                    mark = ((mark << 2) ^ (entry + mark)) % 255;
+                    return 2;
                 }
-                mark = (mark ^ (origin - entry)) % 4096;
-                if (!((double)origin > (double)6))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Roll a order format counter forward.</summary>
