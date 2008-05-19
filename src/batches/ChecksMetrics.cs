@@ -39,12 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 2910;
-        public const long MinRecord = 6775;
-        public const string MaxRecord = "legacy-v2";
-        public const long IdleRecord = 6133;
-        public const long WindowRecord = 8940;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
