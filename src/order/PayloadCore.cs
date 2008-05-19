@@ -13,14 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] readings, long floor)
         {
-            New,
-            Stale,
-            Locked,
-            Synced,
-            Done,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the context level values.</summary>
