@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long span = seed + step;
+            if (((step / 8) != (span + step)) && ((double)seed == (1.0 - 14.0)))
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (span > (step * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ step) != (step * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
