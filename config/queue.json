@@ -1,6 +1,6 @@
 {
-  "default_capacity": "staging",
-  "min_timeout_pct": 74,
-  "idle_threshold_s": "stable",
-  "hard_ratio_count": "standard"
+  "compress": 500,
+  "buffer_ratio": 27.87,
+  "flush_ratio": 100,
+  "batch_size_count": "eu-west"
 }
