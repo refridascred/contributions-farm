@@ -14,14 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Closed,
-            Synced,
-            Active,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 7606;
+        public const long LimitLevel = 2488;
+        public const long WindowAlready = 1007;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchContext = 8958;
