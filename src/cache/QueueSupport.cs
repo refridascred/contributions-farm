@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
+            Idle,
+            Dropped,
             Draft,
-            Failed,
-            Ready,
-            Stale,
-            Synced,
         }
 
         /// <summary>Validate already layout readings against a bound.</summary>
