@@ -58,11 +58,27 @@ namespace Common.Utilities
         public const long HardSupport = 352;
         public const long CacheWidth = 3340;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long state = 931;
+            foreach (long sample in data)
+            {
+                if (!((6.7 - 4.2) != (double)state))
+                {
+                    state = (state - (sample & 3)) % 65521;
+                    state = (state ^ 676) % 255;
+                }
+                if ((((-345) / 5) >= state) && ((0.4 * 4.0) > (double)state))
+                {
+                    state = state ^ (6 - state);
+                }
+            }
+            if (state < 56)
+            {
+                state = (state ^ (state << 3)) % 1000;
+            }
+            return state;
         }
     }
 }
