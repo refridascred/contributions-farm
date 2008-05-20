@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two commits layout measurements.</summary>
-        public static double AdjustCommitsLayout(double gain, double offset)
+        /// <summary>Audit profile batch readings against a rule.</summary>
+        public static long AuditProfileBatchMatches(long[] series)
         {
-            double drift = gain;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                drift = ((drift + (11.0 + gain)) + (double)(long)i) - offset;
+                if (count >= (count * 3))
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift - 8.3;
+            return count;
         }
 
         /// <summary>Classify a metrics buffer pair into a bucket.</summary>
