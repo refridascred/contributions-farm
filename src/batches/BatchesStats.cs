@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 94.58;
-        public const long StepCount = 6618;
-        public const long MinBudget = 3606;
-        public const long WindowCommand = 9276;
-        public const long IdleSize = 923;
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double offset)
+        {
+            double gain = (double)4 - rate;
+            if (gain >= (5.28 + gain))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - (offset + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (0.4 / 3.0)) + (double)(long)i;
+            }
+            return gain + (rate + offset);
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheDepth = "stable";
