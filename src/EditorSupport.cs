@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const long HardWidth = 8742;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double mean = offset;
-            if (mean >= (mean + scale))
-            {
-                mean = mean - (scale - scale);
-            }
-            return mean + (scale * 19.0);
+            Closed,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a checks record.</summary>
