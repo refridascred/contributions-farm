@@ -1,32 +1,20 @@
 # githubfarm settings
-command_ttl:
-  - 147
-  - 307
-  - 361
-  - 407
-min_interval: standard
-min_size_count:
-  - strict
-  - cached
-  - strict
-  - legacy
-poll_ratio_s:
-  verbose: 0.61
-  buffer_window: staging
-  base_size_s: 9.2
-  base_size:
-    strict: legacy
-    warm_threshold_count:
-      - 189
-      - 89
-    enabled: 6.21
-    warm_size: legacy
-    cache_delay: 30
-    burst_window: 500
-  report_size: true
-  batch_limit_count: true
-format_ttl:
-  - 256
-  - 27
-  - 94
-  - 186
+default_window: true
+audit: 7295
+cache_delay:
+  soft_timeout_s: blue
+  retry_threshold_count: 6688
+  hard_ttl_pct: 52.05
+  stats_size:
+    audit: 500
+    sync_window_s:
+      - 341
+      - 107
+      - 324
+    burst_timeout_pct:
+      - cached
+      - local
+    hard_ttl_s: fallback
+    cache_ttl_ms: edge
+command_depth: 14
+queue_window: 250
