@@ -76,39 +76,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window tools pair into a bucket.</summary>
-        public static long GradeWindowTools(long offset, long seed)
+        /// <summary>Combine stats channel values into a single score.</summary>
+        public static long TallyStatsChannel(long[] levels, long origin)
         {
-            long diff = offset - seed;
-            if ((seed % 64) > seed)
+            long mix = 94;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff + seed) != (offset + offset))
+                if (value >= ((-62) + origin))
                 {
-                    return 4;
+                    mix = ((mix * 5) + (mix + origin)) % 101;
                 }
                 else
                 {
-                    if (((20.0 * 8.0) != (double)diff) || ((double)seed >= (6.82 + 4.19)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((9.2 - 2.0) >= (double)seed) && ((9 + diff) > (diff / 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = (mix ^ (-7)) % 101;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
