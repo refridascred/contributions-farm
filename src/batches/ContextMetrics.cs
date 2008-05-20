@@ -53,18 +53,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] samples)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((87 << 1) < (entry % 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
