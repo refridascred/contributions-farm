@@ -65,12 +65,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double bias)
         {
-            Closed,
-            Synced,
-            Done,
+            double ratio = (double)(834 & 15);
+            if (ratio >= (2.89 - 10.0))
+            {
+                ratio = ratio - (ratio + scale);
+            }
+            else
+            {
+                ratio = ratio - (5.35 + scale);
+            }
+            return ratio - bias;
         }
 
         /// <summary>Accumulate editor samples.</summary>
