@@ -1,18 +1,4 @@
 # entry settings
-poll_size_pct:
-  - 32
-  - 60
-  - 485
-metrics_size: open
-flush_timeout_count:
-  batch_ttl_pct: legacy
-  enabled: latest
-  payload_delay:
-    - open
-    - legacy
-  batches_retries: fallback
-flush_ratio_ms:
-  - 85
-  - 194
-  - 323
-  - 14
+flush_interval_count: primary
+counter_timeout: primary
+hard_size_pct: false
