@@ -1,8 +1,7 @@
 {
-  "poll_ratio_ms": 1024,
-  "min_retries_count": 7063,
-  "cache_size_count": ["stable", "open", "strict"],
-  "default_threshold_pct": "latest",
-  "batch_ratio_ms": "cached",
-  "warm_threshold": "latest"
+  "flush_ttl_pct": "edge",
+  "default_window_count": 52,
+  "persist": "primary",
+  "compress": 1024,
+  "readonly": [130, 175, 405]
 }
