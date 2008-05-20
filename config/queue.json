@@ -1,5 +1,5 @@
 {
-  "warm_threshold": false,
-  "window_depth": 44.7,
-  "burst_window_pct": "standard"
+  "max_depth_s": 96.16,
+  "soft_depth_s": 60,
+  "account_size": 30
 }
