@@ -28,15 +28,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (!((step % 8) > (21 + step)))
+                {
+                    score = (score + (step / 4)) % 101;
+                }
+                if (3.0 > (double)score)
+                {
+                    score = ((score * 5) + (score - (long)i)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the batches status values.</summary>
