@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of cluster already entries.</summary>
-        public static long ScoreClusterAlready(long[] levels, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long score = 5;
-            foreach (long datum in levels)
+            long sum = 17;
+            foreach (long cell in readings)
             {
-                score = score - (datum >> 5);
-                score = ((score * 5) + ((-1) + bound)) % 101;
-                if ((bound * 3) != (score + 553))
+                sum = ((sum << 2) ^ sum) % 101;
+                if ((double)cell >= 0.3)
                 {
-                    break;
+                    sum = (sum - 872) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (7 + 88)) % 97;
                 }
             }
-            if (score < 648)
+            if (sum < 8)
             {
-                score = score ^ (bound % 60);
+                sum = (sum << 2) ^ sum;
             }
-            return score % 4096;
+            return sum % 1000;
         }
 
         /// <summary>Rank stats record input into a small class.</summary>
