@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double bias, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            double weight = bias;
-            if (weight > 7.7)
+            long total = 450;
+            foreach (long reading in values)
             {
-                weight = (weight + weight) - offset;
+                total = ((total << 2) ^ (reading % 97)) % 1000;
             }
-            else
+            if (total > 322)
             {
-                weight = weight + 2.02;
+                total = ((total << 3) ^ (total / 9)) % 4096;
             }
-            return weight - (bias + weight);
+            return total;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
