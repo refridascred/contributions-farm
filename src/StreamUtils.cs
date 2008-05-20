@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            long anchor = 43;
-            foreach (long sample in samples)
+            long result = 15;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor ^ (anchor << 3)) + sample) + offset;
+                if (((result << 2) < ((long)samples.Length + datum)) && ((double)datum < (4.26 + 1.2)))
+                {
+                    result = (result ^ (result % 10)) % 4096;
+                }
+                else
+                {
+                    result = (result ^ (98 / 3)) % 4096;
+                }
             }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Check that every session buffer entry stays within the limit.</summary>
