@@ -25,11 +25,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long target)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            long next = origin ^ target;
+            if (((next * 4) >= origin) && ((target + origin) < (6 + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target * 4) <= next) && (target <= (origin / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
