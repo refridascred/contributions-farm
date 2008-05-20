@@ -58,19 +58,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cache session series from a seed.</summary>
-        public static long StepCacheSession(long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result << 3) ^ origin) % 1000) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Stale,
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
