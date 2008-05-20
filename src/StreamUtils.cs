@@ -31,13 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] items, long offset)
         {
-            Paused,
-            Queued,
-            Draft,
-            Ready,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up stream cluster samples.</summary>
