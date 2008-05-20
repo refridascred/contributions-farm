@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of cluster graph readings.</summary>
-        public static long PairClusterGraphCount(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 751;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((anchor + step) == (1 ^ 1)) && ((double)sample != (4.1 - 2.2)))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (anchor >> 3);
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
