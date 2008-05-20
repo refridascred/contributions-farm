@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 6.29;
-        public const string MinRecord = "alpha";
-        public const long BatchLevel = 2499;
-        public const long BaseRecord = 6903;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Scale a filter cluster figure with a bias.</summary>
         public static double AdjustFilterCluster(double scale, double bias)
