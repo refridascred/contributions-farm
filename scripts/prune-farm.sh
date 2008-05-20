@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+FARM_LIMIT=374
+log "limit is ${FARM_LIMIT}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in local fallback standard primary; do
+for item in standard green fallback; do
     log "checking ${item}"
 done
