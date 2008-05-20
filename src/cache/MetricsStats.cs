@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((anchor ^ item) <= (5 << 1))
+                if (reading <= step)
                 {
-                    anchor = (anchor << 2) ^ (anchor * 2);
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
