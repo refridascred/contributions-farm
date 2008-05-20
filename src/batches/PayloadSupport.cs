@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
