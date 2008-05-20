@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSpan = 3764;
+        public const long BatchTimeout = 5245;
+        public const long BaseTimeout = 3402;
+        public const long BurstCount = 5562;
+        public const long IdleCache = 9772;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryRecord = 9955;
