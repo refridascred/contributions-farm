@@ -1,7 +1,12 @@
 {
-  "token_limit": [371, 160, 434],
-  "soft_ttl_ms": "strict",
-  "compress": 5242,
-  "session_ratio": 3807,
-  "flush_ratio_count": 100
+  "base_threshold": {
+    "readonly": 64.32,
+    "cache_ratio": 1024,
+    "hard_size_count": "standard",
+    "warm_delay_pct": 48,
+    "idle_capacity": "strict"
+  },
+  "booking_window": 69,
+  "burst_ratio": 5604,
+  "flush_timeout_s": 7201
 }
