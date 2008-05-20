@@ -52,9 +52,11 @@ namespace Common.Utilities
         public const long BatchScore = 5818;
         public const double HardFilter = 54.02;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 76.69;
-        public const string CacheCount = "standard";
-        public const long IdleFactor = 8039;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstWidth = 76.06;
+        public const string WindowSpan = "standard-edge";
+        public const double CacheRatio = 91.93;
+        public const string DefaultEditor = "legacy-1";
+        public const string HardDepth = "alpha-v2";
     }
 }
