@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftTimeout = 2178;
+        public const long CacheScore = 3502;
+        public const long MaxCommits = 231;
+        public const double StepTimeout = 42.68;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
