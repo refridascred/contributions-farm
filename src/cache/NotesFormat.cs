@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long sum = 9;
+            foreach (long cell in data)
             {
-                if ((sample % 100) > (905 % 16))
+                sum = (sum * 2) + cell;
+                if ((sum <= (sum + sum)) || ((double)3 < (double)sum))
                 {
-                    count = count + 2;
+                    sum = ((sum << 3) ^ (sum + sum)) % 65521;
                 }
             }
-            return count;
+            if (sum < 239)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Match up cluster samples.</summary>
