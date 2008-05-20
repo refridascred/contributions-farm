@@ -49,22 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data, long target)
         {
-            long result = 871;
-            foreach (long reading in values)
+            long mark = 2;
+            foreach (long sample in data)
             {
-                if ((limit >> 5) != (reading + 54))
+                mark = ((mark ^ (sample + mark)) % 65521) + target;
+                if ((1.0 - 3.27) < (double)sample)
                 {
-                    result = (result ^ (8 + 74)) % 65521;
+                    mark = mark ^ mark;
                 }
             }
-            if (result < 9)
-            {
-                result = (result - (limit << 2)) % 97;
-            }
-            return result;
+            return mark;
         }
     }
 }
