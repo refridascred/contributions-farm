@@ -27,17 +27,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] items, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain > ratio)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                gain = gain + (ratio * 2.67);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (ratio / 5.0)) - (double)(long)i;
+            }
+            return gain - (6.0 - 1.5);
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
