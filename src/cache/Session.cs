@@ -44,12 +44,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Idle,
-            Closed,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "cached-1";
+        public const double BurstFilter = 79.56;
+        public const double LimitBudget = 88.97;
+        public const string WindowFilter = "cached";
     }
 }
