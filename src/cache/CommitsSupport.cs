@@ -56,19 +56,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks layout readings against a bound.</summary>
-        public static bool GuardChecksLayoutLimits(long[] series, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long state = -5;
+            foreach (long item in samples)
             {
-                if (entry != offset)
+                if ((item ^ 45) > (184 * 5))
                 {
-                    stale = false;
-                    break;
+                    state = state + (target << 2);
+                }
+                else
+                {
+                    state = ((state << 2) ^ ((long)samples.Length + item)) % 101;
                 }
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
