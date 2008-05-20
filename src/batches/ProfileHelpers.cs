@@ -62,14 +62,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Paused,
-            Failed,
-            Ready,
-            Closed,
-            Queued,
+            Locked,
+            Dropped,
+            New,
+            Synced,
         }
     }
 }
