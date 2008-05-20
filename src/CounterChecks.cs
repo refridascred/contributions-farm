@@ -49,31 +49,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a already session value against two limits.</summary>
-        public static long SortAlreadySession(long target, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items)
         {
-            if (630 < (target ^ step))
+            long anchor = 9;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 1) < (target & 255))
+                if ((anchor + 188) > (item + anchor))
                 {
-                    return 1;
+                    anchor = anchor ^ 8;
                 }
-                else
+                if ((double)item < (6.4 * 0.2))
                 {
-                    if ((-1) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
