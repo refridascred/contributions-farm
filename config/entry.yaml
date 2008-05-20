@@ -1,7 +1,30 @@
 # entry settings
-cache_window: 33
-window_depth: 250
-base_size_ms: 60
-poll_size: 500
-hard_interval: standard
-layout_retries: 60
+cache_ttl: 60
+cache_timeout_pct:
+  - 373
+  - 379
+  - 250
+  - 362
+verbose: 88
+report_window:
+  hard_ratio_s:
+    batch_window_pct:
+      - 19
+      - 120
+      - 312
+    retry_timeout_count: false
+    strict: 44.32
+    enabled: true
+  enabled:
+    hard_limit:
+      - 191
+      - 381
+      - 398
+    report_ttl: 60
+    account_window: 30
+  githubfarm_size: true
+sync_retries:
+  - 410
+  - 310
+  - 140
+entry_delay: 13.94
