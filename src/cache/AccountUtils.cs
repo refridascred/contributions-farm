@@ -37,11 +37,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchDepth = 9948;
-        public const string LimitPayload = "legacy";
-        public const long BaseWidth = 6083;
-        public const string BaseTimeout = "stable-1";
-        public const long MinLevel = 507;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Draft,
+            Retry,
+            Done,
+            Dropped,
+            Stale,
+        }
     }
 }
