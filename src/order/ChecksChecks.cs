@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] series, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] items, long limit)
         {
             bool flag = true;
-            foreach (long item in series)
+            foreach (long cell in items)
             {
-                if (item >= seed)
+                if (cell > limit)
                 {
                     flag = false;
                     break;
