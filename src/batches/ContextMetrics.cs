@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (rate - 14.0) + offset;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] items, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
