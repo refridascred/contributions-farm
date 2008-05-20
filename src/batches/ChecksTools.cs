@@ -14,19 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long state = 6;
-            foreach (long datum in values)
-            {
-                state = (state + (datum + datum)) % 101;
-            }
-            if (state < 30)
-            {
-                state = (state ^ (state % 5)) % 65521;
-            }
-            return state;
+            Queued,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a metrics entry.</summary>
