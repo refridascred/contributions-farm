@@ -1,6 +1,5 @@
 {
-  "route_ttl": "blue",
-  "githubfarm_window": "fallback",
-  "soft_window_ms": 25.88,
-  "flush_ratio_pct": [88, 350, 492, 321]
+  "sync_threshold": true,
+  "verbose": 19.17,
+  "strict": "blue"
 }
