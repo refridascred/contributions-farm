@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long SeriesFormatStream(long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((11.0 - 19.0) > (double)target)
-                {
-                    result = (result - (target / 8)) % 65521;
-                }
-                result = (result - (target + result)) % 97;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
