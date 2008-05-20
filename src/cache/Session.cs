@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long bound)
         {
-            long acc = 4;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit / 3) < (limit + 65))
+                if (readings[i] >= bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                acc = (acc - (846 + entry)) % 4096;
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
