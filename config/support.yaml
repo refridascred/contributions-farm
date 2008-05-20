@@ -1,20 +1,10 @@
 # support settings
-retry_capacity: true
-base_depth:
-  base_depth_s:
-    - 431
-    - 146
-    - 241
-    - 72
-  persist: 8268
-  cache_ratio_s: true
-  batch_size_ms: 51
-  cache_delay: staging
-  hard_limit_pct:
-    - 212
-    - 357
-    - 49
-    - 141
-idle_interval: fallback
-batch_depth_pct: standard
-burst_size_s: 97.46
+persist: primary
+buffer_threshold: true
+route_interval: local
+tools_delay:
+  - primary
+  - strict
+  - green
+  - blue
+layout_interval: strict
