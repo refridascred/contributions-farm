@@ -24,40 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long origin, long seed)
-        {
-            long slot = origin - seed;
-            if ((origin / 7) < 904)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((slot / 8) == (origin >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin + (-9)) >= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((slot + seed) != (78 >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseLevel = 5732;
+        public const long IdleWindow = 7195;
+        public const long LimitWindow = 19;
+        public const long BaseWindow = 248;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] series)
