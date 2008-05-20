@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a filter stats sample.</summary>
-        public static long LookupFilterStatsIndex(long[] data, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (step >= ((-62) - 41))
             {
-                if (data[i] > seed)
+                return 6;
+            }
+            else
+            {
+                if (((5.16 / 9.0) >= (double)offset) && ((offset ^ offset) < step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
