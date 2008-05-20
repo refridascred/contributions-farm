@@ -40,12 +40,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < step)
+                if (data[i] > limit)
                 {
                     return (long)i;
                 }
