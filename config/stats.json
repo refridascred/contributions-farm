@@ -1,6 +1,29 @@
 {
-  "sync_size_count": false,
-  "sync_window_count": 28.6,
-  "flush_window_s": 6471,
-  "sync_timeout": ["strict", "open"]
+  "record_window": {
+    "min_ratio_s": [383, 264, 53, 238],
+    "enabled": "cached",
+    "cache_depth_pct": "local",
+    "layout_depth": [373, 78, 333],
+    "flush_ttl_count": "open",
+    "hard_threshold_pct": [358, 262, 262, 231]
+  },
+  "readonly": "open",
+  "default_size_s": 93.94,
+  "base_threshold_s": {
+    "cache_ttl": 14,
+    "graph_ratio": {
+      "metric_retries": true,
+      "sync_delay_count": "standard",
+      "channel_limit": 20.21
+    },
+    "strict": {
+      "sync_delay_count": "green",
+      "cache_depth_count": "blue",
+      "enabled": 62.59
+    },
+    "burst_interval_ms": "green",
+    "metrics_ratio": 64
+  },
+  "record_size": true,
+  "metrics_window": 63
 }
