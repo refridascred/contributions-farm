@@ -1,6 +1,8 @@
 {
-  "compress": 100,
-  "batch_retries_ms": ["open", "blue", "staging"],
-  "soft_ratio": "standard",
-  "idle_capacity_ms": 5
+  "strict": "eu-west",
+  "warm_ttl_ms": ["standard", "cached", "open"],
+  "idle_threshold_pct": "legacy",
+  "cache_timeout_pct": [497, 50],
+  "min_ttl_count": "open",
+  "schema_capacity": true
 }
