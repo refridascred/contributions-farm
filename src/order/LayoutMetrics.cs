@@ -34,18 +34,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metrics stream samples are out of range.</summary>
-        public static long TallyMetricsStreamGaps(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell ^ count) <= count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
