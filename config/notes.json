@@ -1,8 +1,13 @@
 {
-  "persist": "blue",
-  "min_capacity_pct": true,
-  "readonly": true,
-  "enabled": 6886,
-  "entry_ratio": [24, 135],
-  "batch_retries_s": 55.31
+  "min_depth": true,
+  "max_ratio_pct": {
+    "already_delay": 34,
+    "idle_threshold": 250,
+    "poll_limit_s": 57.8,
+    "burst_timeout": 250,
+    "persist": 43
+  },
+  "poll_ratio_count": "local",
+  "editor_depth": ["eu-west", "blue"],
+  "audit": 500
 }
