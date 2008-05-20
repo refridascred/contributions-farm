@@ -41,24 +41,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long floor)
+        /// <summary>Roll a account cluster counter forward.</summary>
+        public static long IterateAccountCluster(long step)
         {
-            if (!(2.07 < (double)floor))
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                acc = ((acc << 2) ^ ((long)i - step)) % 97;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((10.0 - 15.0) >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the already status values.</summary>
