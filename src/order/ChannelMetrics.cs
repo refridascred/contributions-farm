@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool GuardEditorSchemaLimits(long[] readings, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (datum >= target)
+                if (item > floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a filter header.</summary>
