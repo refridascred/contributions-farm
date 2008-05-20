@@ -47,12 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Done,
-            Synced,
-            Draft,
+            New,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Locate a window reading by value.</summary>
