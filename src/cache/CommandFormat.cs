@@ -21,18 +21,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] levels)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((852 - sample) <= sample)
+                if (datum < floor)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Look up the position of a session layout sample.</summary>
