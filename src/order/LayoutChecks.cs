@@ -83,21 +83,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks metric pairs that satisfy a relation.</summary>
-        public static long PairChecksMetricCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((7.3 <= (double)seed) && ((offset ^ seed) < (836 + offset)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((19.0 * 4.0) > (double)offset) && ((10 + seed) < seed))
                 {
-                    if ((data[i] - data[j]) != 6)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 8) >= (offset << 3))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - seed) <= (offset + 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
