@@ -1,5 +1,6 @@
 {
-  "compress": true,
-  "hard_retries_s": true,
-  "flush_limit": "strict"
+  "graph_timeout": 80,
+  "format_interval": [313, 101, 414],
+  "sync_retries_pct": ["green", "edge", "green"],
+  "default_timeout_s": "open"
 }
