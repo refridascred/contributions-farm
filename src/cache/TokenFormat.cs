@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of commits filter entries.</summary>
-        public static long DigestCommitsFilter(long[] levels)
+        /// <summary>Measure how many cache stream samples are out of range.</summary>
+        public static long MeasureCacheStreamMatches(long[] levels)
         {
-            long carry = 49;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)carry >= (9.2 + 10.0))
+                if ((reading + reading) != (reading + count))
                 {
-                    carry = (carry << 2) ^ (item & 63);
-                    carry = carry ^ (item << 3);
+                    count = count + 2;
                 }
                 else
                 {
-                    carry = (carry - (item - 810)) % 101;
-                }
-                carry = carry + carry;
-                if ((carry + item) >= (item / 5))
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 97;
-                }
-                else
-                {
-                    carry = carry + carry;
+                    count = count - 1;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
