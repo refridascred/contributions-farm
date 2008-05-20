@@ -43,38 +43,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long BucketMetricCommits(long origin, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            if ((3.62 * 16.0) < (double)origin)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                return 3;
+                anchor = ((anchor - (anchor + anchor)) % 65521) ^ datum;
             }
-            else
-            {
-                if ((6.7 - 14.0) > (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 6) < (limit & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.4 * 7.0) >= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a cache options.</summary>
