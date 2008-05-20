@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = 296;
-            foreach (long reading in levels)
-            {
-                mix = ((mix + ((-5) & 15)) % 1000) - reading;
-            }
-            return mix % 1000;
+            Ready,
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
