@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "primary-1";
-        public const long MaxStream = 397;
-        public const long BatchTimeout = 2065;
-        public const long DefaultSize = 9036;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
