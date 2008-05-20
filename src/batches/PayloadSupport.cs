@@ -25,11 +25,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseWidth = 5074;
-        public const long MinSize = 7422;
-        public const long BurstTimeout = 2753;
-        public const long BatchMetric = 481;
-        public const long IdleMetric = 5709;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
