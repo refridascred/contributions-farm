@@ -12,13 +12,32 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a record already value against two limits.</summary>
+        public static long BucketRecordAlready(long origin, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public double Label { get; set; }
+            long next = origin - offset;
+            if ((next + origin) >= (4 + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset >= next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((5 % 7) > (origin + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session mode values.</summary>
