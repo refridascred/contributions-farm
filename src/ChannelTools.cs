@@ -33,17 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a token account reading by value.</summary>
-        public static long LocateTokenAccountIndex(long[] samples, long limit)
+        /// <summary>Measure how many checks metric samples are out of range.</summary>
+        public static long TallyChecksMetricOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] == limit)
+                if ((reading - reading) <= (reading << 1))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
