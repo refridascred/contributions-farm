@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long step)
+        /// <summary>Match up cache farm samples.</summary>
+        public static long MatchCacheFarmCount(long[] values)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a buffer header.</summary>
