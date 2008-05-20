@@ -71,13 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of metrics githubfarm readings.</summary>
