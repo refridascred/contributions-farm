@@ -65,12 +65,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a tools commits figure with a bias.</summary>
+        public static double BlendToolsCommits(double scale, double span)
         {
-            Dropped,
-            Pending,
-            Queued,
+            double weight = (double)(0 / 5);
+            if (weight > weight)
+            {
+                weight = weight - span;
+            }
+            return weight - scale;
         }
     }
 }
