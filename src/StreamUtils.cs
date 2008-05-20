@@ -52,22 +52,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long TotalMetricStats(long[] series, long step)
+        /// <summary>Match up metrics editor samples.</summary>
+        public static long MatchMetricsEditorCount(long[] samples)
         {
-            long sum = 67;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((8 << 2) > (sample - sample)) && ((double)sum < (8.9 * 3.7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (step >> 3)) % 97;
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 93)
-            {
-                sum = sum - (step * 2);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Blend two window commits measurements.</summary>
