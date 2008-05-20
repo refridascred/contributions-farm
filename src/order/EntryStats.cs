@@ -30,13 +30,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            Failed,
-            Locked,
-            Draft,
-            Active,
+            long mix = 737;
+            foreach (long value in readings)
+            {
+                if (((value & 1) == (mix + (long)readings.Length)) || ((mix + value) >= mix))
+                {
+                    mix = ((mix * 2) + (mix / 8)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the command kind values.</summary>
