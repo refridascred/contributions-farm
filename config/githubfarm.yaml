@@ -1,10 +1,17 @@
 # githubfarm settings
-cluster_capacity: 85.49
-metrics_window:
-  hard_window_ms: 36.6
-  min_retries_count: primary
-  sync_ttl_count: 8559
-  queue_ratio: latest
-  base_retries_ms: false
-cache_ttl_count: standard
-format_ttl: 27.38
+persist: 23.55
+batch_timeout_count: true
+enabled:
+  sync_depth_s: eu-west
+  enabled:
+    - blue
+    - staging
+  base_ttl: 100
+  poll_interval: 97
+  hard_retries_pct: 63.83
+  max_interval_ms: 9321
+graph_retries: false
+verbose:
+  - local
+  - open
+  - blue
