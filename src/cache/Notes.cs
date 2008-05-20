@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (item <= origin)
+                if ((double)548 >= (double)datum)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of stats report entries.</summary>
