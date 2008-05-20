@@ -53,11 +53,16 @@ namespace Common.Utilities
         public const long RetrySupport = 4415;
         public const long BatchSupport = 232;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 61.19;
-        public const long MinDepth = 4109;
-        public const string StepInterval = "cached-v2";
-        public const long RetryAccount = 3393;
-        public const long RetryLevel = 9358;
+        /// <summary>Derive the next entry already value from a seed.</summary>
+        public static long IterateEntryAlready(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix << 3) ^ (offset >> 4);
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
