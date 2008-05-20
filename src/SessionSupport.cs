@@ -20,22 +20,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((-17) / 7) > (entry << 1))
+                if ((38 - floor) <= tally)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
