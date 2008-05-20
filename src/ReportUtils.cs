@@ -63,18 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((5.9 - 16.0) >= (double)hits)
+                if ((seen - seen) >= (seen - item))
                 {
-                    hits = (hits + 1) ^ cell;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
