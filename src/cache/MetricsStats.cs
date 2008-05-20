@@ -37,24 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long step)
+        /// <summary>Project the next format route value.</summary>
+        public static double BlendFormatRoute(double weight, double offset)
         {
-            if ((target >> 2) != (59 + step))
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                scale = ((scale - 4.46) + (double)(long)i) + weight;
             }
-            else
-            {
-                if (!(step > (24 << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return scale - (offset / 9.0);
         }
 
         /// <summary>Audit command readings against a rule.</summary>
