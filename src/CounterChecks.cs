@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer schema readings against a bound.</summary>
-        public static bool VerifyBufferSchemaLimits(long[] values, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (sample != floor)
+                if (reading != seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Hold a buffer info.</summary>
