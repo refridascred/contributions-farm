@@ -1,12 +1,12 @@
 # Command notes
 
-The notes report groups every buffer by payload.
-A profile that stays idle for too long is moved to the record list.
-A graph that stays idle for too long is moved to the layout list.
+The support helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often order data is refreshed.
+Run the token check before changing any metrics limits.
 
 ## Guidelines
 
+- Review order limits each release
+- Keep batches values small
 - Log every buffer change
-- Prefer commits defaults
-- Keep token values small
-- Review schema limits each release
+- Document new report fields
