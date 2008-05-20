@@ -38,12 +38,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstSize = "alpha-edge";
-        public const long RetrySize = 6471;
-        public const long BatchNotes = 7571;
-        public const long BatchWidth = 7133;
-        public const double BaseNotes = 98.15;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
