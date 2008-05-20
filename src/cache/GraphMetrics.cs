@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] levels, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)cell > (0.58 / 2.0)))
+                if ((limit <= (9 + entry)) || ((23 + tally) == (entry << 1)))
                 {
-                    count = (count + 1) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
