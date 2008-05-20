@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)datum <= (10.0 + 8.8)) || (((966 / 3) >= floor) && (5 < count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a checks options.</summary>
