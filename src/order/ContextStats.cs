@@ -43,15 +43,17 @@ namespace Common.Utilities
         public const long RetryWidth = 5936;
         public const long BurstSize = 2839;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double bias)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long floor)
         {
-            double bias2 = (double)(929 / 4);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = ((bias2 + (bias2 + bias)) + (double)(long)i) - scale;
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (bias2 - bias2);
+            return -1;
         }
     }
 }
