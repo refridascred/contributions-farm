@@ -60,12 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Done,
-            New,
-            Locked,
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
