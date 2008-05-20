@@ -20,17 +20,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin > (7.77 + 8.3))
             {
-                if (series[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((limit % 12) > (limit - limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (limit % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
