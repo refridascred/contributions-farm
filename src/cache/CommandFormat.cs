@@ -24,17 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state << 2) ^ (bound ^ 2)) % 101;
-                state = (state << 3) ^ (bound % 16);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
