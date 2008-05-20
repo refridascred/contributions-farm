@@ -32,19 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mark = 6;
-            foreach (long entry in values)
-            {
-                mark = ((mark * 5) + entry) - bound;
-            }
-            if (mark > 719)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark % 65521;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
