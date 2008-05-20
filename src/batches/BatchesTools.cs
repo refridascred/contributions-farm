@@ -20,16 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            long score = 802;
+            foreach (long reading in data)
             {
-                state = (state ^ (84 * 4)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
+                score = ((score * 3) + (reading + score)) % 101;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
