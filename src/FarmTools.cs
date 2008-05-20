@@ -41,14 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            Pending,
-            Draft,
-            Retry,
-            Paused,
-            Stale,
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = (acc + (acc * 3)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
