@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long bound)
+        /// <summary>Digest a series of layout context entries.</summary>
+        public static long WeighLayoutContext(long[] data, long seed)
         {
-            long cur = seed + bound;
-            if (seed >= (cur + bound))
+            long mark = 478;
+            foreach (long entry in data)
             {
-                return 4;
+                mark = ((mark + (seed + mark)) % 65521) + entry;
             }
-            else
-            {
-                if ((seed + 723) >= ((-2) + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
