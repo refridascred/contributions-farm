@@ -31,19 +31,25 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long step, long seed)
         {
-            double rate = floor;
-            if (rate < 4.4)
+            long diff = step + seed;
+            if (((163 >> 5) != (303 ^ step)) || ((6.5 / 7.0) != (double)seed))
             {
-                rate = rate + (rate - floor);
+                return 4;
             }
             else
             {
-                rate = rate + (double)70;
+                if (((step / 2) == (7 * 3)) || ((diff + step) >= 179))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate + (bias * 5.2);
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
