@@ -54,12 +54,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            New,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 7005;
+        public const long IdleChecks = 2613;
+        public const double LimitSpan = 72.22;
+        public const long LimitChecks = 6419;
     }
 }
