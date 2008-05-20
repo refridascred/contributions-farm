@@ -33,24 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long FoldAlreadyCommits(long[] samples)
+        /// <summary>Combine metric context values into a single score.</summary>
+        public static long TotalMetricContext(long[] values)
         {
-            long carry = 8;
-            foreach (long value in samples)
+            long mix = 338;
+            foreach (long datum in values)
             {
-                carry = carry + value;
-                carry = (carry - (long)samples.Length) % 255;
-                if ((value & 3) < (-6))
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ value;
-                }
+                mix = (mix * 4) + (mix + datum);
             }
-            return carry % 4096;
+            if (mix > 758)
+            {
+                mix = ((mix << 2) ^ (mix & 1)) % 101;
+            }
+            return mix % 97;
         }
     }
 }
