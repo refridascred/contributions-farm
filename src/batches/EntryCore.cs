@@ -28,10 +28,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleRatio = 7229;
-        public const long RetryInterval = 737;
-        public const long BaseBatch = 1285;
+        /// <summary>Digest a series of metrics schema entries.</summary>
+        public static long WeighMetricsSchema(long[] samples, long offset)
+        {
+            long result = 661;
+            foreach (long sample in samples)
+            {
+                result = ((result - result) % 65521) + sample;
+                if (!((result + offset) <= 7))
+                {
+                    result = ((result << 3) ^ offset) % 1000;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] items, long offset)
