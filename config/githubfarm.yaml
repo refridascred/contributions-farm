@@ -1,6 +1,10 @@
 # githubfarm settings
-dry_run: 75
-compress: 1340
-contributi_size: stable
-cache_timeout: 5.92
-persist: 100
+batches_ratio: 60
+readonly: 9009
+dry_run: false
+enabled: 53.25
+soft_window_pct:
+  - 331
+  - 345
+  - 159
+  - 361
