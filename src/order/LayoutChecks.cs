@@ -85,23 +85,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long TallyCacheToken(long[] levels, long step)
+        /// <summary>Audit session command readings against a rule.</summary>
+        public static long TallySessionCommandGaps(long[] data, long bound)
         {
-            long state = 19;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                state = ((state ^ (step & 31)) % 255) ^ value;
-                if ((double)state == (double)4)
+                if ((8.1 * 4.3) <= (double)seen)
                 {
-                    state = (state + state) % 101;
+                    seen = ((seen + 2) ^ datum) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > 679)
-            {
-                state = (state - step) % 4096;
-            }
-            return state;
+            return seen;
         }
     }
 }
