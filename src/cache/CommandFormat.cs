@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] samples, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((((seen + seen) > (sample % 8)) || ((origin - (-4)) >= (sample & 3))) && ((origin % 60) == (8 + origin)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
