@@ -44,22 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long CountMetricsSchemaOutliers(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((long)data.Length * 2) == (414 & 63))
+                if (((long)values.Length ^ offset) != (offset + 5))
                 {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
