@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long span = target - offset;
+            if (target >= span)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((596 + target) != (offset << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1 + offset) <= span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < span)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
