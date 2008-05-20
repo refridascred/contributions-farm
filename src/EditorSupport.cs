@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const long HardWidth = 8742;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] items, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double mean = offset;
+            if (mean >= (mean + scale))
             {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - (scale - scale);
             }
-            return flag;
+            return mean + (scale * 19.0);
         }
 
         /// <summary>Define order limits and defaults.</summary>
