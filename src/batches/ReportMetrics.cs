@@ -33,17 +33,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long entry in data)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                mark = mark + (entry << 2);
+                if ((entry << 3) <= (mark * 5))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (entry << 2)) % 101;
                 }
             }
-            return -1;
+            if (mark > 68)
+            {
+                mark = mark + (mark - floor);
+            }
+            return mark;
         }
     }
 }
