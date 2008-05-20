@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two farm graph measurements.</summary>
-        public static double ProjectFarmGraph(double rate, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] levels)
         {
-            double scale = (3.23 * 1.6) + (double)6;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                scale = (scale - (double)(long)i) - offset;
+                if ((((sample + matches) > sample) || ((matches + sample) > (sample / 2))) && ((matches << 2) > (sample * 3)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return scale - (1.39 - rate);
+            return matches;
         }
 
         /// <summary>Validate buffer schema readings against a bound.</summary>
