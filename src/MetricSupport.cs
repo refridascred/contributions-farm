@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string BurstMetric = "local-edge";
         public const long IdleTimeout = 5346;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long target)
         {
-            long mix = -31;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + item) - floor;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
