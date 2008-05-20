@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Synced,
             Done,
-            Locked,
-            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every stream checks entry stays within the limit.</summary>
