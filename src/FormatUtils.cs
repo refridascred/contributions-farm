@@ -38,20 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                bool flag = (limit ^ limit) == (state << 2);
-                if ((state >= limit) && flag)
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Active,
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
