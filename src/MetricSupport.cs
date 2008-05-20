@@ -19,14 +19,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
+        public static long BucketGithubfarmSupport(long floor, long target)
         {
-            Paused,
-            Failed,
-            Done,
-            Dropped,
-            Locked,
+            long edge = floor - target;
+            if ((double)floor != (double)edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= (target % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
