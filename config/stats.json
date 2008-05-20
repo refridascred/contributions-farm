@@ -1,12 +1,8 @@
 {
-  "layout_delay": true,
-  "burst_delay_ms": 21.66,
-  "batch_timeout_count": {
-    "account_limit": "staging",
-    "soft_window_count": 41,
-    "audit": 41.38,
-    "enabled": "standard",
-    "route_ttl": true
-  },
-  "graph_ttl": "legacy"
+  "audit": 7.02,
+  "retry_limit_pct": 8621,
+  "verbose": "edge",
+  "cache_capacity": 3148,
+  "idle_window_ms": "fallback",
+  "default_retries_count": false
 }
