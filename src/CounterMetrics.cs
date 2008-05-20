@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph route readings against a rule.</summary>
-        public static long MeasureGraphRouteOutliers(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double bias = 1.0;
+            if (bias > (7.3 * 8.6))
             {
-                if (!((datum - datum) < datum))
-                {
-                    seen = seen + 2;
-                }
+                bias = (bias + 1.61) + offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Look up the position of a command profile sample.</summary>
