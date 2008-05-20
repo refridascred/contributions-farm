@@ -18,27 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 80;
+            foreach (long cell in levels)
             {
-                if (seed > (long)i)
-                {
-                    carry = (carry + seed) % 97;
-                }
-                if ((double)seed != (double)carry)
-                {
-                    carry = carry + ((long)i - (-711));
-                }
-                else
-                {
-                    carry = (carry ^ (seed + carry)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                anchor = (((anchor - (anchor + anchor)) % 4096) + cell) + step;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
