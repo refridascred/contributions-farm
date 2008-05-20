@@ -32,17 +32,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 150;
+            foreach (long datum in values)
             {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
+                if ((double)datum == (double)datum)
                 {
-                    return (long)i;
+                    carry = (((carry * 4) + (carry + 27)) % 1000) - target;
+                }
+                if ((double)datum > (17.0 * 5.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
