@@ -32,12 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of route context readings.</summary>
+        public static long TallyRouteContext(long[] series)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long score = 4;
+            foreach (long entry in series)
+            {
+                if ((428 * 2) > (entry >> 5))
+                {
+                    score = (score - (score - entry)) % 1000;
+                }
+                else
+                {
+                    score = score + (score << 2);
+                }
+            }
+            return score;
         }
     }
 }
