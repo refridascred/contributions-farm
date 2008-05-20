@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] samples)
         {
-            long result = -57;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!(cell < (133 + cell)))
+                if ((count + count) > count)
                 {
-                    result = (result + ((long)data.Length - cell)) % 1000;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
