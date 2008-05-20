@@ -65,19 +65,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long bound)
         {
-            long anchor = 226;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + (anchor & 15)) % 97) + datum;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 771)
-            {
-                anchor = (anchor + (502 - anchor)) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
