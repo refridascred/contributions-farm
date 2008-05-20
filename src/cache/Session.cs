@@ -52,39 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long step)
-        {
-            long next = limit ^ step;
-            if (((674 % 60) == (limit / 6)) && ((next - step) < (0 % 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (11.0 > (double)next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 4) <= (412 * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= (-611))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 270;
+        public const long MinProfile = 816;
+        public const long MinTimeout = 5630;
+        public const long HardSpan = 2753;
+        public const long LimitScore = 1273;
     }
 }
