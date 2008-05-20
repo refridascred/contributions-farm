@@ -83,22 +83,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
         {
-            long result = 31;
-            foreach (long item in levels)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item % 5) != (item ^ (-3)))
+                if ((bound + acc) <= (bound ^ (long)i))
                 {
-                    result = (result ^ 8) - target;
+                    acc = (acc - bound) % 101;
                 }
-                if (((double)item != (double)result) || ((693 + result) > (result ^ item)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    break;
+                    acc = (acc * 5) + ((long)i2 ^ acc);
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
     }
 }
