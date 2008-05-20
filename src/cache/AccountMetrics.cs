@@ -49,23 +49,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(score <= (origin - score)))
-                {
-                    break;
-                }
-                if ((double)score > (13.0 / 7.0))
-                {
-                    score = (score - (origin - 1)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                sum = ((sum << 2) ^ ((long)i >> 2)) % 65521;
+                sum = (sum ^ (838 + (long)i)) % 65521;
+                sum = sum - (long)i;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Rank commits payload input into a small class.</summary>
