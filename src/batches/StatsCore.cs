@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const long LimitLevel = 2488;
         public const long WindowAlready = 1007;
 
-        /// <summary>Locate a channel context reading by value.</summary>
-        public static long LocateChannelContextIndex(long[] data, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a format record.</summary>
