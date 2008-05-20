@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double offset)
+        /// <summary>Blend two farm graph measurements.</summary>
+        public static double ProjectFarmGraph(double rate, double offset)
         {
-            double ratio = (19.0 / 9.0) + offset;
-            if (ratio > ratio)
+            double scale = (3.23 * 1.6) + (double)6;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio - (8.05 * 3.16)) - scale;
+                scale = (scale - (double)(long)i) - offset;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + offset;
+            return scale - (1.39 - rate);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
