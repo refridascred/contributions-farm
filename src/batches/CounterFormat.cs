@@ -38,20 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] values, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                score = (score * 4) + (floor + score);
-                if ((score & 7) < floor)
+                if ((hits + bound) < (value ^ hits))
                 {
-                    score = (score + ((long)i * 5)) % 1000;
+                    hits = hits + 3;
                 }
-                score = ((score * 2) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
