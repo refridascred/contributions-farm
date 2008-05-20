@@ -52,20 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Count the batches buffer entries that pass the check.</summary>
+        public static long MeasureBatchesBufferGaps(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (result <= ((long)i % 10))
+                if (!(bound > (-3)))
                 {
-                    result = (result - 292) % 101;
-                    result = ((result * 2) + ((long)i << 3)) % 65521;
+                    seen = (seen + 2) - datum;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
