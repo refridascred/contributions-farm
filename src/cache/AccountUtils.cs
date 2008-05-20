@@ -38,19 +38,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate order token readings against a bound.</summary>
-        public static bool ValidateOrderTokenRange(long[] data, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading < bound)
+                if ((double)seed < (6.84 - 5.59))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
