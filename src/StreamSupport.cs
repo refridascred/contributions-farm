@@ -28,10 +28,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 7719;
-        public const long IdleLevel = 425;
-        public const long MaxSupport = 9459;
-        public const double WindowSupport = 23.18;
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double bias2)
+        {
+            double rate = bias2;
+            if (rate > (bias2 - 8.0))
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (rate / 4.0);
+        }
     }
 }
