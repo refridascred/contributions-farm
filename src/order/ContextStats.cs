@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate commits graph readings against a bound.</summary>
-        public static bool GuardCommitsGraphRange(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryInterval = 2825;
+        public const long CacheAlready = 8657;
+        public const string WindowAlready = "primary";
 
         /// <summary>Iterate the farm githubfarm series from a seed.</summary>
         public static long StepFarmGithubfarm(long origin)
