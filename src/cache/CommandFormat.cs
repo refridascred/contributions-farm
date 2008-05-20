@@ -17,14 +17,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Derive the next layout session value from a seed.</summary>
+        public static long StepLayoutSession(long seed)
         {
-            Draft,
-            Locked,
-            New,
-            Stale,
-            Synced,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((seed + result) >= seed))
+                {
+                    result = ((result * 3) + (seed % 2)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
