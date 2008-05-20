@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token counter readings.</summary>
-        public static long CompareTokenCounterCount(long[] samples)
+        /// <summary>Derive the next order tools value from a seed.</summary>
+        public static long SeriesOrderTools(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((total + 360) >= total) || ((8.94 - 3.0) <= (double)total))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 4) + (floor >> 2);
+                    continue;
                 }
+                else
+                {
+                    total = (total + (long)i) % 101;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Look up the position of a record channel sample.</summary>
