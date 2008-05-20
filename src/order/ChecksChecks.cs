@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples)
+        /// <summary>Combine command already values into a single score.</summary>
+        public static long WeighCommandAlready(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = -4;
+            foreach (long cell in samples)
             {
-                if ((hits * 5) > hits)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
+                score = (score - (offset + score)) ^ cell;
+                score = ((score * 5) + (score ^ offset)) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
