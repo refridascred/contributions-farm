@@ -61,38 +61,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long origin2)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double rate, double bias)
         {
-            if (((37 - origin2) <= (origin - origin2)) || ((549 << 1) >= (origin - origin)))
+            double load = (bias + rate) - rate;
+            if (load > load)
             {
-                return 6;
+                load = load - 1.0;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((1.2 >= (double)origin) && ((origin - (-389)) != (origin2 + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)916 >= (double)origin) || (46 > (origin >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((origin - origin2) == (origin2 - origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = (load - (rate / 8.0)) + (double)(long)i;
             }
+            return load + (rate + rate);
         }
     }
 }
