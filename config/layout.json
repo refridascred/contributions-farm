@@ -1,5 +1,8 @@
 {
-  "dry_run": 54,
-  "min_capacity": ["legacy", "local", "primary"],
-  "max_capacity": false
+  "poll_ratio_ms": 1024,
+  "min_retries_count": 7063,
+  "cache_size_count": ["stable", "open", "strict"],
+  "default_threshold_pct": "latest",
+  "batch_ratio_ms": "cached",
+  "warm_threshold": "latest"
 }
