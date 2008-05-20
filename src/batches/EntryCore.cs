@@ -33,32 +33,17 @@ namespace Common.Utilities
         public const long RetryInterval = 737;
         public const long BaseBatch = 1285;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long seed, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long offset)
         {
-            long step = seed + origin;
-            if (((6.5 - 2.55) == (double)origin) && ((step % 100) < origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.92 - 6.0) < (double)step)
+                if (items[i] >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step << 2) < origin) && ((step + step) > origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
