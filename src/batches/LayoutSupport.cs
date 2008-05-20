@@ -34,12 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
