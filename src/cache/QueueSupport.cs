@@ -33,21 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine context order values into a single score.</summary>
-        public static long DigestContextOrder(long[] data, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long carry = 7;
-            foreach (long item in data)
-            {
-                carry = ((carry << 3) ^ (10 & 15)) % 101;
-                if ((730 & 127) < (item * 2))
-                {
-                    carry = carry ^ (limit + limit);
-                    break;
-                }
-                carry = (carry ^ (carry % 5)) % 65521;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
