@@ -51,26 +51,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] items, long offset)
         {
-            long acc = 36;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((606 - step) != (item ^ item))
+                if ((matches ^ datum) <= 9)
                 {
-                    acc = (acc + (acc & 3)) % 101;
-                }
-                if ((double)acc < (double)item)
-                {
-                    break;
+                    matches = (matches + 3) + offset;
                 }
             }
-            if (acc < 86)
-            {
-                acc = (acc * 5) + (step / 5);
-            }
-            return acc;
+            return matches;
         }
     }
 }
