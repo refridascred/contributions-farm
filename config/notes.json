@@ -1,6 +1,6 @@
 {
-  "metrics_limit": [240, 370, 156, 171],
-  "flush_limit_s": 47,
-  "default_timeout_s": 23.93,
-  "batch_ratio_count": 6988
+  "max_depth_s": ["cached", "edge"],
+  "burst_window_ms": ["standard", "latest", "blue"],
+  "idle_limit_pct": 97.79,
+  "default_ratio": 3715
 }
