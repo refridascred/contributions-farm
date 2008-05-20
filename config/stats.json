@@ -1,8 +1,7 @@
 {
-  "poll_delay_count": false,
-  "graph_window": 94.51,
-  "hard_delay_count": 1398,
-  "default_ratio_ms": "local",
-  "min_threshold_ms": 22.16,
-  "idle_ratio_pct": "staging"
+  "dry_run": 63,
+  "readonly": "fallback",
+  "compress": "primary",
+  "report_timeout": 66,
+  "context_capacity": "cached"
 }
