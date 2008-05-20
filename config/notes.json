@@ -1,6 +1,13 @@
 {
-  "flush_size_count": 38.95,
-  "persist": "stable",
-  "default_ratio": "cached",
-  "burst_window_s": "eu-west"
+  "batch_interval_ms": "primary",
+  "retry_ratio": "green",
+  "session_interval": {
+    "checks_size": 3471,
+    "flush_depth_s": 52.95,
+    "entry_size": 2294,
+    "hard_delay_s": 30.87,
+    "idle_depth_s": ["legacy", "cached"],
+    "warm_ratio_pct": 65.9
+  },
+  "retry_threshold": true
 }
