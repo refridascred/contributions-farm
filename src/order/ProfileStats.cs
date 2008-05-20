@@ -38,21 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] levels, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (count > ((-56) * 3))
                 {
-                    anchor = ((anchor ^ (720 >> 1)) % 1000) ^ (long)i2;
+                    count = ((count + 3) + item) - origin;
                 }
-                anchor = anchor + (13 / 4);
-                anchor = (anchor - anchor) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
