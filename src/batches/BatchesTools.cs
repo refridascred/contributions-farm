@@ -18,23 +18,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a contributi githubfarm figure with a bias.</summary>
-        public static double SmoothContributiGithubfarm(double scale, double floor)
+        /// <summary>Count the contributi notes entries that pass the check.</summary>
+        public static long TallyContributiNotesOutliers(long[] levels)
         {
-            double gain = floor;
-            if (gain > floor)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                gain = (gain - gain) + scale;
+                if ((4.8 * 16.0) == (double)cell)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain + (gain - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (double)83) + (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
     }
 }
