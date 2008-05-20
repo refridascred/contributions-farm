@@ -19,17 +19,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (items[i] < step)
+                if ((((924 / 6) < (hits ^ sample)) || ((684 ^ sample) > hits)) || ((sample + hits) == (4 & 15)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
