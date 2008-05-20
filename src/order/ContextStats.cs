@@ -20,14 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Compare every pair of support githubfarm readings.</summary>
+        public static long PairSupportGithubfarmCount(long[] items)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Ready,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
