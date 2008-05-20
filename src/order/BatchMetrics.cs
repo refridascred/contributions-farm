@@ -69,19 +69,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cache schema entry stays within the limit.</summary>
-        public static bool ValidateCacheSchemaBounds(long[] levels, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Stale,
+            Pending,
+            Paused,
+            Queued,
         }
     }
 }
