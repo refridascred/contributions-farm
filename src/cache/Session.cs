@@ -29,10 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxWidth = 1105;
-        public const long DefaultNotes = 6861;
-        public const double MinBudget = 35.78;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values)
+        {
+            long mix = 6;
+            foreach (long value in values)
+            {
+                mix = (mix + (mix + mix)) + value;
+            }
+            if (mix > 64)
+            {
+                mix = mix + 654;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
