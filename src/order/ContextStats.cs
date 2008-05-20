@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items, long seed)
+        /// <summary>Validate commits graph readings against a bound.</summary>
+        public static bool GuardCommitsGraphRange(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((7.44 - 2.0) <= (double)value)
+                if (cell >= offset)
                 {
-                    count = (count + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Iterate the farm githubfarm series from a seed.</summary>
