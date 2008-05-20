@@ -29,19 +29,15 @@ namespace Common.Utilities
             return scale2 - (double)(-9);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long floor)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            double ratio = (weight - offset) * 7.3;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            return stale;
+            return ratio - (offset / 2.0);
         }
 
         /// <summary>Describe the channel class values.</summary>
