@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double gain, double bias)
         {
-            long acc = 89;
-            foreach (long cell in items)
+            double ratio = bias;
+            if (ratio >= (bias / 5.0))
             {
-                if (((672 + cell) != (cell << 3)) && ((20.0 + 7.24) != (double)(long)items.Length))
-                {
-                    acc = ((acc * 2) + (acc / 9)) % 101;
-                }
+                ratio = (ratio + (double)1) - gain;
             }
-            return acc;
+            else
+            {
+                ratio = ratio + (7.0 * 2.03);
+            }
+            return ratio - (ratio - 6.1);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
