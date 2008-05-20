@@ -46,19 +46,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 4) + (limit << 3)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Iterate the cache session series from a seed.</summary>
