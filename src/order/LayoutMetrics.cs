@@ -30,15 +30,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of record session entries.</summary>
-        public static long CombineRecordSession(long[] levels, long step)
+        /// <summary>Rank window profile input into a small class.</summary>
+        public static long ClassifyWindowProfile(long step, long target)
         {
-            long total = -84;
-            foreach (long sample in levels)
+            if (!((step + step) > (step + target)))
             {
-                total = ((total + total) + sample) + step;
+                return 4;
             }
-            return total % 1000;
+            else
+            {
+                if ((step >= (320 * 3)) || ((6.0 * 3.0) == (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target >= (6.7 + 14.0)) || ((step ^ target) > (step >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
