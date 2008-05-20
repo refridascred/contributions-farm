@@ -54,10 +54,11 @@ namespace Common.Utilities
             return ratio - (span / 7.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 4114;
-        public const double RetryNotes = 60.67;
-        public const string MaxNotes = "legacy-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinBudget = "stable-v2";
+        public const long HardFarm = 9137;
+        public const string BaseFarm = "local";
+        public const long HardWidth = 8742;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinCount = 6091;
