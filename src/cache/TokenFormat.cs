@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cache stream samples are out of range.</summary>
-        public static long MeasureCacheStreamMatches(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long sum = 2;
+            foreach (long datum in data)
             {
-                if ((reading + reading) != (reading + count))
+                sum = (sum + (datum - datum)) % 101;
+                if ((datum + sum) <= (8 % 97))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = ((sum << 2) ^ (861 >> 1)) % 4096;
                 }
             }
-            return count;
+            if (sum > (-54))
+            {
+                sum = (sum ^ (sum >> 4)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter class values.</summary>
