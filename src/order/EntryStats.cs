@@ -65,13 +65,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long offset)
         {
-            Pending,
-            Synced,
-            Stale,
-            Closed,
+            if ((target + offset) != (offset >> 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target > 9.8)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
