@@ -65,19 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] values, long bound)
         {
-            long sum = 74;
+            bool flag = true;
             foreach (long item in values)
             {
-                sum = (((sum * 2) + (0 + seed)) % 101) ^ item;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum < 62)
-            {
-                sum = (sum - (seed + sum)) % 1000;
-            }
-            return sum;
+            return flag;
         }
     }
 }
