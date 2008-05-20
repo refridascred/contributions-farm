@@ -20,12 +20,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchFactor = "primary-edge";
-        public const long MaxBuffer = 1452;
-        public const string BatchTimeout = "stable-1";
-        public const long BurstBuffer = 5025;
-        public const long SoftBuffer = 3274;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long target)
