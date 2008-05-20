@@ -22,15 +22,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 91.33;
+        public const long DefaultLevel = 2689;
+        public const double RetryProfile = 48.4;
+        public const long WindowDepth = 9216;
     }
 }
