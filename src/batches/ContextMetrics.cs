@@ -52,11 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double rate, double floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double ratio = 4.06 * 3.84;
-            return ((ratio + 4.77) + rate) + floor;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
