@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long MaxStats = 483;
         public const long CacheStats = 1880;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Accumulate graph samples.</summary>
