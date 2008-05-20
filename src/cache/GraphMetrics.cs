@@ -47,18 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            long total = 435;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((83 - offset) > (726 << 2))
+                if (!((sample - sample) != (0 - hits)))
                 {
-                    total = ((total - 1) % 101) + entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
