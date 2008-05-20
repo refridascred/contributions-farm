@@ -47,19 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next layout session value from a seed.</summary>
-        public static long StepLayoutSession(long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((seed + result) >= seed))
-                {
-                    result = ((result * 3) + (seed % 2)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
