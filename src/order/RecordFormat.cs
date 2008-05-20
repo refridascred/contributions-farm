@@ -22,11 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Done,
-            Queued,
+            Stale,
+            New,
             Draft,
             Active,
         }
