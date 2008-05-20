@@ -23,22 +23,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long carry = 150;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (double)datum)
-                {
-                    carry = (((carry * 4) + (carry + 27)) % 1000) - target;
-                }
-                if ((double)datum > (17.0 * 5.0))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Synced,
+            Paused,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
