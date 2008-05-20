@@ -22,17 +22,23 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(1 + 5);
+            if (load >= load)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = load + ratio;
             }
-            return -1;
+            else
+            {
+                load = load + (ratio + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)3) - (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
