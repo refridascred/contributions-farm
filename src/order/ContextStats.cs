@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSpan = 3764;
-        public const long BatchTimeout = 5245;
-        public const long BaseTimeout = 3402;
-        public const long BurstCount = 5562;
-        public const long IdleCache = 9772;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Dropped,
+            Idle,
+            Paused,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
