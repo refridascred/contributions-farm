@@ -19,25 +19,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
-        public static long BucketGithubfarmSupport(long floor, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long edge = floor - target;
-            if ((double)floor != (double)edge)
+            long acc = 5;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (target % 5))
+                if (!(value < (value + value)))
                 {
-                    return 0;
+                    acc = acc ^ (value / 6);
                 }
                 else
                 {
-                    return 4;
+                    acc = (acc ^ (257 + value)) % 255;
                 }
             }
+            if (acc < 377)
+            {
+                acc = (acc - (acc % 64)) % 255;
+            }
+            return acc % 97;
         }
     }
 }
