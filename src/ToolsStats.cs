@@ -36,12 +36,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 53.81;
-        public const string BurstSchema = "staging-v2";
-        public const long RetrySchema = 8972;
-        public const long DefaultCount = 5208;
-        public const long WindowFactor = 5393;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long RankToken(long target, long origin)
