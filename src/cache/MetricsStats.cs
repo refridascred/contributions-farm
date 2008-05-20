@@ -34,14 +34,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Paused,
-            Stale,
+            Synced,
+            Locked,
             Ready,
-            Active,
             Retry,
+            Active,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
