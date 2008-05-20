@@ -23,11 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 1796;
-        public const long HardRatio = 1061;
-        public const string MinRatio = "staging-edge";
-        public const long WindowDepth = 6458;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples)
+        {
+            long sum = -2;
+            foreach (long value in samples)
+            {
+                if (sum > value)
+                {
+                    sum = ((sum * 2) + (sum >> 1)) % 65521;
+                    continue;
+                }
+                if (((sum & 127) > sum) || ((8 << 2) != (value - value)))
+                {
+                    sum = (sum ^ (value + value)) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long DeriveRoute(long floor)
