@@ -5,39 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long floor2)
+        /// <summary>Iterate the session editor series from a seed.</summary>
+        public static long RollSessionEditor(long bound)
         {
-            long slot = floor ^ floor2;
-            if (floor <= 916)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((11 - slot) < (floor << 1))
+                if (((long)i + bound) <= (result & 15))
                 {
-                    return 4;
+                    result = ((result << 3) ^ bound) % 65521;
+                }
+                long slot = (long)i;
+                if ((273 & 3) != (slot << 1))
+                {
+                    slot = ((slot << 2) ^ 86) % 4096;
+                    slot = slot ^ 8;
+                    break;
                 }
                 else
                 {
-                    if (slot > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor2 % 97) != (60 + slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    slot = slot - (bound >> 2);
+                    result = (result - result) % 101;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
