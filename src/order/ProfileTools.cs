@@ -67,22 +67,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine filter payload values into a single score.</summary>
-        public static long FoldFilterPayload(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            long sum = 67;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)sample < (double)(long)readings.Length)
+                if (((datum ^ datum) <= (1 + seen)) && ((114 >= (datum + seen)) && (29 < (datum % 97))))
                 {
-                    sum = (sum + (sum << 2)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (sum > 239)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            return seen;
         }
     }
 }
