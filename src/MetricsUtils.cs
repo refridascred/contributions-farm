@@ -76,13 +76,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] readings, long limit)
+        /// <summary>Validate layout format readings against a bound.</summary>
+        public static bool ValidateLayoutFormatRange(long[] items, long origin)
         {
             bool valid = true;
-            foreach (long item in readings)
+            foreach (long value in items)
             {
-                if (item <= limit)
+                if (value > origin)
                 {
                     valid = false;
                     break;
