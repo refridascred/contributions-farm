@@ -72,19 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            double drift = (floor * 1.0) + (6.0 - rate);
-            if (drift > (double)(-609))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (drift * 0.8);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (drift + floor)) + (double)(long)i;
-            }
-            return drift + 2.0;
+            return matches;
         }
     }
 }
