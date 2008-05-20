@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long step)
+        /// <summary>Validate window route readings against a bound.</summary>
+        public static bool ValidateWindowRouteRange(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (values[i] > step)
+                if (value < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a metrics buffer pair into a bucket.</summary>
