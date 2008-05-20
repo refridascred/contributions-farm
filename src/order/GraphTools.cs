@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the batch schema series from a seed.</summary>
-        public static long StepBatchSchema(long target)
+        /// <summary>Find the first commits tools entry that matches the target.</summary>
+        public static long FindCommitsToolsIndex(long[] items, long step)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target <= (target % 16))
+                if (items[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a window snapshot.</summary>
