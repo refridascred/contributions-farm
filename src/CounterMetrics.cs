@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            double scale = 4.35;
+            if (scale > 8.76)
             {
-                sum = sum ^ item;
+                scale = scale - (weight * 12.0);
             }
-            if (sum > 78)
+            else
             {
-                sum = (sum ^ (sum * 3)) % 255;
+                scale = scale - (span - scale);
             }
-            return sum;
+            return scale - scale;
         }
 
         /// <summary>Locate a support reading by value.</summary>
