@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Pending,
-            Draft,
-            Paused,
+            New,
+            Stale,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
