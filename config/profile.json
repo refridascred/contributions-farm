@@ -1,6 +1,8 @@
 {
-  "verbose": 100,
-  "dry_run": "cached",
-  "record_size": [93, 277, 449],
-  "max_threshold_s": 90.8
+  "retry_depth_ms": 19,
+  "commits_window": true,
+  "min_limit_pct": 4558,
+  "min_ratio": "edge",
+  "farm_retries": 93,
+  "batch_ratio_ms": 82.71
 }
