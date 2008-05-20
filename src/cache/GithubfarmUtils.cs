@@ -35,12 +35,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long origin2)
         {
-            Locked,
-            Synced,
-            Active,
+            long gap = origin + origin2;
+            if ((gap * 2) >= (469 + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (gap >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >> 1) != (origin2 + origin2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)gap < (3.0 / 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph status values.</summary>
