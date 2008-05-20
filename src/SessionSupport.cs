@@ -33,27 +33,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 8421;
         public const long HardRecord = 2020;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data, long step)
+        /// <summary>Count the support order entries that pass the check.</summary>
+        public static long MeasureSupportOrderGaps(long[] values, long limit)
         {
-            long mix = 49;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mix = ((mix * 4) + (reading * 3)) % 65521;
-                if (((step ^ reading) != (step / 3)) || (((-64) >> 2) != (mix - 67)))
+                if ((1.1 * 4.54) == (double)seen)
                 {
-                    mix = (mix - (reading >> 2)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + mix) % 101;
+                    seen = ((seen + 2) ^ item) - limit;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix + (0 + 9)) % 1000;
-            }
-            return mix % 4096;
+            return seen;
         }
     }
 }
