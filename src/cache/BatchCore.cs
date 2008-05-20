@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long LookupLayoutBatchIndex(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
