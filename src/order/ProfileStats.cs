@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCommandCount(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 8;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell - total) != (cell - origin))
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 4) + (origin ^ origin)) % 4096;
+                }
+                else
+                {
+                    total = total - (origin - 789);
                 }
             }
-            return seen;
+            if (total < 2)
+            {
+                total = (total << 2) ^ (total + 74);
+            }
+            return total % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
