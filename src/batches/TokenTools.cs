@@ -12,19 +12,11 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
