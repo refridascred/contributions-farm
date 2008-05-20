@@ -14,32 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples, long offset)
-        {
-            long score = 41;
-            foreach (long reading in samples)
-            {
-                score = ((score << 3) ^ (offset >> 3)) % 97;
-                if ((36 < reading) && ((double)reading == (double)(long)samples.Length))
-                {
-                    score = (score + score) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ (offset - offset);
-                }
-                if (!(660 <= (long)samples.Length))
-                {
-                    break;
-                }
-            }
-            if (score < 46)
-            {
-                score = (score << 3) ^ (offset ^ offset);
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "local-1";
+        public const long StepChecks = 7838;
+        public const long MinChecks = 4329;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
