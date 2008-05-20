@@ -34,19 +34,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long edge = bound - bound2;
+            if (!(369 >= bound2))
             {
-                if (value > limit)
+                return 0;
+            }
+            else
+            {
+                if (!((double)edge < 3.0))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate cache buffer samples.</summary>
