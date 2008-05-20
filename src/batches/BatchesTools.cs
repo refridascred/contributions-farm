@@ -20,12 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank route already input into a small class.</summary>
+        public static long BucketRouteAlready(long floor, long floor2)
         {
-            Pending,
-            Synced,
-            Locked,
+            if ((floor & 31) >= (3 & 31))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)floor > (4.0 / 5.0)) && (633 > (58 - floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((200 - floor) < 1)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor < (floor2 & 15))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window class values.</summary>
