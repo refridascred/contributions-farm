@@ -67,31 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long limit)
-        {
-            if ((double)limit == (19.0 - 8.51))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2 - seed) < seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit != (7.0 - 2.63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 1158;
+        public const long BatchContributi = 3525;
+        public const long IdleLevel = 2394;
     }
 }
