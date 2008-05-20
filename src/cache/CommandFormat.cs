@@ -39,9 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRatio = 15.28;
-        public const double CacheRoute = 17.9;
-        public const long HardRatio = 7460;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
     }
 }
