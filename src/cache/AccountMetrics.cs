@@ -119,38 +119,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long bound, long origin)
-        {
-            if ((origin ^ bound) == (bound - bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound - 0) <= bound) && ((origin >> 2) < origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.2 * 5.6) == (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (origin ^ bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchLevel = 2012;
+        public const long BaseFarm = 6952;
+        public const long MinFarm = 2489;
+        public const long WindowFarm = 7325;
     }
 }
