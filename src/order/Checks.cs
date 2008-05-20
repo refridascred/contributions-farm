@@ -48,15 +48,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] readings, long limit)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                scale2 = scale2 - (double)(long)i;
+                if ((double)limit != (20.0 / 3.0))
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale2 + (floor * 8.52);
+            return tally;
         }
 
         /// <summary>Rank batches farm input into a small class.</summary>
