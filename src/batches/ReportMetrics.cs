@@ -31,13 +31,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long seed)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
