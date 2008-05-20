@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Scale a stats filter figure with a bias.</summary>
+        public static double AdjustStatsFilter(double weight, double span)
         {
-            long carry = 526;
-            foreach (long datum in items)
+            double bias = weight;
+            if (bias <= (bias + bias))
             {
-                carry = ((carry - (carry >> 3)) % 4096) ^ datum;
+                bias = bias + 3.5;
             }
-            return carry % 1000;
+            else
+            {
+                bias = bias + (bias + span);
+            }
+            return bias + weight;
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
