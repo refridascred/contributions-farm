@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long delta = step - floor;
+            if (!((delta / 6) >= delta))
             {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((double)step == (5.8 * 7.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)delta < 1.06)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batches samples.</summary>
