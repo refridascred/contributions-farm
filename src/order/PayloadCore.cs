@@ -50,22 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels, long step)
-        {
-            long carry = 8;
-            foreach (long cell in levels)
-            {
-                if (carry >= (step & 255))
-                {
-                    carry = (carry - (cell + cell)) % 97;
-                }
-            }
-            if (carry < 684)
-            {
-                carry = (carry * 2) + (step * 4);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleCount = 83.72;
+        public const string HardContributi = "staging";
+        public const string BatchContributi = "alpha-v2";
+        public const long SoftTimeout = 6385;
+        public const double MinContributi = 39.95;
     }
 }
