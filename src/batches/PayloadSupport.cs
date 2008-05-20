@@ -16,15 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double span)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long step)
         {
-            double scale = ratio;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - (span - scale)) + (double)(long)i;
+                if ((values[i] == step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + span;
+            return -1;
         }
 
         /// <summary>Blend two batch cache measurements.</summary>
