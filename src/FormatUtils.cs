@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 2878;
-        public const long RetryTimeout = 2697;
-        public const long HardQueue = 7830;
-        public const string WindowCount = "local-1";
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Retry,
+            Idle,
+            Paused,
+            Done,
+            Queued,
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmOutliers(long[] data)
