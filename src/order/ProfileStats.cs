@@ -35,18 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseSpan = 77.92;
+        public const long HardBudget = 3638;
+        public const string MinBatch = "standard-edge";
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double BlendStream(double rate, double bias)
