@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] readings, long floor)
+        /// <summary>Locate a payload graph reading by value.</summary>
+        public static long FindPayloadGraphIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > floor)
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
