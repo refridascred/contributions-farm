@@ -20,13 +20,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            Closed,
-            Paused,
-            Locked,
-            Stale,
+            long state = 8;
+            foreach (long datum in readings)
+            {
+                if ((double)state < (2.0 / 6.0))
+                {
+                    state = state + ((long)readings.Length % 10);
+                }
+                if ((state - datum) >= (datum + (long)readings.Length))
+                {
+                    state = state - datum;
+                }
+                else
+                {
+                    state = (state ^ (6 - state)) % 101;
+                }
+            }
+            if (state < 463)
+            {
+                state = state - (state - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
