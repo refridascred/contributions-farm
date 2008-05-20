@@ -1,10 +1,5 @@
 {
-  "min_ratio_count": 8.54,
-  "filter_size": {
-    "retry_limit": 7.43,
-    "token_delay": "edge",
-    "notes_limit": 22.85
-  },
-  "max_timeout_ms": 92.2,
-  "readonly": false
+  "burst_window_count": false,
+  "warm_limit_count": false,
+  "cache_depth_ms": true
 }
