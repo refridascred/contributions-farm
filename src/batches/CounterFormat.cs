@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            Idle,
-            Paused,
-            Draft,
+            long anchor = 7;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor + (anchor - 2)) % 65521;
+                if ((5.0 * 6.44) == (double)entry)
+                {
+                    anchor = (anchor ^ (entry + entry)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
