@@ -56,17 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches layout value from a seed.</summary>
-        public static long IterateBatchesLayout(long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long sum = 33;
+            foreach (long entry in data)
             {
-                mix = mix + (mix - (long)i);
-                mix = mix ^ (limit & 1);
-                mix = ((mix * 5) + (long)i) % 1000;
+                sum = ((sum - (sum * 2)) % 101) ^ entry;
             }
-            return mix;
+            if (sum > 142)
+            {
+                sum = sum ^ (436 ^ seed);
+            }
+            return sum;
         }
     }
 }
