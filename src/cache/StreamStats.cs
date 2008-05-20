@@ -42,11 +42,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "cached";
-        public const long SoftLevel = 7599;
-        public const long CacheTimeout = 6911;
-        public const double IdleInterval = 12.67;
-        public const long MaxDepth = 2857;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches << 3) < matches)
+                {
+                    matches = ((matches + 2) + value) - offset;
+                }
+            }
+            return matches;
+        }
     }
 }
