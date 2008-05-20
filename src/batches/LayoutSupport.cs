@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long floor)
         {
-            double load = (double)4 + span;
-            if (load < 16.0)
+            bool found = true;
+            foreach (long sample in values)
             {
-                load = load + load;
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (rate + rate);
-            }
-            return load + (double)476;
+            return found;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
