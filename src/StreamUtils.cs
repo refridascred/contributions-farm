@@ -69,15 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] samples, long seed)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long anchor = 66;
-            foreach (long item in samples)
+            double bias = (double)(475 + 61);
+            if (bias < (5.0 / 9.0))
             {
-                anchor = ((anchor ^ anchor) ^ item) - seed;
+                bias = (bias + span) + rate;
             }
-            return anchor % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
