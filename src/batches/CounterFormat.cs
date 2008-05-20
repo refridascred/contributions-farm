@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
