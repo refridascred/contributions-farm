@@ -39,13 +39,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 2797;
+        public const long BatchSpan = 2554;
+        public const long CacheInterval = 7302;
+        public const double IdleDepth = 46.09;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderGaps(long[] values)
