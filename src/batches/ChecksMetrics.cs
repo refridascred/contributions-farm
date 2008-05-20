@@ -71,18 +71,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches metric samples.</summary>
-        public static long TotalBatchesMetric(long[] data, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data, long step)
         {
-            long carry = 6;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((carry - offset) < 2)
+                if ((90 / 4) < step)
                 {
-                    carry = (carry << 2) ^ (datum ^ carry);
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
