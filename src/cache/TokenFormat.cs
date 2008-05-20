@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((count << 2) > count)
+                if (matches >= (floor / 4))
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
