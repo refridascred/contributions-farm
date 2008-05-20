@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Draft,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheDepth = 8370;
+        public const long IdleChannel = 3746;
+        public const long WindowChannel = 7525;
+        public const double DefaultChannel = 98.01;
+        public const long LimitChannel = 4714;
 
         /// <summary>Match up cache farm samples.</summary>
         public static long MatchCacheFarmCount(long[] values)
