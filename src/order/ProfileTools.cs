@@ -41,12 +41,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long offset)
         {
-            Dropped,
-            Paused,
-            Locked,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
