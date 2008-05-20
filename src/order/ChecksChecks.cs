@@ -22,11 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            if ((step << 3) > (bound * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) >= (bound << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
