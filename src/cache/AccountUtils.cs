@@ -25,19 +25,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
