@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double ratio, double floor)
+        /// <summary>Roll a already account counter forward.</summary>
+        public static long SeriesAlreadyAccount(long floor)
         {
-            double load = floor;
-            if (load < load)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - load;
+                result = (result * 5) + (6 + floor);
+                long gap = result + ((long)i / 6);
+                if (((long)i - 24) <= (gap % 60))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (ratio - ratio);
+            return result;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
