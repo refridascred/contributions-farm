@@ -37,21 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Adjust a layout githubfarm reading.</summary>
+        public static double BlendLayoutGithubfarm(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias;
+            if (ratio < bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - gain;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (gain - 13.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
