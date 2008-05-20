@@ -40,31 +40,22 @@ namespace Common.Utilities
             return scale - (bias / 3.0);
         }
 
-        /// <summary>Grade a format buffer value against two limits.</summary>
-        public static long BucketFormatBuffer(long offset, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            if (((origin * 3) >= (3 - offset)) || ((20.0 / 7.0) != (double)origin))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin ^ offset) != (5 - origin)))
+                if ((hits <= (hits / 2)) || (((9 + datum) == (0 + hits)) && ((double)datum <= (8.85 / 5.0))))
                 {
-                    return 5;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (offset < 923)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
