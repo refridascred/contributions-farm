@@ -1,4 +1,4 @@
 # entry settings
-batch_retries: 30
-batch_timeout_count: 14.71
-hard_capacity_s: 66.61
+min_capacity_pct: 8564
+flush_limit: legacy
+route_limit: false
