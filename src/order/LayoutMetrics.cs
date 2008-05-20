@@ -19,18 +19,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items, long floor)
+        /// <summary>Audit context route readings against a rule.</summary>
+        public static long MeasureContextRouteMatches(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (cell > (cell + hits))
+                if ((offset >> 5) > (count ^ count))
                 {
-                    hits = (hits + 2) - floor;
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
