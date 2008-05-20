@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] values, long floor)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
