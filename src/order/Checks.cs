@@ -40,20 +40,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batches editor entries.</summary>
-        public static long WeighBatchesEditor(long[] data)
-        {
-            long acc = 351;
-            foreach (long value in data)
-            {
-                acc = (acc ^ 502) + value;
-            }
-            if (acc < 9)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepDepth = 52.26;
+        public const long DefaultCache = 7343;
+        public const long DefaultBudget = 2890;
+        public const string MaxCache = "cached";
 
         /// <summary>Find the first record counter entry that matches the target.</summary>
         public static long SeekRecordCounterIndex(long[] readings, long target)
