@@ -14,19 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 3) + (bound + score)) + (long)i2;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a already stats.</summary>
