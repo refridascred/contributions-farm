@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 2825;
-        public const long CacheAlready = 8657;
-        public const string WindowAlready = "primary";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels)
+        {
+            long total = -44;
+            foreach (long cell in levels)
+            {
+                if ((cell * 2) >= (cell / 5))
+                {
+                    total = ((total * 4) + (2 * 5)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (cell + total)) % 255;
+                }
+            }
+            if (total > 264)
+            {
+                total = ((total * 5) + (8 + total)) % 4096;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Iterate the farm githubfarm series from a seed.</summary>
         public static long StepFarmGithubfarm(long origin)
