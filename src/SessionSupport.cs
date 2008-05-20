@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double offset)
         {
-            long sum = 1;
-            foreach (long reading in readings)
+            double bias = weight + 5.71;
+            if (bias <= (4.0 / 5.0))
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum << 3) ^ (sum + 46)) ^ (long)i;
-                }
-                if ((long)readings.Length < (sum << 1))
-                {
-                    sum = sum - reading;
-                }
+                bias = (bias - weight) - offset;
             }
-            if (sum < 4)
+            else
             {
-                sum = sum + (sum - sum);
+                bias = bias - 8.75;
             }
-            return sum;
+            return bias - 6.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
