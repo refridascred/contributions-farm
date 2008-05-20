@@ -14,19 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a command payload figure with a bias.</summary>
-        public static double SmoothCommandPayload(double scale, double floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double drift = (floor / 4.0) + (double)(-4);
-            if (drift > 5.2)
-            {
-                drift = (drift + (drift + 17.0)) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 3.39) - (double)(long)i;
-            }
-            return drift + (14.0 - 0.8);
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
