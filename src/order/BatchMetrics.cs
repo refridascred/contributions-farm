@@ -42,15 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] series, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((5.46 > (double)value) && !((464 << 1) != (bound + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
