@@ -55,17 +55,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long step)
+        /// <summary>Validate metrics route readings against a bound.</summary>
+        public static bool GuardMetricsRouteLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (series[i] > step)
+                if (datum >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count schema stats pairs that satisfy a relation.</summary>
