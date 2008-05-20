@@ -35,18 +35,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] data, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long next = bound + limit;
+            if (!((double)bound > 4.91))
             {
-                if ((offset ^ (-55)) < (seen & 1))
+                return 7;
+            }
+            else
+            {
+                if ((937 ^ limit) < (next * 4))
                 {
-                    seen = (seen + 3) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if ((next * 5) <= (next - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(((-7) + next) >= (limit + next)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
