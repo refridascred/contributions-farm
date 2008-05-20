@@ -24,11 +24,17 @@ namespace Common.Utilities
         public const long HardSpan = 6087;
         public const long BurstCounter = 7116;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] values, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
