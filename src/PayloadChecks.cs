@@ -37,38 +37,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long offset, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long origin)
         {
-            if (!((limit * 2) >= ((-41) >> 2)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 + 1.0) <= (double)offset)
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((752 >= (offset + 93)) || (limit < (limit * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (79 >= (offset ^ (-3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
