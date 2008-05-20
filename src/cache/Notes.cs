@@ -57,15 +57,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values, long limit)
+        /// <summary>Look up the position of a counter notes sample.</summary>
+        public static long FindCounterNotesIndex(long[] values, long floor)
         {
-            long mark = -44;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ (8 + limit)) % 4096) + sample;
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
