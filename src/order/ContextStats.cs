@@ -38,13 +38,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Closed,
-            Draft,
-            Paused,
-            Retry,
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
