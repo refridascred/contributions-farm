@@ -1,8 +1,20 @@
 {
-  "min_ratio_ms": 78.52,
-  "strict": 60,
-  "cache_size": 2323,
-  "githubfarm_timeout": 5.53,
-  "base_ratio_s": 56,
-  "verbose": 6434
+  "default_threshold": true,
+  "retry_capacity_count": {
+    "audit": false,
+    "flush_retries": 6758,
+    "verbose": {
+      "graph_window": 8161,
+      "cache_timeout_s": "strict",
+      "cache_ttl_ms": 17,
+      "hard_window_count": 7,
+      "sync_timeout_ms": [400, 109, 268],
+      "queue_limit": false
+    },
+    "batch_ratio_s": 97.66
+  },
+  "dry_run": 4207,
+  "sync_retries_count": ["strict", "staging"],
+  "retry_threshold_pct": "primary",
+  "min_retries_ms": true
 }
