@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double rate, double span)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long target)
         {
-            double ratio = 2.9;
-            if (ratio >= rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - (span / 7.0);
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
