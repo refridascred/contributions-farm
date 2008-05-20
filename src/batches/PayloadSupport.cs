@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long SoftRatio = 9165;
         public const string LimitAlready = "latest";
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = 8.4 / 9.0;
+            return ((mean + (double)9) + gain) + span;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
