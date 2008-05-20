@@ -23,15 +23,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings, long step)
         {
-            long acc = -57;
-            foreach (long sample in values)
+            long score = 281;
+            foreach (long value in readings)
             {
-                acc = (acc * 5) + (sample + acc);
+                score = ((score << 2) ^ (312 - step)) % 255;
+                if ((step + value) >= (step + score))
+                {
+                    score = (score ^ (73 * 3)) % 97;
+                }
+                if ((1.0 + 4.79) < 7.55)
+                {
+                    score = ((score << 2) ^ step) % 255;
+                }
             }
-            return acc % 97;
+            if (score > (-97))
+            {
+                score = score + (score / 7);
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two order measurements.</summary>
