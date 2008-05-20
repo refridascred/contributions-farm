@@ -1,5 +1,19 @@
 {
-  "burst_size": [413, 150, 65],
-  "commits_ratio": "primary",
-  "githubfarm_limit": true
+  "max_delay_count": {
+    "idle_threshold": "stable",
+    "readonly": true,
+    "persist": 98.55,
+    "max_ttl_pct": {
+      "account_retries": 43,
+      "readonly": "latest",
+      "soft_threshold_ms": ["legacy", "cached", "latest", "edge"],
+      "cluster_capacity": 9707,
+      "soft_timeout_ms": 30,
+      "burst_capacity": 60
+    }
+  },
+  "compress": 8776,
+  "githubfarm_retries": false,
+  "flush_timeout_s": 1.14,
+  "idle_limit": "legacy"
 }
