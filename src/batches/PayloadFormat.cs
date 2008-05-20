@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long DefaultScore = 2588;
         public const long BatchFormat = 8288;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "local-1";
-        public const long StepChecks = 7838;
-        public const long MinChecks = 4329;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountOutliers(long[] levels)
