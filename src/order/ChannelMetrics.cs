@@ -39,12 +39,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long delta = bound - target;
+            if (!((0 * 4) < bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target >= 890)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)target <= (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target % 24) != (delta / 8)) && (bound > (delta + delta)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
