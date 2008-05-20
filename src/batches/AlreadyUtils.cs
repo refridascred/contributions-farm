@@ -53,31 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series, long floor)
         {
-            long acc = 615;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc * 5) + (entry / 8)) % 65521;
-                if ((59 << 2) <= acc)
+                if ((hits + hits) < 177)
                 {
-                    acc = acc ^ (entry / 2);
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 7)) % 97;
-                }
-                if (!((acc ^ acc) > (seed % 16)))
-                {
-                    break;
+                    hits = ((hits + 1) + entry) + floor;
                 }
             }
-            if (acc > 48)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
