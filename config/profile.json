@@ -1,8 +1,6 @@
 {
-  "schema_limit": [297, 52, 349],
-  "readonly": 35,
-  "default_delay_pct": "green",
-  "cache_delay": 100,
-  "base_depth_ms": "edge",
-  "idle_capacity": 20.08
+  "route_threshold": "latest",
+  "graph_threshold": 12,
+  "cache_interval": "edge",
+  "warm_delay": ["blue", "standard", "green", "strict"]
 }
