@@ -19,19 +19,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((80 - bound) <= (score - bound))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Closed,
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
