@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 9121;
-        public const string StepStats = "alpha";
-        public const long BurstStats = 3899;
-        public const string CacheInterval = "cached-1";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long floor)
+        {
+            if ((bound * 3) > (bound & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.0 + 13.0) > (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 2) >= (floor - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor < (9.1 + 20.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] levels)
