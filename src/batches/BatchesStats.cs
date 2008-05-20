@@ -34,10 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseSpan = 57.01;
-        public const string MaxOrder = "cached-v2";
-        public const long MinOrder = 5567;
-        public const long HardOrder = 7529;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
