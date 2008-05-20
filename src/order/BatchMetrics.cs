@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] readings, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if (!((origin + limit) >= (limit + origin)))
             {
-                if (entry != floor)
+                return 4;
+            }
+            else
+            {
+                if ((origin + limit) != (origin << 1))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((6.5 - 4.96) != (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
