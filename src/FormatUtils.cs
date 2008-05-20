@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            New,
-            Locked,
-            Draft,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell == (double)matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
