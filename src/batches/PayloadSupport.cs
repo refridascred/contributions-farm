@@ -16,13 +16,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Roll a stream payload counter forward.</summary>
+        public static long DeriveStreamPayload(long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long sum = step;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
