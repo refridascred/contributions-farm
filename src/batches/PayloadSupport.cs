@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] values, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 918;
+            foreach (long item in levels)
             {
-                if (values[i] < target)
+                if (floor > (sum ^ sum))
                 {
-                    return (long)i;
+                    sum = ((sum - sum) % 4096) + item;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
