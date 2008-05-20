@@ -76,19 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] readings, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (sample < floor)
+                if ((double)20 != (double)step)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
