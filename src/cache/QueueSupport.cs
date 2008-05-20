@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const double IdleAlready = 88.61;
         public const long IdleRatio = 7123;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 473;
-        public const long BatchProfile = 1350;
-        public const long WindowProfile = 7467;
-        public const string RetryProfile = "stable-edge";
-        public const string MaxProfile = "fallback-v2";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Dropped,
+            Active,
+            Stale,
+        }
     }
 }
