@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long MaxEditor = 1149;
         public const long CacheSpan = 422;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftCount = 9010;
+        public const long LimitLevel = 9124;
+        public const string StepMetrics = "alpha";
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double SmoothProfile(double weight, double span)
