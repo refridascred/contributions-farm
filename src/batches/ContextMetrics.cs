@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] items, long bound)
         {
-            double scale = gain;
-            if (scale < gain)
+            bool found = true;
+            foreach (long cell in items)
             {
-                scale = scale + (scale - scale);
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale + bias)) - (double)(long)i;
-            }
-            return scale - (bias / 3.0);
+            return found;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
