@@ -60,14 +60,25 @@ namespace Common.Utilities
         public const long BaseInterval = 2934;
         public const long StepInterval = 1980;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long limit, long floor)
         {
-            Pending,
-            Done,
-            Closed,
-            Retry,
-            Stale,
+            long gap = limit - floor;
+            if ((floor ^ limit) <= ((-7) + gap))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.13 * 9.07) <= (13.0 - 13.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
