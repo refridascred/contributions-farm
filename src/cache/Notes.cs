@@ -50,17 +50,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = seed ^ offset;
+            if ((seed - offset) < (offset - 62))
             {
-                if (samples[i] >= floor)
+                return 6;
+            }
+            else
+            {
+                if ((offset & 255) < (bound >> 4))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
