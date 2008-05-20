@@ -48,12 +48,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowTimeout = "alpha-v2";
+        public const double HardCounter = 86.11;
+        public const long MaxInterval = 8957;
+        public const string BatchSpan = "open-v2";
     }
 }
