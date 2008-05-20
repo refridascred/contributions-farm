@@ -54,26 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window commits readings.</summary>
-        public static long TallyWindowCommits(long[] levels, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            long mix = 324;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)28 != (double)mix)
+                if (!(mark > ((long)i + 718)))
                 {
-                    mix = ((mix ^ seed) % 4096) - datum;
+                    mark = mark + (mark & 3);
                 }
-                else
+                long span = mark;
+                if ((551 >> 3) > (span / 6))
                 {
-                    mix = mix + (97 - seed);
+                    long next = (6 - mark) / 8;
+                    span = (span + next) % 65521;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (mix < 96)
-            {
-                mix = (mix ^ (mix * 4)) % 4096;
-            }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Validate layout format readings against a bound.</summary>
