@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every notes layout entry stays within the limit.</summary>
-        public static bool ValidateNotesLayoutBounds(long[] data, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the route mode values.</summary>
