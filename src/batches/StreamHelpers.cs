@@ -88,17 +88,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = scale;
+            if (load > (6.6 * 7.11))
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - bias;
             }
-            return -1;
+            return load + (double)5;
         }
     }
 }
