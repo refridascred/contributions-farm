@@ -1,18 +1,20 @@
 # entry settings
-sync_delay_ms: false
-soft_interval_s:
-  - blue
-  - strict
-  - edge
-  - primary
-strict:
-  min_capacity: 30
-  layout_delay: fallback
-  retry_interval_pct:
-    profile_delay: 6812
-    enabled:
-      - edge
-      - blue
-      - green
-    readonly: 1024
-  batch_depth: standard
+hard_retries_count:
+  - 47
+  - 392
+  - 138
+  - 7
+command_delay: 55.31
+stats_threshold: 30
+flush_ratio_count: 250
+batch_ratio_s: true
+audit:
+  dry_run: 1583
+  readonly: staging
+  layout_limit: 250
+  farm_threshold: 27.62
+  session_capacity: false
+  checks_depth:
+    persist: cached
+    channel_delay: green
+    sync_limit_count: 1116
