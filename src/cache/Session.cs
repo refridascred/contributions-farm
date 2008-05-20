@@ -15,12 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
