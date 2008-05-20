@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= 5.59)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel entry.</summary>
