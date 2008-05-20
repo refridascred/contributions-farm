@@ -38,17 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] levels, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - (carry + (long)i);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
