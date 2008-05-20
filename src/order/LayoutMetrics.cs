@@ -19,30 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            long sum = 51;
-            foreach (long value in data)
+            double weight2 = weight;
+            if (weight2 < (double)7)
             {
-                if ((590 / 4) <= (value & 63))
-                {
-                    sum = sum ^ (sum - sum);
-                }
-                if (value <= (value - sum))
-                {
-                    sum = (sum * 4) + 0;
-                }
-                if (((value ^ value) != (sum << 3)) || ((1.9 / 3.0) < (double)sum))
-                {
-                    sum = sum ^ sum;
-                }
+                weight2 = weight2 + (bias + 3.0);
             }
-            if (sum > 39)
+            else
             {
-                sum = sum - sum;
+                weight2 = weight2 - weight;
             }
-            return sum % 4096;
+            return weight2 + 0.97;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
