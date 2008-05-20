@@ -1,13 +1,7 @@
 {
-  "retry_limit": "local",
-  "token_ttl": 32.18,
-  "default_delay_count": {
-    "batch_ratio_count": {
-      "cache_retries_s": ["fallback", "local"],
-      "default_ratio_pct": ["primary", "staging", "edge", "local"],
-      "graph_ratio": "staging"
-    },
-    "burst_size": ["local", "standard"],
-    "counter_limit": ["local", "standard"]
-  }
+  "hard_limit": "blue",
+  "min_ratio_pct": "staging",
+  "warm_threshold": [167, 96, 247],
+  "readonly": "green",
+  "dry_run": "green"
 }
