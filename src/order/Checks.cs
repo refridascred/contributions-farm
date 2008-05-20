@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] readings, long step)
         {
-            long mark = 4;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 2) ^ (sample + mark)) % 255;
-                if (((mark - sample) <= (sample >> 3)) || ((double)9 < (double)mark))
+                if ((seen / 5) <= (entry + step))
                 {
-                    mark = (mark * 5) + (636 - 57);
+                    seen = seen + 2;
                 }
             }
-            if (mark > 14)
-            {
-                mark = (mark << 3) ^ (0 - mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
