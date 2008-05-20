@@ -1,5 +1,15 @@
 {
-  "burst_window_count": false,
-  "warm_limit_count": false,
-  "cache_depth_ms": true
+  "notes_timeout": false,
+  "cache_ttl_count": true,
+  "retry_timeout_count": {
+    "sync_window": 1.87,
+    "soft_window_s": {
+      "record_ratio": "blue",
+      "notes_limit": "latest",
+      "max_size_pct": [272, 367, 120, 462]
+    },
+    "poll_limit": 5347,
+    "flush_interval_pct": true,
+    "report_size": false
+  }
 }
