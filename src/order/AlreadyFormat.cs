@@ -61,18 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report cache readings.</summary>
-        public static long TallyReportCache(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = 5;
-            foreach (long sample in readings)
-            {
-                if ((35 - 96) != (sample * 2))
-                {
-                    result = (result * 2) + (sample % 60);
-                }
-            }
-            return result;
+            Ready,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the account phase values.</summary>
