@@ -1,5 +1,7 @@
 {
-  "base_depth_pct": "latest",
-  "max_ttl_count": true,
-  "cluster_interval": 26.7
+  "default_retries": [113, 492, 123],
+  "flush_retries": "stable",
+  "context_delay": "local",
+  "hard_delay": 46.82,
+  "base_timeout_ms": 16
 }
