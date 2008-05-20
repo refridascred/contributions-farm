@@ -27,20 +27,15 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Roll a commits tools counter forward.</summary>
-        public static long SeriesCommitsTools(long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark << 2) ^ ((long)i2 >> 4)) % 4096;
-                }
-                mark = (mark * 4) + 15;
-                mark = ((mark * 2) + (long)i) % 4093;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Find the first session counter entry that matches the target.</summary>
