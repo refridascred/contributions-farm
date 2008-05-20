@@ -22,22 +22,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 7;
+            foreach (long value in series)
             {
-                if ((cell + limit) >= 372)
+                acc = ((acc << 2) ^ (value / 2)) % 1000;
+                if (((double)value == (6.9 * 16.0)) || ((acc & 255) > (acc ^ 6)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 66)
+            {
+                acc = ((acc * 5) + (acc - acc)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
