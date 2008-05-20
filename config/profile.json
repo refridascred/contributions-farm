@@ -1,8 +1,8 @@
 {
-  "default_ttl_pct": ["standard", "edge", "open"],
-  "graph_size": 64,
-  "default_window_pct": "eu-west",
-  "context_threshold": [284, 325, 216, 152],
-  "batch_interval_ms": 60,
-  "warm_timeout_pct": 47.38
+  "audit": "green",
+  "warm_limit": "stable",
+  "warm_window_count": ["primary", "cached"],
+  "max_threshold_count": "stable",
+  "poll_size_ms": "stable",
+  "poll_ratio_count": 500
 }
