@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultScore = "latest-edge";
-        public const long BatchBudget = 4191;
-        public const string DefaultMetric = "open-edge";
-        public const double MinWidth = 18.09;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] samples, long step)
+        {
+            long sum = 3;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((sum << 2) ^ ((long)i << 3)) % 255;
+                }
+                if ((9.0 - 8.22) < (double)reading)
+                {
+                    sum = sum - (step << 1);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] readings, long offset)
