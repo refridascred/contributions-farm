@@ -37,17 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already commits sample.</summary>
-        public static long SeekAlreadyCommitsIndex(long[] readings, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                if (((long)i + seed) > seed)
                 {
-                    return (long)i;
+                    score = ((score * 2) + (3 * 4)) % 101;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
