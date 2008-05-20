@@ -26,17 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a report cluster sample.</summary>
-        public static long FindReportClusterIndex(long[] items, long limit)
+        /// <summary>Count the support cache entries that pass the check.</summary>
+        public static long CountSupportCacheMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                if (((tally >> 5) >= sample) && (((-4) >> 5) == (limit % 64)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
