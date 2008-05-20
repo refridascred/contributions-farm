@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
