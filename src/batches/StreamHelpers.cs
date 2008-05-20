@@ -41,11 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long floor)
         {
-            double mean = (bias / 5.0) * 7.0;
-            return (mean - mean) + weight;
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the channel class values.</summary>
