@@ -53,14 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Closed,
-            Synced,
-            New,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 6806;
+        public const string IdleDepth = "cached";
+        public const double HardSize = 8.45;
+        public const long IdleCache = 9390;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double scale, double floor)
