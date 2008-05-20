@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long CountCommitsLayoutOutliers(long[] data)
         {
-            Stale,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((9.0 - 9.79) != (double)(long)data.Length)
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many checks metric samples are out of range.</summary>
