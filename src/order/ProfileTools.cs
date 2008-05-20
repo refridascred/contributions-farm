@@ -41,23 +41,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels)
-        {
-            long state = 95;
-            foreach (long item in levels)
-            {
-                if ((double)state != (4.0 / 5.0))
-                {
-                    state = (((state * 4) + (state / 7)) % 255) + item;
-                }
-                if ((double)state > (13.0 + 3.61))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 91.19;
+        public const double MaxFactor = 38.5;
+        public const long RetryRoute = 9451;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string LimitBudget = "standard-1";
