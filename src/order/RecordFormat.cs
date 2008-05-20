@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            Synced,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
