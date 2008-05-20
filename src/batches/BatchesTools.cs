@@ -18,15 +18,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Scale a contributi githubfarm figure with a bias.</summary>
+        public static double SmoothContributiGithubfarm(double scale, double floor)
         {
-            long score = 91;
-            foreach (long cell in levels)
+            double gain = floor;
+            if (gain > floor)
             {
-                score = ((score - (score ^ score)) % 101) + cell;
+                gain = (gain - gain) + scale;
             }
-            return score;
+            else
+            {
+                gain = gain + (gain - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (double)83) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
