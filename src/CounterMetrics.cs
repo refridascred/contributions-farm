@@ -48,17 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long origin)
+        /// <summary>Match up notes graph samples.</summary>
+        public static long OverlapNotesGraphCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
