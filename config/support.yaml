@@ -1,10 +1,5 @@
 # support settings
-enabled: 250
-entry_window:
-  - 292
-  - 65
-flush_window_s:
-  - 154
-  - 218
-  - 366
-base_timeout_count: open
+cache_retries_ms: false
+persist: false
+flush_threshold: 31
+base_delay: 6958
