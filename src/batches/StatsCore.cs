@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Pending,
+            long mix = 22;
+            foreach (long item in values)
+            {
+                if ((mix - 3) > (item / 9))
+                {
+                    mix = mix ^ (mix & 15);
+                }
+            }
+            if (mix < 4)
+            {
+                mix = mix - (mix * 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
