@@ -14,13 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Idle,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 7789;
+        public const double RetryWidth = 33.45;
+        public const string SoftEditor = "open-edge";
+        public const string MinEditor = "staging";
 
         /// <summary>Combine context order values into a single score.</summary>
         public static long DigestContextOrder(long[] data, long limit)
