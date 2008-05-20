@@ -25,39 +25,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank queue counter input into a small class.</summary>
-        public static long RankQueueCounter(long target, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] readings, long seed)
         {
-            long edge = target ^ limit;
-            if (limit < (limit >> 2))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((19.0 + 0.62) == (double)edge)
+                if (datum >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((12.0 - 1.7) <= (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (edge > (limit + edge))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
