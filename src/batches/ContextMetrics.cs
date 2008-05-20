@@ -77,12 +77,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Dropped,
+            Retry,
+            Closed,
+            New,
         }
     }
 }
