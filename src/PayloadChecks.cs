@@ -71,19 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] readings, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long carry = 233;
-            foreach (long reading in readings)
-            {
-                carry = (((carry << 3) ^ (4 << 1)) % 255) ^ reading;
-            }
-            if (carry > 0)
-            {
-                carry = (carry * 3) + (origin & 3);
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of metrics githubfarm readings.</summary>
