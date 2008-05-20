@@ -22,19 +22,14 @@ namespace Common.Utilities
         public const long BatchLevel = 2499;
         public const long BaseRecord = 6903;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] items, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Draft,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
