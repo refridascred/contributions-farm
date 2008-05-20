@@ -46,11 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 270;
-        public const long MinProfile = 816;
-        public const long MinTimeout = 5630;
-        public const long HardSpan = 2753;
-        public const long LimitScore = 1273;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Idle,
+            Closed,
+            Active,
+        }
     }
 }
