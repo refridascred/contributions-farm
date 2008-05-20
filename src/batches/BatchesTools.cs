@@ -31,10 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowSize = 3538;
-        public const long SoftLevel = 9685;
-        public const long BatchBudget = 9488;
-        public const double LimitCount = 71.69;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (matches >= (59 + (-77)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
