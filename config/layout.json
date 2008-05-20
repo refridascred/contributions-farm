@@ -1,5 +1,8 @@
 {
-  "window_timeout": 250,
-  "cache_ratio_count": true,
-  "enabled": "eu-west"
+  "min_ratio_ms": 78.52,
+  "strict": 60,
+  "cache_size": 2323,
+  "githubfarm_timeout": 5.53,
+  "base_ratio_s": 56,
+  "verbose": 6434
 }
