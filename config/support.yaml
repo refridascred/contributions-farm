@@ -1,11 +1,15 @@
 # support settings
-cache_interval: 7.74
-notes_threshold: 353
-schema_delay: 3467
-readonly: green
-soft_delay_ms: 88.97
-hard_depth_count:
-  - eu-west
-  - standard
-  - local
-  - strict
+retry_limit_count:
+  already_capacity: 500
+  audit: 54.31
+  already_depth: false
+  flush_threshold: 100
+persist: 30
+channel_depth:
+  - 24
+  - 212
+  - 176
+  - 325
+batch_ratio_s: 1024
+audit: staging
+verbose: true
