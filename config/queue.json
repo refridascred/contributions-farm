@@ -1,5 +1,5 @@
 {
-  "max_depth_s": 96.16,
-  "soft_depth_s": 60,
-  "account_size": 30
+  "burst_capacity_pct": 5.22,
+  "default_retries_pct": 41,
+  "audit": 500
 }
