@@ -79,22 +79,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record graph values into a single score.</summary>
-        public static long DigestRecordGraph(long[] samples, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long result = 1;
-            foreach (long sample in samples)
+            long carry = 4;
+            foreach (long cell in readings)
             {
-                if ((result - 341) > (sample & 3))
+                if ((double)carry != (7.4 / 4.0))
                 {
-                    result = ((result << 3) ^ (offset ^ result)) % 101;
+                    carry = carry - carry;
                 }
-                if (!((1.0 + 1.08) == (double)offset))
+                else
                 {
-                    result = (result << 3) ^ (result & 7);
+                    carry = carry ^ (cell % 2);
+                }
+                if (!((long)readings.Length <= 23))
+                {
+                    break;
                 }
             }
-            return result % 1000;
+            return carry % 65521;
         }
     }
 }
