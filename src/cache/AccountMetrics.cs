@@ -75,15 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((8.0 / 8.0) < (double)entry)
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
