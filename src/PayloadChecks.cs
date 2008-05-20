@@ -24,23 +24,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            double rate = (ratio * 8.6) - (floor + ratio);
+            if (rate < (floor - 16.0))
             {
-                if (!((step % 8) > (21 + step)))
-                {
-                    score = (score + (step / 4)) % 101;
-                }
-                if (3.0 > (double)score)
-                {
-                    score = ((score * 5) + (score - (long)i)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                rate = rate - (19.0 * 7.2);
             }
-            return score;
+            else
+            {
+                rate = rate + (ratio / 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (8.56 + floor)) + (double)(long)i;
+            }
+            return rate - (12.0 - floor);
         }
 
         /// <summary>Describe the batches status values.</summary>
