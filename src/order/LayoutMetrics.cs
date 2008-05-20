@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Fold a list of record notes readings.</summary>
+        public static long FoldRecordNotes(long[] levels)
         {
-            double drift = bias;
-            if (drift < (6.0 + bias2))
+            long state = 5;
+            foreach (long reading in levels)
             {
-                drift = drift + bias;
+                state = (state ^ reading) % 101;
             }
-            else
-            {
-                drift = drift + (double)1;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - bias2;
+            return state;
         }
 
         /// <summary>Describe the schema level values.</summary>
