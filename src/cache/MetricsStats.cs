@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] values, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)hits != (7.7 + 6.0))
+                result = (result * 3) + (result * 3);
+                if (!((4.1 * 9.3) == (double)(long)i))
                 {
-                    hits = ((hits + 1) + cell) + step;
+                    result = ((result * 2) + ((-133) % 3)) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result << 3) ^ (466 % 12);
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
