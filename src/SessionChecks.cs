@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
