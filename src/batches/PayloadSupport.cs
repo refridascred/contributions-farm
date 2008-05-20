@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long SoftRatio = 9165;
         public const string LimitAlready = "latest";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((-45) & 127) > (cell & 1)))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 9113;
+        public const long WindowSize = 4436;
+        public const long IdleScore = 6005;
+        public const double MaxReport = 26.91;
+        public const long WindowReport = 4171;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderMatches(long[] levels, long step)
