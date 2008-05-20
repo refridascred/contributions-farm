@@ -46,11 +46,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a format metrics reading.</summary>
-        public static double AdjustFormatMetrics(double bias, double offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long step)
         {
-            double bias2 = (double)68 - (bias + bias);
-            return bias2 - offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count schema stats pairs that satisfy a relation.</summary>
