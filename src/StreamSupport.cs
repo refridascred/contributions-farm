@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of command session readings.</summary>
-        public static long CombineCommandSession(long[] readings)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long state = 4;
-            foreach (long sample in readings)
-            {
-                state = state + (state + state);
-                if ((sample + sample) <= state)
-                {
-                    state = (state << 2) ^ (state << 2);
-                }
-            }
-            return state % 1000;
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
