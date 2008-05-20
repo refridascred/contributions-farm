@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values, long target)
-        {
-            long acc = 9;
-            foreach (long datum in values)
-            {
-                if ((target + datum) >= (datum & 127))
-                {
-                    acc = (acc * 3) + 13;
-                }
-            }
-            if (acc > 842)
-            {
-                acc = (acc * 5) + (9 & 31);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheDepth = 4406;
+        public const long MaxQueue = 799;
+        public const double BaseLevel = 68.36;
+        public const long StepDepth = 783;
+        public const long IdleLevel = 9511;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long bound)
