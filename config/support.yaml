@@ -1,8 +1,17 @@
 # support settings
-verbose: 99
-enabled:
-  - fallback
-  - strict
-  - green
-  - open
-readonly: 43
+burst_window_ms:
+  cluster_threshold:
+    profile_window:
+      - standard
+      - staging
+    support_depth: 1024
+    enabled: true
+    soft_timeout_count: 45.5
+    default_size: 500
+  burst_window:
+    - open
+    - open
+    - eu-west
+  audit: 100
+burst_size: true
+batch_ttl: strict
