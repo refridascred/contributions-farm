@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a cluster account figure with a bias.</summary>
-        public static double ProjectClusterAccount(double scale, double offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            double gain = (double)(-941) * 11.0;
-            if (gain <= gain)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (scale - scale)) - (double)(long)i;
-            }
-            return gain - scale;
+            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
