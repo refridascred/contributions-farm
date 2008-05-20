@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Blend two githubfarm route measurements.</summary>
+        public static double AdjustGithubfarmRoute(double gain, double offset)
         {
-            Synced,
-            New,
-            Pending,
-            Draft,
+            double ratio = gain;
+            if (ratio <= (double)310)
+            {
+                ratio = ratio + gain;
+            }
+            else
+            {
+                ratio = ratio + offset;
+            }
+            return ratio - (gain - ratio);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
