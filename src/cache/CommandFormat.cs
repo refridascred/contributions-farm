@@ -35,17 +35,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] levels, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)(22 << 3);
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                weight = (((weight - (weight * 1.1)) + (double)(long)i) + ratio) - offset;
             }
-            return -1;
+            return weight + weight;
         }
     }
 }
