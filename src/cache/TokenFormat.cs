@@ -45,38 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long limit)
-        {
-            if ((double)limit < (16.0 * 1.75))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit < 7.5)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (977 < (target ^ limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (7.3 >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 13.82;
+        public const long LimitScore = 624;
+        public const long MinOrder = 5523;
+        public const string IdleSpan = "stable-1";
+        public const string MinFactor = "staging-1";
     }
 }
