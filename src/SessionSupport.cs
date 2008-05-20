@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] data, long offset)
         {
-            Stale,
-            Synced,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((offset ^ (-55)) < (seen & 1))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
