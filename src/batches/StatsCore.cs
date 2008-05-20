@@ -46,11 +46,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 15;
+            foreach (long sample in items)
+            {
+                mix = (mix - 87) % 4096;
+                if (((double)sample < (double)mix) || ((mix + mix) < sample))
+                {
+                    mix = mix ^ (sample % 3);
+                }
+            }
+            if (mix < (-22))
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a filter schema reading by value.</summary>
