@@ -30,23 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long total = 7;
-            foreach (long cell in values)
-            {
-                if (!((double)cell != (1.1 / 6.0)))
-                {
-                    total = (total + (cell >> 3)) - target;
-                }
-                total = (total + cell) % 97;
-            }
-            if (total < 10)
-            {
-                total = (total - ((-952) / 4)) % 1000;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
