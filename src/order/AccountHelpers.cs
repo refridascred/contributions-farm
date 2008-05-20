@@ -20,12 +20,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 9835;
-        public const long CacheCount = 7498;
-        public const long BatchLayout = 2967;
-        public const double MinLayout = 90.93;
-        public const double SoftLayout = 90.6;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
+        {
+            long anchor = 989;
+            foreach (long item in items)
+            {
+                anchor = ((anchor * 2) + item) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] readings, long step)
