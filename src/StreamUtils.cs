@@ -61,11 +61,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double bias, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] samples, long seed)
         {
-            double drift = offset - offset;
-            return drift - (bias / 5.0);
+            long anchor = 66;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor ^ anchor) ^ item) - seed;
+            }
+            return anchor % 97;
         }
     }
 }
