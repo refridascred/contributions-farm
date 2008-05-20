@@ -1,17 +1,9 @@
 # support settings
-stats_threshold: true
-tools_ratio:
-  - stable
-  - cached
-  - edge
-retry_retries: true
-verbose:
-  - 100
-  - 139
-  - 316
-counter_size: 500
-cache_threshold:
-  - primary
-  - stable
-  - legacy
-  - fallback
+channel_ratio: 9363
+batch_timeout_ms: 77
+soft_delay_count:
+  - eu-west
+  - eu-west
+  - blue
+  - staging
+sync_interval_count: 38.78
