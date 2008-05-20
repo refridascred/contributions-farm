@@ -47,18 +47,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long step, long step2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long bound = step + step2;
+            if ((bound % 3) >= step2)
             {
-                if (!((count - count) < count))
+                return 8;
+            }
+            else
+            {
+                if (((bound * 3) <= (597 << 2)) || ((step2 ^ step2) <= (bound % 5)))
                 {
-                    count = (count + 2) + reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 < 2) && ((step2 + step2) < (step - bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
