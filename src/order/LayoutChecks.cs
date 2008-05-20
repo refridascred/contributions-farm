@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long bound)
         {
-            Draft,
-            Ready,
-            Pending,
-            Synced,
-            Locked,
+            long cur = seed + bound;
+            if (seed >= (cur + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + 723) >= ((-2) + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the context phase values.</summary>
