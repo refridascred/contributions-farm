@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long span = target - offset;
-            if (target >= span)
+            long acc = 89;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((596 + target) != (offset << 2))
+                if (((672 + cell) != (cell << 3)) && ((20.0 + 7.24) != (double)(long)items.Length))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 + offset) <= span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < span)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = ((acc * 2) + (acc / 9)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
