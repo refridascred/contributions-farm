@@ -56,18 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length ^ offset) != (offset + 5))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Stale,
+            Active,
         }
     }
 }
