@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long BatchBudget = 6801;
         public const long BatchSpan = 9785;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] readings, long target)
-        {
-            long anchor = 674;
-            foreach (long value in readings)
-            {
-                anchor = (anchor ^ (8 + value)) % 4096;
-                if ((double)target == (7.0 * 4.0))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 4968;
+        public const string MinWidth = "legacy-1";
+        public const string MaxTimeout = "primary-v2";
+        public const long WindowTools = 6140;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] readings)
