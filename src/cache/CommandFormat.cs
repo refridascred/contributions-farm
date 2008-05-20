@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Locked,
-            New,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 5513;
+        public const long CacheSize = 8546;
+        public const long BatchLevel = 7895;
 
         /// <summary>Accumulate context graph samples.</summary>
         public static long DigestContextGraph(long[] levels, long origin)
