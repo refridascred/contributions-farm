@@ -83,11 +83,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 51.63;
-        public const string DefaultInterval = "alpha-1";
-        public const long RetryNotes = 3209;
-        public const double CacheNotes = 73.03;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
