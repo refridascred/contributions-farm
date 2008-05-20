@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((68 << 1) <= (target + (long)i))
-                {
-                    carry = ((carry * 2) + ((long)i + carry)) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = carry ^ (111 * 2);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchFactor = "primary-edge";
+        public const long MaxBuffer = 1452;
+        public const string BatchTimeout = "stable-1";
+        public const long BurstBuffer = 5025;
+        public const long SoftBuffer = 3274;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] series)
