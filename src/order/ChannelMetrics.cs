@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm schema sample.</summary>
-        public static long LocateFarmSchemaIndex(long[] items, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a checks counter counter forward.</summary>
