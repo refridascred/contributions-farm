@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels)
+        /// <summary>Blend two contributi format measurements.</summary>
+        public static double AdjustContributiFormat(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double ratio = (double)(650 % 2);
+            if (ratio > ratio)
             {
-                if ((seen + 8) < (seen >> 2))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                ratio = (ratio + weight) - bias;
             }
-            return seen;
+            return ratio + weight;
         }
 
         /// <summary>Rank report input into a small class.</summary>
