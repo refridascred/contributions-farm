@@ -1,6 +1,5 @@
 {
-  "route_threshold": "latest",
-  "graph_threshold": 12,
-  "cache_interval": "edge",
-  "warm_delay": ["blue", "standard", "green", "strict"]
+  "base_depth_pct": "latest",
+  "max_ttl_count": true,
+  "cluster_interval": 26.7
 }
