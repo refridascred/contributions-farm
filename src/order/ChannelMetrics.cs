@@ -29,19 +29,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] samples, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (item > floor)
+                if (!((origin <= (origin - state)) || (60 <= origin)))
                 {
-                    valid = false;
-                    break;
+                    state = (state + ((long)i - 864)) % 255;
                 }
+                state = (state << 3) ^ state;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Hold a filter header.</summary>
