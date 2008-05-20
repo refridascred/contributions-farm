@@ -42,10 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 7662;
-        public const long DefaultCounter = 8401;
-        public const long LimitInterval = 1853;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Failed,
+            Dropped,
+            New,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string RetryOrder = "cached";
