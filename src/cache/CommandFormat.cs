@@ -43,13 +43,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Draft,
-            Paused,
-            Synced,
-            Pending,
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
