@@ -70,14 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Ready,
-            Locked,
-            Retry,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstDepth = 206;
+        public const long MaxBatch = 3383;
+        public const long WindowBatch = 8536;
+        public const long DefaultScore = 4745;
     }
 }
