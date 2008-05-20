@@ -1,14 +1,13 @@
 {
-  "max_retries_s": false,
-  "idle_capacity": {
-    "audit": "legacy",
-    "batch_size_ms": "stable",
-    "soft_ratio": 22.14,
-    "flush_capacity_ms": "legacy",
-    "tools_timeout": "strict"
+  "enabled": 1,
+  "payload_size": 500,
+  "default_threshold_s": [233, 92],
+  "flush_interval": {
+    "warm_capacity_s": "primary",
+    "hard_retries_s": 75.53,
+    "idle_timeout": 84.72,
+    "layout_threshold": true
   },
-  "entry_ttl": "staging",
-  "burst_size_s": 500,
-  "warm_ttl": 86.42,
-  "flush_size_pct": 30
+  "compress": [347, 140, 384],
+  "record_capacity": "fallback"
 }
