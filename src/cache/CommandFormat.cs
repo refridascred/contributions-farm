@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Scale a command payload figure with a bias.</summary>
+        public static double SmoothCommandPayload(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (floor / 4.0) + (double)(-4);
+            if (drift > 5.2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + (drift + 17.0)) + scale;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 3.39) - (double)(long)i;
+            }
+            return drift + (14.0 - 0.8);
         }
 
         /// <summary>Hold a already stats.</summary>
