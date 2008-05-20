@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric notes entry stays within the limit.</summary>
-        public static bool GuardMetricNotesLimits(long[] readings, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (datum <= limit)
+                if (step >= (count ^ step))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
