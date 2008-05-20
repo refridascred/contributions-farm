@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 7362;
-        public const long BaseSpan = 6761;
-        public const long RetryBatch = 5790;
-        public const double DefaultSize = 61.57;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Locked,
+            Active,
+            Dropped,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] levels, long origin)
