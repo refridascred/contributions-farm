@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double gain, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            double ratio = bias;
-            if (ratio >= (bias / 5.0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (double)1) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (7.0 * 2.03);
-            }
-            return ratio - (ratio - 6.1);
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
