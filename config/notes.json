@@ -1,27 +1,8 @@
 {
-  "checks_window": 26,
-  "queue_threshold": {
-    "format_threshold": [320, 474, 293],
-    "filter_timeout": 7471,
-    "default_timeout": [50, 485, 210],
-    "channel_timeout": true
-  },
-  "format_capacity": 8350,
-  "min_limit_pct": {
-    "min_threshold": {
-      "flush_ratio_s": 12.84,
-      "burst_timeout_s": false,
-      "compress": true,
-      "buffer_retries": "primary"
-    },
-    "order_timeout": "cached",
-    "counter_timeout": {
-      "flush_retries_pct": "legacy",
-      "flush_ratio_pct": 100,
-      "readonly": 7253,
-      "strict": 12.53
-    }
-  },
-  "idle_limit_ms": "edge",
-  "filter_threshold": false
+  "hard_retries": true,
+  "context_depth": "edge",
+  "readonly": [477, 442, 150],
+  "batch_size_pct": 31,
+  "sync_threshold": 22,
+  "strict": 100
 }
