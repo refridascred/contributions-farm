@@ -23,11 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Classify a session githubfarm pair into a bucket.</summary>
+        public static long BucketSessionGithubfarm(long seed, long offset)
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long diff = seed ^ offset;
+            if (diff > 47)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((diff - diff) <= (offset * 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset <= diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a support reading by value.</summary>
