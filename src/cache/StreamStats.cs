@@ -57,12 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "cached";
+        public const long SoftLevel = 7599;
+        public const long CacheTimeout = 6911;
+        public const double IdleInterval = 12.67;
+        public const long MaxDepth = 2857;
     }
 }
