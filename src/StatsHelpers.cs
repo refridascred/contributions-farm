@@ -54,11 +54,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchCount = 8394;
-        public const long CacheDepth = 1082;
-        public const long IdleInterval = 4465;
-        public const long DefaultFarm = 3861;
-        public const string LimitFarm = "cached";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxBudget = 8889;
+        public const long BaseCount = 728;
+        public const long HardTimeout = 5704;
+        public const string IdleDepth = "fallback-v2";
     }
 }
