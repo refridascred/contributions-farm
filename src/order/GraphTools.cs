@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double rate = span;
+            if (rate < (double)7)
             {
-                if (!((hits / 7) == (hits % 10)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                rate = rate - span;
             }
-            return hits;
+            else
+            {
+                rate = rate + (span - bias);
+            }
+            return rate + (bias + 16.0);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
