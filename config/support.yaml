@@ -1,5 +1,8 @@
 # support settings
-counter_ratio: 1024
-batch_capacity_pct: true
-notes_depth: 1024
-idle_ttl_ms: 86
+min_depth: 37.34
+cache_retries:
+  - 370
+  - 209
+soft_timeout_ms:
+  - 139
+  - 136
