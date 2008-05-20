@@ -40,17 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift <= bias)
             {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - drift) + ratio;
             }
-            return -1;
+            else
+            {
+                drift = drift - (drift * 5.1);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (7.0 + 4.0)) - (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Define context limits and defaults.</summary>
