@@ -42,17 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] values, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 5;
+            foreach (long value in readings)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ mix) - value) - origin;
             }
-            return -1;
+            if (mix < 797)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
