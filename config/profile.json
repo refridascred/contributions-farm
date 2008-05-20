@@ -1,5 +1,5 @@
 {
-  "flush_capacity_count": "fallback",
-  "idle_window": 80,
-  "channel_limit": 83
+  "route_size": ["edge", "staging"],
+  "poll_window_ms": "green",
+  "route_capacity": ["legacy", "green", "staging", "strict"]
 }
