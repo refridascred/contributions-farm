@@ -1,9 +1,6 @@
 {
-  "base_window_ms": "legacy",
-  "enabled": ["local", "latest", "edge"],
-  "entry_retries": {
-    "cache_ratio_s": 7,
-    "command_delay": "legacy",
-    "retry_depth_ms": 87.77
-  }
+  "flush_size_count": 38.95,
+  "persist": "stable",
+  "default_ratio": "cached",
+  "burst_window_s": "eu-west"
 }
