@@ -57,12 +57,9 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Queued,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinCount = 42.05;
+        public const long HardGraph = 679;
+        public const long WindowGraph = 9000;
     }
 }
