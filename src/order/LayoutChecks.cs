@@ -43,19 +43,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long carry = 2;
-            foreach (long reading in samples)
-            {
-                carry = (carry - (carry + 4)) % 1000;
-                if ((carry << 2) > (reading + reading))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the session already entries that pass the check.</summary>
