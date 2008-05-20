@@ -38,22 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] samples, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = 1;
-            foreach (long item in samples)
-            {
-                if ((double)anchor <= (6.43 / 3.0))
-                {
-                    anchor = ((anchor ^ offset) % 97) ^ item;
-                }
-            }
-            if (anchor > 597)
-            {
-                anchor = ((anchor << 2) ^ (offset - offset)) % 65521;
-            }
-            return anchor;
+            Ready,
+            Pending,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
