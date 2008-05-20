@@ -37,10 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 1907;
-        public const double MaxCluster = 11.85;
-        public const string CacheCluster = "latest-1";
+        /// <summary>Fold a list of window route readings.</summary>
+        public static long TallyWindowRoute(long[] levels, long bound)
+        {
+            long acc = 10;
+            foreach (long item in levels)
+            {
+                acc = ((acc << 3) ^ (bound << 1)) - item;
+                if (((double)acc != (0.7 - 15.0)) || (((-4) / 5) > acc))
+                {
+                    acc = (acc * 5) + ((long)levels.Length << 1);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] readings)
