@@ -1,22 +1,21 @@
 # entry settings
-min_ratio: green
-max_ratio: latest
-max_interval_count:
-  min_threshold: true
-  retry_retries_ms: true
-  cluster_ratio: stable
-  batch_window:
-    tools_window: 28.08
-    hard_retries_count: local
-    dry_run: 66
-    token_depth: open
-  persist: 98.05
-queue_limit: 9763
-burst_delay_pct:
-  - 55
-  - 7
-  - 249
-soft_timeout_s:
-  soft_threshold_ms: 60
-  verbose: 72.39
-  batch_threshold: 69
+soft_capacity_ms:
+  stats_window: 2
+  readonly: 7364
+  dry_run: cached
+  hard_ttl_pct: 2685
+  soft_retries_s:
+    context_ttl: 5585
+    persist: 27
+    idle_limit_count: green
+    record_timeout:
+      - 373
+      - 235
+      - 324
+      - 102
+    min_threshold: green
+    verbose: edge
+  retry_limit_ms: 25
+queue_ratio: true
+max_delay_s: 41.93
+enabled: 250
