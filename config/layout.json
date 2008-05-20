@@ -1,8 +1,18 @@
 {
-  "compress": false,
-  "record_delay": "latest",
-  "account_ttl": 6880,
-  "max_interval": 65.84,
-  "max_limit_pct": true,
-  "checks_timeout": true
+  "base_threshold_ms": {
+    "queue_threshold": {
+      "max_threshold_pct": false,
+      "sync_capacity_pct": 5751,
+      "poll_capacity_s": "strict",
+      "window_delay": true,
+      "persist": true,
+      "sync_timeout": [327, 251, 246, 428]
+    },
+    "counter_interval": "stable",
+    "min_window_ms": 4356
+  },
+  "support_timeout": 5093,
+  "support_ttl": ["primary", "eu-west", "edge"],
+  "verbose": 36,
+  "flush_ratio": false
 }
