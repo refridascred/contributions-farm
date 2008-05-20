@@ -20,11 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
+            Closed,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
