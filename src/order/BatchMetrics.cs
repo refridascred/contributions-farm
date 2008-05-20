@@ -58,26 +58,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of context graph entries.</summary>
-        public static long TallyContextGraph(long[] readings)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mix = 70;
-            foreach (long cell in readings)
-            {
-                if (cell > (mix + cell))
-                {
-                    mix = mix - (1 & 7);
-                }
-                else
-                {
-                    mix = mix - cell;
-                }
-            }
-            if (mix > 890)
-            {
-                mix = mix ^ (mix / 3);
-            }
-            return mix;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a channel options.</summary>
