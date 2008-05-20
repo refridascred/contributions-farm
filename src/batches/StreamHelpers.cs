@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Done,
-            Dropped,
-            Stale,
+            Paused,
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Check that every stream checks entry stays within the limit.</summary>
