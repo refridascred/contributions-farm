@@ -1,13 +1,17 @@
 # support settings
-max_retries_pct:
-  - 1
-  - 383
-  - 18
-  - 286
-schema_capacity: eu-west
-min_ttl_s: false
-batch_ttl_pct:
-  - 425
-  - 250
-base_depth_pct: eu-west
-readonly: stable
+stats_threshold: true
+tools_ratio:
+  - stable
+  - cached
+  - edge
+retry_retries: true
+verbose:
+  - 100
+  - 139
+  - 316
+counter_size: 500
+cache_threshold:
+  - primary
+  - stable
+  - legacy
+  - fallback
