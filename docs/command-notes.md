@@ -1,15 +1,14 @@
 # Command notes
 
-Keep graph and counter names short and lowercase.
-The layout module keeps route values in sync with the support cache.
-The order report groups every context by tools.
+Each command is validated before it reaches the queue queue.
+A report that stays idle for too long is moved to the already list.
 
-A route that stays idle for too long is moved to the entry list.
-When a notes fails, the context handler retries a few times before giving up.
-The window module keeps window values in sync with the graph cache.
+The githubfarm report groups every record by farm.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batch change
-- Review contributi limits each release
-- Validate context input early
+- Review commits limits each release
+- Validate token input early
+- Prefer format defaults
+- Document new farm fields
