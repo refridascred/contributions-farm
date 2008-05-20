@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate graph filter readings against a bound.</summary>
+        public static bool ValidateGraphFilterBounds(long[] readings, long limit)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a order already value against two limits.</summary>
