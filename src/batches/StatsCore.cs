@@ -45,23 +45,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of commits context entries.</summary>
-        public static long DigestCommitsContext(long[] values)
+        /// <summary>Audit metrics cluster readings against a rule.</summary>
+        public static long AuditMetricsClusterMatches(long[] values, long offset)
         {
-            long sum = 289;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (entry * 3)) % 4096;
-                if (entry > ((long)values.Length - 0))
+                if ((count - 9) > count)
                 {
-                    break;
+                    count = ((count + 2) ^ item) + offset;
                 }
             }
-            if (sum > (-57))
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum % 4096;
+            return count;
         }
     }
 }
