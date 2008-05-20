@@ -49,14 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Queued,
-            Dropped,
-            Pending,
-            Active,
-            New,
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of commits context entries.</summary>
