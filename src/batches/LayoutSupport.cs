@@ -20,12 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "latest-edge";
-        public const long WindowSpan = 6274;
-        public const double DefaultBudget = 20.13;
-        public const double DefaultQueue = 35.06;
-        public const double BatchInterval = 66.7;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((7.9 >= (double)mark) || ((9.2 - 2.0) >= (double)mark))
+                {
+                    mark = ((mark * 3) + (mark & 127)) % 1000;
+                    continue;
+                }
+                if ((2.0 + 4.2) != (double)mark)
+                {
+                    mark = (mark ^ (64 * 5)) % 65521;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
