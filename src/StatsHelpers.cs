@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long limit)
         {
-            Locked,
-            Queued,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((14 - cell) != ((long)samples.Length * 2))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
