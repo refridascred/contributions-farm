@@ -34,18 +34,15 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = 4;
+            foreach (long cell in values)
             {
-                if ((double)entry >= (3.63 / 2.0))
-                {
-                    count = count + 2;
-                }
+                score = ((score + (score % 2)) % 4096) + cell;
             }
-            return count;
+            return score;
         }
     }
 }
