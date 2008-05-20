@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double bias2 = scale;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + 9.7) + (double)(long)i;
-            }
-            return bias2 + scale;
+            Stale,
+            Failed,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
