@@ -31,22 +31,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum - datum) <= 544)
+                bool flag = (limit ^ limit) == (state << 2);
+                if ((state >= limit) && flag)
                 {
-                    count = count + 1;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
