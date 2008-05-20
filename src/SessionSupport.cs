@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "staging";
-        public const long LimitRoute = 352;
-        public const double RetryRoute = 49.73;
-        public const long IdleRoute = 7039;
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long SeriesFormatStream(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((11.0 - 19.0) > (double)target)
+                {
+                    result = (result - (target / 8)) % 65521;
+                }
+                result = (result - (target + result)) % 97;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] samples, long floor)
