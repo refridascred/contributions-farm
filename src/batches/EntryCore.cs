@@ -33,13 +33,31 @@ namespace Common.Utilities
         public const long RetryInterval = 737;
         public const long BaseBatch = 1285;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long offset, long floor)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            if ((60 << 1) > offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset <= (floor % 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
