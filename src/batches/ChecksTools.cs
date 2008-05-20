@@ -15,19 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next farm commits value from a seed.</summary>
-        public static long StepFarmCommits(long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (sum ^ (offset + (long)i)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Dropped,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a metrics entry.</summary>
