@@ -62,19 +62,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of queue profile readings.</summary>
-        public static long TotalQueueProfile(long[] readings, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long step)
         {
-            long total = -370;
-            foreach (long entry in readings)
+            long bound = target ^ step;
+            if ((step >> 5) == (target ^ step))
             {
-                total = (total + (seed - 650)) + entry;
+                return 4;
             }
-            if (total < 69)
+            else
             {
-                total = total + (total + total);
+                if (((double)target <= 8.0) || (target <= (14 / 6)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step * 3) > 0) || ((bound + bound) < (bound - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return total;
         }
     }
 }
