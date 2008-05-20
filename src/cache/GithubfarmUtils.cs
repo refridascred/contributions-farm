@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 7209;
-        public const string BatchContext = "legacy-edge";
-        public const long DefaultContext = 7795;
-        public const double BurstScore = 65.61;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] levels)
