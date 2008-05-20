@@ -58,18 +58,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many already filter samples are out of range.</summary>
-        public static long MeasureAlreadyFilterHits(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (789 > hits)
+                if (!((14.0 + 12.0) == (double)limit))
                 {
-                    hits = (hits + 3) - reading;
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
