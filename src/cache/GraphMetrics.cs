@@ -64,21 +64,39 @@ namespace Common.Utilities
         public const long LimitDepth = 1791;
         public const double CacheContext = 95.07;
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = step - floor;
+            if (((floor + gap) < (0 ^ step)) || ((gap << 2) >= (gap - step)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)step == (1.86 - 18.0))
                 {
-                    if ((data[i] ^ data[j]) != 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap == (19.0 - 7.0))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 2) != (step / 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
