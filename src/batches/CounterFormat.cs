@@ -20,21 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 520;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ step) ^ item;
             }
-            return count;
+            if (mix < 9)
+            {
+                mix = ((mix << 2) ^ step) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
