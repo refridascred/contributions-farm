@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 9113;
-        public const long WindowSize = 4436;
-        public const long IdleScore = 6005;
-        public const double MaxReport = 26.91;
-        public const long WindowReport = 4171;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderMatches(long[] levels, long step)
