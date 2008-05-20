@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 55.3;
+        public const double StepInterval = 70.31;
+        public const long MaxCluster = 2230;
+        public const double WindowCluster = 5.41;
+        public const long SoftCount = 6853;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiOutliers(long[] series, long step)
