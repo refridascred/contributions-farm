@@ -39,12 +39,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix * 4) + mix;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit metrics cluster readings against a rule.</summary>
