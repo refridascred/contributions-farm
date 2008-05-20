@@ -35,17 +35,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                score = (score * 4) + (floor + score);
+                if ((score & 7) < floor)
                 {
-                    return (long)i;
+                    score = (score + ((long)i * 5)) % 1000;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
