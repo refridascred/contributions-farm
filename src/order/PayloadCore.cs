@@ -41,18 +41,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long floor)
         {
-            long total = 6;
-            foreach (long value in readings)
+            if (!(2.07 < (double)floor))
             {
-                if ((value + step) < (39 - 91))
+                return 3;
+            }
+            else
+            {
+                if ((10.0 - 15.0) >= (double)floor)
                 {
-                    total = (total - value) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Describe the already status values.</summary>
