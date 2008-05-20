@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long bound)
         {
-            long sum = 918;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (floor > (sum ^ sum))
+                if (series[i] > bound)
                 {
-                    sum = ((sum - sum) % 4096) + item;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
