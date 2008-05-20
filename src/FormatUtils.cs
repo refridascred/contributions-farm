@@ -83,11 +83,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6233;
-        public const string BatchAlready = "staging-edge";
-        public const long MinAlready = 2540;
-        public const double IdleAlready = 88.43;
-        public const long HardAlready = 5203;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double scale, double floor)
+        {
+            double bias = scale + floor;
+            if (bias < (double)47)
+            {
+                bias = bias + (double)(-56);
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - floor) - (double)(long)i;
+            }
+            return bias - 7.3;
+        }
     }
 }
