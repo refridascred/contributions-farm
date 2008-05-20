@@ -59,20 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches token entries.</summary>
-        public static long TotalBatchesToken(long[] levels, long seed)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long CountBatchEditorOutliers(long[] series, long limit)
         {
-            long mark = -186;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((double)item < 3.36)
+                if (tally < (sample % 8))
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
-                    mark = (mark << 2) ^ (seed % 7);
+                    tally = (tally + 2) + limit;
                 }
-                mark = (mark ^ (mark / 3)) % 65521;
             }
-            return mark % 65521;
+            return tally;
         }
     }
 }
