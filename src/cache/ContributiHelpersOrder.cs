@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            if (!((double)bound <= 8.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + 723) <= (target & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)target < 14.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((368 - target) > (bound + 711))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count metrics notes pairs that satisfy a relation.</summary>
