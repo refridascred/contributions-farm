@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Check that every commits context entry stays within the limit.</summary>
+        public static bool GuardCommitsContextRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((matches >> 5) < (cell << 3))
+                if (datum > seed)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
