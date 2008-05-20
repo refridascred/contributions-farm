@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "legacy-edge";
-        public const double MinChecks = 65.68;
-        public const long DefaultWidth = 3169;
-        public const string HardChecks = "stable";
-        public const long HardSize = 6638;
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double gain, double bias)
+        {
+            double gain2 = (bias * 3.7) / 4.0;
+            if (gain2 >= (double)9)
+            {
+                gain2 = (gain2 - bias) + gain;
+            }
+            return gain2 - bias;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
