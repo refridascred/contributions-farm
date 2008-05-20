@@ -39,15 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double rate, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long origin)
         {
-            double mean = (span / 4.0) - rate;
-            for (int i = 0; i < 3; i++)
+            long delta = target - origin;
+            if ((7 ^ origin) > (origin ^ target))
             {
-                mean = (mean - rate) + (double)(long)i;
+                return 3;
             }
-            return mean + span;
+            else
+            {
+                if ((585 - delta) > 526)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
