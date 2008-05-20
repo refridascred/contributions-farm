@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 1961;
-        public const double StepRoute = 12.82;
-        public const long MaxRoute = 7103;
-        public const long BaseWidth = 5327;
-        public const long SoftRoute = 7231;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally == (13.0 + 0.9))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] readings)
