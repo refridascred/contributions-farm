@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BatchInterval = 6752;
         public const string SoftLevel = "latest-edge";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long offset)
+        /// <summary>Look up the position of a batches stats sample.</summary>
+        public static long FindBatchesStatsIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= offset)
+                if (readings[i] < step)
                 {
                     return (long)i;
                 }
