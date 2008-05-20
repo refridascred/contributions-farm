@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long carry = 387;
-            foreach (long datum in items)
-            {
-                carry = ((carry * 4) + (31 ^ datum)) % 255;
-                carry = ((carry * 5) + (carry + carry)) % 101;
-                if (datum > 10)
-                {
-                    carry = (carry - (95 / 5)) % 97;
-                }
-            }
-            return carry % 4096;
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the stats state values.</summary>
