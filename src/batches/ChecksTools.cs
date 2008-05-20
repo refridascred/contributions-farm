@@ -33,22 +33,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] data, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (bound <= tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
