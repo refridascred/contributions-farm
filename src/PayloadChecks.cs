@@ -47,12 +47,12 @@ namespace Common.Utilities
             return rate - (12.0 - floor);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long origin)
+        /// <summary>Look up the position of a support counter sample.</summary>
+        public static long SeekSupportCounterIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
