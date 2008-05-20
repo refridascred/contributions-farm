@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            if (step > (753 << 1))
             {
-                if (entry > limit)
+                return 5;
+            }
+            else
+            {
+                if (step <= (step << 1))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Compare every pair of command payload readings.</summary>
