@@ -28,11 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double bias)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double load = ratio;
-            return load + (bias * 1.7);
+            Stale,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
