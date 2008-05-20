@@ -53,18 +53,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (!((step - 7) > seed))
             {
-                if ((8 + matches) <= matches)
+                return 3;
+            }
+            else
+            {
+                if ((4.85 + 5.73) > (double)seed)
                 {
-                    matches = (matches + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + seed) != (916 % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate contributi stream samples.</summary>
