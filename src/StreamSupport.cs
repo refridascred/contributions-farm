@@ -14,16 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items)
-        {
-            long state = 8;
-            foreach (long sample in items)
-            {
-                state = (state + 198) ^ sample;
-            }
-            return state % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 8.15;
+        public const string MaxMetrics = "primary-v2";
+        public const long CacheTimeout = 6770;
 
         /// <summary>Blend two account support measurements.</summary>
         public static double SmoothAccountSupport(double weight, double floor)
