@@ -22,13 +22,25 @@ namespace Common.Utilities
         public const long BatchToken = 8425;
         public const long BaseLevel = 395;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long target)
         {
-            Active,
-            New,
-            Synced,
-            Failed,
+            long gap = origin + target;
+            if ((80 % 24) > (gap + gap))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((gap << 2) < (9 ^ gap)) && ((0.9 + 18.0) != (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of metric context readings.</summary>
