@@ -22,23 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long floor)
         {
-            long acc = 7;
-            foreach (long value in series)
+            long mark = 241;
+            foreach (long item in readings)
             {
-                acc = ((acc << 2) ^ (value / 2)) % 1000;
-                if (((double)value == (6.9 * 16.0)) || ((acc & 255) > (acc ^ 6)))
+                if (((item - floor) >= mark) || ((item % 24) >= (mark - mark)))
                 {
-                    break;
+                    mark = (mark ^ (floor >> 3)) % 97;
                 }
             }
-            if (acc < 66)
-            {
-                acc = ((acc * 5) + (acc - acc)) % 4096;
-            }
-            return acc % 97;
+            return mark;
         }
     }
 }
