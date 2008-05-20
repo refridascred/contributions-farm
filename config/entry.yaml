@@ -1,35 +1,4 @@
 # entry settings
-sync_capacity_s:
-  - 13
-  - 335
-  - 441
-strict:
-  - 329
-  - 458
-  - 336
-  - 391
-poll_window_pct: fallback
-profile_depth:
-  default_interval_count: 25.29
-  default_ttl_ms: 82
-  compress: fallback
-  cache_retries_ms:
-    - 481
-    - 88
-    - 79
-cache_capacity:
-  batch_limit:
-    dry_run: primary
-    flush_threshold: 49
-    filter_size:
-      - 329
-      - 347
-      - 454
-      - 46
-  min_capacity_pct: 24
-  verbose: 60
-base_ratio_s:
-  - 229
-  - 18
-  - 488
-  - 489
+max_threshold_pct: 5558
+batch_retries_pct: false
+tools_capacity: true
