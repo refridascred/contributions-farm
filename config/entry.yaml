@@ -1,7 +1,35 @@
 # entry settings
-dry_run: standard
-verbose: 37.73
-compress: 100
-hard_capacity_ms: staging
-batch_delay_s: local
-sync_interval: true
+retry_ratio_pct: 11.26
+flush_interval_pct: 1287
+context_size: primary
+idle_ttl: 76.18
+cache_capacity_s: eu-west
+poll_delay_ms:
+  idle_ttl:
+    max_timeout_pct:
+      - cached
+      - green
+      - staging
+    verbose: 18.96
+    stream_depth:
+      - 54
+      - 262
+      - 204
+      - 145
+    audit:
+      - staging
+      - cached
+    burst_delay_pct: 100
+    sync_window:
+      - 309
+      - 37
+  readonly: 250
+  warm_ratio_count: stable
+  default_timeout_count: true
+  filter_ttl: false
+  verbose:
+    warm_capacity_s: 4.06
+    queue_size: blue
+    flush_size_s: 250
+    retry_size_count: 60
+    sync_window_s: 1
