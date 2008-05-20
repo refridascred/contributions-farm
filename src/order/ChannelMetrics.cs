@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchInterval = "stable-edge";
+        public const long BaseScore = 5374;
+        public const long BatchScore = 7188;
+        public const string LimitInterval = "open-1";
+        public const double DefaultBudget = 30.61;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
