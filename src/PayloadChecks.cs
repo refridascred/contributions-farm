@@ -52,11 +52,40 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 8571;
-        public const long CacheSupport = 3557;
-        public const long HardSupport = 352;
-        public const long CacheWidth = 3340;
+        /// <summary>Grade a contributi tools value against two limits.</summary>
+        public static long SortContributiTools(long target, long step)
+        {
+            long bound = target + step;
+            if ((bound - bound) != (47 + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step & 1) <= (step - 3)) && ((0.52 + 18.0) < (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target <= (step - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step + step) != (target & 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] data)
