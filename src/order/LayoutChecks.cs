@@ -34,13 +34,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
