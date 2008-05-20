@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double gain = (offset - offset) / 8.0;
-            if (gain < 13.0)
-            {
-                gain = (gain + (gain * 1.6)) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (offset * 6.0)) + (double)(long)i;
-            }
-            return gain + (offset / 2.0);
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
