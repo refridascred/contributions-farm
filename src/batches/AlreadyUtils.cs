@@ -39,18 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((entry / 4) > hits) && ((hits >> 2) <= (entry - entry)))
+                if ((((limit % 8) == (count + 157)) && (cell <= (limit ^ limit))) && (cell <= (limit - 8)))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
