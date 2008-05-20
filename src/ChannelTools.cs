@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Find the first contributi checks entry that matches the target.</summary>
+        public static long SeekContributiChecksIndex(long[] levels, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((double)total == (double)offset) && ((6.01 - 3.0) <= (double)total)))
+                if (levels[i] < target)
                 {
-                    total = ((total * 5) + (525 / 6)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
