@@ -28,12 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long target)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches status values.</summary>
