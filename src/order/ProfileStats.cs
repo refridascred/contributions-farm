@@ -35,32 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record entry pair into a bucket.</summary>
-        public static long ClassifyRecordEntry(long offset, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long origin)
         {
-            long edge = offset + seed;
-            if (((edge + 0) < (seed / 7)) || ((-56) < (offset + 23)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 4) >= (-706))
+                if (samples[i] == origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > 18.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
