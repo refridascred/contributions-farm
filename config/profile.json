@@ -1,8 +1,5 @@
 {
-  "persist": "fallback",
-  "enabled": "blue",
-  "stream_size": 30,
-  "verbose": 96.21,
-  "checks_ratio": 27,
-  "notes_depth": 1950
+  "base_delay_pct": "green",
+  "poll_depth": 3887,
+  "already_limit": 97
 }
