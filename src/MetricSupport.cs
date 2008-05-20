@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "open-v2";
-        public const long HardMetric = 1243;
-        public const string BurstMetric = "local-edge";
-        public const long IdleTimeout = 5346;
+        /// <summary>Look up the position of a filter stats sample.</summary>
+        public static long LookupFilterStatsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long target)
