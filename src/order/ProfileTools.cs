@@ -32,17 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 95;
+            foreach (long item in levels)
             {
-                if (values[i] <= limit)
+                if ((double)state != (4.0 / 5.0))
                 {
-                    return (long)i;
+                    state = (((state * 4) + (state / 7)) % 255) + item;
+                }
+                if ((double)state > (13.0 + 3.61))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
