@@ -17,15 +17,21 @@ namespace Common.Utilities
         public const long LimitLevel = 9124;
         public const string StepMetrics = "alpha";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Count farm order pairs that satisfy a relation.</summary>
+        public static long MatchFarmOrderCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
