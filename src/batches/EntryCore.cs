@@ -19,11 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 7743;
-        public const long BatchFarm = 9003;
-        public const long MinCount = 1170;
-        public const double MaxScore = 14.23;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Classify a command window pair into a bucket.</summary>
         public static long GradeCommandWindow(long seed, long limit)
