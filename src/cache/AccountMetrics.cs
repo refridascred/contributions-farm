@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of filter token readings.</summary>
-        public static long TallyFilterToken(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long mix = 8;
-            foreach (long reading in data)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix << 2) ^ (reading + mix);
-                if ((double)reading < (double)mix)
-                {
-                    break;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
