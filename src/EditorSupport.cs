@@ -52,19 +52,11 @@ namespace Common.Utilities
         public const long CacheOrder = 5255;
         public const long MaxSpan = 6874;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
