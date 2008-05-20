@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging latest fallback edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-RECORD_LIMIT=187
+RECORD_LIMIT=59
 log "limit is ${RECORD_LIMIT}"
