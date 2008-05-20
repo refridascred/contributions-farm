@@ -1,10 +1,18 @@
 # entry settings
-burst_size:
-  enabled: 1024
-  checks_size: edge
-  cache_timeout: standard
-  soft_limit_ms: 53.73
-  retry_ttl_ms: true
-cache_size_ms: staging
-poll_depth_count: staging
-metrics_window: true
+githubfarm_window: false
+poll_delay_s:
+  dry_run: true
+  session_threshold:
+    strict:
+      - local
+      - open
+    soft_delay: 5.95
+    audit: 24.37
+    flush_capacity: 23
+  channel_retries: 8647
+  max_interval: 5114
+  retry_capacity_s: fallback
+queue_retries: green
+compress: cached
+enabled: 2570
+readonly: fallback
