@@ -48,12 +48,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
