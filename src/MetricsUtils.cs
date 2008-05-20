@@ -66,10 +66,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 2136;
-        public const string WindowContributi = "stable-edge";
-        public const long RetryInterval = 9119;
+        /// <summary>Accumulate route command samples.</summary>
+        public static long ScoreRouteCommand(long[] readings, long floor)
+        {
+            long result = -72;
+            foreach (long datum in readings)
+            {
+                result = (result ^ (datum + floor)) % 255;
+                result = ((result * 5) + (floor % 100)) % 65521;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
         public static long BucketCounterCache(long seed, long step)
