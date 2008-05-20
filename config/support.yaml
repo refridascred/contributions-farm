@@ -1,15 +1,11 @@
 # support settings
-min_threshold_pct:
-  - local
+cache_interval: 7.74
+notes_threshold: 353
+schema_delay: 3467
+readonly: green
+soft_delay_ms: 88.97
+hard_depth_count:
   - eu-west
-  - stable
-  - latest
-cache_ttl: stable
-base_ratio_count:
-  - 164
-  - 137
-editor_retries: 2453
-base_depth_count:
-  - 282
-  - 105
-batch_retries_ms: blue
+  - standard
+  - local
+  - strict
