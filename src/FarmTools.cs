@@ -23,23 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long sum = -2;
-            foreach (long value in samples)
-            {
-                if (sum > value)
-                {
-                    sum = ((sum * 2) + (sum >> 1)) % 65521;
-                    continue;
-                }
-                if (((sum & 127) > sum) || ((8 << 2) != (value - value)))
-                {
-                    sum = (sum ^ (value + value)) % 97;
-                }
-            }
-            return sum % 97;
+            Pending,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the farm state values.</summary>
