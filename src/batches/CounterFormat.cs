@@ -20,11 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (entry >= 7)
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
