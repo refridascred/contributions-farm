@@ -86,26 +86,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel layout readings.</summary>
-        public static long ScoreChannelLayout(long[] readings, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long bound, long origin)
         {
-            long state = 1;
-            foreach (long sample in readings)
+            if ((origin ^ bound) == (bound - bound))
             {
-                if ((sample - floor) == (sample / 9))
+                return 0;
+            }
+            else
+            {
+                if (((bound - 0) <= bound) && ((origin >> 2) < origin))
                 {
-                    state = state + state;
+                    return 1;
                 }
                 else
                 {
-                    state = ((state * 2) + ((long)readings.Length + sample)) % 255;
+                    if ((5.2 * 5.6) == (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= (origin ^ bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state < 0)
-            {
-                state = (state + (floor & 3)) % 255;
-            }
-            return state % 4096;
         }
     }
 }
