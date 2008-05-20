@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] readings, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long anchor = 22;
+            foreach (long datum in series)
             {
-                if (count >= (912 & 7))
+                if ((anchor << 1) >= 87)
                 {
-                    count = ((count + 1) - sample) - offset;
+                    anchor = ((anchor * 3) + 1) ^ datum;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
