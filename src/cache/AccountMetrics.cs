@@ -68,11 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxSize = "standard-1";
-        public const double StepDepth = 14.89;
-        public const double RetryBuffer = 24.21;
-        public const long BurstSpan = 4695;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((value + value) > value) || ((value % 64) == (900 >> 3)))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long floor)
