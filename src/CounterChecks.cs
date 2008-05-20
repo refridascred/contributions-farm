@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale - (1.39 - rate);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels, long origin)
+        /// <summary>Validate buffer schema readings against a bound.</summary>
+        public static bool VerifyBufferSchemaLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (!((count << 2) > 42))
+                if (sample != floor)
                 {
-                    count = ((count + 2) + cell) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of record entries.</summary>
