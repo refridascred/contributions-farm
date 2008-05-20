@@ -32,23 +32,21 @@ namespace Common.Utilities
         public const double LimitRecord = 13.59;
         public const string StepRecord = "fallback-edge";
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double span)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            double drift = span;
-            if (drift <= (scale - scale))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (1.0 / 6.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (double)519;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)604) + (double)(long)i;
-            }
-            return drift - (drift / 9.0);
+            return seen;
         }
     }
 }
