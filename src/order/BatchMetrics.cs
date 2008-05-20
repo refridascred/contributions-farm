@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string SoftLayout = "stable";
         public const double HardFactor = 85.58;
 
-        /// <summary>Audit token checks readings against a rule.</summary>
-        public static long MeasureTokenChecksHits(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = 84;
+            foreach (long item in data)
             {
-                if ((long)values.Length < (tally & 31))
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum + (sum - sum)) + item;
             }
-            return tally;
+            if (sum > 88)
+            {
+                sum = (sum ^ (seed + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a channel stream reading by value.</summary>
