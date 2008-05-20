@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const double DefaultQueue = 35.06;
         public const double BatchInterval = 66.7;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitCount = "latest-1";
-        public const long HardFormat = 445;
-        public const double IdleLevel = 23.78;
-        public const long RetryFormat = 7952;
-        public const long WindowRatio = 7186;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] values)
