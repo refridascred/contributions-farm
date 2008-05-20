@@ -48,11 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 5026;
-        public const string WindowCounter = "staging";
-        public const string IdleCounter = "legacy";
-        public const long HardWidth = 705;
-        public const long BaseCounter = 2356;
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long CountMetricsSchemaOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((long)data.Length * 2) == (414 & 63))
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
