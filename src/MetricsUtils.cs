@@ -72,15 +72,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a tools commits figure with a bias.</summary>
-        public static double BlendToolsCommits(double scale, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            double weight = (double)(0 / 5);
-            if (weight > weight)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                weight = weight - span;
+                if (reading < (reading + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight - scale;
+            return seen;
         }
     }
 }
