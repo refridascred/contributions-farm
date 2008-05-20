@@ -18,30 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long seed, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long floor)
         {
-            long step2 = seed + step;
-            if ((double)seed == (0.93 / 2.0))
+            long bound = offset ^ floor;
+            if ((bound ^ offset) > (floor * 3))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((seed <= (step / 8)) && ((step & 1) > (seed ^ step)))
+                if ((bound / 3) <= (offset % 24))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((step2 / 8) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 1;
                 }
             }
         }
