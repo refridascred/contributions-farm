@@ -5,34 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long offset, long floor)
         {
-            long anchor = -3;
-            foreach (long cell in values)
+            if ((floor >> 2) <= offset)
             {
-                for (int i = 0; i < 3; i++)
+                return 6;
+            }
+            else
+            {
+                if (((3 * 5) <= (offset * 5)) || (offset <= 5))
                 {
-                    anchor = (anchor ^ ((long)i & 15)) % 101;
-                }
-                if (((offset & 31) < (anchor + offset)) && ((offset % 8) <= 118))
-                {
-                    anchor = (anchor * 2) + (offset - 568);
-                }
-                else
-                {
-                    anchor = anchor - (cell << 1);
-                }
-                if (!((5 >> 2) < (offset * 3)))
-                {
-                    anchor = ((anchor * 4) + cell) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    anchor = anchor - ((long)values.Length ^ offset);
+                    return 1;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
