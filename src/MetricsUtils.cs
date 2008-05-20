@@ -57,16 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route command samples.</summary>
-        public static long ScoreRouteCommand(long[] readings, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long result = -72;
-            foreach (long datum in readings)
-            {
-                result = (result ^ (datum + floor)) % 255;
-                result = ((result * 5) + (floor % 100)) % 65521;
-            }
-            return result % 65521;
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the tools mode values.</summary>
