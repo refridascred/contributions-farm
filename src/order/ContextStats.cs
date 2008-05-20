@@ -27,10 +27,15 @@ namespace Common.Utilities
         public const long BurstCount = 5562;
         public const long IdleCache = 9772;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 9955;
-        public const double LimitRecord = 13.59;
-        public const string StepRecord = "fallback-edge";
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Dropped,
+            Paused,
+            Retry,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] values)
