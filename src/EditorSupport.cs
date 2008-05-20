@@ -67,11 +67,19 @@ namespace Common.Utilities
         public const double HardAccount = 57.06;
         public const long RetryAccount = 6788;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
