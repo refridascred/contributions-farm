@@ -44,11 +44,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 9707;
-        public const long DefaultGithubfarm = 9556;
-        public const long CacheGithubfarm = 6817;
-        public const long WindowBudget = 6130;
-        public const long LimitGithubfarm = 7268;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Synced,
+            Active,
+            Draft,
+            Ready,
+            Paused,
+        }
     }
 }
