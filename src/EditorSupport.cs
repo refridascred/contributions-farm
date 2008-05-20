@@ -92,13 +92,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
             long tally = 0;
-            foreach (long item in values)
+            foreach (long cell in data)
             {
-                if ((item - 822) >= (2 - tally))
+                if (((double)tally > (6.0 / 6.0)) && (12.0 < (double)cell))
                 {
                     tally = tally + 1;
                 }
