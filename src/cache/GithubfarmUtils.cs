@@ -20,19 +20,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] values, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long sum = 84;
+            foreach (long sample in samples)
             {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (((sum << 3) ^ 8) % 101) - sample;
+                sum = sum + sum;
             }
-            return ok;
+            if (sum < 99)
+            {
+                sum = (sum * 3) + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
