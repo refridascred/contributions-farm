@@ -33,31 +33,15 @@ namespace Common.Utilities
         public const long RetryInterval = 737;
         public const long BaseBatch = 1285;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long offset, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            if ((60 << 1) > offset)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (offset <= (floor % 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
