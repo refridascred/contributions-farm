@@ -30,15 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Dropped,
-            Paused,
-            Retry,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 47.14;
+        public const long BatchQueue = 6090;
+        public const long RetryWidth = 5936;
+        public const long BurstSize = 2839;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] values)
