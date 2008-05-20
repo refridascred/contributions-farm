@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings, long step)
         {
-            long sum = -9;
-            foreach (long reading in samples)
+            long score = -45;
+            foreach (long value in readings)
             {
-                if ((reading + 62) >= (sum ^ reading))
-                {
-                    sum = sum - (reading & 7);
-                }
+                score = (((score - (score + 7)) % 65521) - value) - step;
             }
-            return sum % 65521;
+            return score % 1000;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
