@@ -42,30 +42,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long floor)
         {
-            long state = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(79 > (state / 8)))
+                if (items[i] < floor)
                 {
-                    state = ((state * 4) + (5 ^ state)) % 4096;
-                }
-                if (((double)step < (4.3 + 2.7)) || ((step - datum) >= (6 + step)))
-                {
-                    state = (state - (datum + datum)) % 97;
-                }
-                else
-                {
-                    state = (state * 3) + (state * 2);
-                }
-                if ((double)step > (double)datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
