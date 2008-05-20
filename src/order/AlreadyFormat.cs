@@ -78,13 +78,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Dropped,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
