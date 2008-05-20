@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5800;
-        public const long MinSupport = 6917;
-        public const string RetryInterval = "local-edge";
-        public const long LimitLevel = 7274;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchWidth = 3748;
+        public const double MaxSpan = 11.82;
+        public const long IdleScore = 3070;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
