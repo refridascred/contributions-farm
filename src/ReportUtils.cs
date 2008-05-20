@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            long sum = 569;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((double)sum == (3.46 * 7.0))
+                if ((5.9 - 16.0) >= (double)hits)
                 {
-                    sum = sum - (value + sum);
-                }
-                else
-                {
-                    sum = sum ^ (859 * 4);
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
