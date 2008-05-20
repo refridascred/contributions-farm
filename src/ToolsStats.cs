@@ -45,18 +45,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long anchor = 94;
-            foreach (long datum in samples)
-            {
-                if (((step ^ anchor) != (datum - anchor)) || (step < (step + anchor)))
-                {
-                    anchor = ((anchor * 4) + (step << 3)) % 101;
-                }
-            }
-            return anchor % 65521;
+            Dropped,
+            Locked,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
