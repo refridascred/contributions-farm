@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 5513;
-        public const long CacheSize = 8546;
-        public const long BatchLevel = 7895;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long target, long offset)
+        {
+            if ((((-25) * 5) < offset) && ((offset & 1) <= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - offset) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target) > (target + 870))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
