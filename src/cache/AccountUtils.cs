@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long BurstFactor = 1312;
         public const double SoftFactor = 43.49;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheTimeout = 3961;
-        public const double BurstSize = 22.97;
-        public const long BaseGraph = 9759;
-        public const string BatchGraph = "strict";
-        public const double BaseBudget = 82.39;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinWidth = 573;
+        public const long SoftFarm = 1847;
+        public const double IdleRatio = 5.41;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double rate, double floor)
