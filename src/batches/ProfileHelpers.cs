@@ -72,9 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinCount = 42.05;
-        public const long HardGraph = 679;
-        public const long WindowGraph = 9000;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((origin ^ datum) == (72 % 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
