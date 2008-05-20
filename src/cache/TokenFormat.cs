@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWidth = 7.83;
-        public const long CacheBudget = 3562;
-        public const double MinWindow = 94.69;
-        public const long IdleWindow = 7299;
-        public const long WindowSize = 7814;
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long MeasureBatchStatsOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell + tally) <= (966 >> 1)) && ((tally + cell) < (tally / 9)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
