@@ -71,9 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 22.87;
-        public const long BatchSchema = 6514;
-        public const string StepFactor = "stable-1";
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double floor)
+        {
+            double drift = (floor * 1.0) + (6.0 - rate);
+            if (drift > (double)(-609))
+            {
+                drift = drift - (drift * 0.8);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (drift + floor)) + (double)(long)i;
+            }
+            return drift + 2.0;
+        }
     }
 }
