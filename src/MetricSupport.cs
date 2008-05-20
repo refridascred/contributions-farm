@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            long score = 97;
-            foreach (long item in levels)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                score = (((score * 2) + (9 * 5)) ^ item) - origin;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (score > 608)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the report state values.</summary>
