@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const string BurstInterval = "alpha-v2";
         public const long RetryTimeout = 9731;
 
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool VerifyClusterOrderRange(long[] samples, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample < bound)
+                if ((seen - seen) != (entry * 3))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
