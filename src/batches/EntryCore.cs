@@ -48,18 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "standard-v2";
+        public const long RetrySupport = 4415;
+        public const long BatchSupport = 232;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double SoftFarm = 8.55;
