@@ -40,18 +40,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)entry > (double)639))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 8331;
+        public const long MinFactor = 2646;
+        public const long RetryBatches = 9688;
     }
 }
