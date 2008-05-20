@@ -22,21 +22,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up graph format samples.</summary>
-        public static long OverlapGraphFormatCount(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (((mix << 2) ^ mix) % 101) ^ (long)i2;
+                    mix = (mix * 3) + limit;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
