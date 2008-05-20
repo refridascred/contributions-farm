@@ -1,7 +1,6 @@
 {
-  "base_interval_s": "stable",
-  "burst_retries": "green",
-  "burst_ttl_s": 97.9,
-  "min_limit": 35.66,
-  "persist": 500
+  "verbose": 100,
+  "dry_run": "cached",
+  "record_size": [93, 277, 449],
+  "max_threshold_s": 90.8
 }
