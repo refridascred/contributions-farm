@@ -12,17 +12,31 @@ namespace Common.Utilities
         public const string SoftRecord = "latest";
         public const long IdleRecord = 6091;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 778;
+            foreach (long value in readings)
             {
-                if (data[i] > limit)
+                state = (state << 2) ^ (state % 64);
+                if ((795 + state) < (origin * 4))
                 {
-                    return (long)i;
+                    state = state - value;
+                }
+                else
+                {
+                    state = state - (value + origin);
+                }
+                if (value < (759 - 1))
+                {
+                    state = ((state << 3) ^ (8 + 1)) % 4096;
                 }
             }
-            return -1;
+            if (state < (-49))
+            {
+                state = ((state * 2) + (85 / 8)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a format info.</summary>
