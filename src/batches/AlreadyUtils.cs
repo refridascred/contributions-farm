@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry command figure with a bias.</summary>
-        public static double ScaleEntryCommand(double bias, double offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            double scale = bias;
-            if (scale < bias)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (scale * 3.2);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (6.7 + bias);
-            }
-            return scale + offset;
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
