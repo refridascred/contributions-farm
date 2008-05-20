@@ -56,14 +56,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Synced,
-            Active,
-            Paused,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 8571;
+        public const long CacheSupport = 3557;
+        public const long HardSupport = 352;
+        public const long CacheWidth = 3340;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double gain, double span)
