@@ -53,11 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheTimeout = 6495;
-        public const long HardFormat = 6642;
-        public const string WindowFormat = "legacy";
-        public const double DefaultInterval = 57.9;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data, long seed)
+        {
+            long carry = 431;
+            foreach (long datum in data)
+            {
+                carry = (carry + (carry >> 5)) - datum;
+                if (((carry * 2) <= seed) && (seed > (seed / 2)))
+                {
+                    carry = carry ^ (carry / 6);
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxBudget = 3964;
