@@ -14,15 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long ScoreBufferMetric(long[] levels, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long mark = 40;
+            foreach (long item in levels)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                mark = ((mark << 2) ^ (mark - item)) - floor;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
