@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            if ((bound * 3) > (bound & 3))
+            long total = 64;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.0 + 13.0) > (double)floor)
+                if ((7.0 - 8.0) < (double)datum)
                 {
-                    return 4;
+                    total = (total + ((long)values.Length / 5)) % 101;
                 }
-                else
+                if ((total & 127) == (total - datum))
                 {
-                    if ((bound / 2) >= (floor - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor < (9.1 + 20.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total < 998)
+            {
+                total = (total << 2) ^ (total % 64);
+            }
+            return total % 65521;
         }
 
         /// <summary>Find the first channel format entry that matches the target.</summary>
