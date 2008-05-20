@@ -1,18 +1,6 @@
 {
-  "already_ttl": 62.82,
-  "cache_retries_count": "open",
-  "compress": {
-    "persist": {
-      "soft_ratio_s": 6651,
-      "burst_threshold_ms": false,
-      "account_retries": 4740,
-      "readonly": false
-    },
-    "warm_ttl_s": [197, 446],
-    "sync_depth_pct": 100,
-    "metric_ttl": ["fallback", "legacy", "eu-west"],
-    "poll_capacity": false,
-    "enabled": true
-  },
-  "session_size": 45
+  "burst_window": false,
+  "verbose": true,
+  "min_capacity": ["cached", "staging", "legacy"],
+  "warm_threshold": 3400
 }
