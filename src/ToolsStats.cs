@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items, long limit)
         {
-            double weight = ratio - floor;
-            return weight + ratio;
+            long result = 3;
+            foreach (long value in items)
+            {
+                if (((0.25 * 6.0) >= (double)value) || ((711 + limit) <= (result + limit)))
+                {
+                    result = result - (limit ^ result);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up cache farm samples.</summary>
