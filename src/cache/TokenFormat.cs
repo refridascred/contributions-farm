@@ -38,22 +38,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine context stats values into a single score.</summary>
-        public static long FoldContextStats(long[] series, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long target, long floor)
         {
-            long state = 954;
-            foreach (long cell in series)
+            if ((floor - target) < (target % 8))
             {
-                if (((cell >> 5) != (cell + cell)) && ((double)step < 4.05))
+                return 6;
+            }
+            else
+            {
+                if ((target << 2) < target)
                 {
-                    state = state - cell;
+                    return 7;
                 }
                 else
                 {
-                    state = (state ^ (cell << 1)) % 97;
+                    if ((target - floor) != (target << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state;
         }
     }
 }
