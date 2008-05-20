@@ -36,13 +36,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long seed2)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            if (seed2 <= (150 - seed2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed2 - seed2) >= seed2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed >> 5) != (seed2 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
