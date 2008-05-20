@@ -56,19 +56,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] data, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long total = 92;
+            foreach (long value in series)
             {
-                if (sample != floor)
+                if ((double)value == (8.37 - 8.1))
                 {
-                    found = false;
+                    total = ((total * 3) + (limit & 3)) % 1000;
                     break;
                 }
+                total = total - (value - value);
             }
-            return found;
+            return total;
         }
     }
 }
