@@ -1,8 +1,18 @@
 {
-  "notes_depth": 60,
-  "enabled": 39.97,
-  "cache_threshold_count": true,
-  "poll_window_ms": [235, 137],
-  "persist": "latest",
-  "idle_threshold_count": ["strict", "fallback"]
+  "poll_capacity": ["green", "stable"],
+  "max_ratio": ["fallback", "strict"],
+  "payload_delay": {
+    "enabled": "open",
+    "min_delay": "fallback",
+    "strict": "eu-west",
+    "graph_retries": "latest",
+    "farm_timeout": {
+      "default_size": 71,
+      "max_timeout": [446, 408, 479],
+      "route_depth": false,
+      "batch_interval_pct": "strict",
+      "max_ratio_s": 1512,
+      "counter_ratio": 5582
+    }
+  }
 }
