@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Retry,
-            Idle,
-            Paused,
-            Done,
-            Queued,
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
