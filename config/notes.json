@@ -1,7 +1,9 @@
 {
-  "verbose": [421, 372, 206],
-  "cache_ratio": true,
-  "soft_threshold": ["local", "green"],
-  "report_window": 250,
-  "burst_retries_count": false
+  "base_window_ms": "legacy",
+  "enabled": ["local", "latest", "edge"],
+  "entry_retries": {
+    "cache_ratio_s": 7,
+    "command_delay": "legacy",
+    "retry_depth_ms": 87.77
+  }
 }
