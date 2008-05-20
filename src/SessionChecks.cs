@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long seed)
         {
-            long carry = 497;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((carry & 255) < (long)data.Length) && ((carry % 7) < carry))
+                if (samples[i] >= seed)
                 {
-                    carry = ((carry << 2) ^ (63 & 1)) + sample;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
