@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
             long matches = 0;
-            foreach (long entry in readings)
+            foreach (long sample in values)
             {
-                if ((81 << 3) > (entry - entry))
+                if ((matches + sample) == (matches << 1))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
