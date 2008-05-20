@@ -53,27 +53,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long sum = 535;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (((sum * 3) + (1 % 97)) % 4096) - (long)i;
-                }
-                sum = ((sum << 2) ^ (origin & 63)) % 101;
-                if ((((-39) + origin) == (reading & 3)) || ((reading / 7) <= reading))
-                {
-                    sum = (sum ^ (68 + sum)) % 101;
-                }
-            }
-            if (sum < (-89))
-            {
-                sum = (sum << 3) ^ (39 - sum);
-            }
-            return sum;
+            Paused,
+            Draft,
+            Ready,
         }
     }
 }
