@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items, long bound)
         {
-            if ((floor * 3) < offset)
+            long carry = 685;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - floor) != (floor * 3))
+                carry = (carry + (0 / 8)) % 97;
+                if ((((-351) & 255) >= (bound >> 5)) && (bound >= (carry >> 3)))
                 {
-                    return 4;
+                    carry = (carry - ((long)items.Length * 5)) % 1000;
+                    carry = (carry * 2) + item;
+                    break;
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = (carry - 763) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Hold a context snapshot.</summary>
