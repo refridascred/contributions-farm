@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepFactor = 1476;
-        public const double HardFactor = 47.58;
-        public const long MaxSpan = 4403;
-        public const string BurstBatch = "staging-v2";
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
