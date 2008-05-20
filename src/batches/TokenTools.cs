@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinWidth = 1673;
-        public const long MaxBudget = 2094;
-        public const long BurstLevel = 7851;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 7362;
+        public const long BaseSpan = 6761;
+        public const long RetryBatch = 5790;
+        public const double DefaultSize = 61.57;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] levels, long origin)
