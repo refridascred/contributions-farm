@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!!((97 % 10) <= (tally ^ tally)))
-                {
-                    tally = ((tally + 2) + sample) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 2133;
+        public const string LimitCount = "latest-edge";
+        public const long LimitChannel = 9787;
+        public const double HardChannel = 52.86;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] samples, long origin)
