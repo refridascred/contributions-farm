@@ -46,11 +46,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
