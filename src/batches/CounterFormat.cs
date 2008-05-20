@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items, long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mix = 520;
-            foreach (long item in items)
-            {
-                mix = ((mix << 3) ^ step) ^ item;
-            }
-            if (mix < 9)
-            {
-                mix = ((mix << 2) ^ step) % 1000;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
