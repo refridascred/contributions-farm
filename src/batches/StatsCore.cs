@@ -66,18 +66,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics cluster readings against a rule.</summary>
-        public static long AuditMetricsClusterMatches(long[] values, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 3;
+            foreach (long sample in samples)
             {
-                if ((count - 9) > count)
+                if (!((seed + 86) < (seed / 5)))
                 {
-                    count = ((count + 2) ^ item) + offset;
+                    result = (result * 5) + (seed - result);
+                }
+                result = (result + (long)samples.Length) % 255;
+                if ((double)sample == (3.52 / 9.0))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
