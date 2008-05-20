@@ -70,19 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue cache readings against a bound.</summary>
-        public static bool CheckQueueCacheRange(long[] readings, long bound)
+        /// <summary>Accumulate batches metric samples.</summary>
+        public static long TotalBatchesMetric(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long carry = 6;
+            foreach (long datum in data)
             {
-                if (cell != bound)
+                if ((carry - offset) < 2)
                 {
-                    found = false;
-                    break;
+                    carry = (carry << 2) ^ (datum ^ carry);
                 }
             }
-            return found;
+            return carry;
         }
     }
 }
