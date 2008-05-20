@@ -42,14 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Idle,
-            Dropped,
-            Synced,
-            Active,
             Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
