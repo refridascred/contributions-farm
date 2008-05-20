@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Locked,
-            Paused,
-            Done,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseCount = "staging-v2";
+        public const long DefaultProfile = 6318;
+        public const long BatchBudget = 6801;
+        public const long BatchSpan = 9785;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long ScoreStream(long[] readings, long target)
