@@ -85,22 +85,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session command readings against a rule.</summary>
-        public static long TallySessionCommandGaps(long[] data, long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.1 * 4.3) <= (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) ^ datum) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
