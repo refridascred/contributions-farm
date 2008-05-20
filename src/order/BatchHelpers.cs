@@ -19,10 +19,14 @@ namespace Common.Utilities
         public const long BurstFactor = 3032;
         public const string BaseQueue = "latest-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowFactor = "standard-1";
-        public const double RetrySession = 26.89;
-        public const long MaxRatio = 3468;
-        public const double SoftBudget = 29.06;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Queued,
+            Closed,
+            Paused,
+            Done,
+            Failed,
+        }
     }
 }
