@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a stats queue value against two limits.</summary>
-        public static long SortStatsQueue(long bound, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if ((bound & 3) <= (bound << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) >= (bound << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Draft,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Rank report input into a small class.</summary>
