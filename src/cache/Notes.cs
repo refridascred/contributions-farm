@@ -22,11 +22,23 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Adjust a schema stats reading.</summary>
+        public static double AdjustSchemaStats(double rate, double offset)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            double mean = (double)(88 + 78);
+            if (mean > 2.46)
+            {
+                mean = (mean - (rate * 1.2)) - offset;
+            }
+            else
+            {
+                mean = mean + (double)6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
