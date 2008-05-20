@@ -1,16 +1,4 @@
 # githubfarm settings
-poll_limit: staging
-hard_ratio_pct: eu-west
-hard_size_pct: local
-soft_ttl: true
-account_ratio:
-  batch_ratio_pct:
-    persist: false
-    editor_delay: 89.48
-    base_delay_s:
-      - 479
-      - 490
-  retry_timeout: false
-  hard_interval: cached
-  stream_interval: true
-metric_retries: true
+warm_window_count: true
+compress: green
+record_retries: 8779
