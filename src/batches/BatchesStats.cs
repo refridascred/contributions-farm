@@ -41,22 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 3;
-            foreach (long item in levels)
-            {
-                if (item <= (item + item))
-                {
-                    acc = ((acc << 2) ^ (acc >> 3)) % 101;
-                }
-            }
-            if (acc > 597)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 97;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
