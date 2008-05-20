@@ -20,12 +20,23 @@ namespace Common.Utilities
             return mean - 0.9;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 6644;
-        public const long CacheRatio = 1324;
-        public const double BaseRatio = 9.34;
-        public const long BurstRatio = 9506;
-        public const long StepFarm = 3529;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings)
+        {
+            long acc = 91;
+            foreach (long sample in readings)
+            {
+                if ((acc / 6) > (sample * 3))
+                {
+                    acc = (acc + sample) % 65521;
+                }
+            }
+            if (acc < 90)
+            {
+                acc = (acc << 2) ^ 26;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] values)
