@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepBudget = 7218;
-        public const long BurstRatio = 8761;
-        public const string IdleTimeout = "standard-edge";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches >> 5) < (cell << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long WeighBatch(long[] items)
