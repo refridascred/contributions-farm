@@ -76,19 +76,12 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
-        public static bool ValidateAlreadyGithubfarmRange(long[] data, long origin)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
