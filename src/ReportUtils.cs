@@ -77,17 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((values[i] >= step) && ((values[i] % 3) == 0))
+                if (sample != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
