@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            public bool Mode { get; set; }
             public long Score { get; set; }
         }
 
