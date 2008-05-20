@@ -41,14 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 9442;
+        public const long BaseSize = 8494;
+        public const long BatchSpan = 3861;
+        public const long SoftRatio = 750;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
