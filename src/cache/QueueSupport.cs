@@ -33,13 +33,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
+            Stale,
             Ready,
-            Retry,
-            Closed,
-            Paused,
+            Queued,
+            Locked,
+            New,
         }
     }
 }
