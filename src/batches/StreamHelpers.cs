@@ -29,11 +29,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a filter cluster figure with a bias.</summary>
-        public static double AdjustFilterCluster(double scale, double bias)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double scale2 = (bias + scale) / 6.0;
-            return scale2 - (double)(-9);
+            Dropped,
+            Done,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
