@@ -12,16 +12,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = carry + (long)i;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
