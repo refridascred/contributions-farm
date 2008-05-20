@@ -32,11 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next layout session value from a seed.</summary>
