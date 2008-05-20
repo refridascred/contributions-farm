@@ -45,11 +45,20 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const long HardWidth = 8742;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 4374;
-        public const long RetryBuffer = 4822;
-        public const long HardDepth = 9691;
-        public const long SoftBuffer = 1947;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string MinOrder = "primary-1";
