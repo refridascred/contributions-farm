@@ -17,23 +17,11 @@ namespace Common.Utilities
         public const string MaxMetrics = "primary-v2";
         public const long CacheTimeout = 6770;
 
-        /// <summary>Blend two account support measurements.</summary>
-        public static double SmoothAccountSupport(double weight, double floor)
-        {
-            double drift = (0.33 + floor) / 5.0;
-            if (drift > (double)0)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + (weight / 6.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)51) - (double)(long)i;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleFactor = 2.19;
+        public const string BaseScore = "staging";
+        public const string StepPayload = "open-edge";
+        public const long SoftFactor = 2906;
+        public const string LimitPayload = "cached";
     }
 }
