@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count commits context pairs that satisfy a relation.</summary>
-        public static long PairCommitsContextCount(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7.44 - 2.0) <= (double)value)
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the farm githubfarm series from a seed.</summary>
