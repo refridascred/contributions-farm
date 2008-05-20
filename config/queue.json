@@ -1,6 +1,10 @@
 {
-  "dry_run": 59.55,
-  "hard_depth": true,
-  "enabled": 500,
-  "default_retries": 28.44
+  "cache_size_ms": false,
+  "profile_timeout": 9968,
+  "warm_threshold_s": true,
+  "metrics_depth": {
+    "max_size_ms": 2291,
+    "warm_window_pct": "cached",
+    "farm_depth": "eu-west"
+  }
 }
