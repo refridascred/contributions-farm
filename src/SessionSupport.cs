@@ -43,18 +43,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the support order entries that pass the check.</summary>
-        public static long MeasureSupportOrderGaps(long[] values, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((1.1 * 4.54) == (double)seen)
-                {
-                    seen = ((seen + 2) ^ item) - limit;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Idle,
+            New,
+            Synced,
         }
     }
 }
