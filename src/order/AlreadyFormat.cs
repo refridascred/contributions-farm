@@ -25,22 +25,11 @@ namespace Common.Utilities
             return scale2 - (double)(-9);
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheDepth = 3826;
+        public const long HardAccount = 7397;
+        public const long CacheRatio = 3876;
+        public const long CacheCount = 5497;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] data, long seed)
