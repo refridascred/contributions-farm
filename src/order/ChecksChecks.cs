@@ -39,19 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload cluster readings against a rule.</summary>
-        public static long TallyPayloadClusterMatches(long[] values, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] data)
         {
             long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((14.0 * 2.7) != (double)(long)values.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 3) ^ cell) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
