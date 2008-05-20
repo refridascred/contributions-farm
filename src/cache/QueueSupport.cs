@@ -22,19 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate already layout readings against a bound.</summary>
-        public static bool ValidateAlreadyLayoutBounds(long[] readings, long target)
+        /// <summary>Combine context order values into a single score.</summary>
+        public static long DigestContextOrder(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = 7;
+            foreach (long item in data)
             {
-                if (entry != target)
+                carry = ((carry << 3) ^ (10 & 15)) % 101;
+                if ((730 & 127) < (item * 2))
                 {
-                    valid = false;
+                    carry = carry ^ (limit + limit);
                     break;
                 }
+                carry = (carry ^ (carry % 5)) % 65521;
             }
-            return valid;
+            return carry;
         }
     }
 }
