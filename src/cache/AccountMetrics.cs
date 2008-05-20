@@ -45,11 +45,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 956;
-        public const long MaxChannel = 2969;
-        public const double MinChannel = 38.62;
-        public const double BatchChannel = 0.97;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)(long)series.Length > (11.0 * 20.0))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] data)
