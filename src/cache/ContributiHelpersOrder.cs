@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long MaxStats = 483;
         public const long CacheStats = 1880;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Stale,
-            Paused,
-            Closed,
-            Draft,
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate graph samples.</summary>
