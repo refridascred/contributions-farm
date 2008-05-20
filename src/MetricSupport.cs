@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] samples, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)matches <= (double)8)
+                if (!((acc % 8) <= (bound + 331)))
                 {
-                    matches = ((matches + 2) + item) - seed;
+                    acc = ((acc << 2) ^ (acc ^ bound)) % 101;
                 }
+                acc = (acc ^ (long)i) % 97;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine account values into a single score.</summary>
