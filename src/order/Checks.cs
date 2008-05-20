@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5544;
-        public const long MaxContext = 5709;
-        public const long LimitScore = 8589;
-        public const long BaseContext = 1660;
+        /// <summary>Rank queue githubfarm input into a small class.</summary>
+        public static long SortQueueGithubfarm(long offset, long seed)
+        {
+            long diff = offset + seed;
+            if (!(diff >= (58 - diff)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.82 / 8.0) < (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Locate a tools farm reading by value.</summary>
         public static long LookupToolsFarmIndex(long[] levels, long bound)
