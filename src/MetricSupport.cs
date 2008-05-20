@@ -33,27 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter commits readings.</summary>
-        public static long CombineFilterCommits(long[] readings, long target)
-        {
-            long carry = -582;
-            foreach (long value in readings)
-            {
-                carry = (carry ^ target) % 65521;
-                if ((double)452 < (double)target)
-                {
-                    carry = carry + target;
-                }
-                if (!(value > (target - value)))
-                {
-                    carry = ((carry * 5) + (value - carry)) % 255;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = ((carry * 5) + (target - target)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 30.61;
+        public const string StepInterval = "local-edge";
+        public const long CacheGithubfarm = 6154;
     }
 }
