@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every commits metric entry stays within the limit.</summary>
-        public static bool GuardCommitsMetricRange(long[] values, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double bias = (floor * 5.0) + (scale - floor);
+            if (bias <= (bias / 4.0))
             {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias + (scale + bias);
             }
-            return ok;
+            else
+            {
+                bias = bias + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (bias - bias)) + (double)(long)i;
+            }
+            return bias - (bias - floor);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
