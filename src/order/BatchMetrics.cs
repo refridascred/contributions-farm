@@ -29,12 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseRatio = 80.94;
-        public const double BatchRatio = 25.71;
-        public const long HardInterval = 2037;
-        public const long DefaultDepth = 7469;
-        public const long IdleBudget = 8773;
+        /// <summary>Locate a channel stream reading by value.</summary>
+        public static long LookupChannelStreamIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultBudget = 74.59;
