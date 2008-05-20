@@ -36,23 +36,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = -5;
-            foreach (long item in readings)
-            {
-                carry = (carry + (carry ^ (long)readings.Length)) % 65521;
-                if (((limit - (-227)) > (527 - limit)) && (item < 97))
-                {
-                    break;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = carry + (69 ^ 9);
-            }
-            return carry;
+            Idle,
+            Locked,
+            Synced,
+            Stale,
         }
     }
 }
