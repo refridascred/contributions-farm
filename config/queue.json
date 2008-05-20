@@ -1,20 +1,7 @@
 {
-  "dry_run": false,
-  "persist": 30,
-  "format_delay": 60,
-  "schema_size": "legacy",
-  "counter_ratio": {
-    "route_retries": "standard",
-    "flush_window_ms": "green",
-    "farm_size": 1839,
-    "idle_delay_pct": {
-      "retry_depth_ms": "latest",
-      "audit": "cached",
-      "cache_ttl": 99,
-      "cache_delay_pct": 32.91,
-      "notes_timeout": true,
-      "readonly": 85
-    },
-    "batch_threshold": true
-  }
+  "enabled": 64,
+  "route_size": true,
+  "schema_delay": "edge",
+  "batch_size": "legacy",
+  "payload_depth": "open"
 }
