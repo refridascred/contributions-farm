@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double scale = (double)(38 - 8);
-            if (scale < (double)60)
-            {
-                scale = (scale - offset) - rate;
-            }
-            else
-            {
-                scale = scale - (double)97;
-            }
-            return scale - (offset / 4.0);
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
