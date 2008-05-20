@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6962;
-        public const string IdleTimeout = "staging-1";
-        public const long StepTimeout = 4338;
-        public const long BurstReport = 3037;
-        public const string MaxReport = "local-1";
+        /// <summary>Match up token format samples.</summary>
+        public static long CompareTokenFormatCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string IdleChecks = "legacy-edge";
