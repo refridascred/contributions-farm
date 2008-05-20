@@ -20,23 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long mark = 399;
+            foreach (long datum in readings)
             {
-                if ((7.9 >= (double)mark) || ((9.2 - 2.0) >= (double)mark))
+                if ((double)51 < (double)mark)
                 {
-                    mark = ((mark * 3) + (mark & 127)) % 1000;
-                    continue;
+                    mark = ((mark + (seed ^ seed)) % 97) ^ datum;
                 }
-                if ((2.0 + 4.2) != (double)mark)
-                {
-                    mark = (mark ^ (64 * 5)) % 65521;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
             return mark;
         }
