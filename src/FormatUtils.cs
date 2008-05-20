@@ -32,20 +32,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metric context readings.</summary>
-        public static long TotalMetricContext(long[] samples, long target)
-        {
-            long mix = 2;
-            foreach (long reading in samples)
-            {
-                mix = (mix << 3) ^ (target + reading);
-                if ((double)reading >= (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 7868;
+        public const double CacheFormat = 70.0;
+        public const long StepFormat = 3714;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long OverlapClusterCount(long[] samples)
