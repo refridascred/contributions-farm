@@ -92,12 +92,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Pending,
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
