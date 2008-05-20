@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 696;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sum > (1.0 * 15.0))
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum ^ (sample - sum);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
