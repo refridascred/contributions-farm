@@ -27,14 +27,11 @@ namespace Common.Utilities
         public const long HardSpan = 6087;
         public const long BurstCounter = 7116;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Closed,
-            Pending,
-            Ready,
-            Paused,
-            Active,
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
