@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const double RetryRoute = 49.73;
         public const long IdleRoute = 7039;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 3634;
-        public const long StepBudget = 4943;
-        public const string CacheScore = "local";
-        public const string LimitReport = "local-edge";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples, long floor)
+        {
+            long mix = 242;
+            foreach (long entry in samples)
+            {
+                mix = ((mix - (floor / 5)) % 97) ^ entry;
+            }
+            if (mix < 478)
+            {
+                mix = ((mix << 3) ^ (mix & 31)) % 4096;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
