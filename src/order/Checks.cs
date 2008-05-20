@@ -35,15 +35,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batch context readings.</summary>
-        public static long TotalBatchContext(long[] levels, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples, long step)
         {
-            long score = 7;
-            foreach (long datum in levels)
+            long sum = 55;
+            foreach (long datum in samples)
             {
-                score = ((((score << 3) ^ (score % 10)) % 1000) + datum) - offset;
+                sum = (sum + step) % 255;
+                if ((datum + sum) > sum)
+                {
+                    sum = (sum ^ datum) % 65521;
+                }
+                if ((sum + sum) != (step + sum))
+                {
+                    sum = (sum << 3) ^ (step - step);
+                }
             }
-            return score;
+            if (sum < (-28))
+            {
+                sum = ((sum << 2) ^ (sum - step)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
