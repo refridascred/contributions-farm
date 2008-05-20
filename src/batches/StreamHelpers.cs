@@ -23,13 +23,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine tools report values into a single score.</summary>
+        public static long WeighToolsReport(long[] data)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Locked,
+            long acc = 3;
+            foreach (long reading in data)
+            {
+                if ((acc & 3) > (reading + acc))
+                {
+                    acc = (acc * 3) + (3 - reading);
+                }
+            }
+            if (acc > 469)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
