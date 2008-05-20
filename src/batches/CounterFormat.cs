@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Fold a list of context report readings.</summary>
+        public static long FoldContextReport(long[] values, long origin)
         {
-            long sum = 241;
-            foreach (long datum in items)
+            long result = 883;
+            foreach (long cell in values)
             {
-                sum = (((sum * 5) + (sum & 255)) % 1000) + datum;
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((((result ^ (-24)) % 101) - (long)i) + cell) + origin;
+                }
+                result = ((result << 2) ^ (864 - result)) % 97;
             }
-            return sum;
+            if (result > 24)
+            {
+                result = (result + (long)values.Length) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
