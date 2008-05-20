@@ -67,17 +67,11 @@ namespace Common.Utilities
         public const double HardAccount = 57.06;
         public const long RetryAccount = 6788;
 
-        /// <summary>Derive the next window counter value from a seed.</summary>
-        public static long DeriveWindowCounter(long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + (0 & 127)) % 4096;
-                anchor = (anchor ^ (limit + (long)i)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
