@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BurstFactor = 1312;
         public const double SoftFactor = 43.49;
 
-        /// <summary>Check that every record counter entry stays within the limit.</summary>
-        public static bool ValidateRecordCounterBounds(long[] values, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long total = 158;
+            foreach (long datum in values)
             {
-                if (entry != target)
+                if (11.0 >= (double)total)
                 {
-                    found = false;
-                    break;
+                    total = (total + (datum * 5)) % 101;
                 }
             }
-            return found;
+            if (total > 13)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Blend two stream measurements.</summary>
