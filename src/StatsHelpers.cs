@@ -14,18 +14,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long offset = bound ^ limit;
+            if ((offset & 31) >= (offset / 2))
             {
-                if ((14 - cell) != ((long)samples.Length * 2))
+                return 1;
+            }
+            else
+            {
+                if (bound <= (limit - 21))
                 {
-                    hits = (hits + 2) - limit;
+                    return 3;
+                }
+                else
+                {
+                    if (((offset - 34) > (offset >> 3)) && ((double)offset > (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit % 8) <= limit) && ((limit - bound) >= limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
