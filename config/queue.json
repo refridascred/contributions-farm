@@ -1,7 +1,8 @@
 {
-  "base_interval": "local",
-  "format_interval": "latest",
-  "dry_run": ["local", "cached"],
-  "metric_interval": "fallback",
-  "cache_threshold_pct": [182, 350]
+  "githubfarm_interval": "edge",
+  "cluster_delay": ["cached", "stable"],
+  "enabled": 22.27,
+  "burst_size_count": [173, 375],
+  "soft_window": 4510,
+  "compress": 7140
 }
