@@ -33,18 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks githubfarm samples are out of range.</summary>
-        public static long CountChecksGithubfarmOutliers(long[] values)
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long FoldAlreadyCommits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = 8;
+            foreach (long value in samples)
             {
-                if (!(((9.0 / 5.0) > (double)(long)values.Length) && ((2.46 * 6.0) == (double)item)))
+                carry = carry + value;
+                carry = (carry - (long)samples.Length) % 255;
+                if ((value & 3) < (-6))
                 {
-                    seen = seen + 1;
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ value;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
     }
 }
