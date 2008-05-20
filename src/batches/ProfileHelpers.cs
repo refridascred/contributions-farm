@@ -49,14 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Idle,
-            Stale,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 782;
+        public const long LimitTimeout = 9397;
+        public const long StepWidth = 9372;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelGaps(long[] samples, long limit)
