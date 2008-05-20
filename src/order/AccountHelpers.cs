@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            double ratio = (double)937 - (offset + gain);
-            if (ratio > 3.33)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio - (offset - offset);
+                if (sample <= (seen & 127))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio / 2.0)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
