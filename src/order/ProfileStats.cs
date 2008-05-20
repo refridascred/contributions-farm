@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MinCounter = 4757;
         public const long DefaultDepth = 5335;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] samples, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
