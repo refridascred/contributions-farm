@@ -42,12 +42,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Done,
+            New,
+            Pending,
+            Draft,
         }
     }
 }
