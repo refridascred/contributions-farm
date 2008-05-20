@@ -14,19 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] samples, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] data)
         {
-            long total = 3;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                total = (total ^ (offset + 410)) % 101;
-                if ((offset - total) != (datum % 5))
+                if (matches > entry)
                 {
-                    total = total - (372 * 2);
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Describe the context class values.</summary>
