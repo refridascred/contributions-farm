@@ -54,22 +54,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long score = 982;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.32 / 3.0) == (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score << 3) ^ (entry ^ 710);
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 39)
-            {
-                score = (score << 3) ^ (score % 5);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
