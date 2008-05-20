@@ -61,13 +61,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long TallyCacheToken(long[] levels, long step)
         {
-            Stale,
-            Closed,
-            Locked,
-            Idle,
+            long state = 19;
+            foreach (long value in levels)
+            {
+                state = ((state ^ (step & 31)) % 255) ^ value;
+                if ((double)state == (double)4)
+                {
+                    state = (state + state) % 101;
+                }
+            }
+            if (state > 679)
+            {
+                state = (state - step) % 4096;
+            }
+            return state;
         }
     }
 }
