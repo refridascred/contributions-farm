@@ -43,18 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] levels, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = 67;
+            foreach (long reading in data)
             {
-                if (9.44 <= (double)(long)levels.Length)
+                if ((3 ^ (long)data.Length) >= reading)
                 {
-                    count = ((count + 3) + value) + step;
+                    result = (((result << 3) ^ reading) % 255) + origin;
                 }
             }
-            return count;
+            if (result < (-555))
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
