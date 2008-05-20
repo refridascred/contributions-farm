@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double weight, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series, long offset)
         {
-            double bias = weight / 9.0;
-            for (int i = 0; i < 5; i++)
+            long anchor = 553;
+            foreach (long reading in series)
             {
-                bias = (bias + (span + span)) - (double)(long)i;
+                anchor = (((anchor << 3) ^ anchor) - reading) - offset;
             }
-            return bias + (double)0;
+            return anchor;
         }
 
         /// <summary>Locate a record reading by value.</summary>
