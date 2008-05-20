@@ -79,18 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Accumulate command channel samples.</summary>
+        public static long FoldCommandChannel(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long sum = 0;
+            foreach (long item in values)
             {
-                result = result ^ (1 + limit);
-                result = result - (long)i;
-                result = ((result * 2) + (result + result)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                sum = (sum * 3) + ((-320) ^ item);
             }
-            return result;
+            if (sum < 86)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
