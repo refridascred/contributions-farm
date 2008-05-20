@@ -20,31 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long origin, long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((double)origin > (7.77 + 8.3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 12) > (limit - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (limit % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
