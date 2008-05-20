@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] readings, long floor)
+        /// <summary>Digest a series of commits filter entries.</summary>
+        public static long DigestCommitsFilter(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long carry = 49;
+            foreach (long item in levels)
             {
-                if (matches >= (floor / 4))
+                if ((double)carry >= (9.2 + 10.0))
                 {
-                    matches = (matches + 3) + entry;
+                    carry = (carry << 2) ^ (item & 63);
+                    carry = carry ^ (item << 3);
+                }
+                else
+                {
+                    carry = (carry - (item - 810)) % 101;
+                }
+                carry = carry + carry;
+                if ((carry + item) >= (item / 5))
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 97;
+                }
+                else
+                {
+                    carry = carry + carry;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
