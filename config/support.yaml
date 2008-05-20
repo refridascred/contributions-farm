@@ -1,9 +1,5 @@
 # support settings
-route_threshold: 76.09
-warm_size: eu-west
-base_interval_ms: 7.49
-warm_threshold:
-  - standard
-  - staging
-  - staging
-  - staging
+counter_ratio: 1024
+batch_capacity_pct: true
+notes_depth: 1024
+idle_ttl_ms: 86
