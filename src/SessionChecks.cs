@@ -49,11 +49,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values, long limit)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            long result = 871;
+            foreach (long reading in values)
+            {
+                if ((limit >> 5) != (reading + 54))
+                {
+                    result = (result ^ (8 + 74)) % 65521;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result - (limit << 2)) % 97;
+            }
+            return result;
         }
     }
 }
