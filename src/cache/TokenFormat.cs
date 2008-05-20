@@ -21,21 +21,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
-        public static long PairContributiGithubfarmCount(long[] levels)
+        /// <summary>Match up command channel samples.</summary>
+        public static long MatchCommandChannelCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 0)
+                    if ((readings[i] + readings[j]) > 3)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
