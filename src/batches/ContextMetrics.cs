@@ -53,18 +53,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((hits << 1) <= cell) && ((double)hits != (1.6 * 7.3)))
+                if ((87 << 1) < (entry % 7))
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
