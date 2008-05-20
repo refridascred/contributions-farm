@@ -19,24 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context report readings.</summary>
-        public static long FoldContextReport(long[] values, long origin)
-        {
-            long result = 883;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((((result ^ (-24)) % 101) - (long)i) + cell) + origin;
-                }
-                result = ((result << 2) ^ (864 - result)) % 97;
-            }
-            if (result > 24)
-            {
-                result = (result + (long)values.Length) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 97.99;
+        public const long IdleDepth = 3331;
+        public const long CacheScore = 8939;
+        public const long IdleEditor = 5330;
+        public const long BatchSize = 9184;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] values)
