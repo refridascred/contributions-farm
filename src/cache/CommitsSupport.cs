@@ -70,18 +70,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch token samples are out of range.</summary>
-        public static long MeasureBatchTokenHits(long[] data, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((count / 3) >= 350)
+                if (tally <= (tally / 2))
                 {
-                    count = ((count + 1) + reading) - seed;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
