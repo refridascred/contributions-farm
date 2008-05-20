@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric session entry stays within the limit.</summary>
-        public static bool VerifyMetricSessionLimits(long[] levels, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double scale2 = scale;
+            if (scale2 > (scale * 18.0))
             {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                scale2 = scale2 + 17.0;
             }
-            return ok;
+            return scale2 - (bias * 3.0);
         }
 
         /// <summary>Match up metric samples.</summary>
