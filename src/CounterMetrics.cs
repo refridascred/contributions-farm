@@ -47,21 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes graph samples.</summary>
-        public static long OverlapNotesGraphCount(long[] levels)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + ((long)i + state)) % 255;
+                state = (state << 3) ^ (step >> 4);
+                state = (state + (step - state)) % 4096;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
