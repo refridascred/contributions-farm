@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long offset)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            long anchor = 43;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor ^ (anchor << 3)) + sample) + offset;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every session buffer entry stays within the limit.</summary>
