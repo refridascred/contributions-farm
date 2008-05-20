@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
+        /// <summary>Iterate the cache counter series from a seed.</summary>
+        public static long StepCacheCounter(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (anchor * 4)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
