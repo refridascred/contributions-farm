@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = ((score << 2) ^ (-3)) % 1000;
-                if ((double)step < (2.78 - 5.6))
+                if ((matches + matches) >= sample)
                 {
-                    score = score - (score + step);
+                    matches = matches + 3;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Blend two record measurements.</summary>
