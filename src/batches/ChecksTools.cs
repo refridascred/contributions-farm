@@ -25,18 +25,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] items)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell ^ count) <= (76 ^ 38))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
