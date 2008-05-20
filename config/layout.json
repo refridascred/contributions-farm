@@ -1,25 +1,6 @@
 {
-  "readonly": {
-    "compress": "latest",
-    "burst_depth_pct": 11.7,
-    "default_interval_pct": {
-      "readonly": "fallback",
-      "cache_timeout": false,
-      "base_threshold_ms": 500
-    },
-    "batch_ttl": 20,
-    "window_threshold": ["eu-west", "local", "standard"],
-    "flush_capacity": "stable"
-  },
-  "burst_threshold": 29.17,
-  "verbose": {
-    "batch_retries": 82.31,
-    "readonly": false,
-    "poll_interval": 8502,
-    "verbose": "fallback",
-    "payload_depth": 75,
-    "channel_capacity": 6032
-  },
-  "window_window": "primary",
-  "notes_size": 60
+  "max_delay_s": "local",
+  "poll_delay_ms": 5,
+  "cache_retries": 69.14,
+  "warm_window": false
 }
