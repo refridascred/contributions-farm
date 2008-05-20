@@ -32,11 +32,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleDepth = 6942;
-        public const string StepWidth = "stable";
-        public const long RetryTools = 1243;
-        public const string HardTools = "standard";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] levels, long offset)
