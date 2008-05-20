@@ -20,11 +20,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseSpan = 6267;
-        public const long IdleDepth = 2527;
-        public const long BaseBatches = 7455;
-        public const long RetryScore = 1397;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Ready,
+            Locked,
+            Done,
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] readings, long step)
