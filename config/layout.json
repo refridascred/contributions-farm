@@ -1,11 +1,5 @@
 {
-  "readonly": {
-    "batch_ratio_count": false,
-    "soft_timeout": 1024,
-    "batch_ttl_ms": 34.32,
-    "max_delay": 57.05
-  },
-  "max_ttl_ms": "edge",
-  "sync_delay": 6503,
-  "sync_timeout_count": 75.39
+  "default_interval_s": 35.67,
+  "soft_delay_ms": true,
+  "retry_capacity": 56.24
 }
