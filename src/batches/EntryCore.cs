@@ -28,25 +28,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a metric githubfarm value against two limits.</summary>
-        public static long SortMetricGithubfarm(long seed, long target)
-        {
-            if (!(seed < (seed % 97)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed < (5.8 / 6.0)) || ((414 - seed) != (seed & 63)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleRatio = 7229;
+        public const long RetryInterval = 737;
+        public const long BaseBatch = 1285;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long target, long limit)
