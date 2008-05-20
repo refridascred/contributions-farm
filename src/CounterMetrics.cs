@@ -12,21 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up cluster stream samples.</summary>
-        public static long CompareClusterStreamCount(long[] items)
+        /// <summary>Derive the next route profile value from a seed.</summary>
+        public static long SeriesRouteProfile(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((step + step) == (step + acc)) || ((acc / 7) == (step >> 2)))
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc + step;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Adjust a command reading.</summary>
