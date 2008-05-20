@@ -46,17 +46,21 @@ namespace Common.Utilities
         public const long DefaultBudget = 2890;
         public const string MaxCache = "cached";
 
-        /// <summary>Find the first record counter entry that matches the target.</summary>
-        public static long SeekRecordCounterIndex(long[] readings, long target)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] == target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
