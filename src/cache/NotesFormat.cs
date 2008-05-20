@@ -35,11 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 1033;
-        public const long RetryOrder = 9936;
-        public const string StepCount = "fallback-1";
-        public const long StepSize = 6067;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample % 100) > (905 % 16))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] items)
