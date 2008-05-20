@@ -58,17 +58,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] values, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = step ^ origin;
+            if ((double)span <= 11.0)
             {
-                if (values[i] < target)
+                return 5;
+            }
+            else
+            {
+                if ((origin + origin) == (span / 7))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((span >> 3) >= (337 + span))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
