@@ -56,13 +56,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Done,
-            Draft,
-            Active,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxDepth = 91.94;
+        public const long MinAccount = 4349;
+        public const string WindowBudget = "open-v2";
+        public const long CacheAccount = 3276;
     }
 }
