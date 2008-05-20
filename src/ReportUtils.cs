@@ -91,21 +91,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor support samples.</summary>
-        public static long MatchEditorSupportCount(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((5 - seed) > seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((17.0 * 17.0) <= (double)seed)
                 {
-                    if ((levels[i] - levels[j]) != 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 8) > (663 << 3))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
