@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
