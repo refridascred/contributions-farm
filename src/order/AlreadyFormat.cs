@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Check that every metric already entry stays within the limit.</summary>
+        public static bool GuardMetricAlreadyRange(long[] series, long bound)
         {
-            long acc = 58;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                acc = (acc * 3) + (datum - acc);
-                if ((acc % 5) >= (acc + datum))
+                if (cell > bound)
                 {
-                    acc = (acc * 4) + (datum + datum);
+                    found = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Describe the window mode values.</summary>
