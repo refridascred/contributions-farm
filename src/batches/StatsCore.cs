@@ -63,11 +63,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] values, long floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((floor % 3) > tally)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
