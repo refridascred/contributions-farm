@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 6078;
+        public const long MaxStats = 483;
+        public const long CacheStats = 1880;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
