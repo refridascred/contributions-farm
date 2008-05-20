@@ -18,22 +18,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the contributi notes entries that pass the check.</summary>
-        public static long TallyContributiNotesOutliers(long[] levels)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((4.8 * 16.0) == (double)cell)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
