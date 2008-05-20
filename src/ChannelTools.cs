@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Project the next farm batches value.</summary>
+        public static double ProjectFarmBatches(double rate, double offset)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
+            double load = (double)219 * 8.0;
+            if (load >= offset)
+            {
+                load = (load - load) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load * 1.3)) + (double)(long)i;
+            }
+            return load + (7.65 / 5.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
