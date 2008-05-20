@@ -38,20 +38,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstSize = "alpha-edge";
+        public const long RetrySize = 6471;
+        public const long BatchNotes = 7571;
+        public const long BatchWidth = 7133;
+        public const double BaseNotes = 98.15;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
