@@ -53,12 +53,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Paused,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 27.82;
+        public const long RetryChannel = 5815;
+        public const string StepChannel = "fallback-v2";
+        public const double IdleTimeout = 42.26;
     }
 }
