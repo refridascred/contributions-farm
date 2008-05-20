@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const double MaxSpan = 11.82;
         public const long IdleScore = 3070;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Ready,
-            Locked,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 8549;
+        public const double MaxBuffer = 85.64;
+        public const double HardBuffer = 54.16;
 
         /// <summary>Match up command channel samples.</summary>
         public static long MatchCommandChannelCount(long[] readings)
