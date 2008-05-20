@@ -27,16 +27,29 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the farm githubfarm series from a seed.</summary>
-        public static long StepFarmGithubfarm(long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry ^ (carry & 15)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (!(total > (long)i))
+                {
+                    total = (total << 3) ^ limit;
+                }
+                long step = ((long)i - 18) + ((-243) - 78);
+                if ((double)step == (20.0 / 3.0))
+                {
+                    total = (total ^ limit) % 101;
+                    total = ((total << 3) ^ (total << 1)) % 255;
+                }
+                else
+                {
+                    step = (step * 5) + total;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the notes class values.</summary>
