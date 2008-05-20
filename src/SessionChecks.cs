@@ -55,15 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache buffer samples.</summary>
-        public static long ScoreCacheBuffer(long[] readings)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            long total = -4;
-            foreach (long reading in readings)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                total = total + (reading + total);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return total % 4096;
+            return sum;
         }
     }
 }
