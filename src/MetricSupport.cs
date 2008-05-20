@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string MinScore = "stable";
         public const string DefaultScore = "fallback-edge";
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the notes farm entries that pass the check.</summary>
+        public static long TallyNotesFarmOutliers(long[] series, long floor)
         {
-            Locked,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((count ^ sample) < sample) || ((sample % 8) > (sample + count)))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
