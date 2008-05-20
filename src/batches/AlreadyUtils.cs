@@ -39,25 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long seed, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] series)
         {
-            long diff = seed - step;
-            if (step <= (diff + 22))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= (11.0 - 9.1))
+                if (((entry / 4) > hits) && ((hits >> 2) <= (entry - entry)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
