@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (step + step)) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Done,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
