@@ -1,11 +1,5 @@
 {
-  "cache_ratio": {
-    "strict": true,
-    "report_ttl": "fallback",
-    "base_window": 4500,
-    "command_timeout": 78
-  },
-  "graph_window": true,
-  "strict": 43.14,
-  "base_threshold_count": 30
+  "compress": true,
+  "hard_retries_s": true,
+  "flush_limit": "strict"
 }
