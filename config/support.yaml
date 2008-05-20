@@ -1,10 +1,12 @@
 # support settings
-persist: primary
-buffer_threshold: true
-route_interval: local
-tools_delay:
-  - primary
-  - strict
-  - green
-  - blue
-layout_interval: strict
+retry_depth:
+  warm_depth_ms: 41
+  default_timeout: standard
+  format_window: standard
+  burst_window: 1179
+  cache_interval_count: 693
+verbose: 84
+enabled: local
+audit: edge
+hard_limit_s: true
+base_timeout: 30
