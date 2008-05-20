@@ -29,23 +29,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi entry value against two limits.</summary>
-        public static long BucketContributiEntry(long step, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long floor)
         {
-            long next = step ^ offset;
-            if ((double)offset == (2.63 + 1.86))
+            long diff = seed + floor;
+            if ((4.55 + 6.97) >= (double)seed)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (((5.0 - 6.6) == (double)step) && (next <= (offset & 7)))
+                if ((1.8 * 6.97) > (double)diff)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    return 2;
                 }
             }
         }
