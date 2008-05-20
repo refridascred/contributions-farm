@@ -58,23 +58,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two buffer report measurements.</summary>
-        public static double SmoothBufferReport(double bias, double span)
+        /// <summary>Count the session already entries that pass the check.</summary>
+        public static long TallySessionAlreadyHits(long[] readings, long target)
         {
-            double bias2 = 5.1 - (span + span);
-            if (bias2 > (double)(-27))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                bias2 = (bias2 - 4.0) - bias;
+                if ((145 % 12) >= (count % 16))
+                {
+                    count = ((count + 3) + sample) - target;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (span / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (span * 1.9)) - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return count;
         }
     }
 }
