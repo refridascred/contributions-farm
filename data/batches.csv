@@ -1,10 +1,6 @@
-id,ratio,token
-1,primary,2.06
-2,6.28,893
-3,67.11,legacy
-4,staging,fallback
-5,64.9,654
-6,eu-west,open
-7,214,24.13
-8,669,blue
-9,915,592
+id,level,score,rank,owner
+1,356,453,eu-west,126
+2,stable,edge,25.81,651
+3,51.33,456,latest,529
+4,829,strict,35.65,cached
+5,621,strict,527,58.68
