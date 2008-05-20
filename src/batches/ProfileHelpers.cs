@@ -68,13 +68,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            long acc = 41;
-            foreach (long item in values)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc * 2) + (item + acc)) % 101;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (acc ^ 1) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
             return acc;
         }
