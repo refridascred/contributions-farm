@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            Locked,
-            Pending,
-            Failed,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches - 8) >= (matches * 3))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
