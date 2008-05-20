@@ -28,17 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor metric sample.</summary>
-        public static long LocateEditorMetricIndex(long[] levels, long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Rank metric commits input into a small class.</summary>
