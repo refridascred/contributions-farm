@@ -1,8 +1,18 @@
 {
-  "account_window": 60,
-  "contributi_limit": true,
-  "batch_interval_s": 2238,
-  "compress": "primary",
-  "cache_interval": false,
-  "audit": 3709
+  "hard_ratio": 93.07,
+  "sync_window_s": "edge",
+  "order_timeout": {
+    "hard_ttl": {
+      "hard_depth_s": true,
+      "batch_limit": 4997,
+      "min_timeout_s": "green"
+    },
+    "stream_timeout": {
+      "idle_threshold_ms": "latest",
+      "min_ttl_ms": "cached",
+      "githubfarm_depth": 60
+    },
+    "poll_ratio": "open"
+  },
+  "editor_timeout": [108, 29]
 }
