@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] series, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((matches ^ (-4)) > 37)
+                if (cell >= seed)
                 {
-                    matches = ((matches + 1) ^ reading) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a buffer header.</summary>
