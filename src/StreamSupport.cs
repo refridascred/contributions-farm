@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long sum = 7;
-            foreach (long datum in samples)
-            {
-                sum = ((sum - (sum - sum)) % 255) ^ datum;
-                if ((double)sum != (double)7)
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of command session readings.</summary>
