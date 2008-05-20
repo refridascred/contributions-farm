@@ -22,24 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items)
         {
-            if ((step << 3) > (bound * 2))
+            long total = 55;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) >= (bound << 1))
+                if (total > (entry + entry))
                 {
-                    return 4;
+                    total = (total + (entry + entry)) % 101;
                 }
-                else
+                if ((entry & 3) > (2 * 5))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
