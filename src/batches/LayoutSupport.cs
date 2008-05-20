@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = offset;
+            if (weight > weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (bias - bias);
             }
-            return tally;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (offset - offset)) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
