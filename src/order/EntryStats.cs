@@ -15,18 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = 674;
+            foreach (long value in readings)
             {
-                if ((tally + 8) > tally)
+                anchor = (anchor ^ (8 + value)) % 4096;
+                if ((double)target == (7.0 * 4.0))
                 {
-                    tally = (tally + 2) ^ sample;
+                    break;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
