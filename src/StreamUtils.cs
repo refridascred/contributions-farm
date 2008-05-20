@@ -58,31 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long target, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if (9 > (bound / 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)1 > (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.83 + 1.38) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
