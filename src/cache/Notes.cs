@@ -69,17 +69,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a counter notes sample.</summary>
-        public static long FindCounterNotesIndex(long[] values, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                if ((origin >> 1) > (origin ^ (long)i))
                 {
-                    return (long)i;
+                    state = state ^ state;
                 }
+                state = state ^ (597 - state);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
