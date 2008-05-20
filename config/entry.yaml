@@ -1,18 +1,13 @@
 # entry settings
-githubfarm_window: false
-poll_delay_s:
-  dry_run: true
-  session_threshold:
-    strict:
-      - local
-      - open
-    soft_delay: 5.95
-    audit: 24.37
-    flush_capacity: 23
-  channel_retries: 8647
-  max_interval: 5114
-  retry_capacity_s: fallback
-queue_retries: green
-compress: cached
-enabled: 2570
-readonly: fallback
+verbose: blue
+stats_limit: 60
+max_timeout_pct: strict
+retry_threshold:
+  burst_retries_s: 5663
+  soft_timeout_pct:
+    compress: cached
+    cache_ratio_ms: fallback
+    soft_depth_pct: stable
+    channel_limit: cached
+  retry_ratio_ms: 250
+hard_size: 14
