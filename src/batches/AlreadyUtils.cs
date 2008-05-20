@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long TallySessionClusterGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((tally - 84) >= tally) && (tally < entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheCount = "strict";
+        public const double SoftWidth = 34.13;
+        public const long HardSession = 1333;
+        public const double MaxCount = 42.77;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] samples)
