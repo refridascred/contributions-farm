@@ -14,23 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long WeighNotesContributi(long[] values, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long total = 57;
-            foreach (long value in values)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                total = ((total << 2) ^ total) % 97;
-                if ((total & 255) == (total + total))
-                {
-                    total = total + (65 + value);
-                }
+                mark = (mark ^ (556 + mark)) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (total < 5)
-            {
-                total = ((total << 2) ^ (floor + total)) % 1000;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the session mode values.</summary>
