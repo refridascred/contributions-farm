@@ -65,17 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long seed)
+        /// <summary>Count the tools payload entries that pass the check.</summary>
+        public static long MeasureToolsPayloadHits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if ((seen >> 3) < (seen ^ 3))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ item) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
