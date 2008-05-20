@@ -1,8 +1,7 @@
-id,region,score,rank
-1,legacy,798,936
-2,328,175,standard
-3,eu-west,stable,primary
-4,39.36,76.92,53.5
-5,66.06,fallback,56
-6,79.92,71.19,37.14
-7,268,73.78,181
+id,level,score
+1,fallback,367
+2,primary,eu-west
+3,95.09,832
+4,248,31.65
+5,68.32,7.45
+6,169,968
