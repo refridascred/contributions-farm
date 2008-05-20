@@ -1,5 +1,5 @@
 {
-  "idle_capacity": 39.81,
-  "readonly": "blue",
-  "max_depth_pct": 1917
+  "batch_capacity_ms": 49.71,
+  "min_ratio_s": true,
+  "farm_ratio": [199, 117, 15]
 }
