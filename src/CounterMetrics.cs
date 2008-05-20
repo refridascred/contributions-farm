@@ -37,23 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Look up the position of a command profile sample.</summary>
+        public static long SeekCommandProfileIndex(long[] levels, long target)
         {
-            double bias = rate * 7.78;
-            if (bias >= (double)724)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + (1.8 + 9.0)) + span;
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)78) + (double)(long)i;
-            }
-            return bias - rate;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
