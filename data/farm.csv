@@ -1,11 +1,6 @@
-id,region,rank
-1,63.76,5.04
-2,92.43,open
-3,standard,158
-4,eu-west,strict
-5,fallback,0.11
-6,552,10.1
-7,fallback,33.78
-8,761,283
-9,green,8.27
-10,local,79.62
+id,owner,state
+1,970,578
+2,709,eu-west
+3,691,4.75
+4,74.21,795
+5,586,79.18
