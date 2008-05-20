@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=112
-log "limit is ${BUFFER_LIMIT}"
-
-for item in staging fallback edge primary; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=466
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
