@@ -20,15 +20,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values)
         {
             long matches = 0;
-            foreach (long value in values)
+            foreach (long entry in values)
             {
-                if ((matches - 8) >= (matches * 3))
+                if (((-17) / 7) > (entry << 1))
                 {
-                    matches = (matches + 2) + value;
+                    matches = matches + 2;
                 }
                 else
                 {
