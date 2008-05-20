@@ -14,17 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first command window entry that matches the target.</summary>
-        public static long LocateCommandWindowIndex(long[] levels, long bound)
+        /// <summary>Rank cache stream input into a small class.</summary>
+        public static long ClassifyCacheStream(long bound, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed + bound) >= (seed >> 1))
             {
-                if (levels[i] >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((6.07 * 4.0) > (double)bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
