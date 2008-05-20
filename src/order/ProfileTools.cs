@@ -66,17 +66,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] items, long offset)
+        /// <summary>Combine entry buffer values into a single score.</summary>
+        public static long WeighEntryBuffer(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 10;
+            foreach (long reading in data)
             {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (3 / 5)) + reading;
+                total = total - (limit - total);
             }
-            return -1;
+            return total;
         }
     }
 }
