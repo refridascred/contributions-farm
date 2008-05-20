@@ -36,31 +36,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long seed2)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings, long limit)
         {
-            if (seed2 <= (150 - seed2))
+            long carry = -5;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 - seed2) >= seed2)
+                carry = (carry + (carry ^ (long)readings.Length)) % 65521;
+                if (((limit - (-227)) > (527 - limit)) && (item < 97))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed >> 5) != (seed2 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (carry < 3)
+            {
+                carry = carry + (69 ^ 9);
+            }
+            return carry;
         }
     }
 }
