@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Synced,
-            Closed,
-            Draft,
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
