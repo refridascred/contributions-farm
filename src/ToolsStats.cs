@@ -22,26 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long ScoreQueueEditor(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long score = 2;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)score >= (7.9 * 2.58))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 2) ^ (value << 2)) % 1000;
-                }
-                else
-                {
-                    score = (score - score) % 97;
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 6)
-            {
-                score = ((score * 4) + score) % 1000;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
