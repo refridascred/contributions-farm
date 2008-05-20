@@ -1,8 +1,13 @@
 {
-  "batch_retries": ["cached", "primary", "blue", "green"],
-  "poll_capacity_s": true,
-  "cache_depth_count": 7219,
-  "burst_window_ms": 0.8,
-  "default_retries_ms": false,
-  "entry_size": 386
+  "min_limit_ms": {
+    "retry_retries": 500,
+    "cache_window_s": true,
+    "dry_run": 1940,
+    "sync_limit_pct": 1024
+  },
+  "cluster_delay": "legacy",
+  "default_depth_s": "edge",
+  "min_depth": ["staging", "primary"],
+  "burst_size_ms": 1654,
+  "min_timeout_s": 37
 }
