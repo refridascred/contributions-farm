@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long floor)
         {
-            Closed,
-            Pending,
-            Active,
+            if ((floor * 3) < offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - floor) != (floor * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a context snapshot.</summary>
