@@ -49,19 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] series, long offset)
+        /// <summary>Roll a checks counter counter forward.</summary>
+        public static long DeriveChecksCounter(long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = total ^ (limit << 1);
+                total = ((total << 2) ^ (limit + (long)i)) % 1000;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
     }
 }
