@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((7.75 / 6.0) >= (double)target) || ((long)i < result))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = result + (target - 0);
+                    result = (result ^ result) % 97;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Locate a record reading by value.</summary>
