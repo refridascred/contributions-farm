@@ -33,10 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "open";
-        public const double DefaultContext = 71.31;
-        public const double BaseContext = 24.68;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 782;
