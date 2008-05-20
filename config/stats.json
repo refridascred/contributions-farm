@@ -1,14 +1,10 @@
 {
-  "sync_retries_count": "standard",
-  "metric_threshold": "standard",
-  "default_capacity_s": 8.02,
-  "hard_timeout": {
-    "compress": true,
-    "order_size": 79.86,
-    "readonly": [340, 391, 391],
-    "cache_capacity_pct": false,
-    "retry_ttl_count": ["legacy", "blue", "strict"]
+  "min_ratio_count": 8.54,
+  "filter_size": {
+    "retry_limit": 7.43,
+    "token_delay": "edge",
+    "notes_limit": 22.85
   },
-  "burst_limit": 57,
-  "idle_interval_s": false
+  "max_timeout_ms": 92.2,
+  "readonly": false
 }
