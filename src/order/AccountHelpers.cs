@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] series, long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != step)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
