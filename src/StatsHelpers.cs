@@ -28,18 +28,16 @@ namespace Common.Utilities
         public const long BaseDepth = 2932;
         public const long BaseScore = 9357;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((2.0 / 6.0) != (double)(long)series.Length)
-                {
-                    matches = (matches + 3) + item;
-                }
+                mark = (mark + (mark + (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
