@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] readings, long step)
+        /// <summary>Digest a series of format report entries.</summary>
+        public static long DigestFormatReport(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long result = 76;
+            foreach (long sample in values)
             {
-                if ((seen / 5) <= (entry + step))
+                if ((result + sample) > (result ^ result))
                 {
-                    seen = seen + 2;
+                    result = (result - (result * 2)) % 255;
                 }
             }
-            return seen;
+            if (result > 986)
+            {
+                result = result + result;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
