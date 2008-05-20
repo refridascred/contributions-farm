@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long MaxSpan = 4403;
         public const string BurstBatch = "staging-v2";
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Paused,
+            Active,
             Stale,
-            Queued,
-            Retry,
-            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
