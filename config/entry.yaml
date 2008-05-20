@@ -1,27 +1,7 @@
 # entry settings
-max_capacity_s:
-  poll_retries_ms: 4401
-  verbose:
-    profile_threshold: eu-west
-    sync_delay:
-      - 205
-      - 366
-      - 327
-      - 138
-    payload_interval: 8.95
-    compress: 59.38
-    stats_threshold: 30
-  poll_delay_s: false
-  route_window:
-    notes_window: 500
-    cache_depth_s: latest
-    default_size: 500
-    poll_size_pct: 59
-    filter_limit: 30
-    soft_retries_s: 100
-dry_run: 4501
-flush_ratio_ms: 1498
-readonly:
-  - 308
-  - 153
-idle_delay_s: 21.99
+poll_timeout_ms: 48
+flush_depth:
+  - cached
+  - green
+  - open
+sync_retries_count: 17
