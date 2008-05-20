@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BaseSpan = 2996;
         public const long BatchPayload = 9448;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            Idle,
-            Synced,
-            Active,
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the graph level values.</summary>
