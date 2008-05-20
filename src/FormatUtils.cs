@@ -45,12 +45,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of metric context readings.</summary>
+        public static long TotalMetricContext(long[] samples, long target)
         {
-            Paused,
-            Failed,
-            Pending,
+            long mix = 2;
+            foreach (long reading in samples)
+            {
+                mix = (mix << 3) ^ (target + reading);
+                if ((double)reading >= (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
