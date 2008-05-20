@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 5574;
-        public const double SoftFactor = 63.57;
-        public const long MaxFactor = 9475;
-        public const string StepTimeout = "legacy-1";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Stale,
+            Paused,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] items, long step)
