@@ -31,22 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long result = -23;
-            foreach (long entry in levels)
-            {
-                if ((entry <= (entry / 3)) && ((result + entry) <= (entry + result)))
-                {
-                    result = (result + (result + result)) % 97;
-                }
-            }
-            if (result < 670)
-            {
-                result = (result * 2) + ((long)levels.Length + result);
-            }
-            return result % 4096;
+            Paused,
+            Stale,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
