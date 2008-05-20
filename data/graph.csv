@@ -1,9 +1,8 @@
-id,active,ratio,region
-1,13.05,91.26,499
-2,521,20.02,fallback
-3,blue,75.78,362
-4,772,60.0,315
-5,blue,436,27
-6,81,staging,147
-7,727,467,19.62
-8,latest,181,latest
+id,level,token,state
+1,921,stable,169
+2,latest,cached,978
+3,250,126,173
+4,45.69,64.11,973
+5,stable,206,3.41
+6,31.44,896,31.27
+7,latest,green,9.96
