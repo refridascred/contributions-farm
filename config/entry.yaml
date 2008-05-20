@@ -1,13 +1,44 @@
 # entry settings
-readonly:
+warm_capacity:
+  persist: 23
+  flush_capacity:
+    persist:
+      - 114
+      - 437
+      - 19
+    hard_ratio: primary
+    batch_timeout_count:
+      - 135
+      - 14
+    cache_capacity: green
+    sync_retries_pct: local
+  default_ratio_s:
+    min_limit_ms: eu-west
+    max_size: primary
+    poll_threshold_ms:
+      - 282
+      - 326
+    session_ttl: false
+    burst_capacity_count: open
+checks_size:
+  persist: 5217
+  enabled: 37
+  flush_delay: legacy
+  max_timeout:
+    - local
+    - stable
+    - legacy
+    - local
+  retry_retries: open
+  cache_size:
+    flush_depth_ms: local
+    enabled: standard
+    idle_size: legacy
+enabled:
   - staging
-  - cached
-  - legacy
-  - blue
-persist:
-  - local
   - stable
-  - latest
   - green
-audit: true
-default_interval_count: open
+filter_depth: 9578
+warm_depth_count:
+  - 231
+  - 96
