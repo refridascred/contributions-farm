@@ -34,11 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate account report samples.</summary>
+        public static long WeighAccountReport(long[] items)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long total = 9;
+            foreach (long entry in items)
+            {
+                if (total > (total + total))
+                {
+                    total = ((total << 3) ^ (entry + 6)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
