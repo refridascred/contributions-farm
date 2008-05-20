@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9494;
-        public const long IdleLevel = 8816;
-        public const double BaseCluster = 89.52;
-        public const long BatchInterval = 6752;
-        public const string SoftLevel = "latest-edge";
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Look up the position of a batches stats sample.</summary>
         public static long FindBatchesStatsIndex(long[] readings, long step)
