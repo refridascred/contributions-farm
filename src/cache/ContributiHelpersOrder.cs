@@ -11,16 +11,22 @@ namespace Common.Utilities
         public const long BaseSpan = 6522;
         public const long WindowFactor = 8001;
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long IterateEditorCache(long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] samples, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                sum = (sum + sum) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((cell << 1) <= (hits * 3))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
