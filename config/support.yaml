@@ -1,8 +1,7 @@
 # support settings
-context_window: 100
-burst_threshold: 500
-retry_retries_pct: 7670
-strict: 9652
-readonly:
-  - blue
-  - latest
+burst_limit_count: fallback
+flush_ttl: false
+audit: green
+retry_window_pct:
+  - staging
+  - edge
