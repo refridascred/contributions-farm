@@ -47,32 +47,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items, long seed)
         {
-            long delta = step - limit;
-            if ((827 & 255) > step)
+            long score = 724;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((delta & 255) >= (limit + limit)) || ((limit - step) <= (step * 2)))
+                if ((item + score) < score)
                 {
-                    return 7;
+                    score = (score ^ (score + item)) % 97;
                 }
                 else
                 {
-                    if ((delta % 3) > 304)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = score + (item + seed);
                 }
             }
+            if (score < 903)
+            {
+                score = (score + (8 & 1)) % 101;
+            }
+            return score;
         }
     }
 }
