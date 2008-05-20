@@ -79,10 +79,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSize = 1444;
-        public const double BurstCount = 86.67;
-        public const long IdleChannel = 4799;
-        public const double DefaultTimeout = 13.19;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Stale,
+            Synced,
+            Idle,
+            Closed,
+        }
     }
 }
