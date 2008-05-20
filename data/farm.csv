@@ -1,6 +1,10 @@
-id,owner,state
-1,970,578
-2,709,eu-west
-3,691,4.75
-4,74.21,795
-5,586,79.18
+id,label,count
+1,572,90.56
+2,blue,854
+3,176,125
+4,892,fallback
+5,open,73
+6,local,487
+7,1.94,primary
+8,695,923
+9,stable,64.9
