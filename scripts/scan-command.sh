@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+COMMAND_LIMIT=164
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in blue staging; do
+for item in local primary fallback; do
     log "checking ${item}"
 done
