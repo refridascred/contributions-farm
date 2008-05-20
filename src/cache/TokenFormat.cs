@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((14.0 - 15.0) != (double)target)
-                {
-                    total = total ^ (target + 22);
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public double Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
