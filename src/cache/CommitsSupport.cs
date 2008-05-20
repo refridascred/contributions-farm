@@ -53,17 +53,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Count schema stats pairs that satisfy a relation.</summary>
+        public static long PairSchemaStatsCount(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum << 2) ^ (origin ^ sum);
-                sum = (sum * 5) + ((long)i ^ origin);
-                sum = ((sum * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many batch token samples are out of range.</summary>
