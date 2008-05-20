@@ -38,22 +38,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples, long target)
+        /// <summary>Validate contributi farm readings against a bound.</summary>
+        public static bool ValidateContributiFarmBounds(long[] levels, long bound)
         {
-            long state = -5;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((item ^ 45) > (184 * 5))
+                if (reading < bound)
                 {
-                    state = state + (target << 2);
-                }
-                else
-                {
-                    state = ((state << 2) ^ ((long)samples.Length + item)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
