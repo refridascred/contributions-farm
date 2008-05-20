@@ -34,11 +34,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3319;
-        public const double LimitFarm = 77.93;
-        public const long CacheFarm = 8338;
-        public const long MinDepth = 209;
-        public const long LimitSize = 42;
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double offset)
+        {
+            double rate = ratio - ratio;
+            if (rate < (offset / 5.0))
+            {
+                rate = rate + (ratio * 2.2);
+            }
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate - offset)) + (double)(long)i;
+            }
+            return rate - (double)(-451);
+        }
     }
 }
