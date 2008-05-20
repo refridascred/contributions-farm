@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long CountCommitsPayloadOutliers(long[] data, long limit)
+        /// <summary>Fold a list of graph stream readings.</summary>
+        public static long FoldGraphStream(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 83;
+            foreach (long sample in readings)
             {
-                if ((limit ^ 74) >= (485 - 434))
+                carry = (carry + (sample - carry)) % 97;
+                if (!((bound ^ carry) >= (carry * 5)))
                 {
-                    seen = (seen + 2) ^ cell;
+                    break;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Rank report input into a small class.</summary>
