@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green primary blue; do
+for item in staging cached; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=400
+log "limit is ${COMMAND_LIMIT}"
