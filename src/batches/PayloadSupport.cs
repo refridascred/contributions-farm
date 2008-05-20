@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 2127;
+        public const double LimitRatio = 19.32;
+        public const string DefaultContributi = "alpha-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseWidth = 5074;
