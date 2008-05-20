@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (322 >= (count << 3))
+                if (value >= step)
                 {
-                    count = (count + 3) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
