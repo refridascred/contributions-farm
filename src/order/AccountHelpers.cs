@@ -28,13 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] values, long seed)
         {
-            Paused,
-            Locked,
-            Retry,
-            Draft,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((seed >> 2) > (tally / 6)) || (((item ^ 9) > ((long)values.Length - tally)) || ((double)tally < (2.0 * 12.0))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
