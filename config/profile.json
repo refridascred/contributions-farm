@@ -1,5 +1,6 @@
 {
-  "base_delay_pct": "green",
-  "poll_depth": 3887,
-  "already_limit": 97
+  "idle_timeout": "blue",
+  "readonly": "fallback",
+  "record_threshold": 37,
+  "cache_timeout_count": "edge"
 }
