@@ -49,19 +49,19 @@ namespace Common.Utilities
             return scale - (offset / 9.0);
         }
 
-        /// <summary>Check that every farm metric entry stays within the limit.</summary>
-        public static bool ValidateFarmMetricRange(long[] readings, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (datum < origin)
+                if (reading != offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the account mode values.</summary>
