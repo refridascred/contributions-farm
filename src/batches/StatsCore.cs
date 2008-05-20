@@ -14,10 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 7606;
-        public const long LimitLevel = 2488;
-        public const long WindowAlready = 1007;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen ^ datum) > (datum >> 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
