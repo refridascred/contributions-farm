@@ -41,16 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 1907;
+        public const double MaxCluster = 11.85;
+        public const string CacheCluster = "latest-1";
 
         /// <summary>Validate support checks readings against a bound.</summary>
         public static bool GuardSupportChecksLimits(long[] samples, long limit)
