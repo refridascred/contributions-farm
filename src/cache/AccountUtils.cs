@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const long BurstFactor = 1312;
         public const double SoftFactor = 43.49;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinWidth = 573;
-        public const long SoftFarm = 1847;
-        public const double IdleRatio = 5.41;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long origin)
+        {
+            long total = 715;
+            foreach (long datum in items)
+            {
+                if ((double)total < (double)origin)
+                {
+                    total = ((total - (total - 8)) % 1000) ^ datum;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (origin ^ 75)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double rate, double floor)
