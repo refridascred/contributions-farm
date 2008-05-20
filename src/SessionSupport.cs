@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next cache layout value from a seed.</summary>
-        public static long SeriesCacheLayout(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((state % 5) <= (origin ^ (long)i))
-                {
-                    state = state ^ (origin ^ (long)i);
-                }
-                else
-                {
-                    state = (state + origin) % 4096;
-                    state = state ^ (state - origin);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "staging";
+        public const long LimitRoute = 352;
+        public const double RetryRoute = 49.73;
+        public const long IdleRoute = 7039;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 3634;
