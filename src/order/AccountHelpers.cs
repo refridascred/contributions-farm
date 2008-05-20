@@ -58,14 +58,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Rank batches profile input into a small class.</summary>
+        public static long SortBatchesProfile(long limit, long seed)
         {
-            Draft,
-            Idle,
-            Closed,
-            Synced,
-            Queued,
+            long lane = limit - seed;
+            if ((lane - lane) >= (lane + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5 - lane) >= (seed - lane))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
