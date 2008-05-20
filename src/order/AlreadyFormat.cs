@@ -38,32 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long next = target - seed;
-            if ((89 >> 3) >= (seed ^ target))
+            long carry = 5;
+            foreach (long value in levels)
             {
-                return 0;
+                carry = ((carry ^ carry) % 65521) - value;
             }
-            else
-            {
-                if ((double)next > (3.6 - 8.72))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target ^ next) != (next - 392))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Validate account already readings against a bound.</summary>
