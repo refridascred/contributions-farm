@@ -72,12 +72,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            Idle,
-            Dropped,
-            Synced,
+            long carry = -518;
+            foreach (long reading in series)
+            {
+                carry = (carry - ((long)series.Length % 97)) - reading;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
