@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long offset, long bound)
-        {
-            if (bound > (bound * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((10.0 * 2.99) >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - 696) < 762)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset % 10) >= (offset + offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6962;
+        public const string IdleTimeout = "staging-1";
+        public const long StepTimeout = 4338;
+        public const long BurstReport = 3037;
+        public const string MaxReport = "local-1";
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long FindRecordIndex(long[] readings, long floor)
