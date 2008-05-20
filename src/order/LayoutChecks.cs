@@ -15,21 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up contributi channel samples.</summary>
-        public static long OverlapContributiChannelCount(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
