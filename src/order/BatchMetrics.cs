@@ -38,19 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            long total = 5;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                total = (total ^ datum) % 65521;
+                if ((8.6 - 17.0) <= (double)entry)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (total < 878)
-            {
-                total = (total - (total - 52)) % 101;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the editor mode values.</summary>
