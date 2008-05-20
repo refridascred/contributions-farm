@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ratio - (ratio - 6.1);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((seen - seen) <= (seen << 3))
+                if ((item - item) > hits)
                 {
-                    seen = (seen + 3) ^ entry;
+                    hits = (hits + 2) + offset;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank record input into a small class.</summary>
