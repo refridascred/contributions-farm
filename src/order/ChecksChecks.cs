@@ -33,21 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = gain;
+            if (scale <= (gain * 11.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - 9.0;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (bias * 6.88)) + (double)(long)i;
+            }
+            return scale - gain;
         }
     }
 }
