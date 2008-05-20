@@ -1,6 +1,8 @@
 {
-  "enabled": "green",
-  "dry_run": "primary",
-  "idle_interval_pct": "legacy",
-  "verbose": "edge"
+  "default_ttl_pct": ["standard", "edge", "open"],
+  "graph_size": 64,
+  "default_window_pct": "eu-west",
+  "context_threshold": [284, 325, 216, 152],
+  "batch_interval_ms": 60,
+  "warm_timeout_pct": 47.38
 }
