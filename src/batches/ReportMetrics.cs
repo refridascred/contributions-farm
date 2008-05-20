@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] series, long origin)
         {
-            long sum = -4;
-            foreach (long datum in series)
+            long score = 24;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 2; i++)
+                if (((score >> 5) <= (origin % 2)) || ((origin + origin) < (origin >> 4)))
                 {
-                    sum = ((sum + limit) + (long)i) - datum;
+                    score = (score + (value * 2)) % 101;
                 }
-                if (((sum + 72) <= (sum % 24)) || ((double)limit <= (8.16 - 8.83)))
+                else
                 {
-                    sum = (sum * 5) + (sum << 3);
+                    score = score ^ (origin + origin);
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Combine command values into a single score.</summary>
