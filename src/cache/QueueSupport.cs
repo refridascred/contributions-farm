@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((5 - (long)i) < ((long)i >> 1))
-                {
-                    carry = (carry - ((long)i ^ 4)) % 255;
-                }
-                if ((-228) > (seed ^ 749))
-                {
-                    carry = (carry + (seed - seed)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Failed,
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Validate already layout readings against a bound.</summary>
