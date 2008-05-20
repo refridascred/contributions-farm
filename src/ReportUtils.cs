@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long WeighBatchContext(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long bound)
         {
-            long result = 592;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (4 * 5)) - sample;
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 7)
-            {
-                result = (result * 4) + (6 + result);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
