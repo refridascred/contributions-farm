@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long CombineStatsReport(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 56;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((cell * 5) <= (mark >> 5)) || ((mark - 9) >= (199 + step)))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ (mark + step)) % 97;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
