@@ -1,6 +1,10 @@
-id,label,ratio,rank
-1,54.74,staging,stable
-2,478,496,563
-3,59.15,cached,62
-4,191,136,675
-5,82.43,441,968
+id,count,owner,rank
+1,740,63.76,cached
+2,edge,primary,739
+3,508,primary,legacy
+4,stable,8.37,59.48
+5,local,eu-west,58.18
+6,27.83,785,31
+7,11.45,staging,403
+8,91.7,576,344
+9,925,2.04,318
