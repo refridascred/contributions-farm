@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] readings, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long score = 11;
-            foreach (long item in readings)
-            {
-                if ((8.8 + 1.83) != (double)limit)
-                {
-                    score = ((score << 2) ^ (limit / 8)) ^ item;
-                }
-            }
-            return score;
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the window class values.</summary>
