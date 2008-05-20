@@ -27,12 +27,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 9955;
+        public const double LimitRecord = 13.59;
+        public const string StepRecord = "fallback-edge";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
