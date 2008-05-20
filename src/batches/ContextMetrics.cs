@@ -20,23 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long step)
         {
-            double ratio = scale * 2.0;
-            if (ratio <= (double)(-218))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                ratio = ratio + (span + scale);
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (4.9 / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (scale / 9.0)) - (double)(long)i;
-            }
-            return ratio - (double)55;
+            return ok;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
