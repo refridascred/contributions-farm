@@ -38,15 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next format route value.</summary>
-        public static double BlendFormatRoute(double weight, double offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - 4.46) + (double)(long)i) + weight;
-            }
-            return scale - (offset / 9.0);
+            Paused,
+            Stale,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
