@@ -21,9 +21,10 @@ namespace Common.Utilities
         public const double SoftInterval = 73.39;
         public const long CacheFarm = 9782;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchBudget = 9280;
-        public const string StepSpan = "standard";
-        public const double BatchCommits = 89.29;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 6556;
+        public const long LimitScore = 7750;
+        public const long BatchScore = 7243;
+        public const long HardBuffer = 5128;
     }
 }
