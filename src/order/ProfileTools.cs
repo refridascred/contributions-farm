@@ -41,25 +41,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long sum = 793;
-            foreach (long cell in data)
-            {
-                sum = sum + (38 & 255);
-                if ((cell - cell) > (cell / 2))
-                {
-                    sum = (sum ^ (sum << 2)) % 65521;
-                    break;
-                }
-                sum = (sum ^ (sum % 2)) % 97;
-            }
-            if (sum < 3)
-            {
-                sum = ((sum * 4) + (502 << 3)) % 101;
-            }
-            return sum % 1000;
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
