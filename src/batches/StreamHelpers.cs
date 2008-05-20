@@ -31,19 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every stream checks entry stays within the limit.</summary>
-        public static bool VerifyStreamChecksBounds(long[] series, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Rank token input into a small class.</summary>
