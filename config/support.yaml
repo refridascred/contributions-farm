@@ -1,11 +1,9 @@
 # support settings
-warm_limit: 60
-min_interval: eu-west
-context_threshold: 26
-verbose: edge
-sync_retries: 4931
+warm_size: primary
 readonly:
-  - blue
-  - standard
-  - open
-  - strict
+  command_ttl: 0.81
+  burst_window_pct: true
+  audit: 3.67
+warm_delay: 66
+audit: true
+verbose: 88.98
