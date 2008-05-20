@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchInterval = 63.71;
-        public const long SoftAccount = 7971;
-        public const double IdleAccount = 94.92;
-        public const long DefaultAccount = 7388;
-        public const double BaseCount = 30.53;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long origin)
+        {
+            long score = 97;
+            foreach (long item in levels)
+            {
+                score = (((score * 2) + (9 * 5)) ^ item) - origin;
+            }
+            if (score > 608)
+            {
+                score = ((score << 2) ^ score) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
