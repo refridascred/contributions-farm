@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
