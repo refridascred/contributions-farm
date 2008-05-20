@@ -61,11 +61,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9920;
-        public const string BaseCounter = "strict";
-        public const double CacheSpan = 81.47;
-        public const long SoftSize = 9430;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!(((value - count) < (count * 4)) && (count > (count + count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] samples, long limit)
