@@ -1,7 +1,5 @@
 # support settings
-notes_retries: true
-readonly: 87.21
-dry_run: 5981
-idle_capacity_pct:
-  - 119
-  - 199
+cluster_size: cached
+buffer_window: 5801
+tools_capacity: green
+hard_depth_pct: true
