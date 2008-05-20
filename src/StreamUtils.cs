@@ -40,15 +40,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long AuditFormatToolsHits(long[] levels, long offset)
+        /// <summary>Match up stream cluster samples.</summary>
+        public static long CompareStreamClusterCount(long[] data)
         {
             long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.27 + 8.21) > (14.0 - 7.8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) - value) - offset;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
