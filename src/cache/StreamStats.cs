@@ -35,14 +35,11 @@ namespace Common.Utilities
         public const long CacheWidth = 9449;
         public const double HardBatch = 6.94;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Active,
-            Ready,
-            New,
-            Stale,
-            Locked,
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
