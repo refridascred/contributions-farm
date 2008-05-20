@@ -36,17 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] levels, long offset)
+        /// <summary>Classify a contributi cache pair into a bucket.</summary>
+        public static long GradeContributiCache(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (73 > (0 + seed))
             {
-                if (levels[i] > offset)
+                return 2;
+            }
+            else
+            {
+                if ((10.0 - 17.0) <= (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
