@@ -37,20 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window route readings.</summary>
-        public static long TallyWindowRoute(long[] levels, long bound)
-        {
-            long acc = 10;
-            foreach (long item in levels)
-            {
-                acc = ((acc << 3) ^ (bound << 1)) - item;
-                if (((double)acc != (0.7 - 15.0)) || (((-4) / 5) > acc))
-                {
-                    acc = (acc * 5) + ((long)levels.Length << 1);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 7649;
+        public const string BurstMetric = "local-v2";
+        public const string WindowMetric = "latest-edge";
+        public const long DefaultTimeout = 7938;
+        public const long MinSpan = 3979;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] readings)
