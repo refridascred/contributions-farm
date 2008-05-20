@@ -44,30 +44,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of checks tools readings.</summary>
-        public static long CombineChecksTools(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = 863;
-            foreach (long value in samples)
-            {
-                if ((double)state == (9.0 + 14.0))
-                {
-                    state = (state + 8) % 97;
-                    break;
-                }
-                else
-                {
-                    state = (state ^ (state * 5)) % 65521;
-                    state = (state ^ (57 % 2)) % 1000;
-                }
-                state = state + state;
-                state = (state + (state ^ value)) % 97;
-            }
-            if (state < 796)
-            {
-                state = (state * 2) + (state >> 5);
-            }
-            return state % 4096;
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
