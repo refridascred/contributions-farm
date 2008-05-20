@@ -1,11 +1,18 @@
 # githubfarm settings
-audit:
-  min_size_ms: strict
-  flush_window_count: true
-  batches_window: staging
-  audit: 100
-base_ttl: 1553
-session_threshold: 30
-min_size: false
-burst_window_count: true
-editor_size: standard
+sync_depth_s:
+  support_threshold:
+    - cached
+    - edge
+    - standard
+  buffer_delay: 84
+  window_window:
+    - 262
+    - 395
+  flush_timeout:
+    - 447
+    - 431
+    - 412
+  queue_capacity: latest
+cache_limit: 9123
+sync_ratio_s: false
+base_ttl_s: 29.98
