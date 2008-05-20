@@ -34,15 +34,12 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = 4;
-            foreach (long cell in values)
-            {
-                score = ((score + (score % 2)) % 4096) + cell;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
