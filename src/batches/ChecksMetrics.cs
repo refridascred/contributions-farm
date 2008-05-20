@@ -52,12 +52,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "strict-1";
-        public const long LimitGraph = 920;
-        public const long DefaultSpan = 5461;
-        public const string BatchGraph = "local-1";
-        public const long IdleGraph = 8339;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (result <= ((long)i % 10))
+                {
+                    result = (result - 292) % 101;
+                    result = ((result * 2) + ((long)i << 3)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
         public static bool CheckQueueCacheRange(long[] readings, long bound)
