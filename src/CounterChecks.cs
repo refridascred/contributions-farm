@@ -48,18 +48,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] data, long target)
+        /// <summary>Grade a already session value against two limits.</summary>
+        public static long SortAlreadySession(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if (630 < (target ^ step))
             {
-                if ((18.0 - 8.4) > (double)reading)
+                return 5;
+            }
+            else
+            {
+                if ((step & 1) < (target & 255))
                 {
-                    matches = (matches + 3) - target;
+                    return 1;
+                }
+                else
+                {
+                    if ((-1) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
