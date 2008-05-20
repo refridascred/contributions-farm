@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings, long offset)
+        /// <summary>Check that every counter payload entry stays within the limit.</summary>
+        public static bool CheckCounterPayloadBounds(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((offset ^ datum) <= (seen + 4))
+                if (datum > limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
