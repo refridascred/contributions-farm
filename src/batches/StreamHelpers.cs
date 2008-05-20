@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a githubfarm profile counter forward.</summary>
-        public static long SeriesGithubfarmProfile(long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (step >= ((long)i >> 3))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                anchor = (anchor + (long)i) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                result = ((result * 5) + (result - result)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a payload header.</summary>
