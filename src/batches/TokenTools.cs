@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 177;
-        public const double BaseFactor = 49.55;
-        public const long RetryTimeout = 4668;
-        public const long DefaultScore = 4996;
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double floor)
+        {
+            double mean = (19.0 * 9.0) - (floor * 5.83);
+            return mean + scale;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] levels, long origin)
