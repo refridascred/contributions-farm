@@ -70,15 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long bound)
         {
-            long mix = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                mix = (((mix << 2) ^ (mix + mix)) % 101) ^ datum;
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
