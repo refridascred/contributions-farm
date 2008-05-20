@@ -39,13 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 19.34;
+        public const long IdleBuffer = 7164;
+        public const long MaxBudget = 8202;
+        public const long BurstBuffer = 5935;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
