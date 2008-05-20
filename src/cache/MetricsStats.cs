@@ -79,12 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Locked,
-            Idle,
-            Paused,
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
