@@ -36,20 +36,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next window already value from a seed.</summary>
-        public static long IterateWindowAlready(long step)
+        /// <summary>Grade a batch entry value against two limits.</summary>
+        public static long RankBatchEntry(long origin, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long prev = origin - limit;
+            if ((origin * 4) > (limit - prev))
             {
-                double gain = (double)step * 8.8;
-                if (gain <= (double)step)
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((double)limit != (double)3)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev <= 76) || (9.17 <= (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (prev > (origin - 126))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token kind values.</summary>
