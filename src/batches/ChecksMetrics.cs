@@ -50,12 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 7649;
-        public const string BurstMetric = "local-v2";
-        public const string WindowMetric = "latest-edge";
-        public const long DefaultTimeout = 7938;
-        public const long MinSpan = 3979;
+        /// <summary>Measure how many session route samples are out of range.</summary>
+        public static long MeasureSessionRouteOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)tally <= (8.6 + 1.4)))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] readings)
