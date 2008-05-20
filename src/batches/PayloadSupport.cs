@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long origin)
         {
-            double mean = (double)(1 ^ 62);
-            if (mean >= mean)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mean = (mean + rate) + bias;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)476) + (double)(long)i;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
