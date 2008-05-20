@@ -22,11 +22,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSpan = 3270;
-        public const long BurstTimeout = 5808;
-        public const string SoftMetrics = "staging";
-        public const long DefaultInterval = 7820;
-        public const long BurstMetrics = 660;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (step < reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
