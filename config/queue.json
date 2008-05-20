@@ -1,6 +1,7 @@
 {
-  "compress": 500,
-  "buffer_ratio": 27.87,
-  "flush_ratio": 100,
-  "batch_size_count": "eu-west"
+  "sync_ttl_count": 7957,
+  "batch_retries": [497, 32, 337],
+  "warm_capacity": true,
+  "record_delay": 3512,
+  "soft_delay_s": 48
 }
