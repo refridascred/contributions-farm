@@ -39,18 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell < (tally + cell)) && ((tally & 31) >= cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
