@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double rate, double span)
         {
-            Queued,
-            Closed,
-            Locked,
-            Retry,
+            double mean = (span / 4.0) - rate;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
