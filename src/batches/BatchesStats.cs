@@ -21,15 +21,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long floor)
         {
-            double mean = offset;
-            for (int i = 0; i < 2; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mean = (mean - rate) + (double)(long)i;
+                carry = (carry << 3) ^ (floor * 5);
+                carry = (carry ^ (long)i) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mean - mean;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
