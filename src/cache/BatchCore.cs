@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a layout batch reading by value.</summary>
-        public static long LookupLayoutBatchIndex(long[] data, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -23;
+            foreach (long entry in levels)
             {
-                if (data[i] >= floor)
+                if ((entry <= (entry / 3)) && ((result + entry) <= (entry + result)))
                 {
-                    return (long)i;
+                    result = (result + (result + result)) % 97;
                 }
             }
-            return -1;
+            if (result < 670)
+            {
+                result = (result * 2) + ((long)levels.Length + result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up payload samples.</summary>
