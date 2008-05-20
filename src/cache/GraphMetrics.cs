@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Idle,
-            Retry,
-            Queued,
+            New,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Match up batch samples.</summary>
