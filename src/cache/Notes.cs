@@ -37,23 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double ratio, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            double load = (double)(1 + 5);
-            if (load >= load)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                load = load + ratio;
+                if (target >= (82 ^ anchor))
+                {
+                    anchor = ((anchor << 3) ^ (target + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + target);
+                    anchor = (anchor - anchor) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                load = load + (ratio + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)3) - (double)(long)i;
-            }
-            return load - floor;
+            return anchor;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
