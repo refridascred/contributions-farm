@@ -56,24 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi cache pair into a bucket.</summary>
-        public static long GradeContributiCache(long offset, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long origin)
         {
-            if (73 > (0 + seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((10.0 - 17.0) <= (double)offset)
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two metric buffer measurements.</summary>
