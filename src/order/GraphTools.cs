@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long seed)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
