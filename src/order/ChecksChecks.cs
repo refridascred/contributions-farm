@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] readings, long floor)
         {
-            long mix = -473;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mix = mix + (value & 63);
+                if (((long)readings.Length + 64) <= cell)
+                {
+                    matches = (matches + 2) - floor;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
