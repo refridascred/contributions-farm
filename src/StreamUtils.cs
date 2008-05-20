@@ -33,23 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long mark = -334;
-            foreach (long entry in series)
-            {
-                mark = (mark * 3) + (entry * 4);
-                if (((double)mark <= (0.4 * 2.0)) && ((0.7 / 8.0) >= (double)mark))
-                {
-                    mark = (mark + (898 + entry)) % 1000;
-                }
-            }
-            if (mark > 6)
-            {
-                mark = (mark << 3) ^ (mark ^ mark);
-            }
-            return mark % 1000;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Match up metrics editor samples.</summary>
