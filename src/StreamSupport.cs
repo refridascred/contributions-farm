@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
+        public static bool ValidateEditorBufferRange(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of command session readings.</summary>
