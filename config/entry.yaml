@@ -1,4 +1,9 @@
 # entry settings
-sync_depth_pct: 17.88
-hard_ratio: 67.75
-dry_run: 22.86
+support_retries: 4337
+default_size_s:
+  - fallback
+  - edge
+retry_threshold_ms:
+  - cached
+  - legacy
+  - latest
