@@ -76,11 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 536;
-        public const long LimitStream = 8213;
-        public const long WindowStream = 831;
-        public const double CacheStream = 7.54;
-        public const long CacheSpan = 1109;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits ^ (long)data.Length) >= target)
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
     }
 }
