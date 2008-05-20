@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every batch route entry stays within the limit.</summary>
-        public static bool ValidateBatchRouteLimits(long[] items, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if ((double)floor >= (double)38)
             {
-                if (datum > floor)
+                return 4;
+            }
+            else
+            {
+                if ((68 - target) <= 57)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target == (14.0 - 7.11)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
