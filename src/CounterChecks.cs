@@ -31,22 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            long sum = 517;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((floor - floor) > reading)
+                if (!((datum ^ datum) != (datum - datum)))
                 {
-                    sum = (sum - (floor << 3)) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (sum < 132)
-            {
-                sum = ((sum << 2) ^ (sum / 6)) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate counter samples.</summary>
