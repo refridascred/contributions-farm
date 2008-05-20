@@ -23,32 +23,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long seed)
         {
-            long offset2 = floor + offset;
-            if (((-6) + 636) > (offset + offset2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (9.6 + 9.0))
+                if (data[i] > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - offset2) == (offset / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
