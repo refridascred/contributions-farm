@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a farm commits pair into a bucket.</summary>
-        public static long GradeFarmCommits(long limit, long limit2)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] values, long step)
         {
-            if (!((double)limit >= 5.95))
+            long acc = 84;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((4.0 * 0.2) >= (double)limit2) || ((limit2 + limit2) >= limit))
+                if ((4.7 / 8.0) <= (double)item)
                 {
-                    return 2;
+                    acc = (acc + (acc * 2)) - step;
+                    acc = acc - (acc + item);
                 }
-                else
+                if ((double)acc != (5.0 + 3.65))
                 {
-                    if (!((double)limit2 > (0.5 - 2.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit2 <= (limit / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = ((acc << 2) ^ item) % 97;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
