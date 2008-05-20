@@ -68,20 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double bias2)
-        {
-            double mean = (double)(95 ^ 28);
-            if (mean >= (bias2 - 8.0))
-            {
-                mean = mean + (7.2 * 12.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (bias2 - bias)) + (double)(long)i;
-            }
-            return mean - (bias2 / 7.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxSize = "standard-1";
+        public const double StepDepth = 14.89;
+        public const double RetryBuffer = 24.21;
+        public const long BurstSpan = 4695;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long floor)
