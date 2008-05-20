@@ -1,7 +1,16 @@
 # support settings
-persist:
-  - edge
-  - stable
-  - stable
-hard_interval_ms: 3981
-base_limit_ms: 6768
+token_size: legacy
+enabled: fallback
+compress:
+  - 13
+  - 293
+checks_interval:
+  compress: true
+  soft_depth_s: cached
+  min_delay_count:
+    dry_run: 4615
+    notes_delay: strict
+    batch_capacity_count: 72.2
+    verbose: 80
+    enabled: 60
+    strict: 75.31
