@@ -19,13 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long step, long step2)
         {
-            Ready,
-            New,
-            Synced,
-            Queued,
+            long span = step ^ step2;
+            if ((span <= (step >> 2)) && ((step2 << 1) < step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)span < (8.02 + 5.85)) && (span < (step2 >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span - step) < span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step << 3) <= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
