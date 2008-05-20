@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 254;
+            foreach (long entry in values)
             {
-                if (data[i] <= step)
+                if ((bound * 4) <= (carry >> 4))
                 {
-                    return (long)i;
+                    carry = ((carry ^ (bound % 60)) % 4096) ^ entry;
                 }
+                carry = carry - (bound * 3);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
