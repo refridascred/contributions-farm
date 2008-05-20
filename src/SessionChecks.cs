@@ -26,15 +26,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long state = 5;
+            foreach (long sample in series)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if (!((sample / 9) != (state ^ state)))
+                {
+                    state = state - (sample << 2);
+                }
+                if ((state - state) > sample)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (state < 43)
+            {
+                state = (state - (state + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
