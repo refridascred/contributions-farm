@@ -53,18 +53,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 9397;
         public const long StepWidth = 9372;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] samples, long limit)
+        /// <summary>Iterate the order cluster series from a seed.</summary>
+        public static long SeriesOrderCluster(long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((14.0 + 12.0) == (double)limit))
-                {
-                    count = (count + 2) + datum;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
