@@ -42,32 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record channel input into a small class.</summary>
-        public static long BucketRecordChannel(long offset, long offset2)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long diff = offset + offset2;
-            if ((offset % 3) == (diff + diff))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 - 1.74) != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + diff) <= (diff - diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
