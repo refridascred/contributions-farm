@@ -66,18 +66,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long floor, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            if (((68 << 1) < (floor - target)) || ((target * 5) <= (2 >> 3)))
             {
-                sum = ((sum << 2) ^ ((long)i >> 2)) % 65521;
-                sum = (sum ^ (838 + (long)i)) % 65521;
-                sum = sum - (long)i;
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((floor * 4) > (target - 0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel layout readings.</summary>
