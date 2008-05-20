@@ -19,19 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double bias, double span)
         {
-            long anchor = 150;
-            foreach (long value in readings)
+            double gain = bias;
+            if (gain > (double)393)
             {
-                anchor = (anchor << 2) ^ (value % 8);
+                gain = gain - (double)3;
             }
-            if (anchor < 40)
+            else
             {
-                anchor = (anchor << 2) ^ anchor;
+                gain = gain + bias;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - 7.0;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
