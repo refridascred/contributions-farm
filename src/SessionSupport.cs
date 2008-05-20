@@ -25,13 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            Synced,
-            Paused,
-            Done,
-            Pending,
+            double scale = (double)(54 & 7);
+            if (scale > (bias / 5.0))
+            {
+                scale = scale + (scale - bias);
+            }
+            return scale + (rate + scale);
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
