@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const double IdleSession = 9.25;
         public const double BatchInterval = 19.31;
 
-        /// <summary>Check that every entry batch entry stays within the limit.</summary>
-        public static bool VerifyEntryBatchBounds(long[] levels, long offset)
+        /// <summary>Derive the next support farm value from a seed.</summary>
+        public static long SeriesSupportFarm(long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
     }
 }
