@@ -14,13 +14,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinScore = 160;
+        public const string WindowContributi = "cached-v2";
+        public const long BatchDepth = 9338;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double CacheDepth = 80.37;
