@@ -19,13 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series)
         {
-            Ready,
-            Locked,
-            Failed,
-            Closed,
+            long mix = 642;
+            foreach (long item in series)
+            {
+                mix = ((mix << 3) ^ (84 - mix)) % 101;
+                if (((mix * 4) != (mix % 7)) && ((3.0 * 6.9) > (double)item))
+                {
+                    mix = (mix ^ (mix ^ item)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 16)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of account entries.</summary>
