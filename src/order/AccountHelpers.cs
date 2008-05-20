@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples)
+        /// <summary>Audit format cluster readings against a rule.</summary>
+        public static long MeasureFormatClusterHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((reading << 1) >= (reading - (long)samples.Length))
+                if ((((datum + datum) >= datum) || ((32 >> 5) > count)) && ((datum ^ count) < datum))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
