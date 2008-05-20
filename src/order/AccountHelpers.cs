@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string BurstInterval = "alpha-v2";
         public const long RetryTimeout = 9731;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] values, long seed)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool VerifyClusterOrderRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (((seed >> 2) > (tally / 6)) || (((item ^ 9) > ((long)values.Length - tally)) || ((double)tally < (2.0 * 12.0))))
+                if (sample < bound)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
