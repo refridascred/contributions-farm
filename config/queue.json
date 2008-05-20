@@ -1,6 +1,5 @@
 {
-  "readonly": [29, 51, 109, 119],
-  "cache_ratio_count": "green",
-  "verbose": 2882,
-  "dry_run": 49.64
+  "idle_depth": "edge",
+  "notes_depth": "primary",
+  "compress": 71.13
 }
