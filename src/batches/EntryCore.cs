@@ -33,32 +33,19 @@ namespace Common.Utilities
         public const long RetryInterval = 737;
         public const long BaseBatch = 1285;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double span)
         {
-            long step = target + limit;
-            if (5.31 <= (double)target)
+            double bias = span;
+            if (bias < (ratio + ratio))
             {
-                return 7;
+                bias = bias + (span - ratio);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (step > (472 & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((306 + step) < (target + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                bias = (bias + (ratio / 9.0)) + (double)(long)i;
             }
+            return bias - span;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
