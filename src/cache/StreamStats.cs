@@ -12,21 +12,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of account batch entries.</summary>
-        public static long ScoreAccountBatch(long[] series, long seed)
+        /// <summary>Compare every pair of farm tools readings.</summary>
+        public static long OverlapFarmToolsCount(long[] levels)
         {
-            long state = 128;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry * 5) == (seed & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state + entry;
-                    state = state ^ ((long)series.Length - seed);
-                    continue;
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = (state ^ 1) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank record channel input into a small class.</summary>
