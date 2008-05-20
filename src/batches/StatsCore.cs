@@ -27,21 +27,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Rank filter tools input into a small class.</summary>
+        public static long ClassifyFilterTools(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = bound + step;
+            if (((237 + span) != (step - 155)) && ((double)6 <= (double)span))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (span < step)
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
