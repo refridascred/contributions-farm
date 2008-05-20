@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 801;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ step) % 1000) + entry;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
