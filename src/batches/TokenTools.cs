@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a context notes pair into a bucket.</summary>
-        public static long SortContextNotes(long limit, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long step)
         {
-            long step = limit + target;
-            if ((target & 7) < 535)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.34 * 6.0) == (double)target)
+                if (samples[i] <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target ^ step) <= (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
