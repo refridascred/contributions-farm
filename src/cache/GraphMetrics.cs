@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate format githubfarm samples.</summary>
-        public static long CombineFormatGithubfarm(long[] values, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = 67;
-            foreach (long entry in values)
-            {
-                result = (result << 2) ^ (result - entry);
-            }
-            if (result > 1)
-            {
-                result = (result + (origin * 2)) % 65521;
-            }
-            return result;
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Match up batch samples.</summary>
