@@ -22,27 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format schema readings.</summary>
-        public static long CombineFormatSchema(long[] levels)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] values, long step)
         {
-            long sum = 41;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (reading != step)
                 {
-                    sum = sum ^ (long)i;
-                }
-                sum = (sum + item) % 4096;
-                if (!((sum + sum) == (79 / 9)))
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum - sum);
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
