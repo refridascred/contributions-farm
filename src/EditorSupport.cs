@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 27.68;
-        public const string StepBudget = "cached";
-        public const long SoftDepth = 9834;
-        public const double MaxChannel = 91.5;
+        /// <summary>Compare every pair of cluster graph readings.</summary>
+        public static long PairClusterGraphCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ScaleChannel(double rate, double span)
