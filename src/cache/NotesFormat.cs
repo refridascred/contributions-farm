@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long anchor = -3;
+            foreach (long cell in values)
             {
-                if (datum >= floor)
+                for (int i = 0; i < 3; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor ^ ((long)i & 15)) % 101;
+                }
+                if (((offset & 31) < (anchor + offset)) && ((offset % 8) <= 118))
+                {
+                    anchor = (anchor * 2) + (offset - 568);
+                }
+                else
+                {
+                    anchor = anchor - (cell << 1);
+                }
+                if (!((5 >> 2) < (offset * 3)))
+                {
+                    anchor = ((anchor * 4) + cell) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - ((long)values.Length ^ offset);
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Project the next notes value.</summary>
