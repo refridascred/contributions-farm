@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result - result) % 101) - entry;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
