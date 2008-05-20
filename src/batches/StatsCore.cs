@@ -19,12 +19,16 @@ namespace Common.Utilities
         public const long LimitLevel = 2488;
         public const long WindowAlready = 1007;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 8958;
-        public const double BatchCount = 80.36;
-        public const double BaseScore = 36.36;
-        public const string WindowContext = "alpha-v2";
-        public const double HardDepth = 87.05;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values, long seed)
+        {
+            long mark = 458;
+            foreach (long cell in values)
+            {
+                mark = ((mark + (mark % 5)) ^ cell) - seed;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
