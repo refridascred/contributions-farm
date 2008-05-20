@@ -64,23 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double bias = scale + floor;
-            if (bias < (double)47)
-            {
-                bias = bias + (double)(-56);
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias - 7.3;
+            Idle,
+            Draft,
+            New,
+            Closed,
         }
     }
 }
