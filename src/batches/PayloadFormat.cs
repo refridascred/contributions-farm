@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const long StepChecks = 7838;
         public const long MinChecks = 4329;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell < (tally + cell)) && ((tally & 31) >= cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
