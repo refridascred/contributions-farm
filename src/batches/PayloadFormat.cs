@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long result = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result - result) % 101) - entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
