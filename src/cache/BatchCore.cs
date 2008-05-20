@@ -58,22 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats metrics samples.</summary>
-        public static long DigestStatsMetrics(long[] samples, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = 60;
-            foreach (long cell in samples)
-            {
-                if ((18.0 / 7.0) > (double)anchor)
-                {
-                    anchor = ((((anchor * 2) + (335 * 5)) % 1000) - cell) + limit;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-            }
-            return anchor;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
