@@ -1,7 +1,6 @@
 {
-  "hard_delay_count": 3,
-  "payload_delay": 41.72,
-  "soft_ratio_count": [15, 273, 417, 405],
-  "cache_ratio": 4854,
-  "retry_interval_count": "primary"
+  "batch_capacity": 42.36,
+  "idle_ratio": true,
+  "compress": ["blue", "stable", "standard"],
+  "persist": "fallback"
 }
