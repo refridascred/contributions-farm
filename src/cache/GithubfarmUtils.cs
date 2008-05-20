@@ -71,22 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels)
-        {
-            long result = 137;
-            foreach (long datum in levels)
-            {
-                if ((result % 64) > result)
-                {
-                    result = ((result * 3) + (datum - result)) % 65521;
-                }
-                if ((datum % 7) > (result << 3))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 22.87;
+        public const long BatchSchema = 6514;
+        public const string StepFactor = "stable-1";
     }
 }
