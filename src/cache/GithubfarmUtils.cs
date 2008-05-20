@@ -23,20 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long origin)
         {
-            long sum = 84;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum << 3) ^ 8) % 101) - sample;
-                sum = sum + sum;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 99)
-            {
-                sum = (sum * 3) + (sum + sum);
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
