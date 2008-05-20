@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
             Stale,
-            Locked,
-            Pending,
-            Draft,
-            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define report limits and defaults.</summary>
