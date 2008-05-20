@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 7209;
+        public const string BatchContext = "legacy-edge";
+        public const long DefaultContext = 7795;
+        public const double BurstScore = 65.61;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] levels)
