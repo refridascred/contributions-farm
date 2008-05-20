@@ -42,15 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support order readings.</summary>
-        public static long WeighSupportOrder(long[] samples, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings, long target)
         {
-            long sum = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                sum = (sum + (origin + entry)) % 101;
+                if (value < target)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Roll a context counter forward.</summary>
