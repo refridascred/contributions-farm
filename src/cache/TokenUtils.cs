@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Done,
-            Dropped,
-            Failed,
-            New,
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
