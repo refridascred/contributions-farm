@@ -31,12 +31,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Draft,
             Paused,
-            Retry,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
