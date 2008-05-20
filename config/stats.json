@@ -1,8 +1,6 @@
 {
-  "min_depth": "cached",
-  "flush_limit": "standard",
-  "verbose": true,
-  "readonly": "cached",
-  "batch_delay": "stable",
-  "base_ratio_pct": 11.22
+  "sync_size_count": false,
+  "sync_window_count": 28.6,
+  "flush_window_s": 6471,
+  "sync_timeout": ["strict", "open"]
 }
