@@ -54,18 +54,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            long mark = 680;
-            foreach (long sample in readings)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((mark ^ mark) == (538 & 3))
-                {
-                    mark = (mark - (sample + 7)) % 65521;
-                }
+                sum = (sum << 2) ^ (origin ^ sum);
+                sum = (sum * 5) + ((long)i ^ origin);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
