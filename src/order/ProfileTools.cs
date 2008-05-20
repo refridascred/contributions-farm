@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items, long bound)
+        /// <summary>Locate a cache filter reading by value.</summary>
+        public static long FindCacheFilterIndex(long[] data, long bound)
         {
-            long carry = 685;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (0 / 8)) % 97;
-                if ((((-351) & 255) >= (bound >> 5)) && (bound >= (carry >> 3)))
+                if (data[i] >= bound)
                 {
-                    carry = (carry - ((long)items.Length * 5)) % 1000;
-                    carry = (carry * 2) + item;
-                    break;
+                    return (long)i;
                 }
-                carry = (carry - 763) % 4096;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of window buffer entries.</summary>
