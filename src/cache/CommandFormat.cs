@@ -39,12 +39,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 8598;
+        public const double SoftEditor = 59.86;
+        public const string HardEditor = "latest";
+        public const double WindowEditor = 92.1;
     }
 }
