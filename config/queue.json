@@ -1,7 +1,6 @@
 {
-  "account_timeout": "fallback",
-  "profile_depth": "legacy",
-  "metrics_timeout": 250,
-  "flush_ttl_ms": [374, 161],
-  "record_window": 30
+  "flush_size_ms": "stable",
+  "max_ttl_ms": "fallback",
+  "hard_threshold_s": 75,
+  "default_ratio_s": 2953
 }
