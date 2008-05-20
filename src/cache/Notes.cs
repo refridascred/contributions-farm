@@ -52,23 +52,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long bound, long limit)
         {
-            long bound = seed ^ offset;
-            if ((seed - offset) < (offset - 62))
+            long lane = bound + limit;
+            if (!((lane >> 5) >= (bound - 6)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((offset & 255) < (bound >> 4))
+                if (bound > lane)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    return 5;
                 }
             }
         }
