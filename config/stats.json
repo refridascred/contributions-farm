@@ -1,7 +1,16 @@
 {
-  "poll_retries": 55.03,
-  "default_limit_count": false,
-  "base_limit": 6814,
-  "batch_interval": true,
-  "dry_run": true
+  "max_interval_count": ["cached", "cached", "blue", "staging"],
+  "batch_threshold": 3012,
+  "entry_window": {
+    "hard_capacity_count": 33.9,
+    "command_ratio": {
+      "retry_depth": [406, 98, 16, 377],
+      "hard_depth_count": 4550,
+      "sync_interval": "blue",
+      "sync_ratio_s": 3204,
+      "soft_capacity_ms": ["staging", "strict", "open"]
+    },
+    "poll_interval_s": false,
+    "cache_interval_ms": 5
+  }
 }
