@@ -1,9 +1,6 @@
 # githubfarm settings
-strict: 13.55
-enabled: 55
-hard_limit: 3711
-verbose: 600
-cache_timeout_count:
-  - 188
-  - 216
-retry_interval_count: true
+verbose: eu-west
+strict:
+  - local
+  - primary
+poll_threshold_pct: 63.4
