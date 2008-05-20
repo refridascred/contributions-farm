@@ -37,11 +37,38 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long offset, long limit)
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            if (!((limit * 2) >= ((-41) >> 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.0 + 1.0) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((752 >= (offset + 93)) || (limit < (limit * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (79 >= (offset ^ (-3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
