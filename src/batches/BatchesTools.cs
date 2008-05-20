@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a order options.</summary>
