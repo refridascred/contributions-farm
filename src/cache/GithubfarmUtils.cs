@@ -35,18 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long MeasureMetricNotesOutliers(long[] samples)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)hits > (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the graph status values.</summary>
