@@ -16,10 +16,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseBudget = 82.4;
-        public const double IdleSession = 9.25;
-        public const double BatchInterval = 19.31;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data)
+        {
+            long sum = 51;
+            foreach (long value in data)
+            {
+                if ((590 / 4) <= (value & 63))
+                {
+                    sum = sum ^ (sum - sum);
+                }
+                if (value <= (value - sum))
+                {
+                    sum = (sum * 4) + 0;
+                }
+                if (((value ^ value) != (sum << 3)) || ((1.9 / 3.0) < (double)sum))
+                {
+                    sum = sum ^ sum;
+                }
+            }
+            if (sum > 39)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Derive the next support farm value from a seed.</summary>
         public static long SeriesSupportFarm(long seed)
