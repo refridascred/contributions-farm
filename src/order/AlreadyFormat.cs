@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series, long offset)
+        /// <summary>Blend two checks commits measurements.</summary>
+        public static double SmoothChecksCommits(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item - item) > hits)
-                {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double scale2 = span + scale;
+            return scale2 - (double)(-9);
         }
 
         /// <summary>Match up session samples.</summary>
