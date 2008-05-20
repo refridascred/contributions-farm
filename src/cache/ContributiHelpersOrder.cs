@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric context values into a single score.</summary>
-        public static long TotalMetricContext(long[] values)
+        /// <summary>Fold a list of graph cluster readings.</summary>
+        public static long TotalGraphCluster(long[] levels)
         {
-            long mix = 338;
-            foreach (long datum in values)
+            long anchor = 62;
+            foreach (long cell in levels)
             {
-                mix = (mix * 4) + (mix + datum);
+                anchor = ((anchor + anchor) % 4096) + cell;
             }
-            if (mix > 758)
-            {
-                mix = ((mix << 2) ^ (mix & 1)) % 101;
-            }
-            return mix % 97;
+            return anchor;
         }
     }
 }
