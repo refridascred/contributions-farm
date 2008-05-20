@@ -12,19 +12,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next route profile value from a seed.</summary>
-        public static long SeriesRouteProfile(long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long edge = offset + floor;
+            if (edge > (floor & 1))
             {
-                if (((step + step) == (step + acc)) || ((acc / 7) == (step >> 2)))
-                {
-                    acc = acc + step;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (7.7 >= (double)edge)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset % 12) < (offset ^ offset)) || ((double)edge >= (14.0 * 1.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
