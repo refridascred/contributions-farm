@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long offset2)
         {
-            long mix = 7;
-            foreach (long item in series)
+            if ((offset >> 4) == (offset2 - offset))
             {
-                mix = mix + (item + item);
-                if ((item - mix) <= item)
+                return 3;
+            }
+            else
+            {
+                if ((51 & 63) >= (offset2 >> 1))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Accumulate record samples.</summary>
