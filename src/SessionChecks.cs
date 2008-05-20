@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) == (item % 100))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardRatio = 1122;
+        public const long RetryLevel = 871;
+        public const long BurstChecks = 7364;
+        public const long StepChecks = 9416;
+        public const long IdleChecks = 5271;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowInterval = "staging-edge";
