@@ -1,8 +1,10 @@
 # githubfarm settings
-burst_capacity_ms: fallback
-min_limit:
-  - 327
-  - 363
-  - 111
-sync_threshold: 44
-default_ratio_s: 52.84
+cluster_capacity: 85.49
+metrics_window:
+  hard_window_ms: 36.6
+  min_retries_count: primary
+  sync_ttl_count: 8559
+  queue_ratio: latest
+  base_retries_ms: false
+cache_ttl_count: standard
+format_ttl: 27.38
