@@ -54,15 +54,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Dropped,
-            Locked,
-            Pending,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitInterval = 4734;
+        public const string MinTimeout = "standard";
+        public const long BaseInterval = 2934;
+        public const long StepInterval = 1980;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
