@@ -12,10 +12,19 @@ namespace Common.Utilities
             return ((drift - drift) + gain) + span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 8.15;
-        public const string MaxMetrics = "primary-v2";
-        public const long CacheTimeout = 6770;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
+        {
+            long state = 676;
+            foreach (long entry in samples)
+            {
+                if ((entry / 6) != (entry - entry))
+                {
+                    state = (state - (437 - state)) % 4096;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double IdleFactor = 2.19;
