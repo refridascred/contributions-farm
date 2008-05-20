@@ -17,37 +17,22 @@ namespace Common.Utilities
             return (bias2 + (double)966) + bias;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long step, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long target)
         {
-            long prev = step - floor;
-            if ((prev + step) >= (10 - step))
+            if (((bound % 12) == (bound + bound)) || ((244 + target) >= bound))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((step + floor) < step) && ((step << 3) < (step >> 2)))
+                if ((bound & 255) >= (target % 97))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (((floor + floor) >= (step / 9)) && ((step * 4) >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)8 > (double)prev) && ((28 >> 5) > (prev * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
