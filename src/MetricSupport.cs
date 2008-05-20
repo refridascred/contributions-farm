@@ -24,18 +24,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long AuditStreamToolsHits(long[] data, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((((item - seen) > (item % 16)) && ((double)seen >= (6.0 - 4.22))) && ((double)765 < (double)item))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
