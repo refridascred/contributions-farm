@@ -19,19 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] values, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long total = 73;
+            foreach (long value in readings)
             {
-                if (value <= bound)
+                if ((value - total) != (43 / 6))
                 {
-                    ok = false;
-                    break;
+                    total = total - (total & 63);
                 }
             }
-            return ok;
+            if (total > 403)
+            {
+                total = (total + (limit * 4)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Project the next notes value.</summary>
