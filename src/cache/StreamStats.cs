@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of cluster already entries.</summary>
+        public static long ScoreClusterAlready(long[] levels, long bound)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long score = 5;
+            foreach (long datum in levels)
+            {
+                score = score - (datum >> 5);
+                score = ((score * 5) + ((-1) + bound)) % 101;
+                if ((bound * 3) != (score + 553))
+                {
+                    break;
+                }
+            }
+            if (score < 648)
+            {
+                score = score ^ (bound % 60);
+            }
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of farm tools readings.</summary>
