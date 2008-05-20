@@ -40,10 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseSpan = 77.92;
-        public const long HardBudget = 3638;
-        public const string MinBatch = "standard-edge";
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double BlendStream(double rate, double bias)
