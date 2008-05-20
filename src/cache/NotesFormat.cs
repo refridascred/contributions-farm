@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long MaxEditor = 1149;
         public const long CacheSpan = 422;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum * 2) + cell;
-                if ((sum <= (sum + sum)) || ((double)3 < (double)sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (sum + sum)) % 65521;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 239)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
