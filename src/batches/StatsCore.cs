@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const long LimitLevel = 2488;
         public const long WindowAlready = 1007;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values, long seed)
+        /// <summary>Locate a channel context reading by value.</summary>
+        public static long LocateChannelContextIndex(long[] data, long limit)
         {
-            long mark = 458;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark + (mark % 5)) ^ cell) - seed;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
