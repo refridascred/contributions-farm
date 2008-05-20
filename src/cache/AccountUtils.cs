@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile batch readings against a rule.</summary>
-        public static long AuditProfileBatchMatches(long[] series)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count >= (count * 3))
+                if (values[i] > step)
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a metrics buffer pair into a bucket.</summary>
