@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 0.44;
-        public const long BurstCount = 2123;
-        public const long BaseDepth = 2736;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "open-v2";
+        public const long HardMetric = 1243;
+        public const string BurstMetric = "local-edge";
+        public const long IdleTimeout = 5346;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] levels, long floor)
