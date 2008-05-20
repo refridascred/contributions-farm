@@ -19,35 +19,29 @@ namespace Common.Utilities
         public const double CacheBudget = 78.69;
         public const long LimitRoute = 6589;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long floor, long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long seed)
         {
-            if ((target * 2) <= (target + 72))
+            long next = target - seed;
+            if ((89 >> 3) >= (seed ^ target))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (!((target * 2) <= (floor >> 3)))
+                if ((double)next > (3.6 - 8.72))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor <= (floor & 15)) || ((double)floor == (4.9 + 7.0)))
+                    if ((target ^ next) != (next - 392))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((floor < 199) && ((double)floor >= 7.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 1;
                     }
                 }
             }
