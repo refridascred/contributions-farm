@@ -25,14 +25,26 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long seed)
         {
-            Stale,
-            Failed,
-            Synced,
-            Closed,
-            Queued,
+            long acc = 820;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc * 3) + acc) ^ (long)i;
+                }
+                if ((acc - datum) >= (seed * 5))
+                {
+                    acc = acc - (seed + acc);
+                }
+            }
+            if (acc < 444)
+            {
+                acc = ((acc << 3) ^ (seed - 438)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
