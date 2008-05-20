@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry + 389) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
