@@ -13,21 +13,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = offset ^ origin;
+            if ((lane - lane) >= (offset * 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)lane <= (double)origin)
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
