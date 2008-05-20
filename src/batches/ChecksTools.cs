@@ -50,11 +50,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            double rate = offset / 7.0;
+            if (rate > (rate / 5.0))
+            {
+                rate = rate - (double)457;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (bias - rate)) + (double)(long)i;
+            }
+            return rate + 9.5;
         }
     }
 }
