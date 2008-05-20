@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Match up cluster stream samples.</summary>
+        public static long CompareClusterStreamCount(long[] items)
         {
-            double scale = 4.35;
-            if (scale > 8.76)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (weight * 12.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (span - scale);
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
