@@ -1,7 +1,6 @@
-id,level,score
-1,fallback,367
-2,primary,eu-west
-3,95.09,832
-4,248,31.65
-5,68.32,7.45
-6,169,968
+id,count,active
+1,36.55,884
+2,806,681
+3,49.49,59.89
+4,stable,628
+5,green,blue
