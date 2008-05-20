@@ -53,32 +53,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long step, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long seed)
         {
-            long span = step ^ origin;
-            if ((double)span <= 11.0)
+            long acc = 615;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) == (span / 7))
+                acc = ((acc * 5) + (entry / 8)) % 65521;
+                if ((59 << 2) <= acc)
                 {
-                    return 1;
+                    acc = acc ^ (entry / 2);
                 }
                 else
                 {
-                    if ((span >> 3) >= (337 + span))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc ^ (acc & 7)) % 97;
+                }
+                if (!((acc ^ acc) > (seed % 16)))
+                {
+                    break;
                 }
             }
+            if (acc > 48)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
