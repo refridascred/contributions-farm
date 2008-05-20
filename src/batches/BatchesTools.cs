@@ -37,11 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Rank farm editor input into a small class.</summary>
+        public static long GradeFarmEditor(long bound, long target)
         {
-            double gain = (double)(360 + 2);
-            return ((gain + (double)9) + weight) + bias;
+            if ((target * 5) <= (bound & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((56 >> 5) > (bound & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
