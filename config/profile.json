@@ -1,6 +1,8 @@
 {
-  "session_window": "edge",
-  "persist": "local",
-  "poll_threshold_count": false,
-  "poll_ratio_pct": 97.4
+  "persist": "fallback",
+  "enabled": "blue",
+  "stream_size": 30,
+  "verbose": 96.21,
+  "checks_ratio": 27,
+  "notes_depth": 1950
 }
