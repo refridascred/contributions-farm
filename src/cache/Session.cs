@@ -53,10 +53,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "cached-1";
-        public const double BurstFilter = 79.56;
-        public const double LimitBudget = 88.97;
-        public const string WindowFilter = "cached";
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
