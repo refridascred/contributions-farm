@@ -37,11 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftCount = 879;
-        public const long BatchFarm = 7713;
-        public const string LimitCount = "local-1";
-        public const long IdleRatio = 3270;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
