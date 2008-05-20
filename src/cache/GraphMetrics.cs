@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
+        public static long SeriesFilterGithubfarm(long seed)
         {
-            long total = 64;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((7.0 - 8.0) < (double)datum)
-                {
-                    total = (total + ((long)values.Length / 5)) % 101;
-                }
-                if ((total & 127) == (total - datum))
-                {
-                    break;
-                }
+                sum = ((sum << 3) ^ seed) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (total < 998)
-            {
-                total = (total << 2) ^ (total % 64);
-            }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
