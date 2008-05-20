@@ -25,13 +25,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Failed,
-            Active,
-            Draft,
-            Queued,
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
