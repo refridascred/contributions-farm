@@ -50,19 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long result = -2;
-            foreach (long item in data)
-            {
-                result = ((result << 3) ^ (84 & 1)) + item;
-            }
-            if (result < 819)
-            {
-                result = ((result << 2) ^ (result + result)) % 101;
-            }
-            return result;
+            Draft,
+            Closed,
+            Done,
         }
     }
 }
