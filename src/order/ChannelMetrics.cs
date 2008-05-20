@@ -5,28 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Classify a farm commits pair into a bucket.</summary>
+        public static long GradeFarmCommits(long limit, long limit2)
         {
-            long mark = 638;
-            foreach (long cell in levels)
+            if (!((double)limit >= 5.95))
             {
-                mark = (mark - (mark * 5)) % 4096;
-                if ((double)mark == (8.0 + 20.0))
+                return 4;
+            }
+            else
+            {
+                if (((4.0 * 0.2) >= (double)limit2) || ((limit2 + limit2) >= limit))
                 {
-                    mark = mark - 410;
-                    mark = (mark * 4) + (-199);
-                }
-                if ((21 * 4) == (mark - (-981)))
-                {
-                    mark = (mark - (mark & 255)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    mark = ((mark * 2) + (cell << 1)) % 4096;
+                    if (!((double)limit2 > (0.5 - 2.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit2 <= (limit / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
