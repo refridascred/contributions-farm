@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] readings, long limit)
-        {
-            long total = 73;
-            foreach (long value in readings)
-            {
-                if ((value - total) != (43 / 6))
-                {
-                    total = total - (total & 63);
-                }
-            }
-            if (total > 403)
-            {
-                total = (total + (limit * 4)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 3106;
+        public const long BurstFactor = 3032;
+        public const string BaseQueue = "latest-v2";
 
         /// <summary>Project the next notes value.</summary>
         public static double AdjustNotes(double ratio, double offset)
