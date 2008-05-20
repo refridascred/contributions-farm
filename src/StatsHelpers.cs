@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
