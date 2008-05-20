@@ -22,11 +22,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowLevel = 9442;
-        public const long BaseSize = 8494;
-        public const long BatchSpan = 3861;
-        public const long SoftRatio = 750;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double bias, double span)
+        {
+            double bias2 = 3.5;
+            if (bias2 < 11.0)
+            {
+                bias2 = bias2 + (double)19;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + span) + (double)(long)i;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
