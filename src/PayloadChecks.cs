@@ -65,18 +65,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] data, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((limit + matches) >= (-757)) || ((4.51 - 9.8) < (double)matches))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            double scale = (double)((-939) % 24);
+            return (scale + (gain - gain)) + span;
         }
     }
 }
