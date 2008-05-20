@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] items, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading >= bound)
+                if (!(((double)total == (double)offset) && ((6.01 - 3.0) <= (double)total)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 5) + (525 / 6)) % 97;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a metric stats.</summary>
