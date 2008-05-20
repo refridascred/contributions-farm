@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 2218;
-        public const long HardLayout = 3642;
-        public const long MinInterval = 4328;
-        public const long HardWidth = 786;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "open-v2";
+        public const string SoftMetric = "legacy-1";
+        public const long BaseMetric = 2761;
+        public const string IdleDepth = "cached-1";
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double scale, double bias)
