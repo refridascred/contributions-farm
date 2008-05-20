@@ -1,11 +1,25 @@
 # support settings
-verbose: true
-max_size: 56.44
-soft_interval_count:
-  - 467
-  - 146
-  - 475
-  - 249
-strict: 1655
-sync_timeout_s: true
-stats_retries: cached
+soft_size_pct:
+  retry_size_count: 29.42
+  profile_ratio: local
+  hard_size_pct: latest
+  flush_limit_count: 62
+  stats_limit: 10
+  min_depth_count: 82.13
+idle_retries_pct:
+  default_size_count: local
+  channel_window:
+    warm_interval: edge
+    sync_delay_pct: strict
+    warm_delay_count: legacy
+    retry_timeout_ms: standard
+    batch_window_pct: 50
+    retry_size_count:
+      - blue
+      - cached
+      - primary
+      - green
+  burst_depth_s: 500
+min_depth_pct: blue
+cache_size_count: 100
+cluster_size: staging
