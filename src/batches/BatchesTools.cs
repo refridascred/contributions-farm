@@ -29,11 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 2999;
-        public const double BurstCommits = 13.15;
-        public const double CacheSpan = 79.1;
-        public const long WindowSpan = 3409;
-        public const long StepBudget = 1643;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxSize = "strict-edge";
+        public const long MaxAccount = 5267;
+        public const long BurstBudget = 7260;
+        public const double HardScore = 9.17;
     }
 }
