@@ -33,19 +33,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (datum < seed)
+                if (((seen & 255) != (sample * 4)) && ((double)sample == (double)628))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
