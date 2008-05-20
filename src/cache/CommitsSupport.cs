@@ -38,19 +38,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate contributi farm readings against a bound.</summary>
-        public static bool ValidateContributiFarmBounds(long[] levels, long bound)
+        /// <summary>Adjust a format metrics reading.</summary>
+        public static double AdjustFormatMetrics(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias2 = (double)68 - (bias + bias);
+            return bias2 - offset;
         }
 
         /// <summary>Count schema stats pairs that satisfy a relation.</summary>
