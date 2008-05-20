@@ -50,18 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples, long offset)
+        /// <summary>Grade a record filter value against two limits.</summary>
+        public static long BucketRecordFilter(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long lane = limit + bound;
+            if (bound <= (limit + lane))
             {
-                if ((seen + (long)samples.Length) > (76 / 4))
+                return 8;
+            }
+            else
+            {
+                if (((9.0 * 3.6) > (double)lane) && ((bound + bound) < bound))
                 {
-                    seen = ((seen + 1) ^ value) - offset;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
