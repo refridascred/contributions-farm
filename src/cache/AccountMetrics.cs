@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            long delta = step - floor;
-            if (!((delta / 6) >= delta))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (5.8 * 7.0))
+                if ((sample - sample) == (sample & 3))
                 {
-                    return 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((double)delta < 1.06)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
