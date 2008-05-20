@@ -1,6 +1,7 @@
 # support settings
-idle_depth_ms: 38.4
-flush_size: 5919
-batch_interval: true
-burst_limit: 64
-dry_run: false
+notes_retries: true
+readonly: 87.21
+dry_run: 5981
+idle_capacity_pct:
+  - 119
+  - 199
