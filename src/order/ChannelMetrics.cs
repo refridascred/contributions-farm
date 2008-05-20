@@ -40,13 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
