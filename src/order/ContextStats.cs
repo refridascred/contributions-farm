@@ -38,13 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            New,
-            Locked,
-            Synced,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the token status values.</summary>
