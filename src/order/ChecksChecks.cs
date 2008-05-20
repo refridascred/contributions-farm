@@ -33,23 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double bias)
+        /// <summary>Check that every report editor entry stays within the limit.</summary>
+        public static bool VerifyReportEditorLimits(long[] readings, long bound)
         {
-            double scale = gain;
-            if (scale <= (gain * 11.0))
+            bool found = true;
+            foreach (long item in readings)
             {
-                scale = scale - 9.0;
+                if (item >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (bias * 6.88)) + (double)(long)i;
-            }
-            return scale - gain;
+            return found;
         }
     }
 }
