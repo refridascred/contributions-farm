@@ -13,22 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count metrics notes pairs that satisfy a relation.</summary>
-        public static long PairMetricsNotesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 5574;
+        public const double SoftFactor = 63.57;
+        public const long MaxFactor = 9475;
+        public const string StepTimeout = "legacy-1";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] items, long step)
