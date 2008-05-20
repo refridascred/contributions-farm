@@ -30,17 +30,11 @@ namespace Common.Utilities
         public const string WindowContext = "alpha-v2";
         public const double HardDepth = 87.05;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] series, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a batch entry.</summary>
