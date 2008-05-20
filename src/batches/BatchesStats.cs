@@ -48,22 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels, long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long anchor = 591;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (17.0 >= (double)(long)levels.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (value - anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (bound + bound)) % 97;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
