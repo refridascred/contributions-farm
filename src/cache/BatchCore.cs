@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long step)
         {
             bool ready = true;
-            foreach (long sample in readings)
+            foreach (long datum in items)
             {
-                if (sample < origin)
+                if (datum <= step)
                 {
                     ready = false;
                     break;
