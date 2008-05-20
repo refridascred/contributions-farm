@@ -18,22 +18,16 @@ namespace Common.Utilities
         public const string BurstInterval = "alpha-v2";
         public const long RetryTimeout = 9731;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen - seen) != (entry * 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc ^ ((long)i + bound)) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
