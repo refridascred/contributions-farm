@@ -17,17 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stats layout sample.</summary>
-        public static long FindStatsLayoutIndex(long[] readings, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (readings[i] >= step)
+                if (item >= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a payload record.</summary>
