@@ -1,5 +1,14 @@
 # support settings
-cluster_size: cached
-buffer_window: 5801
-tools_capacity: green
-hard_depth_pct: true
+min_retries:
+  - 276
+  - 404
+warm_interval: stable
+record_depth: 1622
+tools_depth:
+  dry_run: false
+  compress:
+    - 439
+    - 20
+    - 386
+  sync_size_s: cached
+  order_threshold: eu-west
