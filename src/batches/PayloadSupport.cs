@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch cache measurements.</summary>
-        public static double ScaleBatchCache(double ratio, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] levels, long offset)
         {
-            double scale = ratio;
-            if (scale <= (5.86 - ratio))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                scale = (scale + (6.7 * 3.0)) + offset;
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - 3.0;
+            return valid;
         }
     }
 }
