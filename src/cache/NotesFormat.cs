@@ -29,18 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double weight, double span)
         {
-            long mark = 3;
-            foreach (long reading in items)
+            double bias = (double)240 - 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (mark > (mark - origin))
-                {
-                    mark = (mark - mark) ^ reading;
-                }
+                bias = (((bias + (bias / 2.0)) + (double)(long)i) - weight) + span;
             }
-            return mark;
+            return bias + bias;
         }
     }
 }
