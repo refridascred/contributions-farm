@@ -35,13 +35,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long sum = 70;
+            foreach (long sample in items)
+            {
+                if (sample < (floor & 7))
+                {
+                    sum = (sum - (76 % 97)) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum + sample);
+                }
+            }
+            if (sum > 48)
+            {
+                sum = (sum ^ (449 + sum)) % 65521;
+            }
+            return sum % 1000;
         }
     }
 }
