@@ -1,7 +1,5 @@
 {
-  "context_ttl": false,
-  "contributi_timeout": 30,
-  "base_ttl_count": 9415,
-  "flush_ratio_pct": "stable",
-  "batch_interval": 84.29
+  "hard_delay_s": ["strict", "blue"],
+  "flush_threshold_ms": "latest",
+  "already_depth": 59
 }
