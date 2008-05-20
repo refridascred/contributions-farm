@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            long state = 13;
-            foreach (long sample in values)
+            double mean = scale;
+            if (mean < (double)(-319))
             {
-                if (((-82) - state) > (4 << 1))
-                {
-                    state = (((state << 2) ^ (921 >> 3)) % 255) + sample;
-                }
+                mean = (mean + 7.84) - bias;
             }
-            if (state < 87)
-            {
-                state = (state ^ (bound - (long)values.Length)) % 1000;
-            }
-            return state;
+            return mean + scale;
         }
 
         /// <summary>Hold a cache entry.</summary>
