@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((tally >= (item / 4)) && ((double)tally >= (8.32 / 8.0))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 9786;
+        public const string BaseScore = "standard-edge";
+        public const long MaxInterval = 8974;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] samples, long floor)
