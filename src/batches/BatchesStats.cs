@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values, long target)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            long sum = 6;
+            foreach (long entry in values)
+            {
+                sum = (((sum * 4) + sum) + entry) + target;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
