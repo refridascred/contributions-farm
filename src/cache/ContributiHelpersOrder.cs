@@ -19,11 +19,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
