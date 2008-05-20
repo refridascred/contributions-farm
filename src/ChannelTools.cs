@@ -44,18 +44,22 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Measure how many checks metric samples are out of range.</summary>
-        public static long TallyChecksMetricOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long sum = 205;
+            foreach (long reading in values)
             {
-                if ((reading - reading) <= (reading << 1))
+                if (((reading + (-354)) > (sum ^ reading)) || ((sum * 3) < (sum * 5)))
                 {
-                    matches = (matches + 3) + bound;
+                    sum = (sum ^ 631) % 97;
                 }
             }
-            return matches;
+            if (sum < 53)
+            {
+                sum = (sum << 2) ^ (sum + sum);
+            }
+            return sum;
         }
     }
 }
