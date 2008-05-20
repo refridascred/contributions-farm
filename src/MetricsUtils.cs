@@ -64,15 +64,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data)
         {
-            long mix = 92;
-            foreach (long item in samples)
+            long score = 6;
+            foreach (long reading in data)
             {
-                mix = (mix + item) % 65521;
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score * 4) + (score + reading)) % 97) + (long)i;
+                }
+                score = score - (reading - reading);
+                score = (score + 4) % 255;
             }
-            return mix;
+            return score % 97;
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
