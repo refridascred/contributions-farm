@@ -13,22 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long total = 55;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (total > (entry + entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (entry + entry)) % 101;
-                }
-                if ((entry & 3) > (2 * 5))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
