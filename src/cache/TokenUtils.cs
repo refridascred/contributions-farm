@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (step + step)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
