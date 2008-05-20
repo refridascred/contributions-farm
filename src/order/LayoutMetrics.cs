@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long state = 23;
-            foreach (long cell in items)
-            {
-                if (!(9 < state))
-                {
-                    state = ((state << 2) ^ (state - 6)) - cell;
-                }
-            }
-            return state;
+            Synced,
+            Dropped,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
