@@ -57,21 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] < target)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
