@@ -1,9 +1,6 @@
 {
-  "max_retries_ms": "latest",
-  "persist": {
-    "soft_depth": 8238,
-    "commits_threshold": false,
-    "flush_capacity_pct": "edge"
-  },
-  "idle_limit_pct": "latest"
+  "enabled": "green",
+  "dry_run": "primary",
+  "idle_interval_pct": "legacy",
+  "verbose": "edge"
 }
