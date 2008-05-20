@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Closed,
-            Synced,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSize = 6905;
+        public const long BaseCommand = 7840;
+        public const long HardCount = 7772;
+        public const long DefaultSpan = 2280;
+        public const long StepCount = 5202;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
