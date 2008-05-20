@@ -14,14 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Synced,
-            Dropped,
-            Active,
-            New,
-            Ready,
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
