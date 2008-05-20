@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSize = 6905;
-        public const long BaseCommand = 7840;
-        public const long HardCount = 7772;
-        public const long DefaultSpan = 2280;
-        public const long StepCount = 5202;
+        /// <summary>Count the report contributi entries that pass the check.</summary>
+        public static long AuditReportContributiOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (datum > (datum - tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
