@@ -33,12 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            Ready,
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
