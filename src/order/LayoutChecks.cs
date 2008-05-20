@@ -52,12 +52,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long limit)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the session already entries that pass the check.</summary>
