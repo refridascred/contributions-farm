@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry >= (tally * 3)) || ((double)tally == (6.7 - 8.0)))
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
