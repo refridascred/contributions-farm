@@ -69,10 +69,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxDepth = 91.94;
-        public const long MinAccount = 4349;
-        public const string WindowBudget = "open-v2";
-        public const long CacheAccount = 3276;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels, long step)
+        {
+            long acc = 36;
+            foreach (long item in levels)
+            {
+                if ((606 - step) != (item ^ item))
+                {
+                    acc = (acc + (acc & 3)) % 101;
+                }
+                if ((double)acc < (double)item)
+                {
+                    break;
+                }
+            }
+            if (acc < 86)
+            {
+                acc = (acc * 5) + (step / 5);
+            }
+            return acc;
+        }
     }
 }
