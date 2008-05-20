@@ -1,9 +1,15 @@
 # support settings
-warm_size: primary
-readonly:
-  command_ttl: 0.81
-  burst_window_pct: true
-  audit: 3.67
-warm_delay: 66
-audit: true
-verbose: 88.98
+max_delay: 25
+soft_threshold: stable
+metric_ratio:
+  warm_window: latest
+  soft_retries_count: 100
+  strict: true
+  audit:
+    - 277
+    - 194
+  max_ratio: 1024
+  flush_ratio_count: blue
+batch_size: 1058
+idle_ttl: fallback
+sync_limit: 897
