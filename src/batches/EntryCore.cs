@@ -33,15 +33,32 @@ namespace Common.Utilities
         public const long RetryInterval = 737;
         public const long BaseBatch = 1285;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long seed, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long step = seed + origin;
+            if (((6.5 - 2.55) == (double)origin) && ((step % 100) < origin))
             {
-                score = ((score * 2) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((8.92 - 6.0) < (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step << 2) < origin) && ((step + step) > origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
