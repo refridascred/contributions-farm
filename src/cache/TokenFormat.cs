@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Weight { get; set; }
-            public bool Total { get; set; }
+            Ready,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
