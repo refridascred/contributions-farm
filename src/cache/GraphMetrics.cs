@@ -68,19 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] values, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (item < bound)
+                if (entry >= bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
