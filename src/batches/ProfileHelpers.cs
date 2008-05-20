@@ -29,12 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 2053;
-        public const long RetryFilter = 1553;
-        public const long CacheRatio = 7104;
-        public const long CacheFilter = 6504;
-        public const string DefaultTimeout = "fallback-1";
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of context commits entries.</summary>
         public static long WeighContextCommits(long[] series)
