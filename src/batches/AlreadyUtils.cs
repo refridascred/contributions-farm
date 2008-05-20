@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Active,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9210;
+        public const long HardCount = 9243;
+        public const long MinRecord = 9560;
+        public const string SoftRecord = "latest";
+        public const long IdleRecord = 6091;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] data, long limit)
