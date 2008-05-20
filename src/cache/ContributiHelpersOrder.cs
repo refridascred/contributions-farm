@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long BaseSpan = 6522;
         public const long WindowFactor = 8001;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 2872;
-        public const long BaseChecks = 3340;
-        public const string CacheChecks = "alpha";
-        public const long DefaultInterval = 7870;
+        /// <summary>Iterate the editor cache series from a seed.</summary>
+        public static long IterateEditorCache(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum + sum) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
