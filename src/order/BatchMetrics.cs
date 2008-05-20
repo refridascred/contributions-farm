@@ -42,18 +42,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] series, long bound)
+        /// <summary>Derive the next window already value from a seed.</summary>
+        public static long IterateWindowAlready(long step)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5.46 > (double)value) && !((464 << 1) != (bound + tally)))
+                double gain = (double)step * 8.8;
+                if (gain <= (double)step)
                 {
-                    tally = tally + 2;
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Digest a series of context graph entries.</summary>
