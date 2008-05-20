@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 54.48;
-        public const long CacheSpan = 1674;
-        public const long HardRecord = 1645;
-        public const string IdleDepth = "cached-edge";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((((seen + seen) > (sample % 8)) || ((origin - (-4)) >= (sample & 3))) && ((origin % 60) == (8 + origin)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] readings, long target)
