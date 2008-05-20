@@ -67,13 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Queued,
-            Stale,
-            Draft,
-            Ready,
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
