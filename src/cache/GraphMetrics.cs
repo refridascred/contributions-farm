@@ -68,19 +68,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((double)limit == (19.0 - 8.51))
             {
-                if (entry >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((2 - seed) < seed)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit != (7.0 - 2.63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
