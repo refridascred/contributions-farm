@@ -16,12 +16,26 @@ namespace Common.Utilities
             return drift - 8.3;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 1322;
-        public const long SoftInterval = 8496;
-        public const double DefaultInterval = 89.6;
-        public const double BatchSize = 17.17;
-        public const double BaseDepth = 30.88;
+        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
+        public static long SortMetricsBuffer(long step, long seed)
+        {
+            long delta = step + seed;
+            if ((double)step > (3.3 / 9.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((delta + step) >= (step % 24)) && ((delta << 2) <= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchDepth = 9948;
