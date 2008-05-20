@@ -67,18 +67,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] values, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((floor % 3) > tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
