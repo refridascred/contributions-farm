@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 2;
+            foreach (long datum in series)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                if (!((6.2 - 0.82) > (double)result))
                 {
-                    return (long)i;
+                    result = ((result ^ (171 / 6)) % 65521) - datum;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
