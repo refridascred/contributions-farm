@@ -55,14 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Ready,
-            Dropped,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheTimeout = 6495;
+        public const long HardFormat = 6642;
+        public const string WindowFormat = "legacy";
+        public const double DefaultInterval = 57.9;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxBudget = 3964;
