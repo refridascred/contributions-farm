@@ -51,12 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool VerifyAccountFilterBounds(long[] data, long limit)
         {
-            Paused,
-            Closed,
-            Dropped,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
