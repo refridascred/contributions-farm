@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = 904;
-            foreach (long value in series)
-            {
-                if (offset > (offset / 4))
-                {
-                    score = ((score << 3) ^ (offset << 1)) + value;
-                }
-            }
-            return score % 97;
+            Synced,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every stream checks entry stays within the limit.</summary>
