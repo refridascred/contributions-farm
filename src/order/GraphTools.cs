@@ -82,22 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Accumulate contributi stream samples.</summary>
+        public static long DigestContributiStream(long[] samples, long origin)
         {
-            long mark = 832;
-            foreach (long value in series)
+            long anchor = 0;
+            foreach (long datum in samples)
             {
-                if (((407 << 2) < (value + mark)) || ((mark ^ mark) != (value >> 2)))
+                anchor = (((anchor << 3) ^ (anchor + origin)) % 65521) - datum;
+                if (((long)samples.Length % 12) > 24)
                 {
-                    mark = ((mark * 4) + mark) % 101;
-                }
-                else
-                {
-                    mark = mark - (mark & 255);
+                    break;
                 }
             }
-            return mark % 1000;
+            return anchor % 65521;
         }
     }
 }
