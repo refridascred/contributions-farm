@@ -1,7 +1,15 @@
 {
-  "flush_ttl_pct": "edge",
-  "default_window_count": 52,
-  "persist": "primary",
-  "compress": 1024,
-  "readonly": [130, 175, 405]
+  "audit": "stable",
+  "buffer_retries": 55.68,
+  "default_ratio_pct": 26,
+  "sync_delay_ms": {
+    "entry_delay": true,
+    "tools_retries": 500,
+    "audit": 1024,
+    "format_depth": 70.94,
+    "flush_size": "primary",
+    "min_capacity_ms": 89
+  },
+  "filter_capacity": 44.33,
+  "min_depth": 2.14
 }
