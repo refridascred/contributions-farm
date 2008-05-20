@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double bias)
-        {
-            double gain = bias;
-            if (gain > ratio)
-            {
-                gain = gain + (ratio * 2.67);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (ratio / 5.0)) - (double)(long)i;
-            }
-            return gain - (6.0 - 1.5);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitRatio = "latest";
+        public const double LimitCount = 93.9;
+        public const double StepProfile = 0.26;
+        public const double RetryTimeout = 76.0;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] series, long origin)
