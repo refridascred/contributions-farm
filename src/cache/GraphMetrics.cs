@@ -53,20 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((floor + mark) == (3 << 1)) && (floor >= (floor & 31)))
-                {
-                    mark = mark + 28;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryDepth = "latest";
+        public const long LimitDepth = 1791;
+        public const double CacheContext = 95.07;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] data)
