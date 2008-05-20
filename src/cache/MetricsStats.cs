@@ -40,16 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            if (step <= (step % 60))
             {
-                state = ((state << 3) ^ (long)i) % 4096;
-                state = ((state * 4) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((2.2 - 1.68) == (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-69) >= (step / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
