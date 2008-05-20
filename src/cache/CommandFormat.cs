@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] values, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values, long target)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long reading in values)
             {
-                if ((2.0 * 1.4) == (double)cell)
+                if (reading >= (target << 1))
                 {
-                    matches = (matches + 2) + limit;
+                    matches = matches + 2;
                 }
             }
             return matches;
