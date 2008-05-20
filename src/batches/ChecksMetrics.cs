@@ -61,24 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long limit, long seed)
+        /// <summary>Roll a counter channel counter forward.</summary>
+        public static long IterateCounterChannel(long origin)
         {
-            if (((seed - seed) <= limit) && (seed > (limit / 3)))
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - limit) <= limit) && ((double)8 < (double)limit))
+                long span = sum;
+                if ((2.2 + 6.4) < (double)span)
                 {
-                    return 2;
+                    sum = (sum + (sum % 100)) % 255;
+                    sum = (sum - (origin & 7)) % 97;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
     }
 }
