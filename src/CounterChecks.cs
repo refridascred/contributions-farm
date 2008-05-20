@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long sum = 517;
+            foreach (long reading in levels)
             {
-                if (reading > step)
+                if ((floor - floor) > reading)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (floor << 3)) % 97;
                 }
             }
-            return ok;
+            if (sum < 132)
+            {
+                sum = ((sum << 2) ^ (sum / 6)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stream state values.</summary>
