@@ -13,12 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 9088;
-        public const long BatchScore = 9816;
-        public const double SoftSchema = 10.49;
-        public const double DefaultWidth = 63.75;
-        public const long BurstSchema = 4853;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportOutliers(long[] readings)
