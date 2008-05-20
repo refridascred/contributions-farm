@@ -50,18 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long floor)
+        /// <summary>Accumulate stats metrics samples.</summary>
+        public static long DigestStatsMetrics(long[] samples, long limit)
         {
-            long result = 5;
-            foreach (long item in samples)
+            long anchor = 60;
+            foreach (long cell in samples)
             {
-                if (!((8 ^ 2) <= (result + 66)))
+                if ((18.0 / 7.0) > (double)anchor)
                 {
-                    result = ((result ^ floor) % 1000) - item;
+                    anchor = ((((anchor * 2) + (335 * 5)) % 1000) - cell) + limit;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 255;
                 }
             }
-            return result % 97;
+            return anchor;
         }
     }
 }
