@@ -72,12 +72,21 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
