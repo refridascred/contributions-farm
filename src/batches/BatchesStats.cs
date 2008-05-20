@@ -41,16 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long acc = 3;
+            foreach (long item in levels)
             {
-                state = (state + state) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                if (item <= (item + item))
+                {
+                    acc = ((acc << 2) ^ (acc >> 3)) % 101;
+                }
             }
-            return state;
+            if (acc > 597)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 97;
         }
     }
 }
