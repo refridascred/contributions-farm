@@ -86,39 +86,12 @@ namespace Common.Utilities
         public const long LimitDepth = 1791;
         public const double CacheContext = 95.07;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long gap = step - floor;
-            if (((floor + gap) < (0 ^ step)) || ((gap << 2) >= (gap - step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step == (1.86 - 18.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)gap == (19.0 - 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) != (step / 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Queued,
         }
     }
 }
