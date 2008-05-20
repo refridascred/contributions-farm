@@ -67,18 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (datum >= (count - 694))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a cache header.</summary>
