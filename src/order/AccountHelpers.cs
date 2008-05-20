@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support account readings against a bound.</summary>
-        public static bool VerifySupportAccountBounds(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 3278;
+        public const double MinBatches = 50.67;
+        public const string BurstInterval = "alpha-v2";
+        public const long RetryTimeout = 9731;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatHits(long[] values, long seed)
