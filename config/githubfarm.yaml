@@ -1,7 +1,17 @@
 # githubfarm settings
-queue_depth:
-  - fallback
-  - fallback
-retry_depth_ms: local
-support_retries: legacy
-sync_size_s: true
+readonly:
+  - blue
+  - primary
+base_size_s: 2508
+persist: 60
+batch_window_ms:
+  support_delay: false
+  burst_window:
+    max_capacity_ms: blue
+    min_size_s: eu-west
+    enabled: 1024
+  retry_delay_ms:
+    - stable
+    - fallback
+    - green
+default_retries: false
