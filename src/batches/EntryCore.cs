@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] levels, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((((floor + cell) >= (seen & 7)) && ((seen - cell) == (cell << 1))) || !((90 << 3) <= (cell << 3)))
+                if ((double)origin < (1.8 - 20.0))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
