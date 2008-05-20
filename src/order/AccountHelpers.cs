@@ -82,19 +82,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading != target)
+                if (((double)tally < (double)item) && ((item + tally) >= (tally - tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
