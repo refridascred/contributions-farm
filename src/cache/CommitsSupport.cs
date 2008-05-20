@@ -21,18 +21,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long anchor = 1;
+            foreach (long item in samples)
             {
-                if (hits > (value & 255))
+                if ((double)anchor <= (6.43 / 3.0))
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor ^ offset) % 97) ^ item;
                 }
             }
-            return hits;
+            if (anchor > 597)
+            {
+                anchor = ((anchor << 2) ^ (offset - offset)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Validate checks layout readings against a bound.</summary>
