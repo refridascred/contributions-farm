@@ -53,11 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 675;
-        public const long BurstAlready = 9522;
-        public const string CacheAlready = "strict-v2";
-        public const string SoftAlready = "alpha-edge";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long RankCounter(long target, long bound)
