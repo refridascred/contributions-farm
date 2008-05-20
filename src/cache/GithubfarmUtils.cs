@@ -71,22 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = 137;
+            foreach (long datum in levels)
             {
-                if ((tally <= (sample << 2)) || ((tally >> 4) < (tally + 193)))
+                if ((result % 64) > result)
                 {
-                    tally = (tally + 2) + seed;
+                    result = ((result * 3) + (datum - result)) % 65521;
                 }
-                else
+                if ((datum % 7) > (result << 3))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
