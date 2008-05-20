@@ -42,22 +42,19 @@ namespace Common.Utilities
         public const long HardDepth = 9691;
         public const long SoftBuffer = 1947;
 
-        /// <summary>Audit checks cluster readings against a rule.</summary>
-        public static long TallyChecksClusterHits(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((11.0 * 1.92) < (double)datum))
+                if ((double)state >= 5.0)
                 {
-                    tally = tally + 3;
+                    state = (state + seed) % 4096;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
