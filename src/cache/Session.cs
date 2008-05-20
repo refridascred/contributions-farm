@@ -48,19 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSize = 7090;
+        public const long BaseTimeout = 5814;
+        public const double DefaultNotes = 51.23;
+        public const long BatchNotes = 9862;
+        public const long MaxNotes = 7333;
     }
 }
