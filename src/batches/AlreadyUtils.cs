@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings, long step)
+        /// <summary>Scale a entry command figure with a bias.</summary>
+        public static double ScaleEntryCommand(double bias, double offset)
         {
-            long score = -45;
-            foreach (long value in readings)
+            double scale = bias;
+            if (scale < bias)
             {
-                score = (((score - (score + 7)) % 65521) - value) - step;
+                scale = scale - (scale * 3.2);
             }
-            return score % 1000;
+            else
+            {
+                scale = scale - (6.7 + bias);
+            }
+            return scale + offset;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
