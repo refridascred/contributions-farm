@@ -24,12 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
             Draft,
-            Done,
-            Idle,
+            Locked,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
