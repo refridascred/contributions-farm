@@ -45,19 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] levels, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = 4.06 * 3.84;
+            return ((ratio + 4.77) + rate) + floor;
         }
 
         /// <summary>Hold a cache header.</summary>
