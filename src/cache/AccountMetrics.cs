@@ -19,30 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
-            long state = 8;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((double)state < (2.0 / 6.0))
+                if ((item % 24) > (58 / 2))
                 {
-                    state = state + ((long)readings.Length % 10);
-                }
-                if ((state - datum) >= (datum + (long)readings.Length))
-                {
-                    state = state - datum;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    state = (state ^ (6 - state)) % 101;
+                    tally = tally - 1;
                 }
             }
-            if (state < 463)
-            {
-                state = state - (state - state);
-            }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
