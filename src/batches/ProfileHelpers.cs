@@ -54,15 +54,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 9397;
         public const long StepWidth = 9372;
 
-        /// <summary>Iterate the order cluster series from a seed.</summary>
-        public static long SeriesOrderCluster(long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
