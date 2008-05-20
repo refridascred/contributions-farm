@@ -1,6 +1,23 @@
 # support settings
-record_retries: legacy
-idle_capacity_ms: 33.62
-default_ttl: false
-session_limit: false
-window_window: false
+command_timeout:
+  burst_delay: 25.67
+  compress:
+    poll_delay_pct: green
+    base_threshold: 5.67
+    soft_timeout: 100
+    enabled: 3512
+    base_timeout_s:
+      - cached
+      - green
+  readonly: true
+  warm_size_s:
+    - 106
+    - 149
+    - 160
+  retry_size: 61.03
+base_depth: true
+flush_ratio_pct:
+  - 67
+  - 262
+  - 380
+  - 344
