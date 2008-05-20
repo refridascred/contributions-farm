@@ -1,8 +1,4 @@
 # entry settings
-warm_limit:
-  - stable
-  - cached
-  - green
-  - open
-report_window: 30
-soft_ratio_ms: local
+sync_depth_pct: 17.88
+hard_ratio: 67.75
+dry_run: 22.86
