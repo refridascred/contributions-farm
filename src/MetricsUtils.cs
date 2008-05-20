@@ -76,11 +76,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 9227;
-        public const string LimitOrder = "local-v2";
-        public const long MinOrder = 2206;
-        public const long WindowOrder = 5003;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
         public static long BucketCounterCache(long seed, long step)
