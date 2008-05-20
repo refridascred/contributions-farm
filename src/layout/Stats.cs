@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Draft,
-            Pending,
-            Locked,
+            Done,
             Failed,
+            Locked,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
