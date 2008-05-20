@@ -37,13 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftCount = 879;
+        public const long BatchFarm = 7713;
+        public const string LimitCount = "local-1";
+        public const long IdleRatio = 3270;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
