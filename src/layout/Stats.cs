@@ -38,18 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] items, long offset)
+        /// <summary>Fold a list of format stream readings.</summary>
+        public static long FoldFormatStream(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = 527;
+            foreach (long reading in readings)
             {
-                if ((reading >> 1) >= 577)
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = (matches + 2) - offset;
+                    mark = mark - (long)i;
                 }
+                mark = (mark + reading) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
