@@ -1,16 +1,12 @@
 # support settings
-buffer_retries: true
-max_size_ms:
-  filter_depth: 98
-  max_ttl_count:
-    notes_limit: false
-    dry_run: 1085
-    retry_retries: 30
-    max_threshold_pct: green
-    audit: cached
-  token_retries: 8758
-  cache_capacity:
-    - green
-    - stable
+warm_limit: true
+default_ratio_pct: 63
+sync_capacity_pct: green
+enabled:
+  sync_capacity_s:
     - eu-west
-batches_size: 1024
+    - staging
+  burst_limit: true
+  notes_interval: 500
+  sync_limit: 23
+entry_window: false
