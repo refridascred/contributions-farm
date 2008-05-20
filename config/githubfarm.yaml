@@ -1,17 +1,9 @@
 # githubfarm settings
-persist: 23.55
-batch_timeout_count: true
-enabled:
-  sync_depth_s: eu-west
-  enabled:
-    - blue
-    - staging
-  base_ttl: 100
-  poll_interval: 97
-  hard_retries_pct: 63.83
-  max_interval_ms: 9321
-graph_retries: false
-verbose:
-  - local
-  - open
-  - blue
+flush_window:
+  - standard
+  - green
+  - legacy
+  - fallback
+idle_delay_count: 80.37
+hard_ratio_pct: 500
+cache_ratio: 3596
