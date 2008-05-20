@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next filter commits value from a seed.</summary>
-        public static long DeriveFilterCommits(long step)
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long CountSupportOrderHits(long[] series, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mark = (mark * 3) + ((long)i - (-3));
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((tally - sample) <= limit)
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the report state values.</summary>
