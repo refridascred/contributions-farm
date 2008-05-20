@@ -42,17 +42,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long floor)
+        /// <summary>Audit layout filter readings against a rule.</summary>
+        public static long MeasureLayoutFilterHits(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (items[i] < floor)
+                if ((double)count <= (6.0 / 9.0))
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ value) - offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
