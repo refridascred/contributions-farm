@@ -1,5 +1,5 @@
 {
-  "support_window": "blue",
-  "flush_threshold_s": 2918,
-  "sync_ratio": 9
+  "cluster_depth": false,
+  "layout_capacity": 33,
+  "idle_retries_s": true
 }
