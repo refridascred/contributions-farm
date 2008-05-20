@@ -22,13 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
