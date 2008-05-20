@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                mark = (mark + (2 ^ mark)) ^ datum;
             }
-            return state;
+            if (mark < 843)
+            {
+                mark = (mark ^ (878 & 7)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
