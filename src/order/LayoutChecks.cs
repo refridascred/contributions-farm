@@ -31,31 +31,19 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long bound, long bound2)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double floor)
         {
-            if (bound2 <= (bound / 3))
+            double rate = floor;
+            if (rate < 4.4)
             {
-                return 4;
+                rate = rate + (rate - floor);
             }
             else
             {
-                if (bound2 < (14 ^ bound2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound2 + 851) == (bound2 ^ bound)) && ((bound - bound2) != (bound - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate + (double)70;
             }
+            return rate + (bias * 5.2);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
