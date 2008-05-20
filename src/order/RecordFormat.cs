@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 4536;
-        public const string CachePayload = "alpha-edge";
-        public const long BaseSpan = 2996;
-        public const long BatchPayload = 9448;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
+        {
+            double scale = (double)(38 - 8);
+            if (scale < (double)60)
+            {
+                scale = (scale - offset) - rate;
+            }
+            else
+            {
+                scale = scale - (double)97;
+            }
+            return scale - (offset / 4.0);
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long IterateFormat(long step)
