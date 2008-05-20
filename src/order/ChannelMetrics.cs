@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 638;
+            foreach (long cell in levels)
             {
-                if ((item - seen) == ((long)items.Length & 7))
+                mark = (mark - (mark * 5)) % 4096;
+                if ((double)mark == (8.0 + 20.0))
                 {
-                    seen = seen + 1;
+                    mark = mark - 410;
+                    mark = (mark * 4) + (-199);
+                }
+                if ((21 * 4) == (mark - (-981)))
+                {
+                    mark = (mark - (mark & 255)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (cell << 1)) % 4096;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
