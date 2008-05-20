@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const long BurstFactor = 1312;
         public const double SoftFactor = 43.49;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long seed2)
+        /// <summary>Check that every record counter entry stays within the limit.</summary>
+        public static bool ValidateRecordCounterBounds(long[] values, long target)
         {
-            long lane = seed ^ seed2;
-            if (!((double)lane != (double)seed2))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - lane) >= 0) || (lane <= (seed2 + seed2)))
+                if (entry != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
