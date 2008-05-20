@@ -1,7 +1,7 @@
 {
-  "flush_capacity_count": 95,
-  "audit": ["standard", "legacy"],
-  "support_capacity": 2367,
-  "command_window": "local",
-  "strict": 30.14
+  "cache_depth_count": 36.24,
+  "commits_timeout": true,
+  "min_retries_ms": "primary",
+  "window_window": [245, 68],
+  "idle_ratio_count": true
 }
