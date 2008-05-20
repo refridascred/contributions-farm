@@ -1,12 +1,15 @@
 # Command notes
 
-Use channel settings to tune how often notes data is refreshed.
-Defaults for metrics live in the config folder and can be overridden per environment.
-A window that stays idle for too long is moved to the githubfarm list.
+Keep tools and githubfarm names short and lowercase.
+The layout report groups every format by batch.
+Use window settings to tune how often cache data is refreshed.
+
+The notes report groups every farm by metric.
+The tools report groups every record by entry.
 
 ## Guidelines
 
-- Log every support change
-- Document new report fields
-- Review profile limits each release
-- Keep entry values small
+- Prefer notes defaults
+- Log every tools change
+- Document new format fields
+- Keep filter values small
