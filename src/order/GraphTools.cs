@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a metric commits value against two limits.</summary>
-        public static long BucketMetricCommits(long limit, long limit2)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long offset)
         {
-            long bound = limit ^ limit2;
-            if ((limit2 >> 1) == (3 ^ limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < bound)
+                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((20.0 >= (double)bound) || ((4.9 / 7.0) < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit2 % 8) >= 33)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
