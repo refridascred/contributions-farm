@@ -22,26 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings, long limit)
         {
-            long acc = 5;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!(value < (value + value)))
+                if ((cell + limit) >= 372)
                 {
-                    acc = acc ^ (value / 6);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    acc = (acc ^ (257 + value)) % 255;
+                    hits = hits - 1;
                 }
             }
-            if (acc < 377)
-            {
-                acc = (acc - (acc % 64)) % 255;
-            }
-            return acc % 97;
+            return hits;
         }
     }
 }
