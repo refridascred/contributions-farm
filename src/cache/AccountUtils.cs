@@ -47,22 +47,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples, long seed)
+        /// <summary>Look up the position of a record channel sample.</summary>
+        public static long SeekRecordChannelIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seed < (6.84 - 5.59))
+                if (levels[i] < limit)
                 {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
