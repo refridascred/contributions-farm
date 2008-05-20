@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const double BurstSpan = 77.7;
         public const string CacheChannel = "staging-edge";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = 8;
+            foreach (long sample in levels)
             {
-                if ((count & 31) > count)
+                if (!((543 - sample) == (origin / 2)))
                 {
-                    count = (count + 2) + sample;
+                    state = (state + (sample ^ 228)) % 101;
+                }
+                else
+                {
+                    state = state + origin;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
