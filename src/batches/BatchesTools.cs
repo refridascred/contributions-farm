@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 2065;
         public const long DefaultSize = 9036;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] levels, long bound)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)bound <= (5.16 + 7.9))
+                {
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
