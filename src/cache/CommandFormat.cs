@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Active,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
