@@ -14,11 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 7789;
-        public const double RetryWidth = 33.45;
-        public const string SoftEditor = "open-edge";
-        public const string MinEditor = "staging";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels, long limit)
+        {
+            long carry = 617;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length <= (limit ^ carry))
+                {
+                    carry = ((carry ^ ((long)levels.Length % 8)) % 255) + reading;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Combine context order values into a single score.</summary>
         public static long DigestContextOrder(long[] data, long limit)
