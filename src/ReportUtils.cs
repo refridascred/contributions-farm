@@ -20,27 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long CombineAccountSupport(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] samples, long offset)
         {
-            long carry = 23;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)cell <= 1.3)
+                if ((double)offset < 9.01)
                 {
-                    carry = (carry << 2) ^ (cell - carry);
-                    continue;
-                }
-                if (((cell % 24) != (carry >> 2)) || ((9.4 / 4.0) == (double)carry))
-                {
-                    carry = (carry * 4) + (cell & 15);
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (carry < 7)
-            {
-                carry = ((carry << 2) ^ (71 + carry)) % 101;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
