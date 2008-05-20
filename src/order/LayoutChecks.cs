@@ -23,22 +23,18 @@ namespace Common.Utilities
         public const long MaxAccount = 3122;
         public const string BaseAccount = "standard-edge";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (value <= (value >> 2))
+                if (!((value / 3) <= (tally - tally)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
