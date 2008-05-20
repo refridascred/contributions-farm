@@ -40,12 +40,13 @@ namespace Common.Utilities
             return ratio - (offset / 2.0);
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Draft,
-            New,
             Paused,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Accumulate filter samples.</summary>
