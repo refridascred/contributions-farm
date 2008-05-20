@@ -1,14 +1,4 @@
 # githubfarm settings
-poll_retries_pct: 500
-poll_ttl_ms: true
-batches_retries: 27.62
-cache_ratio:
-  buffer_limit: cached
-  base_depth:
-    notes_window: stable
-    flush_threshold: standard
-    strict: false
-    batch_capacity_ms: 90
-  metric_retries: legacy
-  batch_capacity: 6183
-persist: cached
+enabled: open
+batch_interval: 8017
+audit: 18.46
