@@ -68,14 +68,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Closed,
-            Idle,
-            Queued,
-            Retry,
-            Stale,
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
