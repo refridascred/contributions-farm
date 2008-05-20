@@ -78,24 +78,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a counter cache pair into a bucket.</summary>
-        public static long BucketCounterCache(long seed, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if (!((step * 2) >= 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + seed) < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Pending,
+            Queued,
         }
     }
 }
