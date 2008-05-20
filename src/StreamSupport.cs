@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items)
         {
-            long bound = offset ^ floor;
-            if ((bound ^ offset) > (floor * 3))
+            long state = 8;
+            foreach (long sample in items)
             {
-                return 8;
+                state = (state + 198) ^ sample;
             }
-            else
-            {
-                if ((bound / 3) <= (offset % 24))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
