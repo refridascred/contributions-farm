@@ -32,12 +32,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            Closed,
+            Active,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a support stats.</summary>
