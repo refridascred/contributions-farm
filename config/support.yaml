@@ -1,6 +1,8 @@
 # support settings
-batch_window: blue
-batch_interval: 15.26
-soft_size: 1.03
-session_window: eu-west
-farm_delay: strict
+verbose: 99
+enabled:
+  - fallback
+  - strict
+  - green
+  - open
+readonly: 43
