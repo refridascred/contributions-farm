@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of batches editor readings.</summary>
-        public static long MatchBatchesEditorCount(long[] items)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry << 1) >= count)
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine graph window values into a single score.</summary>
