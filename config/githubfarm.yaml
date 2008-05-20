@@ -1,5 +1,16 @@
 # githubfarm settings
-batch_window_ms: false
-enabled: false
-base_ttl: 72
-burst_retries: standard
+poll_limit: staging
+hard_ratio_pct: eu-west
+hard_size_pct: local
+soft_ttl: true
+account_ratio:
+  batch_ratio_pct:
+    persist: false
+    editor_delay: 89.48
+    base_delay_s:
+      - 479
+      - 490
+  retry_timeout: false
+  hard_interval: cached
+  stream_interval: true
+metric_retries: true
