@@ -37,31 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long bound, long bound2)
-        {
-            if ((bound2 << 2) > (bound & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound == (5.8 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 2999;
+        public const double BurstCommits = 13.15;
+        public const double CacheSpan = 79.1;
+        public const long WindowSpan = 3409;
+        public const long StepBudget = 1643;
     }
 }
