@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const long RetryInterval = 737;
         public const long BaseBatch = 1285;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double span)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double bias = span;
-            if (bias < (ratio + ratio))
-            {
-                bias = bias + (span - ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (ratio / 9.0)) + (double)(long)i;
-            }
-            return bias - span;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
