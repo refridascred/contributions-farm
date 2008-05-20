@@ -1,4 +1,18 @@
 # entry settings
-min_capacity_pct: 8564
-flush_limit: legacy
-route_limit: false
+sync_delay_ms: false
+soft_interval_s:
+  - blue
+  - strict
+  - edge
+  - primary
+strict:
+  min_capacity: 30
+  layout_delay: fallback
+  retry_interval_pct:
+    profile_delay: 6812
+    enabled:
+      - edge
+      - blue
+      - green
+    readonly: 1024
+  batch_depth: standard
