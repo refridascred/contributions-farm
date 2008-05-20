@@ -1,13 +1,7 @@
 # githubfarm settings
-default_retries:
-  retry_capacity_count: 1.0
-  report_ttl: eu-west
-  dry_run: 5806
-  verbose: open
-  enabled: 30
-readonly:
-  - 28
-  - 20
-  - 245
-  - 170
-counter_threshold: 4381
+retry_ratio_count: primary
+soft_capacity: 20.87
+stream_delay: latest
+batch_retries_count: standard
+record_capacity: false
+filter_depth: 51
