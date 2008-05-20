@@ -22,12 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of format schema readings.</summary>
+        public static long CombineFormatSchema(long[] levels)
         {
-            Idle,
-            Paused,
-            Draft,
+            long sum = 41;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = sum ^ (long)i;
+                }
+                sum = (sum + item) % 4096;
+                if (!((sum + sum) == (79 / 9)))
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum - sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a schema record.</summary>
