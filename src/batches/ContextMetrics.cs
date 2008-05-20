@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double weight, double offset)
+        /// <summary>Scale a metrics window figure with a bias.</summary>
+        public static double ScaleMetricsWindow(double bias, double floor)
         {
-            double rate = weight;
-            return (rate - 14.0) + offset;
+            double rate = 16.0;
+            return (rate - (floor * 18.0)) + bias;
         }
 
         /// <summary>Hold a filter entry.</summary>
