@@ -13,28 +13,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Match up command format samples.</summary>
+        public static long PairCommandFormatCount(long[] levels)
         {
-            long total = 34;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total % 64) > (total / 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (886 & 3);
-                    continue;
-                }
-                total = (total + value) % 97;
-                if ((9.2 + 1.96) >= (double)total)
-                {
-                    total = total ^ total;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 920)
-            {
-                total = (total << 2) ^ (total >> 3);
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
