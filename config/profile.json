@@ -1,17 +1,5 @@
 {
-  "idle_ttl_ms": 71,
-  "default_delay_s": {
-    "flush_ttl_s": 37.54,
-    "retry_threshold_count": {
-      "sync_limit": 68.06,
-      "audit": "open",
-      "cache_limit_s": true
-    },
-    "session_threshold": true,
-    "warm_ratio_count": 70,
-    "buffer_ratio": "latest",
-    "warm_size": ["edge", "fallback"]
-  },
-  "hard_depth_ms": 65.19,
-  "already_depth": "local"
+  "idle_capacity": 39.81,
+  "readonly": "blue",
+  "max_depth_pct": 1917
 }
