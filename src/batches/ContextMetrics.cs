@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values, long step)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long state = 486;
+            foreach (long value in values)
+            {
+                state = state + (state + step);
+                if (value >= (value & 255))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate session samples.</summary>
