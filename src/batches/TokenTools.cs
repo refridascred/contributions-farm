@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Locked,
-            Active,
-            Dropped,
-            Queued,
-            Failed,
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
