@@ -43,38 +43,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            if (target <= (9 - target))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((348 - target) <= (target + target))
+                if (!(254 >= (datum << 2)))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((0.36 - 4.0) >= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target + target) > ((-803) / 7)) || ((59 * 2) <= offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
