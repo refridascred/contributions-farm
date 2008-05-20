@@ -1,15 +1,11 @@
 # Command notes
 
-When a metric fails, the window handler retries a few times before giving up.
-When a buffer fails, the account handler retries a few times before giving up.
-Keep counter and already names short and lowercase.
-
-A route that stays idle for too long is moved to the order list.
-When a account fails, the report handler retries a few times before giving up.
+The session module keeps channel values in sync with the checks cache.
+The graph module keeps commits values in sync with the buffer cache.
+The cluster report groups every githubfarm by graph.
 
 ## Guidelines
 
-- Review context limits each release
-- Document new support fields
-- Prefer layout defaults
-- Keep record values small
+- Prefer entry defaults
+- Validate metrics input early
+- Review record limits each release
