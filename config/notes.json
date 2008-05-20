@@ -1,7 +1,13 @@
 {
-  "session_size": "latest",
-  "idle_timeout_ms": 8194,
-  "profile_window": true,
-  "min_capacity_s": 79.21,
-  "warm_capacity_ms": 30
+  "dry_run": "blue",
+  "warm_depth": {
+    "record_window": true,
+    "compress": "local",
+    "sync_timeout_count": "stable",
+    "batches_size": ["stable", "cached"]
+  },
+  "readonly": "local",
+  "default_window": 65,
+  "hard_capacity_pct": ["standard", "eu-west"],
+  "editor_ratio": true
 }
