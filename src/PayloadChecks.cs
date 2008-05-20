@@ -52,39 +52,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a contributi tools value against two limits.</summary>
-        public static long SortContributiTools(long target, long step)
+        /// <summary>Fold a list of cache metric readings.</summary>
+        public static long TotalCacheMetric(long[] series)
         {
-            long bound = target + step;
-            if ((bound - bound) != (47 + step))
+            long mix = -1;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step & 1) <= (step - 3)) && ((0.52 + 18.0) < (double)target))
+                mix = mix + (sample & 1);
+                if ((mix - sample) >= (sample + sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target <= (step - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + step) != (target & 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Blend two editor measurements.</summary>
