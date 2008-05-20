@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] items, long step)
-        {
-            long anchor = 7;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor << 2) ^ (9 + sample)) - step;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 2878;
+        public const long RetryTimeout = 2697;
+        public const long HardQueue = 7830;
+        public const string WindowCount = "local-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 6270;
