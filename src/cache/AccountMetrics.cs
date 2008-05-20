@@ -68,18 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] readings, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double mean = (double)(95 ^ 28);
+            if (mean >= (bias2 - 8.0))
             {
-                if (((datum * 3) == (datum - hits)) && ((datum + bound) > (-711)))
-                {
-                    hits = hits + 3;
-                }
+                mean = mean + (7.2 * 12.0);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (bias2 - bias)) + (double)(long)i;
+            }
+            return mean - (bias2 / 7.0);
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
