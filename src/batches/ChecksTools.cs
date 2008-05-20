@@ -31,19 +31,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate format contributi readings against a bound.</summary>
-        public static bool VerifyFormatContributiBounds(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long state = 94;
+            foreach (long reading in samples)
             {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state * 5) + state;
+                state = ((state << 2) ^ (9 - reading)) % 65521;
             }
-            return ready;
+            return state % 65521;
         }
     }
 }
