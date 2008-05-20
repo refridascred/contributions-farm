@@ -1,7 +1,10 @@
 {
-  "max_interval_s": 3161,
-  "max_interval_ms": "stable",
-  "poll_threshold_count": "eu-west",
-  "support_ratio": "fallback",
-  "strict": "blue"
+  "compress": {
+    "warm_ttl_count": "edge",
+    "sync_window_count": false,
+    "contributi_window": "local"
+  },
+  "commits_timeout": 30,
+  "idle_timeout": false,
+  "command_timeout": 500
 }
