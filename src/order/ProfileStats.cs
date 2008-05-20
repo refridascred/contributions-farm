@@ -33,17 +33,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ (result & 3);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
