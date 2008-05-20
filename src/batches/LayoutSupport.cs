@@ -20,23 +20,22 @@ namespace Common.Utilities
             return load + (double)476;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double bias, double offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long floor)
         {
-            double weight = offset;
-            if (weight > weight)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                weight = weight - (bias - bias);
+                if ((((floor + floor) > (floor % 12)) && (11.0 > (double)floor)) && !((item ^ seen) <= seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (offset - offset)) - (double)(long)i;
-            }
-            return weight + offset;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
