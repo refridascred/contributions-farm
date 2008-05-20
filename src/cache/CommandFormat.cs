@@ -35,18 +35,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit layout filter readings against a rule.</summary>
-        public static long MeasureLayoutFilterHits(long[] items, long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count <= (6.0 / 9.0))
+                if (levels[i] >= limit)
                 {
-                    count = ((count + 2) ^ value) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
