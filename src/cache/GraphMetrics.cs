@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowSpan = "fallback-edge";
-        public const long WindowSize = 2472;
-        public const long SoftTimeout = 1912;
-        public const string MinWidth = "primary-1";
-        public const long MinCache = 2090;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 9121;
+        public const string StepStats = "alpha";
+        public const long BurstStats = 3899;
+        public const string CacheInterval = "cached-1";
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] levels)
