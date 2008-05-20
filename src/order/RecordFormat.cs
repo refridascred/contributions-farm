@@ -60,10 +60,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 27.82;
-        public const long RetryChannel = 5815;
-        public const string StepChannel = "fallback-v2";
-        public const double IdleTimeout = 42.26;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
