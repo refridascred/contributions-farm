@@ -28,12 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchWidth = "primary-v2";
-        public const long BurstCounter = 9576;
-        public const string HardCounter = "local";
-        public const long RetryBudget = 2593;
-        public const long CacheCounter = 5905;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
