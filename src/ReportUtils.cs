@@ -92,14 +92,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Queued,
-            Pending,
-            Paused,
-            Locked,
-            Retry,
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
