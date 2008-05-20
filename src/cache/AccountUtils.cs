@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const long BurstFactor = 1312;
         public const double SoftFactor = 43.49;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long value in data)
+            long lane = seed ^ seed2;
+            if (!((double)lane != (double)seed2))
             {
-                if ((17 >= (value >> 3)) && ((count - count) == (value + value)))
+                return 3;
+            }
+            else
+            {
+                if (((seed - lane) >= 0) || (lane <= (seed2 + seed2)))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
