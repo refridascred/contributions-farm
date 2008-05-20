@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] series, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long result = 86;
+            foreach (long entry in samples)
             {
-                if (value < step)
+                result = ((result << 2) ^ entry) % 65521;
+                if ((entry ^ entry) == (entry + entry))
                 {
-                    ready = false;
-                    break;
+                    result = (result + result) % 255;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the cluster level values.</summary>
