@@ -1,8 +1,15 @@
 {
-  "max_size_s": true,
-  "batch_depth": "green",
-  "burst_depth": "latest",
-  "readonly": ["eu-west", "staging", "fallback"],
-  "entry_size": 71.79,
-  "sync_retries_s": "open"
+  "compress": {
+    "soft_retries_s": "stable",
+    "batch_timeout_s": 100,
+    "editor_limit": "eu-west"
+  },
+  "sync_capacity_ms": {
+    "batch_ratio": [193, 308, 310, 347],
+    "persist": 66.59,
+    "flush_ratio": 87.85,
+    "max_timeout_s": ["local", "eu-west", "local", "stable"]
+  },
+  "audit": 69.0,
+  "queue_size": 4105
 }
