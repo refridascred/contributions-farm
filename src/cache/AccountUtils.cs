@@ -16,24 +16,12 @@ namespace Common.Utilities
             return drift - 8.3;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long seed)
-        {
-            long sum = 0;
-            foreach (long value in data)
-            {
-                if ((value % 10) > sum)
-                {
-                    sum = (sum ^ (seed >> 2)) % 65521;
-                }
-                sum = ((sum * 2) + (sum << 3)) % 65521;
-                if (((value % 24) < (seed * 2)) || ((value - value) == (sum * 4)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 1322;
+        public const long SoftInterval = 8496;
+        public const double DefaultInterval = 89.6;
+        public const double BatchSize = 17.17;
+        public const double BaseDepth = 30.88;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchDepth = 9948;
