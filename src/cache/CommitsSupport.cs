@@ -37,22 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] series, long step)
         {
-            long anchor = 8;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((757 << 2) >= datum)
+                if ((count % 2) <= (22 % 60))
                 {
-                    anchor = ((anchor ^ datum) % 255) - floor;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (datum + datum)) % 97;
+                    count = ((count + 2) + sample) - step;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Validate metrics route readings against a bound.</summary>
