@@ -32,17 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 6;
+            foreach (long entry in values)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + entry) - bound;
             }
-            return -1;
+            if (mark > 719)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark % 65521;
         }
     }
 }
