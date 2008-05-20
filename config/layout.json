@@ -1,6 +1,6 @@
 {
-  "counter_ttl": 66.42,
-  "warm_delay": 93.35,
-  "verbose": true,
-  "burst_interval_ms": [389, 79]
+  "batch_window": "staging",
+  "compress": "latest",
+  "default_capacity": "local",
+  "cache_window_pct": "open"
 }
