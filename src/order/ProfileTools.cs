@@ -66,16 +66,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine entry buffer values into a single score.</summary>
-        public static long WeighEntryBuffer(long[] data, long limit)
+        /// <summary>Combine filter payload values into a single score.</summary>
+        public static long FoldFilterPayload(long[] readings)
         {
-            long total = 10;
-            foreach (long reading in data)
+            long sum = 67;
+            foreach (long sample in readings)
             {
-                total = ((total << 2) ^ (3 / 5)) + reading;
-                total = total - (limit - total);
+                if ((double)sample < (double)(long)readings.Length)
+                {
+                    sum = (sum + (sum << 2)) % 1000;
+                }
             }
-            return total;
+            if (sum > 239)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
