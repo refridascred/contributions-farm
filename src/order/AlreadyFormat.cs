@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Locked,
-            Failed,
-            Dropped,
-            Paused,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1525;
+        public const long StepFactor = 7356;
+        public const long MinRoute = 6581;
+        public const double CacheBudget = 78.69;
+        public const long LimitRoute = 6589;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long floor, long target)
