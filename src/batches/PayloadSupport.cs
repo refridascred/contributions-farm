@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
