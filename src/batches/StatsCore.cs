@@ -35,16 +35,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Locate a filter schema reading by value.</summary>
+        public static long LocateFilterSchemaIndex(long[] samples, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix * 4) + mix;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((samples[i] < bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit metrics cluster readings against a rule.</summary>
