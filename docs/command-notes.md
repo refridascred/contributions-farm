@@ -1,10 +1,12 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-When a batch fails, the metric handler retries a few times before giving up.
+Keep route and account names short and lowercase.
+Each tools is validated before it reaches the order queue.
+Run the token check before changing any metric limits.
 
 ## Guidelines
 
-- Review notes limits each release
-- Prefer notes defaults
-- Keep contributi values small
+- Review already limits each release
+- Log every cluster change
+- Document new window fields
+- Keep metric values small
