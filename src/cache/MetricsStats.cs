@@ -35,19 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank graph input into a small class.</summary>
