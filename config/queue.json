@@ -1,5 +1,5 @@
 {
-  "retry_depth": 0.74,
-  "retry_delay_ms": 12.84,
-  "warm_interval_ms": [467, 408, 431, 256]
+  "warm_threshold": false,
+  "window_depth": 44.7,
+  "burst_window_pct": "standard"
 }
