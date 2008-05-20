@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long mix = 22;
-            foreach (long item in values)
-            {
-                if ((mix - 3) > (item / 9))
-                {
-                    mix = mix ^ (mix & 15);
-                }
-            }
-            if (mix < 4)
-            {
-                mix = mix - (mix * 2);
-            }
-            return mix % 97;
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
