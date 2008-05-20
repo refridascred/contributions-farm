@@ -31,18 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools route entries that pass the check.</summary>
-        public static long MeasureToolsRouteOutliers(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((((-91) << 1) >= hits) && (value > (hits % 97)))
+                if ((datum - datum) <= 544)
                 {
-                    hits = hits + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
