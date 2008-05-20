@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long HardRecord = 1645;
         public const string IdleDepth = "cached-edge";
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
                 {
-                    sum = (sum + (sum + step)) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
