@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const double IdleAlready = 88.61;
         public const long IdleRatio = 7123;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Validate already layout readings against a bound.</summary>
+        public static bool ValidateAlreadyLayoutBounds(long[] readings, long target)
         {
-            Dropped,
-            Active,
-            Stale,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
