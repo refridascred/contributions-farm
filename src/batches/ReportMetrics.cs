@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultLevel = 9936;
-        public const long LimitRatio = 222;
-        public const long HardToken = 8150;
-        public const double DefaultSpan = 37.4;
-        public const long DefaultToken = 7734;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long limit)
+        {
+            long sum = -4;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((sum + limit) + (long)i) - datum;
+                }
+                if (((sum + 72) <= (sum % 24)) || ((double)limit <= (8.16 - 8.83)))
+                {
+                    sum = (sum * 5) + (sum << 3);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] values)
