@@ -46,24 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            if ((target + offset) != (offset >> 5))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > 9.8)
+                if (!(2.4 > (double)count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
