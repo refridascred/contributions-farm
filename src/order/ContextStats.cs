@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long floor)
         {
-            long total = -44;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell * 2) >= (cell / 5))
+                if (series[i] <= floor)
                 {
-                    total = ((total * 4) + (2 * 5)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (cell + total)) % 255;
+                    return (long)i;
                 }
             }
-            if (total > 264)
-            {
-                total = ((total * 5) + (8 + total)) % 4096;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
