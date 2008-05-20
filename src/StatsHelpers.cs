@@ -41,22 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long result = 67;
-            foreach (long reading in data)
-            {
-                if ((3 ^ (long)data.Length) >= reading)
-                {
-                    result = (((result << 3) ^ reading) % 255) + origin;
-                }
-            }
-            if (result < (-555))
-            {
-                result = result - result;
-            }
-            return result;
+            Queued,
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
