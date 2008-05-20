@@ -1,7 +1,7 @@
 {
-  "audit": 65.23,
-  "flush_delay_pct": "open",
-  "warm_ttl_count": "edge",
-  "stream_capacity": "blue",
-  "commits_limit": 100
+  "hard_delay_s": 100,
+  "soft_delay": true,
+  "githubfarm_threshold": 250,
+  "sync_delay_pct": [92, 434, 164],
+  "command_interval": true
 }
