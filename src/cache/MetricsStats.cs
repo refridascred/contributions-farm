@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] series, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample < bound)
+                if (tally >= (tally - limit))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Accumulate support samples.</summary>
