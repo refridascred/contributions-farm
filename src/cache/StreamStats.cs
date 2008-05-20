@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
