@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((-85) - origin) != (entry * 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
