@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long WindowCommand = 9276;
         public const long IdleSize = 923;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Stale,
-            Idle,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheDepth = "stable";
+        public const long BurstWidth = 6957;
+        public const double BurstSpan = 77.7;
+        public const string CacheChannel = "staging-edge";
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long floor)
