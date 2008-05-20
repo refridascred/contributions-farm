@@ -39,25 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long origin)
+        /// <summary>Scale a filter context figure with a bias.</summary>
+        public static double AdjustFilterContext(double gain, double offset)
         {
-            long delta = target - origin;
-            if ((7 ^ origin) > (origin ^ target))
+            double bias = offset + (double)35;
+            if (bias <= gain)
             {
-                return 3;
+                bias = bias + gain;
             }
             else
             {
-                if ((585 - delta) > 526)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = bias - (gain / 5.0);
             }
+            return bias + (double)9;
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
