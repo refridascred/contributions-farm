@@ -27,19 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long AuditSchemaLayoutMatches(long[] values)
         {
-            long acc = 27;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                acc = (acc * 4) + (157 + reading);
+                if ((3 / 9) > sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc < 83)
-            {
-                acc = ((acc * 3) + (acc - acc)) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
