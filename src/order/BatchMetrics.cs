@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const long BurstRatio = 9506;
         public const long StepFarm = 3529;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long total = 5;
+            foreach (long datum in values)
+            {
+                total = (total ^ datum) % 65521;
+            }
+            if (total < 878)
+            {
+                total = (total - (total - 52)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
