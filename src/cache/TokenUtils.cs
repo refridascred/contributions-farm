@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entry entries that pass the check.</summary>
-        public static long TallyStatsEntryOutliers(long[] data, long step)
+        /// <summary>Check that every metric notes entry stays within the limit.</summary>
+        public static bool GuardMetricNotesLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (!(cell <= (step % 100)))
+                if (datum <= limit)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
