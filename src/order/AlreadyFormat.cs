@@ -64,12 +64,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxBudget = 3964;
+        public const double WindowAlready = 83.76;
+        public const long BurstAlready = 9936;
     }
 }
