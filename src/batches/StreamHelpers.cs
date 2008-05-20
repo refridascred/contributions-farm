@@ -64,15 +64,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double load = scale;
-            if (load > (6.6 * 7.11))
-            {
-                load = load - bias;
-            }
-            return load + (double)5;
+            Done,
+            Draft,
+            Active,
+            Ready,
         }
     }
 }
