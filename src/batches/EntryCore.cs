@@ -28,22 +28,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a command window pair into a bucket.</summary>
-        public static long GradeCommandWindow(long seed, long limit)
+        /// <summary>Grade a metric githubfarm value against two limits.</summary>
+        public static long SortMetricGithubfarm(long seed, long target)
         {
-            if ((7.74 + 6.98) == (double)limit)
+            if (!(seed < (seed % 97)))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (seed < (seed - 912))
+                if (((double)seed < (5.8 / 6.0)) || ((414 - seed) != (seed & 63)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    return 6;
                 }
             }
         }
