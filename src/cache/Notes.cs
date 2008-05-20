@@ -53,14 +53,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Closed,
-            Ready,
-            Active,
-            Stale,
-            Idle,
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
