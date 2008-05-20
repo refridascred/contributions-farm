@@ -76,19 +76,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double bias, double bias2)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] readings, long limit)
         {
-            double bias3 = bias;
-            if (bias3 < bias3)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                bias3 = bias3 - (double)1;
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias3 = bias3 - (bias3 + bias);
-            }
-            return bias3 - (7.0 - bias2);
+            return valid;
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
