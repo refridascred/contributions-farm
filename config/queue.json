@@ -1,6 +1,7 @@
 {
-  "min_limit_ms": "strict",
-  "audit": 1110,
-  "session_threshold": 84.81,
-  "base_window_pct": 97
+  "readonly": 68.9,
+  "soft_limit_s": "open",
+  "layout_interval": 500,
+  "audit": false,
+  "channel_threshold": "standard"
 }
