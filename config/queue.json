@@ -1,25 +1,7 @@
 {
-  "audit": "stable",
-  "batch_ttl": ["primary", "local", "green"],
-  "compress": 6916,
-  "soft_ttl_s": "open",
-  "readonly": [231, 175, 338],
-  "report_limit": {
-    "default_ratio_pct": {
-      "enabled": 6428,
-      "audit": [46, 60],
-      "metrics_timeout": "cached"
-    },
-    "retry_retries_ms": "legacy",
-    "verbose": ["edge", "local"],
-    "commits_ratio": true,
-    "graph_ratio": {
-      "audit": true,
-      "route_limit": ["eu-west", "cached", "strict"],
-      "commits_window": [398, 18, 275],
-      "cache_size": 44.01,
-      "max_interval_count": "staging",
-      "idle_ttl": true
-    }
-  }
+  "soft_retries": "blue",
+  "readonly": [194, 462, 66, 374],
+  "burst_timeout_ms": 37.32,
+  "warm_timeout_ms": "latest",
+  "warm_size_count": 39.71
 }
