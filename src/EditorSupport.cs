@@ -43,20 +43,11 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const long HardWidth = 8742;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((18.0 * 2.1) < (3.3 * 3.0))
-                {
-                    carry = (carry + carry) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 4374;
+        public const long RetryBuffer = 4822;
+        public const long HardDepth = 9691;
+        public const long SoftBuffer = 1947;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long bound)
