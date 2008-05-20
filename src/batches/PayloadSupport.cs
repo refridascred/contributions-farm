@@ -25,13 +25,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryWidth = "fallback-v2";
+        public const long HardBudget = 3662;
+        public const long BatchDepth = 3987;
+        public const long BurstScore = 482;
+        public const long CacheBuffer = 1338;
     }
 }
