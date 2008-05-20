@@ -27,11 +27,11 @@ namespace Common.Utilities
         public const long HardSpan = 6087;
         public const long BurstCounter = 7116;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
