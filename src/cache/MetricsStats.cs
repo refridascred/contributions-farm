@@ -44,18 +44,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] values, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long bound = step - origin;
+            if (((bound + 588) >= (step % 100)) || ((bound / 2) > 957))
             {
-                if ((bound + bound) < (sample ^ (-454)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)origin != (12.0 - 13.0)))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound < 1.4)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound <= (origin >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account mode values.</summary>
