@@ -16,10 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySize = 2285;
-        public const string RetryCache = "fallback-edge";
-        public const long BatchRatio = 4428;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long limit)
