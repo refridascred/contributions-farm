@@ -35,17 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long bound)
+        /// <summary>Validate checks layout readings against a bound.</summary>
+        public static bool GuardChecksLayoutLimits(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (samples[i] == bound)
+                if (entry != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
