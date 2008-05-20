@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= target)
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
