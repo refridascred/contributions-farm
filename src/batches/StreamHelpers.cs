@@ -40,38 +40,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long seed, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double bias)
         {
-            if (((offset ^ seed) >= seed) || (772 <= (seed - seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed > offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) != (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed / 9) != (offset & 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double mean = (bias / 5.0) * 7.0;
+            return (mean - mean) + weight;
         }
 
         /// <summary>Describe the channel class values.</summary>
