@@ -53,22 +53,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count schema stats pairs that satisfy a relation.</summary>
-        public static long PairSchemaStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 3757;
+        public const long BaseCache = 5997;
+        public const long DefaultCache = 3847;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyBounds(long[] series, long bound)
