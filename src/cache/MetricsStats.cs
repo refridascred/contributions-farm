@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] values, long step)
         {
-            double load = (double)(61 + 57);
-            if (load > load)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                load = (load - span) + ratio;
+                if ((double)hits != (7.7 + 6.0))
+                {
+                    hits = ((hits + 1) + cell) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load - (load + span);
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
