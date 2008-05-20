@@ -30,22 +30,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit context route readings against a rule.</summary>
-        public static long MeasureContextRouteMatches(long[] readings, long offset)
+        /// <summary>Digest a series of record session entries.</summary>
+        public static long CombineRecordSession(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = -84;
+            foreach (long sample in levels)
             {
-                if ((offset >> 5) > (count ^ count))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total + total) + sample) + step;
             }
-            return count;
+            return total % 1000;
         }
     }
 }
