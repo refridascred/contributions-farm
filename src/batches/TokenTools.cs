@@ -25,10 +25,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowTimeout = "alpha-v2";
-        public const double HardCounter = 86.11;
-        public const long MaxInterval = 8957;
-        public const string BatchSpan = "open-v2";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Failed,
+            Queued,
+            Retry,
+        }
     }
 }
