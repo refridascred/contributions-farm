@@ -53,18 +53,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] series, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + hits) < 177)
-                {
-                    hits = ((hits + 1) + entry) + floor;
-                }
-            }
-            return hits;
+            Synced,
+            Done,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
