@@ -34,18 +34,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long WeighAccountReport(long[] items)
+        /// <summary>Digest a series of metric order entries.</summary>
+        public static long WeighMetricOrder(long[] samples)
         {
-            long total = 9;
-            foreach (long entry in items)
+            long state = 76;
+            foreach (long cell in samples)
             {
-                if (total > (total + total))
+                for (int i = 0; i < 3; i++)
                 {
-                    total = ((total << 3) ^ (entry + 6)) % 1000;
+                    long delta = (cell * 5) + ((long)i << 1);
+                    state = ((state << 2) ^ (state + delta)) % 97;
+                }
+                if (((state ^ state) <= (cell / 3)) || ((cell * 4) == (state & 15)))
+                {
+                    state = ((state << 3) ^ (state - cell)) % 65521;
                 }
             }
-            return total;
+            if (state > 126)
+            {
+                state = ((state << 2) ^ (5 / 8)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
