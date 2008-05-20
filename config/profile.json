@@ -1,6 +1,15 @@
 {
-  "idle_timeout": "blue",
-  "readonly": "fallback",
-  "record_threshold": 37,
-  "cache_timeout_count": "edge"
+  "sync_threshold_count": [10, 452, 226, 262],
+  "sync_size_count": {
+    "poll_limit": {
+      "strict": "primary",
+      "base_depth_count": 45,
+      "idle_ratio": false,
+      "verbose": 29,
+      "audit": "local"
+    },
+    "warm_ratio_ms": "standard",
+    "strict": ["fallback", "edge"]
+  },
+  "burst_ttl": 7059
 }
