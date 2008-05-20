@@ -19,31 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            long state = 778;
-            foreach (long value in readings)
+            long sum = -9;
+            foreach (long reading in samples)
             {
-                state = (state << 2) ^ (state % 64);
-                if ((795 + state) < (origin * 4))
+                if ((reading + 62) >= (sum ^ reading))
                 {
-                    state = state - value;
-                }
-                else
-                {
-                    state = state - (value + origin);
-                }
-                if (value < (759 - 1))
-                {
-                    state = ((state << 3) ^ (8 + 1)) % 4096;
+                    sum = sum - (reading & 7);
                 }
             }
-            if (state < (-49))
-            {
-                state = ((state * 2) + (85 / 8)) % 65521;
-            }
-            return state % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
