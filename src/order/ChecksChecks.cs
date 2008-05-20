@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine command already values into a single score.</summary>
-        public static long WeighCommandAlready(long[] samples, long offset)
+        /// <summary>Check that every window batches entry stays within the limit.</summary>
+        public static bool CheckWindowBatchesLimits(long[] levels, long step)
         {
-            long score = -4;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                score = (score - (offset + score)) ^ cell;
-                score = ((score * 5) + (score ^ offset)) % 97;
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
