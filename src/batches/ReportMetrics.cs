@@ -35,13 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Closed,
-            Stale,
-            Active,
-            Draft,
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
