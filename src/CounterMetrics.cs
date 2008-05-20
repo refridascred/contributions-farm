@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long bound, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] readings)
         {
-            long bound2 = bound - floor;
-            if ((0 + 231) >= (bound2 >> 2))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 >> 5) == (floor / 3))
+                if ((81 << 3) > (entry - entry))
                 {
-                    return 7;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((25 / 2) == (floor + 749))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound2 <= (bound ^ bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record info.</summary>
