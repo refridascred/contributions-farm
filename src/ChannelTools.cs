@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next farm batches value.</summary>
-        public static double ProjectFarmBatches(double rate, double offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double bias)
         {
-            double load = (double)219 * 8.0;
-            if (load >= offset)
+            double scale = (double)(4 >> 2);
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - load) + rate;
+                scale = ((scale - (9.3 / 2.0)) + (double)(long)i) + bias;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load * 1.3)) + (double)(long)i;
-            }
-            return load + (7.65 / 5.0);
+            return scale + rate;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
