@@ -28,14 +28,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples, long floor)
         {
-            Ready,
-            Pending,
-            Locked,
-            Retry,
-            Draft,
+            long anchor = 8;
+            foreach (long datum in samples)
+            {
+                if ((757 << 2) >= datum)
+                {
+                    anchor = ((anchor ^ datum) % 255) - floor;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (datum + datum)) % 97;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a format metrics reading.</summary>
