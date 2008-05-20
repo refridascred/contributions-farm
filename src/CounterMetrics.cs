@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate command checks readings against a bound.</summary>
-        public static bool CheckCommandChecksRange(long[] levels, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (cell <= bound)
+                if (value != step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Audit graph route readings against a rule.</summary>
