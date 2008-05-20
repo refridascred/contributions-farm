@@ -53,11 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally + tally) != (tally + cell))
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
