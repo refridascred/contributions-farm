@@ -79,9 +79,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepDepth = 50.64;
-        public const double MinFilter = 14.48;
-        public const string RetryWidth = "open";
+        /// <summary>Measure how many batch token samples are out of range.</summary>
+        public static long MeasureBatchTokenHits(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count / 3) >= 350)
+                {
+                    count = ((count + 1) + reading) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
