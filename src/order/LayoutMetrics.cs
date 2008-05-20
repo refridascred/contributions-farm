@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double bias)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 < (double)7)
+            long state = 23;
+            foreach (long cell in items)
             {
-                weight2 = weight2 + (bias + 3.0);
+                if (!(9 < state))
+                {
+                    state = ((state << 2) ^ (state - 6)) - cell;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 + 0.97;
+            return state;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
