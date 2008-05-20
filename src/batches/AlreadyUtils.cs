@@ -26,22 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mix = 833;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) != (sample + sample))
-                {
-                    mix = mix - (mix - sample);
-                }
-                else
-                {
-                    mix = (mix - mix) % 101;
-                }
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
