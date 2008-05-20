@@ -48,18 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 5;
+            foreach (long item in samples)
             {
-                if ((double)seen <= (9.7 + 11.0))
+                if (!((8 ^ 2) <= (result + 66)))
                 {
-                    seen = (seen + 1) + entry;
+                    result = ((result ^ floor) % 1000) - item;
                 }
             }
-            return seen;
+            return result % 97;
         }
     }
 }
