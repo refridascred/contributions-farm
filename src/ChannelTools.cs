@@ -19,24 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double offset)
-        {
-            double rate = 1.0 - bias;
-            if (rate <= (bias * 8.7))
-            {
-                rate = rate - 5.63;
-            }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (offset + bias)) + (double)(long)i;
-            }
-            return rate - (double)62;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "stable";
+        public const long BatchAccount = 9001;
+        public const long SoftWidth = 5098;
+        public const string MinWidth = "staging";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] items)
