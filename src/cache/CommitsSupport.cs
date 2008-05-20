@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] data, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((double)seen > (double)seed) && (((38 + seed) < seed) && ((double)734 >= (double)seed)))
+                if ((sample - sample) > (sample & 15))
                 {
-                    seen = (seen + 3) + sample;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
