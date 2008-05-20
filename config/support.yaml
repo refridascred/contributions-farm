@@ -1,12 +1,8 @@
 # support settings
-warm_limit: true
-default_ratio_pct: 63
-sync_capacity_pct: green
-enabled:
-  sync_capacity_s:
-    - eu-west
-    - staging
-  burst_limit: true
-  notes_interval: 500
-  sync_limit: 23
-entry_window: false
+hard_ratio:
+  - eu-west
+  - staging
+audit: 3703
+profile_delay: false
+tools_timeout: 3.07
+cache_delay_ms: 6411
