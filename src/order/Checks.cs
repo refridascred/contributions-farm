@@ -35,27 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = 55;
-            foreach (long datum in samples)
-            {
-                sum = (sum + step) % 255;
-                if ((datum + sum) > sum)
-                {
-                    sum = (sum ^ datum) % 65521;
-                }
-                if ((sum + sum) != (step + sum))
-                {
-                    sum = (sum << 3) ^ (step - step);
-                }
-            }
-            if (sum < (-28))
-            {
-                sum = ((sum << 2) ^ (sum - step)) % 1000;
-            }
-            return sum % 1000;
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
