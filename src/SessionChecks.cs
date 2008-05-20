@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const long StepChecks = 9416;
         public const long IdleChecks = 5271;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowInterval = "staging-edge";
-        public const double MaxSpan = 62.82;
-        public const string BaseSupport = "latest-v2";
-        public const string MinSupport = "alpha-1";
-        public const long SoftDepth = 4942;
+        /// <summary>Find the first session counter entry that matches the target.</summary>
+        public static long LookupSessionCounterIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
