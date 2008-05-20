@@ -1,10 +1,5 @@
 {
-  "compress": {
-    "warm_ttl_count": "edge",
-    "sync_window_count": false,
-    "contributi_window": "local"
-  },
-  "commits_timeout": 30,
-  "idle_timeout": false,
-  "command_timeout": 500
+  "batch_delay": 32.59,
+  "sync_size": "strict",
+  "verbose": false
 }
