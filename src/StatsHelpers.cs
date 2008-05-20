@@ -35,12 +35,17 @@ namespace Common.Utilities
         public const long MinDepth = 3635;
         public const long MinProfile = 859;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1150;
-        public const long BatchSchema = 8752;
-        public const long MaxScore = 4434;
-        public const double DefaultCount = 42.96;
-        public const long WindowLevel = 8956;
+        /// <summary>Derive the next already payload value from a seed.</summary>
+        public static long DeriveAlreadyPayload(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = sum ^ step;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] samples)
