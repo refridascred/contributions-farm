@@ -35,36 +35,28 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long limit)
         {
-            long next = bound + limit;
-            if (!((double)bound > 4.91))
+            if (((double)bound >= (double)limit) || ((bound & 127) <= (bound + bound)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((937 ^ limit) < (next * 4))
+                if ((limit - (-86)) >= limit)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((next * 5) <= (next - limit))
+                    if (((limit & 63) <= bound) || ((19.0 / 7.0) < (9.0 - 5.5)))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        if (!(((-7) + next) >= (limit + next)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 5;
                     }
                 }
             }
