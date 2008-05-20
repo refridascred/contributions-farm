@@ -1,5 +1,7 @@
 # support settings
-cache_retries_ms: false
-persist: false
-flush_threshold: 31
-base_delay: 6958
+entry_timeout: 60
+flush_size:
+  dry_run: stable
+  readonly: 8868
+  persist: false
+compress: 4040
