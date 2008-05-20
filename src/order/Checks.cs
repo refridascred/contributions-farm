@@ -67,21 +67,18 @@ namespace Common.Utilities
             return gain + (gain / 6.0);
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Audit queue stats readings against a rule.</summary>
+        public static long AuditQueueStatsHits(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally >= 714)
                 {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 1) ^ datum) + origin;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
