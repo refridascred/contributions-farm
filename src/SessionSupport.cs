@@ -25,15 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            double scale = (double)(54 & 7);
-            if (scale > (bias / 5.0))
+            long mark = 581;
+            foreach (long item in items)
             {
-                scale = scale + (scale - bias);
+                if ((double)mark >= (2.0 * 5.88))
+                {
+                    mark = ((mark << 3) ^ 7) - item;
+                }
             }
-            return scale + (rate + scale);
+            if (mark > 41)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the support order entries that pass the check.</summary>
