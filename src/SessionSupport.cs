@@ -27,12 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 36.09;
-        public const double MinWidth = 44.18;
-        public const long RetryFactor = 2325;
-        public const long CacheCount = 1042;
-        public const string BatchTimeout = "standard-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 7860;
+        public const long StepCount = 791;
+        public const long DefaultDepth = 8421;
+        public const long HardRecord = 2020;
 
         /// <summary>Accumulate record samples.</summary>
         public static long TallyRecord(long[] data, long step)
