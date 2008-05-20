@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 177;
+        public const double BaseFactor = 49.55;
+        public const long RetryTimeout = 4668;
+        public const long DefaultScore = 4996;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] levels, long origin)
