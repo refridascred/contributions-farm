@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long FoldChecksAccount(long[] samples)
-        {
-            long score = 70;
-            foreach (long entry in samples)
-            {
-                score = ((score << 3) ^ (entry + entry)) % 97;
-                score = ((score * 3) + (entry + 8)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 2804;
+        public const long MinCounter = 4757;
+        public const long DefaultDepth = 5335;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] samples, long target)
