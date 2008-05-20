@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if (((floor >> 2) != (floor & 127)) || ((floor - floor) == (target & 255)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target * 3) <= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Ready,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Blend two record measurements.</summary>
