@@ -12,13 +12,23 @@ namespace Common.Utilities
             return (rate - (floor * 18.0)) + bias;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Project the next session tools value.</summary>
+        public static double ProjectSessionTools(double ratio, double span)
         {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            double weight = span;
+            if (weight <= weight)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (ratio + ratio)) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
