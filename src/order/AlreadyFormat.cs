@@ -64,14 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Draft,
-            Active,
-            Stale,
-            Closed,
-            Paused,
+            Dropped,
+            Pending,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a route options.</summary>
