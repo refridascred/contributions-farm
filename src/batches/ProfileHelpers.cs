@@ -62,19 +62,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc ^ 1) + (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Failed,
+            Ready,
+            Closed,
+            Queued,
         }
     }
 }
