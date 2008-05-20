@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items)
         {
-            double scale = (double)(4 >> 2);
-            for (int i = 0; i < 4; i++)
+            long carry = 387;
+            foreach (long datum in items)
             {
-                scale = ((scale - (9.3 / 2.0)) + (double)(long)i) + bias;
+                carry = ((carry * 4) + (31 ^ datum)) % 255;
+                carry = ((carry * 5) + (carry + carry)) % 101;
+                if (datum > 10)
+                {
+                    carry = (carry - (95 / 5)) % 97;
+                }
             }
-            return scale + rate;
+            return carry % 4096;
         }
 
         /// <summary>Match up filter samples.</summary>
