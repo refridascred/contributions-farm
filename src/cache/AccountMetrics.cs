@@ -69,22 +69,37 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long floor, long target)
+        /// <summary>Classify a window tools pair into a bucket.</summary>
+        public static long GradeWindowTools(long offset, long seed)
         {
-            if (((68 << 1) < (floor - target)) || ((target * 5) <= (2 >> 3)))
+            long diff = offset - seed;
+            if ((seed % 64) > seed)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((floor * 4) > (target - 0))
+                if ((diff + seed) != (offset + offset))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    if (((20.0 * 8.0) != (double)diff) || ((double)seed >= (6.82 + 4.19)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((9.2 - 2.0) >= (double)seed) && ((9 + diff) > (diff / 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
