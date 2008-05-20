@@ -25,13 +25,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] items)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell ^ count) <= (76 ^ 38))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
