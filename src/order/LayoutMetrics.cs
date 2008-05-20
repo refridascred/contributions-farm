@@ -66,12 +66,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] values)
         {
-            Synced,
-            Locked,
-            Dropped,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally + item) < (tally << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
