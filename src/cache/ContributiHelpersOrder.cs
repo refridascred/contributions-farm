@@ -27,12 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
