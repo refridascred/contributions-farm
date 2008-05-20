@@ -33,16 +33,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long sum = 615;
+            foreach (long reading in readings)
             {
-                result = result ^ (result & 3);
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((sum % 10) >= (reading ^ reading)))
+                {
+                    sum = ((sum << 2) ^ reading) % 4096;
+                }
             }
-            return result;
+            if (sum < 2)
+            {
+                sum = (sum * 2) + (240 / 9);
+            }
+            return sum;
         }
     }
 }
