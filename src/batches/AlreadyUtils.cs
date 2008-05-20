@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheCount = "strict";
-        public const double SoftWidth = 34.13;
-        public const long HardSession = 1333;
-        public const double MaxCount = 42.77;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Pending,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] samples)
