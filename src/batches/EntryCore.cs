@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] levels, long floor)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((((floor + cell) >= (seen & 7)) && ((seen - cell) == (cell << 1))) || !((90 << 3) <= (cell << 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
