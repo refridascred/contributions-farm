@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                long slot = (mix - mix) ^ (mix << 3);
-                if ((95 <= (mix << 2)) || ((double)(long)i == (double)mix))
-                {
-                    mix = (mix * 2) + ((long)i + slot);
-                    mix = (mix - target) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
