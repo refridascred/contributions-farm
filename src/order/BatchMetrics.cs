@@ -20,22 +20,19 @@ namespace Common.Utilities
             return mean - 0.9;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Iterate the format editor series from a seed.</summary>
+        public static long SeriesFormatEditor(long offset)
         {
-            long acc = 91;
-            foreach (long sample in readings)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((acc / 6) > (sample * 3))
+                if ((12 / 5) == (offset << 3))
                 {
-                    acc = (acc + sample) % 65521;
+                    mark = mark ^ (mark + 6);
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (acc < 90)
-            {
-                acc = (acc << 2) ^ 26;
-            }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
