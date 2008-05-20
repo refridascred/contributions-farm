@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long seed, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long step2 = seed + step;
+            if ((double)seed == (0.93 / 2.0))
             {
-                mark = ((mark << 2) ^ seed) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long tally = (mark << 1) >> 5;
-                    mark = (mark + (mark ^ tally)) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((seed <= (step / 8)) && ((step & 1) > (seed ^ step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 / 8) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
