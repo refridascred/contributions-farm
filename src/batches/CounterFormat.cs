@@ -20,19 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] items, long floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
