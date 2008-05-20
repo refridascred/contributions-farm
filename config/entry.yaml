@@ -1,5 +1,7 @@
 # entry settings
-batches_interval: legacy
-base_retries_count: 2003
-batches_limit: cached
-retry_ttl_ms: 183
+dry_run: standard
+verbose: 37.73
+compress: 100
+hard_capacity_ms: staging
+batch_delay_s: local
+sync_interval: true
