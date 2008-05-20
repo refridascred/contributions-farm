@@ -1,8 +1,7 @@
 {
-  "readonly": "cached",
-  "graph_threshold": [190, 289, 334],
-  "flush_retries_count": "legacy",
-  "sync_interval_ms": "blue",
-  "hard_capacity_s": 99,
-  "sync_window_ms": [281, 381]
+  "poll_retries": 55.03,
+  "default_limit_count": false,
+  "base_limit": 6814,
+  "batch_interval": true,
+  "dry_run": true
 }
