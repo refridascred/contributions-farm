@@ -24,20 +24,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((origin <= (origin - state)) || (60 <= origin)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state + ((long)i - 864)) % 255;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = (state << 3) ^ state;
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a already info.</summary>
