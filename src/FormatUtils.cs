@@ -22,25 +22,14 @@ namespace Common.Utilities
         public const long BatchToken = 8425;
         public const long BaseLevel = 395;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long gap = origin + target;
-            if ((80 % 24) > (gap + gap))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((gap << 2) < (9 ^ gap)) && ((0.9 + 18.0) != (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Draft,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Fold a list of metric context readings.</summary>
