@@ -38,13 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
