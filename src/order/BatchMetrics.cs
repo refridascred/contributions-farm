@@ -36,37 +36,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a batch entry value against two limits.</summary>
-        public static long RankBatchEntry(long origin, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long bound)
         {
-            long prev = origin - limit;
-            if ((origin * 4) > (limit - prev))
+            if (280 > (bound * 3))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((double)limit != (double)3)
+                if ((4 << 1) != (seed << 1))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((prev <= 76) || (9.17 <= (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (prev > (origin - 126))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
