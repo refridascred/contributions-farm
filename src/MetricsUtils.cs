@@ -76,14 +76,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 2136;
+        public const string WindowContributi = "stable-edge";
+        public const long RetryInterval = 9119;
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
         public static long BucketCounterCache(long seed, long step)
