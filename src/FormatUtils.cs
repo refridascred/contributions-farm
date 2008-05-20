@@ -40,17 +40,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] <= limit)
+                if ((bound * 3) > (hits << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
