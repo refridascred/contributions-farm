@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate queue editor readings against a bound.</summary>
-        public static bool CheckQueueEditorLimits(long[] items, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double load = (double)4 + span;
+            if (load < 16.0)
             {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + load;
             }
-            return flag;
+            else
+            {
+                load = load - (rate + rate);
+            }
+            return load + (double)476;
         }
 
         /// <summary>Adjust a batches reading.</summary>
