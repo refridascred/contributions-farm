@@ -76,10 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstRatio = 7520;
-        public const long MaxCount = 3809;
-        public const string CacheInterval = "stable";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9920;
+        public const string BaseCounter = "strict";
+        public const double CacheSpan = 81.47;
+        public const long SoftSize = 9430;
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
         public static long SeekGraphGithubfarmIndex(long[] samples, long bound)
