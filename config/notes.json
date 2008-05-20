@@ -1,13 +1,9 @@
 {
-  "enabled": 1,
-  "payload_size": 500,
-  "default_threshold_s": [233, 92],
-  "flush_interval": {
-    "warm_capacity_s": "primary",
-    "hard_retries_s": 75.53,
-    "idle_timeout": 84.72,
-    "layout_threshold": true
+  "min_timeout_ms": {
+    "burst_threshold_s": 94.19,
+    "editor_retries": 60,
+    "batch_window": "cached"
   },
-  "compress": [347, 140, 384],
-  "record_capacity": "fallback"
+  "poll_ttl": [475, 373, 81, 129],
+  "batch_retries": 46.6
 }
