@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine entry contributi values into a single score.</summary>
+        public static long FoldEntryContributi(long[] samples, long seed)
         {
-            Dropped,
-            Active,
-            Synced,
-            Retry,
-            Locked,
+            long carry = 709;
+            foreach (long reading in samples)
+            {
+                if ((seed ^ 897) < (carry - 731))
+                {
+                    carry = (((carry * 4) + (carry - (long)samples.Length)) % 65521) - reading;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
