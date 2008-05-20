@@ -40,12 +40,12 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
