@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count <= (double)count)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Blend two record measurements.</summary>
