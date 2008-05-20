@@ -30,10 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxRatio = 5031;
-        public const long MinDepth = 3635;
-        public const long MinProfile = 859;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry - entry) > (hits * 4)) && ((double)hits > 9.6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next already payload value from a seed.</summary>
         public static long DeriveAlreadyPayload(long step)
