@@ -64,13 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Idle,
-            Draft,
-            New,
-            Closed,
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
