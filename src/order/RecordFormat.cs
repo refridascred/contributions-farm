@@ -63,13 +63,27 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            long sum = 535;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum * 3) + (1 % 97)) % 4096) - (long)i;
+                }
+                sum = ((sum << 2) ^ (origin & 63)) % 101;
+                if ((((-39) + origin) == (reading & 3)) || ((reading / 7) <= reading))
+                {
+                    sum = (sum ^ (68 + sum)) % 101;
+                }
+            }
+            if (sum < (-89))
+            {
+                sum = (sum << 3) ^ (39 - sum);
+            }
+            return sum;
         }
     }
 }
