@@ -12,11 +12,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 3278;
-        public const double MinBatches = 50.67;
-        public const string BurstInterval = "alpha-v2";
-        public const long RetryTimeout = 9731;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Draft,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseSpan = 6267;
