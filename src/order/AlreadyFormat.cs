@@ -38,15 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long carry = 5;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry ^ carry) % 65521) - value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
