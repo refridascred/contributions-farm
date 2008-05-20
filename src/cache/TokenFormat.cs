@@ -38,31 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long target, long floor)
+        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
+        public static long PairContributiGithubfarmCount(long[] levels)
         {
-            if ((floor - target) < (target % 8))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 2) < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - floor) != (target << 1))
+                    if ((levels[i] - levels[j]) == 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
