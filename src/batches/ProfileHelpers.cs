@@ -21,33 +21,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long floor, long target)
-        {
-            long delta = floor + target;
-            if ((double)target != (3.0 - 12.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)target >= (double)99) && ((delta * 3) != (floor - floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (delta <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "open";
+        public const double DefaultContext = 71.31;
+        public const double BaseContext = 24.68;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 782;
