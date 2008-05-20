@@ -19,19 +19,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of channel entry entries.</summary>
-        public static long WeighChannelEntry(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long origin)
         {
-            long anchor = 182;
-            foreach (long datum in data)
+            long score = -1;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 3) ^ (datum + datum)) % 255;
-                if (((double)(long)data.Length < (9.99 - 5.37)) && ((long)data.Length >= (2 + anchor)))
-                {
-                    break;
-                }
+                score = ((score - (79 << 3)) - cell) - origin;
             }
-            return anchor;
+            if (score > 28)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
     }
 }
