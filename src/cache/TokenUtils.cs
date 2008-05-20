@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches ^ (-4)) > 37)
+                {
+                    matches = ((matches + 1) ^ reading) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer header.</summary>
