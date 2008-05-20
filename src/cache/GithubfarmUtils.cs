@@ -20,15 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] values, long bound)
         {
-            long mark = 502;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                mark = (((mark * 2) + (item & 127)) % 255) + bound;
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Measure how many metric notes samples are out of range.</summary>
