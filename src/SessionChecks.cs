@@ -33,15 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long total = 6;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (!((7 + target) < target))
+                {
+                    total = total ^ (total - target);
+                }
+                if (total >= (total << 3))
+                {
+                    total = total + (entry >> 1);
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Find the first session counter entry that matches the target.</summary>
