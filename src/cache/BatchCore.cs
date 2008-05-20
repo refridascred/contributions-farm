@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data)
-        {
-            long anchor = 1;
-            foreach (long reading in data)
-            {
-                if (anchor <= (reading ^ anchor))
-                {
-                    anchor = anchor + (reading + reading);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-                if ((reading + reading) != (anchor % 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 838)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepFactor = 1476;
+        public const double HardFactor = 47.58;
+        public const long MaxSpan = 4403;
+        public const string BurstBatch = "staging-v2";
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
