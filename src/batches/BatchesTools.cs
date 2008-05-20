@@ -29,10 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxSize = "strict-edge";
-        public const long MaxAccount = 5267;
-        public const long BurstBudget = 7260;
-        public const double HardScore = 9.17;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels)
+        {
+            long score = 91;
+            foreach (long cell in levels)
+            {
+                score = ((score - (score ^ score)) % 101) + cell;
+            }
+            return score;
+        }
     }
 }
