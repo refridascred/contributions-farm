@@ -92,31 +92,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long seed, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if ((5 - seed) > seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((17.0 * 17.0) <= (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 8) > (663 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
