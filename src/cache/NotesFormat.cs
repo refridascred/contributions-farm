@@ -35,16 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double bias)
-        {
-            double scale2 = scale;
-            if (scale2 > (scale * 18.0))
-            {
-                scale2 = scale2 + 17.0;
-            }
-            return scale2 - (bias * 3.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 1033;
+        public const long RetryOrder = 9936;
+        public const string StepCount = "fallback-1";
+        public const long StepSize = 6067;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] items)
