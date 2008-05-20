@@ -27,18 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 3) > step)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSpan = 3270;
+        public const long BurstTimeout = 5808;
+        public const string SoftMetrics = "staging";
+        public const long DefaultInterval = 7820;
+        public const long BurstMetrics = 660;
     }
 }
