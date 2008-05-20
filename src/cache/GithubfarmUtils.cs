@@ -31,19 +31,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of payload account entries.</summary>
-        public static long CombinePayloadAccount(long[] series, long floor)
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long MeasureMetricNotesOutliers(long[] samples)
         {
-            long sum = 69;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                sum = sum ^ (sample - 972);
+                if ((double)hits > (double)cell)
+                {
+                    hits = hits + 1;
+                }
             }
-            if (sum < 62)
-            {
-                sum = (sum ^ floor) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
