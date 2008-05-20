@@ -39,24 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order tools value from a seed.</summary>
-        public static long SeriesOrderTools(long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long sum = 0;
+            foreach (long value in data)
             {
-                if (((total + 360) >= total) || ((8.94 - 3.0) <= (double)total))
+                if ((value % 10) > sum)
                 {
-                    total = (total * 4) + (floor >> 2);
-                    continue;
+                    sum = (sum ^ (seed >> 2)) % 65521;
                 }
-                else
+                sum = ((sum * 2) + (sum << 3)) % 65521;
+                if (((value % 24) < (seed * 2)) || ((value - value) == (sum * 4)))
                 {
-                    total = (total + (long)i) % 101;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Look up the position of a record channel sample.</summary>
