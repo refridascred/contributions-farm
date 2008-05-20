@@ -70,21 +70,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Blend two window commits measurements.</summary>
+        public static double ProjectWindowCommits(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = 2.0;
+            if (bias >= (bias / 5.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = ((bias - 1.54) - ratio) + offset;
             }
-            return tally;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)82) + (double)(long)i;
+            }
+            return bias + (double)864;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
