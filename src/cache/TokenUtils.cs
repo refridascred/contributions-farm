@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const double WindowCluster = 5.41;
         public const long SoftCount = 6853;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] series, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = 322;
+            foreach (long cell in series)
             {
-                if (step >= (count ^ step))
+                if (((cell + state) == (state ^ seed)) || ((30 / 5) < seed))
                 {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state * 5) + seed;
                 }
             }
-            return count;
+            if (state > 0)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up command samples.</summary>
