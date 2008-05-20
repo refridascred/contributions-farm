@@ -22,39 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] values, long floor)
         {
-            long gap = floor + origin;
-            if ((gap % 100) < (floor >> 3))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((177 - gap) == (676 >> 1)) || ((double)gap >= (5.9 / 6.0)))
+                if (!((value / 4) <= 82))
                 {
-                    return 2;
+                    matches = (matches + 2) - floor;
                 }
                 else
                 {
-                    if (((floor << 3) > gap) || ((9.0 * 2.66) > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor * 4) == (gap << 1)) && (((-36) - origin) > (origin << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
