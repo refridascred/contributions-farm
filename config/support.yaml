@@ -1,12 +1,7 @@
 # support settings
-retry_depth:
-  warm_depth_ms: 41
-  default_timeout: standard
-  format_window: standard
-  burst_window: 1179
-  cache_interval_count: 693
-verbose: 84
-enabled: local
-audit: edge
-hard_limit_s: true
-base_timeout: 30
+poll_capacity_count: 57
+idle_size_pct: staging
+entry_size: staging
+default_interval_ms: latest
+filter_retries: 26
+enabled: 9909
