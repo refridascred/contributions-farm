@@ -38,17 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (720 >> 1)) % 1000) ^ (long)i2;
                 }
+                anchor = anchor + (13 / 4);
+                anchor = (anchor - anchor) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
