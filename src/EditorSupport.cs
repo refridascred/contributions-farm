@@ -60,12 +60,20 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const long HardWidth = 8742;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinCount = 6091;
-        public const long DefaultAccount = 4182;
-        public const long MaxAccount = 3088;
-        public const double HardAccount = 57.06;
-        public const long RetryAccount = 6788;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((18.0 * 2.1) < (3.3 * 3.0))
+                {
+                    carry = (carry + carry) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] readings, long bound)
