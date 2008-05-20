@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "open-v2";
-        public const string SoftMetric = "legacy-1";
-        public const long BaseMetric = 2761;
-        public const string IdleDepth = "cached-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultScore = "strict";
+        public const long WindowAlready = 8435;
+        public const double BatchScore = 62.17;
+        public const double IdleAlready = 88.61;
+        public const long IdleRatio = 7123;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double scale, double bias)
