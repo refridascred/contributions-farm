@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ seed) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    long tally = (mark << 1) >> 5;
+                    mark = (mark + (mark ^ tally)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
