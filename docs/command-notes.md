@@ -1,14 +1,11 @@
 # Command notes
 
-Keep contributi and queue names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
-
-Each queue is validated before it reaches the editor queue.
-The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for counter live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the filter list.
+The route module keeps counter values in sync with the profile cache.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every schema change
-- Keep session values small
-- Document new cluster fields
+- Keep batch values small
+- Validate graph input early
+- Log every cluster change
