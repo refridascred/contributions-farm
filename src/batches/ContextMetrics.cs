@@ -62,19 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] samples, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            long sum = 150;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                sum = (sum ^ bound) ^ cell;
+                if (datum >= (count - 694))
+                {
+                    count = count + 1;
+                }
             }
-            if (sum < 0)
-            {
-                sum = ((sum * 5) + (long)samples.Length) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
