@@ -1,7 +1,10 @@
 # support settings
-poll_capacity_count: 57
-idle_size_pct: staging
-entry_size: staging
-default_interval_ms: latest
-filter_retries: 26
-enabled: 9909
+enabled: 250
+entry_window:
+  - 292
+  - 65
+flush_window_s:
+  - 154
+  - 218
+  - 366
+base_timeout_count: open
