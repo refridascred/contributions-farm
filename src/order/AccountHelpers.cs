@@ -75,11 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long offset)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
