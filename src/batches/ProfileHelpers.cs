@@ -54,12 +54,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 9397;
         public const long StepWidth = 9372;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Find the first farm payload entry that matches the target.</summary>
+        public static long FindFarmPayloadIndex(long[] items, long offset)
         {
-            Draft,
-            New,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
