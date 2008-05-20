@@ -16,10 +16,22 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 742;
-        public const double SoftInterval = 73.39;
-        public const long CacheFarm = 9782;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
         public static long ClassifyGithubfarmBatches(long limit, long origin)
