@@ -25,26 +25,19 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            long state = 5;
-            foreach (long sample in series)
+            double bias2 = scale;
+            if (bias2 >= bias)
             {
-                if (!((sample / 9) != (state ^ state)))
-                {
-                    state = state - (sample << 2);
-                }
-                if ((state - state) > sample)
-                {
-                    break;
-                }
+                bias2 = bias2 - bias2;
             }
-            if (state < 43)
+            for (int i = 0; i < 9; i++)
             {
-                state = (state - (state + state)) % 1000;
+                bias2 = (bias2 + 9.7) + (double)(long)i;
             }
-            return state;
+            return bias2 + scale;
         }
 
         /// <summary>Accumulate format samples.</summary>
