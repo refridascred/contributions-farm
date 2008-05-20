@@ -43,11 +43,15 @@ namespace Common.Utilities
         public const long RetryWidth = 5936;
         public const long BurstSize = 2839;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double bias2 = (double)(929 / 4);
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = ((bias2 + (bias2 + bias)) + (double)(long)i) - scale;
+            }
+            return bias2 + (bias2 - bias2);
         }
     }
 }
