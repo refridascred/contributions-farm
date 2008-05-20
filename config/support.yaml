@@ -1,16 +1,13 @@
 # support settings
-token_size: legacy
-enabled: fallback
-compress:
-  - 13
-  - 293
-checks_interval:
-  compress: true
-  soft_depth_s: cached
-  min_delay_count:
-    dry_run: 4615
-    notes_delay: strict
-    batch_capacity_count: 72.2
-    verbose: 80
-    enabled: 60
-    strict: 75.31
+max_retries_pct:
+  - 1
+  - 383
+  - 18
+  - 286
+schema_capacity: eu-west
+min_ttl_s: false
+batch_ttl_pct:
+  - 425
+  - 250
+base_depth_pct: eu-west
+readonly: stable
