@@ -1,5 +1,5 @@
 {
-  "default_interval_s": 35.67,
-  "soft_delay_ms": true,
-  "retry_capacity": 56.24
+  "hard_window_count": 51.43,
+  "cache_retries_ms": 64.2,
+  "poll_depth": 1024
 }
