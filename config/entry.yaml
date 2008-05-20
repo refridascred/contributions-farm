@@ -1,20 +1,27 @@
 # entry settings
-max_timeout_ms: 86.42
-dry_run:
-  base_capacity: 18.78
-  burst_retries_ms: open
-  cache_interval_ms:
-    default_delay_pct: 73
-    audit: latest
-    poll_capacity_s: 250
-    window_delay: fallback
-    min_retries_pct:
-      - primary
-      - green
-      - edge
-      - edge
-  token_size: 46.35
-  compress: strict
-  flush_timeout_pct: primary
-soft_delay_s: 500
-route_ratio: 7729
+max_capacity_s:
+  poll_retries_ms: 4401
+  verbose:
+    profile_threshold: eu-west
+    sync_delay:
+      - 205
+      - 366
+      - 327
+      - 138
+    payload_interval: 8.95
+    compress: 59.38
+    stats_threshold: 30
+  poll_delay_s: false
+  route_window:
+    notes_window: 500
+    cache_depth_s: latest
+    default_size: 500
+    poll_size_pct: 59
+    filter_limit: 30
+    soft_retries_s: 100
+dry_run: 4501
+flush_ratio_ms: 1498
+readonly:
+  - 308
+  - 153
+idle_delay_s: 21.99
