@@ -68,18 +68,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] items, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 41;
+            foreach (long item in values)
             {
-                if ((origin ^ datum) == (72 % 5))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 2) + (item + acc)) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
