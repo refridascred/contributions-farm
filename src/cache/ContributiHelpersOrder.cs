@@ -19,18 +19,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] values)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((924 / 6) < (hits ^ sample)) || ((684 ^ sample) > hits)) || ((sample + hits) == (4 & 15)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
