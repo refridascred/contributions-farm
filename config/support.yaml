@@ -1,14 +1,6 @@
 # support settings
-poll_limit_pct: 24
-token_capacity: local
-batches_ttl:
-  persist: 100
-  poll_threshold_s: eu-west
-  enabled: fallback
-  readonly: stable
-  flush_limit_pct:
-    burst_capacity_pct: 19.4
-    metrics_timeout: edge
-    batch_ttl: true
-    retry_ratio: 71.3
-    account_window: 57.42
+idle_depth_ms: 38.4
+flush_size: 5919
+batch_interval: true
+burst_limit: 64
+dry_run: false
