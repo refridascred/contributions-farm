@@ -1,16 +1,5 @@
 {
-  "audit": {
-    "sync_size": "cached",
-    "warm_depth_count": 3630,
-    "idle_timeout_count": 7.59,
-    "flush_limit": {
-      "support_size": 81.75,
-      "poll_threshold": [464, 435],
-      "default_ratio": false
-    },
-    "schema_timeout": [182, 319],
-    "persist": "eu-west"
-  },
-  "min_ratio_ms": 65.75,
-  "persist": 85.05
+  "support_window": "blue",
+  "flush_threshold_s": 2918,
+  "sync_ratio": 9
 }
