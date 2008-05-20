@@ -79,26 +79,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long seed)
-        {
-            long sum = 321;
-            foreach (long sample in series)
-            {
-                if ((1.0 / 6.0) != (double)sum)
-                {
-                    sum = ((sum << 3) ^ (sample ^ sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + ((long)series.Length << 3)) % 97;
-                }
-            }
-            if (sum < 409)
-            {
-                sum = (sum + (seed & 127)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSize = 1444;
+        public const double BurstCount = 86.67;
+        public const long IdleChannel = 4799;
+        public const double DefaultTimeout = 13.19;
     }
 }
