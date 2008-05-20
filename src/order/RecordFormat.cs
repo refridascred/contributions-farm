@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values, long floor)
         {
-            Synced,
-            Paused,
-            Closed,
-            Idle,
+            long state = 8;
+            foreach (long datum in values)
+            {
+                if ((state < (state % 100)) && ((datum * 3) >= floor))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = ((state * 2) + (floor - (-107))) % 4096;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank cache stream input into a small class.</summary>
