@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 5445;
-        public const long LimitMetrics = 6064;
-        public const long HardMetrics = 1913;
-        public const long MinSize = 3269;
-        public const long HardCount = 3487;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long seed)
