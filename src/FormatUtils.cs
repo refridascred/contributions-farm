@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long HardQueue = 7830;
         public const string WindowCount = "local-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 6270;
-        public const string SoftToken = "open";
-        public const long BatchToken = 8425;
-        public const long BaseLevel = 395;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((5.66 / 7.0) <= (double)datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] data)
