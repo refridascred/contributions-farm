@@ -1,6 +1,9 @@
 # githubfarm settings
-verbose: eu-west
-strict:
-  - local
-  - primary
-poll_threshold_pct: 63.4
+editor_limit: local
+flush_threshold_pct: open
+default_threshold: 500
+retry_capacity:
+  format_timeout: 1024
+  strict: 250
+  sync_ratio_ms: 250
+burst_capacity: standard
