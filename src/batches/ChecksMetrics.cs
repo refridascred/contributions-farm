@@ -61,18 +61,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (((seed - seed) <= limit) && (seed > (limit / 3)))
             {
-                if ((90 / 4) < step)
+                return 6;
+            }
+            else
+            {
+                if (((seed - limit) <= limit) && ((double)8 < (double)limit))
                 {
-                    hits = (hits + 1) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
