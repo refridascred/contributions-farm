@@ -73,18 +73,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((double)tally > (6.0 / 6.0)) && (12.0 < (double)cell))
+                if (value <= floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
