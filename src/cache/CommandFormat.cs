@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long target, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if ((((-25) * 5) < offset) && ((offset & 1) <= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target - offset) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target) > (target + 870))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
