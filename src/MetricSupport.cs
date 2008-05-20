@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long DeriveFilterCommits(long step)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long mark = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark * 3) + ((long)i - (-3));
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the report state values.</summary>
