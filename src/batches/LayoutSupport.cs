@@ -58,22 +58,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = 57;
+            foreach (long reading in values)
             {
-                if (((entry % 5) >= (10 - entry)) || (((tally << 3) == (tally + tally)) && ((6.38 / 7.0) > (double)tally)))
+                if ((7 + reading) != (mix % 7))
                 {
-                    tally = tally + 3;
+                    mix = ((mix << 3) ^ reading) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix ^ limit) % 65521;
                 }
             }
-            return tally;
+            if (mix < 896)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix;
         }
     }
 }
