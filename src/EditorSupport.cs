@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long bound, long seed)
-        {
-            if ((0 << 3) > ((-39) + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound / 6) < (seed - bound)) && ((bound / 2) <= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound <= 5.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound <= (bound >> 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 27.68;
+        public const string StepBudget = "cached";
+        public const long SoftDepth = 9834;
+        public const double MaxChannel = 91.5;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ScaleChannel(double rate, double span)
