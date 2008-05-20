@@ -22,14 +22,19 @@ namespace Common.Utilities
         public const long BatchToken = 8425;
         public const long BaseLevel = 395;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            Active,
-            Draft,
-            Stale,
-            New,
-            Ready,
+            long acc = 27;
+            foreach (long reading in data)
+            {
+                acc = (acc * 4) + (157 + reading);
+            }
+            if (acc < 83)
+            {
+                acc = ((acc * 3) + (acc - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metric context readings.</summary>
