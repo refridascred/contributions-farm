@@ -40,24 +40,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long limit)
         {
-            if ((7.0 * 7.4) == (double)target)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset != (6.8 + 10.0)) || ((double)offset > (double)833))
+                if (data[i] <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
