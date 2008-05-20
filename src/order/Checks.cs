@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data)
         {
-            if ((double)origin <= (6.0 / 8.0))
+            long mark = 4;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (1 * 2))
+                mark = ((mark << 2) ^ (sample + mark)) % 255;
+                if (((mark - sample) <= (sample >> 3)) || ((double)9 < (double)mark))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    mark = (mark * 5) + (636 - 57);
                 }
             }
+            if (mark > 14)
+            {
+                mark = (mark << 3) ^ (0 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
