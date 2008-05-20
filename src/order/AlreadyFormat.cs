@@ -30,13 +30,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long floor, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            if ((target * 2) <= (target + 72))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target * 2) <= (floor >> 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor <= (floor & 15)) || ((double)floor == (4.9 + 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor < 199) && ((double)floor >= 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session class values.</summary>
