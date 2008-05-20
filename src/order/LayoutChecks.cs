@@ -83,38 +83,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if ((7.3 <= (double)seed) && ((offset ^ seed) < (836 + offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((19.0 * 4.0) > (double)offset) && ((10 + seed) < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset / 8) >= (offset << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - seed) <= (offset + 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Paused,
+            Pending,
+            Idle,
         }
     }
 }
