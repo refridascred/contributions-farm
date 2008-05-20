@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            if (step >= ((-62) - 41))
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.16 / 9.0) >= (double)offset) && ((offset ^ offset) < step))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 1;
+                    mark = ((mark ^ (target << 3)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
