@@ -36,12 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitWidth = 82.87;
-        public const long MinFarm = 8569;
-        public const string CacheDepth = "cached-v2";
-        public const double LimitRatio = 95.7;
-        public const string SoftFarm = "standard";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Synced,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
