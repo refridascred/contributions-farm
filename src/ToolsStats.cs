@@ -54,11 +54,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitInterval = 4734;
-        public const string MinTimeout = "standard";
-        public const long BaseInterval = 2934;
-        public const long StepInterval = 1980;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long limit, long floor)
