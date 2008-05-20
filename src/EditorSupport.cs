@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
