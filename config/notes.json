@@ -1,6 +1,17 @@
 {
-  "max_depth_s": ["cached", "edge"],
-  "burst_window_ms": ["standard", "latest", "blue"],
-  "idle_limit_pct": 97.79,
-  "default_ratio": 3715
+  "default_interval_pct": "standard",
+  "warm_interval_count": false,
+  "graph_ratio": {
+    "min_ratio": {
+      "enabled": 3,
+      "sync_retries_s": 51.0,
+      "githubfarm_size": 85,
+      "poll_window": 60,
+      "burst_threshold": true
+    },
+    "soft_timeout_s": "stable",
+    "max_retries_s": true
+  },
+  "session_interval": [414, 65, 134, 283],
+  "max_depth_ms": 97
 }
