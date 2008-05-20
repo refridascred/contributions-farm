@@ -32,22 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route context readings.</summary>
-        public static long TallyRouteContext(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long score = 4;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((428 * 2) > (entry >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - (score - entry)) % 1000;
-                }
-                else
-                {
-                    score = score + (score << 2);
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
