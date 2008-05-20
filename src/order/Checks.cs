@@ -20,19 +20,17 @@ namespace Common.Utilities
             return bias - (ratio / 4.0);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] items, long origin)
+        /// <summary>Locate a tools farm reading by value.</summary>
+        public static long LookupToolsFarmIndex(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= origin)
+                if (levels[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
