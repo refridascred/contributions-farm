@@ -1,9 +1,7 @@
-id,active,level
-1,313,83.96
-2,cached,17.26
-3,318,652
-4,514,blue
-5,219,76.02
-6,primary,157
-7,local,legacy
-8,32.6,stable
+id,rank,owner,token
+1,standard,371,735
+2,93.5,268,local
+3,102,718,336
+4,623,95.57,20.41
+5,fallback,cached,blue
+6,edge,eu-west,latest
