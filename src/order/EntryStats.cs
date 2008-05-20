@@ -30,21 +30,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the command kind values.</summary>
