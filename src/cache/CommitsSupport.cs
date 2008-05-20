@@ -19,23 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = 642;
-            foreach (long item in series)
-            {
-                mix = ((mix << 3) ^ (84 - mix)) % 101;
-                if (((mix * 4) != (mix % 7)) && ((3.0 * 6.9) > (double)item))
-                {
-                    mix = (mix ^ (mix ^ item)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 16)) % 1000;
-                }
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
