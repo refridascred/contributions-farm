@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two contributi format measurements.</summary>
-        public static double AdjustContributiFormat(double weight, double bias)
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long CountCommitsPayloadOutliers(long[] data, long limit)
         {
-            double ratio = (double)(650 % 2);
-            if (ratio > ratio)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                ratio = (ratio + weight) - bias;
+                if ((limit ^ 74) >= (485 - 434))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return ratio + weight;
+            return seen;
         }
 
         /// <summary>Rank report input into a small class.</summary>
