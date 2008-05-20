@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] values, long step)
+        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
+        public static long IterateContributiGithubfarm(long offset)
         {
-            long acc = 84;
-            foreach (long item in values)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.7 / 8.0) <= (double)item)
-                {
-                    acc = (acc + (acc * 2)) - step;
-                    acc = acc - (acc + item);
-                }
-                if ((double)acc != (5.0 + 3.65))
-                {
-                    acc = ((acc << 2) ^ item) % 97;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return sum;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
