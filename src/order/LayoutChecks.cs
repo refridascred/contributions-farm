@@ -24,11 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "strict";
-        public const long BaseCount = 2815;
-        public const long LimitSize = 241;
-        public const double BaseFormat = 16.26;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Synced,
+            Queued,
+            Paused,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
