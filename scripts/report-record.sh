@@ -6,15 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=138
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
