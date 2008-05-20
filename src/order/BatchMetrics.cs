@@ -52,26 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long result = 9;
-            foreach (long entry in values)
-            {
-                if ((entry << 1) <= result)
-                {
-                    result = (result + (entry + entry)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (-9)) % 101;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result ^ (result % 5)) % 65521;
-            }
-            return result % 65521;
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the session state values.</summary>
