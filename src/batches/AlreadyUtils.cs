@@ -69,12 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] data, long floor)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
