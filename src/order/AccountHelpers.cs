@@ -50,17 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the counter phase values.</summary>
