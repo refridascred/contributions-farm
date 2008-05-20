@@ -1,7 +1,7 @@
 {
-  "dry_run": 63,
-  "readonly": "fallback",
-  "compress": "primary",
-  "report_timeout": 66,
-  "context_capacity": "cached"
+  "flush_capacity_count": 95,
+  "audit": ["standard", "legacy"],
+  "support_capacity": 2367,
+  "command_window": "local",
+  "strict": 30.14
 }
