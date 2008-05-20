@@ -80,23 +80,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of layout format readings.</summary>
-        public static long ScoreLayoutFormat(long[] readings, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            long carry = -109;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!(5 < (reading - carry)))
+                if ((seen / 3) != (62 / 5))
                 {
-                    carry = carry + (seed - 6);
+                    seen = (seen + 2) - datum;
                 }
-                carry = ((carry << 2) ^ (reading >> 4)) % 255;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 8)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return seen;
         }
     }
 }
