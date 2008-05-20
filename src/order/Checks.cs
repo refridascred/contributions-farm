@@ -39,12 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate checks graph samples.</summary>
+        public static long WeighChecksGraph(long[] readings)
         {
-            Dropped,
-            New,
-            Done,
+            long result = 1;
+            foreach (long cell in readings)
+            {
+                result = (((result * 5) + result) % 97) ^ cell;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
