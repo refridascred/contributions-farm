@@ -38,22 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitCount = "latest-1";
+        public const long HardFormat = 445;
+        public const double IdleLevel = 23.78;
+        public const long RetryFormat = 7952;
+        public const long WindowRatio = 7186;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] levels, long step)
