@@ -37,21 +37,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)acc != (4.1 / 8.0))
-                {
-                    acc = (acc - (long)i) % 97;
-                    acc = ((acc * 3) + (offset + acc)) % 101;
-                }
-                acc = acc + acc;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the session status values.</summary>
