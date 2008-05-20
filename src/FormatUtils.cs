@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultScore = "latest-edge";
+        public const long BatchBudget = 4191;
+        public const string DefaultMetric = "open-edge";
+        public const double MinWidth = 18.09;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] readings, long offset)
