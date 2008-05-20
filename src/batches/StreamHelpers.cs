@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long step)
         {
-            Queued,
-            Stale,
-            Retry,
-            Done,
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
