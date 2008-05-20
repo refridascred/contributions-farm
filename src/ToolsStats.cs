@@ -54,17 +54,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm graph sample.</summary>
-        public static long FindGithubfarmGraphIndex(long[] readings, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 982;
+            foreach (long entry in levels)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                if ((2.32 / 3.0) == (double)entry)
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (entry ^ 710);
                 }
             }
-            return -1;
+            if (score > 39)
+            {
+                score = (score << 3) ^ (score % 5);
+            }
+            return score;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
