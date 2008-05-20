@@ -64,18 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] readings)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits << 2) != (value * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
