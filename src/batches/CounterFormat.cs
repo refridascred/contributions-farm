@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double scale, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] series, long seed)
         {
-            double mean = (scale - span) / 9.0;
-            if (mean <= scale)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mean = mean - span;
+                if (seed >= seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (span / 2.0)) + (double)(long)i;
-            }
-            return mean + scale;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
