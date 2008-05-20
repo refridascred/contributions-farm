@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a payload graph reading by value.</summary>
-        public static long FindPayloadGraphIndex(long[] items, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the command phase values.</summary>
