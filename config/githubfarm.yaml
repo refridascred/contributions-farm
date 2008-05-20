@@ -1,18 +1,6 @@
 # githubfarm settings
-sync_depth_s:
-  support_threshold:
-    - cached
-    - edge
-    - standard
-  buffer_delay: 84
-  window_window:
-    - 262
-    - 395
-  flush_timeout:
-    - 447
-    - 431
-    - 412
-  queue_capacity: latest
-cache_limit: 9123
-sync_ratio_s: false
-base_ttl_s: 29.98
+dry_run: 75
+compress: 1340
+contributi_size: stable
+cache_timeout: 5.92
+persist: 100
