@@ -23,14 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Locked,
-            Failed,
-            Synced,
-            Dropped,
+            Queued,
             Retry,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
