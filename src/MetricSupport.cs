@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = ((mark ^ (target << 3)) % 1000) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
