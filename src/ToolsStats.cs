@@ -72,11 +72,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftRatio = 287;
-        public const long RetryDepth = 6318;
-        public const long DefaultCommits = 1770;
-        public const long StepCommits = 4169;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 3441;
+        public const double LimitLevel = 86.37;
+        public const long CacheLevel = 1200;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepNotes = 51.63;
