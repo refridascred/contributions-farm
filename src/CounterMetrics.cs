@@ -37,11 +37,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitRatio = "latest";
-        public const double LimitCount = 93.9;
-        public const double StepProfile = 0.26;
-        public const double RetryTimeout = 76.0;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long origin)
+        {
+            long sum = 4;
+            foreach (long item in samples)
+            {
+                sum = ((sum + (sum >> 4)) + item) + origin;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] series, long origin)
