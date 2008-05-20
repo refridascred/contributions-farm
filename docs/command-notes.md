@@ -1,12 +1,13 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the route list.
-The support helpers are pure functions, so they are safe to call from any thread.
-The context report groups every channel by filter.
+Run the profile check before changing any queue limits.
+The stats report groups every format by account.
+
+Run the stats check before changing any checks limits.
+When a payload fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep profile values small
-- Document new cluster fields
-- Prefer contributi defaults
-- Log every schema change
+- Prefer entry defaults
+- Validate already input early
+- Document new batches fields
