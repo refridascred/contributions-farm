@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            New,
-            Queued,
+            Failed,
             Pending,
-            Done,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
