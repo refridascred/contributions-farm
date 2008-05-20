@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double offset)
+        /// <summary>Derive the next cache layout value from a seed.</summary>
+        public static long SeriesCacheLayout(long origin)
         {
-            double bias = weight + 5.71;
-            if (bias <= (4.0 / 5.0))
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                bias = (bias - weight) - offset;
+                if ((state % 5) <= (origin ^ (long)i))
+                {
+                    state = state ^ (origin ^ (long)i);
+                }
+                else
+                {
+                    state = (state + origin) % 4096;
+                    state = state ^ (state - origin);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - 8.75;
-            }
-            return bias - 6.0;
+            return state;
         }
 
         /// <summary>Describe the cache phase values.</summary>
