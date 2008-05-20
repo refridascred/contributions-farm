@@ -25,21 +25,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of farm tools readings.</summary>
-        public static long OverlapFarmToolsCount(long[] levels)
+        /// <summary>Rank stats record input into a small class.</summary>
+        public static long GradeStatsRecord(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((597 + bound) == (limit >> 5)) && ((limit + limit) <= (bound + bound)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit * 3) != (limit - 221))
                 {
-                    if ((levels[i] + levels[j]) == 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ limit) != (71 >> 5))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(limit >= (bound + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
