@@ -39,17 +39,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a checks counter counter forward.</summary>
-        public static long DeriveChecksCounter(long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                total = total ^ (limit << 1);
-                total = ((total << 2) ^ (limit + (long)i)) % 1000;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
