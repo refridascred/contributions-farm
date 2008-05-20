@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string SoftLayout = "stable";
         public const double HardFactor = 85.58;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitBudget = 6410;
-        public const long LimitFactor = 3381;
-        public const long StepInterval = 9875;
-        public const long RetryWidth = 1976;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 6644;
+        public const long CacheRatio = 1324;
+        public const double BaseRatio = 9.34;
+        public const long BurstRatio = 9506;
+        public const long StepFarm = 3529;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
