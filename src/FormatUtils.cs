@@ -18,20 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long limit, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            if ((12 * 5) != (seed - seed))
             {
-                if (anchor <= (anchor + seed))
-                {
-                    anchor = (anchor << 2) ^ ((long)i << 3);
-                }
-                anchor = ((anchor << 3) ^ (25 - (long)i)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((limit >> 1) > (limit % 24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
