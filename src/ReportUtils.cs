@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Locked,
-            Dropped,
-            Synced,
-            Pending,
-            Ready,
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
