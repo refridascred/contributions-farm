@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard; do
+for item in open edge legacy staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=269
+mode="${1:-open}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=95
 log "limit is ${CHANNEL_LIMIT}"
