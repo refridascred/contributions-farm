@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
