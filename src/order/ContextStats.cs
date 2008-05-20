@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 47.14;
-        public const long BatchQueue = 6090;
-        public const long RetryWidth = 5936;
-        public const long BurstSize = 2839;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] data, long floor)
