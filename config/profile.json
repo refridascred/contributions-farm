@@ -1,5 +1,7 @@
 {
-  "batch_capacity_ms": 49.71,
-  "min_ratio_s": true,
-  "farm_ratio": [199, 117, 15]
+  "base_interval_s": "stable",
+  "burst_retries": "green",
+  "burst_ttl_s": 97.9,
+  "min_limit": 35.66,
+  "persist": 500
 }
