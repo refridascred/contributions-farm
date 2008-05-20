@@ -29,19 +29,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double ratio2 = floor;
-            if (ratio2 <= (ratio * 4.51))
-            {
-                ratio2 = ratio2 - (double)(-3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - floor) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            Paused,
+            Idle,
+            Synced,
+            Queued,
         }
     }
 }
