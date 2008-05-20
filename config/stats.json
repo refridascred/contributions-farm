@@ -1,18 +1,5 @@
 {
-  "hard_capacity_ms": "legacy",
-  "default_window_pct": {
-    "burst_depth_ms": {
-      "base_delay_pct": ["legacy", "blue"],
-      "base_limit_ms": 35,
-      "default_delay": "green",
-      "metric_limit": 4203,
-      "channel_capacity": 9494,
-      "soft_capacity_pct": "legacy"
-    },
-    "idle_interval_pct": "open",
-    "poll_capacity_count": false
-  },
-  "audit": 78,
-  "order_delay": 60,
-  "batch_depth_count": false
+  "burst_size": [413, 150, 65],
+  "commits_ratio": "primary",
+  "githubfarm_limit": true
 }
