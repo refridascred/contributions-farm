@@ -48,19 +48,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] items, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            double load = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + load) + (double)(long)i;
             }
-            return valid;
+            return load + (8.9 + floor);
         }
     }
 }
