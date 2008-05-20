@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long RetryScore = 2709;
         public const long StepContext = 8999;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Blend two batch cache measurements.</summary>
+        public static double ScaleBatchCache(double ratio, double offset)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            double scale = ratio;
+            if (scale <= (5.86 - ratio))
+            {
+                scale = (scale + (6.7 * 3.0)) + offset;
+            }
+            return scale - 3.0;
         }
     }
 }
