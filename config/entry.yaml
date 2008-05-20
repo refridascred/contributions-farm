@@ -1,6 +1,18 @@
 # entry settings
-commits_depth: false
-sync_limit_ms: true
-max_timeout_count: 37.58
-readonly: 1024
-verbose: 250
+poll_size_pct:
+  - 32
+  - 60
+  - 485
+metrics_size: open
+flush_timeout_count:
+  batch_ttl_pct: legacy
+  enabled: latest
+  payload_delay:
+    - open
+    - legacy
+  batches_retries: fallback
+flush_ratio_ms:
+  - 85
+  - 194
+  - 323
+  - 14
