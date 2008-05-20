@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] values, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (3.5 / 2.0) - bias2;
+            if (gain < (bias - bias2))
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                gain = gain + (bias2 - 2.7);
             }
-            return -1;
+            else
+            {
+                gain = gain - (bias / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 4.46) - (double)(long)i;
+            }
+            return gain - (bias + bias2);
         }
 
         /// <summary>Define report limits and defaults.</summary>
