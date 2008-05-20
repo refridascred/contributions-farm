@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] values, long floor)
         {
-            Queued,
-            New,
-            Draft,
-            Closed,
-            Synced,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the command phase values.</summary>
