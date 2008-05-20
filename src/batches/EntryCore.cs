@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data, long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = 167;
-            foreach (long entry in data)
-            {
-                if ((entry % 5) > step)
-                {
-                    score = (score << 3) ^ (entry ^ score);
-                }
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
