@@ -22,14 +22,11 @@ namespace Common.Utilities
         public const long BatchLevel = 2499;
         public const long BaseRecord = 6903;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Scale a filter cluster figure with a bias.</summary>
+        public static double AdjustFilterCluster(double scale, double bias)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Closed,
-            Active,
+            double scale2 = (bias + scale) / 6.0;
+            return scale2 - (double)(-9);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
