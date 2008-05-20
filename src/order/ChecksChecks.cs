@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long floor, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            if ((floor & 127) >= (floor << 3))
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((58 * 2) <= (floor & 1)) && ((limit % 100) == (floor + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + floor) < (floor - limit)) && ((limit % 60) >= 73))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
