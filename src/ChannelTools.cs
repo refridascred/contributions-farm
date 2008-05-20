@@ -21,21 +21,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
