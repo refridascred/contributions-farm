@@ -37,22 +37,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm editor input into a small class.</summary>
-        public static long GradeFarmEditor(long bound, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long bound, long bound2)
         {
-            if ((target * 5) <= (bound & 7))
+            if ((bound2 << 2) > (bound & 127))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((56 >> 5) > (bound & 1))
+                if ((double)bound == (5.8 / 5.0))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    if (bound >= (bound * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
