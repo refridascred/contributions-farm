@@ -1,19 +1,20 @@
 # entry settings
-enabled: 7582
-format_size: 60
-batch_ratio_pct: 43.48
-stats_limit:
-  flush_threshold_count: stable
-  token_window:
-    - 485
-    - 429
-    - 70
-    - 242
-  max_limit_pct: false
-  warm_limit_pct:
-    - 498
-    - 454
-  warm_ratio_count: 0.52
-  tools_depth: false
-filter_window: stable
-payload_window: fallback
+max_timeout_ms: 86.42
+dry_run:
+  base_capacity: 18.78
+  burst_retries_ms: open
+  cache_interval_ms:
+    default_delay_pct: 73
+    audit: latest
+    poll_capacity_s: 250
+    window_delay: fallback
+    min_retries_pct:
+      - primary
+      - green
+      - edge
+      - edge
+  token_size: 46.35
+  compress: strict
+  flush_timeout_pct: primary
+soft_delay_s: 500
+route_ratio: 7729
