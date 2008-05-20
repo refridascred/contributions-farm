@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Active,
-            Retry,
-            Paused,
+            New,
+            Pending,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
