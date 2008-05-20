@@ -33,14 +33,22 @@ namespace Common.Utilities
         public const long MaxAccount = 3122;
         public const string BaseAccount = "standard-edge";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            Synced,
-            Queued,
-            Paused,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value <= (value >> 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch stats.</summary>
