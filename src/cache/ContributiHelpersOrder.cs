@@ -19,19 +19,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long seed)
+        /// <summary>Digest a series of channel entry entries.</summary>
+        public static long WeighChannelEntry(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long anchor = 182;
+            foreach (long datum in data)
             {
-                if (reading < seed)
+                anchor = ((anchor << 3) ^ (datum + datum)) % 255;
+                if (((double)(long)data.Length < (9.99 - 5.37)) && ((long)data.Length >= (2 + anchor)))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
