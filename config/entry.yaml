@@ -1,17 +1,8 @@
 # entry settings
-cache_delay:
-  metrics_ratio: open
-  order_window:
-    max_delay_count: false
-    profile_limit: primary
-    hard_ratio_s: true
-    default_threshold_pct: 500
-    min_limit: edge
-    persist: 30
-  retry_ratio_ms:
-    - 321
-    - 30
-    - 75
-    - 160
-warm_timeout: true
-report_retries: false
+warm_limit:
+  - stable
+  - cached
+  - green
+  - open
+report_window: 30
+soft_ratio_ms: local
