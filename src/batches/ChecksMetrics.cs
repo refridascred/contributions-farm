@@ -34,14 +34,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Queued,
-            Paused,
-            Closed,
-            Ready,
-            Stale,
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
