@@ -1,5 +1,9 @@
 {
-  "commits_timeout": 6.86,
-  "readonly": [138, 386],
-  "idle_window_ms": "stable"
+  "max_retries_ms": "latest",
+  "persist": {
+    "soft_depth": 8238,
+    "commits_threshold": false,
+    "flush_capacity_pct": "edge"
+  },
+  "idle_limit_pct": "latest"
 }
