@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=263
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in stable staging open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+log "total ${total}"
