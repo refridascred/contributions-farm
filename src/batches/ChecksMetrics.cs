@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Look up the position of a route cluster sample.</summary>
+        public static long FindRouteClusterIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] > origin)
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
