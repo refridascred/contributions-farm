@@ -44,22 +44,18 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] items)
         {
-            long sum = 205;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((reading + (-354)) > (sum ^ reading)) || ((sum * 3) < (sum * 5)))
+                if ((double)entry >= (3.63 / 2.0))
                 {
-                    sum = (sum ^ 631) % 97;
+                    count = count + 2;
                 }
             }
-            if (sum < 53)
-            {
-                sum = (sum << 2) ^ (sum + sum);
-            }
-            return sum;
+            return count;
         }
     }
 }
