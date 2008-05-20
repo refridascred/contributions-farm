@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next graph farm value from a seed.</summary>
-        public static long StepGraphFarm(long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long carry = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)reading != (6.5 * 1.9))
+                {
+                    carry = ((carry << 3) ^ carry) % 97;
+                    carry = ((carry * 5) + carry) % 101;
+                }
+                carry = ((carry << 3) ^ carry) % 65521;
+                if ((1.3 * 5.6) <= (double)94)
+                {
+                    carry = (carry ^ carry) % 97;
+                }
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Describe the layout state values.</summary>
