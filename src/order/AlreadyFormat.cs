@@ -64,14 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Fold a list of report cache readings.</summary>
+        public static long TallyReportCache(long[] readings)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Synced,
-            Locked,
+            long result = 5;
+            foreach (long sample in readings)
+            {
+                if ((35 - 96) != (sample * 2))
+                {
+                    result = (result * 2) + (sample % 60);
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a route options.</summary>
