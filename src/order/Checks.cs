@@ -65,24 +65,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches farm input into a small class.</summary>
-        public static long SortBatchesFarm(long seed, long origin)
+        /// <summary>Digest a series of batches token entries.</summary>
+        public static long TotalBatchesToken(long[] levels, long seed)
         {
-            if (((origin * 2) <= (origin + 3)) || ((seed * 3) == (origin ^ origin)))
+            long mark = -186;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (57 >= origin)
+                if ((double)item < 3.36)
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ mark) % 255;
+                    mark = (mark << 2) ^ (seed % 7);
                 }
-                else
-                {
-                    return 3;
-                }
+                mark = (mark ^ (mark / 3)) % 65521;
             }
+            return mark % 65521;
         }
     }
 }
