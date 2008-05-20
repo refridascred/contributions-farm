@@ -37,13 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine context stats values into a single score.</summary>
+        public static long FoldContextStats(long[] series, long step)
         {
-            Synced,
-            Draft,
-            Retry,
-            Ready,
+            long state = 954;
+            foreach (long cell in series)
+            {
+                if (((cell >> 5) != (cell + cell)) && ((double)step < 4.05))
+                {
+                    state = state - cell;
+                }
+                else
+                {
+                    state = (state ^ (cell << 1)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
