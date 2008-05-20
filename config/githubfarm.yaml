@@ -1,9 +1,4 @@
 # githubfarm settings
-tools_window:
-  - 366
-  - 416
-  - 61
-default_limit_pct: 60
-cluster_depth: standard
-max_ttl_count: true
-metric_delay: true
+retry_interval_s: legacy
+context_window: false
+sync_delay: 18
