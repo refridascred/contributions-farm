@@ -69,13 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
