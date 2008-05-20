@@ -35,14 +35,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Rank queue counter input into a small class.</summary>
+        public static long RankQueueCounter(long target, long limit)
         {
-            Paused,
-            Done,
-            New,
-            Pending,
-            Draft,
+            long edge = target ^ limit;
+            if (limit < (limit >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((19.0 + 0.62) == (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((12.0 - 1.7) <= (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (edge > (limit + edge))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
