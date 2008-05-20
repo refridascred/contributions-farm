@@ -30,21 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum * 3) > step)
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
