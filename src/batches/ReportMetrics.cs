@@ -38,23 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mark = 5;
-            foreach (long entry in data)
-            {
-                mark = mark + (entry << 2);
-                if ((entry << 3) <= (mark * 5))
-                {
-                    mark = ((mark << 3) ^ (entry << 2)) % 101;
-                }
-            }
-            if (mark > 68)
-            {
-                mark = mark + (mark - floor);
-            }
-            return mark;
+            Closed,
+            Stale,
+            Active,
+            Draft,
         }
     }
 }
