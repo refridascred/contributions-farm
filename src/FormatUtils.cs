@@ -33,18 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] levels, long bound)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((bound * 3) > (hits << 3))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
