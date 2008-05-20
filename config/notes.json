@@ -1,15 +1,8 @@
 {
-  "compress": {
-    "soft_retries_s": "stable",
-    "batch_timeout_s": 100,
-    "editor_limit": "eu-west"
-  },
-  "sync_capacity_ms": {
-    "batch_ratio": [193, 308, 310, 347],
-    "persist": 66.59,
-    "flush_ratio": 87.85,
-    "max_timeout_s": ["local", "eu-west", "local", "stable"]
-  },
-  "audit": 69.0,
-  "queue_size": 4105
+  "audit": true,
+  "retry_timeout_ms": 1204,
+  "contributi_timeout": ["stable", "fallback"],
+  "enabled": 2992,
+  "hard_retries_count": 500,
+  "burst_delay_pct": [379, 347, 122]
 }
