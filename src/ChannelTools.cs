@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Ready,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 2) ^ (-3)) % 1000;
+                if ((double)step < (2.78 - 5.6))
+                {
+                    score = score - (score + step);
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two record measurements.</summary>
