@@ -28,19 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double scale = (double)36 + (double)7;
-            if (scale > offset)
-            {
-                scale = scale - (scale * 8.2);
-            }
-            else
-            {
-                scale = scale + (double)419;
-            }
-            return scale - bias;
+            Paused,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
