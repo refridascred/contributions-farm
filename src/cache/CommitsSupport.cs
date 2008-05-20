@@ -70,22 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = 0;
+            foreach (long datum in levels)
             {
-                if (tally <= (tally / 2))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix << 2) ^ (mix + mix)) % 101) ^ datum;
             }
-            return tally;
+            return mix;
         }
     }
 }
