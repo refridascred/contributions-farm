@@ -1,4 +1,9 @@
 # already settings
-enabled: blue
-batch_timeout_count: 250
-sync_capacity: 9565
+sync_limit_s: true
+base_retries: false
+cache_retries_s: eu-west
+verbose: primary
+already_ratio:
+  - latest
+  - eu-west
+  - local
