@@ -50,16 +50,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long score = 8;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 3) + floor) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
+                score = ((((score << 2) ^ score) % 101) ^ cell) - step;
             }
-            return carry;
+            return score;
         }
     }
 }
