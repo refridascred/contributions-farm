@@ -59,39 +59,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long limit)
-        {
-            if ((double)target <= (8.5 * 0.96))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit < (target - limit)) && ((double)target > (double)543))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9 % 12) <= (limit + 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target * 5) <= (27 << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstRatio = 7520;
+        public const long MaxCount = 3809;
+        public const string CacheInterval = "stable";
 
         /// <summary>Count the profile layout entries that pass the check.</summary>
         public static long MeasureProfileLayoutGaps(long[] items)
