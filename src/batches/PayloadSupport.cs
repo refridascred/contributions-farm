@@ -27,9 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "staging-v2";
-        public const long CacheCount = 1045;
-        public const double IdleLevel = 49.0;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseWidth = 5074;
+        public const long MinSize = 7422;
+        public const long BurstTimeout = 2753;
+        public const long BatchMetric = 481;
+        public const long IdleMetric = 5709;
     }
 }
