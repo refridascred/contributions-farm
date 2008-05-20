@@ -41,22 +41,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long state = 8;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((543 - sample) == (origin / 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state + (sample ^ 228)) % 101;
-                }
-                else
-                {
-                    state = state + origin;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
