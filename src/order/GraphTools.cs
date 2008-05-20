@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first commits tools entry that matches the target.</summary>
-        public static long FindCommitsToolsIndex(long[] items, long step)
+        /// <summary>Grade a metric commits value against two limits.</summary>
+        public static long BucketMetricCommits(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = limit ^ limit2;
+            if ((limit2 >> 1) == (3 ^ limit))
             {
-                if (items[i] >= step)
+                return 7;
+            }
+            else
+            {
+                if (limit < bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((20.0 >= (double)bound) || ((4.9 / 7.0) < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit2 % 8) >= 33)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a format reading.</summary>
