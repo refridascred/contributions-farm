@@ -25,12 +25,24 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 1122;
-        public const long RetryLevel = 871;
-        public const long BurstChecks = 7364;
-        public const long StepChecks = 9416;
-        public const long IdleChecks = 5271;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double span)
+        {
+            double weight = gain;
+            if (weight < (weight * 9.9))
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + (weight / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + (double)5;
+        }
 
         /// <summary>Find the first session counter entry that matches the target.</summary>
         public static long LookupSessionCounterIndex(long[] readings, long bound)
