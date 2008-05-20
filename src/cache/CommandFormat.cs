@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long datum in samples)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                total = (total ^ (offset + 410)) % 101;
+                if ((offset - total) != (datum % 5))
                 {
-                    return (long)i;
+                    total = total - (372 * 2);
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the context class values.</summary>
