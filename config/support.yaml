@@ -1,10 +1,20 @@
 # support settings
-warm_capacity_s: edge
-farm_delay: 1024
-cache_delay_count: false
-flush_window_pct: 30
-cache_ratio:
-  - 323
-  - 200
-  - 144
-  - 125
+retry_capacity: true
+base_depth:
+  base_depth_s:
+    - 431
+    - 146
+    - 241
+    - 72
+  persist: 8268
+  cache_ratio_s: true
+  batch_size_ms: 51
+  cache_delay: staging
+  hard_limit_pct:
+    - 212
+    - 357
+    - 49
+    - 141
+idle_interval: fallback
+batch_depth_pct: standard
+burst_size_s: 97.46
