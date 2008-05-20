@@ -19,10 +19,10 @@ namespace Common.Utilities
         public const long BurstFactor = 3032;
         public const string BaseQueue = "latest-v2";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 28.08;
-        public const long DefaultCommand = 8067;
-        public const long StepWidth = 1978;
-        public const long BaseDepth = 7116;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowFactor = "standard-1";
+        public const double RetrySession = 26.89;
+        public const long MaxRatio = 3468;
+        public const double SoftBudget = 29.06;
     }
 }
