@@ -12,10 +12,32 @@ namespace Common.Utilities
         public const double HardSupport = 59.5;
         public const long CacheSupport = 3379;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowSize = 59.84;
-        public const double HardReport = 74.78;
-        public const long LimitCount = 3285;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long step, long target)
+        {
+            if ((target ^ target) == (81 + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target * 3) != (target - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - step) == (step >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
