@@ -1,13 +1,14 @@
 # Command notes
 
-Run the profile check before changing any queue limits.
-The stats report groups every format by account.
+Keep contributi and queue names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
 
-Run the stats check before changing any checks limits.
-When a payload fails, the checks handler retries a few times before giving up.
+Each queue is validated before it reaches the editor queue.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate already input early
-- Document new batches fields
+- Review queue limits each release
+- Log every schema change
+- Keep session values small
+- Document new cluster fields
