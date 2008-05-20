@@ -23,25 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = (score - (bound * 5)) % 4096;
-                if ((score >= (bound + bound)) || ((bound + (long)i) > (738 ^ (long)i)))
+                if ((double)(long)samples.Length <= (double)cell)
                 {
-                    score = ((score << 2) ^ 70) % 255;
+                    matches = matches + 1;
                 }
-                if ((score < bound) || ((517 & 15) >= (588 - (long)i)))
-                {
-                    score = (score ^ (63 << 2)) % 101;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
