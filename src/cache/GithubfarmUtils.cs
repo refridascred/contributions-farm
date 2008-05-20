@@ -23,17 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] <= origin)
+                if ((hits > 1) || ((double)sample > (1.5 / 6.0)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
