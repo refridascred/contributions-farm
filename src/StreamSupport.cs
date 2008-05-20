@@ -36,19 +36,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long step)
+        /// <summary>Count the graph record entries that pass the check.</summary>
+        public static long TallyGraphRecordHits(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (datum > step)
+                if (((bound << 2) >= tally) && (((long)items.Length << 3) != (tally & 63)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
