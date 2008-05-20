@@ -1,6 +1,7 @@
 {
-  "burst_depth_ms": 1961,
-  "editor_size": "green",
-  "cache_ttl": "primary",
-  "base_size_count": 60
+  "max_interval_s": 3161,
+  "max_interval_ms": "stable",
+  "poll_threshold_count": "eu-west",
+  "support_ratio": "fallback",
+  "strict": "blue"
 }
