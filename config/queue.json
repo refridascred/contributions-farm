@@ -1,13 +1,6 @@
 {
-  "min_limit_ms": {
-    "retry_retries": 500,
-    "cache_window_s": true,
-    "dry_run": 1940,
-    "sync_limit_pct": 1024
-  },
-  "cluster_delay": "legacy",
-  "default_depth_s": "edge",
-  "min_depth": ["staging", "primary"],
-  "burst_size_ms": 1654,
-  "min_timeout_s": 37
+  "default_capacity": "staging",
+  "min_timeout_pct": 74,
+  "idle_threshold_s": "stable",
+  "hard_ratio_count": "standard"
 }
