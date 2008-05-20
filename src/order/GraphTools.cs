@@ -19,39 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long step2)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings)
         {
-            long span = step ^ step2;
-            if ((span <= (step >> 2)) && ((step2 << 1) < step))
+            long anchor = 150;
+            foreach (long value in readings)
             {
-                return 8;
+                anchor = (anchor << 2) ^ (value % 8);
             }
-            else
+            if (anchor < 40)
             {
-                if (((double)span < (8.02 + 5.85)) && (span < (step2 >> 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span - step) < span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step << 3) <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = (anchor << 2) ^ anchor;
             }
+            return anchor;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
