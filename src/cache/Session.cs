@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double bias, double bias2)
-        {
-            double gain = (3.5 / 2.0) - bias2;
-            if (gain < (bias - bias2))
-            {
-                gain = gain + (bias2 - 2.7);
-            }
-            else
-            {
-                gain = gain - (bias / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 4.46) - (double)(long)i;
-            }
-            return gain - (bias + bias2);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 13.08;
+        public const long SoftSupport = 2422;
+        public const string MinRatio = "stable-1";
+        public const double HardSupport = 59.5;
+        public const long CacheSupport = 3379;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double WindowSize = 59.84;
