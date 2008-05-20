@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            long result = 86;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                result = ((result << 2) ^ entry) % 65521;
-                if ((entry ^ entry) == (entry + entry))
+                if (seen <= (reading / 5))
                 {
-                    result = (result + result) % 255;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Compare every pair of support githubfarm readings.</summary>
