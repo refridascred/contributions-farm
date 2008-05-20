@@ -43,13 +43,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Dropped,
-            Pending,
-            Queued,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 5055;
+        public const long MinSize = 1710;
+        public const long BatchWindow = 5622;
     }
 }
