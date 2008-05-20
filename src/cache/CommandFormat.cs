@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] values, long limit)
         {
-            Pending,
-            Draft,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((2.0 * 1.4) == (double)cell)
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
