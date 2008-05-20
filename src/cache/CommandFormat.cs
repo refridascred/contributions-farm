@@ -62,15 +62,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double weight = (double)(22 << 3);
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (((weight - (weight * 1.1)) + (double)(long)i) + ratio) - offset;
-            }
-            return weight + weight;
+            Draft,
+            Paused,
+            Synced,
+            Pending,
         }
     }
 }
