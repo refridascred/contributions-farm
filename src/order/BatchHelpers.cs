@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long floor)
+        /// <summary>Audit queue commits readings against a rule.</summary>
+        public static long TallyQueueCommitsOutliers(long[] items, long step)
         {
-            if (step > (753 << 1))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (step <= (step << 1))
+                if (step > ((long)items.Length - 14))
                 {
-                    return 7;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of command payload readings.</summary>
