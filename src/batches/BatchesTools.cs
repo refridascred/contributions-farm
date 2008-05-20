@@ -20,38 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank route already input into a small class.</summary>
-        public static long BucketRouteAlready(long floor, long floor2)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long target)
         {
-            if ((floor & 31) >= (3 & 31))
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                state = (state ^ (84 * 4)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)floor > (4.0 / 5.0)) && (633 > (58 - floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((200 - floor) < 1)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor < (floor2 & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
