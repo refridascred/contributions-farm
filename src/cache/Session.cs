@@ -26,19 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mix = 6;
-            foreach (long value in values)
-            {
-                mix = (mix + (mix + mix)) + value;
-            }
-            if (mix > 64)
-            {
-                mix = mix + 654;
-            }
-            return mix;
+            Locked,
+            Ready,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
