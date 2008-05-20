@@ -1,6 +1,11 @@
 # githubfarm settings
-base_retries: 60
-soft_depth_s: 4273
-hard_size_s:
-  - 169
-  - 246
+channel_timeout:
+  - 221
+  - 424
+  - 431
+  - 433
+audit: primary
+readonly:
+  - blue
+  - primary
+hard_retries_ms: eu-west
