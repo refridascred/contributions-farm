@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph contributi samples.</summary>
-        public static long FoldGraphContributi(long[] levels, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = 0;
-            foreach (long datum in levels)
-            {
-                result = (result - (datum / 5)) % 101;
-                if (((datum ^ datum) <= (result - result)) && ((target & 7) <= datum))
-                {
-                    result = result + (target * 2);
-                }
-                else
-                {
-                    result = result - (datum * 4);
-                }
-            }
-            if (result > 97)
-            {
-                result = (result - (result + 73)) % 255;
-            }
-            return result % 1000;
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
