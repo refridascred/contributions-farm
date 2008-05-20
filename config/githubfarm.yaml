@@ -1,25 +1,9 @@
 # githubfarm settings
-poll_capacity_count:
-  readonly:
-    cluster_interval: 0.08
-    flush_size: false
-    readonly:
-      - stable
-      - open
-  idle_delay: strict
-  checks_limit: 100
-  max_threshold_ms:
-    - primary
-    - staging
-    - primary
-    - blue
-  batches_size: 71.89
-  sync_timeout_pct: 61
-retry_threshold:
-  - edge
-  - eu-west
-  - legacy
-  - blue
-cache_retries: 40
-verbose: 8208
-idle_retries: 40.04
+strict: 13.55
+enabled: 55
+hard_limit: 3711
+verbose: 600
+cache_timeout_count:
+  - 188
+  - 216
+retry_interval_count: true
