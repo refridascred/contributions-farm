@@ -40,11 +40,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepDepth = 52.26;
-        public const long DefaultCache = 7343;
-        public const long DefaultBudget = 2890;
-        public const string MaxCache = "cached";
+        /// <summary>Look up the position of a cluster layout sample.</summary>
+        public static long LookupClusterLayoutIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long SortPayload(long step, long target)
