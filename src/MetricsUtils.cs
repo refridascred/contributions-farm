@@ -76,11 +76,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double bias, double bias2)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            double bias3 = bias;
+            if (bias3 < bias3)
+            {
+                bias3 = bias3 - (double)1;
+            }
+            else
+            {
+                bias3 = bias3 - (bias3 + bias);
+            }
+            return bias3 - (7.0 - bias2);
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
