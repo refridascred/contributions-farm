@@ -67,9 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 1158;
-        public const long BatchContributi = 3525;
-        public const long IdleLevel = 2394;
+        /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
+        public static bool ValidateAlreadyGithubfarmRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
