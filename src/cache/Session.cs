@@ -38,14 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] items, long target)
         {
-            Locked,
-            Ready,
-            New,
-            Done,
-            Queued,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
