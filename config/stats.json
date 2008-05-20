@@ -1,7 +1,17 @@
 {
-  "default_timeout": "fallback",
-  "hard_ratio": true,
-  "persist": 91,
-  "default_depth_ms": 64.02,
-  "max_retries": 100
+  "profile_threshold": {
+    "flush_threshold_s": {
+      "burst_timeout": ["staging", "latest"],
+      "readonly": 98.79,
+      "flush_depth": "cached",
+      "verbose": 80,
+      "session_depth": 48.75
+    },
+    "batch_timeout_pct": "latest",
+    "strict": 13,
+    "audit": "local",
+    "burst_threshold_pct": ["green", "legacy", "staging"]
+  },
+  "cache_size": 9,
+  "readonly": "staging"
 }
