@@ -15,18 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowSize = 59.84;
+        public const double HardReport = 74.78;
+        public const long LimitCount = 3285;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
