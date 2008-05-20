@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if ((step * 4) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)offset >= (5.0 + 13.0)) && ((offset & 127) != (step + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset * 3) <= (step % 100))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a filter stats.</summary>
