@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double load = gain + floor;
+            if (load >= floor)
             {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + (double)(-307);
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor + 8.28)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
