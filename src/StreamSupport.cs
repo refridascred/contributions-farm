@@ -36,18 +36,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the graph record entries that pass the check.</summary>
-        public static long TallyGraphRecordHits(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((bound << 2) >= tally) && (((long)items.Length << 3) != (tally & 63)))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 7719;
+        public const long IdleLevel = 425;
+        public const long MaxSupport = 9459;
+        public const double WindowSupport = 23.18;
     }
 }
