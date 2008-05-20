@@ -27,13 +27,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Closed,
-            Locked,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 9574;
+        public const long CacheFilter = 5056;
+        public const string RetryDepth = "alpha-edge";
     }
 }
