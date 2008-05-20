@@ -29,22 +29,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long offset)
         {
-            long carry = 803;
-            foreach (long value in samples)
+            if (target <= (9 - target))
             {
-                if ((double)carry <= (double)value)
+                return 0;
+            }
+            else
+            {
+                if ((348 - target) <= (target + target))
                 {
-                    carry = (carry ^ (517 - carry)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((0.36 - 4.0) >= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target + target) > ((-803) / 7)) || ((59 * 2) <= offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (carry > 399)
-            {
-                carry = ((carry * 2) + (carry - carry)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
