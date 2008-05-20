@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] data, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the metrics kind values.</summary>
