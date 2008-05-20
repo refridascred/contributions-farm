@@ -45,31 +45,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples, long step)
         {
-            if (target < (origin / 3))
+            long anchor = 94;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (double)28)
+                if (((step ^ anchor) != (datum - anchor)) || (step < (step + anchor)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.1 / 8.0) > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = ((anchor * 4) + (step << 3)) % 101;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
