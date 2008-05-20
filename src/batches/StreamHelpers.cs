@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long target)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
