@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data, long seed)
+        /// <summary>Audit profile report readings against a rule.</summary>
+        public static long AuditProfileReportGaps(long[] values)
         {
-            long sum = 33;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                sum = ((sum - (sum * 2)) % 101) ^ entry;
+                if ((double)hits >= (13.0 - 9.0))
+                {
+                    hits = (hits + 3) - value;
+                }
             }
-            if (sum > 142)
-            {
-                sum = sum ^ (436 ^ seed);
-            }
-            return sum;
+            return hits;
         }
     }
 }
