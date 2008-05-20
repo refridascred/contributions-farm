@@ -51,12 +51,19 @@ namespace Common.Utilities
             return drift + (2.8 - 9.0);
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] readings, long floor)
         {
-            Idle,
-            Done,
-            Locked,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
