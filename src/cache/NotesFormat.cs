@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout payload readings against a bound.</summary>
-        public static bool CheckLayoutPayloadRange(long[] levels, long offset)
+        /// <summary>Check that every metric session entry stays within the limit.</summary>
+        public static bool VerifyMetricSessionLimits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (value > offset)
+                if (reading >= offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Match up metric samples.</summary>
