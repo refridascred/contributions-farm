@@ -34,17 +34,18 @@ namespace Common.Utilities
             return weight2 + 0.97;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) != 0))
+                if (cell > (cell + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
