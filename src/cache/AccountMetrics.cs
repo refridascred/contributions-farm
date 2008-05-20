@@ -65,18 +65,38 @@ namespace Common.Utilities
         public const double MinChannel = 38.62;
         public const double BatchChannel = 0.97;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((14.0 - 9.6) <= (double)seed)
             {
-                if (value < target)
+                return 8;
+            }
+            else
+            {
+                if (seed >= (seed & 7))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 3) != (248 + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (1.4 < (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
