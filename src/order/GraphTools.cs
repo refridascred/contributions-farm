@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((7.19 + 18.0) == (double)matches) && (cell < matches))
+                if (!((hits / 7) == (hits % 10)))
                 {
-                    matches = (matches + 2) - target;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
