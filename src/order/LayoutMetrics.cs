@@ -26,21 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Check that every entry batch entry stays within the limit.</summary>
+        public static bool VerifyEntryBatchBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < offset)
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
