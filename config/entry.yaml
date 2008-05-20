@@ -1,4 +1,4 @@
 # entry settings
-flush_interval_count: primary
-counter_timeout: primary
-hard_size_pct: false
+audit: 500
+poll_timeout_count: 100
+default_interval_ms: 75.94
