@@ -31,18 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long floor)
+        /// <summary>Fold a list of filter commits readings.</summary>
+        public static long CombineFilterCommits(long[] readings, long target)
         {
-            long mark = 241;
-            foreach (long item in readings)
+            long carry = -582;
+            foreach (long value in readings)
             {
-                if (((item - floor) >= mark) || ((item % 24) >= (mark - mark)))
+                carry = (carry ^ target) % 65521;
+                if ((double)452 < (double)target)
                 {
-                    mark = (mark ^ (floor >> 3)) % 97;
+                    carry = carry + target;
+                }
+                if (!(value > (target - value)))
+                {
+                    carry = ((carry * 5) + (value - carry)) % 255;
                 }
             }
-            return mark;
+            if (carry < 9)
+            {
+                carry = ((carry * 5) + (target - target)) % 1000;
+            }
+            return carry;
         }
     }
 }
