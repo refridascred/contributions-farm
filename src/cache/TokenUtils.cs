@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const double WindowCluster = 5.41;
         public const long SoftCount = 6853;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            long state = 322;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell + state) == (state ^ seed)) || ((30 / 5) < seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state * 5) + seed;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 0)
-            {
-                state = (state + (state + state)) % 4096;
-            }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
