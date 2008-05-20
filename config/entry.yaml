@@ -1,7 +1,9 @@
 # entry settings
-poll_timeout_ms: 48
-flush_depth:
-  - cached
-  - green
-  - open
-sync_retries_count: 17
+cache_depth: fallback
+cache_interval_s: 7240
+burst_ttl_pct:
+  default_ttl: local
+  verbose: stable
+  cache_limit_s: 8988
+  enabled: 72
+cache_delay: 86
