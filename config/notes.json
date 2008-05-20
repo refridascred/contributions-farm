@@ -1,17 +1,8 @@
 {
-  "default_interval_pct": "standard",
-  "warm_interval_count": false,
-  "graph_ratio": {
-    "min_ratio": {
-      "enabled": 3,
-      "sync_retries_s": 51.0,
-      "githubfarm_size": 85,
-      "poll_window": 60,
-      "burst_threshold": true
-    },
-    "soft_timeout_s": "stable",
-    "max_retries_s": true
-  },
-  "session_interval": [414, 65, 134, 283],
-  "max_depth_ms": 97
+  "max_size_s": true,
+  "batch_depth": "green",
+  "burst_depth": "latest",
+  "readonly": ["eu-west", "staging", "fallback"],
+  "entry_size": 71.79,
+  "sync_retries_s": "open"
 }
