@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count + 753) > item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the tools kind values.</summary>
