@@ -14,10 +14,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinScore = 160;
-        public const string WindowContributi = "cached-v2";
-        public const long BatchDepth = 9338;
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double CacheDepth = 80.37;
