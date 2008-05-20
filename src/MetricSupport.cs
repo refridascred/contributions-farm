@@ -20,20 +20,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long AuditStreamToolsHits(long[] data, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((((item - seen) > (item % 16)) && ((double)seen >= (6.0 - 4.22))) && ((double)765 < (double)item))
                 {
-                    mix = (((mix << 2) ^ mix) % 101) ^ (long)i2;
-                    mix = (mix * 3) + limit;
+                    seen = (seen + 2) + floor;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
     }
 }
