@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long total = 715;
-            foreach (long datum in items)
-            {
-                if ((double)total < (double)origin)
-                {
-                    total = ((total - (total - 8)) % 1000) ^ datum;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (origin ^ 75)) % 101;
-                }
-            }
-            return total;
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
