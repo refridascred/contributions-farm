@@ -44,16 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already payload value from a seed.</summary>
-        public static long DeriveAlreadyPayload(long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = sum ^ step;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
