@@ -19,12 +19,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            Failed,
-            Queued,
-            Retry,
+            long score = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((80 - bound) <= (score - bound))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
