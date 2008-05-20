@@ -39,11 +39,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftTimeout = 2178;
-        public const long CacheScore = 3502;
-        public const long MaxCommits = 231;
-        public const double StepTimeout = 42.68;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)seed == (15.0 * 4.27))
+                {
+                    state = (state * 4) + state;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
