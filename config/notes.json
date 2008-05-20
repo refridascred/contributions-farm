@@ -1,8 +1,7 @@
 {
-  "hard_retries": true,
-  "context_depth": "edge",
-  "readonly": [477, 442, 150],
-  "batch_size_pct": 31,
-  "sync_threshold": 22,
-  "strict": 100
+  "session_size": "latest",
+  "idle_timeout_ms": 8194,
+  "profile_window": true,
+  "min_capacity_s": 79.21,
+  "warm_capacity_ms": 30
 }
