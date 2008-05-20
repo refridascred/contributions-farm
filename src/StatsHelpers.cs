@@ -51,18 +51,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((tally - datum) == (850 / 2))
+                if ((8.3 * 18.0) < (double)count)
                 {
-                    tally = tally + 3;
+                    count = (count + 2) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
