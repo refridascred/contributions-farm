@@ -23,14 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long bound)
         {
-            Queued,
-            Retry,
-            Draft,
-            Pending,
-            Closed,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate queue samples.</summary>
