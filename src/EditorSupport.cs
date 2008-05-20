@@ -41,12 +41,12 @@ namespace Common.Utilities
             return mean + (scale * 19.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "primary-1";
-        public const string IdleScore = "staging-edge";
-        public const string BaseTimeout = "strict-v2";
-        public const long CacheOrder = 5255;
-        public const long MaxSpan = 6874;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Roll a account farm counter forward.</summary>
         public static long SeriesAccountFarm(long target)
