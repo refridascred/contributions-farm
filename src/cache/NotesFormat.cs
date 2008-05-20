@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long MaxEditor = 1149;
         public const long CacheSpan = 422;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels, long floor)
         {
-            long result = -36;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                result = ((result << 3) ^ target) ^ item;
+                if (floor > (6 - floor))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count farm order pairs that satisfy a relation.</summary>
