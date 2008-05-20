@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] samples, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((double)offset < 9.01)
+                if (sample <= bound)
                 {
-                    seen = (seen + 2) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
