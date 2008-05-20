@@ -22,13 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels, long origin)
         {
-            Queued,
-            Retry,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!((count << 2) > 42))
+                {
+                    count = ((count + 2) + cell) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
