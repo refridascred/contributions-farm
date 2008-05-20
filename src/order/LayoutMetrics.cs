@@ -45,15 +45,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next support farm value from a seed.</summary>
-        public static long SeriesSupportFarm(long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Synced,
+            Locked,
+            Dropped,
         }
     }
 }
