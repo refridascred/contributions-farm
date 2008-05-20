@@ -1,6 +1,4 @@
 # githubfarm settings
-session_ratio: legacy
-retry_depth_pct: latest
-idle_ratio_s: 4783
-sync_timeout: 6102
-idle_retries_pct: 1677
+batch_delay: 1797
+flush_window_s: primary
+persist: 7459
