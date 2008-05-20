@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 9868;
-        public const string HardCount = "alpha";
-        public const long MinBatches = 8105;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((count <= (273 + count)) && ((sample - count) > (count >> 4))) && (316 > (sample % 5)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the support cache entries that pass the check.</summary>
         public static long CountSupportCacheMatches(long[] samples, long limit)
