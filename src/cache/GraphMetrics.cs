@@ -65,11 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric buffer measurements.</summary>
-        public static double ProjectMetricBuffer(double scale, double floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            double bias = floor - scale;
-            return bias - scale;
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((floor + mark) == (3 << 1)) && (floor >= (floor & 31)))
+                {
+                    mark = mark + 28;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Match up token samples.</summary>
