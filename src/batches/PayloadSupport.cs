@@ -29,19 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBudget = 5200;
+        public const long StepDepth = 1796;
+        public const string WindowBatches = "strict";
     }
 }
