@@ -25,32 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long floor, long target)
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long MeasureChecksFilterOutliers(long[] series)
         {
-            long edge = floor + target;
-            if (!((double)target < (1.0 + 7.7)))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)54 > (double)floor)
+                if ((7.0 - 2.94) != (double)matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (edge + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
     }
 }
