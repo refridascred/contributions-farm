@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every commits context entry stays within the limit.</summary>
-        public static bool GuardCommitsContextRange(long[] levels, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (datum > seed)
+                if (((value >> 3) > (value + value)) || ((double)(-933) < (double)matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
