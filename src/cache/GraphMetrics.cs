@@ -56,22 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!((sample - sample) != (0 - hits)))
+                if (!((18.0 + 16.0) <= (double)cell))
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
