@@ -41,13 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
