@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a window stream pair into a bucket.</summary>
-        public static long GradeWindowStream(long seed, long bound)
+        /// <summary>Compare every pair of batches editor readings.</summary>
+        public static long MatchBatchesEditorCount(long[] items)
         {
-            if ((bound << 1) >= seed)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 8) > (bound % 60))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
