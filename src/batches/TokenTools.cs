@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheDepth = 4406;
-        public const long MaxQueue = 799;
-        public const double BaseLevel = 68.36;
-        public const long StepDepth = 783;
-        public const long IdleLevel = 9511;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultLevel = 3195;
+        public const string StepFactor = "local-1";
+        public const string DefaultChecks = "open-1";
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long bound)
