@@ -52,18 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches buffer entries that pass the check.</summary>
-        public static long MeasureBatchesBufferGaps(long[] data, long bound)
+        /// <summary>Validate support checks readings against a bound.</summary>
+        public static bool GuardSupportChecksLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!(bound > (-3)))
+                if (datum < limit)
                 {
-                    seen = (seen + 2) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
