@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a route cluster sample.</summary>
-        public static long FindRouteClusterIndex(long[] items, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 57;
+            foreach (long item in data)
             {
-                if (items[i] > origin)
+                anchor = (anchor - (item % 2)) % 255;
+                if ((double)262 > (double)item)
                 {
-                    return (long)i;
+                    anchor = (anchor + (item * 3)) % 1000;
+                    anchor = anchor - (item ^ anchor);
+                }
+                else
+                {
+                    anchor = anchor - 341;
+                }
+                if ((anchor + item) != (item - anchor))
+                {
+                    anchor = (anchor - (item & 31)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - 8) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
