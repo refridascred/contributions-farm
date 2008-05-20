@@ -47,18 +47,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] values)
+        /// <summary>Validate batches stats readings against a bound.</summary>
+        public static bool VerifyBatchesStatsLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (tally >= (tally ^ tally))
+                if (sample != seed)
                 {
-                    tally = (tally + 2) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
