@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Derive the next checks farm value from a seed.</summary>
+        public static long IterateChecksFarm(long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (mark >= ((-71) % 8))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a payload header.</summary>
