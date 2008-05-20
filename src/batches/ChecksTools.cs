@@ -42,12 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Done,
-            Paused,
-            Idle,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
