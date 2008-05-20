@@ -48,15 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long result = -2;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                result = ((result << 3) ^ (84 & 1)) + item;
             }
-            return anchor;
+            if (result < 819)
+            {
+                result = ((result << 2) ^ (result + result)) % 101;
+            }
+            return result;
         }
     }
 }
