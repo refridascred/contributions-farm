@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] values, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long result = -57;
+            foreach (long cell in data)
             {
-                if ((double)seen < 6.37)
+                if (!(cell < (133 + cell)))
                 {
-                    seen = ((seen + 3) - cell) - offset;
+                    result = (result + ((long)data.Length - cell)) % 1000;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
