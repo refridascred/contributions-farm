@@ -1,39 +1,9 @@
 # support settings
-default_timeout: 30
-batch_size:
-  - 90
-  - 53
-retry_threshold_count:
-  warm_window_count: strict
-  soft_retries:
-    enabled: eu-west
-    sync_delay: 5.44
-    batch_window_pct: standard
-  max_retries:
-    - fallback
-    - standard
-  burst_size_s: 36.19
-  flush_window_s: 3940
-  base_retries_pct: fallback
-cluster_capacity:
-  burst_retries_count:
-    - 419
-    - 252
-    - 340
-    - 392
-  burst_ttl: blue
-  warm_size_s: stable
-  batch_timeout: 4
-  idle_depth_s: false
-  stats_interval:
-    strict:
-      - staging
-      - latest
-      - primary
-    burst_retries:
-      - stable
-      - blue
-    idle_capacity: blue
-    retry_limit_count: 3416
-    burst_threshold_ms: false
-stream_threshold: 9849
+route_threshold: 76.09
+warm_size: eu-west
+base_interval_ms: 7.49
+warm_threshold:
+  - standard
+  - staging
+  - staging
+  - staging
