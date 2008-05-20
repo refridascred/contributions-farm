@@ -18,18 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] levels, long limit)
+        /// <summary>Accumulate graph contributi samples.</summary>
+        public static long FoldGraphContributi(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long result = 0;
+            foreach (long datum in levels)
             {
-                if ((item + item) >= (seen >> 2))
+                result = (result - (datum / 5)) % 101;
+                if (((datum ^ datum) <= (result - result)) && ((target & 7) <= datum))
                 {
-                    seen = (seen + 1) - limit;
+                    result = result + (target * 2);
+                }
+                else
+                {
+                    result = result - (datum * 4);
                 }
             }
-            return seen;
+            if (result > 97)
+            {
+                result = (result - (result + 73)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of context readings.</summary>
