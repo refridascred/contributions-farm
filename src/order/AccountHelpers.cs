@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 9786;
-        public const string BaseScore = "standard-edge";
-        public const long MaxInterval = 8974;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Pending,
+            Paused,
+            Stale,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] samples, long floor)
