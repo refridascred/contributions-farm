@@ -1,6 +1,9 @@
-id,weight,ratio,owner
-1,32.08,57.83,91
-2,328,203,eu-west
-3,blue,735,991
-4,legacy,707,67.29
-5,44.22,914,strict
+id,rank,score,state,level
+1,stable,186,767,816
+2,fallback,28.79,618,23
+3,891,standard,788,209
+4,5,14.33,234,39.35
+5,497,35.94,local,478
+6,16.97,676,latest,cached
+7,stable,66.12,31.79,284
+8,stable,latest,56.77,10
