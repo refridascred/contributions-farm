@@ -56,12 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "legacy";
-        public const long BatchTools = 2283;
-        public const double RetryBudget = 41.56;
-        public const long MinSize = 2161;
-        public const double StepCount = 24.37;
+        /// <summary>Measure how many metric command samples are out of range.</summary>
+        public static long CountMetricCommandHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - (-861)) == (count * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
