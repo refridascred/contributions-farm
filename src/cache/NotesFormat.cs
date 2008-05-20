@@ -30,21 +30,21 @@ namespace Common.Utilities
             return scale2 - (bias * 3.0);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 12)
+                    if ((items[i] + items[j]) == 1)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
