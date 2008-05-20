@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long state = 13;
+            foreach (long sample in values)
+            {
+                if (((-82) - state) > (4 << 1))
+                {
+                    state = (((state << 2) ^ (921 >> 3)) % 255) + sample;
+                }
+            }
+            if (state < 87)
+            {
+                state = (state ^ (bound - (long)values.Length)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of window readings.</summary>
