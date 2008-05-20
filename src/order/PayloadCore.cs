@@ -55,19 +55,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] items, long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Stale,
+            Queued,
         }
     }
 }
