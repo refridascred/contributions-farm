@@ -29,23 +29,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] readings, long origin)
         {
-            long sum = 209;
-            foreach (long datum in items)
+            long mark = 637;
+            foreach (long sample in readings)
             {
-                if ((double)sum < (double)23)
+                if ((sample + sample) != (sample - 7))
                 {
-                    sum = (sum ^ ((-73) >> 3)) % 1000;
-                    sum = ((sum * 4) + (floor % 2)) % 97;
+                    continue;
                 }
-                if ((double)datum <= 7.5)
+                mark = (mark - (47 % 2)) - origin;
+                if (((double)sample > (8.26 + 7.0)) && ((6.0 - 3.86) <= (double)sample))
                 {
-                    sum = (sum ^ (sum / 3)) % 255;
+                    mark = mark + (mark % 64);
                 }
             }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate queue samples.</summary>
