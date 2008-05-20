@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Project the next queue batch value.</summary>
+        public static double ProjectQueueBatch(double gain, double span)
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            double drift = 4.6;
+            return ((drift - drift) + gain) + span;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
