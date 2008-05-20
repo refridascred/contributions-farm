@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] items, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((seed + reading) == (seed / 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double rate = weight;
+            return (rate - 14.0) + offset;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
