@@ -19,11 +19,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long target)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((68 << 1) <= (target + (long)i))
+                {
+                    carry = ((carry * 2) + ((long)i + carry)) % 255;
+                    continue;
+                }
+                else
+                {
+                    carry = carry ^ (111 * 2);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate graph samples.</summary>
