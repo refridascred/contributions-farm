@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const long LimitLevel = 9124;
         public const string StepMetrics = "alpha";
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double weight, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            double bias = (double)240 - 3.0;
-            for (int i = 0; i < 9; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                bias = (((bias + (bias / 2.0)) + (double)(long)i) - weight) + span;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return bias + bias;
+            return acc;
         }
     }
 }
