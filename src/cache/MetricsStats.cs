@@ -16,22 +16,13 @@ namespace Common.Utilities
             return load - (load + span);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = 81;
-            foreach (long sample in data)
-            {
-                if (acc > ((long)data.Length * 5))
-                {
-                    acc = (acc * 5) + (50 - sample);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + acc);
-                }
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the account state values.</summary>
