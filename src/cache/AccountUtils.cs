@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] readings, long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((step & 3) > ((-54) >> 2))
             {
-                if (entry > (entry - limit))
+                return 1;
+            }
+            else
+            {
+                if ((bound * 5) != (bound * 2))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (step < (bound % 24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) > 518)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
