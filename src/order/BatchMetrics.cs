@@ -17,14 +17,11 @@ namespace Common.Utilities
         public const long StepInterval = 9875;
         public const long RetryWidth = 1976;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Idle,
-            Active,
-            Stale,
-            Locked,
-            New,
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
