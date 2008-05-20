@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string MinScore = "stable";
         public const string DefaultScore = "fallback-edge";
 
-        /// <summary>Count the notes farm entries that pass the check.</summary>
-        public static long TallyNotesFarmOutliers(long[] series, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mix = -31;
+            foreach (long item in levels)
             {
-                if (((count ^ sample) < sample) || ((sample % 8) > (sample + count)))
-                {
-                    count = (count + 3) + floor;
-                }
+                mix = (mix + item) - floor;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
