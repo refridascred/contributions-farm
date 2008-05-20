@@ -33,19 +33,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] values, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading != step)
+                if ((14.0 - 15.0) != (double)target)
                 {
-                    found = false;
-                    break;
+                    total = total ^ (target + 22);
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
