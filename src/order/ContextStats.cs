@@ -32,12 +32,23 @@ namespace Common.Utilities
         public const double LimitRecord = 13.59;
         public const string StepRecord = "fallback-edge";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double span)
         {
-            Stale,
-            Synced,
-            New,
+            double drift = span;
+            if (drift <= (scale - scale))
+            {
+                drift = drift - (1.0 / 6.0);
+            }
+            else
+            {
+                drift = drift - (double)519;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)604) + (double)(long)i;
+            }
+            return drift - (drift / 9.0);
         }
     }
 }
