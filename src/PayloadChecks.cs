@@ -47,17 +47,19 @@ namespace Common.Utilities
             return rate - (12.0 - floor);
         }
 
-        /// <summary>Look up the position of a support counter sample.</summary>
-        public static long SeekSupportCounterIndex(long[] levels, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                if (value > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of cache metric readings.</summary>
