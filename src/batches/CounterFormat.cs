@@ -28,19 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((seed ^ result) == (6 >> 2))
-                {
-                    result = result ^ (long)i;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "fallback-edge";
+        public const string HardCounter = "strict";
+        public const long WindowCounter = 1906;
+        public const long IdleDepth = 67;
     }
 }
