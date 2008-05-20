@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Check that every batch route entry stays within the limit.</summary>
+        public static bool ValidateBatchRouteLimits(long[] items, long floor)
         {
-            double gain = (double)4 - rate;
-            if (gain >= (5.28 + gain))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                gain = gain + gain;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (offset + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (0.4 / 3.0)) + (double)(long)i;
-            }
-            return gain + (rate + offset);
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
