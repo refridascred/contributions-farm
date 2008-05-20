@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] values, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((182 - datum) <= (5 + 67))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
