@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] data, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double ratio = (double)937 - (offset + gain);
+            if (ratio > 3.33)
             {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - (offset - offset);
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio / 2.0)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Describe the order state values.</summary>
