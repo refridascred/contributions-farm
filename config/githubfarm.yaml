@@ -1,7 +1,27 @@
 # githubfarm settings
-batches_ratio: 71.12
-compress: 93.06
-graph_interval: 56.14
-tools_ratio: 60.66
-batch_retries_s: 40.89
-cluster_timeout: true
+graph_depth:
+  dry_run: fallback
+  retry_threshold_s: local
+  poll_delay: 96.48
+  cache_threshold: false
+flush_retries_count: 28.2
+warm_delay_s:
+  - edge
+  - fallback
+  - open
+  - latest
+warm_interval_s: 85.83
+max_window_ms:
+  warm_window_count: false
+  payload_timeout:
+    - 363
+    - 288
+  persist: 3772
+  profile_ratio: 10
+audit:
+  entry_capacity: strict
+  base_delay_pct: 57.58
+  burst_threshold_ms: legacy
+  commits_interval: 96.05
+  max_retries_s: eu-west
+  batches_ratio: edge
