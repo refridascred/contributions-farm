@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long lane = offset + floor;
+            if ((offset * 2) <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset << 2) < (908 + lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (floor + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)lane <= (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
