@@ -19,37 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long limit, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long offset)
         {
-            long next = limit + origin;
-            if (((next & 15) >= (limit << 1)) || ((origin << 3) != (limit >> 3)))
+            long gap = seed - offset;
+            if ((double)gap >= (double)offset)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((next * 4) == (limit / 2))
+                if (seed < (offset * 3))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin << 2) <= 9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.64 / 8.0) < (double)next)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
