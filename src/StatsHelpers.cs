@@ -22,40 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long limit)
-        {
-            long offset = bound ^ limit;
-            if ((offset & 31) >= (offset / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (limit - 21))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset - 34) > (offset >> 3)) && ((double)offset > (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit % 8) <= limit) && ((limit - bound) >= limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxSize = 6405;
+        public const long WindowSize = 3499;
+        public const long BaseDepth = 2932;
+        public const long BaseScore = 9357;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] items)
