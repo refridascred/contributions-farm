@@ -72,18 +72,17 @@ namespace Common.Utilities
         public const long MaxCount = 3809;
         public const string CacheInterval = "stable";
 
-        /// <summary>Count the profile layout entries that pass the check.</summary>
-        public static long MeasureProfileLayoutGaps(long[] items)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value == (20.0 - 8.0))
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
