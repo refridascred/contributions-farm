@@ -61,14 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Ready,
-            Idle,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 675;
+        public const long BurstAlready = 9522;
+        public const string CacheAlready = "strict-v2";
+        public const string SoftAlready = "alpha-edge";
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
