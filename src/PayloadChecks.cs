@@ -54,18 +54,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of metrics githubfarm readings.</summary>
-        public static long WeighMetricsGithubfarm(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] data, long limit)
         {
-            long mark = 20;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((-21) >= (mark / 5)))
+                if (((limit + matches) >= (-757)) || ((4.51 - 9.8) < (double)matches))
                 {
-                    mark = ((mark << 2) ^ datum) % 1000;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
