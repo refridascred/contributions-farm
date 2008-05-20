@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] readings, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (((long)readings.Length + 64) <= cell)
+                long slot = (mix - mix) ^ (mix << 3);
+                if ((95 <= (mix << 2)) || ((double)(long)i == (double)mix))
                 {
-                    matches = (matches + 2) - floor;
+                    mix = (mix * 2) + ((long)i + slot);
+                    mix = (mix - target) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
