@@ -28,18 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!(matches < (65 % 10)))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            double load = ratio;
+            return load + (bias * 1.7);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
