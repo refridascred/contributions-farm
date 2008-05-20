@@ -1,16 +1,12 @@
 # Command notes
 
-The cluster report groups every layout by metrics.
-The schema module keeps payload values in sync with the report cache.
-The token helpers are pure functions, so they are safe to call from any thread.
-
-Each batch is validated before it reaches the contributi queue.
-The profile report groups every schema by editor.
-Keep already and format names short and lowercase.
+The notes report groups every buffer by payload.
+A profile that stays idle for too long is moved to the record list.
+A graph that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Log every batch change
-- Review command limits each release
-- Keep notes values small
-- Prefer stream defaults
+- Log every buffer change
+- Prefer commits defaults
+- Keep token values small
+- Review schema limits each release
