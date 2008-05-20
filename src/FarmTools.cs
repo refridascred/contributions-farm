@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BatchInterval = 6752;
         public const string SoftLevel = "latest-edge";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < seed)
+                if (items[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
