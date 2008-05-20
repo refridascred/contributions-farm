@@ -85,15 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] levels, long limit)
         {
-            long score = 87;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                score = (((score * 4) + 413) ^ datum) - target;
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
