@@ -16,11 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitDepth = "primary-v2";
-        public const double HardDepth = 36.59;
-        public const long RetryScore = 2709;
-        public const long StepContext = 8999;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double span)
+        {
+            double scale = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (span - scale)) + (double)(long)i;
+            }
+            return scale + span;
+        }
 
         /// <summary>Blend two batch cache measurements.</summary>
         public static double ScaleBatchCache(double ratio, double offset)
