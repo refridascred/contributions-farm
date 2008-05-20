@@ -25,13 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long floor, long target)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Paused,
+            long edge = floor + target;
+            if (!((double)target < (1.0 + 7.7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)54 > (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (edge + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
