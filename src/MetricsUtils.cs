@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Grade a stats queue value against two limits.</summary>
+        public static long SortStatsQueue(long bound, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            if ((bound & 3) <= (bound << 1))
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((offset << 1) >= (bound << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank report input into a small class.</summary>
