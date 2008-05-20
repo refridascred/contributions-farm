@@ -51,19 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (cell != offset)
+                if (value > step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
