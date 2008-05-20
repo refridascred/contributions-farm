@@ -1,6 +1,14 @@
 {
-  "base_ratio_ms": 30,
-  "enabled": 48.74,
-  "retry_threshold": [224, 316],
-  "sync_capacity": true
+  "verbose": true,
+  "batch_ratio_ms": 1024,
+  "compress": ["stable", "open", "legacy", "standard"],
+  "enabled": {
+    "default_delay_ms": false,
+    "profile_limit": 4,
+    "strict": 83.02,
+    "flush_delay": "open",
+    "enabled": false
+  },
+  "window_limit": "fallback",
+  "hard_limit": 30
 }
