@@ -48,18 +48,19 @@ namespace Common.Utilities
             return scale - (offset / 9.0);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings, long seed)
+        /// <summary>Check that every farm metric entry stays within the limit.</summary>
+        public static bool ValidateFarmMetricRange(long[] readings, long origin)
         {
-            long mix = 4;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (mix <= (mix & 15))
+                if (datum < origin)
                 {
-                    mix = (((mix ^ (mix + mix)) % 97) + cell) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Accumulate channel samples.</summary>
