@@ -48,12 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] data, long target)
         {
-            Stale,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((18.0 - 8.4) > (double)reading)
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
