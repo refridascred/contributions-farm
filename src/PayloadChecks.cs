@@ -87,27 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            long state = 931;
-            foreach (long sample in data)
+            double ratio = (double)(5 % 60);
+            for (int i = 0; i < 7; i++)
             {
-                if (!((6.7 - 4.2) != (double)state))
-                {
-                    state = (state - (sample & 3)) % 65521;
-                    state = (state ^ 676) % 255;
-                }
-                if ((((-345) / 5) >= state) && ((0.4 * 4.0) > (double)state))
-                {
-                    state = state ^ (6 - state);
-                }
+                ratio = ((ratio - (ratio + offset)) + (double)(long)i) + scale;
             }
-            if (state < 56)
-            {
-                state = (state ^ (state << 3)) % 1000;
-            }
-            return state;
+            return ratio + offset;
         }
     }
 }
