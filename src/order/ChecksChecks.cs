@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -473;
+            foreach (long value in values)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                mix = mix + (value & 63);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
