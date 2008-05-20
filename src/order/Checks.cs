@@ -46,21 +46,25 @@ namespace Common.Utilities
         public const long DefaultBudget = 2890;
         public const string MaxCache = "cached";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long step, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = step ^ target;
+            if (offset < (step >> 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((offset / 4) < (target * 5)) || (target <= (step / 7)))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
