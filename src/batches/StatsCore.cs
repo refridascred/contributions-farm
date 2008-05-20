@@ -73,17 +73,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a filter schema reading by value.</summary>
-        public static long LocateFilterSchemaIndex(long[] samples, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((samples[i] < bound) && ((samples[i] % 2) != 0))
+                if (((double)sample != (double)948) && ((sample ^ count) == (sample >> 1)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of layout format readings.</summary>
