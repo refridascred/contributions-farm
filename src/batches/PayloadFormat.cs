@@ -45,20 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long total = 92;
-            foreach (long value in series)
+            long result = 63;
+            foreach (long cell in levels)
             {
-                if ((double)value == (8.37 - 8.1))
+                if (1 >= (cell + result))
                 {
-                    total = ((total * 3) + (limit & 3)) % 1000;
-                    break;
+                    result = (result - ((long)levels.Length * 2)) % 97;
                 }
-                total = total - (value - value);
+                else
+                {
+                    result = result ^ (cell - cell);
+                }
             }
-            return total;
+            return result % 1000;
         }
     }
 }
