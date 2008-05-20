@@ -35,13 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of batch context readings.</summary>
+        public static long TotalBatchContext(long[] levels, long offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 7;
+            foreach (long datum in levels)
+            {
+                score = ((((score << 3) ^ (score % 10)) % 1000) + datum) - offset;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
