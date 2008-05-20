@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 7;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = ((sum - (sum - sum)) % 255) ^ datum;
+                if ((double)sum != (double)7)
                 {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of command session readings.</summary>
