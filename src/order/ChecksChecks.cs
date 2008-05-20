@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            Synced,
-            Idle,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
