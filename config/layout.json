@@ -1,7 +1,7 @@
 {
-  "hard_limit": "blue",
-  "min_ratio_pct": "staging",
-  "warm_threshold": [167, 96, 247],
-  "readonly": "green",
-  "dry_run": "green"
+  "persist": 86.16,
+  "burst_threshold_s": 99,
+  "sync_ttl_ms": false,
+  "warm_timeout_ms": 24,
+  "sync_size": false
 }
