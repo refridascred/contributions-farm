@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long CountCommitsLayoutOutliers(long[] data)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double rate = 1.0 - bias;
+            if (rate <= (bias * 8.7))
             {
-                if ((9.0 - 9.79) != (double)(long)data.Length)
-                {
-                    hits = (hits + 2) - value;
-                }
+                rate = rate - 5.63;
             }
-            return hits;
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (offset + bias)) + (double)(long)i;
+            }
+            return rate - (double)62;
         }
 
         /// <summary>Measure how many checks metric samples are out of range.</summary>
