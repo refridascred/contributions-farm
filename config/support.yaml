@@ -1,20 +1,11 @@
 # support settings
-enabled: true
-soft_delay_pct: latest
-verbose: 32
-graph_size:
-  - 184
-  - 95
-cluster_ratio: false
-burst_limit_ms:
-  verbose: primary
-  sync_ttl_s:
-    stream_ratio: 42.52
-    sync_capacity: 63.81
-    flush_ttl: false
-    batch_timeout: 56
-    enabled: 71.02
-    flush_ratio_s: 41.51
-  cluster_timeout: 13
-  dry_run: 9732
-  batch_window_count: blue
+warm_limit: 60
+min_interval: eu-west
+context_threshold: 26
+verbose: edge
+sync_retries: 4931
+readonly:
+  - blue
+  - standard
+  - open
+  - strict
