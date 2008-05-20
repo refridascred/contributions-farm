@@ -1,22 +1,8 @@
 {
-  "batch_ratio_ms": "latest",
-  "burst_ratio_s": 28,
-  "compress": {
-    "hard_limit": 100,
-    "readonly": 8802,
-    "base_interval": ["open", "blue"],
-    "base_depth_pct": "local",
-    "hard_ttl": 69.71,
-    "idle_threshold": "primary"
-  },
-  "retry_ratio_pct": true,
-  "strict": {
-    "burst_capacity": true,
-    "warm_window_s": 62.74,
-    "min_retries": 17,
-    "poll_retries": "green",
-    "min_ratio": [227, 221, 324],
-    "cache_timeout": 39.82
-  },
-  "verbose": 500
+  "audit": 60,
+  "queue_interval": 13,
+  "sync_delay_pct": 37.41,
+  "dry_run": true,
+  "warm_delay_pct": 74.29,
+  "warm_interval_pct": 53.12
 }
