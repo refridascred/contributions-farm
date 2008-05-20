@@ -46,12 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Accumulate githubfarm counter samples.</summary>
+        public static long TallyGithubfarmCounter(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long sum = -467;
+            foreach (long reading in series)
+            {
+                sum = ((sum ^ (offset & 3)) % 255) + reading;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
