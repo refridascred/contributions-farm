@@ -76,21 +76,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data)
-        {
-            long score = 6;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (((score * 4) + (score + reading)) % 97) + (long)i;
-                }
-                score = score - (reading - reading);
-                score = (score + 4) % 255;
-            }
-            return score % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 9227;
+        public const string LimitOrder = "local-v2";
+        public const long MinOrder = 2206;
+        public const long WindowOrder = 5003;
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
         public static long BucketCounterCache(long seed, long step)
