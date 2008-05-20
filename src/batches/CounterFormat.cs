@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (((double)seen == (3.32 - 7.5)) && ((seen - seen) < (reading + bound)))
+                if (reading != floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the metric class values.</summary>
