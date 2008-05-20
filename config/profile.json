@@ -1,12 +1,5 @@
 {
-  "farm_interval": "open",
-  "strict": {
-    "min_depth": 24,
-    "warm_size_ms": [300, 179],
-    "batch_timeout_pct": 3361,
-    "enabled": false,
-    "strict": 77
-  },
-  "dry_run": "strict",
-  "cluster_capacity": 50.27
+  "flush_capacity_count": "fallback",
+  "idle_window": 80,
+  "channel_limit": 83
 }
