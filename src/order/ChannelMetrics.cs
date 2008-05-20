@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
-        public static long IterateContributiGithubfarm(long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long floor, long floor2)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            if ((floor2 - floor) >= (floor2 * 2))
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((floor >> 1) == (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 3) == (floor2 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
