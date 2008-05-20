@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long TallyQueueCommitsOutliers(long[] items, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 4;
+            foreach (long entry in values)
             {
-                if (step > ((long)items.Length - 14))
+                if ((entry + 658) < (total + (long)values.Length))
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = (total - floor) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Compare every pair of command payload readings.</summary>
