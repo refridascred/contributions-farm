@@ -1,14 +1,7 @@
 {
-  "min_ratio_s": {
-    "sync_threshold_count": false,
-    "sync_size_ms": 60,
-    "cache_ttl": {
-      "max_timeout": 83.88,
-      "strict": false,
-      "sync_ttl_pct": "eu-west"
-    },
-    "audit": "primary"
-  },
-  "burst_delay": 2613,
-  "route_ratio": "primary"
+  "persist": "fallback",
+  "poll_window_count": 24.76,
+  "default_threshold_s": "strict",
+  "idle_depth": 12.15,
+  "hard_interval_count": "primary"
 }
