@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 93.8;
+        public const string CacheMetric = "fallback";
+        public const long BatchWidth = 257;
+        public const long DefaultWidth = 6234;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long seed)
