@@ -34,12 +34,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter header.</summary>
