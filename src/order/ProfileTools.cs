@@ -45,22 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch channel readings.</summary>
-        public static long PairBatchChannelCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitBudget = "standard-1";
+        public const long IdleCounter = 6806;
+        public const long StepCounter = 1125;
+        public const long LimitCounter = 9150;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] values)
