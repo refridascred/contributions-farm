@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double offset)
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            double gain = ratio;
+            if (gain < (gain / 7.0))
+            {
+                gain = (gain + (double)5) + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
