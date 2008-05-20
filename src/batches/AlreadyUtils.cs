@@ -33,22 +33,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long seed)
         {
-            long score = 292;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((entry + 85) != (score << 2)) || ((score + entry) >= score))
+                if (datum < seed)
                 {
-                    score = (score ^ (score + score)) % 255;
-                }
-                else
-                {
-                    score = ((score * 5) + (score + entry)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
