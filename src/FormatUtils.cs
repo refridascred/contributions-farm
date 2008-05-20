@@ -23,18 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 6270;
+        public const string SoftToken = "open";
+        public const long BatchToken = 8425;
+        public const long BaseLevel = 395;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
