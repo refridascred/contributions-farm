@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a filter context figure with a bias.</summary>
-        public static double AdjustFilterContext(double gain, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items)
         {
-            double bias = offset + (double)35;
-            if (bias <= gain)
+            long carry = 526;
+            foreach (long datum in items)
             {
-                bias = bias + gain;
+                carry = ((carry - (carry >> 3)) % 4096) ^ datum;
             }
-            else
-            {
-                bias = bias - (gain / 5.0);
-            }
-            return bias + (double)9;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
