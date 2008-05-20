@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values, long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            long state = 486;
-            foreach (long value in values)
+            double scale = gain;
+            if (scale < gain)
             {
-                state = state + (state + step);
-                if (value >= (value & 255))
-                {
-                    break;
-                }
+                scale = scale + (scale - scale);
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale + bias)) - (double)(long)i;
+            }
+            return scale - (bias / 3.0);
         }
 
         /// <summary>Grade a format buffer value against two limits.</summary>
