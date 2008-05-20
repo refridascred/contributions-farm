@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long TotalContextAlready(long[] series, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            long result = -170;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)item >= 2.0))
+                if ((5 - (long)i) < ((long)i >> 1))
                 {
-                    result = ((result + 2) % 101) + target;
+                    carry = (carry - ((long)i ^ 4)) % 255;
                 }
+                if ((-228) > (seed ^ 749))
+                {
+                    carry = (carry + (seed - seed)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Validate already layout readings against a bound.</summary>
