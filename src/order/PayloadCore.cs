@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + item) > hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - target;
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
