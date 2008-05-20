@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 1365;
-        public const double LimitInterval = 11.81;
-        public const long MinTimeout = 8755;
-        public const long HardCluster = 7970;
+        /// <summary>Grade a filter batch value against two limits.</summary>
+        public static long GradeFilterBatch(long origin, long floor)
+        {
+            long step = origin - floor;
+            if ((double)floor < (6.07 + 9.11))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step >> 4) > (origin & 255)) && (9.0 > (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] samples)
