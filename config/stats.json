@@ -1,7 +1,14 @@
 {
-  "poll_interval_count": ["legacy", "local", "edge"],
-  "idle_limit_ms": "stable",
-  "idle_threshold_ms": 233,
-  "contributi_capacity": 45.72,
-  "soft_interval": "strict"
+  "cluster_interval": 100,
+  "hard_retries_s": 58.2,
+  "retry_capacity_count": 500,
+  "warm_limit": true,
+  "filter_capacity": {
+    "buffer_window": 59.04,
+    "base_delay_count": 5457,
+    "sync_ratio_ms": false,
+    "flush_interval": 90.26,
+    "compress": "green",
+    "persist": 6635
+  }
 }
