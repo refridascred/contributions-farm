@@ -46,13 +46,21 @@ namespace Common.Utilities
         public const long DefaultBudget = 2890;
         public const string MaxCache = "cached";
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
