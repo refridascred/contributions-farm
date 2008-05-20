@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            if (((double)seed > 2.1) || (((-67) + seed) == (6 + 7)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) == (907 + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the metric state values.</summary>
