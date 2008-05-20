@@ -1,8 +1,6 @@
 {
-  "audit": "green",
-  "warm_limit": "stable",
-  "warm_window_count": ["primary", "cached"],
-  "max_threshold_count": "stable",
-  "poll_size_ms": "stable",
-  "poll_ratio_count": 500
+  "warm_timeout_count": "fallback",
+  "flush_delay_count": "primary",
+  "support_size": "fallback",
+  "flush_window": 19.72
 }
