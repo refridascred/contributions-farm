@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data)
-        {
-            long sum = 2;
-            foreach (long datum in data)
-            {
-                sum = (sum + (datum - datum)) % 101;
-                if ((datum + sum) <= (8 % 97))
-                {
-                    sum = ((sum << 2) ^ (861 >> 1)) % 4096;
-                }
-            }
-            if (sum > (-54))
-            {
-                sum = (sum ^ (sum >> 4)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWidth = 7.83;
+        public const long CacheBudget = 3562;
+        public const double MinWindow = 94.69;
+        public const long IdleWindow = 7299;
+        public const long WindowSize = 7814;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
