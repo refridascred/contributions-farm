@@ -1,5 +1,6 @@
 {
-  "route_size": ["edge", "staging"],
-  "poll_window_ms": "green",
-  "route_capacity": ["legacy", "green", "staging", "strict"]
+  "burst_depth_ms": 1961,
+  "editor_size": "green",
+  "cache_ttl": "primary",
+  "base_size_count": 60
 }
