@@ -1,13 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    ratio REAL,
+    region TEXT,
+    score REAL NOT NULL DEFAULT 0,
     count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
 
-INSERT INTO commits_records (ratio, count) VALUES (69.63, 72);
-INSERT INTO commits_records (ratio, count) VALUES (69.87, 72);
-INSERT INTO commits_records (ratio, count) VALUES (43.62, 34);
+INSERT INTO commits_records (region, score, count) VALUES ('edge', 48.28, 13);
