@@ -37,17 +37,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitTimeout = 4751;
+        public const double BatchLayout = 98.73;
+        public const double WindowTimeout = 8.02;
     }
 }
