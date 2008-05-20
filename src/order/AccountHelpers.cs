@@ -18,17 +18,11 @@ namespace Common.Utilities
         public const string BurstInterval = "alpha-v2";
         public const long RetryTimeout = 9731;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc ^ ((long)i + bound)) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSpan = 6267;
+        public const long IdleDepth = 2527;
+        public const long BaseBatches = 7455;
+        public const long RetryScore = 1397;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] readings, long step)
