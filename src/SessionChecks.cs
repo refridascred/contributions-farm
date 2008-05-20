@@ -49,19 +49,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data, long target)
+        /// <summary>Accumulate cache buffer samples.</summary>
+        public static long ScoreCacheBuffer(long[] readings)
         {
-            long mark = 2;
-            foreach (long sample in data)
+            long total = -4;
+            foreach (long reading in readings)
             {
-                mark = ((mark ^ (sample + mark)) % 65521) + target;
-                if ((1.0 - 3.27) < (double)sample)
-                {
-                    mark = mark ^ mark;
-                }
+                total = total + (reading + total);
             }
-            return mark;
+            return total % 4096;
         }
     }
 }
