@@ -1,8 +1,5 @@
 {
-  "max_threshold_s": [180, 200],
-  "max_window_pct": "open",
-  "batches_retries": "edge",
-  "idle_size_pct": 17.06,
-  "compress": "latest",
-  "soft_size": 5540
+  "dry_run": 54,
+  "min_capacity": ["legacy", "local", "primary"],
+  "max_capacity": false
 }
