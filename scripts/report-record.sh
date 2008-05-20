@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in staging latest fallback edge; do
+    log "checking ${item}"
+done
 
 RECORD_LIMIT=187
 log "limit is ${RECORD_LIMIT}"
-
-for item in eu-west local primary green; do
-    log "checking ${item}"
-done
