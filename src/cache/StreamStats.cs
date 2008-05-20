@@ -29,18 +29,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric command samples are out of range.</summary>
-        public static long CountMetricCommandHits(long[] samples)
+        /// <summary>Rank record channel input into a small class.</summary>
+        public static long BucketRecordChannel(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long diff = offset + offset2;
+            if ((offset % 3) == (diff + diff))
             {
-                if ((reading - (-861)) == (count * 5))
+                return 7;
+            }
+            else
+            {
+                if ((15.0 - 1.74) != (double)offset)
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + diff) <= (diff - diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a session stats.</summary>
