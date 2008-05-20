@@ -44,22 +44,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] readings, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = 973;
+            foreach (long entry in levels)
             {
-                if ((double)limit != (20.0 / 3.0))
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc + (entry / 8)) % 97;
             }
-            return tally;
+            if (acc < 9)
+            {
+                acc = (acc - (acc - 982)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of batches token entries.</summary>
