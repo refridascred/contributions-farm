@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (readings[i] == target)
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Project the next notes value.</summary>
