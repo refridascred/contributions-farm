@@ -59,13 +59,24 @@ namespace Common.Utilities
             return scale2 + (floor * 8.52);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank batches farm input into a small class.</summary>
+        public static long SortBatchesFarm(long seed, long origin)
         {
-            Locked,
-            Ready,
-            Active,
-            Failed,
+            if (((origin * 2) <= (origin + 3)) || ((seed * 3) == (origin ^ origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (57 >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
