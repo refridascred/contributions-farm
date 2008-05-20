@@ -1,20 +1,6 @@
 {
-  "default_threshold": true,
-  "retry_capacity_count": {
-    "audit": false,
-    "flush_retries": 6758,
-    "verbose": {
-      "graph_window": 8161,
-      "cache_timeout_s": "strict",
-      "cache_ttl_ms": 17,
-      "hard_window_count": 7,
-      "sync_timeout_ms": [400, 109, 268],
-      "queue_limit": false
-    },
-    "batch_ratio_s": 97.66
-  },
-  "dry_run": 4207,
-  "sync_retries_count": ["strict", "staging"],
-  "retry_threshold_pct": "primary",
-  "min_retries_ms": true
+  "route_ttl": "blue",
+  "githubfarm_window": "fallback",
+  "soft_window_ms": 25.88,
+  "flush_ratio_pct": [88, 350, 492, 321]
 }
