@@ -48,18 +48,18 @@ namespace Common.Utilities
             return scale - (offset / 9.0);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = 4;
+            foreach (long cell in readings)
             {
-                if (((5.25 / 7.0) > (double)cell) && ((tally + tally) < (tally / 5)))
+                if (mix <= (mix & 15))
                 {
-                    tally = (tally + 3) + limit;
+                    mix = (((mix ^ (mix + mix)) % 97) + cell) + seed;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate channel samples.</summary>
