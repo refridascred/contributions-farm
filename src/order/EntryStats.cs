@@ -46,18 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(2.4 > (double)count))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Locate a window reading by value.</summary>
