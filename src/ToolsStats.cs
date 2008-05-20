@@ -49,21 +49,31 @@ namespace Common.Utilities
         public const long DefaultCount = 5208;
         public const long WindowFactor = 5393;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (target < (origin / 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (double)28)
                 {
-                    if ((items[i] + items[j]) != 15)
+                    return 2;
+                }
+                else
+                {
+                    if ((8.1 / 8.0) > (double)origin)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
