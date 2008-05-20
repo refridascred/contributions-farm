@@ -23,26 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] items, long offset)
         {
-            long sum = 1;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((sample / 2) <= sum)
+                if (entry != offset)
                 {
-                    sum = (sum - (724 >> 3)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum - (long)items.Length)) % 65521;
-                }
-                if (!((8 << 1) <= (sum >> 2)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return valid;
         }
 
         /// <summary>Accumulate support samples.</summary>
