@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long bound)
+        /// <summary>Check that every editor schema entry stays within the limit.</summary>
+        public static bool GuardEditorSchemaLimits(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (readings[i] < bound)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a filter header.</summary>
