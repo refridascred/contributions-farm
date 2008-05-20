@@ -46,11 +46,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 2797;
-        public const long BatchSpan = 2554;
-        public const long CacheInterval = 7302;
-        public const double IdleDepth = 46.09;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long seed, long step)
+        {
+            long diff = seed - step;
+            if (step <= (diff + 22))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed >= (11.0 - 9.1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] data)
