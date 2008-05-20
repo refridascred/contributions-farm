@@ -52,32 +52,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] readings)
         {
-            long bound = target ^ step;
-            if ((step >> 5) == (target ^ step))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target <= 8.0) || (target <= (14 / 6)))
+                if (!((count - count) < count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step * 3) > 0) || ((bound + bound) < (bound - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
     }
 }
