@@ -33,39 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm batches input into a small class.</summary>
-        public static long ClassifyGithubfarmBatches(long limit, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long offset = limit ^ origin;
-            if ((2 / 9) >= (limit & 1))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((8.23 * 4.19) <= (double)offset) && ((3.11 - 4.1) >= (double)offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin << 3) == (origin % 8)) || ((16 - limit) >= (offset & 63)))
+                    if ((data[i] + data[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((13 + origin) > (-6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
