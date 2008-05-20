@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Validate support account readings against a bound.</summary>
+        public static bool VerifySupportAccountBounds(long[] samples, long seed)
         {
-            Dropped,
-            Synced,
-            Active,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
