@@ -38,20 +38,12 @@ namespace Common.Utilities
             return gain - 7.0;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 9269;
+        public const string SoftSize = "fallback";
+        public const double HardSpan = 40.33;
+        public const long LimitLevel = 7239;
+        public const long HardSchema = 5837;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long step, long seed)
