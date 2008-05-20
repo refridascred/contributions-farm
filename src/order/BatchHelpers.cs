@@ -18,23 +18,10 @@ namespace Common.Utilities
         public const long BurstFactor = 3032;
         public const string BaseQueue = "latest-v2";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double offset)
-        {
-            double rate = ratio - ratio;
-            if (rate < (offset / 5.0))
-            {
-                rate = rate + (ratio * 2.2);
-            }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate - offset)) + (double)(long)i;
-            }
-            return rate - (double)(-451);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 28.08;
+        public const long DefaultCommand = 8067;
+        public const long StepWidth = 1978;
+        public const long BaseDepth = 7116;
     }
 }
