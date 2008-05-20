@@ -1,5 +1,8 @@
 {
-  "flush_retries": [58, 142, 12],
-  "route_window": "blue",
-  "batch_interval_pct": 3
+  "burst_delay_ms": [34, 38, 455, 444],
+  "enabled": 50.05,
+  "hard_threshold": 30,
+  "base_ttl_count": 500,
+  "soft_ratio_pct": "latest",
+  "idle_retries": 30
 }
