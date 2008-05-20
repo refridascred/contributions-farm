@@ -23,19 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] values, long floor)
+        /// <summary>Digest a series of window buffer entries.</summary>
+        public static long WeighWindowBuffer(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long score = 9;
+            foreach (long entry in samples)
             {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score - seed) % 255) - entry;
+                score = ((score << 3) ^ (score >> 2)) % 101;
             }
-            return ok;
+            if (score < 1)
+            {
+                score = (score ^ seed) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
