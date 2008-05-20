@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long MaxWindow = 824;
         public const string BaseWindow = "fallback-v2";
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double gain, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings, long floor)
         {
-            double gain2 = (bias * 3.7) / 4.0;
-            if (gain2 >= (double)9)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                gain2 = (gain2 - bias) + gain;
+                if ((reading & 63) != (floor / 7))
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain2 - bias;
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
