@@ -44,14 +44,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            Synced,
-            Active,
-            Draft,
-            Ready,
-            Paused,
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                long lane = bound;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long bound2 = lane;
+                    lane = (lane ^ (bound2 * 4)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
