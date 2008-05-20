@@ -38,23 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long bound)
         {
-            double ratio = (double)(57 << 1);
-            if (ratio < bias2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + bias;
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio + (7.6 + bias);
+            return -1;
         }
     }
 }
