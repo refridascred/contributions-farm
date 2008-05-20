@@ -55,13 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
