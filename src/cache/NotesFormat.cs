@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long MaxEditor = 1149;
         public const long CacheSpan = 422;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinFactor = 1566;
-        public const long BatchEditor = 5578;
-        public const double LimitFactor = 12.33;
-        public const string CacheInterval = "staging-v2";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double SmoothProfile(double weight, double span)
