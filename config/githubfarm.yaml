@@ -1,10 +1,6 @@
 # githubfarm settings
-batches_ratio: 60
-readonly: 9009
-dry_run: false
-enabled: 53.25
-soft_window_pct:
-  - 331
-  - 345
-  - 159
-  - 361
+base_retries: 60
+soft_depth_s: 4273
+hard_size_s:
+  - 169
+  - 246
