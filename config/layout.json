@@ -1,6 +1,8 @@
 {
-  "hard_capacity_count": 54.5,
-  "layout_size": "blue",
-  "soft_limit_pct": "standard",
-  "persist": ["eu-west", "eu-west"]
+  "max_threshold_s": [180, 200],
+  "max_window_pct": "open",
+  "batches_retries": "edge",
+  "idle_size_pct": 17.06,
+  "compress": "latest",
+  "soft_size": 5540
 }
