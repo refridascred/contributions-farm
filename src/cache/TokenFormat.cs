@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long MeasureBatchStatsOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((cell + tally) <= (966 >> 1)) && ((tally + cell) < (tally / 9)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5800;
+        public const long MinSupport = 6917;
+        public const string RetryInterval = "local-edge";
+        public const long LimitLevel = 7274;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
