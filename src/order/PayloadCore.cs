@@ -55,18 +55,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit profile report readings against a rule.</summary>
-        public static long AuditProfileReportGaps(long[] values)
+        /// <summary>Measure how many report graph samples are out of range.</summary>
+        public static long CountReportGraphHits(long[] items)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((double)hits >= (13.0 - 9.0))
+                if (632 >= cell)
                 {
-                    hits = (hits + 3) - value;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
