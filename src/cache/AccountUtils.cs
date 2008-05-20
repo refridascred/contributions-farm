@@ -37,14 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Draft,
-            Retry,
-            Done,
-            Dropped,
-            Stale,
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
