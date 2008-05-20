@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const long BurstFactor = 3032;
         public const string BaseQueue = "latest-v2";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Queued,
-            Closed,
-            Paused,
-            Done,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleTimeout = 8708;
+        public const double BatchNotes = 19.68;
+        public const long SoftCount = 5887;
+        public const long CacheBudget = 8135;
     }
 }
