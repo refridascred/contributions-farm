@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double offset)
         {
-            long acc = -4;
-            foreach (long entry in series)
+            double ratio = (19.0 / 9.0) + offset;
+            if (ratio > ratio)
             {
-                if ((double)acc <= (6.91 - 6.3))
-                {
-                    acc = (acc + (0 + entry)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (entry % 2)) % 255;
-                }
+                ratio = (ratio - (8.05 * 3.16)) - scale;
             }
-            if (acc < (-1))
+            else
             {
-                acc = acc ^ (271 + 9);
+                ratio = ratio - ratio;
             }
-            return acc;
+            return ratio + offset;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
