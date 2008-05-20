@@ -21,11 +21,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((852 - sample) <= sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a session layout sample.</summary>
