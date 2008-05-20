@@ -1,11 +1,15 @@
 # Command notes
 
-Run the already check before changing any command limits.
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for payload live in the config folder and can be overridden per environment.
+Each tools is validated before it reaches the contributi queue.
+The metric module keeps notes values in sync with the githubfarm cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps tools values in sync with the batch cache.
+Each context is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Review buffer limits each release
-- Log every contributi change
+- Log every commits change
+- Validate farm input early
+- Prefer tools defaults
