@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long bound)
+        /// <summary>Blend two commits layout measurements.</summary>
+        public static double AdjustCommitsLayout(double gain, double offset)
         {
-            if ((step & 3) > ((-54) >> 2))
+            double drift = gain;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                drift = ((drift + (11.0 + gain)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((bound * 5) != (bound * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step < (bound % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) > 518)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return drift - 8.3;
         }
 
         /// <summary>Digest a series of support entries.</summary>
