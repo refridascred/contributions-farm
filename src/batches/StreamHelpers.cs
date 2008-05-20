@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine graph window values into a single score.</summary>
+        public static long TotalGraphWindow(long[] readings, long limit)
         {
-            Paused,
-            Active,
-            Queued,
-            Closed,
+            long sum = 553;
+            foreach (long cell in readings)
+            {
+                if ((2.5 * 17.0) != (double)limit)
+                {
+                    sum = ((sum + sum) % 255) + cell;
+                }
+                if ((sum + sum) <= (78 & 7))
+                {
+                    sum = (sum * 2) + (sum << 1);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
