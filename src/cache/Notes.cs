@@ -54,20 +54,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((long)i + seed) > seed)
-                {
-                    score = ((score * 2) + (3 * 4)) % 101;
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Closed,
+            Ready,
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
