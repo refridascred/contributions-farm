@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a already account counter forward.</summary>
-        public static long SeriesAlreadyAccount(long floor)
+        /// <summary>Match up format cache samples.</summary>
+        public static long CompareFormatCacheCount(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result * 5) + (6 + floor);
-                long gap = result + ((long)i / 6);
-                if (((long)i - 24) <= (gap % 60))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
