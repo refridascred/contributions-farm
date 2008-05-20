@@ -33,18 +33,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] values)
+        /// <summary>Locate a token account reading by value.</summary>
+        public static long LocateTokenAccountIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (5.05 < (double)item)
+                if (samples[i] == limit)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
