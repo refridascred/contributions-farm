@@ -65,38 +65,18 @@ namespace Common.Utilities
         public const double MinChannel = 38.62;
         public const double BatchChannel = 0.97;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long seed, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series, long step)
         {
-            if ((14.0 - 9.6) <= (double)seed)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (seed & 7))
+                if ((9 - cell) > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 3) != (248 + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (1.4 < (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
