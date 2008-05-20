@@ -16,15 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Draft,
-            Stale,
-            Pending,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySize = 2285;
+        public const string RetryCache = "fallback-edge";
+        public const long BatchRatio = 4428;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long limit)
