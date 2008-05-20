@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] series, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long result = 163;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result - ((long)series.Length >> 3)) % 65521) + value) + bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
