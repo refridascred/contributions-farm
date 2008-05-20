@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values, long step)
         {
-            long total = 45;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                total = (((total ^ 47) % 101) ^ reading) - step;
+                if ((entry + entry) < (step ^ entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (total < (-9))
-            {
-                total = (total ^ (486 >> 3)) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
