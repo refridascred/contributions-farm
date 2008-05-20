@@ -1,6 +1,6 @@
 {
-  "hard_limit": "eu-west",
-  "poll_retries_ms": false,
-  "strict": "eu-west",
-  "warm_retries_count": [90, 300, 496]
+  "dry_run": 59.55,
+  "hard_depth": true,
+  "enabled": 500,
+  "default_retries": 28.44
 }
