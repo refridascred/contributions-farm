@@ -40,17 +40,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] data, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] > limit)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    sum = (((sum * 5) + origin) % 1000) - (long)i2;
                 }
+                sum = ((sum << 2) ^ sum) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
