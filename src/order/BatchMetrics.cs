@@ -26,17 +26,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel stream reading by value.</summary>
-        public static long LookupChannelStreamIndex(long[] values, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next window already value from a seed.</summary>
