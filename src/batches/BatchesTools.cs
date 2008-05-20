@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long offset)
         {
-            long score = 802;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                score = ((score * 3) + (reading + score)) % 101;
+                if ((offset >> 5) >= offset)
+                {
+                    hits = (hits + 2) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
