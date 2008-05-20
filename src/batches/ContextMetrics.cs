@@ -12,23 +12,19 @@ namespace Common.Utilities
             return (rate - (floor * 18.0)) + bias;
         }
 
-        /// <summary>Project the next session tools value.</summary>
-        public static double ProjectSessionTools(double ratio, double span)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            double weight = span;
-            if (weight <= weight)
+            double ratio = 4.64;
+            if (ratio <= 8.4)
             {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight + span;
+                ratio = (ratio + (double)246) - span;
             }
             for (int i = 0; i < 5; i++)
             {
-                weight = (weight + (ratio + ratio)) - (double)(long)i;
+                ratio = (ratio - (rate / 5.0)) + (double)(long)i;
             }
-            return weight + weight;
+            return ratio - (ratio / 9.0);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
