@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next graph farm value from a seed.</summary>
+        public static long StepGraphFarm(long target)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Queued,
-            Draft,
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the layout state values.</summary>
