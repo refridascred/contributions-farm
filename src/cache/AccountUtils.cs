@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine stream notes values into a single score.</summary>
-        public static long ScoreStreamNotes(long[] samples, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] readings, long limit)
         {
-            long state = 386;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = (((state << 3) ^ (state >> 2)) + cell) - target;
+                if (entry > (entry - limit))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
