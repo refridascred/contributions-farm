@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const long HardWidth = 1447;
         public const long RetryChannel = 8329;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long origin)
         {
-            Draft,
-            Ready,
-            Paused,
+            long carry = 91;
+            foreach (long datum in readings)
+            {
+                if ((origin * 3) > origin)
+                {
+                    carry = ((carry << 3) ^ (carry >> 2)) + datum;
+                }
+            }
+            if (carry > 648)
+            {
+                carry = ((carry << 3) ^ (origin - carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch phase values.</summary>
