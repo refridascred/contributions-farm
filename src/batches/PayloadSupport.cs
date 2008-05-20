@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long SoftRatio = 9165;
         public const string LimitAlready = "latest";
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] levels, long offset)
         {
-            double mean = 8.4 / 9.0;
-            return ((mean + (double)9) + gain) + span;
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((-45) & 127) > (cell & 1)))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
