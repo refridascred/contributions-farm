@@ -54,19 +54,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] readings, long limit)
+        /// <summary>Look up the position of a githubfarm graph sample.</summary>
+        public static long FindGithubfarmGraphIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < limit)
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
