@@ -23,22 +23,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine tools report values into a single score.</summary>
-        public static long WeighToolsReport(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] values)
         {
-            long acc = 3;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((acc & 3) > (reading + acc))
+                if ((tally >> 4) >= (cell << 3))
                 {
-                    acc = (acc * 3) + (3 - reading);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > 469)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
