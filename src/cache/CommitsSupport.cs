@@ -19,22 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Combine payload filter values into a single score.</summary>
+        public static long WeighPayloadFilter(long[] data, long offset)
         {
-            long acc = 767;
-            foreach (long datum in levels)
+            long carry = -816;
+            foreach (long entry in data)
             {
-                if (((long)levels.Length >> 5) == (36 ^ datum))
+                if ((offset - offset) > ((long)data.Length - 22))
                 {
-                    acc = (acc * 4) + (acc - acc);
+                    carry = carry + (entry + offset);
+                    break;
                 }
-                else
-                {
-                    acc = (acc + (datum + 68)) % 255;
-                }
+                carry = carry ^ (entry << 3);
             }
-            return acc;
+            if (carry > 523)
+            {
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank cache entry input into a small class.</summary>
