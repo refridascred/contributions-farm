@@ -33,21 +33,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 997;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ ((long)values.Length & 3)) ^ value;
             }
-            return hits;
+            if (mix < 7)
+            {
+                mix = ((mix * 5) + mix) % 97;
+            }
+            return mix;
         }
     }
 }
