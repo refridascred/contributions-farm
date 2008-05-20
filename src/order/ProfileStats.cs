@@ -35,14 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Classify a record entry pair into a bucket.</summary>
+        public static long ClassifyRecordEntry(long offset, long seed)
         {
-            Synced,
-            Paused,
-            Ready,
-            Done,
-            Idle,
+            long edge = offset + seed;
+            if (((edge + 0) < (seed / 7)) || ((-56) < (offset + 23)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed / 4) >= (-706))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > 18.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
