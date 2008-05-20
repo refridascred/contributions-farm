@@ -29,18 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format stream samples are out of range.</summary>
-        public static long AuditFormatStreamHits(long[] series, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(((long)series.Length >> 5) == (matches - value)))
+                if (items[i] < step)
                 {
-                    matches = (matches + 1) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
