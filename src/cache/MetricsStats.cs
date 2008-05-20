@@ -76,26 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
-        {
-            long carry = 4;
-            foreach (long cell in readings)
-            {
-                if ((double)carry != (7.4 / 4.0))
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = carry ^ (cell % 2);
-                }
-                if (!((long)readings.Length <= 23))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 536;
+        public const long LimitStream = 8213;
+        public const long WindowStream = 831;
+        public const double CacheStream = 7.54;
+        public const long CacheSpan = 1109;
     }
 }
