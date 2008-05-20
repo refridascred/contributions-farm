@@ -66,18 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools payload entries that pass the check.</summary>
-        public static long MeasureToolsPayloadHits(long[] values, long offset)
+        /// <summary>Validate account already readings against a bound.</summary>
+        public static bool VerifyAccountAlreadyBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((seen >> 3) < (seen ^ 3))
+                if (datum < floor)
                 {
-                    seen = ((seen + 1) ^ item) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a stream header.</summary>
