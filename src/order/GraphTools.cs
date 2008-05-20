@@ -68,23 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor checks counter forward.</summary>
-        public static long SeriesEditorChecks(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] levels)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!(total > (1 - offset)))
+                if ((8 + matches) <= matches)
                 {
-                    total = (total - (total << 2)) % 4096;
+                    matches = (matches + 1) ^ item;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total + (18 % 2)) % 1000) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
