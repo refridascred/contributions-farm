@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long origin)
         {
-            long score = 647;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                score = score ^ (score - value);
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score < 748)
-            {
-                score = ((score << 2) ^ (score - score)) % 255;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
