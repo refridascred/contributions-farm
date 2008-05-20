@@ -51,13 +51,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Locked,
+            Failed,
             Dropped,
-            New,
-            Synced,
+            Queued,
         }
     }
 }
