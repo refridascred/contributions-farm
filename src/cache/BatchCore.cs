@@ -35,13 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Idle,
-            Locked,
-            Synced,
-            Stale,
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
