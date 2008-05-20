@@ -69,10 +69,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstDepth = 206;
-        public const long MaxBatch = 3383;
-        public const long WindowBatch = 8536;
-        public const long DefaultScore = 4745;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Pending,
+            Done,
+            Closed,
+            Retry,
+            Stale,
+        }
     }
 }
