@@ -21,10 +21,39 @@ namespace Common.Utilities
         public const double SoftInterval = 73.39;
         public const long CacheFarm = 9782;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 6556;
-        public const long LimitScore = 7750;
-        public const long BatchScore = 7243;
-        public const long HardBuffer = 5128;
+        /// <summary>Rank githubfarm batches input into a small class.</summary>
+        public static long ClassifyGithubfarmBatches(long limit, long origin)
+        {
+            long offset = limit ^ origin;
+            if ((2 / 9) >= (limit & 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8.23 * 4.19) <= (double)offset) && ((3.11 - 4.1) >= (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin << 3) == (origin % 8)) || ((16 - limit) >= (offset & 63)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((13 + origin) > (-6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
