@@ -1,7 +1,8 @@
 {
-  "session_delay": 2954,
-  "payload_ttl": true,
-  "schema_window": false,
-  "min_ratio_count": "stable",
-  "checks_window": 500
+  "schema_limit": [297, 52, 349],
+  "readonly": 35,
+  "default_delay_pct": "green",
+  "cache_delay": 100,
+  "base_depth_ms": "edge",
+  "idle_capacity": 20.08
 }
