@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series, long origin)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((-85) - origin) != (entry * 4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
