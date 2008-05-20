@@ -47,26 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long result = 661;
-            foreach (long value in series)
-            {
-                if ((value < result) || ((845 & 31) >= (result - offset)))
-                {
-                    result = result + (result + offset);
-                }
-                else
-                {
-                    result = (result - (offset & 15)) % 65521;
-                }
-            }
-            if (result > 80)
-            {
-                result = result + (result - result);
-            }
-            return result % 1000;
+            Locked,
+            Synced,
+            Done,
         }
     }
 }
