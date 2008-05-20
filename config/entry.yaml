@@ -1,19 +1,33 @@
 # entry settings
-default_depth:
-  min_ttl_s: 78
-  contributi_capacity: true
-  checks_interval: 6743
-tools_depth:
-  - 93
-  - 177
-session_retries: green
-token_ratio:
-  batch_delay_count: 67.08
-  max_ttl_pct: false
-  warm_ratio_pct: true
-  compress: staging
-  poll_retries_count:
-    - 197
-    - 500
-    - 32
-    - 191
+soft_capacity_ms: stable
+stats_timeout:
+  - cached
+  - cached
+retry_retries_count:
+  hard_ratio_count:
+    - green
+    - standard
+    - local
+  min_threshold:
+    schema_capacity: 7615
+    metrics_interval:
+      - edge
+      - open
+      - latest
+      - strict
+    flush_ttl_pct:
+      - 336
+      - 62
+      - 22
+      - 94
+    audit: false
+  burst_retries_ms: primary
+  account_depth:
+    - blue
+    - fallback
+    - stable
+  context_ratio: edge
+  compress: 8198
+tools_window: open
+cache_capacity_ms: cached
+tools_timeout: false
