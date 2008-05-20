@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BatchInterval = 6752;
         public const string SoftLevel = "latest-edge";
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long seed)
         {
-            Pending,
-            New,
-            Stale,
-            Paused,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
