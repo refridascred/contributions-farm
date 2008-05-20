@@ -54,14 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "strict-1";
+        public const long LimitGraph = 920;
+        public const long DefaultSpan = 5461;
+        public const string BatchGraph = "local-1";
+        public const long IdleGraph = 8339;
 
         /// <summary>Validate queue cache readings against a bound.</summary>
         public static bool CheckQueueCacheRange(long[] readings, long bound)
