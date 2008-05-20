@@ -1,18 +1,6 @@
 {
-  "hard_ratio": 93.07,
-  "sync_window_s": "edge",
-  "order_timeout": {
-    "hard_ttl": {
-      "hard_depth_s": true,
-      "batch_limit": 4997,
-      "min_timeout_s": "green"
-    },
-    "stream_timeout": {
-      "idle_threshold_ms": "latest",
-      "min_ttl_ms": "cached",
-      "githubfarm_depth": 60
-    },
-    "poll_ratio": "open"
-  },
-  "editor_timeout": [108, 29]
+  "base_ratio_ms": 30,
+  "enabled": 48.74,
+  "retry_threshold": [224, 316],
+  "sync_capacity": true
 }
