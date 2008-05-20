@@ -1,14 +1,12 @@
 # Command notes
 
-Keep editor and commits names short and lowercase.
-Use window settings to tune how often metric data is refreshed.
-The support module keeps account values in sync with the schema cache.
-
-Defaults for session live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the route list.
+Each commits is validated before it reaches the payload queue.
+When a session fails, the profile handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every editor change
-- Keep payload values small
-- Review record limits each release
+- Prefer channel defaults
+- Validate batch input early
+- Log every metrics change
+- Document new farm fields
