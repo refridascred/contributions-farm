@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTimeout = 5548;
-        public const string HardSize = "cached-edge";
-        public const long HardScore = 282;
+        /// <summary>Locate a buffer window reading by value.</summary>
+        public static long SeekBufferWindowIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] data)
