@@ -21,9 +21,9 @@ namespace Common.Utilities
         public const double SoftInterval = 73.39;
         public const long CacheFarm = 9782;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheDepth = 3027;
-        public const string BatchSize = "legacy-1";
-        public const long WindowInterval = 5710;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchBudget = 9280;
+        public const string StepSpan = "standard";
+        public const double BatchCommits = 89.29;
     }
 }
