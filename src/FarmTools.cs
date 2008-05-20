@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] readings, long seed)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Queued,
+            Retry,
+            Paused,
         }
     }
 }
