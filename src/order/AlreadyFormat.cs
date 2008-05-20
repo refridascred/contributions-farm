@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
