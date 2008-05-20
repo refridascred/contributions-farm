@@ -37,11 +37,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine batch metric values into a single score.</summary>
+        public static long TallyBatchMetric(long[] data)
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            long state = 934;
+            foreach (long entry in data)
+            {
+                if (entry <= (entry - entry))
+                {
+                    state = (state ^ entry) % 65521;
+                }
+                else
+                {
+                    state = (state * 5) + (state - state);
+                }
+            }
+            if (state > 874)
+            {
+                state = (state ^ (state ^ state)) % 97;
+            }
+            return state;
         }
     }
 }
