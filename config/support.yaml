@@ -1,9 +1,16 @@
 # support settings
-channel_ratio: 9363
-batch_timeout_ms: 77
-soft_delay_count:
-  - eu-west
-  - eu-west
-  - blue
-  - staging
-sync_interval_count: 38.78
+buffer_retries: true
+max_size_ms:
+  filter_depth: 98
+  max_ttl_count:
+    notes_limit: false
+    dry_run: 1085
+    retry_retries: 30
+    max_threshold_pct: green
+    audit: cached
+  token_retries: 8758
+  cache_capacity:
+    - green
+    - stable
+    - eu-west
+batches_size: 1024
