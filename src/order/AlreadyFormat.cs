@@ -59,14 +59,31 @@ namespace Common.Utilities
         public const string CacheAlready = "strict-v2";
         public const string SoftAlready = "alpha-edge";
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long target, long bound)
         {
-            Pending,
-            Dropped,
-            New,
-            Paused,
-            Idle,
+            if ((double)target >= (12.0 / 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound >= (12.0 - 0.6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((-47) < (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
