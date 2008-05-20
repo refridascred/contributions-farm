@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue strict green; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=447
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy edge eu-west staging; do
+    log "checking ${item}"
+done
