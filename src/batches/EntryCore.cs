@@ -43,10 +43,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "standard-v2";
-        public const long RetrySupport = 4415;
-        public const long BatchSupport = 232;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long limit)
+        {
+            long step = target + limit;
+            if (5.31 <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step > (472 & 63))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((306 + step) < (target + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
