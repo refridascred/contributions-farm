@@ -1,7 +1,8 @@
 # githubfarm settings
-retry_ratio_count: primary
-soft_capacity: 20.87
-stream_delay: latest
-batch_retries_count: standard
-record_capacity: false
-filter_depth: 51
+burst_capacity_ms: fallback
+min_limit:
+  - 327
+  - 363
+  - 111
+sync_threshold: 44
+default_ratio_s: 52.84
