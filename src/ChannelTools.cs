@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Compare every pair of commits support readings.</summary>
+        public static long MatchCommitsSupportCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + matches) >= sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
