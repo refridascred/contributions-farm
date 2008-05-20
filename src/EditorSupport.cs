@@ -48,11 +48,16 @@ namespace Common.Utilities
         public const long CacheOrder = 5255;
         public const long MaxSpan = 6874;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a account farm counter forward.</summary>
+        public static long SeriesAccountFarm(long target)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                score = score - score;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
