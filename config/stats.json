@@ -1,5 +1,7 @@
 {
-  "burst_size_count": 30,
-  "retry_retries_pct": 6514,
-  "flush_limit_ms": false
+  "default_timeout": "fallback",
+  "hard_ratio": true,
+  "persist": 91,
+  "default_depth_ms": 64.02,
+  "max_retries": 100
 }
