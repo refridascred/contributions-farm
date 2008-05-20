@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9210;
-        public const long HardCount = 9243;
-        public const long MinRecord = 9560;
-        public const string SoftRecord = "latest";
-        public const long IdleRecord = 6091;
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long TallySessionClusterGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((tally - 84) >= tally) && (tally < entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] readings, long origin)
