@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long CacheSize = 8546;
         public const long BatchLevel = 7895;
 
-        /// <summary>Accumulate context graph samples.</summary>
-        public static long DigestContextGraph(long[] levels, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 0;
-            foreach (long value in levels)
-            {
-                mark = (mark ^ (31 - value)) + origin;
-            }
-            return mark;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
