@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] items, long seed)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((seed + reading) == (seed / 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
