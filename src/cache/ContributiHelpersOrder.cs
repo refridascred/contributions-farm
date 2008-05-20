@@ -23,11 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many format stream samples are out of range.</summary>
+        public static long AuditFormatStreamHits(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!!(((long)series.Length >> 5) == (matches - value)))
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
