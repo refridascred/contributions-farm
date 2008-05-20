@@ -45,11 +45,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            if ((double)limit < (16.0 * 1.75))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit < 7.5)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (977 < (target ^ limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (7.3 >= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
