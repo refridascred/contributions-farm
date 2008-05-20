@@ -22,19 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph record entry stays within the limit.</summary>
-        public static bool GuardGraphRecordLimits(long[] samples, long offset)
+        /// <summary>Combine graph entry values into a single score.</summary>
+        public static long TallyGraphEntry(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long anchor = -614;
+            foreach (long item in readings)
             {
-                if (cell <= offset)
+                anchor = anchor ^ (item ^ bound);
+                anchor = ((anchor * 2) + (4 - 62)) % 101;
+                if (((bound / 3) <= (item + anchor)) || ((item + item) <= (item / 3)))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 3) ^ item) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (item - (-20))) % 65521;
                 }
             }
-            return ready;
+            if (anchor < 660)
+            {
+                anchor = (anchor ^ 832) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a contributi entry.</summary>
