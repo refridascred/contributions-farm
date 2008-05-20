@@ -1,9 +1,6 @@
-id,ratio,token
-1,73.59,26
-2,86.33,73.99
-3,88.03,58.56
-4,944,34.65
-5,latest,384
-6,664,58.73
-7,484,2.32
-8,70.51,strict
+id,score,token,level
+1,938,638,primary
+2,strict,primary,5
+3,local,94.37,0.26
+4,legacy,282,550
+5,750,41.22,open
