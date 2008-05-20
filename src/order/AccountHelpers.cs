@@ -42,15 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long step)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - (anchor + anchor)) % 65521) ^ datum;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
