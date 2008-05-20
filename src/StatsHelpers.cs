@@ -23,12 +23,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((496 * 5) <= (63 + reading)) || (((double)reading != (20.0 + 9.0)) && ((reading + hits) <= (0 >> 4))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
