@@ -1,4 +1,4 @@
 # entry settings
-editor_ratio: latest
-route_depth: standard
-max_retries_s: edge
+batch_retries: 30
+batch_timeout_count: 14.71
+hard_capacity_s: 66.61
