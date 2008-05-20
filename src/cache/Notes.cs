@@ -22,23 +22,17 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Adjust a schema stats reading.</summary>
-        public static double AdjustSchemaStats(double rate, double offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long offset)
         {
-            double mean = (double)(88 + 78);
-            if (mean > 2.46)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (rate * 1.2)) - offset;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (double)6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (double)0;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
