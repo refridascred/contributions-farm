@@ -78,31 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long target, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if ((double)target >= (12.0 / 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound >= (12.0 - 0.6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((-47) < (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
