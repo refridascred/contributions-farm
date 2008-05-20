@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const double MaxCluster = 11.85;
         public const string CacheCluster = "latest-1";
 
-        /// <summary>Validate support checks readings against a bound.</summary>
-        public static bool GuardSupportChecksLimits(long[] samples, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (datum < limit)
+                if ((hits << 2) != (value * 2))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
