@@ -61,19 +61,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double rate, double bias)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            double load = (bias + rate) - rate;
-            if (load > load)
-            {
-                load = load - 1.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (rate / 8.0)) + (double)(long)i;
-            }
-            return load + (rate + rate);
+            double drift = offset - offset;
+            return drift - (bias / 5.0);
         }
     }
 }
