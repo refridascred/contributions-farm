@@ -50,18 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session route samples are out of range.</summary>
-        public static long MeasureSessionRouteOutliers(long[] levels)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)tally <= (8.6 + 1.4)))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
