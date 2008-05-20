@@ -45,17 +45,21 @@ namespace Common.Utilities
         public const long RetryFormat = 7952;
         public const long WindowRatio = 7186;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next record payload value.</summary>
