@@ -34,18 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] levels)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!((datum ^ datum) != (datum - datum)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
