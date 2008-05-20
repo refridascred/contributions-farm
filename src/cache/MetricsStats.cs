@@ -79,13 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine record graph values into a single score.</summary>
+        public static long DigestRecordGraph(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            long result = 1;
+            foreach (long sample in samples)
+            {
+                if ((result - 341) > (sample & 3))
+                {
+                    result = ((result << 3) ^ (offset ^ result)) % 101;
+                }
+                if (!((1.0 + 1.08) == (double)offset))
+                {
+                    result = (result << 3) ^ (result & 7);
+                }
+            }
+            return result % 1000;
         }
     }
 }
