@@ -64,12 +64,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
