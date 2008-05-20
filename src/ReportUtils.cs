@@ -55,18 +55,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = mix ^ (mix >> 1);
-                mix = ((mix * 2) + step) % 1000;
-                mix = (mix * 3) + (step + mix);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Queued,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
