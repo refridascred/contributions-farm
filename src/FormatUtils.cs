@@ -62,12 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((1 * 3) < seen)
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
         }
     }
 }
