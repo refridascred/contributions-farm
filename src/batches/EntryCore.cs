@@ -28,19 +28,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of metrics schema entries.</summary>
-        public static long WeighMetricsSchema(long[] samples, long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = 661;
-            foreach (long sample in samples)
-            {
-                result = ((result - result) % 65521) + sample;
-                if (!((result + offset) <= 7))
-                {
-                    result = ((result << 3) ^ offset) % 1000;
-                }
-            }
-            return result % 97;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
