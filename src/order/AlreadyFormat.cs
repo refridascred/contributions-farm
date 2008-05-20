@@ -49,19 +49,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate account already readings against a bound.</summary>
-        public static bool VerifyAccountAlreadyBounds(long[] levels, long floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
