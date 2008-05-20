@@ -61,15 +61,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long delta = step - limit;
+            if ((827 & 255) > step)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((delta & 255) >= (limit + limit)) || ((limit - step) <= (step * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((delta % 3) > 304)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
