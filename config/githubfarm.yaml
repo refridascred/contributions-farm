@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_delay: 1797
-flush_window_s: primary
-persist: 7459
+default_delay: 89
+compress: cached
+sync_ttl_s:
+  - 11
+  - 66
+dry_run: 8822
+hard_limit: false
