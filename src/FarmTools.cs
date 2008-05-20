@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Locate a window stream reading by value.</summary>
+        public static long LocateWindowStreamIndex(long[] data, long origin)
         {
-            Paused,
-            Ready,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
