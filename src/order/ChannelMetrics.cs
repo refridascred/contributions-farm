@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 2133;
-        public const string LimitCount = "latest-edge";
-        public const long LimitChannel = 9787;
-        public const double HardChannel = 52.86;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double LimitCounter = 41.26;
