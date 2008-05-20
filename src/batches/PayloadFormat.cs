@@ -45,22 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double floor)
         {
-            long result = 63;
-            foreach (long cell in levels)
+            double gain = (4.0 / 3.0) / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (1 >= (cell + result))
-                {
-                    result = (result - ((long)levels.Length * 2)) % 97;
-                }
-                else
-                {
-                    result = result ^ (cell - cell);
-                }
+                gain = ((gain - 5.5) - (double)(long)i) - weight;
             }
-            return result % 1000;
+            return gain + (floor + gain);
         }
     }
 }
