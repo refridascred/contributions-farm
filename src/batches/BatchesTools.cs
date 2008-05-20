@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "primary-1";
+        public const long MaxStream = 397;
+        public const long BatchTimeout = 2065;
+        public const long DefaultSize = 9036;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
