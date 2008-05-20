@@ -50,15 +50,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long step)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 8;
-            foreach (long cell in samples)
-            {
-                score = ((((score << 2) ^ score) % 101) ^ cell) - step;
-            }
-            return score;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
     }
 }
