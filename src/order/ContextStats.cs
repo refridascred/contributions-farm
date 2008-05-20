@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] levels, long bound)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
