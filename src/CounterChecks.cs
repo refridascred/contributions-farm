@@ -73,17 +73,19 @@ namespace Common.Utilities
         public const double CacheSpan = 81.47;
         public const long SoftSize = 9430;
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long SeekGraphGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                if (sample != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
