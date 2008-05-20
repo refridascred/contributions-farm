@@ -1,29 +1,33 @@
 {
-  "record_window": {
-    "min_ratio_s": [383, 264, 53, 238],
-    "enabled": "cached",
-    "cache_depth_pct": "local",
-    "layout_depth": [373, 78, 333],
-    "flush_ttl_count": "open",
-    "hard_threshold_pct": [358, 262, 262, 231]
-  },
-  "readonly": "open",
-  "default_size_s": 93.94,
-  "base_threshold_s": {
-    "cache_ttl": 14,
-    "graph_ratio": {
-      "metric_retries": true,
-      "sync_delay_count": "standard",
-      "channel_limit": 20.21
+  "soft_size_pct": {
+    "retry_interval_s": {
+      "readonly": "strict",
+      "retry_capacity": ["cached", "fallback", "green", "stable"],
+      "idle_threshold": "cached",
+      "batch_delay_ms": true
     },
-    "strict": {
-      "sync_delay_count": "green",
-      "cache_depth_count": "blue",
-      "enabled": 62.59
-    },
-    "burst_interval_ms": "green",
-    "metrics_ratio": 64
+    "cache_ratio_s": "legacy",
+    "channel_window": "green",
+    "min_interval_count": 5998,
+    "schema_timeout": 500,
+    "command_size": {
+      "sync_retries_s": 60.53,
+      "layout_window": 22.9,
+      "retry_ratio_s": false,
+      "command_depth": 60,
+      "persist": "standard"
+    }
   },
-  "record_size": true,
-  "metrics_window": 63
+  "sync_delay": {
+    "notes_ratio": ["latest", "edge", "blue", "strict"],
+    "soft_retries_pct": false,
+    "burst_threshold_pct": true,
+    "base_ttl_pct": "open",
+    "strict": 26,
+    "cache_size_count": "eu-west"
+  },
+  "flush_threshold": true,
+  "profile_capacity": "primary",
+  "verbose": "staging",
+  "batch_timeout_count": 1024
 }
