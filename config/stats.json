@@ -1,7 +1,8 @@
 {
-  "cache_depth_count": 36.24,
-  "commits_timeout": true,
-  "min_retries_ms": "primary",
-  "window_window": [245, 68],
-  "idle_ratio_count": true
+  "min_depth": "cached",
+  "flush_limit": "standard",
+  "verbose": true,
+  "readonly": "cached",
+  "batch_delay": "stable",
+  "base_ratio_pct": 11.22
 }
