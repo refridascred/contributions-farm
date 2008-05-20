@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long acc = -57;
+            foreach (long sample in values)
             {
-                if (value <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc * 5) + (sample + acc);
             }
-            return stale;
+            return acc % 97;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
