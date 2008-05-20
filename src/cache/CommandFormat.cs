@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Failed,
             Queued,
-            Stale,
+            Idle,
+            Synced,
             Locked,
-            Pending,
         }
 
         /// <summary>Scale a command payload figure with a bias.</summary>
