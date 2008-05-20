@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
