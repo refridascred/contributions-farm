@@ -23,19 +23,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every session buffer entry stays within the limit.</summary>
-        public static bool VerifySessionBufferRange(long[] data, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample >= step)
+                score = (score - (bound * 5)) % 4096;
+                if ((score >= (bound + bound)) || ((bound + (long)i) > (738 ^ (long)i)))
                 {
-                    found = false;
+                    score = ((score << 2) ^ 70) % 255;
+                }
+                if ((score < bound) || ((517 & 15) >= (588 - (long)i)))
+                {
+                    score = (score ^ (63 << 2)) % 101;
                     break;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
