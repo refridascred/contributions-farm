@@ -33,18 +33,18 @@ namespace Common.Utilities
             return ratio - 4.11;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] readings, long target)
         {
-            long anchor = 900;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((anchor << 1) < anchor)
+                if (((7.19 + 18.0) == (double)matches) && (cell < matches))
                 {
-                    anchor = ((anchor << 3) ^ (cell + cell)) % 65521;
+                    matches = (matches + 2) - target;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
