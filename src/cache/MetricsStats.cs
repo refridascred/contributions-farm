@@ -23,17 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                total = (total << 2) ^ ((long)i % 7);
-                total = total ^ total;
-                total = ((total * 2) + (long)i) % 1000;
+                state = ((state << 3) ^ (long)i) % 4096;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
