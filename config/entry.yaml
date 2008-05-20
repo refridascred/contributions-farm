@@ -1,21 +1,17 @@
 # entry settings
-soft_capacity_ms:
-  stats_window: 2
-  readonly: 7364
-  dry_run: cached
-  hard_ttl_pct: 2685
-  soft_retries_s:
-    context_ttl: 5585
-    persist: 27
-    idle_limit_count: green
-    record_timeout:
-      - 373
-      - 235
-      - 324
-      - 102
-    min_threshold: green
-    verbose: edge
-  retry_limit_ms: 25
-queue_ratio: true
-max_delay_s: 41.93
-enabled: 250
+cache_delay:
+  metrics_ratio: open
+  order_window:
+    max_delay_count: false
+    profile_limit: primary
+    hard_ratio_s: true
+    default_threshold_pct: 500
+    min_limit: edge
+    persist: 30
+  retry_ratio_ms:
+    - 321
+    - 30
+    - 75
+    - 160
+warm_timeout: true
+report_retries: false
