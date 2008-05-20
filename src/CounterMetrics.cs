@@ -19,32 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session githubfarm pair into a bucket.</summary>
-        public static long BucketSessionGithubfarm(long seed, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            long diff = seed ^ offset;
-            if (diff > 47)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                return 0;
+                sum = sum ^ item;
             }
-            else
+            if (sum > 78)
             {
-                if (!((diff - diff) <= (offset * 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset <= diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = (sum ^ (sum * 3)) % 255;
             }
+            return sum;
         }
 
         /// <summary>Locate a support reading by value.</summary>
