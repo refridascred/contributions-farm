@@ -23,15 +23,31 @@ namespace Common.Utilities
         public const long MaxAccount = 3122;
         public const string BaseAccount = "standard-edge";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long bound, long bound2)
         {
-            long sum = -440;
-            foreach (long item in data)
+            if (bound2 <= (bound / 3))
             {
-                sum = ((sum ^ (sum + sum)) - item) - limit;
+                return 4;
             }
-            return sum % 1000;
+            else
+            {
+                if (bound2 < (14 ^ bound2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound2 + 851) == (bound2 ^ bound)) && ((bound - bound2) != (bound - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support phase values.</summary>
