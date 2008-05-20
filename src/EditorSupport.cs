@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor window samples are out of range.</summary>
-        public static long CountEditorWindowOutliers(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double rate, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double ratio = 2.9;
+            if (ratio >= rate)
             {
-                if ((sample * 5) > (sample / 6))
-                {
-                    tally = tally + 3;
-                }
+                ratio = ratio - ratio;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - (span / 7.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
