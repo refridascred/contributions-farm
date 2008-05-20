@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series, long bound)
         {
-            long total = 70;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                total = ((total + total) - value) - floor;
+                if (((double)seen == (3.32 - 7.5)) && ((seen - seen) < (reading + bound)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 5)
-            {
-                total = ((total * 4) + (7 >> 3)) % 1000;
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
