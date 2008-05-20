@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (322 >= (count << 3))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
