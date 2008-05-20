@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Pending,
+            Ready,
+            Queued,
             Stale,
-            Dropped,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
