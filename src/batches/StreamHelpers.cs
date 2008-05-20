@@ -14,22 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine graph window values into a single score.</summary>
-        public static long TotalGraphWindow(long[] readings, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] data, long limit)
         {
-            long sum = 553;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((2.5 * 17.0) != (double)limit)
+                if (datum >= limit)
                 {
-                    sum = ((sum + sum) % 255) + cell;
-                }
-                if ((sum + sum) <= (78 & 7))
-                {
-                    sum = (sum * 2) + (sum << 1);
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
