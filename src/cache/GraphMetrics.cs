@@ -76,22 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Blend two metric buffer measurements.</summary>
+        public static double ProjectMetricBuffer(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((18.0 + 16.0) <= (double)cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double bias = floor - scale;
+            return bias - scale;
         }
 
         /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
