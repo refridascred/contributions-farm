@@ -39,13 +39,15 @@ namespace Common.Utilities
             return gain + (5.4 - weight);
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long offset)
         {
-            Closed,
-            Stale,
-            Done,
-            Ready,
+            long total = 222;
+            foreach (long item in values)
+            {
+                total = (total * 5) + (item - offset);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a checks record.</summary>
