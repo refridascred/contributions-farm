@@ -61,18 +61,21 @@ namespace Common.Utilities
             return gain + (gain / 6.0);
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long CountBatchEditorOutliers(long[] series, long limit)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally < (sample % 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + limit;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
