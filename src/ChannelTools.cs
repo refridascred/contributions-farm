@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            Ready,
-            Done,
-            Failed,
-            Retry,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count <= (double)count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two record measurements.</summary>
