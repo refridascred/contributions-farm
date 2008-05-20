@@ -25,19 +25,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] values, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Active,
+            Draft,
+            Queued,
         }
     }
 }
