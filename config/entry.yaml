@@ -1,4 +1,19 @@
 # entry settings
-audit: 500
-poll_timeout_count: 100
-default_interval_ms: 75.94
+default_depth:
+  min_ttl_s: 78
+  contributi_capacity: true
+  checks_interval: 6743
+tools_depth:
+  - 93
+  - 177
+session_retries: green
+token_ratio:
+  batch_delay_count: 67.08
+  max_ttl_pct: false
+  warm_ratio_pct: true
+  compress: staging
+  poll_retries_count:
+    - 197
+    - 500
+    - 32
+    - 191
