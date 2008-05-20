@@ -24,25 +24,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long bound)
-        {
-            if (280 > (bound * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((4 << 1) != (seed << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBudget = 78.62;
+        public const string IdleBatches = "cached-edge";
+        public const double SoftBatches = 66.75;
+        public const long BaseBatches = 4352;
+        public const long HardScore = 762;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
