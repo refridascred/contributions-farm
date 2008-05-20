@@ -1,6 +1,6 @@
 {
-  "min_capacity_ms": [75, 245],
-  "channel_ttl": "green",
-  "audit": [461, 183],
-  "contributi_delay": "local"
+  "batch_threshold_s": "local",
+  "sync_size_s": 100,
+  "poll_window": 2541,
+  "commits_retries": 32.92
 }
