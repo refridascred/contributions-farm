@@ -47,11 +47,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            Stale,
+            Synced,
+            New,
         }
     }
 }
