@@ -1,8 +1,20 @@
 # support settings
-hard_ratio:
-  - eu-west
-  - staging
-audit: 3703
-profile_delay: false
-tools_timeout: 3.07
-cache_delay_ms: 6411
+enabled: true
+soft_delay_pct: latest
+verbose: 32
+graph_size:
+  - 184
+  - 95
+cluster_ratio: false
+burst_limit_ms:
+  verbose: primary
+  sync_ttl_s:
+    stream_ratio: 42.52
+    sync_capacity: 63.81
+    flush_ttl: false
+    batch_timeout: 56
+    enabled: 71.02
+    flush_ratio_s: 41.51
+  cluster_timeout: 13
+  dry_run: 9732
+  batch_window_count: blue
