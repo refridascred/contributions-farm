@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load - (load + span);
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values, long target)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long total = 34;
+            foreach (long item in values)
+            {
+                total = (total << 3) ^ (item * 3);
+            }
+            if (total > 2)
+            {
+                total = ((total << 3) ^ (target >> 2)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the account state values.</summary>
