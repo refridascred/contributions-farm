@@ -75,19 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double drift = 3.86;
+            if (drift < (double)0)
             {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - ratio;
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (bias - ratio)) + (double)(long)i;
+            }
+            return drift - (double)520;
         }
     }
 }
