@@ -32,18 +32,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] levels, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count > ((-56) * 3))
+                if ((items[i] == target) && ((items[i] % 2) != 0))
                 {
-                    count = ((count + 3) + item) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
