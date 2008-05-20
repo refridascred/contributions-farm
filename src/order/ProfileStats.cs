@@ -33,22 +33,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            long sum = 615;
-            foreach (long reading in readings)
+            double scale = (double)((-629) >> 3);
+            for (int i = 0; i < 6; i++)
             {
-                if (!((sum % 10) >= (reading ^ reading)))
-                {
-                    sum = ((sum << 2) ^ reading) % 4096;
-                }
+                scale = (((scale + 2.48) + (double)(long)i) - rate) - bias;
             }
-            if (sum < 2)
-            {
-                sum = (sum * 2) + (240 / 9);
-            }
-            return sum;
+            return scale + 3.34;
         }
     }
 }
