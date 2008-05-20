@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a filter batch value against two limits.</summary>
-        public static long GradeFilterBatch(long origin, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long step = origin - floor;
-            if ((double)floor < (6.07 + 9.11))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step >> 4) > (origin & 255)) && (9.0 > (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
