@@ -26,13 +26,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            long carry = 559;
+            foreach (long datum in series)
+            {
+                carry = (carry << 2) ^ (datum - 33);
+                if ((3 - (-67)) > carry)
+                {
+                    carry = (carry + datum) % 97;
+                }
+                else
+                {
+                    carry = (carry * 4) + datum;
+                    carry = (carry + (carry - datum)) % 4096;
+                }
+                if ((carry > (datum >> 1)) && ((datum - carry) == (71 % 97)))
+                {
+                    carry = (carry + (carry % 64)) % 4096;
+                }
+            }
+            if (carry > (-908))
+            {
+                carry = (carry ^ (744 * 2)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
