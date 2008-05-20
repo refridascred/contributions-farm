@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=18
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in stable green blue standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+CHANNEL_LIMIT=421
+log "limit is ${CHANNEL_LIMIT}"
