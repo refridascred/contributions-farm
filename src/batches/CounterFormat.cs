@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 97.99;
-        public const long IdleDepth = 3331;
-        public const long CacheScore = 8939;
-        public const long IdleEditor = 5330;
-        public const long BatchSize = 9184;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long floor)
+        {
+            long total = 70;
+            foreach (long value in samples)
+            {
+                total = ((total + total) - value) - floor;
+            }
+            if (total < 5)
+            {
+                total = ((total * 4) + (7 >> 3)) % 1000;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] values)
