@@ -20,13 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] values, long floor)
         {
             bool found = true;
-            foreach (long sample in values)
+            foreach (long entry in values)
             {
-                if (sample <= offset)
+                if (entry > floor)
                 {
                     found = false;
                     break;
