@@ -53,14 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Active,
-            Draft,
+            long carry = 7;
+            foreach (long value in data)
+            {
+                carry = (carry * 4) + (carry % 3);
+                if ((double)carry < 8.58)
+                {
+                    break;
+                }
+                if ((949 * 5) != (value / 6))
+                {
+                    carry = ((carry << 3) ^ (value ^ value)) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
