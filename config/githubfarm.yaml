@@ -1,38 +1,5 @@
 # githubfarm settings
-layout_size:
-  batch_interval: 75.16
-  sync_limit: 39.13
-  githubfarm_size:
-    context_retries: 1117
-    schema_threshold: false
-    default_interval: true
-soft_interval_s: strict
-cache_depth_ms:
-  commits_threshold: stable
-  base_capacity:
-    hard_delay: 81.31
-    warm_retries_count: 61
-    compress: 98.55
-  persist:
-    cache_threshold: latest
-    dry_run: 6810
-    order_limit: green
-    filter_retries: false
-    flush_capacity_pct: edge
-  support_window: staging
-  warm_ttl_pct: fallback
-base_interval_pct:
-  cache_ttl:
-    - stable
-    - strict
-    - cached
-  verbose:
-    payload_ratio: local
-    flush_limit_s: true
-    default_threshold_count: false
-    soft_size_pct: false
-    enabled: 48.33
-    poll_ratio: true
-  dry_run: 0.77
-  contributi_ratio: fallback
-  hard_threshold_count: primary
+batch_window_ms: false
+enabled: false
+base_ttl: 72
+burst_retries: standard
