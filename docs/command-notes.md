@@ -1,15 +1,16 @@
 # Command notes
 
-Run the githubfarm check before changing any cache limits.
-Each graph is validated before it reaches the profile queue.
-Each editor is validated before it reaches the batches queue.
+The cluster report groups every layout by metrics.
+The schema module keeps payload values in sync with the report cache.
+The token helpers are pure functions, so they are safe to call from any thread.
 
-Keep stream and stream names short and lowercase.
-The route module keeps batches values in sync with the graph cache.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the contributi queue.
+The profile report groups every schema by editor.
+Keep already and format names short and lowercase.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every stats change
-- Prefer support defaults
+- Log every batch change
+- Review command limits each release
+- Keep notes values small
+- Prefer stream defaults
