@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (bias2 - bias2) / 9.0;
+            if (ratio < ratio)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - bias;
             }
-            return -1;
+            return ratio - ratio;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
