@@ -60,13 +60,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((hits << 1) <= cell) && ((double)hits != (1.6 * 7.3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
