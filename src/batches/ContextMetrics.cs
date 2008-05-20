@@ -35,22 +35,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data, long offset)
+        /// <summary>Grade a format buffer value against two limits.</summary>
+        public static long BucketFormatBuffer(long offset, long origin)
         {
-            long acc = 797;
-            foreach (long sample in data)
+            if (((origin * 3) >= (3 - offset)) || ((20.0 / 7.0) != (double)origin))
             {
-                if ((4.5 - 7.65) >= (double)acc)
+                return 0;
+            }
+            else
+            {
+                if (!((origin ^ offset) != (5 - origin)))
                 {
-                    acc = (((acc - (acc / 3)) % 1000) - sample) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if (offset < 923)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 211)
-            {
-                acc = (acc << 3) ^ 492;
-            }
-            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
