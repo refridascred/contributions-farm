@@ -1,13 +1,14 @@
 {
-  "min_depth": true,
-  "max_ratio_pct": {
-    "already_delay": 34,
-    "idle_threshold": 250,
-    "poll_limit_s": 57.8,
-    "burst_timeout": 250,
-    "persist": 43
+  "max_retries_s": false,
+  "idle_capacity": {
+    "audit": "legacy",
+    "batch_size_ms": "stable",
+    "soft_ratio": 22.14,
+    "flush_capacity_ms": "legacy",
+    "tools_timeout": "strict"
   },
-  "poll_ratio_count": "local",
-  "editor_depth": ["eu-west", "blue"],
-  "audit": 500
+  "entry_ttl": "staging",
+  "burst_size_s": 500,
+  "warm_ttl": 86.42,
+  "flush_size_pct": 30
 }
