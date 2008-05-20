@@ -47,19 +47,22 @@ namespace Common.Utilities
         public const long HardDepth = 9691;
         public const long SoftBuffer = 1947;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long bound)
+        /// <summary>Audit checks cluster readings against a rule.</summary>
+        public static long TallyChecksClusterHits(long[] levels)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (item < bound)
+                if (!((11.0 * 1.92) < (double)datum))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
