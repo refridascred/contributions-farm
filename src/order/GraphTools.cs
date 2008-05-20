@@ -61,11 +61,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstWidth = 76.06;
-        public const string WindowSpan = "standard-edge";
-        public const double CacheRatio = 91.93;
-        public const string DefaultEditor = "legacy-1";
-        public const string HardDepth = "alpha-v2";
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels)
+        {
+            long state = 0;
+            foreach (long entry in levels)
+            {
+                if ((9.3 + 8.0) != (double)state)
+                {
+                    state = (state - ((-806) + state)) % 97;
+                    state = (state * 2) + (-8);
+                }
+                else
+                {
+                    state = (state * 5) + (state ^ state);
+                }
+                if (state > (state * 2))
+                {
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = (state - (state ^ entry)) % 1000;
+                }
+            }
+            return state;
+        }
     }
 }
