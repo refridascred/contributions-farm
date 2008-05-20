@@ -24,10 +24,10 @@ namespace Common.Utilities
         public const long HardSpan = 6087;
         public const long BurstCounter = 7116;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Mode { get; set; }
+            public string Label { get; set; } = "";
             public long Weight { get; set; }
         }
     }
