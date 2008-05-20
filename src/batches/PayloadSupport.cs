@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            Active,
-            Synced,
-            Paused,
-            Retry,
+            double ratio = bias2;
+            if (ratio < (bias2 - bias))
+            {
+                ratio = ratio + (double)3;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a editor header.</summary>
