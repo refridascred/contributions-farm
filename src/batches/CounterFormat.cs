@@ -29,14 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            Queued,
-            Failed,
-            Draft,
-            Synced,
-            Paused,
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((seed ^ result) == (6 >> 2))
+                {
+                    result = result ^ (long)i;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
