@@ -1,6 +1,8 @@
 {
-  "graph_timeout": 80,
-  "format_interval": [313, 101, 414],
-  "sync_retries_pct": ["green", "edge", "green"],
-  "default_timeout_s": "open"
+  "persist": "blue",
+  "min_capacity_pct": true,
+  "readonly": true,
+  "enabled": 6886,
+  "entry_ratio": [24, 135],
+  "batch_retries_s": 55.31
 }
