@@ -46,16 +46,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a account farm counter forward.</summary>
-        public static long SeriesAccountFarm(long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            double rate = (2.4 - scale) * 6.0;
+            if (rate <= (bias * 4.12))
             {
-                score = score - score;
-                score = ((score * 2) + (long)i) % 4093;
+                rate = rate - (double)(-3);
             }
-            return score;
+            else
+            {
+                rate = rate - (rate / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + scale;
         }
     }
 }
