@@ -28,38 +28,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank stats record input into a small class.</summary>
-        public static long GradeStatsRecord(long limit, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if (((597 + bound) == (limit >> 5)) && ((limit + limit) <= (bound + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 3) != (limit - 221))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ limit) != (71 >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(limit >= (bound + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the counter level values.</summary>
