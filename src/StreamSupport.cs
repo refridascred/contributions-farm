@@ -29,19 +29,32 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double bias2)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long offset)
         {
-            double rate = bias2;
-            if (rate > (bias2 - 8.0))
+            long offset2 = floor + offset;
+            if (((-6) + 636) > (offset + offset2))
             {
-                rate = rate + bias;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate = (rate - rate) + (double)(long)i;
+                if ((double)floor > (9.6 + 9.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - offset2) == (offset / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return rate - (rate / 4.0);
         }
     }
 }
