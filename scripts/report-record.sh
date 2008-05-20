@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback stable; do
+for item in strict edge stable cached; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=266
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    stable)
         log "fast path"
         ;;
     *)
