@@ -36,9 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 8331;
-        public const long MinFactor = 2646;
-        public const long RetryBatches = 9688;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((target / 9) >= matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
