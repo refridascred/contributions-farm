@@ -1,6 +1,11 @@
 {
-  "min_timeout_pct": 9502,
-  "enabled": "eu-west",
-  "warm_delay": "eu-west",
-  "default_interval": 18
+  "contributi_limit": false,
+  "profile_threshold": "staging",
+  "cache_capacity_pct": {
+    "min_threshold": [449, 293],
+    "compress": 75.99,
+    "min_ttl": 15,
+    "flush_window": false
+  },
+  "tools_delay": 7.24
 }
