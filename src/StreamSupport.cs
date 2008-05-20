@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Fold a list of command session readings.</summary>
+        public static long CombineCommandSession(long[] readings)
         {
-            long state = 676;
-            foreach (long entry in samples)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                if ((entry / 6) != (entry - entry))
+                state = state + (state + state);
+                if ((sample + sample) <= state)
                 {
-                    state = (state - (437 - state)) % 4096;
+                    state = (state << 2) ^ (state << 2);
                 }
             }
-            return state % 65521;
+            return state % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
