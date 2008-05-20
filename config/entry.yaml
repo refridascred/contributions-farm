@@ -1,13 +1,13 @@
 # entry settings
-verbose: blue
-stats_limit: 60
-max_timeout_pct: strict
-retry_threshold:
-  burst_retries_s: 5663
-  soft_timeout_pct:
-    compress: cached
-    cache_ratio_ms: fallback
-    soft_depth_pct: stable
-    channel_limit: cached
-  retry_ratio_ms: 250
-hard_size: 14
+readonly:
+  - staging
+  - cached
+  - legacy
+  - blue
+persist:
+  - local
+  - stable
+  - latest
+  - green
+audit: true
+default_interval_count: open
