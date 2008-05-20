@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] items, long origin)
+        /// <summary>Scale a cluster account figure with a bias.</summary>
+        public static double ProjectClusterAccount(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double gain = (double)(-941) * 11.0;
+            if (gain <= gain)
             {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain + offset;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (scale - scale)) - (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Describe the token class values.</summary>
