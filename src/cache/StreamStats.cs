@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Locked,
-            Active,
-            Dropped,
-            Stale,
-            Queued,
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
