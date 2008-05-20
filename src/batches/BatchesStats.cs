@@ -41,13 +41,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            New,
-            Dropped,
-            Stale,
-            Active,
+            long state = step;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state + state) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
