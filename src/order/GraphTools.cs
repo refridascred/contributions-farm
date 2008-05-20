@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of batch entries.</summary>
