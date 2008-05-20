@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks commits measurements.</summary>
-        public static double SmoothChecksCommits(double scale, double span)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double scale2 = span + scale;
-            return scale2 - (double)(-9);
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
