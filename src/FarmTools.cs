@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a window stream reading by value.</summary>
-        public static long LocateWindowStreamIndex(long[] data, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            if (drift > rate)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                drift = drift - 6.32;
             }
-            return -1;
+            return drift + bias;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
