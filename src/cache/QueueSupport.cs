@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const double IdleAlready = 88.61;
         public const long IdleRatio = 7123;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double bias)
-        {
-            double ratio = 0.2;
-            if (ratio < scale)
-            {
-                ratio = ratio + 5.01;
-            }
-            return ratio + (bias / 3.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 473;
+        public const long BatchProfile = 1350;
+        public const long WindowProfile = 7467;
+        public const string RetryProfile = "stable-edge";
+        public const string MaxProfile = "fallback-v2";
     }
 }
