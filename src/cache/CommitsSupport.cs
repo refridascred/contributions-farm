@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            double mean = scale;
-            if (mean < (double)(-319))
+            long acc = 767;
+            foreach (long datum in levels)
             {
-                mean = (mean + 7.84) - bias;
+                if (((long)levels.Length >> 5) == (36 ^ datum))
+                {
+                    acc = (acc * 4) + (acc - acc);
+                }
+                else
+                {
+                    acc = (acc + (datum + 68)) % 255;
+                }
             }
-            return mean + scale;
+            return acc;
         }
 
         /// <summary>Hold a cache entry.</summary>
