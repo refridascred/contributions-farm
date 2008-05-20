@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardScore = 5446;
+        public const long DefaultScore = 2588;
+        public const long BatchFormat = 8288;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string WindowChecks = "local-1";
