@@ -50,23 +50,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            double rate = offset / 7.0;
-            if (rate > (rate / 5.0))
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - (double)457;
+                carry = ((carry * 3) + floor) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (bias - rate)) + (double)(long)i;
-            }
-            return rate + 9.5;
+            return carry;
         }
     }
 }
