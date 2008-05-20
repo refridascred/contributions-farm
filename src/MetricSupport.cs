@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long CountSupportOrderHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally - sample) <= limit)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchInterval = 63.71;
+        public const long SoftAccount = 7971;
+        public const double IdleAccount = 94.92;
+        public const long DefaultAccount = 7388;
+        public const double BaseCount = 30.53;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
