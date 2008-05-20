@@ -52,11 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record payload value.</summary>
-        public static double BlendRecordPayload(double rate, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            double bias = (double)1 + span;
-            return (bias + 3.59) + rate;
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((entry % 5) >= (10 - entry)) || (((tally << 3) == (tally + tally)) && ((6.38 / 7.0) > (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
