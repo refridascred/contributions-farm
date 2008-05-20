@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double load = (double)(61 + 57);
+            if (load > load)
             {
-                if (tally >= (tally - limit))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                load = (load - span) + ratio;
             }
-            return tally;
+            return load - (load + span);
         }
 
         /// <summary>Accumulate support samples.</summary>
