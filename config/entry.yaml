@@ -1,37 +1,10 @@
 # entry settings
-default_window:
-  stream_interval: standard
-  hard_interval_count:
-    route_retries: edge
-    compress: false
-    cache_size_s: 3574
-    account_timeout: latest
-    idle_limit_count: 94.24
-  persist: edge
-  report_capacity: false
-burst_limit_pct:
-  - edge
-  - primary
-soft_timeout:
-  audit: 30
-  soft_ratio: cached
-  stream_timeout: true
-  default_limit_pct: 87.02
-  flush_depth_ms: eu-west
-  schema_capacity: fallback
-cache_retries_ms:
-  verbose: 8204
-  sync_threshold_s:
-    - 403
-    - 281
-    - 435
-    - 176
-  hard_interval_pct: 46
-  readonly:
-    route_depth: false
-    soft_ratio_pct: 2104
-    compress: edge
-    queue_ttl: 39
-  metrics_threshold: 41
-audit: true
-cache_retries: 27
+burst_size:
+  enabled: 1024
+  checks_size: edge
+  cache_timeout: standard
+  soft_limit_ms: 53.73
+  retry_ttl_ms: true
+cache_size_ms: staging
+poll_depth_count: staging
+metrics_window: true
