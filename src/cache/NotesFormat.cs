@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long MaxEditor = 1149;
         public const long CacheSpan = 422;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftCount = 9010;
-        public const long LimitLevel = 9124;
-        public const string StepMetrics = "alpha";
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings, long target)
+        {
+            long result = -36;
+            foreach (long item in readings)
+            {
+                result = ((result << 3) ^ target) ^ item;
+            }
+            return result;
+        }
 
         /// <summary>Count farm order pairs that satisfy a relation.</summary>
         public static long MatchFarmOrderCount(long[] series)
