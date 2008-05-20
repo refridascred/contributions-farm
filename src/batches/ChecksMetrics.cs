@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support cache entries that pass the check.</summary>
-        public static long CountSupportCacheMatches(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((tally >> 5) >= sample) && (((-4) >> 5) == (limit % 64)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitWidth = 82.87;
+        public const long MinFarm = 8569;
+        public const string CacheDepth = "cached-v2";
+        public const double LimitRatio = 95.7;
+        public const string SoftFarm = "standard";
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
