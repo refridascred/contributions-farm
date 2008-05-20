@@ -19,29 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(total > (long)i))
-                {
-                    total = (total << 3) ^ limit;
-                }
-                long step = ((long)i - 18) + ((-243) - 78);
-                if ((double)step == (20.0 / 3.0))
-                {
-                    total = (total ^ limit) % 101;
-                    total = ((total << 3) ^ (total << 1)) % 255;
-                }
-                else
-                {
-                    step = (step * 5) + total;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a cluster options.</summary>
