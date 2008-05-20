@@ -34,15 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Ready,
+            Failed,
+            Locked,
         }
     }
 }
