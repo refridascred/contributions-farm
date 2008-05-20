@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double offset)
         {
-            Active,
-            Draft,
-            Closed,
-            Pending,
-            Queued,
+            double gain = (offset - offset) / 8.0;
+            if (gain < 13.0)
+            {
+                gain = (gain + (gain * 1.6)) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (offset * 6.0)) + (double)(long)i;
+            }
+            return gain + (offset / 2.0);
         }
 
         /// <summary>Hold a order snapshot.</summary>
