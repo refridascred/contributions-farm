@@ -72,39 +72,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank commits payload input into a small class.</summary>
-        public static long RankCommitsPayload(long offset, long floor)
+        /// <summary>Fold a list of channel layout readings.</summary>
+        public static long ScoreChannelLayout(long[] readings, long floor)
         {
-            long step = offset + floor;
-            if ((double)offset != (double)floor)
+            long state = 1;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - step) <= (floor / 8))
+                if ((sample - floor) == (sample / 9))
                 {
-                    return 0;
+                    state = state + state;
                 }
                 else
                 {
-                    if (((5.46 - 7.5) <= (6.1 + 4.1)) || ((-4) > (floor << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((419 + 445) < (floor + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = ((state * 2) + ((long)readings.Length + sample)) % 255;
                 }
             }
+            if (state < 0)
+            {
+                state = (state + (floor & 3)) % 255;
+            }
+            return state % 4096;
         }
     }
 }
