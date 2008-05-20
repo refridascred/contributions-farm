@@ -16,14 +16,14 @@ namespace Common.Utilities
         public const long HardSpan = 6087;
         public const long BurstCounter = 7116;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
             Closed,
             Pending,
-            Retry,
-            New,
-            Queued,
+            Ready,
+            Paused,
+            Active,
         }
     }
 }
