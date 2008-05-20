@@ -70,14 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values, long seed)
         {
-            Idle,
-            Synced,
-            Locked,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally <= (sample << 2)) || ((tally >> 4) < (tally + 193)))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
