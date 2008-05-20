@@ -25,25 +25,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long target)
+        /// <summary>Blend two account support measurements.</summary>
+        public static double SmoothAccountSupport(double weight, double floor)
         {
-            long next = origin ^ target;
-            if (((next * 4) >= origin) && ((target + origin) < (6 + target)))
+            double drift = (0.33 + floor) / 5.0;
+            if (drift > (double)0)
             {
-                return 8;
+                drift = drift - drift;
             }
             else
             {
-                if (((target * 4) <= next) && (target <= (origin / 6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                drift = drift + (weight / 6.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)51) - (double)(long)i;
+            }
+            return drift - weight;
         }
     }
 }
