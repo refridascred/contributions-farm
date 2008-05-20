@@ -29,13 +29,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Paused,
-            Idle,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitWidth = 828;
+        public const long MinDepth = 3134;
+        public const long HardFactor = 3342;
+        public const long BatchTimeout = 2006;
     }
 }
