@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double mean = (scale - span) / 9.0;
+            if (mean <= scale)
             {
-                if (((value >> 3) > (value + value)) || ((double)(-933) < (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                mean = mean - span;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (span / 2.0)) + (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Accumulate queue samples.</summary>
