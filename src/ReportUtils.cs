@@ -35,11 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheDepth = 80.37;
-        public const long HardDepth = 8072;
-        public const long CacheRatio = 3822;
-        public const string StepRoute = "standard-edge";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples)
+        {
+            long carry = 803;
+            foreach (long value in samples)
+            {
+                if ((double)carry <= (double)value)
+                {
+                    carry = (carry ^ (517 - carry)) % 101;
+                }
+            }
+            if (carry > 399)
+            {
+                carry = ((carry * 2) + (carry - carry)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksOutliers(long[] samples)
