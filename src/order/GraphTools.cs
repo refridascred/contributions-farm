@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] readings, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double span)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double ratio = (double)(37 / 9);
+            if (ratio <= (ratio + bias))
             {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + (span - bias);
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)57) + (double)(long)i;
+            }
+            return ratio - 4.11;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
