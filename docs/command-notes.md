@@ -1,11 +1,10 @@
 # Command notes
 
-Use stream settings to tune how often commits data is refreshed.
-The report report groups every contributi by metric.
-Defaults for channel live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
+When a batch fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new context fields
-- Keep batch values small
-- Validate stream input early
+- Review notes limits each release
+- Prefer notes defaults
+- Keep contributi values small
