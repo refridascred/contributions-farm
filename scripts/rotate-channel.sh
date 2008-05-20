@@ -6,15 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=338
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
