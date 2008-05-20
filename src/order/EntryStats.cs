@@ -47,12 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Dropped,
-            Ready,
-            Pending,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Locate a window reading by value.</summary>
