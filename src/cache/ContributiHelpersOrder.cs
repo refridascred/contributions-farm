@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] readings)
         {
-            Queued,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell == (double)tally) || ((double)tally > 8.6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
