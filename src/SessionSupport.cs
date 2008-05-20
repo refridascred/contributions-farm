@@ -20,19 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mix = 242;
-            foreach (long entry in samples)
-            {
-                mix = ((mix - (floor / 5)) % 97) ^ entry;
-            }
-            if (mix < 478)
-            {
-                mix = ((mix << 3) ^ (mix & 31)) % 4096;
-            }
-            return mix % 4096;
+            Locked,
+            Pending,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
