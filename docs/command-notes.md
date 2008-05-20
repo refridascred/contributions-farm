@@ -1,14 +1,11 @@
 # Command notes
 
-Keep farm and payload names short and lowercase.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-Use command settings to tune how often queue data is refreshed.
-Each cache is validated before it reaches the cache queue.
+Use stream settings to tune how often commits data is refreshed.
+The report report groups every contributi by metric.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer stats defaults
-- Log every counter change
+- Document new context fields
+- Keep batch values small
+- Validate stream input early
