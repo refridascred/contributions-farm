@@ -40,20 +40,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] items, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (items[i] <= bound)
                 {
-                    sum = (((sum * 5) + origin) % 1000) - (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ sum) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
     }
 }
