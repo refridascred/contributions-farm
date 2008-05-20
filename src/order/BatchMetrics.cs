@@ -50,12 +50,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBudget = 78.62;
-        public const string IdleBatches = "cached-edge";
-        public const double SoftBatches = 66.75;
-        public const long BaseBatches = 4352;
-        public const long HardScore = 762;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Failed,
+            Synced,
+            New,
+            Queued,
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
