@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of payload account entries.</summary>
+        public static long CombinePayloadAccount(long[] series, long floor)
         {
-            Stale,
-            Pending,
-            Closed,
+            long sum = 69;
+            foreach (long sample in series)
+            {
+                sum = sum ^ (sample - 972);
+            }
+            if (sum < 62)
+            {
+                sum = (sum ^ floor) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the graph status values.</summary>
