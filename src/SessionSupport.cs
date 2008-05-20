@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] data)
         {
-            Failed,
-            Pending,
-            Stale,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item % 7) == (87 << 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
