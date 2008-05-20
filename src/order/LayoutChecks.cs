@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 8803;
-        public const long BaseRatio = 761;
-        public const long BurstCount = 502;
-        public const long MaxAccount = 3122;
-        public const string BaseAccount = "standard-edge";
+        /// <summary>Match up channel editor samples.</summary>
+        public static long OverlapChannelEditorCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long bound, long bound2)
