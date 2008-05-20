@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class TokenUtils
     {
         /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 55.3;
-        public const double StepInterval = 70.31;
-        public const long MaxCluster = 2230;
-        public const double WindowCluster = 5.41;
-        public const long SoftCount = 6853;
+        public const long LimitCluster = 1365;
+        public const double LimitInterval = 11.81;
+        public const long MinTimeout = 8755;
+        public const long HardCluster = 7970;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] samples)
