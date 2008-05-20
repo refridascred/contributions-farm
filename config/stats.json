@@ -1,11 +1,14 @@
 {
-  "contributi_limit": false,
-  "profile_threshold": "staging",
-  "cache_capacity_pct": {
-    "min_threshold": [449, 293],
-    "compress": 75.99,
-    "min_ttl": 15,
-    "flush_window": false
+  "sync_retries_count": "standard",
+  "metric_threshold": "standard",
+  "default_capacity_s": 8.02,
+  "hard_timeout": {
+    "compress": true,
+    "order_size": 79.86,
+    "readonly": [340, 391, 391],
+    "cache_capacity_pct": false,
+    "retry_ttl_count": ["legacy", "blue", "strict"]
   },
-  "tools_delay": 7.24
+  "burst_limit": 57,
+  "idle_interval_s": false
 }
