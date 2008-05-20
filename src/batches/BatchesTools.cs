@@ -54,13 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Retry,
-            Ready,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowSize = 3538;
+        public const long SoftLevel = 9685;
+        public const long BatchBudget = 9488;
+        public const double LimitCount = 71.69;
     }
 }
