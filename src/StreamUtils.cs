@@ -36,21 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up metrics editor samples.</summary>
-        public static long MatchMetricsEditorCount(long[] samples)
+        /// <summary>Adjust a account context reading.</summary>
+        public static double BlendAccountContext(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift < (drift - bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + ratio;
             }
-            return hits;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (2.8 - 9.0);
         }
 
         /// <summary>Describe the filter state values.</summary>
