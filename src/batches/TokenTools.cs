@@ -35,18 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((5.7 - 1.5) > (17.0 + 12.0))
-                {
-                    matches = ((matches + 2) - value) - limit;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
