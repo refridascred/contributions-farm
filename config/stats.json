@@ -1,14 +1,7 @@
 {
-  "cluster_interval": 100,
-  "hard_retries_s": 58.2,
-  "retry_capacity_count": 500,
-  "warm_limit": true,
-  "filter_capacity": {
-    "buffer_window": 59.04,
-    "base_delay_count": 5457,
-    "sync_ratio_ms": false,
-    "flush_interval": 90.26,
-    "compress": "green",
-    "persist": 6635
-  }
+  "context_ttl": false,
+  "contributi_timeout": 30,
+  "base_ttl_count": 9415,
+  "flush_ratio_pct": "stable",
+  "batch_interval": 84.29
 }
