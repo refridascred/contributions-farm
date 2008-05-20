@@ -62,11 +62,11 @@ namespace Common.Utilities
         public const long HardSupport = 352;
         public const long CacheWidth = 3340;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double scale = (double)((-939) % 24);
-            return (scale + (gain - gain)) + span;
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
