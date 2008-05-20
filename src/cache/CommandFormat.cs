@@ -26,19 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((19.0 * 9.8) <= (double)step)
-                {
-                    carry = ((carry * 3) + (69 >> 3)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                state = ((state << 2) ^ (bound ^ 2)) % 101;
+                state = (state << 3) ^ (bound % 16);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
