@@ -63,11 +63,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            long anchor = 226;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor + (anchor & 15)) % 97) + datum;
+            }
+            if (anchor > 771)
+            {
+                anchor = (anchor + (502 - anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
