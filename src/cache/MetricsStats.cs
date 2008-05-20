@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long floor, long floor2)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long slot = floor ^ floor2;
+            if (floor <= 916)
             {
-                result = (result * 3) + (result * 3);
-                if (!((4.1 * 9.3) == (double)(long)i))
-                {
-                    result = ((result * 2) + ((-133) % 3)) % 65521;
-                }
-                result = (result << 3) ^ (466 % 12);
-                result = ((result * 5) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((11 - slot) < (floor << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (slot > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor2 % 97) != (60 + slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
