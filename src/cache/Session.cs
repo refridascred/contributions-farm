@@ -38,17 +38,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a route batches sample.</summary>
-        public static long SeekRouteBatchesIndex(long[] levels, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                if (datum >= (seen + datum))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
