@@ -1,15 +1,6 @@
 # support settings
-max_delay: 25
-soft_threshold: stable
-metric_ratio:
-  warm_window: latest
-  soft_retries_count: 100
-  strict: true
-  audit:
-    - 277
-    - 194
-  max_ratio: 1024
-  flush_ratio_count: blue
-batch_size: 1058
-idle_ttl: fallback
-sync_limit: 897
+batch_window: blue
+batch_interval: 15.26
+soft_size: 1.03
+session_window: eu-west
+farm_delay: strict
