@@ -17,15 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
