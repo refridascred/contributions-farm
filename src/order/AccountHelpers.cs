@@ -70,18 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] values, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((2.1 > (double)step) || ((cell / 3) != (cell + step)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
