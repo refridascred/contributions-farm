@@ -16,15 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            New,
-            Synced,
-            Ready,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseBudget = 82.4;
+        public const double IdleSession = 9.25;
+        public const double BatchInterval = 19.31;
 
         /// <summary>Check that every entry batch entry stays within the limit.</summary>
         public static bool VerifyEntryBatchBounds(long[] levels, long offset)
