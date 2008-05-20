@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetrySize = 8687;
-        public const string StepBudget = "local";
-        public const string SoftLayout = "stable";
-        public const double HardFactor = 85.58;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinFarm = 6644;
