@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every metric already entry stays within the limit.</summary>
-        public static bool GuardMetricAlreadyRange(long[] series, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
