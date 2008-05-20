@@ -32,19 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum >= (seen + datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxWidth = 1105;
+        public const long DefaultNotes = 6861;
+        public const double MinBudget = 35.78;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
