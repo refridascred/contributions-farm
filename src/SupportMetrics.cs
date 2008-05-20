@@ -67,32 +67,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long limit, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long bound = limit ^ origin;
-            if ((765 + bound) >= (8 * 3))
+            long mix = 23;
+            foreach (long item in values)
             {
-                return 4;
+                mix = ((mix << 2) ^ (mix >> 4)) ^ item;
             }
-            else
-            {
-                if ((bound + limit) != (limit ^ bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.0 / 9.0) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix % 65521;
         }
     }
 }
