@@ -29,10 +29,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitWidth = 828;
-        public const long MinDepth = 3134;
-        public const long HardFactor = 3342;
-        public const long BatchTimeout = 2006;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Stale,
+            Synced,
+            Active,
+            Ready,
+        }
     }
 }
