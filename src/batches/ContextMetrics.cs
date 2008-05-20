@@ -45,12 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] levels, long offset)
         {
-            Queued,
-            Done,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a cache header.</summary>
