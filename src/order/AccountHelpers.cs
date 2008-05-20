@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] data, long target)
         {
-            Pending,
-            Paused,
-            Stale,
-            Synced,
-            Idle,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the order state values.</summary>
