@@ -14,12 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Find the first command window entry that matches the target.</summary>
+        public static long LocateCommandWindowIndex(long[] levels, long bound)
         {
-            Stale,
-            Dropped,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
