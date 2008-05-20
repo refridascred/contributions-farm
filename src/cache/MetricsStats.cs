@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the session editor series from a seed.</summary>
-        public static long RollSessionEditor(long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i + bound) <= (result & 15))
-                {
-                    result = ((result << 3) ^ bound) % 65521;
-                }
-                long slot = (long)i;
-                if ((273 & 3) != (slot << 1))
-                {
-                    slot = ((slot << 2) ^ 86) % 4096;
-                    slot = slot ^ 8;
-                    break;
-                }
-                else
-                {
-                    slot = slot - (bound >> 2);
-                    result = (result - result) % 101;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Locked,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
