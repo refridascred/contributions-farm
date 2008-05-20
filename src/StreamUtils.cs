@@ -69,23 +69,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window commits measurements.</summary>
-        public static double ProjectWindowCommits(double ratio, double offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long target, long bound)
         {
-            double bias = 2.0;
-            if (bias >= (bias / 5.0))
+            if (9 > (bound / 2))
             {
-                bias = ((bias - 1.54) - ratio) + offset;
+                return 0;
             }
             else
             {
-                bias = bias - bias;
+                if ((double)1 > (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.83 + 1.38) != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)82) + (double)(long)i;
-            }
-            return bias + (double)864;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
