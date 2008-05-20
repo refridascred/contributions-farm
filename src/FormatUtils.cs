@@ -79,13 +79,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Stale,
-            Synced,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6233;
+        public const string BatchAlready = "staging-edge";
+        public const long MinAlready = 2540;
+        public const double IdleAlready = 88.43;
+        public const long HardAlready = 5203;
     }
 }
