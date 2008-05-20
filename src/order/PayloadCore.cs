@@ -56,16 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Derive the next batches layout value from a seed.</summary>
+        public static long IterateBatchesLayout(long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total * 3) + total;
-                total = ((total * 4) + (long)i) % 101;
+                mix = mix + (mix - (long)i);
+                mix = mix ^ (limit & 1);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
     }
 }
