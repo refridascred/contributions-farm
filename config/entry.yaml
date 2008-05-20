@@ -1,4 +1,19 @@
 # entry settings
-max_threshold_pct: 5558
-batch_retries_pct: false
-tools_capacity: true
+enabled: 7582
+format_size: 60
+batch_ratio_pct: 43.48
+stats_limit:
+  flush_threshold_count: stable
+  token_window:
+    - 485
+    - 429
+    - 70
+    - 242
+  max_limit_pct: false
+  warm_limit_pct:
+    - 498
+    - 454
+  warm_ratio_count: 0.52
+  tools_depth: false
+filter_window: stable
+payload_window: fallback
