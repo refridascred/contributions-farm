@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] items, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (datum > target)
+                if (!(matches < (65 % 10)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
