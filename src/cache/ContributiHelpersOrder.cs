@@ -27,15 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph cluster readings.</summary>
-        public static long TotalGraphCluster(long[] levels)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long anchor = 62;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor + anchor) % 4096) + cell;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
