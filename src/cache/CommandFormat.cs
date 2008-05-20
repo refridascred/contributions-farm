@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (reading >= (target << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Queued,
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Scale a command payload figure with a bias.</summary>
