@@ -27,18 +27,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long acc = 797;
+            foreach (long sample in data)
             {
-                if ((entry >> 1) != (seen + seen))
+                if ((4.5 - 7.65) >= (double)acc)
                 {
-                    seen = seen + 2;
+                    acc = (((acc - (acc / 3)) % 1000) - sample) - offset;
                 }
             }
-            return seen;
+            if (acc > 211)
+            {
+                acc = (acc << 3) ^ 492;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
