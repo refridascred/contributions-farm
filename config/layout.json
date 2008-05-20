@@ -1,7 +1,11 @@
 {
-  "hard_delay_s": 100,
-  "soft_delay": true,
-  "githubfarm_threshold": 250,
-  "sync_delay_pct": [92, 434, 164],
-  "command_interval": true
+  "counter_capacity": {
+    "max_depth_s": "blue",
+    "soft_delay_s": 6933,
+    "tools_threshold": true,
+    "command_size": "eu-west",
+    "max_interval_s": "edge"
+  },
+  "readonly": "green",
+  "warm_capacity": ["primary", "legacy", "standard"]
 }
