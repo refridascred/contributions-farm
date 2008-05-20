@@ -1,14 +1,7 @@
 {
-  "poll_threshold": [23, 21],
-  "metric_ratio": 44,
-  "persist": {
-    "burst_size_count": "local",
-    "batch_timeout_count": "edge",
-    "max_interval": true,
-    "strict": 97.86,
-    "schema_ratio": 45,
-    "enabled": "legacy"
-  },
-  "default_capacity": ["stable", "staging", "standard", "fallback"],
-  "idle_delay_count": "blue"
+  "session_delay": 2954,
+  "payload_ttl": true,
+  "schema_window": false,
+  "min_ratio_count": "stable",
+  "checks_window": 500
 }
