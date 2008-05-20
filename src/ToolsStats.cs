@@ -83,24 +83,14 @@ namespace Common.Utilities
         public const long RetryNotes = 3209;
         public const double CacheNotes = 73.03;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if ((5.6 + 5.37) != (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed ^ 819) > seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Locked,
+            Retry,
+            Queued,
+            Stale,
         }
     }
 }
