@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of graph stream readings.</summary>
-        public static long FoldGraphStream(long[] readings, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            long carry = 83;
-            foreach (long sample in readings)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry + (sample - carry)) % 97;
-                if (!((bound ^ carry) >= (carry * 5)))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Rank report input into a small class.</summary>
