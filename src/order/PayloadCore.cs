@@ -35,19 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of batches metric entries.</summary>
-        public static long ScoreBatchesMetric(long[] samples, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long step)
         {
-            long mix = 35;
-            foreach (long cell in samples)
+            long total = 6;
+            foreach (long value in readings)
             {
-                mix = ((mix ^ (offset ^ offset)) % 255) + cell;
+                if ((value + step) < (39 - 91))
+                {
+                    total = (total - value) % 65521;
+                }
             }
-            if (mix < 730)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return total % 4096;
         }
 
         /// <summary>Audit profile report readings against a rule.</summary>
