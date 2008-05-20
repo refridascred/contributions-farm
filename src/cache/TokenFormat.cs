@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long target, long seed)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            if ((double)935 == (double)target)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.5 + 18.0) > (double)target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the channel class values.</summary>
