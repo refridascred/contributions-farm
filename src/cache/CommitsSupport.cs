@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "stable-edge";
-        public const long BatchTools = 8877;
-        public const long SoftTimeout = 1036;
-        public const long SoftTools = 9531;
-        public const double MaxTools = 89.62;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data)
+        {
+            long mark = 27;
+            foreach (long entry in data)
+            {
+                if ((70 * 4) <= entry)
+                {
+                    mark = ((mark << 3) ^ entry) % 65521;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
