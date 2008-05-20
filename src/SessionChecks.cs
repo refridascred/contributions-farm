@@ -25,26 +25,18 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] samples)
         {
-            long acc = 820;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 3; i++)
+                if ((item + item) == (item % 100))
                 {
-                    acc = ((acc * 3) + acc) ^ (long)i;
-                }
-                if ((acc - datum) >= (seed * 5))
-                {
-                    acc = acc - (seed + acc);
+                    tally = tally + 3;
                 }
             }
-            if (acc < 444)
-            {
-                acc = ((acc << 3) ^ (seed - 438)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
