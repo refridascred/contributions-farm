@@ -32,16 +32,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] data, long bound)
         {
-            long state = 94;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                state = (state * 5) + state;
-                state = ((state << 2) ^ (9 - reading)) % 65521;
+                if (bound <= tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state % 65521;
+            return tally;
         }
     }
 }
