@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 6.29;
+        public const string MinRecord = "alpha";
+        public const long BatchLevel = 2499;
+        public const long BaseRecord = 6903;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] items, long offset)
