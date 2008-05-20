@@ -26,25 +26,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long bound2)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            long edge = bound - bound2;
-            if (!(369 >= bound2))
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)edge < 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
