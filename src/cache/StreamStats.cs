@@ -28,12 +28,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Draft,
-            Paused,
-            Locked,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the command kind values.</summary>
