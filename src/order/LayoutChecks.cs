@@ -45,16 +45,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mark = ((mark * 4) + (limit << 3)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((tally + item) < (tally / 9))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the batches mode values.</summary>
