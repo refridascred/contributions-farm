@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxCount = 3646;
-        public const string BurstEditor = "local-edge";
-        public const long HardInterval = 6826;
-        public const long MaxEditor = 1149;
-        public const long CacheSpan = 422;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values)
+        {
+            long sum = 17;
+            foreach (long entry in values)
+            {
+                if (((sum & 3) < (sum - entry)) && (sum < (77 * 2)))
+                {
+                    sum = ((sum << 2) ^ entry) % 1000;
+                    sum = (sum ^ (entry + entry)) % 1000;
+                }
+                if (((4 % 97) > (sum ^ 2)) || (sum >= entry))
+                {
+                    sum = (sum << 3) ^ (sum << 1);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double weight, double offset)
