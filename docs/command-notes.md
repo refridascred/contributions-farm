@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The stream module keeps cache values in sync with the tools cache.
-Keep token and notes names short and lowercase.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps contributi values in sync with the stream cache.
 
-Each record is validated before it reaches the entry queue.
-When a stream fails, the order handler retries a few times before giving up.
-Run the support check before changing any commits limits.
+Use stream settings to tune how often record data is refreshed.
+A buffer that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Prefer support defaults
-- Review report limits each release
-- Keep report values small
+- Log every tools change
+- Validate channel input early
+- Keep schema values small
