@@ -42,11 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultBudget = 74.59;
-        public const long BaseWindow = 3588;
-        public const long StepSpan = 3916;
-        public const long DefaultWindow = 3344;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
