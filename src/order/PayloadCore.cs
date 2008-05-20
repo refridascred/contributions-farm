@@ -55,18 +55,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many report graph samples are out of range.</summary>
-        public static long CountReportGraphHits(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] items, long bound)
         {
-            long matches = 0;
+            bool found = true;
             foreach (long cell in items)
             {
-                if (632 >= cell)
+                if (cell <= bound)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
