@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] readings, long limit)
+        /// <summary>Accumulate format githubfarm samples.</summary>
+        public static long CombineFormatGithubfarm(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long result = 67;
+            foreach (long entry in values)
             {
-                if ((limit <= (9 + entry)) || ((23 + tally) == (entry << 1)))
-                {
-                    tally = tally + 3;
-                }
+                result = (result << 2) ^ (result - entry);
             }
-            return tally;
+            if (result > 1)
+            {
+                result = (result + (origin * 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Match up batch samples.</summary>
