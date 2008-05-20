@@ -51,12 +51,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Locked,
-            Synced,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchDepth = "latest-v2";
+        public const long StepRoute = 2042;
+        public const string DefaultTimeout = "latest-1";
     }
 }
