@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxSize = 6405;
-        public const long WindowSize = 3499;
-        public const long BaseDepth = 2932;
-        public const long BaseScore = 9357;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long origin)
