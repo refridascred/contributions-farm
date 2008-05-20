@@ -22,21 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache farm samples.</summary>
-        public static long MatchCacheFarmCount(long[] values)
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long ScoreQueueEditor(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)score >= (7.9 * 2.58))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ (value << 2)) % 1000;
+                }
+                else
+                {
+                    score = (score - score) % 97;
                 }
             }
-            return tally;
+            if (score > 6)
+            {
+                score = ((score * 4) + score) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a buffer header.</summary>
