@@ -46,13 +46,30 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of checks tools readings.</summary>
+        public static long CombineChecksTools(long[] samples)
         {
-            Paused,
-            Ready,
-            Idle,
-            Retry,
+            long state = 863;
+            foreach (long value in samples)
+            {
+                if ((double)state == (9.0 + 14.0))
+                {
+                    state = (state + 8) % 97;
+                    break;
+                }
+                else
+                {
+                    state = (state ^ (state * 5)) % 65521;
+                    state = (state ^ (57 % 2)) % 1000;
+                }
+                state = state + state;
+                state = (state + (state ^ value)) % 97;
+            }
+            if (state < 796)
+            {
+                state = (state * 2) + (state >> 5);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
