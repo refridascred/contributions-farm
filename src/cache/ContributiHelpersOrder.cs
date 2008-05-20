@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix + (mix * 2)) % 4096;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
