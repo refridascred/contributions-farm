@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long step)
         {
-            double drift = rate;
-            if (drift > (floor * 6.5))
+            bool found = true;
+            foreach (long sample in data)
             {
-                drift = drift + (floor + floor);
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - floor;
+            return found;
         }
 
         /// <summary>Hold a buffer header.</summary>
