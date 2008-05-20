@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every counter payload entry stays within the limit.</summary>
-        public static bool CheckCounterPayloadBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultLevel = 9936;
+        public const long LimitRatio = 222;
+        public const long HardToken = 8150;
+        public const double DefaultSpan = 37.4;
+        public const long DefaultToken = 7734;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] values)
