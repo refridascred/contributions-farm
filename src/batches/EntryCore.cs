@@ -50,13 +50,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
