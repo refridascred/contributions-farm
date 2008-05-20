@@ -12,13 +12,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a graph report value against two limits.</summary>
+        public static long SortGraphReport(long step, long offset)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long step2 = step ^ offset;
+            if (step2 > (offset + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step / 2) < (step2 + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
