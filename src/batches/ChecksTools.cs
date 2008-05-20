@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Active,
-            Closed,
-            Paused,
             Stale,
+            Dropped,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Derive the next farm commits value from a seed.</summary>
