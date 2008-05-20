@@ -52,21 +52,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up stream cluster samples.</summary>
-        public static long CompareStreamClusterCount(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result ^ (result + (long)values.Length)) % 255) + item;
+                if ((0.7 * 1.4) >= (double)result)
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 5) + result;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
