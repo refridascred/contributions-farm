@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 28.54;
-        public const long IdleWidth = 339;
-        public const long BatchTimeout = 7751;
-        public const double BatchAlready = 42.7;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen + 8) < (seen >> 2))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long floor, long origin)
