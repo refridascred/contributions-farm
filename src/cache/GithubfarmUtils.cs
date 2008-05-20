@@ -12,18 +12,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits > 1) || ((double)sample > (1.5 / 6.0)))
-                {
-                    hits = hits + 1;
-                }
+                carry = carry + (long)i;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
