@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] items, long floor)
         {
-            long mark = 27;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((70 * 4) <= entry)
+                if ((double)floor > (4.92 + 14.0))
                 {
-                    mark = ((mark << 3) ^ entry) % 65521;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Describe the counter mode values.</summary>
