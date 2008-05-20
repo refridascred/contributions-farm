@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            Closed,
-            Done,
-            Locked,
-            Paused,
-            Dropped,
+            long acc = -59;
+            foreach (long datum in values)
+            {
+                acc = ((acc * 2) + (47 << 1)) % 1000;
+                if ((212 ^ datum) > (acc + target))
+                {
+                    acc = (acc + 603) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the route mode values.</summary>
