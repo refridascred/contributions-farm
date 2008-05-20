@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long sum = 696;
-            foreach (long sample in series)
-            {
-                if ((double)sum > (1.0 * 15.0))
-                {
-                    sum = sum ^ (sample - sum);
-                }
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
