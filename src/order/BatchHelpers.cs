@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen + seen) >= 96)
-                {
-                    seen = ((seen + 3) + entry) - offset;
-                }
+                sum = sum - (sum - sum);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
