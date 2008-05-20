@@ -14,22 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] data)
+        /// <summary>Accumulate context graph samples.</summary>
+        public static long DigestContextGraph(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mark = 0;
+            foreach (long value in levels)
             {
-                if (matches > entry)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark ^ (31 - value)) + origin;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the context class values.</summary>
