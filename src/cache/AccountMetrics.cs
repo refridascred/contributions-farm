@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double mean = (double)(4 - 704);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)(long)series.Length > (11.0 * 20.0))
-                {
-                    count = (count + 3) + reading;
-                }
+                mean = (mean - ratio) + (double)(long)i;
             }
-            return count;
+            return mean - (bias + 5.3);
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
