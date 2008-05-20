@@ -41,11 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (9.44 <= (double)(long)levels.Length)
+                {
+                    count = ((count + 3) + value) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
