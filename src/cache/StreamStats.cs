@@ -28,13 +28,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Pending,
-            Synced,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 6085;
+        public const long LimitSpan = 8220;
+        public const long StepBatch = 7871;
+        public const long CacheWidth = 9449;
+        public const double HardBatch = 6.94;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
