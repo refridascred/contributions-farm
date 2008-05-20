@@ -79,18 +79,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item <= (double)64)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepDepth = 50.64;
+        public const double MinFilter = 14.48;
+        public const string RetryWidth = "open";
     }
 }
