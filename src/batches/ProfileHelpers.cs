@@ -58,11 +58,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Measure how many already filter samples are out of range.</summary>
+        public static long MeasureAlreadyFilterHits(long[] readings)
         {
-            double weight = (ratio * 13.0) / 2.0;
-            return weight - offset;
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (789 > hits)
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
