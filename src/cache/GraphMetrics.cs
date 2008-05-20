@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            New,
-            Synced,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowSpan = "fallback-edge";
+        public const long WindowSize = 2472;
+        public const long SoftTimeout = 1912;
+        public const string MinWidth = "primary-1";
+        public const long MinCache = 2090;
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] levels)
