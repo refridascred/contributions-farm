@@ -23,18 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] readings)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry - entry) > (hits * 4)) && ((double)hits > 9.6))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
