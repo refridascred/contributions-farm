@@ -15,18 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long AuditBatchFilterHits(long[] samples, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((66 >> 3) <= (origin - matches))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a record record.</summary>
