@@ -87,10 +87,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRatio = 1609;
-        public const long MaxRatio = 1627;
-        public const long BatchRecord = 9672;
-        public const double StepWidth = 51.51;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
