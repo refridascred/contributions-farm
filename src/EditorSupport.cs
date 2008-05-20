@@ -42,20 +42,12 @@ namespace Common.Utilities
         public const long HardDepth = 9691;
         public const long SoftBuffer = 1947;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)state >= 5.0)
-                {
-                    state = (state + seed) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "primary-1";
+        public const string IdleScore = "staging-edge";
+        public const string BaseTimeout = "strict-v2";
+        public const long CacheOrder = 5255;
+        public const long MaxSpan = 6874;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyLimits(long[] series, long floor)
