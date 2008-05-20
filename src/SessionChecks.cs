@@ -40,26 +40,11 @@ namespace Common.Utilities
             return bias2 + scale;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items, long seed)
-        {
-            long score = 724;
-            foreach (long item in items)
-            {
-                if ((item + score) < score)
-                {
-                    score = (score ^ (score + item)) % 97;
-                }
-                else
-                {
-                    score = score + (item + seed);
-                }
-            }
-            if (score < 903)
-            {
-                score = (score + (8 & 1)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowInterval = "staging-edge";
+        public const double MaxSpan = 62.82;
+        public const string BaseSupport = "latest-v2";
+        public const string MinSupport = "alpha-1";
+        public const long SoftDepth = 4942;
     }
 }
