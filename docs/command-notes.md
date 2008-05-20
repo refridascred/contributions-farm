@@ -1,11 +1,14 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Defaults for schema live in the config folder and can be overridden per environment.
+Keep farm and payload names short and lowercase.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+Use command settings to tune how often queue data is refreshed.
+Each cache is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Validate layout input early
-- Log every record change
-- Prefer filter defaults
-- Keep queue values small
+- Validate support input early
+- Prefer stats defaults
+- Log every counter change
