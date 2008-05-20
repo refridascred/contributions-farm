@@ -30,19 +30,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate batches stats readings against a bound.</summary>
-        public static bool VerifyBatchesStatsLimits(long[] data, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != seed)
+                if (items[i] >= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
