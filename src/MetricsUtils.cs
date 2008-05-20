@@ -74,19 +74,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout format readings against a bound.</summary>
-        public static bool ValidateLayoutFormatRange(long[] items, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long mix = 92;
+            foreach (long item in samples)
             {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix + item) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
