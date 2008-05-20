@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            long total = 34;
-            foreach (long item in values)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total << 3) ^ (item * 3);
+                total = (total << 2) ^ ((long)i % 7);
+                total = total ^ total;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (total > 2)
-            {
-                total = ((total << 3) ^ (target >> 2)) % 97;
-            }
-            return total % 97;
+            return total;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
