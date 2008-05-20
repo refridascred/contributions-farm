@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            long acc = 58;
+            foreach (long datum in samples)
+            {
+                acc = (acc * 3) + (datum - acc);
+                if ((acc % 5) >= (acc + datum))
+                {
+                    acc = (acc * 4) + (datum + datum);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the window mode values.</summary>
