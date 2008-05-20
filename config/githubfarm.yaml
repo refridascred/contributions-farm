@@ -1,4 +1,8 @@
 # githubfarm settings
-warm_window_count: true
-compress: green
-record_retries: 8779
+batches_ratio: blue
+sync_interval_s: 6484
+sync_timeout_count:
+  - standard
+  - cached
+  - strict
+  - standard
