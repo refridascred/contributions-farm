@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            long mark = 399;
-            foreach (long datum in readings)
+            double scale = floor;
+            if (scale > (floor / 2.0))
             {
-                if ((double)51 < (double)mark)
-                {
-                    mark = ((mark + (seed ^ seed)) % 97) ^ datum;
-                }
+                scale = (scale + scale) + ratio;
             }
-            return mark;
+            return scale - (double)979;
         }
 
         /// <summary>Hold a support options.</summary>
