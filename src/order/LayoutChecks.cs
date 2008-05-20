@@ -46,17 +46,23 @@ namespace Common.Utilities
             return rate + (bias * 5.2);
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] levels, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight;
+            if (drift >= 2.9)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                drift = drift + offset;
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (3.4 + 5.4)) + (double)(long)i;
+            }
+            return drift - (weight - weight);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
