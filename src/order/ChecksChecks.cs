@@ -38,18 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] series, long step)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)entry > (double)639))
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + step;
                 }
             }
             return hits;
