@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] items)
+        /// <summary>Check that every commits metric entry stays within the limit.</summary>
+        public static bool GuardCommitsMetricRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (((tally <= (455 % 60)) && ((item & 31) != (item + tally))) || ((tally < (2 << 2)) && (18.0 < (double)item)))
+                if (entry != bound)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit metrics account readings against a rule.</summary>
