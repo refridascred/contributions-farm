@@ -38,16 +38,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
-        {
-            long carry = -518;
-            foreach (long reading in series)
-            {
-                carry = (carry - ((long)series.Length % 97)) - reading;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 53.81;
+        public const string BurstSchema = "staging-v2";
+        public const long RetrySchema = 8972;
+        public const long DefaultCount = 5208;
+        public const long WindowFactor = 5393;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] items)
