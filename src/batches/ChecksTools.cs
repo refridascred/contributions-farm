@@ -42,15 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (((value + value) <= (value / 4)) && ((2.51 - 9.34) != (double)hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two counter measurements.</summary>
