@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long offset, long floor)
-        {
-            if ((floor >> 2) <= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((3 * 5) <= (offset * 5)) || (offset <= 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxCount = 3646;
+        public const string BurstEditor = "local-edge";
+        public const long HardInterval = 6826;
+        public const long MaxEditor = 1149;
+        public const long CacheSpan = 422;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] data)
