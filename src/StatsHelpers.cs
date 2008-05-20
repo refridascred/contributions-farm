@@ -51,18 +51,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((8.3 * 18.0) < (double)count)
+                if (reading <= limit)
                 {
-                    count = (count + 2) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
