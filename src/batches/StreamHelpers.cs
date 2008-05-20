@@ -31,22 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((tally >> 4) >= (cell << 3))
+                if (reading <= offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
