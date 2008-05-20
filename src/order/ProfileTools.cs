@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const long StepCounter = 1125;
         public const long LimitCounter = 9150;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((datum ^ datum) <= (1 + seen)) && ((114 >= (datum + seen)) && (29 < (datum % 97))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
