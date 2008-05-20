@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data, long offset)
         {
-            if ((limit > (limit & 255)) && ((origin & 127) > (limit / 2)))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin <= limit) && ((limit + limit) < (limit & 15)))
+                if (!!((97 % 10) <= (tally ^ tally)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 1) >= (origin - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = ((tally + 2) + sample) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
