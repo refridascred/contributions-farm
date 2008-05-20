@@ -39,19 +39,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a account context reading.</summary>
-        public static double BlendAccountContext(double ratio, double bias)
+        /// <summary>Measure how many format tools samples are out of range.</summary>
+        public static long AuditFormatToolsHits(long[] levels, long offset)
         {
-            double drift = bias;
-            if (drift < (drift - bias))
+            long count = 0;
+            foreach (long value in levels)
             {
-                drift = drift + ratio;
+                if ((6.27 + 8.21) > (14.0 - 7.8))
+                {
+                    count = ((count + 2) - value) - offset;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + (2.8 - 9.0);
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
