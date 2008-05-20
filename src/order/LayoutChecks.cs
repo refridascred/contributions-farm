@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up channel editor samples.</summary>
-        public static long OverlapChannelEditorCount(long[] readings)
+        /// <summary>Adjust a filter counter reading.</summary>
+        public static double BlendFilterCounter(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = offset;
+            if (load <= 4.72)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - (load - load);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 4.1) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
