@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "stable";
-        public const double StepSize = 37.85;
-        public const long MaxWindow = 824;
-        public const string BaseWindow = "fallback-v2";
+        /// <summary>Match up token cluster samples.</summary>
+        public static long OverlapTokenClusterCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] readings, long floor)
