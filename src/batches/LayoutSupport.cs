@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a channel commits reading.</summary>
-        public static double ScaleChannelCommits(double scale, double bias)
+        /// <summary>Validate queue editor readings against a bound.</summary>
+        public static bool CheckQueueEditorLimits(long[] items, long bound)
         {
-            double gain = (scale / 6.0) + (double)938;
-            if (gain < (double)215)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                gain = gain + bias;
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)92) - (double)(long)i;
-            }
-            return gain - bias;
+            return flag;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
