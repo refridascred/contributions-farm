@@ -1,7 +1,9 @@
-id,score,label,weight,region
-1,837,96,546,staging
-2,edge,374,93.47,264
-3,stable,31.72,210,66.11
-4,open,89.07,staging,640
-5,199,fallback,53,574
-6,standard,53.15,8.54,13.56
+id,count,label,weight
+1,latest,573,74.12
+2,287,blue,primary
+3,833,green,21.96
+4,738,primary,325
+5,743,935,primary
+6,stable,0.72,19.51
+7,fallback,885,41.42
+8,4.91,87.88,520
