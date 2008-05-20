@@ -34,12 +34,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Count { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleDepth = 6942;
+        public const string StepWidth = "stable";
+        public const long RetryTools = 1243;
+        public const string HardTools = "standard";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] levels, long offset)
