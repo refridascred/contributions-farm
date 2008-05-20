@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleTimeout = 66.53;
-        public const long BatchCount = 4853;
-        public const double LimitAccount = 12.61;
-        public const long BurstAccount = 9722;
-        public const long StepAccount = 4963;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstDepth = 53.54;
+        public const double SoftRatio = 48.9;
+        public const long LimitRatio = 1856;
+        public const double BatchWidth = 24.53;
+        public const double BaseSize = 87.08;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] items)
