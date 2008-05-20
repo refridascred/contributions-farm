@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstLevel = 92.89;
-        public const long SoftRatio = 9165;
-        public const string LimitAlready = "latest";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Locked,
+            Pending,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstReport = 9113;
