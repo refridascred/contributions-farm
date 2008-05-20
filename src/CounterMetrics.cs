@@ -47,18 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 3) + ((long)i + state)) % 255;
-                state = (state << 3) ^ (step >> 4);
-                state = (state + (step - state)) % 4096;
-                state = ((state * 3) + (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
     }
 }
