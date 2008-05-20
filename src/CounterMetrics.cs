@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up profile context samples.</summary>
-        public static long OverlapProfileContextCount(long[] data)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound2 = bound - floor;
+            if ((0 + 231) >= (bound2 >> 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound2 >> 5) == (floor / 3))
                 {
-                    if ((data[i] ^ data[j]) < 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((25 / 2) == (floor + 749))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound2 <= (bound ^ bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a record info.</summary>
