@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((double)floor >= (double)38)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((68 - target) <= 57)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target == (14.0 - 7.11)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
