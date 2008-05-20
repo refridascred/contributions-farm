@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double ratio, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            double mean = (double)(451 - (-7));
-            if (mean > (double)39)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mean = ((mean + (mean + mean)) - ratio) - span;
+                if ((tally & 7) != (tally % 10))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (4.11 * 9.17)) + (double)(long)i;
-            }
-            return mean - 0.9;
+            return tally;
         }
 
         /// <summary>Iterate the format editor series from a seed.</summary>
