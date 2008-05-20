@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a buffer window reading by value.</summary>
-        public static long SeekBufferWindowIndex(long[] samples, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
