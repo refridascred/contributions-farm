@@ -53,25 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long step, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            long offset = step ^ target;
-            if (offset < (step >> 5))
+            double scale2 = scale;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                scale2 = scale2 - (double)(long)i;
             }
-            else
-            {
-                if (((offset / 4) < (target * 5)) || (target <= (step / 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return scale2 + (floor * 8.52);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
