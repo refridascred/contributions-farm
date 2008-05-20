@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 89.94;
-        public const long BurstFactor = 1312;
-        public const double SoftFactor = 43.49;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + value) > hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] items, long origin)
