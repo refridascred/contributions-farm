@@ -1,8 +1,7 @@
 {
-  "audit": true,
-  "retry_timeout_ms": 1204,
-  "contributi_timeout": ["stable", "fallback"],
-  "enabled": 2992,
-  "hard_retries_count": 500,
-  "burst_delay_pct": [379, 347, 122]
+  "verbose": [421, 372, 206],
+  "cache_ratio": true,
+  "soft_threshold": ["local", "green"],
+  "report_window": 250,
+  "burst_retries_count": false
 }
