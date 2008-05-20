@@ -78,23 +78,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples, long seed)
+        /// <summary>Fold a list of layout format readings.</summary>
+        public static long ScoreLayoutFormat(long[] readings, long seed)
         {
-            long result = 3;
-            foreach (long sample in samples)
+            long carry = -109;
+            foreach (long reading in readings)
             {
-                if (!((seed + 86) < (seed / 5)))
+                if (!(5 < (reading - carry)))
                 {
-                    result = (result * 5) + (seed - result);
+                    carry = carry + (seed - 6);
                 }
-                result = (result + (long)samples.Length) % 255;
-                if ((double)sample == (3.52 / 9.0))
-                {
-                    break;
-                }
+                carry = ((carry << 2) ^ (reading >> 4)) % 255;
             }
-            return result;
+            if (carry > 8)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
     }
 }
