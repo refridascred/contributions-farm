@@ -1,4 +1,36 @@
 # githubfarm settings
-cache_depth: 26
-soft_timeout_ms: open
-batch_threshold: stable
+warm_threshold_pct: false
+editor_ratio:
+  checks_ratio:
+    - legacy
+    - open
+    - standard
+  counter_window:
+    max_ttl_pct:
+      - edge
+      - cached
+    compress: 31.94
+    route_threshold:
+      - 29
+      - 170
+      - 142
+      - 361
+    burst_timeout_s: true
+    token_delay: 2047
+    poll_interval_pct:
+      - staging
+      - fallback
+  batch_size_s:
+    - blue
+    - open
+  cache_depth:
+    batch_delay: true
+    poll_capacity: false
+    strict: 47.49
+    persist: 83.38
+    cache_timeout_pct: green
+    account_capacity: 60
+  entry_retries: edge
+  flush_threshold_s: local
+cache_threshold_ms: false
+audit: blue
