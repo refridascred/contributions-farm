@@ -75,21 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                long lane = bound;
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!((long)i >= (sum + (long)i)))
                 {
-                    long bound2 = lane;
-                    lane = (lane ^ (bound2 * 4)) ^ (long)i2;
+                    sum = sum + sum;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
     }
 }
