@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 9868;
+        public const string HardCount = "alpha";
+        public const long MinBatches = 8105;
 
         /// <summary>Count the support cache entries that pass the check.</summary>
         public static long CountSupportCacheMatches(long[] samples, long limit)
