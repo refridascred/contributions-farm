@@ -32,19 +32,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long anchor = 68;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + (item - item)) % 255;
-                if ((double)bound <= (7.8 / 4.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor - (item + 3);
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Hold a buffer options.</summary>
