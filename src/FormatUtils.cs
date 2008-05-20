@@ -69,19 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double bias)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double bias2 = bias;
-            if (bias2 <= 2.3)
-            {
-                bias2 = bias2 - (scale * 13.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (1.9 + bias)) + (double)(long)i;
-            }
-            return bias2 - (double)8;
+            Closed,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of format entries.</summary>
