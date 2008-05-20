@@ -1,6 +1,20 @@
 {
-  "batch_threshold_count": 62.26,
-  "audit": 500,
-  "soft_threshold": ["standard", "eu-west", "open", "blue"],
-  "warm_delay_count": false
+  "poll_ttl": "standard",
+  "max_capacity_ms": true,
+  "default_threshold_count": "legacy",
+  "retry_limit_count": 33.77,
+  "max_window_count": {
+    "cache_interval_s": false,
+    "retry_ratio_ms": {
+      "warm_delay_count": [404, 141, 344, 22],
+      "retry_depth_ms": 87.28,
+      "min_ttl": 16,
+      "audit": "open",
+      "route_depth": "fallback",
+      "burst_interval_s": false
+    },
+    "payload_timeout": true,
+    "retry_limit": "blue",
+    "retry_interval_ms": [297, 102, 99, 213]
+  }
 }
