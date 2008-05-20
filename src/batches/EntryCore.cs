@@ -43,17 +43,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (items[i] >= offset)
+                if (((119 % 12) > (entry & 7)) || ((entry - count) > (entry + 103)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
