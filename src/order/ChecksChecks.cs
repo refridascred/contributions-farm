@@ -35,26 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] items, long offset)
         {
-            long sum = 70;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (sample < (floor & 7))
+                if ((double)offset <= (double)(-8))
                 {
-                    sum = (sum - (76 % 97)) % 65521;
+                    hits = (hits + 1) ^ cell;
                 }
                 else
                 {
-                    sum = (sum * 2) + (sum + sample);
+                    hits = hits - 1;
                 }
             }
-            if (sum > 48)
-            {
-                sum = (sum ^ (449 + sum)) % 65521;
-            }
-            return sum % 1000;
+            return hits;
         }
     }
 }
