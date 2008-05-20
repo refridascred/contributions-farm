@@ -57,12 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            Closed,
-            Pending,
-            Synced,
+            long mark = 4;
+            foreach (long reading in samples)
+            {
+                mark = (mark + (reading ^ (-23))) % 65521;
+            }
+            if (mark > (-106))
+            {
+                mark = ((mark << 3) ^ (mark + mark)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Scale a tools commits figure with a bias.</summary>
