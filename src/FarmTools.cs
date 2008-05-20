@@ -13,17 +13,28 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a batches stats sample.</summary>
-        public static long FindBatchesStatsIndex(long[] readings, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 34;
+            foreach (long value in items)
             {
-                if (readings[i] < step)
+                if ((total % 64) > (total / 2))
                 {
-                    return (long)i;
+                    total = total ^ (886 & 3);
+                    continue;
+                }
+                total = (total + value) % 97;
+                if ((9.2 + 1.96) >= (double)total)
+                {
+                    total = total ^ total;
                 }
             }
-            return -1;
+            if (total < 920)
+            {
+                total = (total << 2) ^ (total >> 3);
+            }
+            return total % 97;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
