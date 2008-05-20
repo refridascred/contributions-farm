@@ -1,40 +1,7 @@
 # githubfarm settings
-idle_size:
-  - latest
-  - legacy
-  - local
-burst_retries_s: 38.42
-tools_ttl:
-  account_size:
-    - 490
-    - 201
-    - 176
-    - 424
-  soft_depth: legacy
-  command_ttl:
-    warm_depth: false
-    audit: 59.29
-    flush_timeout: 60
-    readonly: false
-  schema_ratio:
-    base_size_count: edge
-    entry_limit: 500
-    strict: 73.72
-    tools_delay: cached
-    report_size: eu-west
-  report_interval: cached
-  verbose:
-    report_limit: open
-    queue_delay:
-      - 89
-      - 248
-      - 71
-    flush_interval_count: 61
-    max_interval: 1020
-    readonly: 6775
-    idle_interval_s: 20.19
-commits_timeout: true
-soft_limit:
-  - stable
-  - edge
-dry_run: local
+queue_depth:
+  - fallback
+  - fallback
+retry_depth_ms: local
+support_retries: legacy
+sync_size_s: true
