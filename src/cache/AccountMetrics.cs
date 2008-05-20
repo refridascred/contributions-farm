@@ -46,20 +46,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
-        {
-            long state = 488;
-            foreach (long cell in values)
-            {
-                state = state ^ cell;
-            }
-            if (state < 88)
-            {
-                state = state ^ (state * 2);
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 956;
+        public const long MaxChannel = 2969;
+        public const double MinChannel = 38.62;
+        public const double BatchChannel = 0.97;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricGaps(long[] readings, long target)
