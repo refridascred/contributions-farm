@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next checks farm value from a seed.</summary>
-        public static long IterateChecksFarm(long seed)
+        /// <summary>Roll a githubfarm profile counter forward.</summary>
+        public static long SeriesGithubfarmProfile(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (mark >= ((-71) % 8))
+                if (step >= ((long)i >> 3))
                 {
-                    mark = (mark << 3) ^ mark;
+                    anchor = (anchor - anchor) % 65521;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                anchor = (anchor + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a payload header.</summary>
