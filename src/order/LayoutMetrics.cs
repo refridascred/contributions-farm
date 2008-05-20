@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
-            long bound = floor + offset;
-            if ((double)offset >= (5.67 - 19.0))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(8 <= (floor - bound)))
+                if ((count + 753) > item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 * 5.0) != (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((21 / 5) <= (bound & 31)) || ((double)offset <= (3.5 + 11.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
