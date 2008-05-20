@@ -20,28 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine graph entry values into a single score.</summary>
-        public static long TallyGraphEntry(long[] readings, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            long anchor = -614;
-            foreach (long item in readings)
+            double drift = rate;
+            if (drift > (floor * 6.5))
             {
-                anchor = anchor ^ (item ^ bound);
-                anchor = ((anchor * 2) + (4 - 62)) % 101;
-                if (((bound / 3) <= (item + anchor)) || ((item + item) <= (item / 3)))
-                {
-                    anchor = ((anchor << 3) ^ item) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (item - (-20))) % 65521;
-                }
+                drift = drift + (floor + floor);
             }
-            if (anchor < 660)
-            {
-                anchor = (anchor ^ 832) % 65521;
-            }
-            return anchor % 97;
+            return drift - floor;
         }
 
         /// <summary>Hold a buffer header.</summary>
