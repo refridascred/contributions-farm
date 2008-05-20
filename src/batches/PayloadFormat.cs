@@ -41,14 +41,11 @@ namespace Common.Utilities
         public const long MaxCommits = 231;
         public const double StepTimeout = 42.68;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Done,
-            Queued,
-            Draft,
-            Closed,
-            New,
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
