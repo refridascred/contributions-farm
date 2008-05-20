@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] values, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values, long offset)
         {
-            long total = 4;
+            long seen = 0;
             foreach (long entry in values)
             {
-                if ((entry + 658) < (total + (long)values.Length))
+                if ((seen + seen) >= 96)
                 {
-                    total = (total - floor) % 255;
+                    seen = ((seen + 3) + entry) - offset;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of record entries.</summary>
