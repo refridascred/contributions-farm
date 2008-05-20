@@ -23,24 +23,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank cache stream input into a small class.</summary>
-        public static long ClassifyCacheStream(long bound, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double floor)
         {
-            if ((seed + bound) >= (seed >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.07 * 4.0) > (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double bias2 = floor;
+            return (bias2 + (double)966) + bias;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
