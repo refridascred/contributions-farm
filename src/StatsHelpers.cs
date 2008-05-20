@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Done,
-            Failed,
-            Paused,
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
