@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            Closed,
-            Active,
-            Synced,
-            Retry,
+            double mean = (double)(21 ^ 76);
+            return ((mean - (mean * 3.4)) + rate) + offset;
         }
 
         /// <summary>Describe the batches status values.</summary>
