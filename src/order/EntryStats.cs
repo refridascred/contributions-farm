@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long BatchBudget = 6801;
         public const long BatchSpan = 9785;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 4968;
-        public const string MinWidth = "legacy-1";
-        public const string MaxTimeout = "primary-v2";
-        public const long WindowTools = 6140;
+        /// <summary>Scale a counter support figure with a bias.</summary>
+        public static double BlendCounterSupport(double ratio, double offset)
+        {
+            double weight = ratio;
+            return (weight + (double)0) + offset;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] readings)
