@@ -12,25 +12,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long bound)
         {
-            long edge = offset - origin;
-            if ((double)88 != (double)origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge + offset) <= origin)
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of graph cluster readings.</summary>
