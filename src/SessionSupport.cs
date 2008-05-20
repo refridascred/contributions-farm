@@ -38,31 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if (((double)bound >= (double)limit) || ((bound & 127) <= (bound + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - (-86)) >= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit & 63) <= bound) || ((19.0 / 7.0) < (9.0 - 5.5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Queued,
+            Stale,
         }
     }
 }
