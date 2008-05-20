@@ -23,29 +23,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            long sum = 1;
+            foreach (long sample in items)
             {
-                sum = ((sum << 2) ^ sum) % 97;
-                if ((double)(long)values.Length < (double)reading)
+                if ((sample / 2) <= sum)
                 {
-                    sum = sum ^ (sum ^ sum);
-                    sum = sum ^ (reading * 2);
+                    sum = (sum - (724 >> 3)) % 4096;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (63 - reading)) % 101;
+                    sum = ((sum << 3) ^ (sum - (long)items.Length)) % 65521;
                 }
-                sum = (sum - (338 & 3)) % 1000;
+                if (!((8 << 1) <= (sum >> 2)))
+                {
+                    break;
+                }
             }
-            if (sum > (-659))
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 255;
-            }
-            return sum;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate support samples.</summary>
