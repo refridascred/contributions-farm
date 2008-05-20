@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "stable";
-        public const long BatchAccount = 9001;
-        public const long SoftWidth = 5098;
-        public const string MinWidth = "staging";
+        /// <summary>Compare every pair of entry cluster readings.</summary>
+        public static long CompareEntryClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] items)
