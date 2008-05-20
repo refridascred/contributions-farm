@@ -36,14 +36,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Failed,
-            Dropped,
-            New,
-            Draft,
+            Active,
             Ready,
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
