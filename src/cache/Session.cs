@@ -54,11 +54,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstSize = 7090;
-        public const long BaseTimeout = 5814;
-        public const double DefaultNotes = 51.23;
-        public const long BatchNotes = 9862;
-        public const long MaxNotes = 7333;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            New,
+            Pending,
+            Ready,
+        }
     }
 }
