@@ -51,12 +51,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long CountAlreadySchemaMatches(long[] data, long offset)
         {
-            Failed,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count >= (16.0 + 4.15))
+                {
+                    count = ((count + 2) - value) + offset;
+                }
+            }
+            return count;
         }
     }
 }
