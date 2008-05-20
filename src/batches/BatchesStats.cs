@@ -13,15 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double span)
         {
-            long sum = 6;
-            foreach (long entry in values)
+            double load = 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (((sum * 4) + sum) + entry) + target;
+                load = ((load + (load - gain)) + (double)(long)i) + span;
             }
-            return sum;
+            return load - (double)184;
         }
 
         /// <summary>Match up commits samples.</summary>
