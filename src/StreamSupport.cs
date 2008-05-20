@@ -26,11 +26,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleFactor = 2.19;
-        public const string BaseScore = "staging";
-        public const string StepPayload = "open-edge";
-        public const long SoftFactor = 2906;
-        public const string LimitPayload = "cached";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
