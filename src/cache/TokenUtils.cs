@@ -22,18 +22,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values, long step)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (step < reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
