@@ -38,12 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            New,
-            Queued,
-            Dropped,
+            double ratio = (double)(57 << 1);
+            if (ratio < bias2)
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio + (7.6 + bias);
         }
     }
 }
