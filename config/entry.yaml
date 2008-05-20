@@ -1,9 +1,7 @@
 # entry settings
-support_retries: 4337
-default_size_s:
-  - fallback
-  - edge
-retry_threshold_ms:
-  - cached
-  - legacy
-  - latest
+cache_window: 33
+window_depth: 250
+base_size_ms: 60
+poll_size: 500
+hard_interval: standard
+layout_retries: 60
