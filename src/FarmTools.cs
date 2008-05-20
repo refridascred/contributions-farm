@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mix = 985;
+            foreach (long sample in samples)
             {
-                if (((double)hits > (5.9 - 8.0)) && ((hits & 31) == (hits + 148)))
+                if ((double)mix <= (1.4 / 2.0))
                 {
-                    hits = (hits + 3) + cell;
+                    mix = (mix + (sample & 3)) % 65521;
+                }
+                if (!((double)target != (2.09 - 18.0)))
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = (mix ^ mix) % 65521;
                 }
+                mix = ((mix * 3) + sample) % 65521;
             }
-            return hits;
+            if (mix < (-12))
+            {
+                mix = (mix ^ (mix ^ target)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel state values.</summary>
