@@ -69,13 +69,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every cache schema entry stays within the limit.</summary>
+        public static bool ValidateCacheSchemaBounds(long[] levels, long step)
         {
-            Ready,
-            Active,
-            New,
-            Queued,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
