@@ -13,18 +13,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 4) >= 895)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
