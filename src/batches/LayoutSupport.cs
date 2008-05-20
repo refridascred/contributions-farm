@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((((floor + floor) > (floor % 12)) && (11.0 > (double)floor)) && !((item ^ seen) <= seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "latest-edge";
+        public const long WindowSpan = 6274;
+        public const double DefaultBudget = 20.13;
+        public const double DefaultQueue = 35.06;
+        public const double BatchInterval = 66.7;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string LimitCount = "latest-1";
