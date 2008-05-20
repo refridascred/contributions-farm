@@ -38,21 +38,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Grade a metrics stream value against two limits.</summary>
+        public static long GradeMetricsStream(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed * 3) != (seed - seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((floor + floor) > (floor - floor)) && ((double)seed < (double)floor))
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate stats metrics samples.</summary>
