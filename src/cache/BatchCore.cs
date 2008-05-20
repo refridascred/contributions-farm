@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long anchor = 1;
+            foreach (long reading in data)
             {
-                if (datum <= step)
+                if (anchor <= (reading ^ anchor))
                 {
-                    ready = false;
+                    anchor = anchor + (reading + reading);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
+                if ((reading + reading) != (anchor % 3))
+                {
                     break;
                 }
             }
-            return ready;
+            if (anchor < 838)
+            {
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
