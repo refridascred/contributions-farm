@@ -1,5 +1,20 @@
 {
-  "hard_window_count": 51.43,
-  "cache_retries_ms": 64.2,
-  "poll_depth": 1024
+  "format_delay": {
+    "compress": "staging",
+    "batches_limit": 95,
+    "sync_limit": false
+  },
+  "checks_threshold": 83.59,
+  "default_threshold_pct": {
+    "min_limit_s": false,
+    "hard_threshold": 79.66,
+    "idle_depth_s": "blue",
+    "strict": {
+      "verbose": [109, 119, 219],
+      "soft_window_ms": ["local", "latest", "cached", "legacy"],
+      "persist": [100, 439, 188]
+    }
+  },
+  "already_ratio": 4925,
+  "burst_retries_pct": 80.15
 }
