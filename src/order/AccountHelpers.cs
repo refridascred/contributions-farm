@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples)
         {
-            Draft,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) >= (reading - (long)samples.Length))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
