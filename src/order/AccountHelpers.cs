@@ -28,13 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double offset)
         {
-            Closed,
-            Locked,
-            Synced,
-            Ready,
+            double scale = (double)36 + (double)7;
+            if (scale > offset)
+            {
+                scale = scale - (scale * 8.2);
+            }
+            else
+            {
+                scale = scale + (double)419;
+            }
+            return scale - bias;
         }
 
         /// <summary>Rank metric commits input into a small class.</summary>
