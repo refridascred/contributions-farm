@@ -60,13 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] items, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] data, long floor)
         {
             bool valid = true;
-            foreach (long datum in items)
+            foreach (long datum in data)
             {
-                if (datum >= seed)
+                if (datum >= floor)
                 {
                     valid = false;
                     break;
