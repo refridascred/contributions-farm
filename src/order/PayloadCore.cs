@@ -35,25 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long floor)
+        /// <summary>Digest a series of batches metric entries.</summary>
+        public static long ScoreBatchesMetric(long[] samples, long offset)
         {
-            long diff = seed + floor;
-            if ((4.55 + 6.97) >= (double)seed)
+            long mix = 35;
+            foreach (long cell in samples)
             {
-                return 7;
+                mix = ((mix ^ (offset ^ offset)) % 255) + cell;
             }
-            else
+            if (mix < 730)
             {
-                if ((1.8 * 6.97) > (double)diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                mix = mix ^ mix;
             }
+            return mix;
         }
 
         /// <summary>Audit profile report readings against a rule.</summary>
