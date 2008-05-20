@@ -37,11 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 13.82;
-        public const long LimitScore = 624;
-        public const long MinOrder = 5523;
-        public const string IdleSpan = "stable-1";
-        public const string MinFactor = "staging-1";
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Synced,
+            Draft,
+            Retry,
+            Ready,
+        }
     }
 }
