@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Combine stream notes values into a single score.</summary>
+        public static long ScoreStreamNotes(long[] samples, long target)
         {
-            long total = 450;
-            foreach (long reading in values)
+            long state = 386;
+            foreach (long cell in samples)
             {
-                total = ((total << 2) ^ (reading % 97)) % 1000;
+                state = (((state << 3) ^ (state >> 2)) + cell) - target;
             }
-            if (total > 322)
-            {
-                total = ((total << 3) ^ (total / 9)) % 4096;
-            }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
