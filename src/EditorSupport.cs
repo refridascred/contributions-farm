@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long step)
         {
-            long anchor = 751;
-            foreach (long sample in values)
+            if (((double)seed > 2.1) || (((-67) + seed) == (6 + 7)))
             {
-                if (((anchor + step) == (1 ^ 1)) && ((double)sample != (4.1 - 2.2)))
+                return 3;
+            }
+            else
+            {
+                if ((step - step) == (907 + seed))
                 {
-                    anchor = anchor ^ (anchor >> 3);
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
