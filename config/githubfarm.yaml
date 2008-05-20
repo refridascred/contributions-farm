@@ -1,26 +1,15 @@
 # githubfarm settings
-burst_size: 705
-batch_limit_count:
-  - fallback
-  - stable
-  - primary
-poll_delay_pct:
-  readonly: blue
-  compress:
-    readonly: 92.59
-    cache_ratio: 3996
-    burst_limit_count:
-      - edge
-      - eu-west
-      - open
-    sync_size: 100
-    poll_depth_count: false
-    min_ttl_s: 3280
-  soft_interval_ms: edge
-  flush_ratio: 1484
-retry_capacity:
-  - fallback
-  - latest
-  - cached
-burst_window: 60
-default_threshold_ms: true
+channel_depth: false
+format_ratio: 15.47
+cache_delay:
+  poll_threshold: green
+  persist: primary
+  cache_interval_pct: legacy
+  max_limit_count:
+    - blue
+    - blue
+    - green
+    - edge
+  max_retries_count: primary
+  default_capacity_ms: green
+max_threshold_pct: false
