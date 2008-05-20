@@ -33,18 +33,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of context commits entries.</summary>
-        public static long WeighContextCommits(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long anchor = 459;
-            foreach (long value in series)
-            {
-                if (!(anchor > (value + (-10))))
-                {
-                    anchor = (anchor ^ (value - anchor)) % 255;
-                }
-            }
-            return anchor;
+            Idle,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Project the next session value.</summary>
