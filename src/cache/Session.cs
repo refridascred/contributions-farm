@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double bias = weight / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell <= seen)
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias + (span + span)) - (double)(long)i;
             }
-            return seen;
+            return bias + (double)0;
         }
 
         /// <summary>Locate a record reading by value.</summary>
