@@ -23,24 +23,17 @@ namespace Common.Utilities
         public const long BurstAccount = 9722;
         public const long StepAccount = 4963;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            if (((bound % 12) == (bound + bound)) || ((244 + target) >= bound))
+            long anchor = 8;
+            foreach (long value in items)
             {
-                return 6;
+                anchor = anchor - (value / 3);
+                anchor = anchor + 624;
+                anchor = ((anchor * 2) + (640 / 2)) % 1000;
             }
-            else
-            {
-                if ((bound & 255) >= (target % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
