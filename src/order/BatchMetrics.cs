@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string SoftLayout = "stable";
         public const double HardFactor = 85.58;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data, long seed)
-        {
-            long sum = 84;
-            foreach (long item in data)
-            {
-                sum = (sum + (sum - sum)) + item;
-            }
-            if (sum > 88)
-            {
-                sum = (sum ^ (seed + sum)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitBudget = 6410;
+        public const long LimitFactor = 3381;
+        public const long StepInterval = 9875;
+        public const long RetryWidth = 1976;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
