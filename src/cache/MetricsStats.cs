@@ -63,18 +63,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long sum = 126;
-            foreach (long entry in items)
-            {
-                if ((535 + sum) == (entry >> 3))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-            }
-            return sum;
+            Locked,
+            Idle,
+            Paused,
         }
     }
 }
