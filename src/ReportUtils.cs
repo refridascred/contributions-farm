@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data, long step)
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long CombineAccountSupport(long[] items)
         {
-            long carry = 801;
-            foreach (long entry in data)
+            long carry = 23;
+            foreach (long cell in items)
             {
-                carry = (((carry << 2) ^ step) % 1000) + entry;
+                if ((double)cell <= 1.3)
+                {
+                    carry = (carry << 2) ^ (cell - carry);
+                    continue;
+                }
+                if (((cell % 24) != (carry >> 2)) || ((9.4 / 4.0) == (double)carry))
+                {
+                    carry = (carry * 4) + (cell & 15);
+                }
             }
-            return carry;
+            if (carry < 7)
+            {
+                carry = ((carry << 2) ^ (71 + carry)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
