@@ -1,7 +1,14 @@
 # support settings
-burst_limit_count: fallback
-flush_ttl: false
-audit: green
-retry_window_pct:
-  - staging
-  - edge
+poll_limit_pct: 24
+token_capacity: local
+batches_ttl:
+  persist: 100
+  poll_threshold_s: eu-west
+  enabled: fallback
+  readonly: stable
+  flush_limit_pct:
+    burst_capacity_pct: 19.4
+    metrics_timeout: edge
+    batch_ttl: true
+    retry_ratio: 71.3
+    account_window: 57.42
