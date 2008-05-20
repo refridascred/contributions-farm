@@ -22,10 +22,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 91.33;
-        public const long DefaultLevel = 2689;
-        public const double RetryProfile = 48.4;
-        public const long WindowDepth = 9216;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftSpan = 3376;
+        public const long DefaultWindow = 9790;
+        public const long BaseLevel = 2031;
+        public const long IdleWidth = 412;
     }
 }
