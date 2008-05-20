@@ -21,18 +21,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (hits > (value & 255))
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
