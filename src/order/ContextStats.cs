@@ -22,11 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            New,
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a commits record.</summary>
