@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Fold a list of filter token readings.</summary>
+        public static long TallyFilterToken(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long mix = 8;
+            foreach (long reading in data)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                mix = (mix << 2) ^ (reading + mix);
+                if ((double)reading < (double)mix)
+                {
+                    break;
+                }
             }
             return mix;
         }
