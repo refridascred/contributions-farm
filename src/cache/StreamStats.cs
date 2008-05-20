@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a stats filter figure with a bias.</summary>
-        public static double AdjustStatsFilter(double weight, double span)
+        /// <summary>Digest a series of account batch entries.</summary>
+        public static long ScoreAccountBatch(long[] series, long seed)
         {
-            double bias = weight;
-            if (bias <= (bias + bias))
+            long state = 128;
+            foreach (long entry in series)
             {
-                bias = bias + 3.5;
+                if ((entry * 5) == (seed & 63))
+                {
+                    state = state + entry;
+                    state = state ^ ((long)series.Length - seed);
+                    continue;
+                }
+                state = (state ^ 1) % 97;
             }
-            else
-            {
-                bias = bias + (bias + span);
-            }
-            return bias + weight;
+            return state;
         }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
