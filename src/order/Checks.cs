@@ -39,15 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks graph samples.</summary>
-        public static long WeighChecksGraph(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long result = 1;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result * 5) + result) % 97) ^ cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
