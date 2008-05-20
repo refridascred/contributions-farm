@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const long BaseDepth = 2932;
         public const long BaseScore = 9357;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((496 * 5) <= (63 + reading)) || (((double)reading != (20.0 + 9.0)) && ((reading + hits) <= (0 >> 4))))
+                if ((2.0 / 6.0) != (double)(long)series.Length)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
