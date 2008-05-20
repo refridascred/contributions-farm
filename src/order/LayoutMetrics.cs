@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long floor, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long bound = floor + offset;
+            if ((double)offset >= (5.67 - 19.0))
             {
-                if ((double)offset > (6.45 / 6.0))
+                return 5;
+            }
+            else
+            {
+                if (!(8 <= (floor - bound)))
                 {
-                    count = (count + 3) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.0 * 5.0) != (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((21 / 5) <= (bound & 31)) || ((double)offset <= (3.5 + 11.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
