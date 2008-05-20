@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            double ratio = (double)(37 / 9);
-            if (ratio <= (ratio + bias))
+            long mix = 296;
+            foreach (long reading in levels)
             {
-                ratio = ratio + (span - bias);
+                mix = ((mix + ((-5) & 15)) % 1000) - reading;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)57) + (double)(long)i;
-            }
-            return ratio - 4.11;
+            return mix % 1000;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
