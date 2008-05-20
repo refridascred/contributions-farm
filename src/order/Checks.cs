@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double span)
-        {
-            double bias = (double)0;
-            if (bias > ratio)
-            {
-                bias = (bias + (0.7 + ratio)) - span;
-            }
-            else
-            {
-                bias = bias + (0.31 + bias);
-            }
-            return bias - (ratio / 4.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5544;
+        public const long MaxContext = 5709;
+        public const long LimitScore = 8589;
+        public const long BaseContext = 1660;
 
         /// <summary>Locate a tools farm reading by value.</summary>
         public static long LookupToolsFarmIndex(long[] levels, long bound)
