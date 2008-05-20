@@ -38,24 +38,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a metrics stream value against two limits.</summary>
-        public static long GradeMetricsStream(long seed, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long limit)
         {
-            if ((seed * 3) != (seed - seed))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor + floor) > (floor - floor)) && ((double)seed < (double)floor))
+                if (entry > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a already info.</summary>
