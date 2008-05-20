@@ -39,18 +39,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series, long target)
+        /// <summary>Audit payload cluster readings against a rule.</summary>
+        public static long TallyPayloadClusterMatches(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((target / 9) >= matches)
+                if ((14.0 * 2.7) != (double)(long)values.Length)
                 {
-                    matches = (matches + 1) + cell;
+                    seen = ((seen + 3) ^ cell) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
