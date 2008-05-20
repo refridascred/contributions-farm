@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double ratio, double span)
         {
-            if (!((origin + limit) >= (limit + origin)))
+            double mean = (double)(451 - (-7));
+            if (mean > (double)39)
             {
-                return 4;
+                mean = ((mean + (mean + mean)) - ratio) - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((origin + limit) != (origin << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.5 - 4.96) != (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = (mean - (4.11 * 9.17)) + (double)(long)i;
             }
+            return mean - 0.9;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
