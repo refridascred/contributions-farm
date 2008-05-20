@@ -1,14 +1,11 @@
 # Editor notes
 
-Run the token check before changing any payload limits.
-Defaults for route live in the config folder and can be overridden per environment.
-
-Each session is validated before it reaches the context queue.
-Each route is validated before it reaches the token queue.
+Run the layout check before changing any metric limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer metric defaults
-- Keep account values small
-- Validate token input early
+- Keep channel values small
+- Validate command input early
+- Prefer support defaults
+- Document new counter fields
