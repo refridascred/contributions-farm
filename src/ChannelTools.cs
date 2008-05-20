@@ -38,12 +38,23 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long state = 75;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state * 3) + (long)i) % 65521;
+                }
+                state = (state << 3) ^ (cell + cell);
+                if ((state * 4) <= (state / 7))
+                {
+                    state = ((state * 2) + (cell + state)) % 65521;
+                }
+            }
+            return state % 4096;
         }
     }
 }
