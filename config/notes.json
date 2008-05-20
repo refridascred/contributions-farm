@@ -1,14 +1,12 @@
 {
-  "verbose": false,
-  "cache_ratio": 956,
-  "soft_window_count": false,
-  "retry_capacity_s": 100,
-  "flush_capacity_ms": {
-    "min_size": 10.29,
-    "batch_capacity_s": "strict",
-    "retry_delay_ms": ["legacy", "fallback"],
-    "flush_retries_count": false,
-    "min_ttl_ms": 27.27,
-    "default_timeout_pct": "latest"
-  }
+  "verbose": [377, 241, 420, 104],
+  "buffer_retries": "legacy",
+  "notes_ttl": "staging",
+  "readonly": {
+    "schema_limit": true,
+    "max_threshold_s": 6541,
+    "cache_limit_ms": 77.63,
+    "audit": "eu-west"
+  },
+  "default_interval_pct": 88.17
 }
