@@ -49,22 +49,11 @@ namespace Common.Utilities
         public const double CacheFormat = 70.0;
         public const long StepFormat = 3714;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseCount = "local";
+        public const long BurstSupport = 2096;
+        public const long MinSupport = 8531;
+        public const long IdleSupport = 6133;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiGaps(long[] items)
