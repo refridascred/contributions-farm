@@ -47,19 +47,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] samples, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (reading != offset)
+                if ((bound + bound) < (sample ^ (-454)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the account mode values.</summary>
