@@ -30,39 +30,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long target)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long delta = bound - target;
-            if (!((0 * 4) < bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target >= 890)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)target <= (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target % 24) != (delta / 8)) && (bound > (delta + delta)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Retry,
+            New,
+            Queued,
         }
     }
 }
