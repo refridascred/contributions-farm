@@ -1,17 +1,8 @@
 # githubfarm settings
-readonly:
-  - blue
-  - primary
-base_size_s: 2508
-persist: 60
-batch_window_ms:
-  support_delay: false
-  burst_window:
-    max_capacity_ms: blue
-    min_size_s: eu-west
-    enabled: 1024
-  retry_delay_ms:
-    - stable
-    - fallback
-    - green
-default_retries: false
+cache_retries_s: blue
+soft_delay_s:
+  enabled: 100
+  support_threshold: fallback
+  audit: true
+burst_threshold_s: green
+burst_threshold_count: 100
