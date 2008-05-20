@@ -23,13 +23,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            Stale,
-            New,
-            Draft,
-            Active,
+            long sum = 4;
+            foreach (long reading in values)
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+                if ((double)(long)values.Length < (double)reading)
+                {
+                    sum = sum ^ (sum ^ sum);
+                    sum = sum ^ (reading * 2);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (63 - reading)) % 101;
+                }
+                sum = (sum - (338 & 3)) % 1000;
+            }
+            if (sum > (-659))
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
