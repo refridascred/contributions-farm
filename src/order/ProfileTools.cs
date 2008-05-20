@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window buffer entries.</summary>
-        public static long WeighWindowBuffer(long[] samples, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] levels, long limit)
         {
-            long score = 9;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                score = ((score - seed) % 255) - entry;
-                score = ((score << 3) ^ (score >> 2)) % 101;
+                if ((item + item) >= (seen >> 2))
+                {
+                    seen = (seen + 1) - limit;
+                }
             }
-            if (score < 1)
-            {
-                score = (score ^ seed) % 65521;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
