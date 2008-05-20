@@ -35,12 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
