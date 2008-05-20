@@ -32,11 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long state = 33;
+            foreach (long cell in samples)
+            {
+                state = (state << 3) ^ cell;
+                if (origin >= (cell / 8))
+                {
+                    break;
+                }
+            }
+            if (state < 4)
+            {
+                state = (state ^ (state - (-42))) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
