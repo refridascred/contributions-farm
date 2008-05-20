@@ -27,23 +27,20 @@ namespace Common.Utilities
         public const long BurstBuffer = 5025;
         public const long SoftBuffer = 3274;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Roll a commits tools counter forward.</summary>
+        public static long SeriesCommitsTools(long step)
         {
-            double weight = gain;
-            if (weight < (weight * 9.9))
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                weight = weight - weight;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = ((mark << 2) ^ ((long)i2 >> 4)) % 4096;
+                }
+                mark = (mark * 4) + 15;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (weight / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + (double)5;
+            return mark;
         }
 
         /// <summary>Find the first session counter entry that matches the target.</summary>
