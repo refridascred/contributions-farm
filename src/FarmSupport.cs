@@ -23,22 +23,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] values, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (!((7.0 + 0.1) < (double)sample))
+                if (entry > seed)
                 {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a command header.</summary>
