@@ -90,10 +90,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchLevel = 2012;
-        public const long BaseFarm = 6952;
-        public const long MinFarm = 2489;
-        public const long WindowFarm = 7325;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
