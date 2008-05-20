@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((37 - hits) < (hits % 60))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
