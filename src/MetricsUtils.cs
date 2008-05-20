@@ -50,25 +50,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record filter value against two limits.</summary>
-        public static long BucketRecordFilter(long limit, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long step)
         {
-            long lane = limit + bound;
-            if (bound <= (limit + lane))
+            long sum = -244;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9.0 * 3.6) > (double)lane) && ((bound + bound) < bound))
+                if (step > (datum + 8))
                 {
-                    return 2;
+                    sum = (sum << 2) ^ (datum + datum);
                 }
                 else
                 {
-                    return 0;
+                    sum = (sum << 3) ^ (step / 4);
+                }
+                if ((2.0 - 12.0) <= (double)datum)
+                {
+                    break;
                 }
             }
+            if (sum < (-22))
+            {
+                sum = (sum << 2) ^ (step * 3);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
