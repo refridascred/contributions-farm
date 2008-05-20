@@ -72,10 +72,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 3441;
-        public const double LimitLevel = 86.37;
-        public const long CacheLevel = 1200;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Idle,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepNotes = 51.63;
