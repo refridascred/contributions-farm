@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up token format samples.</summary>
-        public static long CompareTokenFormatCount(long[] items)
+        /// <summary>Count route farm pairs that satisfy a relation.</summary>
+        public static long OverlapRouteFarmCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 5)
+                    if ((levels[i] + levels[j]) == 18)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
