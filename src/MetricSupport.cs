@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long acc = 31;
+            foreach (long item in samples)
             {
-                if ((37 - hits) < (hits % 60))
+                if (((double)acc < (5.9 + 8.54)) && ((double)floor <= (0.16 / 9.0)))
                 {
-                    hits = (hits + 3) - datum;
+                    acc = (acc ^ (2 >> 1)) ^ item;
                 }
             }
-            return hits;
+            if (acc < 752)
+            {
+                acc = acc ^ (floor + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
