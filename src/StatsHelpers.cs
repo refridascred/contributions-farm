@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Ready,
-            Locked,
-            Draft,
-            Active,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 9088;
+        public const long BatchScore = 9816;
+        public const double SoftSchema = 10.49;
+        public const double DefaultWidth = 63.75;
+        public const long BurstSchema = 4853;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportOutliers(long[] readings)
