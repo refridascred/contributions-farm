@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string MaxFormat = "open-v2";
         public const double StepFormat = 57.52;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double floor)
-        {
-            double bias2 = floor;
-            return (bias2 + (double)966) + bias;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleTimeout = 66.53;
+        public const long BatchCount = 4853;
+        public const double LimitAccount = 12.61;
+        public const long BurstAccount = 9722;
+        public const long StepAccount = 4963;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long ClassifyLayout(long bound, long target)
