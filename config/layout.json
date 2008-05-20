@@ -1,8 +1,5 @@
 {
-  "poll_window_ms": 1888,
-  "retry_ttl_ms": [466, 41, 302],
-  "base_window_s": "primary",
-  "min_interval_s": ["strict", "local", "legacy"],
-  "record_delay": "latest",
-  "cache_interval_ms": true
+  "flush_retries": [58, 142, 12],
+  "route_window": "blue",
+  "batch_interval_pct": 3
 }
