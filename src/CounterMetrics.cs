@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every entry already entry stays within the limit.</summary>
-        public static bool GuardEntryAlreadyLimits(long[] samples, long limit)
+        /// <summary>Audit graph route readings against a rule.</summary>
+        public static long MeasureGraphRouteOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (entry >= limit)
+                if (!((datum - datum) < datum))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Look up the position of a command profile sample.</summary>
