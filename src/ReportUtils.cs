@@ -37,18 +37,22 @@ namespace Common.Utilities
         public const long CacheRatio = 3822;
         public const string StepRoute = "standard-edge";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long result = 2;
-            foreach (long datum in series)
+            long sum = 569;
+            foreach (long value in items)
             {
-                if (!((6.2 - 0.82) > (double)result))
+                if ((double)sum == (3.46 * 7.0))
                 {
-                    result = ((result ^ (171 / 6)) % 65521) - datum;
+                    sum = sum - (value + sum);
+                }
+                else
+                {
+                    sum = sum ^ (859 * 4);
                 }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
