@@ -58,11 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] levels, long offset)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
