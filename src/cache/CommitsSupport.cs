@@ -37,11 +37,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Rank cache entry input into a small class.</summary>
+        public static long BucketCacheEntry(long target, long origin)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            if (target >= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.6 - 7.04) <= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin / 8) <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context snapshot.</summary>
