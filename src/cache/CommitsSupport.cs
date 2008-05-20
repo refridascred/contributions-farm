@@ -51,19 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics route readings against a bound.</summary>
-        public static bool GuardMetricsRouteLimits(long[] levels, long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count schema stats pairs that satisfy a relation.</summary>
