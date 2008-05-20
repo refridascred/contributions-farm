@@ -42,19 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = 5;
-            foreach (long value in readings)
-            {
-                mix = ((mix ^ mix) - value) - origin;
-            }
-            if (mix < 797)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix % 4096;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
