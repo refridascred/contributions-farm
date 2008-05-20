@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 13.08;
-        public const long SoftSupport = 2422;
-        public const string MinRatio = "stable-1";
-        public const double HardSupport = 59.5;
-        public const long CacheSupport = 3379;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long step, long target)
