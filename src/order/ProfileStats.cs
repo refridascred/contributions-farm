@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long bound)
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long FoldChecksAccount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long score = 70;
+            foreach (long entry in samples)
             {
-                if (!(((593 ^ value) == (46 >> 3)) || ((value + matches) != (value & 1))))
-                {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score << 3) ^ (entry + entry)) % 97;
+                score = ((score * 3) + (entry + 8)) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
