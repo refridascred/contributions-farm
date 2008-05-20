@@ -14,15 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long ScoreBufferMetric(long[] levels, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mark = 40;
-            foreach (long item in levels)
-            {
-                mark = ((mark << 2) ^ (mark - item)) - floor;
-            }
-            return mark;
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
