@@ -1,8 +1,7 @@
 {
-  "githubfarm_interval": "edge",
-  "cluster_delay": ["cached", "stable"],
-  "enabled": 22.27,
-  "burst_size_count": [173, 375],
-  "soft_window": 4510,
-  "compress": 7140
+  "account_timeout": "fallback",
+  "profile_depth": "legacy",
+  "metrics_timeout": 250,
+  "flush_ttl_ms": [374, 161],
+  "record_window": 30
 }
