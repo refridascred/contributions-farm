@@ -42,15 +42,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double gain = (4.0 / 3.0) / 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - 5.5) - (double)(long)i) - weight;
-            }
-            return gain + (floor + gain);
+            Done,
+            Queued,
+            Draft,
+            Closed,
+            New,
         }
     }
 }
