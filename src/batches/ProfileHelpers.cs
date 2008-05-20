@@ -29,13 +29,32 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long floor, long target)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            long delta = floor + target;
+            if ((double)target != (3.0 - 12.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)target >= (double)99) && ((delta * 3) != (floor - floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (delta <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session state values.</summary>
