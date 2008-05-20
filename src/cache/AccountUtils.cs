@@ -58,17 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a record channel sample.</summary>
-        public static long SeekRecordChannelIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchDepth = 9948;
+        public const string LimitPayload = "legacy";
+        public const long BaseWidth = 6083;
+        public const string BaseTimeout = "stable-1";
+        public const long MinLevel = 507;
     }
 }
