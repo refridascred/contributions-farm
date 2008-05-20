@@ -31,9 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 9748;
-        public const long BurstFarm = 199;
-        public const long LimitFarm = 7289;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items, long origin)
+        {
+            long mark = 3;
+            foreach (long reading in items)
+            {
+                if (mark > (mark - origin))
+                {
+                    mark = (mark - mark) ^ reading;
+                }
+            }
+            return mark;
+        }
     }
 }
