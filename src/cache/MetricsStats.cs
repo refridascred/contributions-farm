@@ -38,14 +38,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            Synced,
-            Locked,
-            Ready,
-            Retry,
-            Active,
+            long anchor = 0;
+            foreach (long item in readings)
+            {
+                if ((anchor ^ item) <= (5 << 1))
+                {
+                    anchor = (anchor << 2) ^ (anchor * 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
