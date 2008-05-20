@@ -31,11 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches % 7) < (datum + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
