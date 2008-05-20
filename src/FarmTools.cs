@@ -37,18 +37,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long MeasureChecksFilterOutliers(long[] series)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.0 - 2.94) != (double)matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) ^ value;
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
