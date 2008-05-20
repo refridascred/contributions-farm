@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long limit, long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] readings, long offset)
         {
-            if ((12 * 5) != (seed - seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit >> 1) > (limit % 24))
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
