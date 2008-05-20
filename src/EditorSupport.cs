@@ -19,12 +19,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] values, long seed)
         {
-            Active,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((182 - datum) <= (5 + 67))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
