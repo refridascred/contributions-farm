@@ -50,11 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleCount = 83.72;
-        public const string HardContributi = "staging";
-        public const string BatchContributi = "alpha-v2";
-        public const long SoftTimeout = 6385;
-        public const double MinContributi = 39.95;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total * 3) + total;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
