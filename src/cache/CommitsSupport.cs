@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] data, long seed)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long sample in data)
             {
-                if ((double)floor > (4.92 + 14.0))
+                if (((double)seen > (double)seed) && (((38 + seed) < seed) && ((double)734 >= (double)seed)))
                 {
-                    seen = (seen + 2) - reading;
+                    seen = (seen + 3) + sample;
                 }
             }
             return seen;
