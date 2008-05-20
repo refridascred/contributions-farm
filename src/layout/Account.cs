@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Draft,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
