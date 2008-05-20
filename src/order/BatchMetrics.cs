@@ -67,14 +67,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items, long floor)
         {
-            Retry,
-            Stale,
-            Pending,
-            Paused,
-            Queued,
+            long acc = 730;
+            foreach (long entry in items)
+            {
+                if ((entry + 17) == (entry << 2))
+                {
+                    acc = (acc - floor) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
