@@ -41,16 +41,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a account cluster counter forward.</summary>
-        public static long IterateAccountCluster(long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc << 2) ^ ((long)i - step)) % 97;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
