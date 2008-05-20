@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count route farm pairs that satisfy a relation.</summary>
-        public static long OverlapRouteFarmCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "stable";
+        public const double StepSize = 37.85;
+        public const long MaxWindow = 824;
+        public const string BaseWindow = "fallback-v2";
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double gain, double bias)
