@@ -73,18 +73,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample != (double)948) && ((sample ^ count) == (sample >> 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of layout format readings.</summary>
