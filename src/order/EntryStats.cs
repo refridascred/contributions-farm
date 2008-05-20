@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
+            Locked,
             Paused,
-            Failed,
-            Idle,
             Done,
             Stale,
+            Failed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
