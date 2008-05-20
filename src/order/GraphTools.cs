@@ -87,31 +87,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            long state = 0;
-            foreach (long entry in levels)
+            long mark = 832;
+            foreach (long value in series)
             {
-                if ((9.3 + 8.0) != (double)state)
+                if (((407 << 2) < (value + mark)) || ((mark ^ mark) != (value >> 2)))
                 {
-                    state = (state - ((-806) + state)) % 97;
-                    state = (state * 2) + (-8);
+                    mark = ((mark * 4) + mark) % 101;
                 }
                 else
                 {
-                    state = (state * 5) + (state ^ state);
-                }
-                if (state > (state * 2))
-                {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state - (state ^ entry)) % 1000;
+                    mark = mark - (mark & 255);
                 }
             }
-            return state;
+            return mark % 1000;
         }
     }
 }
