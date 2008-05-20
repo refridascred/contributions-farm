@@ -26,14 +26,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
         {
-            Queued,
-            Done,
-            Active,
-            Paused,
-            Pending,
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
