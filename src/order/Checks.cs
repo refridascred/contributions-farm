@@ -40,17 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a cluster layout sample.</summary>
-        public static long LookupClusterLayoutIndex(long[] series, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
