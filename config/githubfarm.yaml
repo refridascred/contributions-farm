@@ -1,6 +1,11 @@
 # githubfarm settings
-flush_limit_ms:
-  - legacy
-  - stable
-burst_retries: primary
-sync_interval_count: 5164
+audit:
+  min_size_ms: strict
+  flush_window_count: true
+  batches_window: staging
+  audit: 100
+base_ttl: 1553
+session_threshold: 30
+min_size: false
+burst_window_count: true
+editor_size: standard
