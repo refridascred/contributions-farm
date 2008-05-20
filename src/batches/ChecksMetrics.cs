@@ -61,21 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter channel counter forward.</summary>
-        public static long IterateCounterChannel(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                long span = sum;
-                if ((2.2 + 6.4) < (double)span)
+                if ((double)datum < (16.0 - 4.52))
                 {
-                    sum = (sum + (sum % 100)) % 255;
-                    sum = (sum - (origin & 7)) % 97;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
