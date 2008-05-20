@@ -1,6 +1,14 @@
 {
-  "burst_window": false,
-  "verbose": true,
-  "min_capacity": ["cached", "staging", "legacy"],
-  "warm_threshold": 3400
+  "verbose": false,
+  "cache_ratio": 956,
+  "soft_window_count": false,
+  "retry_capacity_s": 100,
+  "flush_capacity_ms": {
+    "min_size": 10.29,
+    "batch_capacity_s": "strict",
+    "retry_delay_ms": ["legacy", "fallback"],
+    "flush_retries_count": false,
+    "min_ttl_ms": 27.27,
+    "default_timeout_pct": "latest"
+  }
 }
