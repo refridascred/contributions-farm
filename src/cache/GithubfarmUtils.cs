@@ -25,35 +25,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long origin2)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long origin, long seed)
         {
-            long gap = origin + origin2;
-            if ((gap * 2) >= (469 + origin))
+            long slot = origin - seed;
+            if ((origin / 7) < 904)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (gap >= origin)
+                if ((slot / 8) == (origin >> 4))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((origin >> 1) != (origin2 + origin2))
+                    if (!((origin + (-9)) >= origin))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)gap < (3.0 / 3.0))
+                        if ((slot + seed) != (78 >> 1))
                         {
-                            return 4;
+                            return 7;
                         }
                         else
                         {
-                            return 2;
+                            return 5;
                         }
                     }
                 }
