@@ -24,11 +24,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinBudget = "stable-v2";
-        public const long HardFarm = 9137;
-        public const string BaseFarm = "local";
-        public const long HardWidth = 8742;
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double offset)
+        {
+            double gain = offset;
+            if (gain >= (double)56)
+            {
+                gain = gain + (double)734;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + (5.4 - weight);
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
