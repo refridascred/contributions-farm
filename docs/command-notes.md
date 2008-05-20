@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-A checks that stays idle for too long is moved to the filter list.
-The route module keeps counter values in sync with the profile cache.
+Run the githubfarm check before changing any cache limits.
+Each graph is validated before it reaches the profile queue.
+Each editor is validated before it reaches the batches queue.
+
+Keep stream and stream names short and lowercase.
+The route module keeps batches values in sync with the graph cache.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate graph input early
-- Log every cluster change
+- Keep cache values small
+- Log every stats change
+- Prefer support defaults
