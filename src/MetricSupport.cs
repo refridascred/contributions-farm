@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 8388;
-        public const long BatchStats = 7101;
-        public const string MinScore = "stable";
-        public const string DefaultScore = "fallback-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 0.44;
+        public const long BurstCount = 2123;
+        public const long BaseDepth = 2736;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] levels, long floor)
