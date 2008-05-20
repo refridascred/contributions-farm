@@ -1,12 +1,12 @@
 {
-  "retry_window": "edge",
-  "audit": 5.12,
-  "min_delay_s": 96,
-  "readonly": {
-    "hard_delay_count": false,
-    "idle_window": 41,
-    "batch_window": false,
-    "burst_ratio_count": 26,
-    "schema_capacity": 58.65
-  }
+  "layout_delay": true,
+  "burst_delay_ms": 21.66,
+  "batch_timeout_count": {
+    "account_limit": "staging",
+    "soft_window_count": 41,
+    "audit": 41.38,
+    "enabled": "standard",
+    "route_ttl": true
+  },
+  "graph_ttl": "legacy"
 }
