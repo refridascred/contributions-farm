@@ -1,8 +1,6 @@
 {
-  "burst_delay_ms": [34, 38, 455, 444],
-  "enabled": 50.05,
-  "hard_threshold": 30,
-  "base_ttl_count": 500,
-  "soft_ratio_pct": "latest",
-  "idle_retries": 30
+  "counter_ttl": 66.42,
+  "warm_delay": 93.35,
+  "verbose": true,
+  "burst_interval_ms": [389, 79]
 }
