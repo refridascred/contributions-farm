@@ -43,13 +43,17 @@ namespace Common.Utilities
             return rate - (12.0 - floor);
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] items, long origin)
         {
-            Draft,
-            Failed,
-            Queued,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of cache metric readings.</summary>
