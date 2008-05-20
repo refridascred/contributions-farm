@@ -76,14 +76,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Pending,
-            Dropped,
-            Retry,
-            Closed,
-            New,
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
