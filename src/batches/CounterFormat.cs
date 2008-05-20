@@ -38,18 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits <= (cell >> 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
