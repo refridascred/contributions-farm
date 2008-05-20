@@ -42,13 +42,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 9707;
+        public const long DefaultGithubfarm = 9556;
+        public const long CacheGithubfarm = 6817;
+        public const long WindowBudget = 6130;
+        public const long LimitGithubfarm = 7268;
     }
 }
