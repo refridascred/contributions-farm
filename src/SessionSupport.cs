@@ -20,11 +20,40 @@ namespace Common.Utilities
             return bias - 6.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 7860;
-        public const long StepCount = 791;
-        public const long DefaultDepth = 8421;
-        public const long HardRecord = 2020;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long bound)
+        {
+            long bound2 = offset - bound;
+            if ((bound << 2) >= (422 & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset / 5) >= (bound2 + bound2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 + bound) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound2 != (4.9 + 3.3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support order entries that pass the check.</summary>
         public static long MeasureSupportOrderGaps(long[] values, long limit)
