@@ -1,10 +1,6 @@
 {
-  "filter_ttl": [432, 218, 265, 21],
-  "batch_delay": {
-    "cache_window": 7571,
-    "verbose": "local",
-    "queue_interval": 12.43,
-    "soft_limit_s": ["standard", "primary"]
-  },
-  "format_threshold": "green"
+  "batch_threshold_count": 62.26,
+  "audit": 500,
+  "soft_threshold": ["standard", "eu-west", "open", "blue"],
+  "warm_delay_count": false
 }
