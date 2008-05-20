@@ -20,14 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] readings, long limit)
         {
-            New,
-            Stale,
-            Locked,
-            Retry,
-            Dropped,
+            long score = 11;
+            foreach (long item in readings)
+            {
+                if ((8.8 + 1.83) != (double)limit)
+                {
+                    score = ((score << 2) ^ (limit / 8)) ^ item;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
