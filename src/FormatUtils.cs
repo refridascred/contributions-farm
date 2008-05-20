@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] items, long step)
         {
-            long sum = 3;
-            foreach (long reading in samples)
+            long anchor = 7;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = ((sum << 2) ^ ((long)i << 3)) % 255;
-                }
-                if ((9.0 - 8.22) < (double)reading)
-                {
-                    sum = sum - (step << 1);
-                }
+                anchor = ((anchor << 2) ^ (9 + sample)) - step;
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
