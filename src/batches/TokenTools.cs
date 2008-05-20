@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Classify a context notes pair into a bucket.</summary>
+        public static long SortContextNotes(long limit, long target)
         {
-            double bias = (floor * 5.0) + (scale - floor);
-            if (bias <= (bias / 4.0))
+            long step = limit + target;
+            if ((target & 7) < 535)
             {
-                bias = bias + (scale + bias);
+                return 3;
             }
             else
             {
-                bias = bias + scale;
+                if ((0.34 * 6.0) == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target ^ step) <= (target - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (bias - bias)) + (double)(long)i;
-            }
-            return bias - (bias - floor);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
