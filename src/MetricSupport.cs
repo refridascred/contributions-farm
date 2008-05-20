@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 7134;
-        public const string WindowCount = "local-v2";
-        public const string HardSize = "latest";
-        public const long BurstGraph = 8028;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)matches <= (double)8)
+                {
+                    matches = ((matches + 2) + item) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmHits(long[] samples)
