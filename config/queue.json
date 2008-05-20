@@ -1,21 +1,5 @@
 {
-  "retry_retries": "eu-west",
-  "buffer_interval": "fallback",
-  "editor_threshold": {
-    "report_window": {
-      "account_threshold": 79,
-      "schema_window": "staging",
-      "poll_size_count": "cached",
-      "queue_timeout": true
-    },
-    "sync_timeout": false,
-    "idle_window": {
-      "max_ttl_count": 96.37,
-      "soft_limit": [153, 9],
-      "strict": false,
-      "stream_capacity": ["fallback", "staging"],
-      "enabled": true
-    },
-    "soft_timeout_pct": [256, 349, 23]
-  }
+  "retry_depth": 0.74,
+  "retry_delay_ms": 12.84,
+  "warm_interval_ms": [467, 408, 431, 256]
 }
