@@ -84,37 +84,22 @@ namespace Common.Utilities
         public const long RetryNotes = 3209;
         public const double CacheNotes = 73.03;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long offset)
         {
-            long offset = floor ^ target;
-            if ((offset ^ floor) >= floor)
+            if ((5.6 + 5.37) != (double)seed)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((double)offset < (7.7 - 2.58))
+                if ((seed ^ 819) > seed)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (offset <= (target - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset != (4.0 + 3.6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
