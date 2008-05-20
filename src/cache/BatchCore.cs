@@ -29,23 +29,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] readings, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long mark = 637;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + sample) != (sample - 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
-                }
-                mark = (mark - (47 % 2)) - origin;
-                if (((double)sample > (8.26 + 7.0)) && ((6.0 - 3.86) <= (double)sample))
-                {
-                    mark = mark + (mark % 64);
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
