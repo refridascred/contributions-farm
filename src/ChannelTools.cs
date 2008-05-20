@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first contributi checks entry that matches the target.</summary>
-        public static long SeekContributiChecksIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 84.83;
+        public const long DefaultCount = 7538;
+        public const long RetryCommits = 8622;
+        public const long RetryLevel = 1624;
+        public const long DefaultCommits = 6053;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long floor)
