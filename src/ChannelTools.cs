@@ -16,39 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long lane = offset + floor;
-            if ((offset * 2) <= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 2) < (908 + lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ offset) == (floor + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)lane <= (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the token kind values.</summary>
