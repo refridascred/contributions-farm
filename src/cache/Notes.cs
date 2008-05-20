@@ -57,25 +57,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long bound, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values, long limit)
         {
-            long lane = bound + limit;
-            if (!((lane >> 5) >= (bound - 6)))
+            long mark = -44;
+            foreach (long sample in values)
             {
-                return 4;
+                mark = ((mark ^ (8 + limit)) % 4096) + sample;
             }
-            else
-            {
-                if (bound > lane)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
     }
 }
