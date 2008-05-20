@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long origin)
         {
-            double mean = (double)797 * 6.75;
-            if (mean >= 7.53)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                mean = ((mean + (double)97) + ratio) + bias;
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (5.45 / 6.0);
-            }
-            return mean + mean;
+            return ready;
         }
 
         /// <summary>Hold a record info.</summary>
