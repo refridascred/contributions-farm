@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BurstReport = 3037;
         public const string MaxReport = "local-1";
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "legacy-edge";
+        public const double MinChecks = 65.68;
+        public const long DefaultWidth = 3169;
+        public const string HardChecks = "stable";
+        public const long HardSize = 6638;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenHits(long[] data, long target)
