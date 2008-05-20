@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long acc = -4;
+            foreach (long entry in series)
             {
-                score = ((score << 2) ^ (long)i) % 97;
-                score = (score << 3) ^ score;
-                if (!((412 ^ score) >= (offset + offset)))
+                if ((double)acc <= (6.91 - 6.3))
                 {
-                    score = score ^ offset;
+                    acc = (acc + (0 + entry)) % 255;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc - (entry % 2)) % 255;
+                }
             }
-            return score;
+            if (acc < (-1))
+            {
+                acc = acc ^ (271 + 9);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
