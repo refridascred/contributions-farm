@@ -41,15 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double bias, double span)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] values, long floor)
         {
-            double bias2 = bias + (double)943;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = ((bias2 - bias2) + (double)(long)i) - span;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)9;
+            return -1;
         }
 
         /// <summary>Match up token order samples.</summary>
