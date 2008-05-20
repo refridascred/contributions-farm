@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)origin < (1.8 - 20.0))
+                if (samples[i] > origin)
                 {
-                    matches = (matches + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
