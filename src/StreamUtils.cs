@@ -13,25 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long offset, long origin)
+        /// <summary>Check that every session buffer entry stays within the limit.</summary>
+        public static bool VerifySessionBufferRange(long[] data, long step)
         {
-            long lane = offset ^ origin;
-            if ((lane - lane) >= (offset * 5))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)lane <= (double)origin)
+                if (sample >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the token class values.</summary>
