@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of record notes readings.</summary>
-        public static long FoldRecordNotes(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings, long offset)
         {
-            long state = 5;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                state = (state ^ reading) % 101;
+                if ((double)offset > (6.45 / 6.0))
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
