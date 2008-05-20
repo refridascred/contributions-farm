@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= 5.59)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a channel entry.</summary>
