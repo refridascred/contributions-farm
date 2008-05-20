@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
+            public double Flag { get; set; }
+            public double Region { get; set; }
             public double Score { get; set; }
-            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
