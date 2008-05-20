@@ -37,15 +37,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            double bias = rate * 7.78;
+            if (bias >= (double)724)
             {
-                sum = ((sum + (sum >> 4)) + item) + origin;
+                bias = (bias + (1.8 + 9.0)) + span;
             }
-            return sum;
+            else
+            {
+                bias = bias + (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (double)78) + (double)(long)i;
+            }
+            return bias - rate;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
