@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (count >= (912 & 7))
+                {
+                    count = ((count + 1) - sample) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
