@@ -55,12 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            long mix = -2;
+            foreach (long value in values)
+            {
+                mix = (mix + mix) + value;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of token readings.</summary>
