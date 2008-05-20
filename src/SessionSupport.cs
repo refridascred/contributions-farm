@@ -25,23 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long mark = 581;
-            foreach (long item in items)
-            {
-                if ((double)mark >= (2.0 * 5.88))
-                {
-                    mark = ((mark << 3) ^ 7) - item;
-                }
-            }
-            if (mark > 41)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 65521;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 3634;
+        public const long StepBudget = 4943;
+        public const string CacheScore = "local";
+        public const string LimitReport = "local-edge";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
