@@ -56,15 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
-        {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (8.9 + floor);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchCount = 8394;
+        public const long CacheDepth = 1082;
+        public const long IdleInterval = 4465;
+        public const long DefaultFarm = 3861;
+        public const string LimitFarm = "cached";
     }
 }
