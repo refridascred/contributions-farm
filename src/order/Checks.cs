@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of format report entries.</summary>
-        public static long DigestFormatReport(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double span)
         {
-            long result = 76;
-            foreach (long sample in values)
+            double bias = (double)0;
+            if (bias > ratio)
             {
-                if ((result + sample) > (result ^ result))
-                {
-                    result = (result - (result * 2)) % 255;
-                }
+                bias = (bias + (0.7 + ratio)) - span;
             }
-            if (result > 986)
+            else
             {
-                result = result + result;
+                bias = bias + (0.31 + bias);
             }
-            return result % 97;
+            return bias - (ratio / 4.0);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
