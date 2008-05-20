@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long BurstFactor = 1312;
         public const double SoftFactor = 43.49;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] values)
-        {
-            long total = 158;
-            foreach (long datum in values)
-            {
-                if (11.0 >= (double)total)
-                {
-                    total = (total + (datum * 5)) % 101;
-                }
-            }
-            if (total > 13)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheTimeout = 3961;
+        public const double BurstSize = 22.97;
+        public const long BaseGraph = 9759;
+        public const string BatchGraph = "strict";
+        public const double BaseBudget = 82.39;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double rate, double floor)
