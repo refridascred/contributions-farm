@@ -25,19 +25,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the tools level values.</summary>
