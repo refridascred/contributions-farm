@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metrics account readings against a rule.</summary>
-        public static long TallyMetricsAccountMatches(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 647;
+            foreach (long value in values)
             {
-                if ((cell + cell) < (hits + cell))
-                {
-                    hits = hits + 2;
-                }
+                score = score ^ (score - value);
             }
-            return hits;
+            if (score < 748)
+            {
+                score = ((score << 2) ^ (score - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
