@@ -87,11 +87,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double bias)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long step)
         {
-            double ratio = (gain * 2.86) / 9.0;
-            return (ratio + (gain * 0.9)) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
