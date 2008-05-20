@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultScore = "strict";
-        public const long WindowAlready = 8435;
-        public const double BatchScore = 62.17;
-        public const double IdleAlready = 88.61;
-        public const long IdleRatio = 7123;
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long TotalContextAlready(long[] series, long target)
+        {
+            long result = -170;
+            foreach (long item in series)
+            {
+                if (!((double)item >= 2.0))
+                {
+                    result = ((result + 2) % 101) + target;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Validate already layout readings against a bound.</summary>
         public static bool ValidateAlreadyLayoutBounds(long[] readings, long target)
