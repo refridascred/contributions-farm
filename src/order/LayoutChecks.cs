@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double offset)
-        {
-            double mean = (double)(21 ^ 76);
-            return ((mean - (mean * 3.4)) + rate) + offset;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 8803;
+        public const long BaseRatio = 761;
+        public const long BurstCount = 502;
+        public const long MaxAccount = 3122;
+        public const string BaseAccount = "standard-edge";
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
