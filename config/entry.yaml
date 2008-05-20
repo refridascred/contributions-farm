@@ -1,33 +1,5 @@
 # entry settings
-soft_capacity_ms: stable
-stats_timeout:
-  - cached
-  - cached
-retry_retries_count:
-  hard_ratio_count:
-    - green
-    - standard
-    - local
-  min_threshold:
-    schema_capacity: 7615
-    metrics_interval:
-      - edge
-      - open
-      - latest
-      - strict
-    flush_ttl_pct:
-      - 336
-      - 62
-      - 22
-      - 94
-    audit: false
-  burst_retries_ms: primary
-  account_depth:
-    - blue
-    - fallback
-    - stable
-  context_ratio: edge
-  compress: 8198
-tools_window: open
-cache_capacity_ms: cached
-tools_timeout: false
+batches_interval: legacy
+base_retries_count: 2003
+batches_limit: cached
+retry_ttl_ms: 183
