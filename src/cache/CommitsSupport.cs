@@ -37,18 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] series, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count % 2) <= (22 % 60))
-                {
-                    count = ((count + 2) + sample) - step;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a context snapshot.</summary>
