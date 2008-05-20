@@ -71,25 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long floor)
+        /// <summary>Scale a cluster metric figure with a bias.</summary>
+        public static double SmoothClusterMetric(double gain, double offset)
         {
-            long gap = limit - floor;
-            if ((floor ^ limit) <= ((-7) + gap))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.13 * 9.07) <= (13.0 - 13.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double load = offset;
+            return (load + load) + gain;
         }
     }
 }
