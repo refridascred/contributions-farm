@@ -33,19 +33,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long bound)
         {
-            long mix = 997;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ ((long)values.Length & 3)) ^ value;
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 7)
-            {
-                mix = ((mix * 5) + mix) % 97;
-            }
-            return mix;
+            return -1;
         }
     }
 }
