@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long MaxAccount = 3122;
         public const string BaseAccount = "standard-edge";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value / 3) <= (tally - tally)))
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
