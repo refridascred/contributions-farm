@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
