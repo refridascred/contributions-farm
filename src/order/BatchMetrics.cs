@@ -80,11 +80,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Active,
+            New,
+            Queued,
         }
     }
 }
