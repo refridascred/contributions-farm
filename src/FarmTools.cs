@@ -42,16 +42,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc + (acc * 3)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
