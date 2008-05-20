@@ -20,21 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 81;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (acc > ((long)data.Length * 5))
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 5) + (50 - sample);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + acc);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Project the next format route value.</summary>
