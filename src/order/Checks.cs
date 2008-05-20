@@ -50,19 +50,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            long acc = 973;
-            foreach (long entry in levels)
+            double gain = (double)542 - floor;
+            if (gain >= gain)
             {
-                acc = (acc + (entry / 8)) % 97;
+                gain = gain + (weight + weight);
             }
-            if (acc < 9)
-            {
-                acc = (acc - (acc - 982)) % 65521;
-            }
-            return acc;
+            return gain + (gain / 6.0);
         }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
