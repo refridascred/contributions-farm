@@ -1,11 +1,6 @@
 {
-  "counter_capacity": {
-    "max_depth_s": "blue",
-    "soft_delay_s": 6933,
-    "tools_threshold": true,
-    "command_size": "eu-west",
-    "max_interval_s": "edge"
-  },
-  "readonly": "green",
-  "warm_capacity": ["primary", "legacy", "standard"]
+  "hard_capacity_count": 54.5,
+  "layout_size": "blue",
+  "soft_limit_pct": "standard",
+  "persist": ["eu-west", "eu-west"]
 }
