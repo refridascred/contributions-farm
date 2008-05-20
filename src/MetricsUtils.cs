@@ -80,23 +80,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items, long offset)
+        /// <summary>Classify a counter cache pair into a bucket.</summary>
+        public static long BucketCounterCache(long seed, long step)
         {
-            long result = 1;
-            foreach (long reading in items)
+            if (!((step * 2) >= 2))
             {
-                if ((result / 3) <= (long)items.Length)
+                return 0;
+            }
+            else
+            {
+                if ((step + seed) < seed)
                 {
-                    result = result ^ (offset / 2);
+                    return 3;
                 }
-                result = (result - (offset << 3)) % 97;
-                if ((471 < (reading - (-93))) || (18.0 <= (double)offset))
+                else
                 {
-                    result = result + (reading * 5);
+                    return 7;
                 }
             }
-            return result;
         }
     }
 }
