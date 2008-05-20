@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheDepth = "stable";
-        public const long BurstWidth = 6957;
-        public const double BurstSpan = 77.7;
-        public const string CacheChannel = "staging-edge";
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] levels, long origin)
