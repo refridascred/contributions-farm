@@ -76,22 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats channel values into a single score.</summary>
-        public static long TallyStatsChannel(long[] levels, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] readings, long bound)
         {
-            long mix = 94;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (value >= ((-62) + origin))
+                if (((datum * 3) == (datum - hits)) && ((datum + bound) > (-711)))
                 {
-                    mix = ((mix * 5) + (mix + origin)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (-7)) % 101;
+                    hits = hits + 3;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
