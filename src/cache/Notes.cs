@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const string HardChecks = "stable";
         public const long HardSize = 6638;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] data, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((-132) + count) == (item >> 4))
-                {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
