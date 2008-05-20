@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            double drift = bias;
-            if (drift > rate)
+            long acc = 903;
+            foreach (long sample in items)
             {
-                drift = drift - 6.32;
+                long tally = (sample / 6) & 3;
+                acc = (acc + (sample ^ tally)) % 1000;
+                if (((357 ^ 247) <= acc) && ((55 - sample) < acc))
+                {
+                    acc = acc ^ (sample >> 4);
+                }
             }
-            return drift + bias;
+            return acc;
         }
 
         /// <summary>Describe the session level values.</summary>
