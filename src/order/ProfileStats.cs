@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine entry contributi values into a single score.</summary>
-        public static long FoldEntryContributi(long[] samples, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long bound)
         {
-            long carry = 709;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((seed ^ 897) < (carry - 731))
+                if (!(((593 ^ value) == (46 >> 3)) || ((value + matches) != (value & 1))))
                 {
-                    carry = (((carry * 4) + (carry - (long)samples.Length)) % 65521) - reading;
+                    matches = (matches + 3) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
