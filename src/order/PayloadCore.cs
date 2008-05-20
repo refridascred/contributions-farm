@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] readings, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (readings[i] >= floor)
+                if ((item + item) > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
