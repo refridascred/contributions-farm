@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFactor = 97.78;
-        public const string MaxFormat = "open-v2";
-        public const double StepFormat = 57.52;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] series, long bound)
+        {
+            long result = 163;
+            foreach (long value in series)
+            {
+                result = (((result - ((long)series.Length >> 3)) % 65521) + value) + bound;
+            }
+            return result;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double IdleTimeout = 66.53;
