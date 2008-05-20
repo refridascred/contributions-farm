@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 537;
+            foreach (long reading in samples)
             {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 5) + (61 & 127)) % 1000) ^ reading;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine account values into a single score.</summary>
