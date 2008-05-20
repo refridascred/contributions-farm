@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long bound)
         {
-            long anchor = 98;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((double)anchor == (5.54 + 11.0))
+                if (value < bound)
                 {
-                    anchor = (anchor << 3) ^ ((long)samples.Length - entry);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Locate a record reading by value.</summary>
