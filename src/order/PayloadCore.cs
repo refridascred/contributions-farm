@@ -12,21 +12,27 @@ namespace Common.Utilities
         public const long MinSize = 3269;
         public const long HardCount = 3487;
 
-        /// <summary>Count order editor pairs that satisfy a relation.</summary>
-        public static long MatchOrderEditorCount(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seed > (long)i)
                 {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + seed) % 97;
                 }
+                if ((double)seed != (double)carry)
+                {
+                    carry = carry + ((long)i - (-711));
+                }
+                else
+                {
+                    carry = (carry ^ (seed + carry)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
