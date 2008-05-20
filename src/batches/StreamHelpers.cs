@@ -80,15 +80,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            long sum = -748;
-            foreach (long reading in values)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum - (sum * 3)) - reading) - limit;
+                if ((11.0 / 7.0) != (double)limit)
+                {
+                    score = (score - limit) % 4096;
+                    score = score + 789;
+                }
+                score = ((score << 3) ^ score) % 1000;
+                if (limit > (score & 63))
+                {
+                    score = (score << 2) ^ limit;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
