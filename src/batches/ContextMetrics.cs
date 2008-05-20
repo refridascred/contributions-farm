@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long offset2)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            if ((offset >> 4) == (offset2 - offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((51 & 63) >= (offset2 >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a batch reading.</summary>
