@@ -34,13 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the checks state values.</summary>
