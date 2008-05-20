@@ -29,9 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBudget = 5200;
-        public const long StepDepth = 1796;
-        public const string WindowBatches = "strict";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((double)sample != (9.58 - 5.64)) && ((7.1 - 2.2) != (double)(long)levels.Length)))
+                {
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
