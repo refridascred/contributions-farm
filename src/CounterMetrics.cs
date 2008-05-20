@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long floor)
+        /// <summary>Check that every entry already entry stays within the limit.</summary>
+        public static bool GuardEntryAlreadyLimits(long[] samples, long limit)
         {
-            long edge = offset + floor;
-            if (edge > (floor & 1))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (7.7 >= (double)edge)
+                if (entry >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset % 12) < (offset ^ offset)) || ((double)edge >= (14.0 * 1.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
