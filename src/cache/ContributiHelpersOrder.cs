@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 7378;
-        public const double CacheFactor = 60.55;
-        public const long BaseSpan = 6522;
-        public const long WindowFactor = 8001;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long bound)
+        {
+            if (!((double)bound <= 8.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + 723) <= (target & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)target < 14.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((368 - target) > (bound + 711))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterMatches(long[] samples, long target)
