@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches + sample) == (matches << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
