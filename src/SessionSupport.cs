@@ -20,18 +20,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] readings, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((38 - floor) <= tally)
+                if (reading >= offset)
                 {
-                    tally = (tally + 2) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the record class values.</summary>
