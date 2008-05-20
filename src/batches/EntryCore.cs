@@ -53,9 +53,11 @@ namespace Common.Utilities
         public const long RetrySupport = 4415;
         public const long BatchSupport = 232;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 8.55;
-        public const long RetryScore = 2140;
-        public const long MinSize = 861;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 61.19;
+        public const long MinDepth = 4109;
+        public const string StepInterval = "cached-v2";
+        public const long RetryAccount = 3393;
+        public const long RetryLevel = 9358;
     }
 }
