@@ -79,19 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi stream samples.</summary>
-        public static long DigestContributiStream(long[] samples, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long limit)
         {
-            long anchor = 0;
-            foreach (long datum in samples)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (((anchor << 3) ^ (anchor + origin)) % 65521) - datum;
-                if (((long)samples.Length % 12) > 24)
-                {
-                    break;
-                }
+                result = result ^ (1 + limit);
+                result = result - (long)i;
+                result = ((result * 2) + (result + result)) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return result;
         }
     }
 }
