@@ -20,11 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
