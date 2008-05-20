@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long mark = 537;
-            foreach (long reading in samples)
-            {
-                mark = (((mark * 5) + (61 & 127)) % 1000) ^ reading;
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine account values into a single score.</summary>
