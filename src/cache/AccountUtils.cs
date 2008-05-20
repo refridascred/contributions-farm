@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] levels)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double weight = bias;
+            if (weight > 7.7)
             {
-                if ((value + value) > hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight + weight) - offset;
             }
-            return hits;
+            else
+            {
+                weight = weight + 2.02;
+            }
+            return weight - (bias + weight);
         }
 
         /// <summary>Combine queue values into a single score.</summary>
