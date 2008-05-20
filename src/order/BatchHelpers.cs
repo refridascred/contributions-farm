@@ -19,19 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] values, long bound)
         {
-            long carry = 7;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in values)
             {
-                carry = ((carry * 5) + (carry + datum)) % 1000;
-                if (carry >= (datum ^ datum))
+                if (value <= bound)
                 {
-                    carry = (carry << 2) ^ 0;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
