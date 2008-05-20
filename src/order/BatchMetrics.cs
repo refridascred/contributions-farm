@@ -56,13 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of context graph entries.</summary>
+        public static long TallyContextGraph(long[] readings)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mix = 70;
+            foreach (long cell in readings)
+            {
+                if (cell > (mix + cell))
+                {
+                    mix = mix - (1 & 7);
+                }
+                else
+                {
+                    mix = mix - cell;
+                }
+            }
+            if (mix > 890)
+            {
+                mix = mix ^ (mix / 3);
+            }
+            return mix;
         }
 
         /// <summary>Hold a channel options.</summary>
