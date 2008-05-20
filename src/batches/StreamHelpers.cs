@@ -59,18 +59,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] items, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches ^ datum) <= 9)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + offset;
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
