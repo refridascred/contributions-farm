@@ -39,15 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] series, long step)
         {
-            long mix = -2;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                mix = (mix + mix) + value;
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the counter phase values.</summary>
