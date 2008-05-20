@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series, long offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long anchor = 553;
-            foreach (long reading in series)
-            {
-                anchor = (((anchor << 3) ^ anchor) - reading) - offset;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
