@@ -1,8 +1,25 @@
 # githubfarm settings
-default_delay: 89
-compress: cached
-sync_ttl_s:
-  - 11
-  - 66
-dry_run: 8822
-hard_limit: false
+poll_capacity_count:
+  readonly:
+    cluster_interval: 0.08
+    flush_size: false
+    readonly:
+      - stable
+      - open
+  idle_delay: strict
+  checks_limit: 100
+  max_threshold_ms:
+    - primary
+    - staging
+    - primary
+    - blue
+  batches_size: 71.89
+  sync_timeout_pct: 61
+retry_threshold:
+  - edge
+  - eu-west
+  - legacy
+  - blue
+cache_retries: 40
+verbose: 8208
+idle_retries: 40.04
