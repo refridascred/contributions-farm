@@ -34,19 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] data, long step)
         {
-            double rate = span;
-            if (rate < (double)7)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                rate = rate - span;
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (span - bias);
-            }
-            return rate + (bias + 16.0);
+            return ready;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
