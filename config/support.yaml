@@ -1,8 +1,7 @@
 # support settings
-min_depth: 37.34
-cache_retries:
-  - 370
-  - 209
-soft_timeout_ms:
-  - 139
-  - 136
+persist:
+  - edge
+  - stable
+  - stable
+hard_interval_ms: 3981
+base_limit_ms: 6768
