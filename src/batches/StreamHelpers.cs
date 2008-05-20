@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry << 1) >= count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Combine graph window values into a single score.</summary>
