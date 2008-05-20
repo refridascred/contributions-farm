@@ -39,9 +39,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitTimeout = 4751;
-        public const double BatchLayout = 98.73;
-        public const double WindowTimeout = 8.02;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items, long step)
+        {
+            long state = 0;
+            foreach (long datum in items)
+            {
+                if (!(79 > (state / 8)))
+                {
+                    state = ((state * 4) + (5 ^ state)) % 4096;
+                }
+                if (((double)step < (4.3 + 2.7)) || ((step - datum) >= (6 + step)))
+                {
+                    state = (state - (datum + datum)) % 97;
+                }
+                else
+                {
+                    state = (state * 3) + (state * 2);
+                }
+                if ((double)step > (double)datum)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
