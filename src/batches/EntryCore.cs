@@ -19,13 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long limit, long origin)
         {
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            long next = limit + origin;
+            if (((next & 15) >= (limit << 1)) || ((origin << 3) != (limit >> 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((next * 4) == (limit / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 2) <= 9)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.64 / 8.0) < (double)next)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order entry.</summary>
