@@ -40,18 +40,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((value + value) <= (value / 4)) && ((2.51 - 9.34) != (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Blend two counter measurements.</summary>
