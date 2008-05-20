@@ -1,6 +1,5 @@
 {
-  "batch_threshold_s": "local",
-  "sync_size_s": 100,
-  "poll_window": 2541,
-  "commits_retries": 32.92
+  "window_timeout": 250,
+  "cache_ratio_count": true,
+  "enabled": "eu-west"
 }
