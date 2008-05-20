@@ -19,12 +19,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1525;
-        public const long StepFactor = 7356;
-        public const long MinRoute = 6581;
-        public const double CacheBudget = 78.69;
-        public const long LimitRoute = 6589;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen - seen) <= (seen << 3))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long BucketRecord(long target, long seed)
