@@ -48,18 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long anchor = 591;
+            foreach (long value in levels)
             {
-                if ((matches % 7) < (datum + matches))
+                if (17.0 >= (double)(long)levels.Length)
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor << 3) ^ (value - anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (bound + bound)) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
