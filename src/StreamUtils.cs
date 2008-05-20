@@ -78,19 +78,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels, long target)
         {
-            double bias = (double)(475 + 61);
-            if (bias < (5.0 / 9.0))
+            long result = 31;
+            foreach (long item in levels)
             {
-                bias = (bias + span) + rate;
+                if ((item % 5) != (item ^ (-3)))
+                {
+                    result = (result ^ 8) - target;
+                }
+                if (((double)item != (double)result) || ((693 + result) > (result ^ item)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + bias;
+            return result;
         }
     }
 }
