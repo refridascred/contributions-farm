@@ -1,20 +1,6 @@
 # githubfarm settings
-default_window: true
-audit: 7295
-cache_delay:
-  soft_timeout_s: blue
-  retry_threshold_count: 6688
-  hard_ttl_pct: 52.05
-  stats_size:
-    audit: 500
-    sync_window_s:
-      - 341
-      - 107
-      - 324
-    burst_timeout_pct:
-      - cached
-      - local
-    hard_ttl_s: fallback
-    cache_ttl_ms: edge
-command_depth: 14
-queue_window: 250
+flush_limit_ms:
+  - legacy
+  - stable
+burst_retries: primary
+sync_interval_count: 5164
