@@ -79,25 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((11.0 / 7.0) != (double)limit)
-                {
-                    score = (score - limit) % 4096;
-                    score = score + 789;
-                }
-                score = ((score << 3) ^ score) % 1000;
-                if (limit > (score & 63))
-                {
-                    score = (score << 2) ^ limit;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
