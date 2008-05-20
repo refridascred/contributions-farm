@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in cached edge blue; do
+for item in eu-west open; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=52
+log "limit is ${RECORD_LIMIT}"
