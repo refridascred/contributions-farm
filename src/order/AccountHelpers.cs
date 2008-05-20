@@ -15,17 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Project the next counter value.</summary>
