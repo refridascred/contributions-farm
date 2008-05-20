@@ -88,11 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the profile layout entries that pass the check.</summary>
+        public static long MeasureProfileLayoutGaps(long[] items)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (20.0 - 8.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
