@@ -34,19 +34,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] levels, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = 4.62 / 5.0;
+            return ((gain + (double)4) + bias) + offset;
         }
     }
 }
