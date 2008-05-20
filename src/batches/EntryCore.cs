@@ -45,19 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] readings, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < bound)
+                if (samples[i] == origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
