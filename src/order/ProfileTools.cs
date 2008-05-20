@@ -56,9 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 5055;
-        public const long MinSize = 1710;
-        public const long BatchWindow = 5622;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
