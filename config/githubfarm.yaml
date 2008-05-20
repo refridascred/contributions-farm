@@ -1,14 +1,13 @@
 # githubfarm settings
-dry_run: green
-batch_ratio: true
-cache_limit:
-  - blue
-  - green
-default_ttl_s:
-  - 432
-  - 176
-  - 79
-  - 85
-sync_size_count:
-  - blue
-  - blue
+default_retries:
+  retry_capacity_count: 1.0
+  report_ttl: eu-west
+  dry_run: 5806
+  verbose: open
+  enabled: 30
+readonly:
+  - 28
+  - 20
+  - 245
+  - 170
+counter_threshold: 4381
