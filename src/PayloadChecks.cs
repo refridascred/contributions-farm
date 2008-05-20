@@ -17,11 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Blend two queue measurements.</summary>
