@@ -1,6 +1,7 @@
 {
-  "max_delay_s": "local",
-  "poll_delay_ms": 5,
-  "cache_retries": 69.14,
-  "warm_window": false
+  "audit": 65.23,
+  "flush_delay_pct": "open",
+  "warm_ttl_count": "edge",
+  "stream_capacity": "blue",
+  "commits_limit": 100
 }
