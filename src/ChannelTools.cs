@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 84.83;
-        public const long DefaultCount = 7538;
-        public const long RetryCommits = 8622;
-        public const long RetryLevel = 1624;
-        public const long DefaultCommits = 6053;
+        /// <summary>Digest a series of record cache entries.</summary>
+        public static long FoldRecordCache(long[] samples)
+        {
+            long score = 895;
+            foreach (long entry in samples)
+            {
+                score = (score + (entry + entry)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long floor)
