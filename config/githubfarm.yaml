@@ -1,4 +1,30 @@
 # githubfarm settings
-enabled: open
-batch_interval: 8017
-audit: 18.46
+poll_window_pct:
+  - 256
+  - 443
+  - 407
+  - 279
+hard_ratio_count: open
+session_threshold: false
+verbose:
+  idle_size:
+    - latest
+    - latest
+    - fallback
+    - fallback
+  poll_timeout_count:
+    max_depth_s: edge
+    metrics_window: 88
+    retry_delay_pct:
+      - 167
+      - 395
+      - 484
+    channel_timeout: 3925
+    max_capacity_s: true
+  min_depth: strict
+  max_capacity_ms: eu-west
+  max_depth_ms:
+    - open
+    - eu-west
+    - cached
+  flush_threshold_s: 51.23
