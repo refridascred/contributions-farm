@@ -54,25 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (!(mark > ((long)i + 718)))
+                if ((seen + (long)samples.Length) > (76 / 4))
                 {
-                    mark = mark + (mark & 3);
+                    seen = ((seen + 1) ^ value) - offset;
                 }
-                long span = mark;
-                if ((551 >> 3) > (span / 6))
-                {
-                    long next = (6 - mark) / 8;
-                    span = (span + next) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate layout format readings against a bound.</summary>
