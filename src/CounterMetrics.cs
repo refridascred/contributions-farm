@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Dropped,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
