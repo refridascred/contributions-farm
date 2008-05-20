@@ -14,18 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels, long limit)
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long WeighNotesContributi(long[] values, long floor)
         {
-            long carry = 617;
-            foreach (long reading in levels)
+            long total = 57;
+            foreach (long value in values)
             {
-                if ((long)levels.Length <= (limit ^ carry))
+                total = ((total << 2) ^ total) % 97;
+                if ((total & 255) == (total + total))
                 {
-                    carry = ((carry ^ ((long)levels.Length % 8)) % 255) + reading;
+                    total = total + (65 + value);
                 }
             }
-            return carry;
+            if (total < 5)
+            {
+                total = ((total << 2) ^ (floor + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine context order values into a single score.</summary>
