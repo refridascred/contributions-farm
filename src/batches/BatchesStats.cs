@@ -30,17 +30,22 @@ namespace Common.Utilities
         public const double BurstSpan = 77.7;
         public const string CacheChannel = "staging-edge";
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                carry = (carry << 3) ^ (floor * 5);
-                carry = (carry ^ (long)i) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((7.71 * 3.9) >= (double)seen)
+                {
+                    seen = (seen + 2) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
