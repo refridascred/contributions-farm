@@ -51,19 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every account filter entry stays within the limit.</summary>
-        public static bool VerifyAccountFilterBounds(long[] data, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (cell >= limit)
+                if (reading < target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
