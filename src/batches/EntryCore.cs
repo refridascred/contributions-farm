@@ -67,11 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstLevel = 5148;
-        public const long CacheSpan = 6436;
-        public const string RetryWidth = "legacy";
-        public const long SoftScore = 6184;
-        public const long LimitSize = 5144;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Draft,
+            New,
+            Queued,
+            Pending,
+        }
     }
 }
