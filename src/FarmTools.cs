@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
