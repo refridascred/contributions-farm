@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
-        public static long SeriesFilterGithubfarm(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum << 3) ^ seed) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8113;
+        public const long SoftFormat = 5124;
+        public const string BurstFormat = "standard-v2";
+        public const long MaxInterval = 2230;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
