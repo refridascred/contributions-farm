@@ -14,12 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryDepth = "staging-edge";
+        public const string LimitOrder = "latest-edge";
+        public const long StepSize = 3594;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
