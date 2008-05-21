@@ -1,5 +1,13 @@
 {
-  "burst_threshold_ms": 70.54,
-  "filter_interval": 500,
-  "dry_run": "edge"
+  "sync_threshold_ms": "staging",
+  "verbose": false,
+  "enabled": true,
+  "readonly": "green",
+  "filter_interval": {
+    "min_depth": 17.36,
+    "editor_ttl": false,
+    "poll_window": "edge",
+    "base_capacity_ms": true,
+    "audit": 500
+  }
 }
