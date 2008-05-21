@@ -18,18 +18,21 @@ namespace Common.Utilities
             return (weight + (double)0) + offset;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long mix = 737;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value & 1) == (mix + (long)readings.Length)) || ((mix + value) >= mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 2) + (mix / 8)) % 4096;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
