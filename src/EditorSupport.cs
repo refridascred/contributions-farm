@@ -41,15 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples, long bound)
         {
-            long total = 222;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                total = (total * 5) + (item - offset);
+                if (matches >= (matches - 39))
+                {
+                    matches = ((matches + 2) ^ entry) + bound;
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
