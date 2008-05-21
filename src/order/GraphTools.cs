@@ -44,11 +44,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long limit, long offset)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            long span = limit - offset;
+            if ((3.22 / 4.0) == (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 64) >= span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((8.3 / 2.0) == (double)offset) || ((offset * 3) <= (span & 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
