@@ -49,17 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long bound)
+        /// <summary>Accumulate already profile samples.</summary>
+        public static long ScoreAlreadyProfile(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 745;
+            foreach (long datum in values)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                if (datum <= (mark << 3))
                 {
-                    return (long)i;
+                    mark = mark - 224;
+                }
+                if ((74 <= (datum - mark)) || ((datum - datum) >= datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
