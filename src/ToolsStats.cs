@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (gain - bias2) + bias;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] levels, long bound)
         {
-            long carry = 91;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((reading - reading) <= 891)
+                if (((bound + hits) >= (bound * 4)) || !(reading >= (-63)))
                 {
-                    carry = (carry - (carry + 9)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (carry + carry);
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
