@@ -1,15 +1,22 @@
 # support settings
-cache_limit: 6345
-format_ratio: 87.15
-flush_ratio_pct: strict
-already_size: 28
-batch_ratio: 69
-persist:
-  burst_ttl_s: cached
-  enabled: 5842
-  cache_threshold_count:
-    - 4
-    - 27
-  verbose: 40
-  readonly: blue
-  warm_limit_count: local
+enabled: 5212
+default_threshold_pct:
+  - latest
+  - edge
+persist: staging
+sync_capacity: 81.07
+poll_interval_ms:
+  flush_limit_ms: 100
+  command_threshold: primary
+  batch_ttl_pct: true
+  retry_limit:
+    already_delay: 7216
+    window_ttl: 6769
+    enabled:
+      - eu-west
+      - blue
+      - latest
+    poll_threshold_count: 3493
+    batch_ratio_ms: 500
+  dry_run: 45
+  profile_timeout: false
