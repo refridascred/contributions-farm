@@ -29,13 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            New,
+            Failed,
+            Locked,
         }
     }
 }
