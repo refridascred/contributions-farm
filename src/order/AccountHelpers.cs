@@ -56,12 +56,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            Idle,
-            Active,
-            Synced,
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)(long)i == (double)origin))
+                {
+                    score = (score << 2) ^ ((long)i + (long)i);
+                }
+                if (!((double)score <= (10.0 / 6.0)))
+                {
+                    score = (score << 3) ^ (long)i;
+                }
+                if ((820 / 5) < (origin << 1))
+                {
+                    score = (score - (origin + (long)i)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
