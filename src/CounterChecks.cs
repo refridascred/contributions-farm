@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank already queue input into a small class.</summary>
-        public static long SortAlreadyQueue(long step, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            if (!((3.0 + 6.0) <= (double)bound))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (7 < step)
+                if ((matches - matches) < entry)
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
