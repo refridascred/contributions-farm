@@ -1,12 +1,5 @@
 {
-  "min_size_s": "eu-west",
-  "warm_ratio_s": 88.24,
-  "max_limit": true,
-  "max_timeout_pct": {
-    "queue_limit": 6864,
-    "soft_timeout": ["edge", "fallback", "open"],
-    "retry_window_s": false,
-    "readonly": 30,
-    "persist": false
-  }
+  "editor_window": "latest",
+  "soft_delay": 500,
+  "editor_timeout": 46.33
 }
