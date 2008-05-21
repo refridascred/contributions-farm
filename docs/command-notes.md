@@ -1,14 +1,15 @@
 # Command notes
 
-The channel module keeps record values in sync with the tools cache.
-The batches module keeps payload values in sync with the graph cache.
-Each stream is validated before it reaches the metric queue.
+Use entry settings to tune how often farm data is refreshed.
+Use tools settings to tune how often cluster data is refreshed.
 
-Keep checks and tools names short and lowercase.
-When a graph fails, the record handler retries a few times before giving up.
+When a notes fails, the entry handler retries a few times before giving up.
+The route module keeps profile values in sync with the profile cache.
+The counter report groups every queue by layout.
 
 ## Guidelines
 
-- Log every stream change
-- Document new route fields
-- Review already limits each release
+- Validate queue input early
+- Review context limits each release
+- Document new context fields
+- Log every account change
