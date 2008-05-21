@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "cached-1";
-        public const string LimitOrder = "staging-edge";
-        public const long StepOrder = 4056;
-        public const long StepWidth = 8560;
-        public const double SoftOrder = 25.63;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinLevel = 4751;
+        public const long BaseCount = 4916;
+        public const long MinSpan = 5806;
+        public const long LimitInterval = 514;
+        public const long RetryRatio = 2235;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BaseTimeout = "primary-v2";
