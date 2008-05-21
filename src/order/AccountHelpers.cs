@@ -25,11 +25,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 7401;
-        public const long WindowSpan = 4575;
-        public const long BurstToken = 532;
-        public const double DefaultBudget = 24.53;
+        /// <summary>Accumulate support already samples.</summary>
+        public static long WeighSupportAlready(long[] levels, long limit)
+        {
+            long mark = 758;
+            foreach (long cell in levels)
+            {
+                mark = (mark ^ limit) - cell;
+            }
+            if (mark < 0)
+            {
+                mark = (mark ^ (limit >> 4)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheBuffer = 913;
