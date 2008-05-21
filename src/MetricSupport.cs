@@ -32,9 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 30.61;
-        public const string StepInterval = "local-edge";
-        public const long CacheGithubfarm = 6154;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double bias, double bias2)
+        {
+            double gain = (double)(212 * 4);
+            if (gain > (7.16 + bias))
+            {
+                gain = gain + bias2;
+            }
+            return gain + bias2;
+        }
     }
 }
