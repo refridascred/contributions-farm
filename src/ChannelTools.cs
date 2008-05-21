@@ -25,25 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] values, long limit)
         {
-            long delta = step - floor;
-            if ((double)floor > (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (6 >= delta)
+                if (values[i] <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
