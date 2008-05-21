@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long CountChannelBatchHits(long[] samples, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long item in values)
             {
-                if (!(((cell >> 5) < cell) || ((hits >> 3) == (seed - 10))))
+                if ((hits << 2) < ((-484) / 5))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
