@@ -38,10 +38,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowDepth = "strict-edge";
-        public const long SoftFactor = 5559;
-        public const long MinFormat = 4624;
-        public const long RetrySpan = 9511;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "strict";
+        public const long WindowCount = 890;
+        public const long BurstFactor = 1524;
+        public const double BaseTimeout = 95.53;
     }
 }
