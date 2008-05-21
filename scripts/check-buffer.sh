@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=317
+log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback local eu-west cached; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
