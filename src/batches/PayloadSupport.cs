@@ -38,10 +38,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "strict";
-        public const long WindowCount = 890;
-        public const long BurstFactor = 1524;
-        public const double BaseTimeout = 95.53;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
