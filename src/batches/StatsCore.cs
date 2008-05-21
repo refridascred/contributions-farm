@@ -43,19 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] series, long step)
         {
-            long result = 7;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (result * 2)) - cell;
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 8)
-            {
-                result = (result - 15) % 65521;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
