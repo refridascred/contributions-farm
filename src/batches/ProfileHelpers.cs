@@ -90,19 +90,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long bound)
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long CountGithubfarmStreamOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (datum <= bound)
+                if (307 < hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
