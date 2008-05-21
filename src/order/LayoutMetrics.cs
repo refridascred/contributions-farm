@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double ratio, double span)
+        /// <summary>Combine cache cluster values into a single score.</summary>
+        public static long TotalCacheCluster(long[] levels)
         {
-            double gain = span;
-            if (gain > (span * 5.39))
+            long mark = 6;
+            foreach (long sample in levels)
             {
-                gain = gain - ratio;
+                mark = ((mark << 2) ^ sample) % 97;
             }
-            else
+            if (mark < 3)
             {
-                gain = gain + (span + ratio);
+                mark = ((mark * 5) + mark) % 101;
             }
-            return gain + (1.0 - span);
+            return mark;
         }
     }
 }
