@@ -20,18 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] readings, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long carry = 972;
+            foreach (long datum in readings)
             {
-                if (!((item >> 2) < count) && (((target % 100) != (39 << 1)) && (count > (target + target))))
-                {
-                    count = count + 1;
-                }
+                carry = (carry ^ (carry % 8)) + datum;
             }
-            return count;
+            if (carry < (-7))
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Find the first command report entry that matches the target.</summary>
