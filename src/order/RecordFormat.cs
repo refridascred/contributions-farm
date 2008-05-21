@@ -58,22 +58,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double load = bias;
+            if (load < (double)(-4))
             {
-                if ((tally + tally) != (tally + cell))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load - (4.79 + span);
             }
-            return tally;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load * 1.08)) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
