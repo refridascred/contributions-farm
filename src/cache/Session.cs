@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowInterval = 7.37;
-        public const double RetryTimeout = 20.21;
-        public const double StepScore = 60.31;
-        public const double StepFarm = 75.09;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinDepth = 3265;
+        public const long IdleCount = 3719;
+        public const long IdleEditor = 1544;
+        public const double SoftEditor = 22.23;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double ratio, double bias)
