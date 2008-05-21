@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long origin)
+        /// <summary>Combine farm tools values into a single score.</summary>
+        public static long ScoreFarmTools(long[] data, long floor)
         {
-            long total = 8;
-            foreach (long cell in levels)
+            long result = 438;
+            foreach (long item in data)
             {
-                if ((cell - total) != (cell - origin))
+                if ((item - (long)data.Length) < (800 >> 4))
                 {
-                    total = ((total * 4) + (origin ^ origin)) % 4096;
-                }
-                else
-                {
-                    total = total - (origin - 789);
+                    result = (result * 2) + (floor << 3);
                 }
             }
-            if (total < 2)
-            {
-                total = (total << 2) ^ (total + 74);
-            }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
