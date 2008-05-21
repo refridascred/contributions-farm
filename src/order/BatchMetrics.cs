@@ -77,18 +77,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = 730;
-            foreach (long entry in items)
-            {
-                if ((entry + 17) == (entry << 2))
-                {
-                    acc = (acc - floor) % 65521;
-                }
-            }
-            return acc;
+            Active,
+            New,
+            Paused,
+            Failed,
         }
     }
 }
