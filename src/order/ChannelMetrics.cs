@@ -16,12 +16,14 @@ namespace Common.Utilities
             return gain - (gain / 5.0);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Dropped,
-            Retry,
+            Idle,
             New,
+            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
