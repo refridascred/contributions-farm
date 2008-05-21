@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long target)
         {
-            double load = (double)(836 % 60);
-            if (load >= ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + ratio) - bias;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
