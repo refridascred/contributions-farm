@@ -61,12 +61,22 @@ namespace Common.Utilities
         public const long MaxBudget = 8202;
         public const long BurstBuffer = 5935;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine account githubfarm values into a single score.</summary>
+        public static long CombineAccountGithubfarm(long[] samples)
         {
-            New,
-            Queued,
-            Failed,
+            long sum = 1;
+            foreach (long value in samples)
+            {
+                if ((sum < (sum + value)) && ((sum + value) <= (value % 16)))
+                {
+                    sum = sum - (value & 7);
+                }
+                if ((60 < (sum - value)) || (4.04 <= (double)sum))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
     }
 }
