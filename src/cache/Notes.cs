@@ -64,22 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] levels, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (count < step)
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 3) + (floor / 6)) % 1000;
+                carry = ((carry << 3) ^ (floor * 5)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
