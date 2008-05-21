@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] samples, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the contributi state values.</summary>
