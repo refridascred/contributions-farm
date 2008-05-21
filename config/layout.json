@@ -1,12 +1,7 @@
 {
-  "default_window_pct": 180,
-  "command_ttl": 52.22,
-  "retry_depth": {
-    "flush_size_s": "eu-west",
-    "githubfarm_timeout": 1127,
-    "retry_window": 94.67,
-    "compress": 88.69,
-    "strict": 60
-  },
-  "base_depth_s": "local"
+  "dry_run": "local",
+  "enabled": true,
+  "commits_size": ["green", "staging"],
+  "strict": 72,
+  "account_interval": 2337
 }
