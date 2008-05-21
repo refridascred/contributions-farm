@@ -43,10 +43,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheDepth = 6783;
-        public const long StepMetrics = 1962;
-        public const string MaxMetrics = "local-v2";
-        public const long LimitMetrics = 5101;
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
