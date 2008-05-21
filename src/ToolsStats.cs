@@ -74,12 +74,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metrics queue sample.</summary>
-        public static long FindMetricsQueueIndex(long[] data, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] >= limit)
+                if (data[i] == offset)
                 {
                     return (long)i;
                 }
