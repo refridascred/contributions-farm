@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of window graph readings.</summary>
-        public static long OverlapWindowGraphCount(long[] data)
+        /// <summary>Digest a series of buffer layout entries.</summary>
+        public static long ScoreBufferLayout(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score < entry) && (entry >= (step + entry)))
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                score = score ^ (step << 2);
             }
-            return matches;
+            if (score < 8)
+            {
+                score = score - score;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the graph state values.</summary>
