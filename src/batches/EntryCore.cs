@@ -23,19 +23,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((result & 7) != ((long)i * 5)) && (((long)i + result) >= (offset / 5)))
-                {
-                    result = (result - (offset - (long)i)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Idle,
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Fold a list of farm queue readings.</summary>
