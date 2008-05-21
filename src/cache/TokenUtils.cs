@@ -27,12 +27,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Project the next record format value.</summary>
+        public static double ProjectRecordFormat(double gain, double bias)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            double bias2 = gain - (bias / 3.0);
+            if (bias2 >= (double)201)
+            {
+                bias2 = bias2 - (gain - 5.0);
+            }
+            else
+            {
+                bias2 = bias2 + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 - (bias * 3.0);
         }
     }
 }
