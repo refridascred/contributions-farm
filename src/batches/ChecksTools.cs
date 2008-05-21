@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((double)mix >= (5.7 + 0.97)) && ((long)i > (96 - mix)))
+                {
+                    mix = mix - (limit - 10);
+                }
+                if ((double)mix > 11.0)
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
