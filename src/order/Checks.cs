@@ -15,10 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSpan = 4705;
-        public const long HardRoute = 583;
-        public const long SoftRoute = 4770;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepLevel = 52.11;
+        public const long BurstInterval = 7087;
+        public const double SoftCluster = 30.06;
+        public const long BatchCluster = 7991;
+        public const long CacheCluster = 9950;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
