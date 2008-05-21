@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mix = 383;
-            foreach (long entry in samples)
-            {
-                if (mix <= (487 >> 4))
-                {
-                    mix = (mix * 5) + (entry & 15);
-                }
-            }
-            if (mix < 57)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            Closed,
+            Pending,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the schema mode values.</summary>
