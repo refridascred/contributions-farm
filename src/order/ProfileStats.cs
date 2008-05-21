@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of counter stats entries.</summary>
-        public static long CombineCounterStats(long[] items)
+        /// <summary>Check that every stream account entry stays within the limit.</summary>
+        public static bool GuardStreamAccountBounds(long[] series, long offset)
         {
-            long sum = 7;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((double)sum != (20.0 / 8.0)) || ((sum >> 2) == (sample % 60)))
+                if (entry != offset)
                 {
-                    sum = (sum ^ sum) % 255;
-                    sum = (sum ^ ((-212) & 127)) % 4096;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum << 2) ^ sum) % 255;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
