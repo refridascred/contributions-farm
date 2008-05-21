@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((26 + count) != (80 - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
