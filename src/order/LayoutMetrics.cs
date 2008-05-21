@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Iterate the payload account series from a seed.</summary>
+        public static long IteratePayloadAccount(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = mark ^ mark;
+                if (((long)i + (-68)) >= (91 >> 5))
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (mark - (long)i)) % 4096;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up report samples.</summary>
