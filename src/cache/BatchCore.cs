@@ -30,17 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token report reading by value.</summary>
-        public static long LocateTokenReportIndex(long[] items, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
