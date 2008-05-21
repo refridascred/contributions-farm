@@ -1,22 +1,4 @@
 # entry settings
-counter_capacity: 37.85
-default_ttl_pct: local
-poll_window_s:
-  - legacy
-  - eu-west
-retry_ttl:
-  audit: latest
-  default_window_s: 20
-  hard_timeout_count: local
-  max_size_s: 73.41
-  format_depth:
-    hard_size_pct: 58.68
-    report_capacity: 21
-    min_ratio: stable
-    min_capacity_s:
-      - eu-west
-      - fallback
-    max_capacity_ms: fallback
-    batch_ttl: true
-  default_depth_s: 1024
-burst_ttl_ms: 47.88
+warm_capacity_count: 8801
+notes_delay: 6845
+default_ratio_s: true
