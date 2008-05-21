@@ -54,16 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Combine context format values into a single score.</summary>
+        public static long CombineContextFormat(long[] data, long floor)
         {
-            long sum = 635;
-            foreach (long reading in readings)
+            long sum = 111;
+            foreach (long reading in data)
             {
-                sum = (sum << 3) ^ (5 ^ (-20));
-                sum = (sum - (reading + 3)) % 4096;
+                if ((reading >> 2) >= floor)
+                {
+                    sum = ((sum * 3) + reading) % 65521;
+                }
             }
-            return sum % 1000;
+            return sum % 97;
         }
     }
 }
