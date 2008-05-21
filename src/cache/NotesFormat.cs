@@ -31,21 +31,15 @@ namespace Common.Utilities
             return (scale + (double)0) + offset;
         }
 
-        /// <summary>Count farm order pairs that satisfy a relation.</summary>
-        public static long MatchFarmOrderCount(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
