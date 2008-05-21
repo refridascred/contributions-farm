@@ -19,38 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stats contributi input into a small class.</summary>
-        public static long ClassifyStatsContributi(long limit, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] items, long limit)
         {
-            if ((0.4 / 2.0) >= (double)offset)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((6.28 + 20.0) < (double)offset))
+                if (sample >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit & 63) <= (offset % 100))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset + limit) >= (offset + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
