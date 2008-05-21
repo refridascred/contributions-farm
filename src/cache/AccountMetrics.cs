@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Queued,
-            Idle,
-            Stale,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSpan = 2572;
+        public const long IdleInterval = 7494;
+        public const long CacheWidth = 7849;
+        public const long CacheTimeout = 6661;
+        public const double CacheDepth = 93.41;
 
         /// <summary>Locate a support filter reading by value.</summary>
         public static long LookupSupportFilterIndex(long[] items, long step)
