@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate contributi payload readings against a bound.</summary>
-        public static bool ValidateContributiPayloadLimits(long[] samples, long seed)
+        /// <summary>Adjust a order graph reading.</summary>
+        public static double ScaleOrderGraph(double gain, double floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double bias = gain + floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + bias) + (double)(long)i;
             }
-            return found;
+            return bias + floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
