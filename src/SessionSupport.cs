@@ -16,39 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long origin, long origin2)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long floor)
         {
-            long span = origin ^ origin2;
-            if ((origin2 & 127) <= span)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((1 ^ origin2) >= 66))
+                if (items[i] < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(origin2 <= (origin2 + span)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin >> 2) >= (4 >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
