@@ -1,9 +1,8 @@
 {
-  "max_threshold_count": {
-    "max_limit": ["primary", "latest", "fallback", "blue"],
-    "cache_limit": 60,
-    "burst_size": ["local", "legacy", "strict", "primary"]
-  },
-  "flush_limit_count": 8221,
-  "audit": ["eu-west", "stable"]
+  "retry_threshold_pct": 78.34,
+  "readonly": 66.01,
+  "default_interval_pct": "green",
+  "retry_delay": 6.54,
+  "burst_interval_s": 4707,
+  "flush_retries_ms": [137, 90, 157]
 }
