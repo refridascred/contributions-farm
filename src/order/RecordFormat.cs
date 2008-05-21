@@ -35,12 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultRatio = 7901;
+        public const long SoftChecks = 875;
+        public const long MinChecks = 6867;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MaxAlready = 47.5;
