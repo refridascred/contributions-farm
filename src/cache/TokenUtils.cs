@@ -20,12 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            Locked,
-            Failed,
-            Retry,
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix * 3) + (seed + 3);
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Match up payload samples.</summary>
