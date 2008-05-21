@@ -13,15 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two metrics account measurements.</summary>
-        public static double BlendMetricsAccount(double weight, double floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double load = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)(long)i) - floor;
-            }
-            return load - weight;
+            Retry,
+            Paused,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a editor info.</summary>
