@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long result = 82;
-            foreach (long datum in series)
-            {
-                if (result < datum)
-                {
-                    result = result + datum;
-                }
-            }
-            if (result < 6)
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
