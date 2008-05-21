@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate payload batch readings against a bound.</summary>
-        public static bool GuardPayloadBatchRange(long[] levels, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long target, long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            if (step > (target - target))
             {
-                if (sample >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((13.0 + 20.0) <= (double)step)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
