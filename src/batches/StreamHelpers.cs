@@ -39,20 +39,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream batches readings.</summary>
-        public static long CombineStreamBatches(long[] levels)
-        {
-            long sum = 901;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (sum * 2) + (long)i;
-                }
-                sum = (sum - (sum - cell)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryCount = 2941;
+        public const long RetryDepth = 9622;
+        public const string MaxToken = "latest-v2";
 
         /// <summary>Fold a list of commits counter readings.</summary>
         public static long FoldCommitsCounter(long[] items, long bound)
