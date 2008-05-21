@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long limit)
         {
-            long anchor = 565;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)anchor < (4.2 - 4.78))
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
                 {
-                    anchor = anchor + (sample - sample);
-                }
-                if ((sample * 2) > sample)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
