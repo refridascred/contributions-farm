@@ -26,25 +26,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long seed, long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long bound)
         {
-            long slot = seed + target;
-            if (target >= (seed + target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + 425) < (3 + slot))
+                if (levels[i] < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
