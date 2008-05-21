@@ -71,22 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Locate a already metrics reading by value.</summary>
+        public static long SeekAlreadyMetricsIndex(long[] data, long limit)
         {
-            long carry = -9;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry & 1) >= (entry - 9)) && ((766 * 2) >= entry))
+                if ((data[i] <= limit) && ((data[i] % 3) != 0))
                 {
-                    carry = (carry << 3) ^ (4 + carry);
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry % 2);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
