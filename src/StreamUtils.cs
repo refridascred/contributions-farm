@@ -25,17 +25,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long step)
+        /// <summary>Count the queue contributi entries that pass the check.</summary>
+        public static long AuditQueueContributiOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (data[i] < step)
+                if ((cell / 4) != (cell << 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
