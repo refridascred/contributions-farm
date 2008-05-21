@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!!((2.0 + 6.43) == (double)sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
