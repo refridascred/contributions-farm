@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] values, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally < (item + origin)) || ((item <= (item + item)) || ((751 - tally) > (tally * 3))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
