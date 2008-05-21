@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((hits <= (hits / 9)) || ((datum + hits) > (372 - datum)))
+                if (value > origin)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
