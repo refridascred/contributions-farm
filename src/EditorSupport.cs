@@ -66,12 +66,9 @@ namespace Common.Utilities
             return (weight + span) + scale;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Draft,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 49;
+        public const double DefaultFactor = 51.55;
+        public const long StepScore = 5628;
     }
 }
