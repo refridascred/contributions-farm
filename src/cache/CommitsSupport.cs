@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Locked,
+            Failed,
             Active,
-            Idle,
-            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
