@@ -41,19 +41,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Look up the position of a channel entry sample.</summary>
+        public static long FindChannelEntryIndex(long[] data, long offset)
         {
-            double gain = offset;
-            if (gain >= (double)56)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (double)734;
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + (5.4 - weight);
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
