@@ -30,10 +30,14 @@ namespace Common.Utilities
         public const long LimitInterval = 514;
         public const long RetryRatio = 2235;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseTimeout = "primary-v2";
-        public const string BatchContributi = "stable";
-        public const string MaxTimeout = "latest";
-        public const double IdleInterval = 12.03;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Synced,
+            Stale,
+            Failed,
+            Draft,
+            Dropped,
+        }
     }
 }
