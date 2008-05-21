@@ -27,15 +27,23 @@ namespace Common.Utilities
             return (scale + (double)0) + offset;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long score = 644;
+            foreach (long cell in items)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                score = (score + cell) % 65521;
+                if ((cell * 4) <= cell)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (score > 631)
+            {
+                score = score + 95;
+            }
+            return score;
         }
     }
 }
