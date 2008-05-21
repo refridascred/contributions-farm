@@ -13,15 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Blend two stream context measurements.</summary>
+        public static double SmoothStreamContext(double rate, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            double bias2 = bias;
+            if (bias2 >= bias)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                bias2 = bias2 - (rate / 7.0);
             }
-            return score;
+            return bias2 - (double)38;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
