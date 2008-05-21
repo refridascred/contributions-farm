@@ -20,13 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long bound, long limit)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            if ((7 - bound) < (30 >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((43 + bound) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the profile mode values.</summary>
