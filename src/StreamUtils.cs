@@ -45,12 +45,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 8276;
         public const string StepCount = "legacy";
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            Idle,
-            Paused,
-            Done,
+            double load = floor;
+            if (load > (double)(-6))
+            {
+                load = load - weight;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (load / 4.0);
         }
 
         /// <summary>Hold a graph options.</summary>
