@@ -68,26 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            long score = 6;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((2.23 + 0.1) <= (double)value) || ((value + score) == (score ^ value)))
+                if (((-2) + seen) != (datum >> 2))
                 {
-                    score = (score - (550 / 7)) % 97;
-                }
-                else
-                {
-                    score = (score - (880 / 8)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            if (score > 851)
-            {
-                score = score + score;
-            }
-            return score % 1000;
+            return seen;
         }
     }
 }
