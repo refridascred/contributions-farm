@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 92.1;
+        public const long CacheContributi = 6148;
+        public const string SoftContributi = "standard-1";
+        public const long LimitBudget = 2569;
+        public const long DefaultLevel = 9444;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamHits(long[] items)
