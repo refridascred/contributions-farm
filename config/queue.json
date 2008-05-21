@@ -1,5 +1,7 @@
 {
-  "batch_delay_ms": false,
-  "retry_capacity_s": "strict",
-  "verbose": ["latest", "open", "fallback", "edge"]
+  "idle_capacity_ms": 1024,
+  "dry_run": "local",
+  "enabled": "fallback",
+  "hard_ttl_s": 41.42,
+  "base_depth_s": true
 }
