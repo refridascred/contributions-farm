@@ -59,9 +59,19 @@ namespace Common.Utilities
         public const long MinSupport = 8531;
         public const long IdleSupport = 6133;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 1947;
-        public const long BurstBudget = 9072;
-        public const string BatchOrder = "legacy-1";
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double offset)
+        {
+            double mean = 5.0;
+            if (mean >= offset)
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + mean;
+        }
     }
 }
