@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long origin)
         {
-            long sum = 17;
-            foreach (long cell in readings)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum << 2) ^ sum) % 101;
-                if ((double)cell >= 0.3)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    sum = (sum - 872) % 97;
+                    result = result + (long)i2;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (7 + 88)) % 97;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (sum < 8)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
