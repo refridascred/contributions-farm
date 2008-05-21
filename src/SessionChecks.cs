@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double bias, double span)
-        {
-            double mean = 20.0 + (span / 9.0);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + (span / 2.0)) + (double)(long)i) + bias;
-            }
-            return mean + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowCount = 2129;
+        public const long BurstGithubfarm = 8131;
+        public const long CacheFactor = 5076;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long seed)
