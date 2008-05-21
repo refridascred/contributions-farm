@@ -1,5 +1,7 @@
 {
-  "editor_window": "latest",
-  "soft_delay": 500,
-  "editor_timeout": 46.33
+  "readonly": 49.92,
+  "poll_capacity_s": 5428,
+  "audit": "cached",
+  "burst_timeout_pct": 54.14,
+  "retry_interval_ms": ["staging", "primary"]
 }
