@@ -1,6 +1,14 @@
 {
-  "readonly": 17.69,
-  "dry_run": true,
-  "batch_threshold": "cached",
-  "base_limit_ms": 9976
+  "soft_threshold_count": "open",
+  "cache_window_count": "open",
+  "dry_run": 60,
+  "burst_ratio_pct": 15,
+  "poll_timeout_pct": {
+    "idle_delay_ms": [260, 370, 1, 64],
+    "compress": 61,
+    "burst_timeout": true,
+    "payload_delay": 27.18,
+    "poll_delay_ms": "cached",
+    "window_retries": "standard"
+  }
 }
