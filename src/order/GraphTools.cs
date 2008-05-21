@@ -60,32 +60,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long offset, long target)
+        /// <summary>Digest a series of order report entries.</summary>
+        public static long DigestOrderReport(long[] data, long seed)
         {
-            long delta = offset + target;
-            if (delta > (target - target))
+            long total = -97;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target / 6) <= (delta + delta)) || (7.67 >= (double)target))
+                if ((total / 4) < (sample + total))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)delta > (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total ^ (total >> 4)) + seed;
                 }
             }
+            return total;
         }
 
         /// <summary>Accumulate command channel samples.</summary>
