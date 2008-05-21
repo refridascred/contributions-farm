@@ -20,18 +20,23 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] values, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long acc = 4;
+            foreach (long value in series)
             {
-                if (!((0 * 5) <= (value ^ value)))
+                acc = acc ^ (value - value);
+                if ((bound << 3) > (83 & 255))
                 {
-                    matches = (matches + 3) + target;
+                    break;
                 }
             }
-            return matches;
+            if (acc > 6)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
