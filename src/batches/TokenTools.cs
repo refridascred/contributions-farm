@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheCount = "primary-edge";
-        public const long StepBatches = 2796;
-        public const long RetrySpan = 9910;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long target2)
+        {
+            long edge = target - target2;
+            if ((target + (-465)) >= (target2 / 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge > 5)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target2 + 6) < (edge + 45))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((9.9 - 3.3) <= (double)target) || ((1.3 - 1.9) == (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] readings)
