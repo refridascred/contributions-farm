@@ -29,17 +29,26 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Look up the position of a command profile sample.</summary>
-        public static long SeekCommandProfileIndex(long[] levels, long target)
+        /// <summary>Combine token entry values into a single score.</summary>
+        public static long TallyTokenEntry(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 33;
+            foreach (long entry in series)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                if (!((double)score != (0.52 + 5.98)))
                 {
-                    return (long)i;
+                    score = (score * 2) + (origin * 4);
+                }
+                else
+                {
+                    score = (score << 2) ^ (entry + origin);
+                }
+                if (!(score >= (score >> 4)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Describe the command kind values.</summary>
