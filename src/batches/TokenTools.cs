@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] samples, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = -4;
-            foreach (long value in samples)
-            {
-                mix = ((mix - 7) + value) - origin;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
