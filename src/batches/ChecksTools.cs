@@ -30,18 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout filter entries that pass the check.</summary>
-        public static long MeasureLayoutFilterOutliers(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > (3.0 * 5.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
