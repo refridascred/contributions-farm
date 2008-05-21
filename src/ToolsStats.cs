@@ -84,11 +84,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster metric figure with a bias.</summary>
-        public static double SmoothClusterMetric(double gain, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            double load = offset;
-            return (load + load) + gain;
+            long score = 6;
+            foreach (long value in samples)
+            {
+                if (((2.23 + 0.1) <= (double)value) || ((value + score) == (score ^ value)))
+                {
+                    score = (score - (550 / 7)) % 97;
+                }
+                else
+                {
+                    score = (score - (880 / 8)) % 4096;
+                }
+            }
+            if (score > 851)
+            {
+                score = score + score;
+            }
+            return score % 1000;
         }
     }
 }
