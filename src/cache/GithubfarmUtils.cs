@@ -21,11 +21,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseLevel = 5732;
-        public const long IdleWindow = 7195;
-        public const long LimitWindow = 19;
-        public const long BaseWindow = 248;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] series)
