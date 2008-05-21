@@ -27,14 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of format tools readings.</summary>
+        public static long ScoreFormatTools(long[] samples, long origin)
         {
-            Idle,
-            Pending,
-            New,
-            Synced,
-            Locked,
+            long anchor = 647;
+            foreach (long reading in samples)
+            {
+                if (reading < (anchor ^ anchor))
+                {
+                    anchor = anchor ^ origin;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Blend two format measurements.</summary>
