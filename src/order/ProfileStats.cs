@@ -22,10 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 508;
-        public const string BatchSpan = "staging-edge";
-        public const long CacheGithubfarm = 7574;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] values)
