@@ -51,16 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double span)
-        {
-            double ratio = 4.7 / 8.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (((ratio - 3.0) + (double)(long)i) + gain) + span;
-            }
-            return ratio - (3.86 + 3.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 1019;
+        public const string CacheStream = "open-1";
+        public const long DefaultStream = 6683;
+        public const long LimitTimeout = 428;
+        public const string LimitStream = "staging";
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] samples, long bound)
