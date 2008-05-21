@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] values, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 784;
+            foreach (long cell in samples)
             {
-                if (values[i] >= target)
+                if ((cell & 15) >= target)
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (target >> 3);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
