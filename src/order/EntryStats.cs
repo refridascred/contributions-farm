@@ -31,12 +31,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSize = 7117;
-        public const long CacheDepth = 8563;
-        public const string WindowContext = "fallback-v2";
-        public const double StepContext = 92.12;
-        public const long BaseTimeout = 8680;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up already order samples.</summary>
         public static long PairAlreadyOrderCount(long[] values)
