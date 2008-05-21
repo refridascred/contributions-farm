@@ -34,12 +34,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstWidth = 5844;
-        public const long BatchScore = 5250;
-        public const string LimitFactor = "cached-1";
-        public const long RetryDepth = 4059;
-        public const long LimitRecord = 761;
+        /// <summary>Combine contributi stream values into a single score.</summary>
+        public static long WeighContributiStream(long[] readings, long limit)
+        {
+            long carry = -9;
+            foreach (long sample in readings)
+            {
+                if ((8.5 + 6.4) > (double)sample)
+                {
+                    carry = (((carry << 2) ^ carry) % 97) - limit;
+                }
+                else
+                {
+                    carry = carry - (557 - carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
