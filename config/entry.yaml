@@ -1,11 +1,11 @@
 # entry settings
-metrics_retries:
-  - eu-west
-  - eu-west
-  - fallback
-enabled:
-  - open
-  - eu-west
-soft_ratio_pct: 8457
-default_interval: fallback
-retry_window_ms: edge
+retry_threshold_count:
+  sync_delay_s:
+    - eu-west
+    - open
+    - strict
+    - blue
+  sync_interval_s: 30
+  cache_depth_count: 84.2
+flush_retries_s: 59.47
+burst_ratio_count: 97.64
