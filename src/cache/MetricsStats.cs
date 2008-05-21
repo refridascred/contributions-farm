@@ -46,15 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values, long limit)
+        /// <summary>Adjust a notes metric reading.</summary>
+        public static double BlendNotesMetric(double weight, double offset)
         {
-            long carry = 87;
-            foreach (long cell in values)
+            double mean = offset;
+            if (mean > (offset / 8.0))
             {
-                carry = ((((carry << 2) ^ carry) % 65521) + cell) - limit;
+                mean = (mean + (double)827) + weight;
             }
-            return carry % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (2.2 + offset)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define already limits and defaults.</summary>
