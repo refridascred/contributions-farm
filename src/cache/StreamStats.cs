@@ -13,22 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = 856;
+            foreach (long entry in samples)
             {
-                if ((cell + step) > (-3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc << 2) ^ (entry + entry)) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Digest a series of window account entries.</summary>
