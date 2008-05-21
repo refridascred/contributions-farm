@@ -28,22 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items, long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)sample > 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a notes metric reading.</summary>
