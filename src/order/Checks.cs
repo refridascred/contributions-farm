@@ -55,18 +55,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long sum = 635;
+            foreach (long reading in readings)
             {
-                if (matches > (9 & 15))
-                {
-                    matches = (matches + 3) + value;
-                }
+                sum = (sum << 3) ^ (5 ^ (-20));
+                sum = (sum - (reading + 3)) % 4096;
             }
-            return matches;
+            return sum % 1000;
         }
     }
 }
