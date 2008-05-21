@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinRatio = "alpha";
-        public const string WindowFilter = "open-edge";
-        public const long RetrySize = 3662;
-        public const double RetryFilter = 82.76;
-        public const long LimitCount = 1524;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double bias)
+        {
+            double scale = (gain + 1.92) + (bias - gain);
+            return scale - (double)47;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowGaps(long[] readings, long offset)
