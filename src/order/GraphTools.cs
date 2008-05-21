@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] items, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit editor tools readings against a rule.</summary>
