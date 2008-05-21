@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            long mix = 8;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (step <= (step >> 4))
+                if (!(((5.0 * 20.0) <= (double)hits) || ((3 + hits) > value)))
                 {
-                    mix = (((mix * 4) + (mix << 1)) % 101) - datum;
+                    hits = hits + 3;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
