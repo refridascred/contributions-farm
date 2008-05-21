@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            New,
-            Pending,
-            Idle,
-            Paused,
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark ^ ((long)i % 2);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next profile value.</summary>
