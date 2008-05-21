@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long AuditToolsWindowOutliers(long[] data)
         {
-            long anchor = 57;
+            long matches = 0;
             foreach (long item in data)
             {
-                anchor = (anchor - (item % 2)) % 255;
-                if ((double)262 > (double)item)
+                if (!((1.89 * 6.38) <= (double)item))
                 {
-                    anchor = (anchor + (item * 3)) % 1000;
-                    anchor = anchor - (item ^ anchor);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    anchor = anchor - 341;
-                }
-                if ((anchor + item) != (item - anchor))
-                {
-                    anchor = (anchor - (item & 31)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - 8) % 97;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
