@@ -49,11 +49,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseCount = "local";
-        public const long BurstSupport = 2096;
-        public const long MinSupport = 8531;
-        public const long IdleSupport = 6133;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!(19.0 < (double)tally))
+                {
+                    tally = ((tally + 2) + sample) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double gain, double offset)
