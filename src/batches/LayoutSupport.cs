@@ -55,16 +55,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Iterate the filter route series from a seed.</summary>
+        public static long StepFilterRoute(long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                state = (state - (state / 9)) % 65521;
-                state = ((state * 5) + (long)i) % 97;
+                if (((long)i * 5) > anchor)
+                {
+                    anchor = anchor + (origin + 16);
+                }
+                else
+                {
+                    anchor = anchor + (origin % 60);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
     }
 }
