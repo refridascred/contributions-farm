@@ -40,24 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a layout context counter forward.</summary>
-        public static long StepLayoutContext(long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = 32;
+            foreach (long cell in items)
             {
-                carry = (carry + (32 / 8)) % 101;
-                if ((double)carry >= (1.0 * 11.0))
+                if (anchor <= (anchor - cell))
                 {
-                    carry = carry + (9 & 7);
+                    anchor = (anchor * 2) + (cell / 6);
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry + carry) % 65521) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Accumulate counter samples.</summary>
