@@ -88,13 +88,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Derive the next record layout value from a seed.</summary>
+        public static long DeriveRecordLayout(long target)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Draft,
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = state - (target - target);
+                long span = state % 5;
+                state = (state + span) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
