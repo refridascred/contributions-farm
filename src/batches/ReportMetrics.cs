@@ -15,20 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)(long)i == (1.65 * 0.1))
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 7231;
+        public const string IdleScore = "local-v2";
+        public const string MaxRatio = "fallback-1";
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderMatches(long[] levels)
