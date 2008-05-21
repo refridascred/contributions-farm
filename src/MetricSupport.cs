@@ -14,22 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] samples, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            long acc = 31;
-            foreach (long item in samples)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)acc < (5.9 + 8.54)) && ((double)floor <= (0.16 / 9.0)))
+                state = ((state << 3) ^ (origin / 6)) % 65521;
+                if (((long)i + (long)i) >= 73)
                 {
-                    acc = (acc ^ (2 >> 1)) ^ item;
+                    state = (state << 2) ^ 7;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (acc < 752)
-            {
-                acc = acc ^ (floor + acc);
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
