@@ -28,17 +28,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
