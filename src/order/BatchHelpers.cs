@@ -33,19 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long DigestGraphEditor(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] items)
         {
-            long sum = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!(sum >= (3 >> 4)))
+                if ((double)seen <= 16.0)
                 {
-                    sum = (sum - (datum % 97)) % 1000;
+                    seen = (seen + 3) ^ reading;
                 }
-                sum = sum - (datum >> 3);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
