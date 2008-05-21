@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Done,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
