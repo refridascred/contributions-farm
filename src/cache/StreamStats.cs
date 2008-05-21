@@ -51,10 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowLevel = 2974;
-        public const long MaxStats = 4289;
-        public const string StepInterval = "alpha-1";
-        public const long StepStats = 6548;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
