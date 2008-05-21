@@ -13,13 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] values, long target)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((0 * 5) <= (value ^ value)))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
