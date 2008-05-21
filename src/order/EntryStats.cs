@@ -19,19 +19,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] data, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            long result = 6;
-            foreach (long item in data)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                result = result + (item - offset);
+                state = (state * 5) + (target << 2);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (result > 868)
-            {
-                result = (result + (68 - offset)) % 255;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
