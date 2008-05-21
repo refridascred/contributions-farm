@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double load = offset;
-            if (load <= load)
-            {
-                load = load + (load + weight);
-            }
-            return load - (9.0 / 8.0);
+            Closed,
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a order stats.</summary>
