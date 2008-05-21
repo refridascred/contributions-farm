@@ -22,10 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 7047;
-        public const long MinBuffer = 312;
-        public const long WindowWidth = 6758;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 508;
+        public const string BatchSpan = "staging-edge";
+        public const long CacheGithubfarm = 7574;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] values)
