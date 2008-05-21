@@ -47,19 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] data, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != floor)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor ^ floor) % 65521) - (long)i2;
+                    anchor = (anchor * 3) + floor;
                 }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the window status values.</summary>
