@@ -90,19 +90,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi checks reading.</summary>
-        public static double AdjustContributiChecks(double gain, double span)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double mean = (gain - 3.7) * 3.3;
-            if (mean > (gain / 3.0))
-            {
-                mean = (mean + 4.12) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 9.2) - (double)(long)i;
-            }
-            return mean + (double)9;
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the layout status values.</summary>
