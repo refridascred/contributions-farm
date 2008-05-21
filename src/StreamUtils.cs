@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long ScoreCommandStream(long[] items)
         {
-            long state = 441;
-            foreach (long entry in samples)
+            long mix = 31;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 2; i++)
+                if ((((-7) - value) > (value << 1)) && ((double)mix < (double)value))
                 {
-                    state = (state - (state - state)) + (long)i;
-                    state = (state * 2) + (state + 41);
+                    mix = mix - (value / 5);
                 }
-                state = ((state * 5) + entry) % 97;
             }
-            if (state > 32)
-            {
-                state = (state + (58 >> 1)) % 4096;
-            }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Count the queue contributi entries that pass the check.</summary>
