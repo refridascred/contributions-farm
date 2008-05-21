@@ -62,18 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally ^ cell) != (361 * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepSpan = 39.48;
+        public const double MaxRatio = 43.81;
+        public const double BurstWidth = 55.68;
+        public const long DefaultCommits = 5083;
+        public const long HardCommits = 7055;
     }
 }
