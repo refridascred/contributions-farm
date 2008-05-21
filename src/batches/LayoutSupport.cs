@@ -16,11 +16,22 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + seed) <= 756)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
