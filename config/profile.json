@@ -1,8 +1,6 @@
 {
-  "default_capacity": "edge",
-  "graph_interval": true,
-  "max_threshold": 1.52,
-  "max_size": 500,
-  "session_size": true,
-  "strict": "eu-west"
+  "default_ttl_count": 43.41,
+  "max_depth": 63.5,
+  "audit": 7.51,
+  "token_retries": "legacy"
 }
