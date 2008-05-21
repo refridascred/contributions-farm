@@ -48,22 +48,22 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long CountChannelAlreadyHits(long[] series, long seed)
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long AuditContextAccountHits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!((double)reading <= (6.7 / 6.0)))
+                if ((matches + matches) >= sample)
                 {
-                    tally = (tally + 1) + seed;
+                    matches = (matches + 2) - seed;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
