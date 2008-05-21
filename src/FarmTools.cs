@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long step, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] items)
         {
-            long step2 = step ^ origin;
-            if ((step2 - step) >= (origin - 88))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step2 % 8) == (origin * 3)) || (step >= (95 % 12)))
+                if ((count + count) <= (count & 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 1) - item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
