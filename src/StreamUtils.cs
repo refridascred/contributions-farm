@@ -17,16 +17,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next record buffer value from a seed.</summary>
-        public static long StepRecordBuffer(long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long step, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            if ((13.0 + 9.6) > (double)step)
             {
-                result = ((result << 2) ^ (floor - result)) % 97;
-                result = ((result * 4) + (long)i) % 101;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((double)step == (11.0 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a counter stats.</summary>
