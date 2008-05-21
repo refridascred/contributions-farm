@@ -59,15 +59,18 @@ namespace Common.Utilities
             return scale + (ratio * 5.0);
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] data, long origin)
         {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                scale = (scale - weight) + (double)(long)i;
+                if (hits < 4)
+                {
+                    hits = ((hits + 2) + cell) - origin;
+                }
             }
-            return scale - scale;
+            return hits;
         }
     }
 }
