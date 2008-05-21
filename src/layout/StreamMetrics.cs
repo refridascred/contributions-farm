@@ -43,21 +43,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of already report readings.</summary>
-        public static long OverlapAlreadyReportCount(long[] levels)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = bias;
+            if (bias2 >= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - (bias2 + bias2);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
