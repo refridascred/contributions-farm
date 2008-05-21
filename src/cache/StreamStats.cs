@@ -42,15 +42,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long mix = 69;
-            foreach (long cell in samples)
+            long state = 18;
+            foreach (long datum in samples)
             {
-                mix = (mix * 3) + (cell / 8);
+                state = (state ^ (datum - datum)) % 4096;
+                if ((14.0 - 12.0) >= (double)datum)
+                {
+                    break;
+                }
             }
-            return mix;
+            return state % 1000;
         }
     }
 }
