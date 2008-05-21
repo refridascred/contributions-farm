@@ -46,11 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long mix = 32;
+            foreach (long value in samples)
+            {
+                mix = mix ^ mix;
+                if (value > (value ^ value))
+                {
+                    break;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = ((mix << 3) ^ (mix & 7)) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
