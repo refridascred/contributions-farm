@@ -21,22 +21,15 @@ namespace Common.Utilities
         public const string LimitInterval = "open-1";
         public const double DefaultBudget = 30.61;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((438 + bound) > datum)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
