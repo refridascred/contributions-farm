@@ -30,19 +30,16 @@ namespace Common.Utilities
         public const long RetryCommits = 4865;
         public const long WindowRatio = 5706;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] series, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (floor + floor)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
     }
 }
