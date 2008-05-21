@@ -24,17 +24,15 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(1 ^ 335);
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (double)47) + (double)(long)i) - floor;
             }
-            return -1;
+            return ratio - (rate / 9.0);
         }
     }
 }
