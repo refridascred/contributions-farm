@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            Dropped,
-            Active,
-            Failed,
-            Pending,
-            Closed,
+            double load = (double)(462 + 1);
+            if (load < (bias / 3.0))
+            {
+                load = load + gain;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (bias / 7.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define order limits and defaults.</summary>
