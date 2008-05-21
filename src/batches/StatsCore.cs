@@ -85,13 +85,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
