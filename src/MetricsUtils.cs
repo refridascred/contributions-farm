@@ -51,15 +51,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double rate, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] samples, long step)
         {
-            double bias = offset;
-            if (bias >= offset)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                bias = bias - rate;
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias - (bias / 8.0);
+            return ready;
         }
     }
 }
