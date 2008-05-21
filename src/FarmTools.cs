@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up command format samples.</summary>
