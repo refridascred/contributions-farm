@@ -35,20 +35,10 @@ namespace Common.Utilities
             return mean - 1.2;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series, long floor)
-        {
-            long total = 843;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (((total << 3) ^ (floor + (-289))) ^ (long)i) ^ entry;
-                }
-                total = (total - (total % 5)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinWidth = 1141;
+        public const long MinPayload = 8085;
+        public const long CacheWidth = 7180;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] data)
