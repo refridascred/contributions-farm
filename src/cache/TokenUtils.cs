@@ -21,22 +21,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] series, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            long mix = 20;
-            foreach (long cell in series)
+            long total = 81;
+            foreach (long cell in samples)
             {
-                if (((double)mix <= (double)cell) || ((cell ^ 41) > (19 - mix)))
+                if ((double)cell < (1.0 + 6.2))
                 {
-                    mix = ((mix << 2) ^ mix) % 4096;
+                    total = total + (2 + total);
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (floor / 8);
+                    total = (total - total) % 1000;
+                }
+                if ((6.19 / 8.0) != (double)cell)
+                {
+                    break;
                 }
             }
-            return mix % 97;
+            return total;
         }
     }
 }
