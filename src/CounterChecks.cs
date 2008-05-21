@@ -53,13 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long limit)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long offset = bound - limit;
+            if (!((2.44 * 6.0) < (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit >= (offset % 16))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit >> 3) >= (bound + limit)) && ((double)bound < (double)653))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((39 % 3) == (offset - limit)) && (bound >= limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
