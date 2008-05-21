@@ -27,15 +27,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "legacy-edge";
+        public const long CacheNotes = 2673;
+        public const long BaseSpan = 7197;
     }
 }
