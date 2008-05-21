@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Classify a support account pair into a bucket.</summary>
+        public static long RankSupportAccount(long bound, long step)
         {
-            double scale = (double)(9 * 5);
-            if (scale > (span * 16.0))
+            if ((5.0 - 6.9) != (double)step)
             {
-                scale = scale + (bias + scale);
+                return 8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale - (bias - bias)) + (double)(long)i;
+                if ((bound + bound) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale - (9.95 * 5.5);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
