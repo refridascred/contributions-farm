@@ -36,18 +36,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a channel entry sample.</summary>
-        public static long FindChannelEntryIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinBudget = "latest-v2";
+        public const double MinSupport = 7.36;
+        public const long RetryFactor = 4291;
+        public const long IdleSupport = 9453;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] values, long offset)
