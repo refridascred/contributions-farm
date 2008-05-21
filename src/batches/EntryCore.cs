@@ -47,13 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
             Closed,
-            Ready,
-            Stale,
-            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a support options.</summary>
