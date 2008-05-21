@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long bound, long origin)
         {
-            Queued,
-            Idle,
-            Synced,
-            Locked,
+            long gap = bound - origin;
+            if (bound <= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin < (gap / 8)) && (826 >= (bound - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5 - origin) != (bound - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-94) + bound) != (origin + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
