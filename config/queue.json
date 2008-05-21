@@ -1,5 +1,13 @@
 {
-  "tools_timeout": 1024,
-  "min_size": 5357,
-  "hard_size_count": false
+  "flush_depth": [128, 140, 336, 345],
+  "githubfarm_threshold": {
+    "idle_interval_ms": 100,
+    "commits_depth": 173,
+    "idle_capacity": "primary",
+    "soft_size_pct": "green",
+    "sync_ttl_ms": 36.19
+  },
+  "idle_threshold_count": "green",
+  "soft_depth_ms": "strict",
+  "warm_depth": 82
 }
