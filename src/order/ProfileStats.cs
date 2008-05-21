@@ -32,15 +32,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double rate, double bias)
-        {
-            double scale = (double)((-629) >> 3);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (((scale + 2.48) + (double)(long)i) - rate) - bias;
-            }
-            return scale + 3.34;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 9373;
+        public const double WindowSession = 58.32;
+        public const long BatchFactor = 6445;
     }
 }
