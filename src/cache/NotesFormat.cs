@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile contributi reading.</summary>
-        public static double ScaleProfileContributi(double bias, double span)
+        /// <summary>Validate batches profile readings against a bound.</summary>
+        public static bool GuardBatchesProfileLimits(long[] samples, long limit)
         {
-            double bias2 = 7.0;
-            if (bias2 > span)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                bias2 = bias2 - (bias2 - span);
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - span;
+            return stale;
         }
     }
 }
