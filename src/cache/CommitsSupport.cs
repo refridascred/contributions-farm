@@ -50,10 +50,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 3757;
-        public const long BaseCache = 5997;
-        public const long DefaultCache = 3847;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((1.0 / 6.0) > (double)reading) || ((double)(long)data.Length >= (7.0 - 9.46)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyBounds(long[] series, long bound)
