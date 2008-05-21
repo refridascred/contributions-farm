@@ -12,17 +12,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first counter payload entry that matches the target.</summary>
-        public static long SeekCounterPayloadIndex(long[] data, long floor)
+        /// <summary>Rank command account input into a small class.</summary>
+        public static long RankCommandAccount(long floor, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = floor - offset;
+            if (((floor - offset) >= floor) || ((double)offset < (double)step))
             {
-                if (data[i] > floor)
+                return 8;
+            }
+            else
+            {
+                if ((0.53 * 0.4) == (double)step)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of metrics cache entries.</summary>
