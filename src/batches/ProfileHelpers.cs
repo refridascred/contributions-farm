@@ -68,12 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Synced,
-            Locked,
-            Paused,
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
