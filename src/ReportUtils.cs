@@ -31,19 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (step < (step + 742))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetrySpan = "standard-1";
+        public const long CacheSpan = 6925;
+        public const long WindowInterval = 9050;
+        public const double BatchMetrics = 81.17;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
