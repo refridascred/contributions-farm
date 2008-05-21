@@ -79,19 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= origin)
+                if (samples[i] < floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
