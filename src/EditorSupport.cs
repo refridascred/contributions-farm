@@ -28,11 +28,18 @@ namespace Common.Utilities
             return ratio + (scale * 0.92);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinBudget = "latest-v2";
-        public const double MinSupport = 7.36;
-        public const long RetryFactor = 4291;
-        public const long IdleSupport = 9453;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] values, long offset)
