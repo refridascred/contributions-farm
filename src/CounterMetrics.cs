@@ -34,19 +34,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((3.0 + 7.0) > (double)matches) || (((459 % 97) != (matches - matches)) && ((item ^ matches) != (item + item))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstWidth = 5844;
+        public const long BatchScore = 5250;
+        public const string LimitFactor = "cached-1";
+        public const long RetryDepth = 4059;
+        public const long LimitRecord = 761;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
