@@ -23,21 +23,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up batch buffer samples.</summary>
-        public static long PairBatchBufferCount(long[] values)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 16)
+                    if ((data[i] - data[j]) == 15)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the cluster status values.</summary>
