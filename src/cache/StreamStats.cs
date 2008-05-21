@@ -42,15 +42,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = 69;
+            foreach (long cell in samples)
             {
-                state = ((state * 5) + (long)i) % 101;
+                mix = (mix * 3) + (cell / 8);
             }
-            return state;
+            return mix;
         }
     }
 }
