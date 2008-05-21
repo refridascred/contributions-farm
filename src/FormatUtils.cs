@@ -24,22 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 1261;
+        public const long LimitChannel = 7354;
+        public const long CacheChannel = 8950;
+        public const long DefaultTimeout = 3464;
+        public const string MaxScore = "stable-v2";
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] items)
