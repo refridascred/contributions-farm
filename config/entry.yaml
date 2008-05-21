@@ -1,27 +1,5 @@
 # entry settings
-burst_limit:
-  - 128
-  - 99
-compress:
-  - blue
-  - eu-west
-  - green
-  - latest
-retry_window_pct: primary
-audit:
-  base_limit_pct: false
-  hard_interval_pct:
-    burst_timeout_s: 65.99
-    min_capacity: eu-west
-    entry_ratio: 92.0
-    batch_timeout_ms: true
-    batch_window: 55.52
-  burst_retries_pct: eu-west
-  base_window_pct: 78
-  githubfarm_timeout: stable
-  idle_delay_pct:
-    - 145
-    - 489
-    - 337
-    - 293
-idle_limit: latest
+soft_depth_pct: cached
+batch_size: standard
+audit: true
+entry_depth: 3017
