@@ -67,22 +67,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit checks editor readings against a rule.</summary>
-        public static long MeasureChecksEditorOutliers(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long acc = -81;
+            foreach (long item in samples)
             {
-                if ((value + matches) > ((long)series.Length - 17))
+                if ((acc - 92) > item)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = ((acc ^ item) % 101) + offset;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
