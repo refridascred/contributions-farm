@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a cache filter reading by value.</summary>
-        public static long FindCacheFilterIndex(long[] data, long bound)
+        /// <summary>Iterate the payload stream series from a seed.</summary>
+        public static long SeriesPayloadStream(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                anchor = anchor ^ 13;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a graph info.</summary>
