@@ -56,11 +56,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long floor)
         {
-            double bias = gain;
-            return (bias + (gain / 4.0)) + offset;
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
