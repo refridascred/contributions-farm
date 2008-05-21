@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long bound, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if (758 < (bound / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - bound) <= (limit % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
