@@ -45,25 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks queue input into a small class.</summary>
-        public static long GradeChecksQueue(long origin, long seed)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            long edge = origin + seed;
-            if ((seed >= (origin % 12)) && (((-2) ^ seed) >= origin))
+            double mean = bias / 5.0;
+            if (mean >= (double)884)
             {
-                return 2;
+                mean = (mean - mean) + bias2;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (seed >= (edge - edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = (mean + 6.4) - (double)(long)i;
             }
+            return mean - (double)8;
         }
 
         /// <summary>Define already limits and defaults.</summary>
