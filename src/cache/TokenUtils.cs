@@ -37,14 +37,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Dropped,
-            Retry,
-            Stale,
-            Idle,
-            Locked,
+            Active,
+            Draft,
+            Done,
+            Failed,
+            Pending,
         }
     }
 }
