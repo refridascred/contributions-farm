@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string LimitSupport = "latest";
         public const string BatchSupport = "strict-1";
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((double)tally < (1.14 + 8.68)) || ((tally + value) >= (value * 2)))
+                if ((count & 1) < (reading / 8))
                 {
-                    tally = tally + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
