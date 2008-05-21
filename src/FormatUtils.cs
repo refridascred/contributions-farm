@@ -27,22 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long AuditSchemaLayoutMatches(long[] values)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((3 / 9) > sample)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
