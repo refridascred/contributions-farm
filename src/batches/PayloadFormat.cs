@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Blend two support token measurements.</summary>
+        public static double ScaleSupportToken(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(33 & 1);
+            if (rate >= (1.2 * 2.5))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (double)6) - floor;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (bias - bias);
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
