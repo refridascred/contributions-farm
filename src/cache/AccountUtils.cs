@@ -17,17 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score - (score + score)) % 255;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowLevel = 7781;
+        public const long DefaultTimeout = 3298;
+        public const long StepFactor = 8716;
+        public const long MinFormat = 4653;
+        public const long MaxFormat = 4854;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] series)
