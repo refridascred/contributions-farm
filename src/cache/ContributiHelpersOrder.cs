@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 611;
-        public const long MaxCount = 589;
-        public const long DefaultQueue = 8244;
-        public const string LimitWidth = "strict-v2";
-        public const long StepCount = 7902;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "stable";
+        public const long DefaultRatio = 1242;
+        public const long LimitScore = 7946;
+        public const long SoftInterval = 9657;
+        public const string BaseRatio = "stable-v2";
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
