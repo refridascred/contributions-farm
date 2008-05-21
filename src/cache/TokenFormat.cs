@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Validate stats format readings against a bound.</summary>
+        public static bool VerifyStatsFormatRange(long[] levels, long offset)
         {
-            double bias = (5.0 / 7.0) * 5.3;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                bias = ((bias - (floor - bias)) + (double)(long)i) + gain;
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - floor;
+            return stale;
         }
     }
 }
