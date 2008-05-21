@@ -1,17 +1,13 @@
 {
-  "readonly": "blue",
-  "sync_depth_count": 3,
-  "commits_delay": {
-    "persist": 30,
-    "buffer_limit": {
-      "min_ttl_s": true,
-      "base_ratio_pct": "strict",
-      "batch_window_pct": 33
-    },
-    "default_ttl_ms": 250,
-    "poll_limit_pct": "legacy",
-    "payload_depth": 29.95,
-    "soft_size_s": 20
+  "context_timeout": ["blue", "legacy"],
+  "persist": {
+    "max_depth": [127, 250, 298],
+    "strict": "fallback",
+    "poll_capacity_pct": "local",
+    "flush_ratio_s": 1282,
+    "command_delay": 500,
+    "compress": "primary"
   },
-  "default_threshold_count": [1, 41, 319, 4]
+  "poll_window_s": 100,
+  "profile_size": "green"
 }
