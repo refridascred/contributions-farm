@@ -38,24 +38,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double ratio, double floor)
         {
-            if ((3.12 + 3.0) <= (double)origin)
+            double bias = floor;
+            if (bias >= (ratio - 9.4))
             {
-                return 2;
+                bias = bias - 4.9;
             }
             else
             {
-                if ((double)origin != (6.7 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                bias = bias - floor;
             }
+            return bias + (ratio / 2.0);
         }
     }
 }
