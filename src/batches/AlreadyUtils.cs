@@ -26,10 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowBudget = 7271;
-        public const double MinToken = 58.07;
-        public const long StepToken = 3802;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 1190;
+        public const double BatchFactor = 46.8;
+        public const string BatchCount = "standard-1";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long offset)
