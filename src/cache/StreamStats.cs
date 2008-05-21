@@ -53,11 +53,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepLevel = 4355;
-        public const long BatchCommits = 5661;
-        public const double DefaultDepth = 40.79;
-        public const string MinCommits = "strict-v2";
-        public const double IdleScore = 24.23;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long origin)
+        {
+            if (!(floor < 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((42 % 12) <= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= (floor - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((92 >> 5) <= (origin << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
