@@ -1,7 +1,13 @@
 # support settings
-dry_run: standard
-sync_threshold_count: false
-soft_limit_s: true
-strict: stable
-batch_retries: 1024
-metrics_ttl: open
+poll_ttl_count:
+  dry_run: latest
+  default_depth_count:
+    enabled: false
+    max_capacity_pct: false
+    default_size_count: green
+    stats_capacity: 12.03
+  filter_timeout: 90.97
+  min_timeout_pct: true
+  strict: false
+filter_window: true
+report_depth: local
