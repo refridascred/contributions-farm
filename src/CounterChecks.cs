@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long anchor = 32;
-            foreach (long cell in items)
-            {
-                if (anchor <= (anchor - cell))
-                {
-                    anchor = (anchor * 2) + (cell / 6);
-                }
-            }
-            return anchor;
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
