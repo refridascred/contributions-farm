@@ -1,6 +1,7 @@
 {
-  "flush_capacity_s": "standard",
-  "base_capacity_pct": [195, 294],
-  "enabled": true,
-  "flush_timeout_pct": "blue"
+  "already_depth": 72.1,
+  "sync_ttl_pct": 2269,
+  "schema_limit": true,
+  "metrics_retries": true,
+  "account_size": 37
 }
