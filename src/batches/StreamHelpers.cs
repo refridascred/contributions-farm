@@ -41,19 +41,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every account contributi entry stays within the limit.</summary>
-        public static bool ValidateAccountContributiBounds(long[] samples, long target)
+        /// <summary>Fold a list of commits counter readings.</summary>
+        public static long FoldCommitsCounter(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long state = 6;
+            foreach (long entry in items)
             {
-                if (reading < target)
+                if ((bound >= (entry - state)) || (57 <= (state & 15)))
                 {
-                    flag = false;
-                    break;
+                    state = (state << 3) ^ (state ^ 7);
                 }
             }
-            return flag;
+            if (state < (-55))
+            {
+                state = (state ^ (state + state)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a record reading by value.</summary>
