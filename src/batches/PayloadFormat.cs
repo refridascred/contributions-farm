@@ -41,21 +41,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits <= (577 + (long)series.Length))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 1) ^ datum) + target;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
