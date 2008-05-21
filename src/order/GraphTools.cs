@@ -33,35 +33,29 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long offset, long target)
         {
-            if (!((step - 7) > seed))
+            long delta = offset + target;
+            if (delta > (target - target))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((4.85 + 5.73) > (double)seed)
+                if (((target / 6) <= (delta + delta)) || (7.67 >= (double)target))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((step + seed) != (916 % 16))
+                    if ((double)delta > (double)offset)
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((double)seed <= (double)2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 8;
                     }
                 }
             }
