@@ -37,19 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a layout githubfarm reading.</summary>
-        public static double BlendLayoutGithubfarm(double gain, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            double ratio = bias;
-            if (ratio < bias)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                ratio = ratio - gain;
+                if (matches > 3)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (gain - 13.0);
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
