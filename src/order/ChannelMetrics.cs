@@ -22,31 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if (limit < (limit ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (4.8 >= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.0 / 6.0) >= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
