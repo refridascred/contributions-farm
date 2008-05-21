@@ -33,18 +33,22 @@ namespace Common.Utilities
             return weight2 + (double)66;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((reading + hits) <= (58 << 1))
+                if (387 >= (entry + matches))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
