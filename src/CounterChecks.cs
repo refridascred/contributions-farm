@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSpan = 2992;
-        public const long RetryCommand = 8892;
-        public const long HardCommand = 88;
+        /// <summary>Look up the position of a channel counter sample.</summary>
+        public static long LookupChannelCounterIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultToken = "alpha";
