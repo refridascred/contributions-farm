@@ -1,7 +1,22 @@
 # entry settings
-audit:
-  - stable
-  - local
-  - strict
-base_depth: false
-command_threshold: green
+queue_limit: legacy
+burst_interval: 100
+max_window_count: 4093
+idle_ttl_s:
+  burst_limit: 591
+  base_delay_count: legacy
+  default_window_ms: 38
+  default_capacity_s: latest
+  token_threshold: staging
+  burst_capacity_s: legacy
+poll_limit_count:
+  min_interval_count: 16
+  command_size: open
+  soft_ratio_ms: stable
+  warm_retries_ms:
+    - 280
+    - 292
+    - 387
+  cache_window_s: 42.41
+  compress: 76.47
+batch_limit: blue
