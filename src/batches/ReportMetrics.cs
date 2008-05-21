@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long mark = 93;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark >= (mark << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark + mark) % 255) ^ datum;
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 0)
-            {
-                mark = mark ^ (origin / 8);
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
