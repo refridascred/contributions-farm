@@ -59,17 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] data, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 93;
+            foreach (long datum in values)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                anchor = (anchor - (datum + target)) % 101;
+                if ((target >> 3) == (anchor + target))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + anchor) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
