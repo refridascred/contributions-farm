@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every format contributi entry stays within the limit.</summary>
-        public static bool ValidateFormatContributiBounds(long[] levels, long floor)
+        /// <summary>Validate profile report readings against a bound.</summary>
+        public static bool GuardProfileReportBounds(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (datum < floor)
+                if (cell < seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
