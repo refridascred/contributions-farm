@@ -13,14 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series)
         {
-            Synced,
-            Done,
-            Ready,
-            Queued,
-            Stale,
+            long anchor = 5;
+            foreach (long item in series)
+            {
+                if ((double)anchor > (double)(long)series.Length)
+                {
+                    anchor = (anchor << 3) ^ (item * 4);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
