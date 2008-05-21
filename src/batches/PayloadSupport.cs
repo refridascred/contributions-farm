@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 9454;
-        public const long BatchSpan = 2416;
-        public const long BaseTimeout = 9918;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
