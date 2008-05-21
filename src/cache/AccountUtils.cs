@@ -41,26 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch metric values into a single score.</summary>
-        public static long TallyBatchMetric(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
-            long state = 934;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (entry <= (entry - entry))
+                if ((matches << 1) != (value % 60))
                 {
-                    state = (state ^ entry) % 65521;
-                }
-                else
-                {
-                    state = (state * 5) + (state - state);
+                    matches = matches + 3;
                 }
             }
-            if (state > 874)
-            {
-                state = (state ^ (state ^ state)) % 97;
-            }
-            return state;
+            return matches;
         }
     }
 }
