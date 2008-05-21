@@ -62,13 +62,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Active,
-            Ready,
-            Closed,
-            Pending,
+            Failed,
+            Locked,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
