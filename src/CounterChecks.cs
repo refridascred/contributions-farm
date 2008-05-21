@@ -66,22 +66,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((datum + (-9)) == (653 & 31)) && ((tally + 84) > datum)) && ((double)tally == (0.91 * 0.26)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
