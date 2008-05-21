@@ -1,5 +1,6 @@
 {
-  "burst_capacity_pct": 5.22,
-  "default_retries_pct": 41,
-  "audit": 500
+  "readonly": 17.69,
+  "dry_run": true,
+  "batch_threshold": "cached",
+  "base_limit_ms": 9976
 }
