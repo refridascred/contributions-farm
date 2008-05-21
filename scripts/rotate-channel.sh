@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge cached; do
+mode="${1:-cached}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in fallback strict primary staging; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
