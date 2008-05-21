@@ -35,14 +35,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            Active,
-            Closed,
-            Stale,
-            New,
-            Ready,
+            long total = 4;
+            foreach (long value in items)
+            {
+                if (total < 3)
+                {
+                    total = total - (total % 64);
+                }
+                if (((double)value < (11.0 / 8.0)) || (total >= 794))
+                {
+                    total = (total * 5) + (value - value);
+                }
+                else
+                {
+                    total = (total - (total >> 5)) % 97;
+                }
+            }
+            if (total > 96)
+            {
+                total = total ^ (893 % 8);
+            }
+            return total % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
