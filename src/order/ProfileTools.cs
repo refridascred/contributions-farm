@@ -30,13 +30,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            Done,
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the checks kind values.</summary>
