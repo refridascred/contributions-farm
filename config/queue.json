@@ -1,7 +1,6 @@
 {
-  "idle_capacity_ms": 1024,
-  "dry_run": "local",
-  "enabled": "fallback",
-  "hard_ttl_s": 41.42,
-  "base_depth_s": true
+  "audit": 9.45,
+  "max_threshold_count": "cached",
+  "enabled": 11.08,
+  "cache_capacity_pct": ["primary", "standard", "edge", "open"]
 }
