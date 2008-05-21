@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total << 2) ^ ((long)i / 3)) % 65521;
-                total = (total - ((long)i + step)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Idle,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Blend two schema already measurements.</summary>
