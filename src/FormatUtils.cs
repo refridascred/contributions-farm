@@ -20,21 +20,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up checks samples.</summary>
