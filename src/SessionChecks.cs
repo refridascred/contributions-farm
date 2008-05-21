@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Digest a series of editor order entries.</summary>
+        public static long TotalEditorOrder(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long state = 44;
+            foreach (long sample in levels)
             {
-                if ((double)target <= (7.9 + 9.77))
+                if (sample <= (sample + sample))
                 {
-                    acc = acc ^ (target / 9);
+                    state = state ^ (sample << 1);
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            if (state > 405)
+            {
+                state = (state ^ (47 << 1)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
