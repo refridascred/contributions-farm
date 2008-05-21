@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((count - 74) < (26 ^ count))
+                if (((item * 3) > item) || ((long)samples.Length > 59))
                 {
-                    count = (count + 2) + item;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
