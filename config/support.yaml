@@ -1,13 +1,4 @@
 # support settings
-poll_ttl_count:
-  dry_run: latest
-  default_depth_count:
-    enabled: false
-    max_capacity_pct: false
-    default_size_count: green
-    stats_capacity: 12.03
-  filter_timeout: 90.97
-  min_timeout_pct: true
-  strict: false
-filter_window: true
-report_depth: local
+dry_run: local
+strict: blue
+verbose: 71.66
