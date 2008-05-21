@@ -16,28 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Count the account stats entries that pass the check.</summary>
+        public static long MeasureAccountStatsGaps(long[] readings)
         {
-            long sum = 38;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                sum = sum ^ (reading + sum);
-                sum = ((sum << 3) ^ (reading >> 5)) % 4096;
-                if (!((reading ^ sum) != (long)items.Length))
+                if ((1.95 + 7.06) > (double)tally)
                 {
-                    sum = sum + (sum >> 5);
-                }
-                else
-                {
-                    sum = (sum + (sum % 24)) % 1000;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            if (sum > 519)
-            {
-                sum = (sum + (sum - sum)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
