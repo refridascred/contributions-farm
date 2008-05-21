@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSize = 3824;
+        public const string BaseBatches = "standard-v2";
+        public const string BaseTimeout = "primary-v2";
+        public const string SoftBatches = "standard-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string LimitBudget = "cached-edge";
