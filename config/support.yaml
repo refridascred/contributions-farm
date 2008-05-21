@@ -1,11 +1,4 @@
 # support settings
-notes_retries:
-  - 107
-  - 233
-min_retries_s:
-  - staging
-  - stable
-enabled: primary
-poll_limit_ms: 2243
-flush_limit_pct: primary
-warm_timeout_count: false
+soft_retries_ms: false
+poll_limit: false
+sync_retries: 100
