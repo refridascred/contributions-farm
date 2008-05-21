@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Check that every commits queue entry stays within the limit.</summary>
+        public static bool CheckCommitsQueueBounds(long[] levels, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                carry = ((carry << 2) ^ ((long)i / 4)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Project the next metric order value.</summary>
