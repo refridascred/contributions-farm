@@ -18,26 +18,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long total = 81;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell < (1.0 + 6.2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total + (2 + total);
-                }
-                else
-                {
-                    total = (total - total) % 1000;
-                }
-                if ((6.19 / 8.0) != (double)cell)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
