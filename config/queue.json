@@ -1,6 +1,11 @@
 {
-  "readonly": 8,
-  "checks_depth": ["latest", "stable", "latest", "edge"],
-  "dry_run": false,
-  "warm_size": ["green", "latest", "latest"]
+  "report_limit": [117, 50, 302, 342],
+  "idle_limit": 23.76,
+  "enabled": {
+    "session_ttl": 13,
+    "payload_ratio": 4.22,
+    "idle_ttl_ms": "legacy",
+    "max_timeout": 87.29,
+    "batch_limit_ms": 9.57
+  }
 }
