@@ -46,17 +46,11 @@ namespace Common.Utilities
         public const long HardChannel = 7720;
         public const double MaxInterval = 98.15;
 
-        /// <summary>Find the first already graph entry that matches the target.</summary>
-        public static long LookupAlreadyGraphIndex(long[] items, long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
