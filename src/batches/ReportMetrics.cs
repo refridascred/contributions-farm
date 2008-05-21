@@ -30,10 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxRatio = 6851;
-        public const long IdleWindow = 1082;
-        public const double WindowCount = 69.28;
-        public const long BaseTimeout = 8078;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count ^ entry) >= (entry + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
