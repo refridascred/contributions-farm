@@ -61,17 +61,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a farm editor reading by value.</summary>
-        public static long LocateFarmEditorIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
