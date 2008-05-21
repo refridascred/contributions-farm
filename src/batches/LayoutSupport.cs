@@ -23,15 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings, long bound)
         {
-            double scale = bias;
-            if (scale <= bias)
+            long mark = 956;
+            foreach (long sample in readings)
             {
-                scale = (scale + (double)1) - weight;
+                if ((bound << 3) < sample)
+                {
+                    mark = ((mark * 5) + (299 * 4)) % 97;
+                    mark = (mark + (mark + bound)) % 4096;
+                }
+                mark = ((mark * 4) + (sample * 3)) % 101;
+                if ((bound + sample) > bound)
+                {
+                    mark = (mark - (bound & 127)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (sample % 64)) % 4096;
+                }
             }
-            return scale + scale;
+            if (mark > 171)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the cache kind values.</summary>
