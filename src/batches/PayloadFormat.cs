@@ -34,19 +34,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)seed == (15.0 * 4.27))
-                {
-                    state = (state * 4) + state;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
