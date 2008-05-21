@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long delta = floor ^ seed;
+            if ((double)floor > 2.93)
             {
-                if ((double)mix == (double)2)
-                {
-                    mix = (mix ^ (long)i) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((floor - delta) >= (seed % 16))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
