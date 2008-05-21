@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 77.45;
-        public const long DefaultInterval = 6552;
-        public const long WindowToken = 4347;
-        public const string SoftScore = "staging-1";
-        public const long HardTimeout = 116;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double weight, double bias)
+        {
+            double drift = (bias / 3.0) * 7.7;
+            if (drift > bias)
+            {
+                drift = drift - weight;
+            }
+            return drift + (double)87;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long target, long target2)
