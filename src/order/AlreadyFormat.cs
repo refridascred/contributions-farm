@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Scale a command report figure with a bias.</summary>
+        public static double SmoothCommandReport(double weight, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            double rate = span;
+            if (rate >= (double)34)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (total ^ (-82)) + (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                rate = (rate - rate) + weight;
             }
-            return total;
+            else
+            {
+                rate = rate + (rate - 0.8);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (4.68 / 9.0);
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
