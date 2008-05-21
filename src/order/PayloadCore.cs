@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double MaxCommand = 26.64;
         public const long StepCommand = 6533;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long step)
+        /// <summary>Derive the next batch cluster value from a seed.</summary>
+        public static long SeriesBatchCluster(long floor)
         {
-            long anchor = 80;
-            foreach (long cell in levels)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (((anchor - (anchor + anchor)) % 4096) + cell) + step;
+                if ((0 + (long)i) > floor)
+                {
+                    mark = (mark - (floor - mark)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
