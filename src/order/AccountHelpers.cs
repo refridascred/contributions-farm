@@ -37,31 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long bound, long limit)
+        /// <summary>Digest a series of report queue entries.</summary>
+        public static long WeighReportQueue(long[] series, long origin)
         {
-            if (limit < (bound / 7))
+            long mix = 3;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit - bound) > limit) && ((9.9 + 5.21) >= (double)limit))
+                if ((-5) >= (origin >> 1))
                 {
-                    return 7;
+                    mix = (((mix << 3) ^ (mix % 100)) % 65521) + cell;
                 }
                 else
                 {
-                    if (limit >= (bound + 71))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix - origin) % 101;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Blend two tools measurements.</summary>
