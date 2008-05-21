@@ -13,23 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((value / 4) <= 82))
-                {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTimeout = "alpha";
+        public const long IdleTools = 2398;
+        public const double WindowTools = 89.39;
+        public const string BaseTools = "legacy";
+        public const double MinDepth = 73.04;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] readings, long step)
