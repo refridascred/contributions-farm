@@ -22,12 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            double mean = bias * 4.0;
+            if (mean >= bias)
+            {
+                mean = (mean - mean) - ratio;
+            }
+            else
+            {
+                mean = mean - 7.7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 0.66) + (double)(long)i;
+            }
+            return mean - 1.2;
         }
 
         /// <summary>Digest a series of context entries.</summary>
