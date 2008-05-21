@@ -29,21 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Blend two schema checks measurements.</summary>
+        public static double ProjectSchemaChecks(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift - (weight / 8.0)) - (double)(long)i) - span;
             }
-            return seen;
+            return drift - weight;
         }
     }
 }
