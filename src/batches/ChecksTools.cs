@@ -49,12 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long seed)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
