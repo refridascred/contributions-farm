@@ -54,26 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values, long limit)
-        {
-            long mix = 57;
-            foreach (long reading in values)
-            {
-                if ((7 + reading) != (mix % 7))
-                {
-                    mix = ((mix << 3) ^ reading) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ limit) % 65521;
-                }
-            }
-            if (mix < 896)
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSpan = 5908;
+        public const long RetryLevel = 3920;
+        public const long IdleWidth = 4608;
+        public const long StepTools = 8351;
     }
 }
