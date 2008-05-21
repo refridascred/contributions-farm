@@ -69,22 +69,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (bound > (floor * 5))
             {
-                if ((value << 3) > (seen ^ seen))
+                return 7;
+            }
+            else
+            {
+                if (((75 >> 5) == (floor + floor)) || ((2.46 - 7.6) >= (double)floor))
                 {
-                    seen = seen + 2;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (bound <= (floor * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - 5) > (bound / 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
