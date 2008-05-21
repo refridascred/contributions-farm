@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window layout readings.</summary>
-        public static long CombineWindowLayout(long[] data, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = 61;
-            foreach (long reading in data)
-            {
-                state = ((state * 3) + (state << 3)) + reading;
-            }
-            if (state < (-933))
-            {
-                state = (state ^ (seed * 3)) % 65521;
-            }
-            return state;
+            Synced,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
