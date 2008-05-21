@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((bound << 2) <= (floor + floor))
             {
-                if ((tally & 7) != (tally % 10))
+                return 7;
+            }
+            else
+            {
+                if (((floor / 2) >= bound) || ((floor << 2) == (734 ^ bound)))
                 {
-                    tally = (tally + 2) ^ value;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (7.07 < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the format editor series from a seed.</summary>
