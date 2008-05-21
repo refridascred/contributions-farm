@@ -46,18 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi checks samples are out of range.</summary>
-        public static long TallyContributiChecksGaps(long[] data)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value - seen) >= (value >> 2)) && (((double)value >= (double)22) && ((16.0 + 11.0) >= (double)value)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
