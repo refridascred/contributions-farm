@@ -1,7 +1,13 @@
 {
-  "readonly": 49.92,
-  "poll_capacity_s": 5428,
-  "audit": "cached",
-  "burst_timeout_pct": 54.14,
-  "retry_interval_ms": ["staging", "primary"]
+  "retry_size_ms": {
+    "flush_window_pct": 62.94,
+    "notes_limit": 30,
+    "profile_capacity": "stable",
+    "min_ratio_s": 85.14
+  },
+  "idle_depth_count": true,
+  "soft_delay_count": false,
+  "base_ttl": "edge",
+  "batch_size_pct": 69,
+  "base_threshold_count": false
 }
