@@ -48,22 +48,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((5 - 653) != (step % 7))
             {
-                if (datum <= (datum + count))
+                return 0;
+            }
+            else
+            {
+                if ((seed + (-43)) < (seed + seed))
                 {
-                    count = count + 2;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((14.0 + 14.0) > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
