@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry queue value.</summary>
-        public static double ProjectEntryQueue(double bias, double span)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            double gain = (double)(0 + (-9));
-            if (gain <= (double)7)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (9.0 * 2.32)) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain - 4.6)) - (double)(long)i;
-            }
-            return gain - (bias - gain);
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
