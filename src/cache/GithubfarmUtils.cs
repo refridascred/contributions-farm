@@ -12,13 +12,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long anchor = -9;
+            foreach (long cell in values)
+            {
+                if (!((cell << 2) <= cell))
+                {
+                    anchor = anchor ^ cell;
+                }
+            }
+            if (anchor > 82)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
