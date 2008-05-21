@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Fold a list of schema report readings.</summary>
+        public static long TotalSchemaReport(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -427;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)mark >= (8.7 + 19.0))
                 {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 4) + (sample * 4)) + origin;
                 }
+                mark = ((mark << 3) ^ (long)items.Length) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
