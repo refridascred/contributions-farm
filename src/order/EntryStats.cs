@@ -32,13 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            New,
-            Failed,
-            Retry,
-            Ready,
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
