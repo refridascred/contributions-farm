@@ -56,25 +56,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long score = -3;
+            foreach (long sample in data)
             {
-                if (!((double)(long)i == (double)origin))
+                if ((step + score) >= step)
                 {
-                    score = (score << 2) ^ ((long)i + (long)i);
+                    score = score + (sample - sample);
+                    score = (score - score) % 1000;
                 }
-                if (!((double)score <= (10.0 / 6.0)))
+                else
                 {
-                    score = (score << 3) ^ (long)i;
+                    score = ((score << 2) ^ (step - score)) % 1000;
                 }
-                if ((820 / 5) < (origin << 1))
-                {
-                    score = (score - (origin + (long)i)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                score = (score - ((long)data.Length >> 1)) % 4096;
+            }
+            if (score < 186)
+            {
+                score = (score - (step ^ 58)) % 65521;
             }
             return score;
         }
