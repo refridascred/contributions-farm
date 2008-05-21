@@ -30,14 +30,11 @@ namespace Common.Utilities
             return weight2 + (double)66;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Dropped,
-            Done,
-            New,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "standard-1";
+        public const long IdleLevel = 6337;
+        public const long StepWidth = 2963;
+        public const double StepSpan = 32.63;
+        public const double CacheScore = 44.47;
     }
 }
