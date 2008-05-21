@@ -23,15 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double bias2)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            double ratio = (bias2 - bias2) / 9.0;
-            if (ratio < ratio)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                ratio = ratio - bias;
+                if ((double)count != (18.0 + 3.1))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Hold a command stats.</summary>
