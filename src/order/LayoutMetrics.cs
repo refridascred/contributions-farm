@@ -35,18 +35,11 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] series)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen <= (reading / 3)) || ((double)reading <= (6.5 / 3.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
