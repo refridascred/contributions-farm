@@ -70,18 +70,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)cell <= 5.92)
+                if ((tally + tally) == (entry * 3))
                 {
-                    hits = (hits + 3) - target;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up cluster report samples.</summary>
