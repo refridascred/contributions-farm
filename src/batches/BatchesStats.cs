@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] readings, long target)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((item >> 2) < count) && (((target % 100) != (39 << 1)) && (count > (target + target))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema summary.</summary>
