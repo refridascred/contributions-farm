@@ -1,16 +1,9 @@
 {
-  "persist": true,
-  "verbose": {
-    "compress": ["staging", "open"],
-    "retry_depth": 64,
-    "already_depth": "edge",
-    "enabled": 41,
-    "channel_interval": {
-      "dry_run": false,
-      "editor_capacity": [475, 374, 119, 336],
-      "warm_timeout_count": [18, 471, 94, 145]
-    },
-    "notes_interval": true
+  "profile_limit": {
+    "queue_timeout": ["fallback", "strict"],
+    "readonly": [97, 193],
+    "context_threshold": 1024
   },
-  "max_threshold": "primary"
+  "default_capacity_ms": 20.21,
+  "warm_threshold_count": 5523
 }
