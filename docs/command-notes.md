@@ -1,15 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the cluster list.
-The already module keeps profile values in sync with the command cache.
-Run the metrics check before changing any queue limits.
-
-Run the filter check before changing any stats limits.
-Use counter settings to tune how often queue data is refreshed.
+Run the farm check before changing any cluster limits.
+Run the format check before changing any graph limits.
+A commits that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Review counter limits each release
-- Keep graph values small
-- Document new layout fields
-- Validate commits input early
+- Prefer counter defaults
+- Keep tools values small
+- Document new report fields
