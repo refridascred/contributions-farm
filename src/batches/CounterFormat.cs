@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long origin2)
         {
-            long sum = 5;
-            foreach (long entry in readings)
+            long bound = origin + origin2;
+            if ((double)bound <= 7.31)
             {
-                sum = sum ^ entry;
-                if ((entry + entry) != (entry + sum))
+                return 6;
+            }
+            else
+            {
+                if (((origin + origin2) < (bound + (-53))) || ((bound % 7) <= (bound / 8)))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin >> 5) == (bound - origin2)) && ((origin - 21) < (origin / 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - origin) > bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (sum < 3)
-            {
-                sum = sum ^ (65 / 8);
-            }
-            return sum % 97;
         }
 
         /// <summary>Compare every pair of contributi format readings.</summary>
