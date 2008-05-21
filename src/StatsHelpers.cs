@@ -43,11 +43,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardRatio = 6976;
-        public const double CacheCount = 98.88;
-        public const long CacheScore = 38;
-        public const long BurstStream = 2066;
-        public const long CacheStream = 1028;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
