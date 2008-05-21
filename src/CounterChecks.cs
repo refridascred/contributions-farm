@@ -42,13 +42,13 @@ namespace Common.Utilities
         public const double CacheScore = 15.76;
         public const long LimitSpan = 4097;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
