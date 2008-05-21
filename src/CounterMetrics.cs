@@ -39,18 +39,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many cache commits samples are out of range.</summary>
-        public static long MeasureCacheCommitsOutliers(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = 92;
+            foreach (long value in items)
             {
-                if ((((long)values.Length ^ tally) == (61 - 5)) || ((246 + tally) == (tally % 64)))
-                {
-                    tally = (tally + 1) + item;
-                }
+                mix = ((mix << 3) ^ (value ^ 707)) - seed;
             }
-            return tally;
+            return mix;
         }
     }
 }
