@@ -13,31 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long step, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] values, long seed)
         {
-            if ((target ^ target) == (81 + step))
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target * 3) != (target - target))
+                if (value >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - step) == (step >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the account phase values.</summary>
