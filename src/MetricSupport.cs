@@ -14,22 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = -966;
-            foreach (long item in values)
-            {
-                if ((double)score >= (double)item)
-                {
-                    score = (score + score) % 65521;
-                }
-                if (((score + score) <= item) || (((long)values.Length - item) <= score))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
