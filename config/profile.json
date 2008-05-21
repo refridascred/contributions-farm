@@ -1,9 +1,5 @@
 {
-  "profile_limit": {
-    "queue_timeout": ["fallback", "strict"],
-    "readonly": [97, 193],
-    "context_threshold": 1024
-  },
-  "default_capacity_ms": 20.21,
-  "warm_threshold_count": 5523
+  "editor_ratio": true,
+  "compress": 60.42,
+  "persist": false
 }
