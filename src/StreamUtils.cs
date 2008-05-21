@@ -75,18 +75,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data, long origin)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)origin < (20.0 + 1.0))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
