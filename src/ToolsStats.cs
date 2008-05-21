@@ -40,18 +40,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value - matches) >= (42 - 6))
+                if ((values[i] < step) && ((values[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
