@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseBudget = 9.94;
-        public const double LimitEntry = 38.13;
-        public const double MinSpan = 70.56;
-        public const long CacheEntry = 8413;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long bound)
+        {
+            if ((bound + 309) >= (floor % 60))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)bound == (1.5 / 4.0)) && (1 <= bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-1) * 2) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound / 5) >= floor) && ((double)floor < (5.93 + 8.28)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
