@@ -38,15 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long step)
+        /// <summary>Audit order filter readings against a rule.</summary>
+        public static long MeasureOrderFilterOutliers(long[] data)
         {
-            long sum = 514;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                sum = (((sum + (60 ^ sum)) % 4096) ^ item) - step;
+                if ((8.0 - 19.0) != (double)hits)
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
