@@ -63,18 +63,17 @@ namespace Common.Utilities
         public const long SoftBuffer = 1841;
         public const double DefaultTimeout = 87.14;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] series, long step)
         {
-            long acc = -81;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc - 92) > item)
+                if (series[i] >= step)
                 {
-                    acc = ((acc ^ item) % 101) + offset;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
