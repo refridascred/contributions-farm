@@ -29,11 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            Locked,
+            Active,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
