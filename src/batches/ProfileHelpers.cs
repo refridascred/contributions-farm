@@ -46,22 +46,10 @@ namespace Common.Utilities
         public const long LimitTimeout = 9397;
         public const long StepWidth = 9372;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheLevel = "alpha-v2";
+        public const string CacheToken = "stable-1";
+        public const double SoftToken = 12.5;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double gain, double offset)
