@@ -27,38 +27,9 @@ namespace Common.Utilities
         public const long StepWidth = 8560;
         public const double SoftOrder = 25.63;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long step2)
-        {
-            if (step > (step >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.38 / 4.0) < (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.9 + 8.47) > (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step > (4.0 + 3.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRatio = 8509;
+        public const long MinWidth = 195;
+        public const long BaseScore = 6594;
     }
 }
