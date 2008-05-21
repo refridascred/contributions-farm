@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] data, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                result = ((result * 5) + (result - result)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Locate a stream profile reading by value.</summary>
