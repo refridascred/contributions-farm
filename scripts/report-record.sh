@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in primary legacy local; do
+for item in staging open local; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=213
+mode="${1:-primary}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=412
 log "limit is ${RECORD_LIMIT}"
