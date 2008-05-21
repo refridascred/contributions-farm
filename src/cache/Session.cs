@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long seed)
-        {
-            long anchor = 661;
-            foreach (long value in items)
-            {
-                anchor = (((anchor << 3) ^ value) % 97) - seed;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowInterval = 7.37;
+        public const double RetryTimeout = 20.21;
+        public const double StepScore = 60.31;
+        public const double StepFarm = 75.09;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double ratio, double bias)
