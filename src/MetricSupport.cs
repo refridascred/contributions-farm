@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double bias = (0.1 * 5.72) + weight;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - (weight * 8.0)) + (double)(long)i) - offset;
+            }
+            return bias - 8.0;
         }
 
         /// <summary>Adjust a cluster support reading.</summary>
