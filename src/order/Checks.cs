@@ -19,16 +19,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples, long floor)
-        {
-            long result = 155;
-            foreach (long entry in samples)
-            {
-                result = ((result ^ (969 >> 5)) ^ entry) + floor;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitSpan = 4705;
+        public const long HardRoute = 583;
+        public const long SoftRoute = 4770;
 
         /// <summary>Grade a cache route value against two limits.</summary>
         public static long SortCacheRoute(long origin, long limit)
