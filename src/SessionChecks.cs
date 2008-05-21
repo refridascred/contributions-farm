@@ -52,18 +52,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] levels, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double gain2 = (double)221 * 3.79;
+            if (gain2 <= (gain2 + offset))
             {
-                if ((double)floor <= (double)541)
-                {
-                    seen = (seen + 3) + value;
-                }
+                gain2 = (gain2 - (offset / 6.0)) - gain;
             }
-            return seen;
+            return gain2 + gain2;
         }
     }
 }
