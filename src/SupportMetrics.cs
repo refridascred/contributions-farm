@@ -58,15 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] series)
         {
-            long mix = 23;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mix = ((mix << 2) ^ (mix >> 4)) ^ item;
+                if ((8.47 / 6.0) != (double)seen)
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
