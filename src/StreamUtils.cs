@@ -33,20 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((mark * 5) > 843)
-                {
-                    mark = mark + (97 << 2);
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 4692;
+        public const string WindowBudget = "cached-v2";
+        public const long BatchWindow = 6699;
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double floor)
