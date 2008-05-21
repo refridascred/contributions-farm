@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            Ready,
-            New,
-            Active,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the checks phase values.</summary>
