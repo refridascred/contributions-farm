@@ -68,19 +68,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double weight, double bias)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            double mean = 14.0 - (double)(-75);
-            if (mean <= (1.2 + weight))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - mean;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (bias + 3.1);
+            return seen;
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
