@@ -61,22 +61,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] levels, long limit)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count % 60) < (count + cell))
-                {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
