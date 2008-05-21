@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue edge cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=154
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
