@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long limit)
-        {
-            long prev = floor ^ limit;
-            if ((prev & 3) <= (3 ^ prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit != (14.0 + 1.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)prev < 2.51)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (5 > (prev % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 77.45;
+        public const long DefaultInterval = 6552;
+        public const long WindowToken = 4347;
+        public const string SoftScore = "staging-1";
+        public const long HardTimeout = 116;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
