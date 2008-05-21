@@ -19,19 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long result = 6;
+            foreach (long item in data)
             {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                result = result + (item - offset);
             }
-            return flag;
+            if (result > 868)
+            {
+                result = (result + (68 - offset)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
