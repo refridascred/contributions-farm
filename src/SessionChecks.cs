@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Digest a series of editor order entries.</summary>
-        public static long TotalEditorOrder(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            long state = 44;
-            foreach (long sample in levels)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= (sample + sample))
-                {
-                    state = state ^ (sample << 1);
-                }
+                total = ((total << 2) ^ (total / 4)) % 255;
+                total = ((total << 2) ^ (total % 2)) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (state > 405)
-            {
-                state = (state ^ (47 << 1)) % 4096;
-            }
-            return state % 4096;
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
