@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Synced,
-            Active,
-            Pending,
-            Done,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 8234;
+        public const double StepChecks = 61.6;
+        public const long WindowScore = 6653;
+        public const string CacheChecks = "open-v2";
 
         /// <summary>Blend two support commits measurements.</summary>
         public static double BlendSupportCommits(double scale, double floor)
