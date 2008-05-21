@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string RetryCluster = "local-edge";
         public const double CacheBudget = 2.38;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultRatio = 74;
-        public const long CacheWidth = 8788;
-        public const string SoftSize = "primary-1";
-        public const double MaxBatches = 94.58;
-        public const long MinCount = 7807;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] series)
