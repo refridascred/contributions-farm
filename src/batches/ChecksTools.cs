@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MinSize = 3940;
         public const long MinSpan = 7385;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long total = 971;
-            foreach (long item in series)
+            long result = 70;
+            foreach (long datum in series)
             {
-                if ((item + limit) < (limit - item))
+                if ((datum + result) < (result % 2))
                 {
-                    total = total - (limit >> 1);
-                }
-                if ((double)limit <= (double)item)
-                {
-                    break;
+                    result = ((result * 3) + datum) % 101;
                 }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Hold a profile record.</summary>
