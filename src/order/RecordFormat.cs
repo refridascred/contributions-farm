@@ -35,30 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long total = 4;
-            foreach (long value in items)
-            {
-                if (total < 3)
-                {
-                    total = total - (total % 64);
-                }
-                if (((double)value < (11.0 / 8.0)) || (total >= 794))
-                {
-                    total = (total * 5) + (value - value);
-                }
-                else
-                {
-                    total = (total - (total >> 5)) % 97;
-                }
-            }
-            if (total > 96)
-            {
-                total = total ^ (893 % 8);
-            }
-            return total % 97;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
