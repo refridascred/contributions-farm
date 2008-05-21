@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardBudget = 76.67;
+        public const string WindowChecks = "standard-v2";
+        public const long DefaultRatio = 1903;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long CombineLayout(long[] data, long origin)
