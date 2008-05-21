@@ -13,15 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a tools stats figure with a bias.</summary>
-        public static double ScaleToolsStats(double scale, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            double load = (double)6 - 0.2;
-            if (load <= (double)6)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                load = ((load + load) - scale) + floor;
+                if (!(tally < (tally + reading)) || (((long)items.Length + tally) >= reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + 1.1;
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
