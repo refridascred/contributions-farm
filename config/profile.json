@@ -1,5 +1,5 @@
 {
-  "idle_retries_count": "eu-west",
-  "cache_window": 63.83,
-  "base_size_count": 36
+  "buffer_interval": "stable",
+  "min_size_count": "latest",
+  "entry_delay": false
 }
