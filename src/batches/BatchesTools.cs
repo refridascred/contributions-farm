@@ -23,10 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "legacy-1";
-        public const long DefaultBudget = 1853;
-        public const long BaseEntry = 4813;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] data, long bound)
