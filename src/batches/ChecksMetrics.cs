@@ -39,13 +39,11 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 3199;
+        public const string BurstRatio = "primary-1";
+        public const double BatchFarm = 81.85;
+        public const long BaseFarm = 2466;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long target)
