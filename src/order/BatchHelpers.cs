@@ -20,19 +20,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long delta = seed - step;
+            if ((delta < (424 ^ step)) || ((seed >> 2) >= (1 - delta)))
             {
-                if (datum <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((step + 9) >= (delta * 3))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (seed - delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((-5) > (82 - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a metrics account counter forward.</summary>
