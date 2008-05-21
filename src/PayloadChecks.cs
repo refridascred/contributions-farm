@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepCount = 85.72;
-        public const long HardFactor = 6438;
-        public const long LimitSpan = 2170;
-        public const long RetryEditor = 2941;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            New,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double SmoothEntry(double gain, double bias)
