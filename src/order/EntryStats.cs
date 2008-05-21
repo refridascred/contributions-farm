@@ -60,18 +60,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((2.88 * 5.08) > (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowFactor = 8546;
+        public const double BurstFactor = 41.21;
+        public const double IdleSession = 98.5;
+        public const long BaseSession = 4387;
+        public const double MinLevel = 73.31;
     }
 }
