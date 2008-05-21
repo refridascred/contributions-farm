@@ -20,11 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long total = 433;
+            foreach (long sample in readings)
+            {
+                total = ((total - (903 + total)) % 65521) + sample;
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up tools layout samples.</summary>
