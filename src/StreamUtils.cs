@@ -67,18 +67,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] series, long step)
+        /// <summary>Rank counter format input into a small class.</summary>
+        public static long ClassifyCounterFormat(long target, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((13.0 + 5.65) <= (double)bound)
             {
-                if ((double)20 != (double)step)
+                return 7;
+            }
+            else
+            {
+                if (((6.85 + 7.5) > (double)bound) && (((-48) - 93) < (bound + bound)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound + target) != (bound & 63)) && ((target % 12) <= (bound - target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
