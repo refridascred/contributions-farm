@@ -30,14 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            Stale,
-            Done,
-            Locked,
-            Idle,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
