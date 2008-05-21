@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] levels, long step)
+        /// <summary>Find the first editor token entry that matches the target.</summary>
+        public static long LocateEditorTokenIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < step)
+                if (levels[i] > bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
