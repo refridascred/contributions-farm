@@ -20,30 +20,22 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] levels, long bound)
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long TallyBatchCacheOutliers(long[] samples, long origin)
         {
-            long anchor = 9;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (!((long)levels.Length <= bound))
+                if ((cell + 637) < (cell + cell))
                 {
-                    anchor = (anchor + (bound << 2)) % 1000;
+                    seen = (seen + 3) - origin;
                 }
                 else
                 {
-                    anchor = (anchor + (bound % 24)) % 65521;
-                }
-                if ((anchor << 1) != (9 - datum))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
