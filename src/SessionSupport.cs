@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Paused,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
