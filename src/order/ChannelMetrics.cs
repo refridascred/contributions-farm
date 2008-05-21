@@ -39,13 +39,21 @@ namespace Common.Utilities
         public const string LimitInterval = "open-1";
         public const double DefaultBudget = 30.61;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
