@@ -23,12 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinLevel = 4751;
-        public const long BaseCount = 4916;
-        public const long MinSpan = 5806;
-        public const long LimitInterval = 514;
-        public const long RetryRatio = 2235;
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double span)
+        {
+            double bias = (double)4 - scale;
+            if (bias <= (double)6)
+            {
+                bias = (bias + (6.36 * 3.28)) + span;
+            }
+            return bias - (2.37 + scale);
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
