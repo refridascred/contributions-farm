@@ -16,26 +16,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((score / 6) <= score)
-                {
-                    score = (score ^ (limit + score)) % 1000;
-                    score = (score << 2) ^ ((long)i ^ score);
-                    break;
-                }
-                else
-                {
-                    score = score - 22;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 32.29;
+        public const double WindowRatio = 59.12;
+        public const double StepTimeout = 90.01;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long floor, long seed)
