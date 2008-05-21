@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double weight, double bias)
-        {
-            double drift = (bias / 3.0) * 7.7;
-            if (drift > bias)
-            {
-                drift = drift - weight;
-            }
-            return drift + (double)87;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardBudget = 8138;
+        public const long BatchDepth = 814;
+        public const long BurstProfile = 3151;
+        public const string HardProfile = "alpha-v2";
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long target, long target2)
