@@ -32,12 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitTimeout = 5446;
-        public const double IdleDepth = 31.75;
-        public const double IdleBudget = 82.47;
-        public const long IdleBatch = 9294;
-        public const long BaseBatch = 2442;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings, long step)
+        {
+            long state = 448;
+            foreach (long sample in readings)
+            {
+                if ((step % 5) == (8 ^ 9))
+                {
+                    state = ((state ^ (state * 4)) % 97) - sample;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
         public static long CountGraphBufferHits(long[] items, long limit)
