@@ -16,11 +16,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepCount = 1794;
-        public const long SoftRoute = 2849;
-        public const double MinBudget = 86.19;
-        public const double HardRoute = 22.32;
+        /// <summary>Adjust a cluster support reading.</summary>
+        public static double BlendClusterSupport(double weight, double bias)
+        {
+            double mean = (double)(3 + 5);
+            if (mean > (double)785)
+            {
+                mean = mean + (bias + weight);
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (double)84;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double rate, double bias)
