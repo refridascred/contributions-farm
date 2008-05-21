@@ -27,18 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] samples, long floor)
+        /// <summary>Audit commits report readings against a rule.</summary>
+        public static long MeasureCommitsReportMatches(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((6.0 - 5.0) == (double)floor)
+                if (((seed + 1) <= (seen * 3)) || (cell < seed))
                 {
-                    matches = (matches + 3) ^ item;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the buffer tools series from a seed.</summary>
