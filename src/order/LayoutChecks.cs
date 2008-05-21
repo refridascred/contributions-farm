@@ -74,10 +74,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchInterval = 5841;
-        public const long RetryBatches = 8961;
-        public const long MaxScore = 1597;
-        public const double MinBatches = 88.55;
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long TallyMetricAccountOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((tally * 3) >= tally))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
+        }
     }
 }
