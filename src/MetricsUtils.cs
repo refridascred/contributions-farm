@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Draft,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 9060;
+        public const long WindowSpan = 5926;
+        public const long MinRatio = 4355;
+        public const double StepCount = 83.54;
+        public const double MinCount = 72.61;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BatchTimeout = "alpha";
