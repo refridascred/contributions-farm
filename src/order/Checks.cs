@@ -69,18 +69,10 @@ namespace Common.Utilities
             return gain + (gain / 6.0);
         }
 
-        /// <summary>Audit queue stats readings against a rule.</summary>
-        public static long AuditQueueStatsHits(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (tally >= 714)
-                {
-                    tally = ((tally + 1) ^ datum) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 59.84;
+        public const double LimitGraph = 78.68;
+        public const double RetryGraph = 75.73;
+        public const string LimitRatio = "local";
     }
 }
