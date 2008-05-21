@@ -17,12 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowLevel = 7781;
-        public const long DefaultTimeout = 3298;
-        public const long StepFactor = 8716;
-        public const long MinFormat = 4653;
-        public const long MaxFormat = 4854;
+        /// <summary>Project the next metric order value.</summary>
+        public static double SmoothMetricOrder(double rate, double bias)
+        {
+            double ratio = (double)(2 + (-7));
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (((ratio + ratio) + (double)(long)i) + rate) - bias;
+            }
+            return ratio + (double)56;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] series)
