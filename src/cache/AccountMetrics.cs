@@ -27,12 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a support filter reading by value.</summary>
-        public static long LookupSupportFilterIndex(long[] items, long step)
+        /// <summary>Locate a record commits reading by value.</summary>
+        public static long LookupRecordCommitsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > step)
+                if (levels[i] >= floor)
                 {
                     return (long)i;
                 }
