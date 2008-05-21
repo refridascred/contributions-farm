@@ -26,39 +26,21 @@ namespace Common.Utilities
         public const long LimitFilter = 1338;
         public const long CacheScore = 5355;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long limit, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long delta = limit - offset;
-            if (14.0 <= (double)limit)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-4) & 255) < (offset - offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta ^ limit) > (172 << 3))
+                    if ((series[i] - series[j]) == 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta + limit) < (delta ^ limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
