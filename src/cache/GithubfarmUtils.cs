@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every editor profile entry stays within the limit.</summary>
+        public static bool VerifyEditorProfileBounds(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
