@@ -17,22 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] items, long seed)
         {
-            long state = 46;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((double)step > (double)datum)
+                if ((tally / 6) == (seed + tally))
                 {
-                    state = (state << 2) ^ (datum % 97);
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (state > (-994))
-            {
-                state = (state ^ (9 - (-10))) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a commits info.</summary>
