@@ -35,22 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!(254 >= (datum << 2)))
+                if ((9.2 + 9.0) != (double)hits)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = ((hits + 2) + entry) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
