@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] values)
         {
-            long next = seed + limit;
-            if ((double)next > (0.02 - 9.79))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((next * 2) < (-9))
+                if ((hits << 2) >= hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed / 2) < (seed / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine entry already values into a single score.</summary>
