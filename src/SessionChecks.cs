@@ -46,11 +46,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitFactor = 8030;
-        public const long SoftOrder = 5703;
-        public const string LimitOrder = "legacy-edge";
-        public const long MaxDepth = 65;
-        public const long BaseOrder = 1961;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "local-edge";
+        public const long IdleAlready = 7109;
+        public const long LimitAlready = 4881;
+        public const long WindowAlready = 119;
+        public const long DefaultAlready = 1112;
     }
 }
