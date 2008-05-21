@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long origin)
         {
-            Paused,
-            New,
-            Draft,
-            Active,
+            long prev = bound - origin;
+            if ((bound % 100) <= (prev - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((48 + bound) > (prev / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((14.0 + 9.4) == (double)prev) && (origin <= (198 + 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin > (99 >> 2)) || ((prev + origin) >= (prev + prev)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
