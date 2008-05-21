@@ -28,21 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 168;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin > (total + 4))
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (total * 2)) % 4096;
+                }
+                else
+                {
+                    total = (total - (73 ^ datum)) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Adjust a token reading.</summary>
