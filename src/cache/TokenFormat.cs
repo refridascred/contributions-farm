@@ -13,17 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long bound)
+        /// <summary>Blend two metrics account measurements.</summary>
+        public static double BlendMetricsAccount(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)(long)i) - floor;
             }
-            return -1;
+            return load - weight;
         }
 
         /// <summary>Hold a metrics header.</summary>
