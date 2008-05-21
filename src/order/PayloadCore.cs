@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long floor)
         {
-            long score = 3;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)samples.Length >= (5.0 * 9.0))
+                if (samples[i] >= floor)
                 {
-                    score = ((score * 3) + (value * 3)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (offset + (long)samples.Length)) % 97;
+                    return (long)i;
                 }
             }
-            if (score < 6)
-            {
-                score = (score * 2) + ((long)samples.Length + offset);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of context payload entries.</summary>
