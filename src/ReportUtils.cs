@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultRatio = 74;
+        public const long CacheWidth = 8788;
+        public const string SoftSize = "primary-1";
+        public const double MaxBatches = 94.58;
+        public const long MinCount = 7807;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] series)
