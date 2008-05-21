@@ -55,19 +55,24 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Grade a payload window value against two limits.</summary>
+        public static long RankPayloadWindow(long seed, long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if ((double)seed > (6.3 + 3.0))
             {
-                if (datum <= target)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) > (seed % 8))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
