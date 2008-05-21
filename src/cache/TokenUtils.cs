@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)seen == (8.73 - 0.33))
+                if ((650 ^ cell) >= (217 - cell))
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
