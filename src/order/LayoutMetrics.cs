@@ -35,11 +35,14 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            Pending,
+            Done,
+            Locked,
+            Idle,
+            Retry,
         }
     }
 }
