@@ -1,8 +1,6 @@
 {
-  "cache_threshold_count": "legacy",
-  "filter_window": 7517,
-  "min_ratio_pct": [367, 285, 422],
-  "min_size_pct": 5139,
-  "sync_size_ms": 12,
-  "cache_ttl_ms": 42.83
+  "readonly": 65,
+  "sync_timeout_ms": [445, 370],
+  "retry_capacity": "edge",
+  "flush_retries": true
 }
