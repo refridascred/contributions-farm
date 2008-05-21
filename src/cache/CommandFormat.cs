@@ -62,14 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] levels, long target)
         {
-            Active,
-            Done,
-            Queued,
-            Ready,
-            Idle,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
