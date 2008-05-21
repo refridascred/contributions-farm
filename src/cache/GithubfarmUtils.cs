@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
