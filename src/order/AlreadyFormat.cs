@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value > origin)
+                if ((double)floor >= (double)entry)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
