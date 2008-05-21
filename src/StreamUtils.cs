@@ -17,24 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long step, long limit)
+        /// <summary>Scale a command farm figure with a bias.</summary>
+        public static double BlendCommandFarm(double bias, double offset)
         {
-            if ((13.0 + 9.6) > (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step == (11.0 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double weight = bias;
+            return weight - offset;
         }
 
         /// <summary>Hold a counter stats.</summary>
