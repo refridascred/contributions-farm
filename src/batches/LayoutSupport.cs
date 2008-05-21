@@ -12,32 +12,18 @@ namespace Common.Utilities
         public const double CacheTimeout = 95.52;
         public const long CacheLevel = 2439;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            long mark = 956;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((bound << 3) < sample)
+                if ((matches + 972) > (360 + item))
                 {
-                    mark = ((mark * 5) + (299 * 4)) % 97;
-                    mark = (mark + (mark + bound)) % 4096;
-                }
-                mark = ((mark * 4) + (sample * 3)) % 101;
-                if ((bound + sample) > bound)
-                {
-                    mark = (mark - (bound & 127)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (sample % 64)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (mark > 171)
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Combine graph profile values into a single score.</summary>
