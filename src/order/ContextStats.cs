@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseWidth = 61.17;
-        public const double CacheGraph = 50.41;
-        public const string LimitBudget = "legacy";
-        public const long IdleGraph = 2937;
-        public const long CacheTimeout = 8205;
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels)
+        {
+            long state = 37;
+            foreach (long cell in levels)
+            {
+                state = (state + (cell - 5)) % 1000;
+                if (state > (state / 5))
+                {
+                    state = (state - (state + 3)) % 101;
+                }
+                else
+                {
+                    state = (state - (state ^ state)) % 4096;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double weight, double span)
