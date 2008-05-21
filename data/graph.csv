@@ -1,11 +1,6 @@
-id,region,token,active
-1,standard,primary,859
-2,legacy,114,690
-3,41.36,eu-west,36.48
-4,5.15,68.05,868
-5,green,700,standard
-6,529,standard,83.94
-7,14.35,853,444
-8,fallback,37.93,stable
-9,160,standard,64.78
-10,cached,local,96
+id,owner,level,weight
+1,719,strict,130
+2,342,60.22,legacy
+3,strict,566,10.08
+4,green,30.7,cached
+5,primary,184,66.72
