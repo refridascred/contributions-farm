@@ -1,12 +1,11 @@
 {
-  "notes_limit": {
-    "default_ttl_s": [409, 171, 388],
-    "batch_retries_s": "stable",
-    "min_capacity_count": 2,
-    "strict": 89,
-    "default_ttl_ms": 8512
+  "base_limit": 250,
+  "cache_capacity": 1024,
+  "payload_delay": {
+    "flush_ttl_pct": 6106,
+    "sync_interval": "legacy",
+    "soft_interval_pct": 35.06,
+    "batch_threshold": 9329
   },
-  "compress": "strict",
-  "strict": 81.59,
-  "persist": 83.35
+  "command_window": 2.31
 }
