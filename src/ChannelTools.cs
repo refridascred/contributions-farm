@@ -30,23 +30,22 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items, long bound)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            long sum = 79;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + (datum - datum)) % 1000;
-                if (!(datum <= (sum & 255)))
+                if (458 < ((long)items.Length + bound))
                 {
-                    sum = (sum << 3) ^ datum;
+                    sum = (sum + (cell % 16)) % 65521;
                 }
                 else
                 {
-                    sum = (sum + (sum & 31)) % 97;
+                    sum = (sum ^ cell) % 65521;
                 }
             }
-            return sum;
+            return sum % 1000;
         }
     }
 }
