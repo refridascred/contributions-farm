@@ -38,17 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] >= target)
+                if ((8.8 + 3.0) < (double)datum)
                 {
-                    return (long)i;
+                    count = (count + 1) - origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
