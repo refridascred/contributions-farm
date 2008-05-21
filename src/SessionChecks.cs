@@ -28,13 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the token channel entries that pass the check.</summary>
+        public static long MeasureTokenChannelMatches(long[] levels)
         {
-            New,
-            Ready,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits % 16) >= hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
