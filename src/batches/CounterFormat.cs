@@ -57,20 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long bound)
         {
-            long total = 75;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + 567) % 255;
-                if (((entry + total) < (total ^ total)) && (total > 2))
+                if (readings[i] == bound)
                 {
-                    total = (total ^ (total + (-8))) % 1000;
+                    return (long)i;
                 }
-                total = (total * 4) + (entry ^ (-527));
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
