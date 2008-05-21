@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the metrics farm entries that pass the check.</summary>
-        public static long TallyMetricsFarmOutliers(long[] data)
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool VerifyWindowChecksLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)value == (7.4 / 6.0))
+                if (item >= limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of support entries.</summary>
