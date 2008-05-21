@@ -62,9 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseSpan = "fallback-1";
-        public const long SoftBatches = 7835;
-        public const long BaseBatches = 742;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Active,
+            Done,
+            Queued,
+            Ready,
+            Idle,
+        }
     }
 }
