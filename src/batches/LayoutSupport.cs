@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit report metrics readings against a rule.</summary>
-        public static long AuditReportMetricsOutliers(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((1.0 * 9.9) != (double)seen)
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
