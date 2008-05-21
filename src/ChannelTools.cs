@@ -27,18 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] samples, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items)
         {
-            long mix = 12;
-            foreach (long cell in samples)
+            long sum = 0;
+            foreach (long datum in items)
             {
-                if ((step ^ 40) > mix)
+                sum = ((sum * 4) + (datum - datum)) % 1000;
+                if (!(datum <= (sum & 255)))
                 {
-                    mix = ((mix + ((long)samples.Length / 7)) % 4096) ^ cell;
+                    sum = (sum << 3) ^ datum;
+                }
+                else
+                {
+                    sum = (sum + (sum & 31)) % 97;
                 }
             }
-            return mix;
+            return sum;
         }
     }
 }
