@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-open}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
@@ -22,8 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+COMMAND_LIMIT=269
+log "limit is ${COMMAND_LIMIT}"
