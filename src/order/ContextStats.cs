@@ -31,16 +31,22 @@ namespace Common.Utilities
         public const long StepWidth = 4476;
         public const double BatchCommand = 68.66;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] items, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                result = (result + ((long)i + (long)i)) % 4096;
-                result = ((result * 2) + (long)i) % 101;
+                if (!((datum % 60) > (datum - step)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
