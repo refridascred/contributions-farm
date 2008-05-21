@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] readings, long seed)
+        /// <summary>Validate token layout readings against a bound.</summary>
+        public static bool CheckTokenLayoutLimits(long[] series, long step)
         {
-            long acc = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                acc = (((acc << 3) ^ (seed + 93)) % 97) ^ reading;
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
