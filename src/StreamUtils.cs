@@ -40,19 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] items, long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
