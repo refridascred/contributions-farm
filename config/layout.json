@@ -1,11 +1,15 @@
 {
-  "stats_capacity": 46,
-  "command_interval": true,
-  "flush_interval": "latest",
-  "poll_depth": 100,
-  "verbose": {
-    "min_interval": "open",
-    "sync_capacity_s": 49.08,
-    "tools_window": [439, 238, 204, 154]
-  }
+  "sync_timeout_ms": "blue",
+  "poll_threshold": 58.67,
+  "channel_size": [416, 22],
+  "batch_window_ms": true,
+  "hard_depth": {
+    "retry_interval_ms": "staging",
+    "default_delay_count": 4367,
+    "default_threshold_count": ["fallback", "cached", "blue", "edge"],
+    "notes_window": 8353,
+    "idle_interval_s": true,
+    "flush_size_pct": ["standard", "legacy"]
+  },
+  "enabled": 8816
 }
