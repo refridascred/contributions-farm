@@ -1,7 +1,16 @@
 {
-  "flush_delay": 30,
-  "hard_delay_ms": "latest",
-  "cache_ttl_s": true,
-  "sync_window_count": 53.81,
-  "report_ratio": "latest"
+  "enabled": false,
+  "record_size": 5337,
+  "flush_depth_count": 612,
+  "flush_timeout_count": {
+    "idle_threshold_pct": {
+      "compress": "legacy",
+      "poll_interval": ["strict", "green", "cached"],
+      "default_timeout_count": 183
+    },
+    "warm_limit_pct": true,
+    "strict": 7,
+    "metrics_depth": "green",
+    "soft_delay_pct": 92.32
+  }
 }
