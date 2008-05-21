@@ -1,6 +1,5 @@
 {
-  "warm_timeout_count": "fallback",
-  "flush_delay_count": "primary",
-  "support_size": "fallback",
-  "flush_window": 19.72
+  "batch_retries_count": "legacy",
+  "cache_delay": 7497,
+  "batch_threshold": 18
 }
