@@ -30,16 +30,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a stream batches counter forward.</summary>
-        public static long RollStreamBatches(long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result * 2) + (target & 63);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the checks kind values.</summary>
