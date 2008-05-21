@@ -1,11 +1,20 @@
 # support settings
-checks_retries: 7
-base_delay_ms:
-  - latest
-  - green
-  - green
-  - green
-compress: local
-tools_window: eu-west
-metric_limit: 1024
-max_timeout_count: blue
+enabled: 500
+counter_interval: 77.38
+readonly:
+  stats_depth:
+    sync_delay_pct: 2644
+    batch_ratio_count:
+      - standard
+      - strict
+      - blue
+    sync_threshold_s: blue
+    default_threshold_pct: 50.92
+  metrics_capacity: 60
+  persist: false
+  dry_run: true
+  commits_size:
+    - 485
+    - 279
+sync_ttl: open
+soft_capacity: true
