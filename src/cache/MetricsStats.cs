@@ -42,13 +42,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long carry = 87;
+            foreach (long cell in values)
+            {
+                carry = ((((carry << 2) ^ carry) % 65521) + cell) - limit;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
