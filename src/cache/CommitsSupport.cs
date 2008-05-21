@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
