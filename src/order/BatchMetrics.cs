@@ -52,11 +52,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
