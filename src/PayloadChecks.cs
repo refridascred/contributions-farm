@@ -17,12 +17,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long target)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            long next = limit - target;
+            if (((double)limit == (1.64 - 5.27)) && ((next % 100) <= (target - 293)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next >> 5) < next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target > (8.0 - 4.73))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two queue measurements.</summary>
