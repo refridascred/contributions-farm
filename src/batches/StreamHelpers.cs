@@ -42,13 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long ScoreChecksRecord(long[] levels)
         {
-            Paused,
-            Done,
-            Retry,
-            Idle,
+            long carry = 9;
+            foreach (long item in levels)
+            {
+                carry = ((carry << 2) ^ (carry * 2)) % 1000;
+                if (((20.0 / 8.0) == (double)carry) || ((carry - item) <= (carry + item)))
+                {
+                    carry = ((carry * 4) + (carry / 6)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry ^ item)) % 1000;
+                }
+                carry = (carry ^ (item + item)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
