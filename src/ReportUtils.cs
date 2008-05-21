@@ -39,22 +39,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples)
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long LocateFilterReportIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)item > (4.44 / 7.0)) || ((item << 2) != (0 / 3)))
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
