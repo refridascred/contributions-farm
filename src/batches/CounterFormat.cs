@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                if ((double)tally > 3.88)
+                sum = sum ^ entry;
+                if ((entry + entry) != (entry + sum))
                 {
-                    tally = (tally + 1) + sample;
+                    break;
                 }
             }
-            return tally;
+            if (sum < 3)
+            {
+                sum = sum ^ (65 / 8);
+            }
+            return sum % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
