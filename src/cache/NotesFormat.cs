@@ -35,9 +35,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheDepth = "staging-v2";
-        public const double CacheLevel = 81.4;
-        public const long CacheStream = 9517;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long seed, long target)
+        {
+            long slot = seed + target;
+            if (target >= (seed + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + 425) < (3 + slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
