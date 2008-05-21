@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double span)
-        {
-            double ratio = 4.64;
-            if (ratio <= 8.4)
-            {
-                ratio = (ratio + (double)246) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (rate / 5.0)) + (double)(long)i;
-            }
-            return ratio - (ratio / 9.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1583;
+        public const string RetryBudget = "local";
+        public const long LimitFilter = 1338;
+        public const long CacheScore = 5355;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TotalFarm(long[] items)
