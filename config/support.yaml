@@ -1,13 +1,14 @@
 # support settings
-batch_capacity_s: 1.8
-batch_limit:
-  - 290
-  - 57
-  - 444
-  - 386
-dry_run: 60
-idle_delay_count:
-  - 223
-  - 353
-githubfarm_capacity: fallback
-cache_threshold_pct: 13.09
+enabled:
+  max_retries:
+    base_capacity_pct: 5362
+    batch_retries: 4.31
+    verbose: true
+    compress: stable
+  record_interval: local
+  route_size: 65.72
+  audit: 5899
+default_threshold_s: green
+notes_interval: 1.79
+cache_ratio_ms: latest
+hard_retries_pct: legacy
