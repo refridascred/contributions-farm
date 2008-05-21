@@ -37,23 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data, long step)
+        /// <summary>Check that every entry session entry stays within the limit.</summary>
+        public static bool VerifyEntrySessionBounds(long[] items, long origin)
         {
-            long result = 258;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                result = ((result << 3) ^ (5 + sample)) - step;
-                if ((543 ^ 9) >= result)
+                if (reading != origin)
                 {
-                    result = (result + (result % 60)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 2) + (sample & 63)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
