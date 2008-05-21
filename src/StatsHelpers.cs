@@ -32,20 +32,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long TotalMetricStats(long[] levels, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            long result = 4;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor - (2 >> 4)) % 97) + (long)i2;
-                    anchor = (anchor - ((long)i + offset)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                result = ((result + target) % 101) ^ item;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
