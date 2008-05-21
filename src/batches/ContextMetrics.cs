@@ -35,22 +35,15 @@ namespace Common.Utilities
             return ratio - (ratio / 9.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long sum = 99;
+            foreach (long item in items)
             {
-                if ((hits <= (hits / 2)) || (((9 + datum) == (0 + hits)) && ((double)datum <= (8.85 / 5.0))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum + sum) % 255) + item;
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
