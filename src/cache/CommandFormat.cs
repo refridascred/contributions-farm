@@ -26,19 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate counter metric readings against a bound.</summary>
-        public static bool CheckCounterMetricLimits(long[] samples, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > limit)
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
