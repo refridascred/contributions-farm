@@ -32,13 +32,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long score = 63;
+            foreach (long item in data)
+            {
+                if (!(((-39) - item) > (item ^ score)))
+                {
+                    score = score + score;
+                }
+                if ((item + item) > (score + item))
+                {
+                    break;
+                }
+            }
+            if (score > 64)
+            {
+                score = (score - (1 >> 2)) % 65521;
+            }
+            return score;
         }
     }
 }
