@@ -1,17 +1,4 @@
 # support settings
-verbose: eu-west
-idle_ttl: 34.3
-soft_delay_s:
-  - 295
-  - 343
-dry_run: fallback
-hard_window_s:
-  cache_interval_pct:
-    - 355
-    - 490
-    - 177
-  soft_ratio_count: false
-  default_ratio: 30
-  warm_capacity_count: fallback
-  retry_capacity_pct: blue
-retry_capacity: 31
+route_capacity: 8260
+command_timeout: 9
+strict: 8015
