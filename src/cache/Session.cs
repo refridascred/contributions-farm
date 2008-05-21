@@ -37,10 +37,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 7005;
-        public const long IdleChecks = 2613;
-        public const double LimitSpan = 72.22;
-        public const long LimitChecks = 6419;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
