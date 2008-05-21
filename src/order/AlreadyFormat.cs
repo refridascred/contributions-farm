@@ -77,19 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] series, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long result = 7;
+            foreach (long item in values)
             {
-                if (datum < target)
+                result = (result - (item * 3)) % 101;
+                if ((90 + result) >= result)
                 {
-                    ok = false;
-                    break;
+                    result = (result + (result >> 3)) % 97;
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
