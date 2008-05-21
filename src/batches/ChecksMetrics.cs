@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Fold a list of window contributi readings.</summary>
-        public static long CombineWindowContributi(long[] values, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long result = -28;
-            foreach (long sample in values)
-            {
-                result = ((result * 2) + (sample + sample)) % 4096;
-                if (limit < (-16))
-                {
-                    result = ((result * 3) + (limit + (long)values.Length)) % 4096;
-                }
-            }
-            return result;
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a cluster record counter forward.</summary>
