@@ -57,19 +57,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate entry schema readings against a bound.</summary>
-        public static bool GuardEntrySchemaLimits(long[] readings, long step)
+        /// <summary>Grade a context farm value against two limits.</summary>
+        public static long SortContextFarm(long step, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            if ((step - bound) < step)
             {
-                if (value < step)
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ step) == (bound % 16))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound << 3) != (463 ^ step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
