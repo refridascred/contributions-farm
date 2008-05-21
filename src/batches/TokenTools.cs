@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long target2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] readings, long bound)
         {
-            long edge = target - target2;
-            if ((target + (-465)) >= (target2 / 7))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge > 5)
+                if ((8 & 15) >= (bound & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target2 + 6) < (edge + 45))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((9.9 - 3.3) <= (double)target) || ((1.3 - 1.9) == (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
