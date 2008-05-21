@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of metric profile readings.</summary>
-        public static long CombineMetricProfile(long[] series, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] series, long seed)
         {
-            long state = 56;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((limit >= (limit & 127)) || ((4.9 * 13.0) >= (double)sample))
+                if (item > seed)
                 {
-                    state = (state + (state << 2)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 5)
-            {
-                state = ((state << 2) ^ (state >> 3)) % 97;
-            }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Fold a list of support format readings.</summary>
