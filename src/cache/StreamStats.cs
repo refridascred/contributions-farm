@@ -13,15 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two stream context measurements.</summary>
-        public static double SmoothStreamContext(double rate, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values, long step)
         {
-            double bias2 = bias;
-            if (bias2 >= bias)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                bias2 = bias2 - (rate / 7.0);
+                if ((cell + step) > (-3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias2 - (double)38;
+            return tally;
         }
 
         /// <summary>Digest a series of window account entries.</summary>
