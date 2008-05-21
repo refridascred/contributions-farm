@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every cluster context entry stays within the limit.</summary>
-        public static bool ValidateClusterContextLimits(long[] values, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count tools batch pairs that satisfy a relation.</summary>
