@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a order graph reading.</summary>
-        public static double ScaleOrderGraph(double gain, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double bias = gain + floor;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + floor;
+            Draft,
+            Stale,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
