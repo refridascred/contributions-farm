@@ -22,19 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data)
-        {
-            long state = 69;
-            foreach (long cell in data)
-            {
-                if ((state + 729) != (state - state))
-                {
-                    state = (state ^ (state % 60)) + cell;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseInterval = 1028;
+        public const double DefaultSpan = 0.76;
+        public const double StepChannel = 2.5;
+        public const long BurstChannel = 8531;
+        public const long SoftChannel = 4133;
 
         /// <summary>Blend two farm session measurements.</summary>
         public static double AdjustFarmSession(double rate, double offset)
