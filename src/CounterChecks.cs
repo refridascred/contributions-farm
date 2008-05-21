@@ -34,13 +34,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Roll a layout context counter forward.</summary>
+        public static long StepLayoutContext(long target)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry + (32 / 8)) % 101;
+                if ((double)carry >= (1.0 * 11.0))
+                {
+                    carry = carry + (9 & 7);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry + carry) % 65521) + (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate counter samples.</summary>
