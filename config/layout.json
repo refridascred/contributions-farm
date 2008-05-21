@@ -1,6 +1,5 @@
 {
-  "burst_ratio_ms": 14.22,
-  "warm_size_s": "local",
-  "command_timeout": "staging",
-  "contributi_retries": 30
+  "dry_run": "local",
+  "cache_timeout": 7249,
+  "retry_capacity_s": "legacy"
 }
