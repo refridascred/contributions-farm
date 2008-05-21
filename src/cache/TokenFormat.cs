@@ -13,13 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            Done,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
