@@ -24,19 +24,12 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples, long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long score = 36;
-            foreach (long value in samples)
-            {
-                score = ((score << 3) ^ (value >> 3)) - seed;
-            }
-            if (score < 23)
-            {
-                score = ((score << 2) ^ 7) % 1000;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
