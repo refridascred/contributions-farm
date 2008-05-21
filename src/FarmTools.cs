@@ -15,21 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up command format samples.</summary>
-        public static long PairCommandFormatCount(long[] levels)
+        /// <summary>Accumulate session stream samples.</summary>
+        public static long CombineSessionStream(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 6;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix % 64) == (19 - cell))
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 5) + (cell % 7);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
