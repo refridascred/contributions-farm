@@ -31,39 +31,19 @@ namespace Common.Utilities
         public const double MinToken = 58.07;
         public const long StepToken = 3802;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long origin, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long offset)
         {
-            long span = origin ^ offset;
-            if ((431 % 16) <= span)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) <= (offset * 2))
+                if (cell >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset > (4.81 - 2.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset > (origin + span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
