@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((586 << 1) < hits) || (((bound + bound) >= (bound & 3)) || ((double)bound > (double)hits)))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
