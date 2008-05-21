@@ -33,17 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix * 2) + mix;
-                mix = ((mix * 4) + ((long)i - mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
