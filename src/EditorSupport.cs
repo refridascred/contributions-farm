@@ -58,10 +58,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheLevel = 9136;
-        public const long LimitScore = 9098;
-        public const long CacheFactor = 8247;
-        public const long BatchSpan = 2861;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Draft,
+            Paused,
+            Queued,
+        }
     }
 }
