@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable standard green; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-fallback}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=127
+for item in green open; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=471
 log "limit is ${BUFFER_LIMIT}"
