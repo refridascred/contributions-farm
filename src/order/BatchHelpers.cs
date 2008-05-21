@@ -20,12 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 92.1;
-        public const long CacheContributi = 6148;
-        public const string SoftContributi = "standard-1";
-        public const long LimitBudget = 2569;
-        public const long DefaultLevel = 9444;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "local-v2";
+        public const double LimitFormat = 34.61;
+        public const long SoftFormat = 2186;
+        public const string BaseSize = "legacy-v2";
 
         /// <summary>Roll a metrics account counter forward.</summary>
         public static long IterateMetricsAccount(long floor)
