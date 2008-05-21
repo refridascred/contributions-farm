@@ -53,15 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long sample in values)
             {
-                if (((item - tally) != (7 ^ item)) || ((double)item < 3.3))
+                if ((sample ^ 74) <= tally)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
