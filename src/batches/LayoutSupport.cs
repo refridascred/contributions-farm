@@ -65,10 +65,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSpan = 5908;
-        public const long RetryLevel = 3920;
-        public const long IdleWidth = 4608;
-        public const long StepTools = 8351;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state - (state / 9)) % 65521;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
