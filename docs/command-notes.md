@@ -1,10 +1,12 @@
 # Command notes
 
-The cluster report groups every commits by notes.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Keep farm and tools names short and lowercase.
+Each already is validated before it reaches the payload queue.
+A cache that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Log every report change
 - Prefer report defaults
-- Document new channel fields
+- Keep buffer values small
+- Log every checks change
+- Document new metrics fields
