@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of support session entries.</summary>
+        public static long CombineSupportSession(long[] samples)
         {
-            New,
-            Active,
-            Retry,
+            long state = 334;
+            foreach (long value in samples)
+            {
+                if ((double)value >= (1.1 + 3.9))
+                {
+                    break;
+                }
+                if ((value / 4) <= (0 - value))
+                {
+                    state = (state ^ state) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two route measurements.</summary>
