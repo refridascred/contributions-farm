@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 5813;
-        public const long MinStream = 8500;
-        public const double LimitBudget = 19.95;
+        /// <summary>Audit record graph readings against a rule.</summary>
+        public static long AuditRecordGraphMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen << 1) >= reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long limit)
