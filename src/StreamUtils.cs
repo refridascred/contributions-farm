@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)(long)samples.Length <= (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
