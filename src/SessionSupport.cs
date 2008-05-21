@@ -24,12 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] samples, long step)
         {
-            Stale,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 7) == (tally / 6))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
     }
 }
