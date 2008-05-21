@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings)
         {
-            if ((518 % 60) > limit)
+            long mark = 83;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit + limit))
+                if ((entry * 3) < (entry & 1))
                 {
-                    return 0;
+                    mark = (mark - (mark / 4)) % 97;
                 }
                 else
                 {
-                    if ((limit + limit) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit >= (offset * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = mark ^ 82;
                 }
             }
+            if (mark < 4)
+            {
+                mark = (mark - (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the metric mode values.</summary>
