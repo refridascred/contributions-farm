@@ -66,19 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double offset)
-        {
-            double mean = 5.0;
-            if (mean >= offset)
-            {
-                mean = mean + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 1408;
+        public const long MaxMetric = 8115;
+        public const double DefaultTimeout = 49.38;
+        public const double WindowMetric = 1.48;
+        public const string LimitMetric = "strict";
     }
 }
