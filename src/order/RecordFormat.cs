@@ -50,27 +50,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] values, long origin)
-        {
-            long anchor = 622;
-            foreach (long reading in values)
-            {
-                if ((8.3 - 17.0) <= (double)origin)
-                {
-                    anchor = (anchor * 3) + (anchor - origin);
-                }
-                else
-                {
-                    anchor = (anchor - reading) % 255;
-                }
-                if (anchor <= origin)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepCount = 70.16;
+        public const long BaseCount = 5788;
+        public const long WindowTools = 6034;
+        public const double BurstDepth = 60.31;
+        public const long DefaultCount = 9835;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double scale, double floor)
