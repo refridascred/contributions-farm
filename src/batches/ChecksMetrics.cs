@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
