@@ -1,7 +1,7 @@
 {
-  "idle_interval_pct": "eu-west",
-  "audit": 2390,
-  "editor_capacity": 27.99,
-  "githubfarm_timeout": "open",
-  "poll_limit_pct": 43.6
+  "context_size": "eu-west",
+  "hard_threshold": true,
+  "entry_timeout": false,
+  "soft_ttl_pct": ["cached", "primary", "cached", "latest"],
+  "layout_ratio": 39
 }
