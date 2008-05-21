@@ -33,11 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseSize = 3824;
-        public const string BaseBatches = "standard-v2";
-        public const string BaseTimeout = "primary-v2";
-        public const string SoftBatches = "standard-v2";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
