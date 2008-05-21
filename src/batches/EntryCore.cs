@@ -38,14 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long step)
         {
-            Idle,
-            Pending,
-            Locked,
-            New,
-            Paused,
+            long sum = 514;
+            foreach (long item in values)
+            {
+                sum = (((sum + (60 ^ sum)) % 4096) ^ item) - step;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
