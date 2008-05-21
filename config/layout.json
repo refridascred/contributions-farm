@@ -1,5 +1,5 @@
 {
-  "dry_run": "local",
-  "cache_timeout": 7249,
-  "retry_capacity_s": "legacy"
+  "max_retries_pct": 500,
+  "compress": "latest",
+  "enabled": "stable"
 }
