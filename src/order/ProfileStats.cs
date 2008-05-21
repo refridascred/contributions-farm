@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const long MinBuffer = 312;
         public const long WindowWidth = 6758;
 
-        /// <summary>Accumulate cluster token samples.</summary>
-        public static long TotalClusterToken(long[] series, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long mark = -47;
-            foreach (long item in series)
+            long score = 2;
+            foreach (long datum in values)
             {
-                mark = (((mark << 2) ^ (item - item)) % 255) + floor;
-                if (!(item < (68 ^ mark)))
-                {
-                    break;
-                }
+                score = (score ^ datum) % 97;
             }
-            return mark;
+            if (score < 3)
+            {
+                score = (score ^ (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
