@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            long mix = -27;
-            foreach (long item in levels)
-            {
-                if ((target - item) > target)
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-            }
-            if (mix < 399)
-            {
-                mix = (mix << 2) ^ (mix / 4);
-            }
-            return mix;
+            double drift = bias + bias;
+            return (drift + (double)592) + weight;
         }
 
         /// <summary>Adjust a context reading.</summary>
