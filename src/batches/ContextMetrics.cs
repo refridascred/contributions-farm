@@ -53,11 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 19.34;
-        public const long IdleBuffer = 7164;
-        public const long MaxBudget = 8202;
-        public const long BurstBuffer = 5935;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((-18) + limit) > (cell >> 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine account githubfarm values into a single score.</summary>
         public static long CombineAccountGithubfarm(long[] samples)
