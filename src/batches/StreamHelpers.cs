@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stream profile reading by value.</summary>
-        public static long LookupStreamProfileIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepSize = 1005;
+        public const string BurstBatches = "stable-v2";
+        public const long IdleRatio = 690;
+        public const string BaseBudget = "stable-edge";
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long offset, long origin)
