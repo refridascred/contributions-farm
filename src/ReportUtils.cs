@@ -19,22 +19,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metrics route entries.</summary>
-        public static long TotalMetricsRoute(long[] series)
+        /// <summary>Audit token payload readings against a rule.</summary>
+        public static long TallyTokenPayloadGaps(long[] levels)
         {
-            long acc = -65;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((acc - 65) < (entry - entry))
+                if (reading <= (25 / 8))
                 {
-                    acc = acc + (acc + 8);
+                    count = count + 1;
                 }
                 else
                 {
-                    acc = (acc + (entry & 7)) % 65521;
+                    count = count - 1;
                 }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Describe the layout mode values.</summary>
