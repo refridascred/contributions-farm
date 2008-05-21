@@ -28,16 +28,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 1853;
         public const long BaseEntry = 4813;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                carry = carry ^ (seed % 7);
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((bound << 2) == (638 % 97))
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
