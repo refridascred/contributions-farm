@@ -34,22 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] data)
+        /// <summary>Find the first command report entry that matches the target.</summary>
+        public static long FindCommandReportIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((8.52 - 7.0) == (double)matches) && ((matches - matches) == (matches + matches)))
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
