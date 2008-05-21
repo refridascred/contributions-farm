@@ -37,17 +37,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (limit < (bound / 7))
             {
-                if (readings[i] == step)
+                return 5;
+            }
+            else
+            {
+                if (((limit - bound) > limit) && ((9.9 + 5.21) >= (double)limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (limit >= (bound + 71))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
