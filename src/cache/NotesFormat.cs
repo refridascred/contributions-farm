@@ -19,14 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long target)
         {
-            Retry,
-            Idle,
-            Closed,
-            Stale,
-            Synced,
+            if (!((target & 31) == (target ^ floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.37 * 7.4) != (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor - target) >= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a profile contributi reading.</summary>
