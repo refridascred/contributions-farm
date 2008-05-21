@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] levels, long limit)
         {
-            Failed,
-            Closed,
-            Active,
-            Queued,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((limit << 2) == (tally * 4))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
