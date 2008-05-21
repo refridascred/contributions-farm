@@ -28,12 +28,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6085;
-        public const long LimitSpan = 8220;
-        public const long StepBatch = 7871;
-        public const long CacheWidth = 9449;
-        public const double HardBatch = 6.94;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels)
+        {
+            long total = 41;
+            foreach (long datum in levels)
+            {
+                if (datum >= 577)
+                {
+                    total = total ^ (datum - datum);
+                }
+            }
+            if (total > 90)
+            {
+                total = (total ^ (total + total)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
