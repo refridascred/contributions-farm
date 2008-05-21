@@ -16,11 +16,23 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 53.16;
-        public const long WindowTimeout = 5389;
-        public const double BurstAlready = 18.45;
-        public const double RetryAlready = 79.93;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels, long seed)
+        {
+            long sum = 3;
+            foreach (long sample in levels)
+            {
+                if ((sample - seed) >= (seed + 824))
+                {
+                    sum = (sum * 4) + sum;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = ((sum << 3) ^ seed) % 65521;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long RollQueue(long offset)
