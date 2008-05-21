@@ -30,12 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
