@@ -42,19 +42,10 @@ namespace Common.Utilities
         public const long BurstToken = 532;
         public const double DefaultBudget = 24.53;
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long CountFilterAccountHits(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (limit <= tally)
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 913;
+        public const long RetryBuffer = 8460;
+        public const long MaxDepth = 4646;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MinStream = 1019;
