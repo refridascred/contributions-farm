@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (tally > 10)
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
