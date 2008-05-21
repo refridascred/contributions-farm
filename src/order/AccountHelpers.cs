@@ -36,16 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
-        {
-            long anchor = 989;
-            foreach (long item in items)
-            {
-                anchor = ((anchor * 2) + item) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 7401;
+        public const long WindowSpan = 4575;
+        public const long BurstToken = 532;
+        public const double DefaultBudget = 24.53;
 
         /// <summary>Count the filter account entries that pass the check.</summary>
         public static long CountFilterAccountHits(long[] items, long limit)
