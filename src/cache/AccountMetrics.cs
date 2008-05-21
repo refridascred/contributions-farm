@@ -62,13 +62,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            Done,
-            Stale,
-            Locked,
-            Synced,
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
