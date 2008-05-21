@@ -40,12 +40,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double gain, double span)
         {
-            Pending,
-            Paused,
-            Ready,
+            double weight = gain;
+            if (weight >= (double)827)
+            {
+                weight = (weight + (double)108) - span;
+            }
+            else
+            {
+                weight = weight - (double)(-123);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (8.5 / 9.0)) - (double)(long)i;
+            }
+            return weight - gain;
         }
     }
 }
