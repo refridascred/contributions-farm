@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            if ((origin ^ step) < step)
             {
-                if (((double)acc < (double)15) || ((acc << 1) <= (limit + (long)i)))
-                {
-                    acc = acc - 77;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (origin >= (origin % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
