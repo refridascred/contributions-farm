@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinDepth = 3265;
-        public const long IdleCount = 3719;
-        public const long IdleEditor = 1544;
-        public const double SoftEditor = 22.23;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double ratio, double bias)
