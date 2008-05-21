@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] levels, long step)
         {
-            Closed,
-            Pending,
-            Dropped,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (matches <= (matches + 158))
+                {
+                    matches = ((matches + 3) ^ value) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema mode values.</summary>
