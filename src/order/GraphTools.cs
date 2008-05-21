@@ -38,15 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Locked,
-            Active,
-            Paused,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 93.11;
+        public const long LimitRatio = 5506;
+        public const long MaxCluster = 5543;
+        public const string SoftSpan = "cached-1";
+        public const long CacheCount = 3910;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchOutliers(long[] levels)
