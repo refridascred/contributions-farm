@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((hits % 8) >= datum) || (((492 - 38) > datum) && ((datum & 3) >= (hits - hits))))
+                if ((mix + mix) > (target << 2))
                 {
-                    hits = hits + 2;
+                    mix = (mix - (long)i) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the entry status values.</summary>
