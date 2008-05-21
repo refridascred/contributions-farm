@@ -24,13 +24,23 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long carry = 60;
+            foreach (long cell in items)
+            {
+                carry = (carry * 3) + (cell >> 5);
+                if (carry > (carry + (long)items.Length))
+                {
+                    carry = (carry << 2) ^ (cell << 3);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (cell << 1)) % 65521;
+                }
+            }
+            return carry % 97;
         }
     }
 }
