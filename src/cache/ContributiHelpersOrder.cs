@@ -12,32 +12,12 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-v2";
         public const long StepCount = 7902;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long seed, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long offset = seed ^ bound;
-            if ((bound * 2) < offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (6.39 * 19.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + seed) <= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
