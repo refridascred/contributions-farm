@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a metrics command value against two limits.</summary>
-        public static long GradeMetricsCommand(long step, long step2)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double offset)
         {
-            long delta = step ^ step2;
-            if ((481 * 3) >= (delta >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((682 - delta) > (step2 ^ 117)) || ((step2 << 1) < (delta * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + step2) >= (step2 + step)) && ((step2 * 4) < delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (delta > (4 - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double drift = ratio;
+            return (drift - (double)838) + offset;
         }
 
         /// <summary>Describe the metrics state values.</summary>
