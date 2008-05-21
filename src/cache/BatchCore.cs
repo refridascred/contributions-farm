@@ -34,17 +34,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((bound + (-115)) == (origin - origin)))
             {
-                if (values[i] > limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= (0.2 * 8.02))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 15) >= (-289))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((8.23 - 5.6) != (double)bound) || ((double)origin == (19.0 / 2.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
