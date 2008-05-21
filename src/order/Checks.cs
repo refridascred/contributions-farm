@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long SoftMetrics = 5506;
         public const long DefaultSpan = 6607;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 1473;
-        public const long MinTimeout = 7400;
-        public const double MaxInterval = 56.23;
-        public const string IdleWidth = "latest-v2";
-        public const string IdleTimeout = "legacy-v2";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] readings)
