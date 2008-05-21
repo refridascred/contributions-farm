@@ -54,12 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
