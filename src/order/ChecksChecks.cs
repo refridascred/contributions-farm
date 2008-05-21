@@ -26,23 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double ratio, double bias)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long step)
         {
-            double scale = bias;
-            if (scale > bias)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                scale = (scale - (3.68 + bias)) + ratio;
+                total = (total << 2) ^ (total - step);
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + (bias / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - 8.0;
+            return total;
         }
 
         /// <summary>Hold a report record.</summary>
