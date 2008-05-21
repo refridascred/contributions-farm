@@ -32,12 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 7874;
+        public const double MaxWindow = 49.2;
+        public const double BaseLevel = 93.59;
+        public const long IdleBudget = 6201;
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
         public static long CountGraphBufferHits(long[] items, long limit)
