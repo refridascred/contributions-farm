@@ -1,8 +1,16 @@
 {
-  "idle_depth_pct": false,
-  "record_threshold": 52,
-  "flush_capacity": 60,
-  "graph_size": "stable",
-  "base_retries_ms": "strict",
-  "soft_timeout": [166, 83, 381]
+  "base_delay_ms": {
+    "soft_depth_count": "green",
+    "idle_retries_pct": 75.76,
+    "retry_delay_pct": 7,
+    "idle_delay": 60,
+    "already_size": {
+      "poll_retries": false,
+      "base_limit_s": "green",
+      "warm_delay": 35
+    },
+    "audit": 66.47
+  },
+  "audit": 37.53,
+  "buffer_window": "fallback"
 }
