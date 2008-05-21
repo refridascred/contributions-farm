@@ -38,10 +38,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 5421;
-        public const long MaxBudget = 6728;
-        public const double BatchInterval = 93.13;
-        public const long WindowProfile = 9297;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
