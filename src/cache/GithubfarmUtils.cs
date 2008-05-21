@@ -16,22 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long anchor = -9;
-            foreach (long cell in values)
-            {
-                if (!((cell << 2) <= cell))
-                {
-                    anchor = anchor ^ cell;
-                }
-            }
-            if (anchor > 82)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 97;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
