@@ -30,13 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
