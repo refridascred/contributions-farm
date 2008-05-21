@@ -1,36 +1,11 @@
 # support settings
-persist:
-  flush_size: 93.81
-  batch_depth_ms: 77
-  retry_threshold: strict
-  audit:
-    verbose: 1024
-    stats_timeout: 44.26
-    readonly: eu-west
-    counter_depth: eu-west
-  strict:
-    idle_timeout: 51
-    retry_interval_s: true
-    min_interval_s: 92
-    verbose: 8299
-    hard_window_count:
-      - 334
-      - 315
-  githubfarm_delay: fallback
-profile_timeout: 52.08
-default_timeout_s: 37.97
-batch_window:
-  batch_size_pct: strict
-  batch_capacity_ms:
-    poll_depth_count:
-      - 297
-      - 430
-    compress: fallback
-    channel_threshold: primary
-    hard_ttl_pct: 4569
-  cache_interval_s:
-    strict: legacy
-    persist: 43.49
-    warm_limit: true
-    compress: green
-    queue_capacity: false
+checks_retries: 7
+base_delay_ms:
+  - latest
+  - green
+  - green
+  - green
+compress: local
+tools_window: eu-west
+metric_limit: 1024
+max_timeout_count: blue
