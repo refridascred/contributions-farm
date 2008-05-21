@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up notes farm samples.</summary>
-        public static long PairNotesFarmCount(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits <= 18.0)
                 {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) + sample) + limit;
                 }
             }
             return hits;
