@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const double MaxSpan = 11.82;
         public const long IdleScore = 3070;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 8549;
-        public const double MaxBuffer = 85.64;
-        public const double HardBuffer = 54.16;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Match up command channel samples.</summary>
         public static long MatchCommandChannelCount(long[] readings)
