@@ -30,18 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((11 / 3) != (long)levels.Length)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
