@@ -31,22 +31,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] readings, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] series)
         {
-            long total = 3;
-            foreach (long entry in readings)
+            long score = 4;
+            foreach (long datum in series)
             {
-                if ((double)step >= 6.1)
+                if ((datum % 60) < (datum + score))
                 {
-                    total = total - (entry + 5);
+                    score = (score + (score / 4)) % 1000;
+                }
+                else
+                {
+                    score = (score + datum) % 65521;
                 }
             }
-            if (total < 3)
+            if (score > (-6))
             {
-                total = (total - total) % 65521;
+                score = (score + (800 + score)) % 97;
             }
-            return total % 4096;
+            return score;
         }
     }
 }
