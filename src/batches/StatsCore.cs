@@ -58,10 +58,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseFactor = 17.4;
-        public const long WindowStream = 514;
-        public const long IdleStream = 8522;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
