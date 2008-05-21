@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double bias, double span)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double rate = (span - 9.02) + (9.68 / 8.0);
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 2.22) + (double)(long)i;
-            }
-            return rate - bias;
+            New,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
