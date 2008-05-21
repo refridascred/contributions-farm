@@ -23,21 +23,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Fold a list of support format readings.</summary>
+        public static long ScoreSupportFormat(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total ^ (total + 745)) - reading) + origin;
             }
-            return hits;
+            if (total > 3)
+            {
+                total = total - (total >> 1);
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster status values.</summary>
