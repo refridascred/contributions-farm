@@ -43,19 +43,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long result = 484;
-            foreach (long cell in readings)
-            {
-                result = ((result * 5) + (cell - 7)) % 101;
-            }
-            if (result > 861)
-            {
-                result = result - (result << 3);
-            }
-            return result;
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
