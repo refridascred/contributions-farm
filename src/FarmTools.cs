@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < bound)
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Project the next commits value.</summary>
