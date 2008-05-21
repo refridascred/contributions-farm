@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every stream account entry stays within the limit.</summary>
-        public static bool GuardStreamAccountBounds(long[] series, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long score = -85;
+            foreach (long cell in samples)
             {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = score + (cell >> 4);
             }
-            return ready;
+            if (score > (-918))
+            {
+                score = ((score << 2) ^ (score ^ offset)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
