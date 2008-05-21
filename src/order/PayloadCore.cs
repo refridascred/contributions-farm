@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long floor)
         {
-            double scale = gain;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale - (double)3) + (double)(long)i) - span;
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (scale - 3.0);
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
