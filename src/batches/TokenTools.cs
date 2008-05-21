@@ -26,15 +26,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
