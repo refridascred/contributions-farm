@@ -22,21 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score / 6) <= score)
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ (limit + score)) % 1000;
+                    score = (score << 2) ^ ((long)i ^ score);
+                    break;
                 }
+                else
+                {
+                    score = score - 22;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Rank session input into a small class.</summary>
