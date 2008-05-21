@@ -39,25 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches payload readings.</summary>
-        public static long DigestBatchesPayload(long[] data, long origin)
+        /// <summary>Check that every profile window entry stays within the limit.</summary>
+        public static bool VerifyProfileWindowLimits(long[] values, long origin)
         {
-            long sum = 15;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                double gain = 3.8 - (2.57 * 2.4);
-                if ((gain - gain) <= (2.81 + gain))
+                if (datum > origin)
                 {
-                    sum = ((sum - (0 & 127)) % 65521) + origin;
-                    sum = (sum + (datum % 5)) % 255;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    gain = gain - 9.66;
-                }
-                sum = ((sum << 3) ^ 3) % 4096;
             }
-            return sum % 4096;
+            return valid;
         }
     }
 }
