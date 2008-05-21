@@ -36,23 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            double drift = 1.2 + scale;
-            if (drift >= scale)
+            long count = 0;
+            foreach (long item in data)
             {
-                drift = drift + (double)3;
+                if ((7.0 + 8.91) != (double)(long)data.Length)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift + 2.34;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (offset - offset);
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
