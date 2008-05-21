@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] data, long floor)
         {
-            Closed,
-            Ready,
-            Draft,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((5 + 614) < (count - value))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
