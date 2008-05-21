@@ -16,22 +16,19 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels, long seed)
+        /// <summary>Blend two profile metrics measurements.</summary>
+        public static double AdjustProfileMetrics(double bias, double bias2)
         {
-            long sum = 3;
-            foreach (long sample in levels)
+            double rate = (bias * 3.2) / 5.0;
+            if (rate > (bias2 * 12.0))
             {
-                if ((sample - seed) >= (seed + 824))
-                {
-                    sum = (sum * 4) + sum;
-                }
+                rate = rate + rate;
             }
-            if (sum > 7)
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum << 3) ^ seed) % 65521;
+                rate = (rate - bias2) - (double)(long)i;
             }
-            return sum % 65521;
+            return rate - bias2;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
