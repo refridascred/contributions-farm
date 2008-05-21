@@ -20,22 +20,14 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long TallyBatchCacheOutliers(long[] samples, long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + 637) < (cell + cell))
-                {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
