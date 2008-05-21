@@ -16,12 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long limit2)
         {
-            Failed,
-            Retry,
-            Stale,
+            long edge = limit + limit2;
+            if (((double)edge > (17.0 / 5.0)) && ((limit2 >> 4) < (limit + edge)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge % 5) < (limit / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next record format value.</summary>
