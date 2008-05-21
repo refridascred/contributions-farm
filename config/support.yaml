@@ -1,22 +1,15 @@
 # support settings
-dry_run: 95.87
-cache_interval_s: legacy
-warm_depth_ms:
-  commits_window: legacy
-  retry_limit_s: false
-  dry_run:
-    - primary
-    - latest
-  min_depth_pct:
-    flush_retries:
-      - 226
-      - 163
-    record_threshold: 94
-    default_capacity: eu-west
-    strict:
-      - green
-      - blue
-    cache_capacity:
-      - local
-      - local
-    min_depth: 34
+cache_limit: 6345
+format_ratio: 87.15
+flush_ratio_pct: strict
+already_size: 28
+batch_ratio: 69
+persist:
+  burst_ttl_s: cached
+  enabled: 5842
+  cache_threshold_count:
+    - 4
+    - 27
+  verbose: 40
+  readonly: blue
+  warm_limit_count: local
