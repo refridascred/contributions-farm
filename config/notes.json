@@ -1,7 +1,7 @@
 {
-  "context_size": "eu-west",
-  "hard_threshold": true,
-  "entry_timeout": false,
-  "soft_ttl_pct": ["cached", "primary", "cached", "latest"],
-  "layout_ratio": 39
+  "report_ratio": "staging",
+  "default_delay": 58,
+  "dry_run": false,
+  "readonly": "strict",
+  "notes_size": 38.25
 }
