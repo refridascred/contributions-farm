@@ -24,15 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long total = 433;
-            foreach (long sample in readings)
-            {
-                total = ((total - (903 + total)) % 65521) + sample;
-            }
-            return total % 1000;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up tools layout samples.</summary>
