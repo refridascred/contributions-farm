@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const double RetryFilter = 82.76;
         public const long LimitCount = 1524;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] readings, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)offset != (double)entry)
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
