@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double weight, double floor)
+        /// <summary>Roll a filter graph counter forward.</summary>
+        public static long IterateFilterGraph(long step)
         {
-            double drift = 0.82;
-            if (drift < (19.0 + 6.0))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift - (double)25) + floor;
+                if (!(6.4 <= (double)step))
+                {
+                    mark = (mark + ((long)i + 268)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (weight / 6.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return mark;
         }
 
         /// <summary>Describe the layout mode values.</summary>
