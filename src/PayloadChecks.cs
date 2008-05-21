@@ -68,23 +68,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batch window value from a seed.</summary>
-        public static long SeriesBatchWindow(long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (4.3 >= (double)total)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    total = (total - (314 >> 5)) % 65521;
+                    long seen = ((long)i2 + acc) - (target / 6);
+                    acc = (acc - seen) % 97;
                 }
-                else
-                {
-                    total = ((total * 3) + 82) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
