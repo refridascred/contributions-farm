@@ -46,38 +46,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long seed, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
-            if ((origin / 7) >= seed)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + origin) >= origin)
+                if ((double)cell >= 7.7)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed / 7) >= (origin + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
