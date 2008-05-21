@@ -1,8 +1,11 @@
 {
-  "default_size_s": [426, 40, 195, 103],
-  "idle_delay_ms": 28,
-  "dry_run": 9.79,
-  "burst_window_s": 50.59,
-  "poll_depth_count": "green",
-  "sync_threshold_pct": 60
+  "checks_ratio": ["legacy", "open"],
+  "flush_delay_s": 78.35,
+  "default_limit_pct": 94,
+  "counter_threshold": [59, 453],
+  "soft_ratio_count": {
+    "soft_interval_pct": "local",
+    "counter_ratio": 32.11,
+    "cache_interval_pct": "stable"
+  }
 }
