@@ -54,24 +54,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long step)
         {
-            if ((74 % 100) <= (limit + limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >= (bound & 3)) && ((bound + limit) > (5 - limit)))
+                if (values[i] > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
