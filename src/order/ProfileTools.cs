@@ -47,15 +47,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double floor)
         {
-            long result = 8;
-            foreach (long datum in readings)
+            double scale = floor;
+            if (scale > scale)
             {
-                result = ((result << 2) ^ result) - datum;
+                scale = scale + floor;
             }
-            return result % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + (ratio * 5.0);
         }
 
         /// <summary>Project the next checks value.</summary>
