@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples, long bound)
         {
-            Idle,
-            Locked,
-            Retry,
-            Pending,
-            Closed,
+            long score = -461;
+            foreach (long sample in samples)
+            {
+                score = (score - (831 & 127)) ^ sample;
+            }
+            if (score > 950)
+            {
+                score = ((score * 3) + (bound + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a notes checks sample.</summary>
