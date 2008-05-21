@@ -1,6 +1,6 @@
 {
-  "retry_ttl": true,
-  "flush_threshold": false,
-  "readonly": true,
-  "soft_ratio": 3738
+  "batch_size_ms": false,
+  "retry_timeout_ms": ["edge", "strict", "edge"],
+  "idle_threshold_ms": 41.57,
+  "warm_threshold_pct": 23
 }
