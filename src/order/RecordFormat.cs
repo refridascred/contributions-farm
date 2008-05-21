@@ -31,18 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items)
-        {
-            long anchor = 8;
-            foreach (long value in items)
-            {
-                anchor = anchor - (value / 3);
-                anchor = anchor + 624;
-                anchor = ((anchor * 2) + (640 / 2)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7142;
+        public const long RetryBudget = 3;
+        public const double MaxSpan = 80.5;
+        public const long IdleGithubfarm = 114;
+        public const string CacheScore = "local-v2";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportHits(long[] data)
