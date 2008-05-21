@@ -41,21 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 62;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value >> 3) <= (25 << 3))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 3) + (860 - mix)) - floor;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
