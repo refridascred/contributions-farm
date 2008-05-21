@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many contributi command samples are out of range.</summary>
-        public static long AuditContributiCommandGaps(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 7;
+            foreach (long cell in readings)
             {
-                if ((hits * 5) != ((-199) - hits))
+                if (cell <= (sum << 3))
                 {
-                    hits = (hits + 3) ^ cell;
+                    sum = (sum - sum) % 65521;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Blend two format order measurements.</summary>
