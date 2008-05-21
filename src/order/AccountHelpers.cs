@@ -48,31 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            if ((5 - 653) != (step % 7))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + (-43)) < (seed + seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((14.0 + 14.0) > (double)step)
+                    if ((items[i] + items[j]) > 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
