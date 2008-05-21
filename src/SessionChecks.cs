@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] samples, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] >= bound)
+                if ((double)target <= (7.9 + 9.77))
                 {
-                    return (long)i;
+                    acc = acc ^ (target / 9);
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
