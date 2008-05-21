@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Retry,
-            Failed,
-            Dropped,
+            Stale,
+            Closed,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
