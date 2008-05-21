@@ -26,12 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Validate counter metric readings against a bound.</summary>
+        public static bool CheckCounterMetricLimits(long[] samples, long limit)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
