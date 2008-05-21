@@ -27,20 +27,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a checks farm figure with a bias.</summary>
-        public static double ProjectChecksFarm(double scale, double bias)
-        {
-            double rate = (double)9 * 3.2;
-            if (rate <= bias)
-            {
-                rate = (rate - (double)55) - scale;
-            }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 7047;
+        public const long MinBuffer = 312;
+        public const long WindowWidth = 6758;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
