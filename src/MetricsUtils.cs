@@ -41,12 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
