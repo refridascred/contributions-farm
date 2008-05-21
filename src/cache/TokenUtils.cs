@@ -23,16 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] samples, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                mix = (mix * 3) + (seed + 3);
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (origin > datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the window status values.</summary>
