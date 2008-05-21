@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
+            New,
             Closed,
-            Stale,
-            Synced,
-            Done,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the metric state values.</summary>
