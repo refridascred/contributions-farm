@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseFactor = 446;
+        public const double IdleStream = 7.44;
+        public const double DefaultStream = 91.79;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long floor)
