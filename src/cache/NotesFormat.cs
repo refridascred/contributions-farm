@@ -17,13 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            Ready,
-            Active,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value - value) >= value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
