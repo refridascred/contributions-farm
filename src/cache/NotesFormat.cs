@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long offset)
         {
-            long sum = 17;
-            foreach (long entry in values)
+            if (!((double)limit >= (8.1 + 20.0)))
             {
-                if (((sum & 3) < (sum - entry)) && (sum < (77 * 2)))
+                return 1;
+            }
+            else
+            {
+                if (((5 - offset) < limit) || (limit < (offset * 2)))
                 {
-                    sum = ((sum << 2) ^ entry) % 1000;
-                    sum = (sum ^ (entry + entry)) % 1000;
+                    return 3;
                 }
-                if (((4 % 97) > (sum ^ 2)) || (sum >= entry))
+                else
                 {
-                    sum = (sum << 3) ^ (sum << 1);
+                    if (((7 - limit) < offset) || (((-821) + limit) <= (limit - limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
