@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            New,
-            Pending,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchInterval = 5814;
+        public const long SoftCount = 5581;
+        public const long DefaultBatch = 9441;
+        public const long MaxBatch = 4008;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 3106;
