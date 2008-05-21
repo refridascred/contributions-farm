@@ -1,14 +1,9 @@
 {
-  "flush_ratio_pct": "cached",
-  "soft_limit": 500,
-  "stats_timeout": {
-    "soft_interval": "legacy",
-    "burst_threshold_count": ["stable", "fallback"],
-    "sync_ratio_pct": 48,
-    "idle_limit_count": false,
-    "readonly": [482, 452, 193, 162],
-    "default_threshold_ms": 250
+  "max_threshold_count": {
+    "max_limit": ["primary", "latest", "fallback", "blue"],
+    "cache_limit": 60,
+    "burst_size": ["local", "legacy", "strict", "primary"]
   },
-  "notes_capacity": true,
-  "warm_ttl": "stable"
+  "flush_limit_count": 8221,
+  "audit": ["eu-west", "stable"]
 }
