@@ -16,14 +16,22 @@ namespace Common.Utilities
             return scale - (scale - 3.0);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the window batches entries that pass the check.</summary>
+        public static long MeasureWindowBatchesOutliers(long[] data)
         {
-            Draft,
-            Synced,
-            Paused,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((seen * 2) <= (seen >> 3)) || ((seen + entry) <= (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
