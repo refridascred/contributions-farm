@@ -33,12 +33,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseInterval = 1028;
-        public const double DefaultSpan = 0.76;
-        public const double StepChannel = 2.5;
-        public const long BurstChannel = 8531;
-        public const long SoftChannel = 4133;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Done,
+            Draft,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
