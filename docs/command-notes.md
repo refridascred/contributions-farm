@@ -1,10 +1,11 @@
 # Command notes
 
-Run the profile check before changing any channel limits.
-The channel module keeps graph values in sync with the command cache.
+When a cluster fails, the tools handler retries a few times before giving up.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Each notes is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Prefer context defaults
-- Review commits limits each release
-- Keep metric values small
+- Validate profile input early
+- Document new graph fields
+- Review format limits each release
