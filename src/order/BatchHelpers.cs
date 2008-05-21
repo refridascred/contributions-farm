@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long DigestGraphEditor(long[] series)
         {
-            Closed,
-            Pending,
-            Paused,
+            long sum = 0;
+            foreach (long datum in series)
+            {
+                if (!(sum >= (3 >> 4)))
+                {
+                    sum = (sum - (datum % 97)) % 1000;
+                }
+                sum = sum - (datum >> 3);
+            }
+            return sum;
         }
     }
 }
