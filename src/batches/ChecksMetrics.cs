@@ -53,21 +53,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Roll a cluster record counter forward.</summary>
+        public static long RollClusterRecord(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = state - (state + (-963));
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + (seed + (long)i2);
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    state = ((state ^ 30) % 255) + (long)i3;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
