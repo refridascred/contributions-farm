@@ -55,18 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record layout value from a seed.</summary>
-        public static long DeriveRecordLayout(long target)
+        /// <summary>Measure how many graph buffer samples are out of range.</summary>
+        public static long CountGraphBufferHits(long[] items, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                state = state - (target - target);
-                long span = state % 5;
-                state = (state + span) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((limit - limit) <= (limit + limit))
+                {
+                    matches = (matches + 1) - cell;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
