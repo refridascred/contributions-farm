@@ -27,18 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] levels, long limit)
+        /// <summary>Count the layout filter entries that pass the check.</summary>
+        public static long MeasureLayoutFilterOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value <= (limit - limit))
+                if ((double)entry > (3.0 * 5.0))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
