@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] values, long step)
+        /// <summary>Fold a list of graph channel readings.</summary>
+        public static long ScoreGraphChannel(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long acc = 194;
+            foreach (long cell in data)
             {
-                if ((double)sample != (19.0 + 5.85))
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (((acc << 2) ^ (acc / 4)) % 97) + cell;
             }
-            return seen;
+            if (acc < 402)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
