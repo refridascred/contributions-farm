@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next metric order value.</summary>
-        public static double SmoothMetricOrder(double rate, double bias)
-        {
-            double ratio = (double)(2 + (-7));
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (((ratio + ratio) + (double)(long)i) + rate) - bias;
-            }
-            return ratio + (double)56;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "cached-1";
+        public const string LimitOrder = "staging-edge";
+        public const long StepOrder = 4056;
+        public const long StepWidth = 8560;
+        public const double SoftOrder = 25.63;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long step, long step2)
