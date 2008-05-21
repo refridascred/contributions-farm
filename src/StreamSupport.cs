@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count batches githubfarm pairs that satisfy a relation.</summary>
-        public static long PairBatchesGithubfarmCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -27;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target - item) > target)
                 {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return count;
+            if (mix < 399)
+            {
+                mix = (mix << 2) ^ (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Adjust a context reading.</summary>
