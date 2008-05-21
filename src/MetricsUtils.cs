@@ -27,22 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] samples, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!(92 <= (tally - step)))
+                if ((6.0 - 5.0) == (double)floor)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
