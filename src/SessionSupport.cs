@@ -26,11 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public bool Limit { get; set; }
             public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
