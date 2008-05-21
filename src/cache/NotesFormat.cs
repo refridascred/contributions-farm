@@ -55,19 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report notes reading.</summary>
-        public static double AdjustReportNotes(double gain, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] values, long limit)
         {
-            double scale = (double)(4 + 4);
-            if (scale < (14.0 * 5.48))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                scale = (scale + gain) - span;
+                if (((matches < (sample - 4)) && (limit < (-721))) && ((matches % 10) >= (matches / 4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale - gain;
-            }
-            return scale + (gain / 4.0);
+            return matches;
         }
     }
 }
