@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
