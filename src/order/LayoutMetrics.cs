@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            long carry = 2;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry ^ (origin << 1)) % 255) ^ cell;
+                if ((26 + count) != (80 - entry))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
