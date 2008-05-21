@@ -28,13 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items, long floor)
         {
-            Done,
-            Draft,
-            Queued,
-            Closed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)sample > 2.0))
+                {
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
