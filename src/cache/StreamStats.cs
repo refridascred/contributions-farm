@@ -51,15 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double weight, double floor)
-        {
-            double scale = floor - (weight + weight);
-            if (scale <= (double)31)
-            {
-                scale = scale - (double)8;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowLevel = 2974;
+        public const long MaxStats = 4289;
+        public const string StepInterval = "alpha-1";
+        public const long StepStats = 6548;
     }
 }
