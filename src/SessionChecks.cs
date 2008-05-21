@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double offset)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool GuardChecksCacheLimits(long[] items, long offset)
         {
-            double gain = ratio;
-            if (gain < (gain / 7.0))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                gain = (gain + (double)5) + offset;
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + gain;
+            return stale;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
