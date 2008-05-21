@@ -14,11 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
+            long score = -966;
+            foreach (long item in values)
+            {
+                if ((double)score >= (double)item)
+                {
+                    score = (score + score) % 65521;
+                }
+                if (((score + score) <= item) || (((long)values.Length - item) <= score))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a counter stats.</summary>
