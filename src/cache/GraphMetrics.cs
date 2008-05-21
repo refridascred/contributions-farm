@@ -52,23 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double bias)
+        /// <summary>Audit layout channel readings against a rule.</summary>
+        public static long AuditLayoutChannelHits(long[] values)
         {
-            double drift = bias;
-            if (drift <= bias)
+            long count = 0;
+            foreach (long item in values)
             {
-                drift = (drift - drift) + ratio;
+                if ((count << 1) > (96 >> 1))
+                {
+                    count = (count + 2) - item;
+                }
             }
-            else
-            {
-                drift = drift - (drift * 5.1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (7.0 + 4.0)) - (double)(long)i;
-            }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
