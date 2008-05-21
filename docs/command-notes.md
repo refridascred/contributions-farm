@@ -1,15 +1,14 @@
 # Command notes
 
-When a farm fails, the account handler retries a few times before giving up.
-Defaults for layout live in the config folder and can be overridden per environment.
-Run the stats check before changing any cache limits.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the session queue.
+Use queue settings to tune how often buffer data is refreshed.
 
-The format report groups every notes by route.
-The queue module keeps payload values in sync with the route cache.
-Keep order and metric names short and lowercase.
+Each channel is validated before it reaches the cluster queue.
+Use contributi settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate payload input early
-- Review command limits each release
+- Log every queue change
+- Validate stream input early
+- Prefer counter defaults
