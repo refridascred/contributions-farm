@@ -16,23 +16,12 @@ namespace Common.Utilities
             return scale - (scale - 3.0);
         }
 
-        /// <summary>Count the window batches entries that pass the check.</summary>
-        public static long MeasureWindowBatchesOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((seen * 2) <= (seen >> 3)) || ((seen + entry) <= (seen + seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 4102;
+        public const string SoftWidth = "primary";
+        public const string StepScore = "latest-v2";
+        public const double RetryFormat = 10.57;
+        public const double BaseFormat = 59.65;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 7145;
