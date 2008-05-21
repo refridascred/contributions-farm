@@ -28,17 +28,22 @@ namespace Common.Utilities
             return ratio + (scale * 0.92);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long datum in levels)
             {
-                if (samples[i] > offset)
+                if ((datum & 63) != (276 / 9))
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) % 65521;
+                }
+                if ((1 / 3) < (anchor - anchor))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
