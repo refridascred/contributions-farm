@@ -24,11 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell < (matches ^ matches)) || ((cell + cell) >= (matches + cell))) || ((cell <= (matches + 5)) || (matches >= 282)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report header.</summary>
