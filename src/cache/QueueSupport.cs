@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next order cache value from a seed.</summary>
-        public static long SeriesOrderCache(long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)limit != (double)9)
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
                 {
-                    sum = sum ^ 823;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum ^ (limit - sum);
-                }
-                sum = (sum << 2) ^ (921 >> 4);
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
