@@ -46,10 +46,20 @@ namespace Common.Utilities
         public const long LimitTimeout = 9397;
         public const long StepWidth = 9372;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheLevel = "alpha-v2";
-        public const string CacheToken = "stable-1";
-        public const double SoftToken = 12.5;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double offset)
+        {
+            double drift = offset;
+            if (drift > 19.0)
+            {
+                drift = (drift + (drift / 7.0)) + gain;
+            }
+            else
+            {
+                drift = drift - (7.3 - offset);
+            }
+            return drift + drift;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double gain, double offset)
