@@ -49,12 +49,11 @@ namespace Common.Utilities
             return rate - (12.0 - floor);
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Closed,
-            Done,
-            New,
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
