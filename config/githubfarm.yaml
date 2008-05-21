@@ -1,11 +1,9 @@
 # githubfarm settings
-max_capacity_ms: 5929
-sync_retries_ms: 81.39
-poll_retries_s:
-  strict: 250
-  retry_window: 78.38
-  support_timeout: 28.82
-  retry_interval_s:
-    - 482
-    - 273
-    - 364
+compress: false
+githubfarm_limit:
+  - strict
+  - green
+  - fallback
+min_ratio_count: 100
+cache_size_s: true
+route_retries: 4721
