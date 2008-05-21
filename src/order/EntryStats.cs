@@ -38,19 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] series, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            New,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
