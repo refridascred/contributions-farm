@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "stable-edge";
+        public const long BaseInterval = 1277;
+        public const string LimitOrder = "primary";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] items)
