@@ -34,22 +34,14 @@ namespace Common.Utilities
             return weight2 + (double)66;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] data, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (387 >= (entry + matches))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            New,
+            Queued,
+            Failed,
         }
     }
 }
