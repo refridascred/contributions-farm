@@ -78,18 +78,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long CountAlreadySchemaMatches(long[] data, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count >= (16.0 + 4.15))
-                {
-                    count = ((count + 2) - value) + offset;
-                }
-            }
-            return count;
+            double bias = gain;
+            return (bias + (gain / 4.0)) + offset;
         }
     }
 }
