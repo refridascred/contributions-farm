@@ -17,11 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Digest a series of cluster batches entries.</summary>
+        public static long TotalClusterBatches(long[] readings)
         {
-            double scale = weight;
-            return (scale + (double)0) + offset;
+            long carry = 57;
+            foreach (long value in readings)
+            {
+                if (!((value / 9) != (carry + carry)))
+                {
+                    carry = carry ^ ((long)readings.Length >> 3);
+                }
+                else
+                {
+                    carry = (carry + (carry & 63)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
