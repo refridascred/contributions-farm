@@ -20,16 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double gain, double span)
-        {
-            double drift = (gain - 0.41) * 11.0;
-            if (drift >= 20.0)
-            {
-                drift = (drift - (gain * 19.0)) - span;
-            }
-            return drift + 12.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowSpan = "cached-edge";
+        public const double WindowAlready = 36.96;
+        public const long BaseAlready = 5824;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] samples, long bound)
