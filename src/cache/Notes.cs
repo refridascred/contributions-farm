@@ -50,17 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                load = ((load - (load + load)) + (double)(long)i) - rate;
             }
-            return -1;
+            return load + (load * 8.74);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
