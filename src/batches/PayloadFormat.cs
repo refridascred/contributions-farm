@@ -34,11 +34,15 @@ namespace Common.Utilities
             return load - (9.0 / 8.0);
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Derive the next farm report value from a seed.</summary>
+        public static long StepFarmReport(long floor)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
