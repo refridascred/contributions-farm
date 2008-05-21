@@ -1,7 +1,8 @@
 {
-  "burst_retries": 4962,
-  "sync_capacity": 94,
-  "report_size": [241, 175, 131],
-  "notes_retries": 56.36,
-  "cache_ratio": "stable"
+  "idle_retries_s": 16.66,
+  "batch_retries": 5197,
+  "idle_depth_pct": 250,
+  "dry_run": ["open", "legacy"],
+  "cache_capacity_ms": "primary",
+  "persist": 100
 }
