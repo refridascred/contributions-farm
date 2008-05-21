@@ -13,11 +13,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 68.32;
-        public const string DefaultSize = "cached-edge";
-        public const double HardPayload = 90.77;
-        public const double StepPayload = 42.07;
+        /// <summary>Roll a session filter counter forward.</summary>
+        public static long RollSessionFilter(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 4) + (20 << 1)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] values, long limit)
