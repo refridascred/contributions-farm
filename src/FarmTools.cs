@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const string LimitSupport = "latest";
         public const string BatchSupport = "strict-1";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count & 1) < (reading / 8))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate format readings against a bound.</summary>
