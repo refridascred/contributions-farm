@@ -1,10 +1,15 @@
 {
-  "max_size_pct": {
-    "notes_ratio": ["strict", "primary"],
-    "audit": [432, 308, 418, 197],
-    "cache_capacity": 500
-  },
-  "cluster_threshold": "edge",
-  "flush_retries_count": 97.93,
-  "enabled": 32.5
+  "soft_timeout_pct": 68.18,
+  "batch_ratio_s": 30,
+  "flush_ttl": true,
+  "session_ttl": false,
+  "soft_capacity_count": "edge",
+  "warm_window_s": {
+    "sync_retries_s": 78.69,
+    "account_size": "legacy",
+    "dry_run": "fallback",
+    "default_ttl": "standard",
+    "idle_delay_pct": "blue",
+    "verbose": 250
+  }
 }
