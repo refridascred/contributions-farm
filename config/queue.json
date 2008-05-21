@@ -1,9 +1,6 @@
 {
-  "soft_interval_s": {
-    "verbose": ["local", "blue"],
-    "strict": 43,
-    "default_delay_s": ["legacy", "primary", "stable", "standard"]
-  },
-  "window_capacity": 56.2,
-  "enabled": 10.32
+  "max_limit": false,
+  "filter_interval": "blue",
+  "stream_limit": "standard",
+  "cluster_threshold": true
 }
