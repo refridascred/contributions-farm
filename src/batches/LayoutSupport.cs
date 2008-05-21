@@ -34,21 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Scale a payload batch figure with a bias.</summary>
+        public static double BlendPayloadBatch(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = rate;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - floor) - (double)(long)i;
             }
-            return tally;
+            return ratio + floor;
         }
 
         /// <summary>Describe the channel state values.</summary>
