@@ -24,25 +24,13 @@ namespace Common.Utilities
         public const long HardRoute = 583;
         public const long SoftRoute = 4770;
 
-        /// <summary>Grade a cache route value against two limits.</summary>
-        public static long SortCacheRoute(long origin, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long offset = origin ^ limit;
-            if (((origin - offset) == (limit / 5)) || ((double)offset == (2.0 + 9.8)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((705 & 1) < (offset & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Accumulate stream profile samples.</summary>
