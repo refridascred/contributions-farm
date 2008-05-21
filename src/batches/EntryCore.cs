@@ -23,25 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long seed, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels, long offset)
         {
-            long gap = seed - offset;
-            if ((double)gap >= (double)offset)
+            long sum = 21;
+            foreach (long entry in levels)
             {
-                return 5;
+                sum = ((sum + (sum + offset)) % 101) - entry;
             }
-            else
+            if (sum < 0)
             {
-                if (seed < (offset * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                sum = (sum + (sum >> 5)) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Describe the graph class values.</summary>
