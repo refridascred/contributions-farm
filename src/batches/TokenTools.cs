@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long BaseInterval = 7645;
         public const long SoftBatch = 7451;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = 352;
+            foreach (long datum in items)
             {
-                if (!((matches * 4) <= (matches - reading)))
+                if (datum <= (sum >> 5))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum - (datum * 3)) % 101;
                 }
             }
-            return matches;
+            if (sum > 702)
+            {
+                sum = ((sum * 5) + (limit / 9)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
