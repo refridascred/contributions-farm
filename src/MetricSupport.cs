@@ -25,16 +25,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double rate, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            double load = bias;
+            if (load >= (rate - bias))
             {
-                state = (state - (long)i) % 1000;
-                state = ((state * 4) + (long)i) % 65521;
+                load = load + bias;
             }
-            return state;
+            else
+            {
+                load = load + (1.9 * 13.0);
+            }
+            return load + (9.44 - 2.0);
         }
     }
 }
