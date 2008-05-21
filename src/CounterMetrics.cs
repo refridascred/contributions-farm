@@ -14,19 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double bias = 1.0;
-            if (bias > (7.3 * 8.6))
-            {
-                bias = (bias + 1.61) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + scale) + (double)(long)i;
-            }
-            return bias + scale;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine token entry values into a single score.</summary>
