@@ -29,31 +29,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank account layout input into a small class.</summary>
-        public static long RankAccountLayout(long floor, long seed)
-        {
-            if (((-380) - floor) != (floor & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - seed) <= (seed + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor < 11.0) && ((floor % 16) < (-991)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxRatio = 6851;
+        public const long IdleWindow = 1082;
+        public const double WindowCount = 69.28;
+        public const long BaseTimeout = 8078;
     }
 }
