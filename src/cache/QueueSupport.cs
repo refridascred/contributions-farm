@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit layout command readings against a rule.</summary>
-        public static long TallyLayoutCommandMatches(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((47 / 6) != (value ^ 5))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxWidth = "open-v2";
+        public const double LimitDepth = 13.24;
+        public const long SoftCache = 7141;
+        public const long WindowFactor = 8849;
+        public const string CacheInterval = "legacy-1";
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
         public static bool ValidateSessionFilterRange(long[] readings, long target)
