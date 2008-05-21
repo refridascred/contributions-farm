@@ -49,15 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] data, long seed)
         {
-            double gain2 = (double)221 * 3.79;
-            if (gain2 <= (gain2 + offset))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                gain2 = (gain2 - (offset / 6.0)) - gain;
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain2 + gain2;
+            return ready;
         }
     }
 }
