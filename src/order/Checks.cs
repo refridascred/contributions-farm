@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long sum = 7;
-            foreach (long cell in readings)
-            {
-                if (cell <= (sum << 3))
-                {
-                    sum = (sum - sum) % 65521;
-                }
-            }
-            return sum % 1000;
+            Pending,
+            Active,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define route limits and defaults.</summary>
