@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long offset)
         {
-            long sum = 784;
-            foreach (long cell in samples)
+            long score = 3;
+            foreach (long value in samples)
             {
-                if ((cell & 15) >= target)
+                if ((double)(long)samples.Length >= (5.0 * 9.0))
                 {
-                    sum = (sum << 3) ^ (target >> 3);
+                    score = ((score * 3) + (value * 3)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (offset + (long)samples.Length)) % 97;
                 }
             }
-            return sum % 4096;
+            if (score < 6)
+            {
+                score = (score * 2) + ((long)samples.Length + offset);
+            }
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
