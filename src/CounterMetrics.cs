@@ -37,26 +37,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine token entry values into a single score.</summary>
-        public static long TallyTokenEntry(long[] series, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series)
         {
-            long score = 33;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((double)score != (0.52 + 5.98)))
+                if (((3.0 + 7.0) > (double)matches) || (((459 % 97) != (matches - matches)) && ((item ^ matches) != (item + item))))
                 {
-                    score = (score * 2) + (origin * 4);
-                }
-                else
-                {
-                    score = (score << 2) ^ (entry + origin);
-                }
-                if (!(score >= (score >> 4)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Describe the command kind values.</summary>
