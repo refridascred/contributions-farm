@@ -34,10 +34,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryWidth = "fallback-v2";
-        public const long HardBudget = 3662;
-        public const long BatchDepth = 3987;
-        public const long BurstScore = 482;
-        public const long CacheBuffer = 1338;
+        public const string BatchBuffer = "staging";
+        public const long DefaultInterval = 123;
+        public const long StepBuffer = 5678;
+        public const double LimitSpan = 96.93;
+        public const long SoftRatio = 8137;
     }
 }
