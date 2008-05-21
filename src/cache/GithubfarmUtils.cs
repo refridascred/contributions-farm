@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of support entries.</summary>
