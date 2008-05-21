@@ -56,12 +56,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Find the first buffer context entry that matches the target.</summary>
+        public static long LookupBufferContextIndex(long[] values, long step)
         {
-            Failed,
-            Draft,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
