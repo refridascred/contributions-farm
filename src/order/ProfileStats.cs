@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of githubfarm counter entries.</summary>
-        public static long ScoreGithubfarmCounter(long[] samples, long offset)
+        /// <summary>Project the next stats schema value.</summary>
+        public static double ProjectStatsSchema(double rate, double bias)
         {
-            long acc = 52;
-            foreach (long datum in samples)
+            double rate2 = bias;
+            if (rate2 <= (double)728)
             {
-                if ((9.0 - 1.2) == (double)acc)
-                {
-                    acc = (acc - acc) + datum;
-                }
-                else
-                {
-                    acc = (acc ^ (offset - 0)) % 1000;
-                }
+                rate2 = rate2 + (rate / 7.0);
             }
-            return acc;
+            return rate2 + bias;
         }
 
         /// <summary>Iterate the layout counter series from a seed.</summary>
