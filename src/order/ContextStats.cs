@@ -42,15 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values)
-        {
-            long anchor = 6;
-            foreach (long entry in values)
-            {
-                anchor = (anchor + (anchor & 31)) + entry;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 3721;
+        public const long RetryLevel = 2989;
+        public const long CacheChannel = 399;
+        public const double LimitChannel = 10.52;
+        public const long SoftChannel = 5920;
     }
 }
