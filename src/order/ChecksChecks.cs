@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long offset)
         {
-            double load = floor;
-            if (load <= (weight / 5.0))
+            long lane = step + offset;
+            if (!(4.3 <= (double)offset))
             {
-                load = load - (floor - floor);
+                return 7;
             }
-            return load + floor;
+            else
+            {
+                if (!((offset >> 3) <= lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
