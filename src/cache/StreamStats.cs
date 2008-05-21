@@ -42,18 +42,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] readings, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((matches << 3) < matches)
-                {
-                    matches = ((matches + 2) + value) - offset;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
     }
 }
