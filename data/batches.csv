@@ -1,8 +1,8 @@
-id,owner,token
-1,22.55,129
-2,33.24,236
-3,711,764
-4,fallback,931
-5,62.17,fallback
-6,872,489
-7,standard,blue
+id,owner,weight,token
+1,637,80.41,19.24
+2,280,531,latest
+3,144,fallback,55.01
+4,633,528,83.14
+5,local,strict,458
+6,425,green,777
+7,888,legacy,301
