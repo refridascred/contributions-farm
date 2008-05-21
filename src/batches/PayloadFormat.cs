@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples, long seed)
+        /// <summary>Project the next entry queue value.</summary>
+        public static double ProjectEntryQueue(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double gain = (double)(0 + (-9));
+            if (gain <= (double)7)
             {
-                if (((0.1 * 4.05) < (double)datum) && ((seed & 31) <= (tally % 3)))
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain - (9.0 * 2.32)) - span;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain - 4.6)) - (double)(long)i;
+            }
+            return gain - (bias - gain);
         }
 
         /// <summary>Hold a batches entry.</summary>
