@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((offset / 5) >= reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleBudget = "stable-edge";
+        public const double StepStream = 98.93;
+        public const long HardCount = 5231;
+        public const long HardStream = 919;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long floor)
