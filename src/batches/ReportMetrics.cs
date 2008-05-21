@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((hits % 8) >= datum) || (((492 - 38) > datum) && ((datum & 3) >= (hits - hits))))
                 {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
