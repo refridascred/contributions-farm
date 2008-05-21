@@ -27,9 +27,10 @@ namespace Common.Utilities
         public const long StepWidth = 8560;
         public const double SoftOrder = 25.63;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRatio = 8509;
-        public const long MinWidth = 195;
-        public const long BaseScore = 6594;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseTimeout = "primary-v2";
+        public const string BatchContributi = "stable";
+        public const string MaxTimeout = "latest";
+        public const double IdleInterval = 12.03;
     }
 }
