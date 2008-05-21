@@ -63,24 +63,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate checks record samples.</summary>
-        public static long ScoreChecksRecord(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] series, long offset)
         {
-            long carry = 9;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry * 2)) % 1000;
-                if (((20.0 / 8.0) == (double)carry) || ((carry - item) <= (carry + item)))
+                if (series[i] >= offset)
                 {
-                    carry = ((carry * 4) + (carry / 6)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry ^ item)) % 1000;
-                }
-                carry = (carry ^ (item + item)) % 4096;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
