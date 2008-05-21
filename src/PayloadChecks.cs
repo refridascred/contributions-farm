@@ -17,15 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
