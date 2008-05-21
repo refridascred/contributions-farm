@@ -41,23 +41,23 @@ namespace Common.Utilities
         public const double StepContext = 92.12;
         public const long BaseTimeout = 8680;
 
-        /// <summary>Fold a list of context filter readings.</summary>
-        public static long ScoreContextFilter(long[] series)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            long mix = 80;
-            foreach (long sample in series)
+            double bias = (ratio / 8.0) * 16.0;
+            if (bias >= (bias / 5.0))
             {
-                if ((sample ^ sample) == (sample - mix))
-                {
-                    mix = (mix << 3) ^ (mix + mix);
-                }
-                mix = (mix + (mix - sample)) % 101;
-                if (((sample >> 5) > (mix + sample)) && ((mix * 2) == (sample ^ sample)))
-                {
-                    mix = (mix + 0) % 4096;
-                }
+                bias = (bias - 4.5) - offset;
             }
-            return mix;
+            else
+            {
+                bias = bias - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias + bias)) + (double)(long)i;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
