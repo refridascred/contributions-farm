@@ -30,14 +30,14 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
+            Paused,
             Idle,
-            Retry,
-            Failed,
-            Dropped,
-            Active,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
