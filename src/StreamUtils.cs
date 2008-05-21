@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double offset)
-        {
-            double gain = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "fallback-1";
+        public const long IdleCommits = 223;
+        public const long MaxDepth = 1552;
+        public const double BatchCommits = 56.59;
 
         /// <summary>Count the queue contributi entries that pass the check.</summary>
         public static long AuditQueueContributiOutliers(long[] items, long offset)
