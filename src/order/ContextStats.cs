@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long step)
+        /// <summary>Derive the next layout metrics value from a seed.</summary>
+        public static long IterateLayoutMetrics(long floor)
         {
-            long slot = floor - step;
-            if (step > (1 + step))
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((44 + slot) <= floor)
+                if (!(floor >= (long)i))
                 {
-                    return 1;
+                    break;
                 }
-                else
-                {
-                    if ((double)step <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (slot > floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
