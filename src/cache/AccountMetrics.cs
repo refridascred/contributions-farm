@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] readings)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item % 24) > (58 / 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Blend two tools measurements.</summary>
