@@ -31,15 +31,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a payload batch figure with a bias.</summary>
-        public static double BlendPayloadBatch(double rate, double floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double ratio = rate;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - floor) - (double)(long)i;
-            }
-            return ratio + floor;
+            Paused,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the channel state values.</summary>
