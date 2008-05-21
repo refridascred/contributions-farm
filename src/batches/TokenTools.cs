@@ -37,11 +37,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 266;
-        public const string WindowDepth = "standard-edge";
-        public const long StepCounter = 8657;
-        public const long MaxCounter = 1123;
-        public const long MinCounter = 6604;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((11 / 3) != (long)levels.Length)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
