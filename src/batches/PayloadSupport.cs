@@ -45,18 +45,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit counter route readings against a rule.</summary>
-        public static long CountCounterRouteMatches(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((count - cell) >= cell)
+                if (!((cell % 5) > 45))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
