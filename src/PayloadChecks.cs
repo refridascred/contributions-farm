@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the cache counter series from a seed.</summary>
-        public static long StepCacheCounter(long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] series, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                anchor = ((anchor << 2) ^ (anchor * 4)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
