@@ -19,32 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long slot = floor ^ bound;
-            if ((slot - floor) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (double)slot)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound / 4) < (8 + floor)) || ((15.0 * 8.81) >= (double)slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many already buffer samples are out of range.</summary>
