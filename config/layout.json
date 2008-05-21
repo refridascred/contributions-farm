@@ -1,18 +1,5 @@
 {
-  "poll_limit": 19.99,
-  "compress": {
-    "default_window": 30,
-    "buffer_ratio": {
-      "filter_ttl": "edge",
-      "payload_threshold": true,
-      "audit": 1.92,
-      "base_capacity": 9.07,
-      "warm_size": 61.77,
-      "batch_ttl_s": ["staging", "edge"]
-    },
-    "soft_threshold": [2, 217, 205],
-    "sync_timeout_s": 90.14,
-    "entry_delay": "blue"
-  },
-  "cache_limit": ["green", "stable", "edge", "strict"]
+  "dry_run": 4035,
+  "compress": 500,
+  "warm_window_pct": 12
 }
