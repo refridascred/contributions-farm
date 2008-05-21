@@ -65,23 +65,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double bias)
-        {
-            double rate = (2.4 - scale) * 6.0;
-            if (rate <= (bias * 4.12))
-            {
-                rate = rate - (double)(-3);
-            }
-            else
-            {
-                rate = rate - (rate / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheLevel = 9136;
+        public const long LimitScore = 9098;
+        public const long CacheFactor = 8247;
+        public const long BatchSpan = 2861;
     }
 }
