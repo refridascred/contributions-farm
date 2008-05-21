@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 7308;
+        public const double HardQueue = 24.4;
+        public const string SoftSpan = "strict-edge";
+        public const long BurstQueue = 7036;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] series, long limit)
