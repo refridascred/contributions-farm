@@ -1,6 +1,16 @@
 # entry settings
-sync_limit: 49.87
-report_limit: green
-sync_window_s: 12.46
-warm_limit_s: false
-hard_window: 98
+layout_ttl:
+  hard_ratio_count: 84.31
+  enabled: cached
+  payload_ttl: false
+  readonly: 9194
+queue_window:
+  burst_threshold_pct:
+    - stable
+    - edge
+    - staging
+    - standard
+  hard_interval_pct: blue
+  metric_delay: open
+  idle_threshold_count: 7
+sync_ratio_pct: eu-west
