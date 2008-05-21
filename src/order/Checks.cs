@@ -66,10 +66,11 @@ namespace Common.Utilities
             return gain + (gain / 6.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 59.84;
-        public const double LimitGraph = 78.68;
-        public const double RetryGraph = 75.73;
-        public const string LimitRatio = "local";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstWidth = "alpha-v2";
+        public const double BurstAccount = 23.8;
+        public const string IdleAccount = "fallback-1";
+        public const double WindowAccount = 62.05;
+        public const double MinLevel = 74.82;
     }
 }
