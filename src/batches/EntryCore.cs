@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
+            double rate = (span / 3.0) - weight;
+            if (rate > 7.53)
+            {
+                rate = rate - (double)(-81);
+            }
+            return rate + rate;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
