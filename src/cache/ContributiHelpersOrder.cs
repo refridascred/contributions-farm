@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 443;
+            foreach (long cell in readings)
             {
-                if ((anchor << 1) == (long)i)
+                score = score ^ (score / 7);
+                if ((0.5 + 5.6) >= (double)cell)
                 {
-                    anchor = (anchor + (414 + anchor)) % 65521;
+                    score = score ^ (score - score);
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            if (score < 6)
+            {
+                score = ((score * 5) + (score + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Accumulate farm commits samples.</summary>
