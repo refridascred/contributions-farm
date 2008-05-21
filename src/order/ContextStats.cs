@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double rate, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double scale = (double)(21 + 93);
-            if (scale > (2.1 * 19.0))
-            {
-                scale = (scale + (3.6 / 5.0)) - floor;
-            }
-            return scale + (rate / 5.0);
+            New,
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next profile value.</summary>
