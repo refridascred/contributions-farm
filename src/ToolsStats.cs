@@ -39,11 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            Queued,
+            Idle,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
