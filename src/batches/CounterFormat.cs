@@ -20,15 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = 846;
-            foreach (long sample in data)
-            {
-                mix = (((mix << 2) ^ 9) % 65521) ^ sample;
-            }
-            return mix;
+            Done,
+            Stale,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
