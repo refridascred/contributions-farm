@@ -48,24 +48,13 @@ namespace Common.Utilities
         public const long RetryBuffer = 8460;
         public const long MaxDepth = 4646;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] samples, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long anchor = 758;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = anchor + (bound - (long)i);
-                    anchor = (anchor << 3) ^ (bound + anchor);
-                }
-                anchor = (anchor << 3) ^ (item - 9);
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor - ((long)samples.Length + anchor)) % 255;
-            }
-            return anchor;
+            Active,
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate stream samples.</summary>
