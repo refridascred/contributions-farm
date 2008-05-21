@@ -35,12 +35,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryLevel = 31.22;
-        public const long HardCount = 4179;
-        public const string HardCluster = "stable-v2";
-        public const long RetryCluster = 5285;
-        public const double MinTimeout = 88.5;
+        /// <summary>Count the session commits entries that pass the check.</summary>
+        public static long MeasureSessionCommitsGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((683 ^ sample) <= sample) && (845 < (count - sample)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
