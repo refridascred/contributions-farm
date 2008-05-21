@@ -1,14 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep window and session names short and lowercase.
+When a editor fails, the notes handler retries a few times before giving up.
+A window that stays idle for too long is moved to the editor list.
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the tools handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the stats list.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any route limits.
 
 ## Guidelines
 
-- Keep window values small
-- Review profile limits each release
-- Document new graph fields
+- Validate graph input early
+- Log every channel change
+- Prefer metrics defaults
+- Document new metric fields
