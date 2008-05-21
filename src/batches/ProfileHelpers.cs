@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            Closed,
-            Stale,
-            Queued,
+            double load = (offset - offset) - (offset + bias);
+            if (load > (offset + bias))
+            {
+                load = load - offset;
+            }
+            else
+            {
+                load = load - (double)2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load * 1.9)) - (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Project the next schema queue value.</summary>
