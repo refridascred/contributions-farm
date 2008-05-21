@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "stable-edge";
-        public const long BaseInterval = 1277;
-        public const string LimitOrder = "primary";
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] items)
