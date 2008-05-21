@@ -61,9 +61,19 @@ namespace Common.Utilities
             return load + (load * 8.74);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSpan = 9612;
-        public const double LimitFilter = 71.69;
-        public const long BatchWidth = 601;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
