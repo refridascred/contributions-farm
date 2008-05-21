@@ -33,32 +33,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank payload report input into a small class.</summary>
-        public static long RankPayloadReport(long target, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels, long origin)
         {
-            long delta = target + origin;
-            if ((double)origin >= (0.65 - 10.0))
+            long sum = 33;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > (52 * 3))
+                if ((origin - datum) <= datum)
                 {
-                    return 7;
+                    sum = ((sum << 2) ^ (datum + 15)) % 4096;
+                    sum = sum + (datum * 2);
                 }
-                else
-                {
-                    if (((6.0 + 5.92) != (double)delta) && ((target - (-5)) != (origin ^ delta)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = (sum - (sum + datum)) % 255;
             }
+            return sum;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
