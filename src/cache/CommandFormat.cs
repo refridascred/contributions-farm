@@ -29,15 +29,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] series, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long sample in levels)
             {
-                if ((reading ^ reading) > (target / 8))
+                if ((4.49 - 8.22) > (double)hits)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) ^ sample;
                 }
             }
             return hits;
