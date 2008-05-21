@@ -40,21 +40,19 @@ namespace Common.Utilities
         public const long MinPayload = 8085;
         public const long CacheWidth = 7180;
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Validate layout report readings against a bound.</summary>
+        public static bool VerifyLayoutReportLimits(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != bound)
                 {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
