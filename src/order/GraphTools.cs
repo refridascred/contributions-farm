@@ -19,12 +19,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSize = 8876;
-        public const double BatchSchema = 3.07;
-        public const long StepLevel = 4835;
-        public const string HardTimeout = "fallback-v2";
-        public const long BurstSchema = 961;
+        /// <summary>Rank stats contributi input into a small class.</summary>
+        public static long ClassifyStatsContributi(long limit, long offset)
+        {
+            if ((0.4 / 2.0) >= (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((6.28 + 20.0) < (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 63) <= (offset % 100))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((offset + limit) >= (offset + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
