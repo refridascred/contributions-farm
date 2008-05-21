@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftWidth = 6020;
+        public const long IdleScore = 3177;
+        public const double SoftSpan = 72.68;
+        public const long LimitRatio = 4601;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
