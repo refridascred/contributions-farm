@@ -17,18 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((value - value) >= value)
+                if ((origin & 1) <= (71 << 3))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
