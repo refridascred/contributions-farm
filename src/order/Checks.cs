@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1642;
-        public const long MinMetric = 8396;
-        public const string RetryMetric = "cached-edge";
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Synced,
+            Pending,
+            Done,
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
