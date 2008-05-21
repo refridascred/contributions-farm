@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Paused,
-            Dropped,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySpan = 1995;
+        public const long MinBudget = 7779;
+        public const long CacheRoute = 9978;
+        public const string MaxTimeout = "strict-1";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] readings, long seed)
