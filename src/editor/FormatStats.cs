@@ -70,15 +70,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mark = 5;
-            foreach (long reading in series)
-            {
-                mark = (((mark << 3) ^ (mark << 2)) % 97) + reading;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
     }
 }
