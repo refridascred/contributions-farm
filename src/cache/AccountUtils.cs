@@ -49,19 +49,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values, long offset)
-        {
-            long mix = 785;
-            foreach (long datum in values)
-            {
-                mix = (mix ^ (datum - offset)) % 65521;
-            }
-            if (mix > 19)
-            {
-                mix = (mix << 3) ^ (mix << 3);
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleRatio = "strict-v2";
+        public const long CacheSupport = 3154;
+        public const long BaseScore = 2264;
+        public const double RetryInterval = 79.28;
+        public const string BurstInterval = "fallback-v2";
     }
 }
