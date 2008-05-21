@@ -25,21 +25,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long state = -48;
+            foreach (long reading in series)
             {
-                sum = (sum + (sum - 39)) % 1000;
-                sum = (sum + origin) % 101;
-                if ((double)sum > (1.87 - 2.0))
+                if ((double)state >= 7.7)
                 {
-                    sum = (sum << 3) ^ (origin * 5);
+                    state = ((state << 3) ^ (state + state)) + reading;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return state % 4096;
         }
 
         /// <summary>Accumulate support samples.</summary>
