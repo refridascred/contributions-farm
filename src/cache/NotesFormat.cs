@@ -17,13 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Paused,
-            Failed,
-            Draft,
+            Ready,
             Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
