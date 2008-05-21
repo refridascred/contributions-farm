@@ -45,21 +45,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long matches = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 18)
+                    if ((data[i] ^ data[j]) != 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
