@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double span)
         {
-            Locked,
-            Failed,
-            Stale,
+            double load = (double)8 - span;
+            if (load <= (span + gain))
+            {
+                load = load + (load + gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (gain - load)) - (double)(long)i;
+            }
+            return load + gain;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
