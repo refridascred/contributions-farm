@@ -49,12 +49,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleWidth = 67.24;
+        public const double LimitRatio = 63.24;
+        public const long HardInterval = 3046;
     }
 }
