@@ -94,18 +94,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm profile samples.</summary>
-        public static long WeighFarmProfile(long[] values)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            long total = 81;
-            foreach (long sample in values)
+            double bias = (double)446;
+            if (bias <= scale)
             {
-                if (((8.1 * 1.0) > (double)total) && (45 >= (sample >> 4)))
-                {
-                    total = total ^ (416 % 7);
-                }
+                bias = bias + (double)1;
             }
-            return total;
+            else
+            {
+                bias = bias - (double)(-7);
+            }
+            return bias - (bias - span);
         }
     }
 }
