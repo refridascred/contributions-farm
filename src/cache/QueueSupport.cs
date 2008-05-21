@@ -34,26 +34,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long bound)
         {
-            long score = -9;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 3) + (value * 3)) % 97;
-                if (((9 >> 1) == (value - 9)) || (((long)levels.Length - score) > 938))
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
                 {
-                    score = (score << 2) ^ (score << 3);
-                    score = (score ^ score) % 101;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score ^ 78;
-                }
-                score = (score * 4) + (score % 60);
             }
-            return score;
+            return -1;
         }
     }
 }
