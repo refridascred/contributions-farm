@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a cluster support reading.</summary>
