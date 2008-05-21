@@ -60,18 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((hits * 5) <= (hits + (-11))))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
