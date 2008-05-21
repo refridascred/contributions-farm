@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark + mark) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 18.52;
+        public const string SoftMetric = "local-edge";
+        public const long BurstMetric = 8564;
+        public const long MaxWidth = 2492;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double SmoothEntry(double gain, double bias)
