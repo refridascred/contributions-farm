@@ -50,13 +50,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Done,
+            Paused,
             Retry,
-            Closed,
-            Synced,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
