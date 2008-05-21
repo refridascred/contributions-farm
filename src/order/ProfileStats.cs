@@ -42,9 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 9373;
-        public const double WindowSession = 58.32;
-        public const long BatchFactor = 6445;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
