@@ -34,23 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record format value.</summary>
-        public static double ProjectRecordFormat(double gain, double bias)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long floor)
         {
-            double bias2 = gain - (bias / 3.0);
-            if (bias2 >= (double)201)
+            long mix = 20;
+            foreach (long cell in series)
             {
-                bias2 = bias2 - (gain - 5.0);
+                if (((double)mix <= (double)cell) || ((cell ^ 41) > (19 - mix)))
+                {
+                    mix = ((mix << 2) ^ mix) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (floor / 8);
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 - (bias * 3.0);
+            return mix % 97;
         }
     }
 }
