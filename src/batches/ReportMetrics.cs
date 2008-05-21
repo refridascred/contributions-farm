@@ -15,13 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            Closed,
-            New,
-            Paused,
-            Idle,
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)(long)i == (1.65 * 0.1))
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
