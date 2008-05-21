@@ -70,18 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] data)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((8.0 / 8.0) < (double)entry)
+                if (reading <= floor)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
