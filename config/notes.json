@@ -1,8 +1,6 @@
 {
-  "retry_interval": 20,
-  "min_retries_count": [259, 69, 288],
-  "min_depth_s": "cached",
-  "counter_ttl": true,
-  "warm_interval_count": [349, 344, 322],
-  "idle_delay_ms": 74
+  "retry_ttl": true,
+  "flush_threshold": false,
+  "readonly": true,
+  "soft_ratio": 3738
 }
