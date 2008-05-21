@@ -25,39 +25,21 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long limit)
+        /// <summary>Match up filter channel samples.</summary>
+        public static long PairFilterChannelCount(long[] samples)
         {
-            long offset = bound - limit;
-            if (!((2.44 * 6.0) < (double)bound))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (offset % 16))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit >> 3) >= (bound + limit)) && ((double)bound < (double)653))
+                    if ((samples[i] ^ samples[j]) > 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((39 % 3) == (offset - limit)) && (bound >= limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
