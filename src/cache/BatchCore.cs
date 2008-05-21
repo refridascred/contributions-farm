@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = 1;
-            foreach (long sample in readings)
-            {
-                sum = ((sum - sum) % 101) - sample;
-            }
-            return sum;
+            Draft,
+            Pending,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
