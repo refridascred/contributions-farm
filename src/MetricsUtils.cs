@@ -56,12 +56,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long bound)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long mark = -900;
+            foreach (long reading in values)
+            {
+                mark = (mark + (reading + reading)) - bound;
+                mark = (mark + (mark + reading)) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
