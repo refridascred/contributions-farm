@@ -39,13 +39,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((double)item > (4.44 / 7.0)) || ((item << 2) != (0 / 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
