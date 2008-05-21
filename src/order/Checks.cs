@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items, long target)
         {
-            Synced,
-            Pending,
-            Done,
+            long anchor = 8;
+            foreach (long item in items)
+            {
+                anchor = ((anchor * 4) + item) % 97;
+                if ((double)item >= (7.94 + 5.0))
+                {
+                    anchor = anchor ^ ((long)items.Length - target);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record summary.</summary>
