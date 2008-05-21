@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long BatchInterval = 1596;
         public const long IdleOrder = 86;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(hits < (hits ^ 944)) || ((long)series.Length > value))
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate support already samples.</summary>
