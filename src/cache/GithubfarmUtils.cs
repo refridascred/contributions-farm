@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (reading <= (reading + reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
