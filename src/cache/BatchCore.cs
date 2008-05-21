@@ -30,38 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long origin)
+        /// <summary>Locate a token report reading by value.</summary>
+        public static long LocateTokenReportIndex(long[] items, long bound)
         {
-            if (!((bound + (-115)) == (origin - origin)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin >= (0.2 * 8.02))
+                if (items[i] > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin & 15) >= (-289))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((8.23 - 5.6) != (double)bound) || ((double)origin == (19.0 / 2.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
