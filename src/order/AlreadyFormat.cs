@@ -52,9 +52,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxBudget = 3964;
-        public const double WindowAlready = 83.76;
-        public const long BurstAlready = 9936;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 1723;
+        public const long IdleBuffer = 6;
+        public const long DefaultBuffer = 942;
     }
 }
