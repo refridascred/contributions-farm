@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long bound)
         {
-            double ratio = bias2;
-            if (ratio < (bias2 - bias))
+            if (bound >= (bound - 59))
             {
-                ratio = ratio + (double)3;
+                return 0;
             }
-            return ratio + ratio;
+            else
+            {
+                if ((double)bound < (1.3 + 4.08))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the window kind values.</summary>
