@@ -31,22 +31,11 @@ namespace Common.Utilities
         public const long StepWidth = 4476;
         public const double BatchCommand = 68.66;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] items, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum % 60) > (datum - step)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
