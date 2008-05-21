@@ -40,13 +40,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
