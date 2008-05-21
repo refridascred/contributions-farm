@@ -54,21 +54,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed ^ mix) <= (69 + 285))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
     }
 }
