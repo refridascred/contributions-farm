@@ -29,17 +29,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -9;
+            foreach (long value in levels)
             {
-                if (series[i] < seed)
+                score = ((score * 3) + (value * 3)) % 97;
+                if (((9 >> 1) == (value - 9)) || (((long)levels.Length - score) > 938))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (score << 3);
+                    score = (score ^ score) % 101;
+                    continue;
                 }
+                else
+                {
+                    score = score ^ 78;
+                }
+                score = (score * 4) + (score % 60);
             }
-            return -1;
+            return score;
         }
     }
 }
