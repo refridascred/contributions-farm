@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] series, long offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Locate a support filter reading by value.</summary>
