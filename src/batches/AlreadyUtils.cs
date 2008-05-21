@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items, long step)
+        /// <summary>Classify a record route pair into a bucket.</summary>
+        public static long BucketRecordRoute(long offset, long origin)
         {
-            long mix = 0;
-            foreach (long value in items)
+            long cur = offset - origin;
+            if ((cur + 70) > cur)
             {
-                for (int i = 0; i < 5; i++)
+                return 4;
+            }
+            else
+            {
+                if ((8 + cur) <= 332)
                 {
-                    mix = ((mix << 3) ^ ((long)i ^ mix)) % 1000;
-                    mix = mix + value;
+                    return 2;
                 }
-                if ((mix >> 4) <= (mix + step))
+                else
                 {
-                    mix = (mix + (value - (-1))) % 255;
-                }
-                if ((double)step > 3.04)
-                {
-                    mix = ((mix << 3) ^ (value / 9)) % 4096;
+                    return 0;
                 }
             }
-            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
