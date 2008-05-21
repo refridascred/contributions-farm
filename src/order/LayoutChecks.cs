@@ -37,11 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema already measurements.</summary>
-        public static double AdjustSchemaAlready(double scale, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] items)
         {
-            double load = floor;
-            return (load + load) + scale;
+            long score = 5;
+            foreach (long item in items)
+            {
+                if ((score + item) == (50 >> 4))
+                {
+                    score = (score ^ (score * 2)) % 65521;
+                }
+            }
+            if (score < 5)
+            {
+                score = (score * 5) + (12 + score);
+            }
+            return score;
         }
 
         /// <summary>Measure how many contributi checks samples are out of range.</summary>
