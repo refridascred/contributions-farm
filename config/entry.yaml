@@ -1,21 +1,6 @@
 # entry settings
-support_depth: 431
-verbose:
-  - stable
-  - blue
-  - latest
-  - green
-batch_delay_pct: standard
-compress: 100
-default_interval:
-  compress: blue
-  poll_threshold: 20
-  max_limit_ms: staging
-max_timeout_ms:
-  burst_interval: 250
-  already_ratio:
-    - 34
-    - 43
-  hard_interval_s: true
-  cache_size_s: 8217
-  format_window: stable
+persist: false
+hard_delay_s: 60
+strict:
+  - 460
+  - 291
