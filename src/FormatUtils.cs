@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a filter graph counter forward.</summary>
-        public static long IterateFilterGraph(long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!(6.4 <= (double)step))
+                if ((sample - (long)readings.Length) <= (hits << 1))
                 {
-                    mark = (mark + ((long)i + 268)) % 97;
+                    hits = hits + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the layout mode values.</summary>
