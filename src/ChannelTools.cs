@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two token order measurements.</summary>
-        public static double AdjustTokenOrder(double ratio, double span)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] values, long seed)
         {
-            double bias = (double)(-442) - (7.0 + span);
-            return (bias - bias) + ratio;
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a filter reading.</summary>
