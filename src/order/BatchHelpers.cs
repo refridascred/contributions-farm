@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const long LimitBudget = 2569;
         public const long DefaultLevel = 9444;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Roll a metrics account counter forward.</summary>
+        public static long IterateMetricsAccount(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((3.2 * 2.9) <= (double)(long)i) || (((long)i / 7) >= ((long)i ^ sum)))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (-3);
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
