@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long target, long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if (step > (target - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((13.0 + 20.0) <= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
