@@ -1,6 +1,6 @@
 # entry settings
-readonly: 24.26
-commits_ttl: cached
-default_limit_ms: true
-default_depth_pct: stable
-cache_size: 30
+sync_limit: 49.87
+report_limit: green
+sync_window_s: 12.46
+warm_limit_s: false
+hard_window: 98
