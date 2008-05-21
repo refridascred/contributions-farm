@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = rate * 5.6;
+            if (load < 18.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (double)(-832)) + floor;
             }
-            return hits;
+            return load + load;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
