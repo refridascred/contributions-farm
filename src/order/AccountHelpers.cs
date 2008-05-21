@@ -75,25 +75,19 @@ namespace Common.Utilities
             return ratio - (3.86 + 3.0);
         }
 
-        /// <summary>Rank batches profile input into a small class.</summary>
-        public static long SortBatchesProfile(long limit, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] samples, long bound)
         {
-            long lane = limit - seed;
-            if ((lane - lane) >= (lane + limit))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5 - lane) >= (seed - lane))
+                if (cell > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
