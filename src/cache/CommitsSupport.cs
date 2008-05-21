@@ -40,31 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank cache entry input into a small class.</summary>
-        public static long BucketCacheEntry(long target, long origin)
+        /// <summary>Match up command farm samples.</summary>
+        public static long MatchCommandFarmCount(long[] items)
         {
-            if (target >= origin)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.6 - 7.04) <= (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin / 8) <= target)
+                    if ((items[i] - items[j]) == 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
