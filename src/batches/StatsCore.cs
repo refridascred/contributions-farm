@@ -67,15 +67,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Idle,
-            Locked,
-            Ready,
-            Done,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseFactor = 17.4;
+        public const long WindowStream = 514;
+        public const long IdleStream = 8522;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterMatches(long[] data)
