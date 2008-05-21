@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command farm figure with a bias.</summary>
-        public static double BlendCommandFarm(double bias, double offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] items, long target)
         {
-            double weight = bias;
-            return weight - offset;
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
