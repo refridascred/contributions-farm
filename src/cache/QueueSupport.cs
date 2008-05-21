@@ -34,19 +34,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate order batch readings against a bound.</summary>
-        public static bool VerifyOrderBatchBounds(long[] samples, long bound)
+        /// <summary>Rank token buffer input into a small class.</summary>
+        public static long SortTokenBuffer(long floor, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long gap = floor + limit;
+            if (limit <= (floor & 3))
             {
-                if (datum < bound)
+                return 3;
+            }
+            else
+            {
+                if (((floor * 3) >= floor) || ((gap + limit) > (488 ^ limit)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit / 7) <= (floor + limit)) || ((1.5 * 10.0) == (double)gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
     }
 }
