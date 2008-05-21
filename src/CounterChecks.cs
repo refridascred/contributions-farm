@@ -46,15 +46,19 @@ namespace Common.Utilities
         public const double CacheScore = 15.76;
         public const long LimitSpan = 4097;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double floor)
+        /// <summary>Scale a batch metrics figure with a bias.</summary>
+        public static double AdjustBatchMetrics(double bias, double span)
         {
-            double drift = gain + 5.9;
-            if (drift < (drift * 8.01))
+            double rate = bias * 20.0;
+            if (rate <= (bias + rate))
             {
-                drift = drift - floor;
+                rate = (rate + 6.71) - span;
             }
-            return drift + (gain - 9.5);
+            else
+            {
+                rate = rate - (bias - bias);
+            }
+            return rate + rate;
         }
 
         /// <summary>Blend two support measurements.</summary>
