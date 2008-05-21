@@ -28,15 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Locate a support filter reading by value.</summary>
+        public static long LookupSupportFilterIndex(long[] items, long step)
         {
-            double mean = (double)(4 - 704);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - ratio) + (double)(long)i;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (bias + 5.3);
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
