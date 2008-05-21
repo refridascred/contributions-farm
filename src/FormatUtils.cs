@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double weight, double floor)
         {
-            Synced,
-            Done,
-            Failed,
-            Retry,
-            Stale,
+            double drift = 0.82;
+            if (drift < (19.0 + 6.0))
+            {
+                drift = (drift - (double)25) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (weight / 6.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
