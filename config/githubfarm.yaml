@@ -1,8 +1,22 @@
 # githubfarm settings
-cache_retries_count: 1024
-dry_run: 10
-idle_size_ms: legacy
-commits_delay:
-  - 227
-  - 462
-batch_depth_pct: cached
+max_interval_s: 8343
+compress:
+  persist: blue
+  enabled: 15.23
+  idle_ratio: false
+  burst_ratio:
+    cache_window: 96
+    audit: 13
+    batch_depth_count: 84
+    default_window_pct: 3
+    context_timeout: 48
+    persist:
+      - 183
+      - 282
+      - 206
+      - 61
+dry_run:
+  - 406
+  - 37
+  - 340
+burst_threshold_ms: blue
