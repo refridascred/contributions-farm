@@ -37,17 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if ((state >> 2) > (long)i)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (limit * 5)) % 255;
+                    state = (state - (limit ^ limit)) % 4096;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
