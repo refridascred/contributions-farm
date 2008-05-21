@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series)
         {
-            long mark = 64;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mark = ((mark - (value - value)) % 1000) - origin;
+                if ((sample * 2) < 8)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (mark > 46)
-            {
-                mark = (mark - (mark % 97)) % 255;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
