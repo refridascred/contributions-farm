@@ -23,12 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            double scale = bias;
+            if (scale <= bias)
+            {
+                scale = (scale + (double)1) - weight;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the cache kind values.</summary>
