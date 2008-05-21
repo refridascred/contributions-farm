@@ -29,19 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support already samples.</summary>
-        public static long WeighSupportAlready(long[] levels, long limit)
+        /// <summary>Iterate the command already series from a seed.</summary>
+        public static long RollCommandAlready(long floor)
         {
-            long mark = 758;
-            foreach (long cell in levels)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark ^ limit) - cell;
+                if (!((score / 4) <= (score / 8)))
+                {
+                    score = score ^ (score % 10);
+                }
+                else
+                {
+                    score = score - (floor >> 1);
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (limit >> 4)) % 1000;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
