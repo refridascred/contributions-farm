@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double weight2 = weight;
+            if (weight2 < (double)(-53))
             {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = (weight2 - weight2) - bias;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - weight2) - (double)(long)i;
+            }
+            return weight2 - (double)427;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
