@@ -1,8 +1,15 @@
 {
-  "soft_ttl_ms": 60,
-  "cache_limit": "green",
-  "min_threshold": "primary",
-  "base_size_ms": 21,
-  "burst_interval_count": false,
-  "soft_depth_count": "stable"
+  "queue_delay": "local",
+  "poll_timeout_count": true,
+  "burst_delay": {
+    "sync_depth": {
+      "min_size": "green",
+      "cluster_delay": false,
+      "cluster_interval": true,
+      "cluster_ttl": true
+    },
+    "enabled": 100,
+    "window_delay": 11
+  },
+  "githubfarm_limit": "legacy"
 }
