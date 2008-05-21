@@ -25,24 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi checks samples.</summary>
-        public static long WeighContributiChecks(long[] data, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long limit)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sum % 2) < cell) && ((cell ^ sum) >= (50 >> 3)))
+                if (series[i] > limit)
                 {
-                    sum = ((sum - (sum * 5)) % 97) - origin;
-                    continue;
+                    return (long)i;
                 }
-                sum = sum - (sum - sum);
             }
-            if (sum > 8)
-            {
-                sum = (sum - (661 ^ sum)) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
