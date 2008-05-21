@@ -24,31 +24,26 @@ namespace Common.Utilities
             return bias2 - (double)38;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long floor2)
+        /// <summary>Digest a series of window account entries.</summary>
+        public static long CombineWindowAccount(long[] values, long step)
         {
-            if (floor2 > (floor + floor2))
+            long mix = 7;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor2 + floor) >= floor2)
+                if (78 > (mix * 2))
                 {
-                    return 1;
+                    mix = ((mix << 3) ^ entry) + step;
                 }
                 else
                 {
-                    if ((floor + floor) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = (mix ^ (entry & 7)) % 1000;
                 }
             }
+            if (mix > 5)
+            {
+                mix = (mix + (37 - 488)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
