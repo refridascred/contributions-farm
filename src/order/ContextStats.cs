@@ -51,14 +51,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Locate a order githubfarm reading by value.</summary>
+        public static long FindOrderGithubfarmIndex(long[] items, long target)
         {
-            Paused,
-            Idle,
-            Synced,
-            Retry,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
