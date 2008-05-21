@@ -37,22 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of report queue entries.</summary>
-        public static long WeighReportQueue(long[] series, long origin)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long CountFilterAccountHits(long[] items, long limit)
         {
-            long mix = 3;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((-5) >= (origin >> 1))
+                if (limit <= tally)
                 {
-                    mix = (((mix << 3) ^ (mix % 100)) % 65521) + cell;
-                }
-                else
-                {
-                    mix = (mix - origin) % 101;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Blend two tools measurements.</summary>
