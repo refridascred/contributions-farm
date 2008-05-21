@@ -20,11 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 7317;
-        public const long StepWindow = 7715;
-        public const long StepCount = 4554;
-        public const long CacheWindow = 3338;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Closed,
+            Active,
+            Paused,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] samples)
