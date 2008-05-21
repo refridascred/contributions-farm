@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryFactor = 69.88;
-        public const double BaseTimeout = 74.99;
-        public const double DefaultTimeout = 59.02;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheCount = "primary-edge";
+        public const long StepBatches = 2796;
+        public const long RetrySpan = 9910;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] readings)
