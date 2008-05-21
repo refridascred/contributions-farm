@@ -48,14 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long target)
         {
-            Synced,
-            Done,
-            Dropped,
-            Retry,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
