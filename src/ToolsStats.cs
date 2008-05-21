@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (gain - bias2) + bias;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] levels, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((bound + hits) >= (bound * 4)) || !(reading >= (-63)))
+                if ((count ^ count) > count)
                 {
-                    hits = hits + 1;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
