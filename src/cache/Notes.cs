@@ -56,22 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric record series from a seed.</summary>
-        public static long SeriesMetricRecord(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] levels, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((offset / 2) < offset)
+                if (count < step)
                 {
-                    result = result ^ (result % 3);
-                    result = result + result;
+                    count = (count + 3) + cell;
                 }
-                result = ((result * 5) + (offset - result)) % 255;
-                result = (result ^ (result - offset)) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
