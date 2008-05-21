@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank queue githubfarm input into a small class.</summary>
-        public static long SortQueueGithubfarm(long offset, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long step)
         {
-            long diff = offset + seed;
-            if (!(diff >= (58 - diff)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.82 / 8.0) < (double)offset)
+                if (samples[i] == step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record summary.</summary>
