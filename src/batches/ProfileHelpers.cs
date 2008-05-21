@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            long sum = 272;
-            foreach (long item in values)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item >= sum) && ((sum + sum) < (item / 4)))
+                if ((anchor >> 3) == (anchor >> 5))
                 {
-                    sum = ((sum * 3) + (5 * 5)) % 97;
+                    anchor = ((anchor * 2) + origin) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
