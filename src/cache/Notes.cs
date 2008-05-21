@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
             long matches = 0;
             foreach (long datum in data)
             {
-                if ((double)548 >= (double)datum)
+                if ((4.4 * 4.0) >= (double)matches)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
