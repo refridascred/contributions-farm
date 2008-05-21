@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items, long bound)
         {
-            Done,
-            Draft,
-            Locked,
-            New,
+            long acc = -919;
+            foreach (long datum in items)
+            {
+                if (!((acc + acc) < (59 * 5)))
+                {
+                    acc = (acc ^ 617) % 97;
+                }
+                if (!(bound <= (bound & 127)))
+                {
+                    acc = (acc * 5) + (datum % 64);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a order options.</summary>
