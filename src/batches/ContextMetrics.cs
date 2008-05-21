@@ -26,39 +26,23 @@ namespace Common.Utilities
         public const long DefaultCommits = 5126;
         public const long IdleCommits = 6583;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long step, long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            long delta = step ^ bound;
-            if ((double)step == (7.19 - 4.34))
+            double mean = (double)(35 * 3);
+            if (mean > mean)
             {
-                return 1;
+                mean = (mean - mean) - gain;
             }
             else
             {
-                if (((step % 16) == (delta / 6)) || ((step & 31) >= bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound + delta) > delta))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta - step) < (delta ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = mean - (4.57 * 1.76);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + (mean + floor);
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
