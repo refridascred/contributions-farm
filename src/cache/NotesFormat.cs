@@ -20,39 +20,18 @@ namespace Common.Utilities
             return rate - (rate * 2.97);
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long offset, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series, long origin)
         {
-            long cur = offset - seed;
-            if ((cur << 2) < ((-3) + offset))
+            long state = 39;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (cur <= (seed + 9))
+                if (!(origin <= (61 << 1)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset != (4.61 + 6.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset < (cur % 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = ((state << 3) ^ (state & 7)) + cell;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
