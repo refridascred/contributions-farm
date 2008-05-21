@@ -47,11 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "primary-1";
-        public const long RetryWidth = 4399;
-        public const string DefaultChecks = "legacy-1";
-        public const long WindowInterval = 9768;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BatchInterval = 5841;
