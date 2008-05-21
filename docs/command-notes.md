@@ -1,15 +1,15 @@
 # Command notes
 
-Keep already and commits names short and lowercase.
-Defaults for stream live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the filter queue.
+Use metric settings to tune how often payload data is refreshed.
+A counter that stays idle for too long is moved to the cluster list.
 
-Use support settings to tune how often githubfarm data is refreshed.
-Defaults for route live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the githubfarm list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer stream defaults
-- Document new cluster fields
-- Review account limits each release
+- Review order limits each release
+- Keep batch values small
+- Prefer cache defaults
+- Validate account input early
