@@ -19,14 +19,17 @@ namespace Common.Utilities
         public const double HardPayload = 90.77;
         public const double StepPayload = 42.07;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long limit)
         {
-            Queued,
-            New,
-            Pending,
-            Active,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
