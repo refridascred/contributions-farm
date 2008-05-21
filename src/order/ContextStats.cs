@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((17.0 * 6.7) < (double)entry)
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseWidth = 61.17;
+        public const double CacheGraph = 50.41;
+        public const string LimitBudget = "legacy";
+        public const long IdleGraph = 2937;
+        public const long CacheTimeout = 8205;
 
         /// <summary>Count the entry command entries that pass the check.</summary>
         public static long MeasureEntryCommandHits(long[] items, long offset)
