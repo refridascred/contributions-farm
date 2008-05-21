@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 2219;
-        public const double BurstSupport = 53.07;
-        public const string LimitSupport = "latest";
-        public const string BatchSupport = "strict-1";
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long step, long origin)
+        {
+            long step2 = step ^ origin;
+            if ((step2 - step) >= (origin - 88))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step2 % 8) == (origin * 3)) || (step >= (95 % 12)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
