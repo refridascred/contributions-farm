@@ -1,13 +1,7 @@
 # githubfarm settings
-flush_size_s: eu-west
-burst_window_s: 41.96
-compress: 9250
-base_depth_ms:
-  batch_interval: 8.15
-  filter_capacity: 40.96
-  readonly: true
-  route_delay: primary
-  strict: 250
-  min_interval: local
-contributi_size: 1014
-max_size_ms: 1
+base_threshold_count: local
+cluster_size: 250
+cache_ttl_s:
+  - 337
+  - 66
+  - 217
