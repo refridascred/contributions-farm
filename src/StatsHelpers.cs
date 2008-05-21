@@ -81,19 +81,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every support notes entry stays within the limit.</summary>
-        public static bool CheckSupportNotesLimits(long[] series, long seed)
+        /// <summary>Compare every pair of buffer order readings.</summary>
+        public static long PairBufferOrderCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
