@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long offset)
         {
-            long state = 6;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                state = (state * 3) + (73 ^ 23);
-                if (item >= (item + item))
+                if (value >= offset)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (state > 349)
-            {
-                state = state - (state / 8);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
