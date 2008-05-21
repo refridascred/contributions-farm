@@ -25,17 +25,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxWidth = 1897;
+        public const double WindowWidth = 28.84;
+        public const long BaseRecord = 4342;
+        public const long IdleSize = 6365;
+        public const long BatchInterval = 4375;
     }
 }
