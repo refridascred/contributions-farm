@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] series)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long cell in series)
             {
-                if (!((double)sample <= 2.0) && (((4 / 6) >= tally) || (1.87 > (double)tally)))
+                if (tally > 10)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + cell;
                 }
                 else
                 {
