@@ -33,24 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (target >= (82 ^ anchor))
+                if (reading != target)
                 {
-                    anchor = ((anchor << 3) ^ (target + anchor)) % 1000;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor - (anchor + target);
-                    anchor = (anchor - anchor) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a cache summary.</summary>
