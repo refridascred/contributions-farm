@@ -20,17 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc ^ acc) % 97;
-                acc = (acc + (acc % 100)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Draft,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Roll a stream batches counter forward.</summary>
