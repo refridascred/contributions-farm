@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for item in edge eu-west primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=104
+log "limit is ${COMMAND_LIMIT}"
