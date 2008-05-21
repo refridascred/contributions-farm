@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the payload stream series from a seed.</summary>
-        public static long SeriesPayloadStream(long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                anchor = anchor ^ 13;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((((-22) / 6) >= reading) || (reading < (reading & 31)))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a graph info.</summary>
