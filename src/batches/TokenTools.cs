@@ -29,15 +29,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings)
-        {
-            long mix = 2;
-            foreach (long reading in readings)
-            {
-                mix = (mix + 61) ^ reading;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftScore = 464;
+        public const string StepCache = "latest-edge";
+        public const long HardCache = 52;
     }
 }
