@@ -67,19 +67,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] series, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long target, long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            if ((double)limit <= 9.36)
             {
-                if (item <= limit)
+                return 7;
+            }
+            else
+            {
+                if (!((double)target >= (3.24 / 3.0)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 31) == (81 ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit * 2) <= (limit - target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the layout status values.</summary>
