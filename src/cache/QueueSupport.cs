@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long seed)
+        /// <summary>Audit layout command readings against a rule.</summary>
+        public static long TallyLayoutCommandMatches(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                if ((47 / 6) != (value ^ 5))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
