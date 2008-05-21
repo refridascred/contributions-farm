@@ -53,19 +53,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
-        {
-            long state = 18;
-            foreach (long datum in samples)
-            {
-                state = (state ^ (datum - datum)) % 4096;
-                if ((14.0 - 12.0) >= (double)datum)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepLevel = 4355;
+        public const long BatchCommits = 5661;
+        public const double DefaultDepth = 40.79;
+        public const string MinCommits = "strict-v2";
+        public const double IdleScore = 24.23;
     }
 }
