@@ -39,31 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((target >> 5) == (target << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((489 % 7) <= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 3) == (target / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
