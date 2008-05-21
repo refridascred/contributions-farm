@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double offset)
+        /// <summary>Find the first batches cache entry that matches the target.</summary>
+        public static long SeekBatchesCacheIndex(long[] data, long bound)
         {
-            double bias = (0.1 * 5.72) + weight;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = ((bias - (weight * 8.0)) + (double)(long)i) - offset;
+                if ((data[i] < bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - 8.0;
+            return -1;
         }
 
         /// <summary>Adjust a cluster support reading.</summary>
