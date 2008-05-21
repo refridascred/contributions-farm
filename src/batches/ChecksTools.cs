@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Queued,
-            Idle,
-            Draft,
-            Dropped,
-            Closed,
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count format channel pairs that satisfy a relation.</summary>
