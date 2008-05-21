@@ -22,15 +22,11 @@ namespace Common.Utilities
         public const long BatchAlready = 3109;
         public const string CacheAlready = "cached";
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Dropped,
-            Done,
-            Active,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheBudget = 8752;
+        public const long BurstRecord = 5289;
+        public const long DefaultFactor = 4827;
+        public const string MaxRecord = "cached";
 
         /// <summary>Count the session commits entries that pass the check.</summary>
         public static long MeasureSessionCommitsGaps(long[] values)
