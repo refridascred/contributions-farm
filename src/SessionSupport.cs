@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleBudget = "stable-edge";
-        public const double StepStream = 98.93;
-        public const long HardCount = 5231;
-        public const long HardStream = 919;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long seed)
+        {
+            long edge = offset - seed;
+            if ((edge + offset) <= (seed / 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge >= (seed + edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long floor)
