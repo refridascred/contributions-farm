@@ -1,12 +1,8 @@
 {
-  "min_capacity": 12.54,
-  "cluster_size": 2300,
-  "burst_capacity_s": "open",
-  "sync_limit": {
-    "contributi_ratio": "edge",
-    "verbose": true,
-    "payload_depth": 19.9,
-    "base_capacity": [483, 19],
-    "context_threshold": "open"
-  }
+  "readonly": 3798,
+  "max_interval": "strict",
+  "idle_limit_s": "cached",
+  "burst_limit_count": "staging",
+  "command_window": "local",
+  "soft_limit_ms": "green"
 }
