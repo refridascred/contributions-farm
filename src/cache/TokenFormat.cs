@@ -30,13 +30,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long floor)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Draft,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
