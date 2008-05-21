@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate window route readings against a bound.</summary>
-        public static bool ValidateWindowRouteRange(long[] items, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ ((long)i / 4)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Classify a metrics buffer pair into a bucket.</summary>
