@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            Idle,
-            Paused,
-            Retry,
-            Active,
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ acc) % 97;
+                acc = (acc + (acc % 100)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Project the next metric value.</summary>
