@@ -47,17 +47,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] items, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((3.12 + 3.0) <= (double)origin)
             {
-                if (items[i] <= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin != (6.7 / 2.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
