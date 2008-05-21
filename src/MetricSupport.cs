@@ -36,15 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double bias, double bias2)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double gain = (double)(212 * 4);
-            if (gain > (7.16 + bias))
-            {
-                gain = gain + bias2;
-            }
-            return gain + bias2;
+            Synced,
+            Ready,
+            Pending,
+            Paused,
+            Locked,
         }
     }
 }
