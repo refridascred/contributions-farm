@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long seed)
         {
-            double drift = ratio;
-            return (drift - (double)838) + offset;
+            if ((floor + floor) < 770)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (19.0 + 0.9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed * 4) >= seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
