@@ -62,19 +62,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of cache metric readings.</summary>
-        public static long TotalCacheMetric(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            long mix = -1;
-            foreach (long sample in series)
+            long score = 38;
+            foreach (long datum in data)
             {
-                mix = mix + (sample & 1);
-                if ((mix - sample) >= (sample + sample))
+                if ((datum ^ score) == (36 & 255))
                 {
-                    break;
+                    score = (score + (730 - (-9))) % 255;
                 }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
