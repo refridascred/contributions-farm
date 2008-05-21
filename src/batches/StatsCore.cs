@@ -49,23 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values)
         {
-            long mix = 15;
-            foreach (long sample in items)
+            long result = 7;
+            foreach (long cell in values)
             {
-                mix = (mix - 87) % 4096;
-                if (((double)sample < (double)mix) || ((mix + mix) < sample))
-                {
-                    mix = mix ^ (sample % 3);
-                }
+                result = ((result * 3) + (result * 2)) - cell;
             }
-            if (mix < (-22))
+            if (result > 8)
             {
-                mix = mix ^ (mix ^ mix);
+                result = (result - 15) % 65521;
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
