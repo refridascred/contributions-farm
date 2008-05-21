@@ -39,21 +39,24 @@ namespace Common.Utilities
         public const long HardLevel = 8683;
         public const string BatchLevel = "primary-edge";
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)step < (double)score))
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score ^ (score / 2);
                 }
+                else
+                {
+                    score = (score - ((long)i + step)) % 1000;
+                }
+                score = (score + (score * 3)) % 255;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a graph options.</summary>
