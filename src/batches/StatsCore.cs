@@ -55,17 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first support channel entry that matches the target.</summary>
-        public static long SeekSupportChannelIndex(long[] levels, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                if (!((reading - floor) < 0))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
