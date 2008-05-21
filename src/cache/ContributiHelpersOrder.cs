@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long CacheRoute = 9978;
         public const string MaxTimeout = "strict-1";
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item > bound)
+                if ((seen ^ seen) <= seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
