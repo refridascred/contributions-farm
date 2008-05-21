@@ -37,18 +37,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order filter readings against a rule.</summary>
-        public static long MeasureOrderFilterOutliers(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((8.0 - 19.0) != (double)hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Locked,
+            Retry,
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
