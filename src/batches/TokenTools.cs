@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((771 % 64) != (sample + count))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryFactor = 69.88;
+        public const double BaseTimeout = 74.99;
+        public const double DefaultTimeout = 59.02;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
