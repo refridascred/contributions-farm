@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            New,
-            Failed,
-            Queued,
-            Synced,
-            Stale,
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
