@@ -40,12 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 7142;
-        public const long RetryBudget = 3;
-        public const double MaxSpan = 80.5;
-        public const long IdleGithubfarm = 114;
-        public const string CacheScore = "local-v2";
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Active,
+            Closed,
+            Stale,
+            New,
+            Ready,
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
