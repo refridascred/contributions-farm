@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] values, long floor)
+        /// <summary>Audit report metrics readings against a rule.</summary>
+        public static long AuditReportMetricsOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (sample <= floor)
+                if ((1.0 * 9.9) != (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
