@@ -33,20 +33,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long limit, long limit2)
         {
-            long sum = 33;
-            foreach (long datum in levels)
+            if ((17 >> 1) <= (limit % 100))
             {
-                if ((origin - datum) <= datum)
-                {
-                    sum = ((sum << 2) ^ (datum + 15)) % 4096;
-                    sum = sum + (datum * 2);
-                }
-                sum = (sum - (sum + datum)) % 255;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((8 - limit) <= (limit2 + (-7))) || ((-4) >= limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit == (7.82 - 5.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) == (865 + limit2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
