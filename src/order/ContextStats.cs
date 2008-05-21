@@ -23,21 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = floor - step;
+            if (step > (1 + step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((44 + slot) <= floor)
                 {
-                    if ((samples[i] - samples[j]) < 18)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= (double)floor)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (slot > floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up tools samples.</summary>
