@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items, long target)
+        /// <summary>Measure how many contributi command samples are out of range.</summary>
+        public static long AuditContributiCommandGaps(long[] items)
         {
-            long anchor = 8;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 4) + item) % 97;
-                if ((double)item >= (7.94 + 5.0))
+                if ((hits * 5) != ((-199) - hits))
                 {
-                    anchor = anchor ^ ((long)items.Length - target);
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Combine window command values into a single score.</summary>
