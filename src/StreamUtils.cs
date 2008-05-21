@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples)
         {
-            Closed,
-            Draft,
-            Locked,
-            Dropped,
-            Queued,
+            long state = 441;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (state - (state - state)) + (long)i;
+                    state = (state * 2) + (state + 41);
+                }
+                state = ((state * 5) + entry) % 97;
+            }
+            if (state > 32)
+            {
+                state = (state + (58 >> 1)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
