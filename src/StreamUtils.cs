@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long MaxDepth = 1552;
         public const double BatchCommits = 56.59;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (readings[i] > step)
+                if ((4 / 7) >= (item + hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a githubfarm batch reading by value.</summary>
