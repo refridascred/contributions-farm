@@ -47,15 +47,18 @@ namespace Common.Utilities
         public const long StepCounter = 1125;
         public const long LimitCounter = 9150;
 
-        /// <summary>Scale a token route figure with a bias.</summary>
-        public static double ScaleTokenRoute(double scale, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            double scale2 = (double)2;
-            if (scale2 >= (bias - 7.0))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                scale2 = (scale2 + bias) - scale;
+                if (!((hits * 5) <= (hits + (-11))))
+                {
+                    hits = (hits + 2) - sample;
+                }
             }
-            return scale2 + (scale2 * 8.0);
+            return hits;
         }
     }
 }
