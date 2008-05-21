@@ -1,9 +1,7 @@
-id,rank,token,level
-1,15,733,33.98
-2,blue,81.65,357
-3,900,eu-west,staging
-4,63.27,75.83,blue
-5,11.44,26.64,eu-west
-6,staging,staging,68.98
-7,43.78,339,cached
-8,71.25,52.79,green
+id,region,ratio
+1,885,419
+2,700,351
+3,90,940
+4,15.46,standard
+5,staging,latest
+6,494,36.57
