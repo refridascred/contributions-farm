@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const string RetryRatio = "primary-1";
         public const long StepSupport = 491;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            New,
-            Queued,
-            Synced,
-            Retry,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftCount = 19.43;
+        public const long MaxChecks = 4667;
+        public const long BaseChecks = 8020;
+        public const string RetryChecks = "stable-edge";
+        public const long RetryScore = 5959;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
