@@ -28,13 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of cluster metrics readings.</summary>
+        public static long WeighClusterMetrics(long[] readings)
         {
-            Stale,
-            Paused,
-            Ready,
-            New,
+            long mark = 244;
+            foreach (long reading in readings)
+            {
+                mark = ((mark * 5) + 7) + reading;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload header.</summary>
