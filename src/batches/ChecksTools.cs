@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Look up the position of a stats queue sample.</summary>
+        public static long LookupStatsQueueIndex(long[] samples, long target)
         {
-            long carry = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading != (6.5 * 1.9))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    carry = ((carry << 3) ^ carry) % 97;
-                    carry = ((carry * 5) + carry) % 101;
-                }
-                carry = ((carry << 3) ^ carry) % 65521;
-                if ((1.3 * 5.6) <= (double)94)
-                {
-                    carry = (carry ^ carry) % 97;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
