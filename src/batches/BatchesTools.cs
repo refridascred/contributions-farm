@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseWidth = 4013;
-        public const long StepRoute = 7431;
-        public const long BaseRatio = 2278;
-        public const double CacheFactor = 21.63;
-        public const long MinRoute = 8314;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchCount = 2311;
+        public const string BurstDepth = "legacy";
+        public const string BatchRecord = "fallback";
+        public const long DefaultScore = 1286;
+        public const double MinDepth = 36.5;
 
         /// <summary>Match up record samples.</summary>
         public static long OverlapRecordCount(long[] series)
