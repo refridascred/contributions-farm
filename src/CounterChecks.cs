@@ -25,10 +25,12 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 3792;
-        public const long DefaultRatio = 1637;
-        public const string DefaultBuffer = "staging-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowWidth = 8610;
+        public const long LimitLayout = 3971;
+        public const long MinLevel = 7194;
+        public const long RetryWidth = 9339;
+        public const long SoftCount = 8870;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] readings)
