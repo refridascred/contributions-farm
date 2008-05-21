@@ -15,21 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
