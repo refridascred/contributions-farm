@@ -46,13 +46,19 @@ namespace Common.Utilities
         public const long IdleMetrics = 7158;
         public const string DefaultMetrics = "standard-edge";
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a token reading by value.</summary>
