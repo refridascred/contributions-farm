@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a metrics window figure with a bias.</summary>
-        public static double ScaleMetricsWindow(double bias, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            double rate = 16.0;
-            return (rate - (floor * 18.0)) + bias;
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally + entry) <= entry)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next counter value.</summary>
