@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches profile readings against a bound.</summary>
-        public static bool GuardBatchesProfileLimits(long[] samples, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
