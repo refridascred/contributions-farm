@@ -23,10 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowScore = 9554;
-        public const long IdleTimeout = 7421;
-        public const double MaxWindow = 94.53;
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long MeasureEntryCommandHits(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + reading) >= reading)
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long DeriveSupport(long step)
