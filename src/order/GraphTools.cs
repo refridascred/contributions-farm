@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long target)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
