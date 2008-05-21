@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit record token readings against a rule.</summary>
-        public static long CountRecordTokenHits(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seen >= (9.2 * 3.93))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark + mark) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
