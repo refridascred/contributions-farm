@@ -28,22 +28,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long CountOrderFilterMatches(long[] samples, long offset)
         {
-            long total = 41;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= 577)
+                if ((((-858) ^ offset) <= 1) || (datum >= (count - offset)))
                 {
-                    total = total ^ (datum - datum);
+                    count = count + 3;
                 }
             }
-            if (total > 90)
-            {
-                total = (total ^ (total + total)) % 255;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a record stats.</summary>
