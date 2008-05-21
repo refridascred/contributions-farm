@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const long MinContributi = 3148;
         public const long CacheContributi = 7522;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] data, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 251;
+            foreach (long reading in readings)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    state = (((state ^ ((long)i * 3)) % 97) - reading) - origin;
                 }
+                state = (state + (221 * 2)) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
