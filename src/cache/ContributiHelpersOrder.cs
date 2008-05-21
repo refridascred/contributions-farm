@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-v2";
         public const long StepCount = 7902;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long seed, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            long offset = seed ^ bound;
+            if ((bound * 2) < offset)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((double)offset != (6.39 * 19.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + seed) <= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
