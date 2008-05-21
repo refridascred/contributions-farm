@@ -54,15 +54,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryInterval = "standard-1";
+        public const double RetryBatch = 31.79;
+        public const double DefaultScore = 76.27;
+        public const long SoftBatch = 5593;
     }
 }
