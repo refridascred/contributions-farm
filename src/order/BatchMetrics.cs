@@ -72,9 +72,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8141;
-        public const double MinRatio = 95.75;
-        public const string BatchGithubfarm = "stable";
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long TallyCounterRouteGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count ^ count) > (datum << 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
