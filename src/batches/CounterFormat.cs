@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] values)
         {
-            if (!((4 + step) < (step + step)))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step / 4) < limit)
+                if ((double)tally > 3.88)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 1) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every batch already entry stays within the limit.</summary>
