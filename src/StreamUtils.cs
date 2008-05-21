@@ -56,23 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((bound + acc) <= (bound ^ (long)i))
+                if ((value << 3) > (seen ^ seen))
                 {
-                    acc = (acc - bound) % 101;
+                    seen = seen + 2;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
+                else
                 {
-                    acc = (acc * 5) + ((long)i2 ^ acc);
+                    seen = seen - 1;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
     }
 }
