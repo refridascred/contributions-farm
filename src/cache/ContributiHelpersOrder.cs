@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool VerifyProfileWindowLimits(long[] values, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double scale = weight;
+            if (scale >= (floor - 2.87))
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (double)318;
             }
-            return valid;
+            else
+            {
+                scale = scale - (double)2;
+            }
+            return scale + floor;
         }
     }
 }
