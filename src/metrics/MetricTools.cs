@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Find the first booking entry that matches the target.</summary>
+        public static long SeekBookingIndex(long[] series, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (acc & 15)) % 65521;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Adjust a already metric reading.</summary>
