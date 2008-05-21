@@ -1,13 +1,9 @@
 # entry settings
-enabled: 79.79
-burst_window_ms:
-  - edge
-  - primary
-  - local
-retry_ratio_count: eu-west
-sync_threshold: eu-west
-hard_window_pct:
-  - 163
-  - 62
-  - 170
-batch_depth_s: standard
+cache_capacity: 56
+token_limit:
+  - latest
+  - latest
+  - stable
+  - stable
+contributi_ratio: 6.9
+base_interval_ms: true
