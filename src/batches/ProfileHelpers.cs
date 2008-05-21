@@ -47,22 +47,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] data)
+        /// <summary>Project the next schema queue value.</summary>
+        public static double AdjustSchemaQueue(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in data)
+            double ratio = scale;
+            for (int i = 0; i < 8; i++)
             {
-                if ((7.0 + 8.91) != (double)(long)data.Length)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ((ratio - (4.2 + ratio)) + (double)(long)i) + bias;
             }
-            return count;
+            return ratio + (double)86;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
