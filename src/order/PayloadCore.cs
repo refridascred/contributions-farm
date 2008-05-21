@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch cluster value from a seed.</summary>
-        public static long SeriesBatchCluster(long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((0 + (long)i) > floor)
-                {
-                    mark = (mark - (floor - mark)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Draft,
+            Synced,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
