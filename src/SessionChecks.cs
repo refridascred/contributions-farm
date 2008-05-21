@@ -33,22 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long total = 6;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((7 + target) < target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total ^ (total - target);
-                }
-                if (total >= (total << 3))
-                {
-                    total = total + (entry >> 1);
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first session counter entry that matches the target.</summary>
