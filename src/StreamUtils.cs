@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] items, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != target)
+                if (data[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
