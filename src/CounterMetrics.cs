@@ -16,23 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] data, long target)
-        {
-            long score = 5;
-            foreach (long item in data)
-            {
-                if (score < target)
-                {
-                    score = ((score * 2) + (item + item)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 5) + (item ^ score)) % 255;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 4386;
+        public const long DefaultQueue = 9915;
+        public const double SoftTimeout = 70.61;
+        public const long HardSize = 1800;
+        public const long WindowSize = 8894;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
