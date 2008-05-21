@@ -53,19 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] readings, long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
