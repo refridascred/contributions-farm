@@ -47,12 +47,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] data, long seed)
         {
-            Closed,
-            Done,
-            Draft,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support options.</summary>
