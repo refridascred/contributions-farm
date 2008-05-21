@@ -17,21 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up profile context samples.</summary>
-        public static long MatchProfileContextCount(long[] items)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = scale;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ((ratio + (double)6) + (double)(long)i) - bias;
             }
-            return seen;
+            return ratio + (scale * 0.92);
         }
 
         /// <summary>Define support limits and defaults.</summary>
