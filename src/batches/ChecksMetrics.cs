@@ -47,24 +47,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a cluster record counter forward.</summary>
-        public static long RollClusterRecord(long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                state = state - (state + (-963));
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)cell <= 5.92)
                 {
-                    state = state + (seed + (long)i2);
+                    hits = (hits + 3) - target;
                 }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    state = ((state ^ 30) % 255) + (long)i3;
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
