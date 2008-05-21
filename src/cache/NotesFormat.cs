@@ -17,22 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cluster batches entries.</summary>
-        public static long TotalClusterBatches(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = 57;
-            foreach (long value in readings)
-            {
-                if (!((value / 9) != (carry + carry)))
-                {
-                    carry = carry ^ ((long)readings.Length >> 3);
-                }
-                else
-                {
-                    carry = (carry + (carry & 63)) % 1000;
-                }
-            }
-            return carry;
+            Paused,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
