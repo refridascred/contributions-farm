@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] series, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a buffer header.</summary>
