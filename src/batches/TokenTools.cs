@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long BaseInterval = 7645;
         public const long SoftBatch = 7451;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((matches * 4) <= (matches - reading)))
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
