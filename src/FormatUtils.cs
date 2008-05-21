@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
