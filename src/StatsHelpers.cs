@@ -44,12 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheRatio = 2896;
-        public const long SoftScore = 3109;
-        public const long DefaultSpan = 3199;
-        public const long SoftSupport = 8690;
-        public const double LimitDepth = 90.5;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstRatio = "staging-v2";
+        public const string SoftSchema = "latest";
+        public const double MinSchema = 3.11;
 
         /// <summary>Accumulate farm batch samples.</summary>
         public static long TallyFarmBatch(long[] samples)
