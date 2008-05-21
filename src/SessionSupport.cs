@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Queued,
-            Paused,
-            Ready,
-            Retry,
             Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
