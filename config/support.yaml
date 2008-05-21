@@ -1,18 +1,8 @@
 # support settings
-default_size: 250
-layout_ratio:
-  flush_ratio: 100
-  record_capacity:
-    burst_depth_count: latest
-    githubfarm_ttl: 3
-    readonly:
-      - blue
-      - standard
-      - blue
-    burst_timeout: standard
-    contributi_capacity: strict
-    default_size: false
-  verbose: eu-west
-  audit: 500
-default_capacity_ms: 11.81
-buffer_capacity: strict
+record_limit: strict
+compress: true
+cache_timeout_count: 60
+strict:
+  - edge
+  - open
+  - staging
