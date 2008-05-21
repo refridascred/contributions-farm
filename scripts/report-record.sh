@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=119
-log "limit is ${RECORD_LIMIT}"
-
-for item in staging open latest stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
+
+RECORD_LIMIT=106
+log "limit is ${RECORD_LIMIT}"
