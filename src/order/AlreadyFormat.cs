@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
-        {
-            long state = -48;
-            foreach (long reading in series)
-            {
-                if ((double)state >= 7.7)
-                {
-                    state = ((state << 3) ^ (state + state)) + reading;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 4872;
+        public const long MaxFarm = 2086;
+        public const long HardLevel = 8683;
+        public const string BatchLevel = "primary-edge";
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] series)
