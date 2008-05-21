@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] items, long offset)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample % 97) >= (hits - sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
