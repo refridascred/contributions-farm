@@ -68,22 +68,18 @@ namespace Common.Utilities
         public const double BurstDepth = 60.31;
         public const long DefaultCount = 9835;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] levels, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((60 - 247) > (hits % 60))
+                if (((item - tally) != (7 ^ item)) || ((double)item < 3.3))
                 {
-                    hits = ((hits + 1) + cell) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
