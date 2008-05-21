@@ -18,19 +18,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 50.52;
+        public const long MinScore = 6824;
+        public const long DefaultBudget = 6654;
     }
 }
