@@ -23,18 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double load = offset;
+            if (load <= load)
             {
-                if ((double)count != (18.0 + 3.1))
-                {
-                    count = (count + 2) + reading;
-                }
+                load = load + (load + weight);
             }
-            return count;
+            return load - (9.0 / 8.0);
         }
 
         /// <summary>Hold a command stats.</summary>
