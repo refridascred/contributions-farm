@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((seed ^ mix) <= (69 + 285))
+                if (value >= origin)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return ok;
         }
     }
 }
