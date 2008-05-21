@@ -1,11 +1,12 @@
 {
-  "tools_window": 1024,
-  "audit": 1024,
-  "verbose": {
-    "burst_window_count": "edge",
-    "soft_timeout": 30,
-    "flush_depth_s": ["fallback", "staging"],
-    "compress": 17.88
-  },
-  "hard_depth_ms": true
+  "min_capacity": 12.54,
+  "cluster_size": 2300,
+  "burst_capacity_s": "open",
+  "sync_limit": {
+    "contributi_ratio": "edge",
+    "verbose": true,
+    "payload_depth": 19.9,
+    "base_capacity": [483, 19],
+    "context_threshold": "open"
+  }
 }
