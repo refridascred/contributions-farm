@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const long SoftChecks = 875;
         public const long MinChecks = 6867;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 47.5;
-        public const long BurstDepth = 582;
-        public const string CacheAlready = "local-v2";
-        public const long StepAlready = 8121;
-        public const double BatchAlready = 33.73;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] data)
