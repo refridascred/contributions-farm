@@ -17,15 +17,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double scale, double bias)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double ratio = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + (double)6) + (double)(long)i) - bias;
-            }
-            return ratio + (scale * 0.92);
+            Failed,
+            Paused,
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
