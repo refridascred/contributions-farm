@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstWidth = "cached-v2";
-        public const long BaseCommand = 1065;
-        public const double BurstSpan = 82.52;
-        public const string IdleSize = "open";
+        /// <summary>Find the first counter payload entry that matches the target.</summary>
+        public static long SeekCounterPayloadIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metrics cache entries.</summary>
         public static long TotalMetricsCache(long[] items)
