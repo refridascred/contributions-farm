@@ -1,15 +1,11 @@
 # Command notes
 
-Each support is validated before it reaches the filter queue.
-Use metric settings to tune how often payload data is refreshed.
-A counter that stays idle for too long is moved to the cluster list.
-
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use record settings to tune how often route data is refreshed.
+Each githubfarm is validated before it reaches the filter queue.
+The tools report groups every notes by cluster.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review order limits each release
-- Keep batch values small
-- Prefer cache defaults
-- Validate account input early
+- Validate token input early
+- Prefer session defaults
+- Review token limits each release
