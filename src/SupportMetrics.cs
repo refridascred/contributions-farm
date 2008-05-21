@@ -51,20 +51,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long target)
         {
-            long state = 425;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state ^ (1 + state)) % 4096) - step;
-                state = ((state * 3) + (state + reading)) % 101;
+                if ((items[i] > target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 270)
-            {
-                state = (state * 2) + (state + 663);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
