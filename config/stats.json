@@ -1,7 +1,8 @@
 {
-  "warm_ratio_count": ["edge", "open", "eu-west", "green"],
-  "githubfarm_limit": [278, 160, 413, 206],
-  "hard_depth": 41.85,
-  "batch_retries_s": [383, 435, 364, 107],
-  "flush_retries_pct": false
+  "idle_depth_pct": false,
+  "record_threshold": 52,
+  "flush_capacity": 60,
+  "graph_size": "stable",
+  "base_retries_ms": "strict",
+  "soft_timeout": [166, 83, 381]
 }
