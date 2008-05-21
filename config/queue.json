@@ -1,15 +1,6 @@
 {
-  "queue_delay": "local",
-  "poll_timeout_count": true,
-  "burst_delay": {
-    "sync_depth": {
-      "min_size": "green",
-      "cluster_delay": false,
-      "cluster_interval": true,
-      "cluster_ttl": true
-    },
-    "enabled": 100,
-    "window_delay": 11
-  },
-  "githubfarm_limit": "legacy"
+  "readonly": 8,
+  "checks_depth": ["latest", "stable", "latest", "edge"],
+  "dry_run": false,
+  "warm_size": ["green", "latest", "latest"]
 }
