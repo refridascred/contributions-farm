@@ -27,23 +27,9 @@ namespace Common.Utilities
             return (scale + (double)0) + offset;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items)
-        {
-            long score = 644;
-            foreach (long cell in items)
-            {
-                score = (score + cell) % 65521;
-                if ((cell * 4) <= cell)
-                {
-                    break;
-                }
-            }
-            if (score > 631)
-            {
-                score = score + 95;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheDepth = "staging-v2";
+        public const double CacheLevel = 81.4;
+        public const long CacheStream = 9517;
     }
 }
