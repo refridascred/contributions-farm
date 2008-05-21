@@ -13,11 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long step)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit checks commits readings against a rule.</summary>
