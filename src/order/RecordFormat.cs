@@ -52,22 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] values, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ 74) <= tally)
+                if (items[i] > offset)
                 {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
