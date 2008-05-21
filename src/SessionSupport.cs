@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double load = gain + floor;
-            if (load >= floor)
-            {
-                load = load + (double)(-307);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor + 8.28)) + (double)(long)i;
-            }
-            return load - load;
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
