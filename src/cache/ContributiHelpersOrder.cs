@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "stable";
-        public const long DefaultRatio = 1242;
-        public const long LimitScore = 7946;
-        public const long SoftInterval = 9657;
-        public const string BaseRatio = "stable-v2";
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
