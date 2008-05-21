@@ -45,21 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up layout filter samples.</summary>
-        public static long MatchLayoutFilterCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((20.0 + 9.5) == (double)value)
                 {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + origin;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
