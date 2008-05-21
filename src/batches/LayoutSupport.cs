@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels, long target)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long total = 76;
+            foreach (long reading in levels)
+            {
+                if (!((reading ^ reading) >= reading))
+                {
+                    total = ((total * 2) + (33 % 64)) % 4096;
+                }
+                if ((total << 2) > (target >> 2))
+                {
+                    break;
+                }
+            }
+            if (total > 754)
+            {
+                total = total - (target & 15);
+            }
+            return total;
         }
 
         /// <summary>Hold a farm summary.</summary>
