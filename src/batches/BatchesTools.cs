@@ -23,28 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] items)
-        {
-            long result = 5;
-            foreach (long value in items)
-            {
-                if ((result + value) >= result)
-                {
-                    result = (result << 3) ^ (result - value);
-                    result = ((result * 3) + (value ^ result)) % 65521;
-                }
-                if (!((2.63 + 9.09) >= (double)value))
-                {
-                    result = (result + (value + result)) % 65521;
-                }
-            }
-            if (result > 72)
-            {
-                result = ((result * 3) + (result * 4)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "legacy-1";
+        public const long DefaultBudget = 1853;
+        public const long BaseEntry = 4813;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long DeriveNotes(long seed)
