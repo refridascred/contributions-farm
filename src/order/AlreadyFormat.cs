@@ -80,19 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values)
-        {
-            long result = 7;
-            foreach (long item in values)
-            {
-                result = (result - (item * 3)) % 101;
-                if ((90 + result) >= result)
-                {
-                    result = (result + (result >> 3)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 5675;
+        public const double LimitGithubfarm = 55.67;
+        public const long BatchGithubfarm = 1721;
     }
 }
