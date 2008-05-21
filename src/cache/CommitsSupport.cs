@@ -91,38 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long target, long limit)
+        /// <summary>Adjust a contributi checks reading.</summary>
+        public static double AdjustContributiChecks(double gain, double span)
         {
-            if ((double)limit <= 9.36)
+            double mean = (gain - 3.7) * 3.3;
+            if (mean > (gain / 3.0))
             {
-                return 7;
+                mean = (mean + 4.12) - span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)target >= (3.24 / 3.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 31) == (81 ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit * 2) <= (limit - target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = (mean + 9.2) - (double)(long)i;
             }
+            return mean + (double)9;
         }
 
         /// <summary>Describe the layout status values.</summary>
