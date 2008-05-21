@@ -70,18 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 953;
+            foreach (long entry in series)
             {
-                if ((double)datum < (16.0 - 4.52))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state + (entry + entry)) % 97) - origin;
             }
-            return hits;
+            if (state > 909)
+            {
+                state = (state ^ (state << 3)) % 4096;
+            }
+            return state;
         }
     }
 }
