@@ -32,19 +32,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Roll a stream batches counter forward.</summary>
+        public static long RollStreamBatches(long target)
         {
-            double ratio = offset;
-            if (ratio < (double)(-88))
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = ratio - bias;
+                result = (result * 2) + (target & 63);
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + 19.0;
-            }
-            return ratio + ratio;
+            return result;
         }
 
         /// <summary>Blend two commits measurements.</summary>
