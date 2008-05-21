@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((anchor >> 3) == (anchor >> 5))
-                {
-                    anchor = ((anchor * 2) + origin) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Check that every entry session entry stays within the limit.</summary>
