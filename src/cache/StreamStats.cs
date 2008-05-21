@@ -42,11 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit checks commits readings against a rule.</summary>
+        public static long MeasureChecksCommitsOutliers(long[] data)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)matches == (1.1 - 6.52))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
