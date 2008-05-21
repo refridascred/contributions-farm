@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] series, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading >= floor)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (-82)) + (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
