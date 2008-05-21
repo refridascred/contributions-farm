@@ -1,15 +1,11 @@
 # Command notes
 
-Each account is validated before it reaches the metric queue.
-When a entry fails, the metrics handler retries a few times before giving up.
-
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Run the payload check before changing any metrics limits.
-The context report groups every buffer by route.
+A batches that stays idle for too long is moved to the contributi list.
+When a stats fails, the githubfarm handler retries a few times before giving up.
+Use checks settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Log every order change
-- Prefer record defaults
-- Keep cluster values small
-- Review route limits each release
+- Review cluster limits each release
+- Prefer support defaults
+- Document new profile fields
