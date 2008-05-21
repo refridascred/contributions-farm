@@ -1,8 +1,25 @@
 {
-  "idle_retries_s": 16.66,
-  "batch_retries": 5197,
-  "idle_depth_pct": 250,
-  "dry_run": ["open", "legacy"],
-  "cache_capacity_ms": "primary",
-  "persist": 100
+  "audit": "blue",
+  "compress": false,
+  "base_ttl": 8337,
+  "max_window": {
+    "readonly": true,
+    "soft_threshold_s": {
+      "max_capacity_s": 47.43,
+      "readonly": "standard",
+      "dry_run": ["standard", "blue", "latest"],
+      "commits_delay": [456, 433, 147],
+      "report_window": ["edge", "standard", "legacy"]
+    },
+    "flush_depth_s": 7.62,
+    "flush_size": {
+      "min_ratio_count": "legacy",
+      "already_ratio": 66.43,
+      "default_ratio_ms": "fallback",
+      "editor_window": "fallback",
+      "metric_size": 7037
+    },
+    "dry_run": 67.4,
+    "channel_depth": 25.34
+  }
 }
