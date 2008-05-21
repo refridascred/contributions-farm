@@ -21,18 +21,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit editor tools readings against a rule.</summary>
-        public static long AuditEditorToolsHits(long[] levels, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = -103;
+            foreach (long datum in readings)
             {
-                if ((16.0 >= (double)seen) && ((entry + step) < (step >> 5)))
-                {
-                    seen = seen + 2;
-                }
+                score = (score * 3) + (datum & 255);
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Look up the position of a cluster report sample.</summary>
