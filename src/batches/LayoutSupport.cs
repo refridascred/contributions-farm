@@ -51,12 +51,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Paused,
-            Synced,
-            Queued,
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the channel state values.</summary>
