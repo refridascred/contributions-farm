@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double BaseTimeout = 74.99;
         public const double DefaultTimeout = 59.02;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
