@@ -45,19 +45,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long carry = 431;
-            foreach (long datum in data)
-            {
-                carry = (carry + (carry >> 5)) - datum;
-                if (((carry * 2) <= seed) && (seed > (seed / 2)))
-                {
-                    carry = carry ^ (carry / 6);
-                }
-            }
-            return carry % 1000;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
