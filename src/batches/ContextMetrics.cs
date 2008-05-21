@@ -61,19 +61,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch stream readings against a bound.</summary>
-        public static bool CheckBatchStreamBounds(long[] values, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long step, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long delta = step ^ bound;
+            if ((double)step == (7.19 - 4.34))
             {
-                if (reading > seed)
+                return 1;
+            }
+            else
+            {
+                if (((step % 16) == (delta / 6)) || ((step & 31) >= bound))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound + delta) > delta))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta - step) < (delta ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
