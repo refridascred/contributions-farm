@@ -55,19 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool VerifyRouteContributiBounds(long[] data, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Failed,
+            Locked,
         }
     }
 }
