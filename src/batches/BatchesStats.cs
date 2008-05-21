@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] series, long limit)
         {
-            double ratio = scale;
-            if (ratio <= floor)
+            long total = 1;
+            foreach (long cell in series)
             {
-                ratio = ratio - 19.0;
+                total = ((((total << 2) ^ total) % 1000) - cell) - limit;
             }
-            return ratio + (scale + floor);
+            if (total > 722)
+            {
+                total = total ^ (total & 7);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
