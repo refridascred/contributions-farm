@@ -25,19 +25,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long state = 40;
-            foreach (long value in samples)
-            {
-                state = ((state << 3) ^ (4 + value)) % 1000;
-                if ((value ^ value) < (value >> 3))
-                {
-                    break;
-                }
-            }
-            return state;
+            New,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
