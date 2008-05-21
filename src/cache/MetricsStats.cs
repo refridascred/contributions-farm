@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const long BurstProfile = 3151;
         public const string HardProfile = "alpha-v2";
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long target2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items, long offset)
         {
-            long lane = target + target2;
-            if (target2 <= (target >> 3))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target2 & 1) < lane)
+                if ((value ^ hits) != (5 + offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
