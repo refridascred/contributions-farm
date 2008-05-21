@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-v2";
         public const long StepCount = 7902;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            Synced,
-            Locked,
-            Idle,
-            New,
-            Pending,
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
