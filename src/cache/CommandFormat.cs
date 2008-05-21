@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a support account pair into a bucket.</summary>
-        public static long RankSupportAccount(long bound, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((5.0 - 6.9) != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            New,
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
