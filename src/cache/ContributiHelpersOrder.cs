@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings)
-        {
-            long score = 443;
-            foreach (long cell in readings)
-            {
-                score = score ^ (score / 7);
-                if ((0.5 + 5.6) >= (double)cell)
-                {
-                    score = score ^ (score - score);
-                }
-            }
-            if (score < 6)
-            {
-                score = ((score * 5) + (score + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseBudget = 9.94;
+        public const double LimitEntry = 38.13;
+        public const double MinSpan = 70.56;
+        public const long CacheEntry = 8413;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
