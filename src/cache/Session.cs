@@ -37,15 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cluster metrics readings.</summary>
-        public static long WeighClusterMetrics(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series, long floor)
         {
-            long mark = 244;
-            foreach (long reading in readings)
+            long total = 843;
+            foreach (long entry in series)
             {
-                mark = ((mark * 5) + 7) + reading;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (((total << 3) ^ (floor + (-289))) ^ (long)i) ^ entry;
+                }
+                total = (total - (total % 5)) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a payload header.</summary>
