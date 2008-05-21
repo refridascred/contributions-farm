@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-edge";
+        public const long BatchDepth = 6547;
+        public const long BatchBudget = 6609;
+        public const long RetryScore = 7975;
+        public const string HardInterval = "open-1";
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
