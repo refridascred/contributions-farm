@@ -1,20 +1,18 @@
 # support settings
-base_capacity_ms: true
-metrics_ratio: 1286
-cache_delay_ms:
-  sync_delay: 60
-  flush_timeout:
-    burst_size_pct: cached
-    warm_retries: 4086
-    metrics_interval: fallback
-    sync_interval_count: green
-    hard_ttl_count:
-      - primary
+default_size: 250
+layout_ratio:
+  flush_ratio: 100
+  record_capacity:
+    burst_depth_count: latest
+    githubfarm_ttl: 3
+    readonly:
       - blue
       - standard
-      - staging
-    verbose: false
-  profile_depth: 500
-  audit: 54.59
-default_delay_count: 60
-strict: standard
+      - blue
+    burst_timeout: standard
+    contributi_capacity: strict
+    default_size: false
+  verbose: eu-west
+  audit: 500
+default_capacity_ms: 11.81
+buffer_capacity: strict
