@@ -1,4 +1,8 @@
 # support settings
-notes_capacity: 96.14
-retry_ttl_ms: blue
-schema_ratio: 1024
+cache_ratio_pct: 1024
+verbose: true
+warm_limit_count: 7653
+checks_ttl:
+  - 62
+  - 223
+  - 307
