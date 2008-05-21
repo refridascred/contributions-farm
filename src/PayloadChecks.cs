@@ -17,16 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values, long limit)
-        {
-            long mix = 66;
-            foreach (long sample in values)
-            {
-                mix = (mix ^ (880 + limit)) ^ sample;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryLevel = "fallback-v2";
+        public const double MaxSize = 6.32;
+        public const string BurstCommand = "primary-v2";
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double ratio, double floor)
