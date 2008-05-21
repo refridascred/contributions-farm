@@ -33,16 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double weight, double floor)
-        {
-            double drift = (double)((-9) / 7);
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - (floor + drift)) + (double)(long)i) - weight;
-            }
-            return drift - (double)(-4);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFactor = "open";
+        public const string HardFormat = "strict-v2";
+        public const long BurstDepth = 4491;
+        public const double MinFormat = 5.5;
+        public const string BatchInterval = "local-edge";
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] series)
