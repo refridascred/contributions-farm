@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a record route pair into a bucket.</summary>
-        public static long BucketRecordRoute(long offset, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples, long floor)
         {
-            long cur = offset - origin;
-            if ((cur + 70) > cur)
+            long mix = 44;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8 + cur) <= 332)
+                if (((floor + mix) <= 59) || (floor <= (4 - mix)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    mix = (mix - item) % 4096;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
