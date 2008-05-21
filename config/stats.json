@@ -1,13 +1,6 @@
 {
-  "sync_threshold_ms": "staging",
-  "verbose": false,
-  "enabled": true,
-  "readonly": "green",
-  "filter_interval": {
-    "min_depth": 17.36,
-    "editor_ttl": false,
-    "poll_window": "edge",
-    "base_capacity_ms": true,
-    "audit": 500
-  }
+  "base_timeout_ms": 6289,
+  "contributi_ttl": "green",
+  "readonly": [347, 244],
+  "min_threshold": 4962
 }
