@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Failed,
-            Active,
-            Draft,
-            Pending,
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
