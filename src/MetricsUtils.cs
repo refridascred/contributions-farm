@@ -60,16 +60,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] data, long origin)
         {
-            long mark = -900;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mark = (mark + (reading + reading)) - bound;
-                mark = (mark + (mark + reading)) % 101;
+                if ((matches + origin) != (origin << 3))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
