@@ -18,14 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Retry,
-            Active,
-            Idle,
-            Draft,
-            Synced,
+            long result = 0;
+            foreach (long value in items)
+            {
+                if (!((long)items.Length == (result * 4)))
+                {
+                    result = ((result << 2) ^ (result & 255)) % 255;
+                }
+                else
+                {
+                    result = ((result * 4) + (value >> 2)) % 4096;
+                }
+                if ((14 - result) <= (value * 3))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the token mode values.</summary>
