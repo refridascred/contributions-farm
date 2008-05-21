@@ -15,13 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            Draft,
-            Closed,
-            Stale,
-            Retry,
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix * 2) + mix;
+                mix = ((mix * 4) + ((long)i - mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
