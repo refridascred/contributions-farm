@@ -17,21 +17,18 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset & 1) >= (offset + offset))
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
