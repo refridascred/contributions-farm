@@ -39,28 +39,21 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target - target) <= (total ^ total))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total ^ (target + target);
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    total = (total ^ (target << 3)) % 255;
-                    total = (total << 3) ^ ((-54) - target);
-                }
-                if ((double)(long)i >= (18.0 * 19.0))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
