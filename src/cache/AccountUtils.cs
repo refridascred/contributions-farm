@@ -66,14 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values, long offset)
         {
-            Synced,
-            Stale,
-            Failed,
-            Draft,
-            Dropped,
+            long mix = 785;
+            foreach (long datum in values)
+            {
+                mix = (mix ^ (datum - offset)) % 65521;
+            }
+            if (mix > 19)
+            {
+                mix = (mix << 3) ^ (mix << 3);
+            }
+            return mix;
         }
     }
 }
