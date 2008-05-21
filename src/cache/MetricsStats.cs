@@ -64,39 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long origin)
+        /// <summary>Blend two farm session measurements.</summary>
+        public static double AdjustFarmSession(double rate, double offset)
         {
-            long bound = step - origin;
-            if (((bound + 588) >= (step % 100)) || ((bound / 2) > 957))
+            double load = rate;
+            if (load < offset)
             {
-                return 2;
+                load = load - (rate - load);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)origin != (12.0 - 13.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound < 1.4)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound <= (origin >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = (load + 4.76) + (double)(long)i;
             }
+            return load + (16.0 + rate);
         }
 
         /// <summary>Hold a farm info.</summary>
