@@ -66,22 +66,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)tally == (5.58 / 2.0))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Closed,
+            Active,
+            New,
         }
     }
 }
