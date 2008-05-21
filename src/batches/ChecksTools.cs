@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double gain = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - (2.2 + gain)) + (double)(long)i) + span;
-            }
-            return gain + gain;
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
