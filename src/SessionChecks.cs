@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 4407;
-        public const long LimitRatio = 6483;
-        public const double MinInterval = 72.3;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
