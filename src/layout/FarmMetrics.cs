@@ -22,11 +22,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 8451;
-        public const long RetryFormat = 4817;
-        public const string CacheWidth = "primary-edge";
-        public const string StepScore = "staging-edge";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Draft,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] items)
