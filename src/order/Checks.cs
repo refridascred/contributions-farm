@@ -36,18 +36,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] samples, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long mix = 62;
-            foreach (long value in samples)
-            {
-                if ((value >> 3) <= (25 << 3))
-                {
-                    mix = ((mix * 3) + (860 - mix)) - floor;
-                }
-            }
-            return mix;
+            Active,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
