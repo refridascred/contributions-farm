@@ -52,32 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long limit, long offset)
+        /// <summary>Count channel graph pairs that satisfy a relation.</summary>
+        public static long OverlapChannelGraphCount(long[] values)
         {
-            long span = limit - offset;
-            if ((3.22 / 4.0) == (double)limit)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 64) >= span)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((8.3 / 2.0) == (double)offset) || ((offset * 3) <= (span & 1)))
+                    if ((values[i] - values[j]) == 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
