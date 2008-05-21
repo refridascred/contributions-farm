@@ -13,18 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] samples, long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (25 >= (cell ^ cell))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            Done,
+            Ready,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
