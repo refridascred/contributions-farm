@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if ((step >= offset) && ((4.0 + 9.0) != (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) >= 56)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
