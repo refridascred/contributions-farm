@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double bias2)
-        {
-            double weight = bias2;
-            if (weight < (double)(-43))
-            {
-                weight = (weight - weight) - bias;
-            }
-            return weight + (double)29;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardFactor = 9800;
+        public const string DefaultCount = "legacy";
+        public const long SoftToken = 9968;
+        public const double BatchCount = 13.47;
+        public const long BaseToken = 5025;
 
         /// <summary>Adjust a order reading.</summary>
         public static double BlendOrder(double rate, double offset)
