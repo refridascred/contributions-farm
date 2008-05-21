@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowBudget = 7271;
+        public const double MinToken = 58.07;
+        public const long StepToken = 3802;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorOutliers(long[] levels, long limit)
