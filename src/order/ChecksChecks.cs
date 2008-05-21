@@ -41,11 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseWidth = 6307;
-        public const string LimitTimeout = "latest-1";
-        public const long SoftSupport = 8126;
-        public const long LimitFactor = 9871;
-        public const long MinSupport = 5903;
+        /// <summary>Blend two tools entry measurements.</summary>
+        public static double ProjectToolsEntry(double weight, double offset)
+        {
+            double gain = offset;
+            if (gain >= gain)
+            {
+                gain = (gain + (double)519) + weight;
+            }
+            else
+            {
+                gain = gain - (double)91;
+            }
+            return gain - (offset - 6.0);
+        }
     }
 }
