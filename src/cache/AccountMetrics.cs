@@ -69,10 +69,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 34.0;
-        public const long BatchQueue = 2420;
-        public const long StepQueue = 8516;
+        /// <summary>Locate a farm editor reading by value.</summary>
+        public static long LocateFarmEditorIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterOutliers(long[] data)
