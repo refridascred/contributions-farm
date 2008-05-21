@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const long BatchAlready = 3109;
         public const string CacheAlready = "cached";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheBudget = 8752;
-        public const long BurstRecord = 5289;
-        public const long DefaultFactor = 4827;
-        public const string MaxRecord = "cached";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((sample - matches) < (matches * 5)) && ((double)sample > (4.0 / 7.0))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
