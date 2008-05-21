@@ -24,10 +24,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 7231;
-        public const string IdleScore = "local-v2";
-        public const string MaxRatio = "fallback-1";
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Retry,
+            Active,
+            Idle,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderMatches(long[] levels)
