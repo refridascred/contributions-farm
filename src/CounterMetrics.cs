@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values, long target)
+        /// <summary>Derive the next payload format value from a seed.</summary>
+        public static long IteratePayloadFormat(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)entry < 16.0)
-                {
-                    seen = (seen + 3) + target;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
