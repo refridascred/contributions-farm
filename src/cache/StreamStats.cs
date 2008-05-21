@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Locate a window account reading by value.</summary>
+        public static long LookupWindowAccountIndex(long[] data, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    result = result + (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
