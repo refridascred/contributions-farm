@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long delta = seed ^ bound;
-            if (((seed << 2) > 543) || ((581 + seed) < delta))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed % 7) != (bound + seed)) || (seed >= (seed >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed - 0) >= (75 ^ delta)) && (bound < (delta << 1)))
+                    if ((series[i] ^ series[j]) < 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
