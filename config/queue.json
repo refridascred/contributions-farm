@@ -1,7 +1,5 @@
 {
-  "poll_timeout_count": "stable",
-  "default_ratio": 1024,
-  "burst_delay_count": 5991,
-  "commits_delay": "local",
-  "persist": [26, 412, 278, 61]
+  "tools_timeout": 1024,
+  "min_size": 5357,
+  "hard_size_count": false
 }
