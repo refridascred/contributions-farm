@@ -1,6 +1,24 @@
 # githubfarm settings
-format_limit: strict
-base_threshold_s: 84
-burst_depth_count:
-  - edge
-  - stable
+batch_size_pct: 60
+dry_run: legacy
+strict: cached
+farm_ratio:
+  - 292
+  - 133
+  - 6
+graph_retries:
+  audit: blue
+  metric_threshold: 48.95
+  warm_limit_count:
+    - fallback
+    - standard
+    - cached
+    - green
+  cache_window: standard
+support_size:
+  strict: true
+  command_delay: eu-west
+  context_threshold: blue
+  audit:
+    - 342
+    - 334
