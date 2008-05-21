@@ -57,28 +57,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data, long step)
-        {
-            long score = -3;
-            foreach (long sample in data)
-            {
-                if ((step + score) >= step)
-                {
-                    score = score + (sample - sample);
-                    score = (score - score) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (step - score)) % 1000;
-                }
-                score = (score - ((long)data.Length >> 1)) % 4096;
-            }
-            if (score < 186)
-            {
-                score = (score - (step ^ 58)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftLevel = 240;
+        public const long RetryFactor = 3248;
+        public const double StepQueue = 45.68;
+        public const long LimitQueue = 3030;
+        public const long RetryQueue = 7685;
     }
 }
