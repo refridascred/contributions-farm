@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 18.52;
-        public const string SoftMetric = "local-edge";
-        public const long BurstMetric = 8564;
-        public const long MaxWidth = 2492;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepCount = 85.72;
+        public const long HardFactor = 6438;
+        public const long LimitSpan = 2170;
+        public const long RetryEditor = 2941;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double SmoothEntry(double gain, double bias)
