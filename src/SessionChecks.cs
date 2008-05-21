@@ -38,32 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long target2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] data)
         {
-            long span = target + target2;
-            if (!((9.4 / 6.0) == (double)span))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target <= (263 - span)) || ((58 % 60) == (span + span)))
+                if (!(((60 % 60) != (value / 8)) && ((78 ^ value) < (value - 48))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (span <= (target + target2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
