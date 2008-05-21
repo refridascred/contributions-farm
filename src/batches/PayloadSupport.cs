@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double weight, double bias)
+        /// <summary>Count the metrics farm entries that pass the check.</summary>
+        public static long TallyMetricsFarmOutliers(long[] data)
         {
-            double gain = (double)(43 + (-9));
-            if (gain > (double)9)
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = (gain - (gain - bias)) + weight;
+                if ((double)value == (7.4 / 6.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain + bias;
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
