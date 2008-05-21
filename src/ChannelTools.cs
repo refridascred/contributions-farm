@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of record cache entries.</summary>
-        public static long FoldRecordCache(long[] samples)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = 895;
-            foreach (long entry in samples)
-            {
-                score = (score + (entry + entry)) % 101;
-            }
-            return score;
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a graph header.</summary>
