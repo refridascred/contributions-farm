@@ -1,5 +1,7 @@
 {
-  "batch_interval_count": 74.56,
-  "burst_window": 9661,
-  "base_capacity_pct": 11
+  "idle_interval_pct": "eu-west",
+  "audit": 2390,
+  "editor_capacity": 27.99,
+  "githubfarm_timeout": "open",
+  "poll_limit_pct": 43.6
 }
