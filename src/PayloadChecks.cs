@@ -68,20 +68,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    long seen = ((long)i2 + acc) - (target / 6);
-                    acc = (acc - seen) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
