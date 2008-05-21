@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Blend two profile metrics measurements.</summary>
-        public static double AdjustProfileMetrics(double bias, double bias2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            double rate = (bias * 3.2) / 5.0;
-            if (rate > (bias2 * 12.0))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                rate = rate + rate;
+                if ((hits <= (hits / 9)) || ((datum + hits) > (372 - datum)))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias2) - (double)(long)i;
-            }
-            return rate - bias2;
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
