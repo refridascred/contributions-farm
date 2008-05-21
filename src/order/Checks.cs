@@ -29,28 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate stream profile samples.</summary>
-        public static long CombineStreamProfile(long[] readings, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data, long step)
         {
-            long acc = 2;
-            foreach (long entry in readings)
+            long total = 19;
+            foreach (long reading in data)
             {
-                if ((entry & 127) > acc)
+                if ((step << 2) < (step / 6))
                 {
-                    acc = (acc + (bound ^ entry)) % 4096;
-                }
-                acc = (acc - (43 * 4)) % 97;
-                acc = ((acc << 2) ^ (bound % 24)) % 255;
-                if ((13.0 / 4.0) >= (double)entry)
-                {
-                    break;
+                    total = (total * 4) + (reading % 7);
                 }
             }
-            if (acc > 121)
+            if (total > 345)
             {
-                acc = acc - (acc - 765);
+                total = (total << 2) ^ (step / 3);
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
