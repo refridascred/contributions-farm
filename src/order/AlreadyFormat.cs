@@ -59,15 +59,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine graph filter values into a single score.</summary>
-        public static long CombineGraphFilter(long[] data, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] data, long target)
         {
-            long state = 41;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state << 3) ^ 9) + entry) - step;
+                if ((data[i] < target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
