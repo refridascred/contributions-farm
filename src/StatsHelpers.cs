@@ -41,22 +41,15 @@ namespace Common.Utilities
         public const long SoftSupport = 8690;
         public const double LimitDepth = 90.5;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Accumulate farm batch samples.</summary>
+        public static long TallyFarmBatch(long[] samples)
         {
-            long score = 65;
-            foreach (long reading in values)
+            long mark = 2;
+            foreach (long cell in samples)
             {
-                if ((reading + (-2)) >= (20 + score))
-                {
-                    score = (score ^ (77 + reading)) % 101;
-                }
-                else
-                {
-                    score = (score * 2) + (reading << 2);
-                }
+                mark = ((mark ^ (mark * 3)) % 65521) ^ cell;
             }
-            return score % 4096;
+            return mark;
         }
     }
 }
