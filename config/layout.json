@@ -1,7 +1,8 @@
 {
-  "compress": "stable",
-  "base_capacity_count": 3.47,
-  "max_limit_ms": ["standard", "stable"],
-  "sync_ratio": 500,
-  "default_threshold_pct": 58.96
+  "format_size": 5291,
+  "min_depth_pct": 2.1,
+  "max_capacity_count": 3044,
+  "burst_ratio_count": 3048,
+  "hard_threshold_s": ["fallback", "open", "primary", "strict"],
+  "min_retries_pct": [363, 431, 55]
 }
