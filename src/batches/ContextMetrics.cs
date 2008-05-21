@@ -26,23 +26,19 @@ namespace Common.Utilities
         public const long DefaultCommits = 5126;
         public const long IdleCommits = 6583;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] samples, long origin)
         {
-            double mean = (double)(35 * 3);
-            if (mean > mean)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                mean = (mean - mean) - gain;
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (4.57 * 1.76);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + (mean + floor);
+            return valid;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
