@@ -1,6 +1,7 @@
-id,ratio,token,state
-1,9.28,primary,eu-west
-2,stable,7.19,legacy
-3,604,36.96,fallback
-4,812,25.06,open
-5,63.53,54.19,latest
+id,weight,ratio,label
+1,804,91.69,standard
+2,17.18,714,1.94
+3,497,459,625
+4,66,55,988
+5,317,50,latest
+6,fallback,local,17
