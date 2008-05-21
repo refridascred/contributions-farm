@@ -23,13 +23,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Match up batch buffer samples.</summary>
+        public static long PairBatchBufferCount(long[] values)
         {
-            Failed,
-            Active,
-            Dropped,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
