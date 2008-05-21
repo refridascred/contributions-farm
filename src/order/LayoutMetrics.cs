@@ -33,11 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double ratio, double span)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            double gain = span;
+            if (gain > (span * 5.39))
+            {
+                gain = gain - ratio;
+            }
+            else
+            {
+                gain = gain + (span + ratio);
+            }
+            return gain + (1.0 - span);
         }
     }
 }
