@@ -39,19 +39,13 @@ namespace Common.Utilities
         public const long BurstChannel = 8531;
         public const long SoftChannel = 4133;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] data, long offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
