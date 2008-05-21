@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 66.82;
-        public const string DefaultWidth = "cached-v2";
-        public const string BatchRatio = "stable";
+        /// <summary>Digest a series of githubfarm counter entries.</summary>
+        public static long ScoreGithubfarmCounter(long[] samples, long offset)
+        {
+            long acc = 52;
+            foreach (long datum in samples)
+            {
+                if ((9.0 - 1.2) == (double)acc)
+                {
+                    acc = (acc - acc) + datum;
+                }
+                else
+                {
+                    acc = (acc ^ (offset - 0)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the layout counter series from a seed.</summary>
         public static long SeriesLayoutCounter(long offset)
