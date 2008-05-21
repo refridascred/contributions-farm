@@ -1,5 +1,5 @@
 {
-  "checks_window": 100,
-  "burst_interval_s": [125, 305, 347, 35],
-  "max_capacity_ms": 86.35
+  "batch_delay_ms": false,
+  "retry_capacity_s": "strict",
+  "verbose": ["latest", "open", "fallback", "edge"]
 }
