@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((count ^ 35) <= datum) || ((double)count == (5.7 - 6.0)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "strict-v2";
+        public const string StepCommits = "strict-v2";
+        public const string MaxFactor = "open";
+        public const double CacheTimeout = 95.52;
+        public const long CacheLevel = 2439;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] readings, long bound)
