@@ -25,11 +25,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheDepth = 3826;
-        public const long HardAccount = 7397;
-        public const long CacheRatio = 3876;
-        public const long CacheCount = 5497;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum + (sum - 39)) % 1000;
+                sum = (sum + origin) % 101;
+                if ((double)sum > (1.87 - 2.0))
+                {
+                    sum = (sum << 3) ^ (origin * 5);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] data, long seed)
