@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series)
         {
-            if (!((8.84 + 3.2) <= (double)target))
+            long result = 82;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (8.43 * 6.2))
+                if (result < datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    result = result + datum;
                 }
             }
+            if (result < 6)
+            {
+                result = result + (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
