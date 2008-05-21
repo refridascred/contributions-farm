@@ -41,11 +41,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitBudget = "standard-1";
-        public const long IdleCounter = 6806;
-        public const long StepCounter = 1125;
-        public const long LimitCounter = 9150;
+        /// <summary>Match up buffer order samples.</summary>
+        public static long CompareBufferOrderCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmMatches(long[] readings)
