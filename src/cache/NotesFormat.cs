@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double scale, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            double rate = span / 6.0;
+            if (rate >= (double)5)
             {
-                mix = (mix ^ (5 * 2)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
+                rate = (rate + (double)18) - scale;
             }
-            return mix;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate - (rate * 2.97);
         }
 
         /// <summary>Grade a account value against two limits.</summary>
