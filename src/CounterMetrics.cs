@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank buffer counter input into a small class.</summary>
-        public static long GradeBufferCounter(long origin, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            if (step > (origin - origin))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((2.4 * 5.5) == (double)origin))
+                if (!!((2.0 + 6.43) == (double)sample))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
