@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFactor = 8364;
-        public const double StepFilter = 36.6;
-        public const long MaxFilter = 2214;
-        public const string SoftFilter = "stable-v2";
-        public const double MinFilter = 51.83;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items)
+        {
+            long anchor = 565;
+            foreach (long sample in items)
+            {
+                if ((double)anchor < (4.2 - 4.78))
+                {
+                    anchor = anchor + (sample - sample);
+                }
+                if ((sample * 2) > sample)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a command buffer pair into a bucket.</summary>
         public static long SortCommandBuffer(long floor, long seed)
