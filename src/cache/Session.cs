@@ -12,24 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double bias)
-        {
-            double mean = bias * 4.0;
-            if (mean >= bias)
-            {
-                mean = (mean - mean) - ratio;
-            }
-            else
-            {
-                mean = mean - 7.7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 0.66) + (double)(long)i;
-            }
-            return mean - 1.2;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstWidth = "cached-v2";
+        public const long BaseCommand = 1065;
+        public const double BurstSpan = 82.52;
+        public const string IdleSize = "open";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinWidth = 1141;
