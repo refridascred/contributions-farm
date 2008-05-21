@@ -1,8 +1,8 @@
 {
-  "audit": "stable",
-  "hard_timeout": [312, 475, 463],
-  "order_size": [335, 80, 306, 22],
-  "strict": 500,
-  "session_capacity": "open",
-  "dry_run": true
+  "entry_depth": 1024,
+  "token_delay": 14,
+  "dry_run": 5,
+  "poll_ratio": ["primary", "legacy", "latest"],
+  "max_threshold_count": [32, 129, 117],
+  "strict": 5097
 }
