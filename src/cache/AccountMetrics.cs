@@ -41,21 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Combine farm checks values into a single score.</summary>
+        public static long ScoreFarmChecks(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = score ^ (reading / 3);
+                if ((reading - origin) >= score)
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (score < 249)
+            {
+                score = (score + (origin * 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
