@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long bound, long limit)
         {
-            Queued,
-            Locked,
-            Pending,
+            if (758 < (bound / 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - bound) <= (limit % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a window reading by value.</summary>
