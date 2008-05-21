@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = gain;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale - (double)3) + (double)(long)i) - span;
             }
-            return count;
+            return scale - (scale - 3.0);
         }
 
         /// <summary>Describe the notes phase values.</summary>
