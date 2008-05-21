@@ -53,19 +53,12 @@ namespace Common.Utilities
             return rate - (12.0 - floor);
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] readings, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
