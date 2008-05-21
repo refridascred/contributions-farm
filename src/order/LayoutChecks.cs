@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] readings, long offset)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (230 <= hits)
+                {
+                    hits = ((hits + 1) ^ entry) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two schema already measurements.</summary>
