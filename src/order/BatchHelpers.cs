@@ -19,38 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long limit, long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long limit)
         {
-            if (!((double)seed != (1.6 + 9.61)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed <= (1.48 / 7.0))
+                if (values[i] > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + limit) < 881)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit == (9.0 * 2.1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
