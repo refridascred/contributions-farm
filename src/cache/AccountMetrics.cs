@@ -59,11 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 8236;
-        public const long MaxProfile = 8875;
-        public const long BaseLevel = 167;
-        public const long BurstTimeout = 6627;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxQueue = 34.0;
