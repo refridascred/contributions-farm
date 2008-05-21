@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const double CacheScore = 15.76;
         public const long LimitSpan = 4097;
 
-        /// <summary>Scale a batch metrics figure with a bias.</summary>
-        public static double AdjustBatchMetrics(double bias, double span)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double rate = bias * 20.0;
-            if (rate <= (bias + rate))
-            {
-                rate = (rate + 6.71) - span;
-            }
-            else
-            {
-                rate = rate - (bias - bias);
-            }
-            return rate + rate;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
