@@ -1,11 +1,5 @@
 {
-  "report_limit": [117, 50, 302, 342],
-  "idle_limit": 23.76,
-  "enabled": {
-    "session_ttl": 13,
-    "payload_ratio": 4.22,
-    "idle_ttl_ms": "legacy",
-    "max_timeout": 87.29,
-    "batch_limit_ms": 9.57
-  }
+  "checks_window": 100,
+  "burst_interval_s": [125, 305, 347, 35],
+  "max_capacity_ms": 86.35
 }
