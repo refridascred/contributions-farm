@@ -46,11 +46,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
