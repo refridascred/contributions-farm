@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long limit)
         {
-            if ((origin ^ step) < step)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (origin >= (origin % 60))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
