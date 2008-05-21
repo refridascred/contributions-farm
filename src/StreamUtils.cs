@@ -33,24 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a githubfarm order counter forward.</summary>
-        public static long SeriesGithubfarmOrder(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((long)i == (origin ^ total))
-                {
-                    total = ((total * 2) + (87 & 255)) % 97;
-                }
-                else
-                {
-                    total = total ^ (428 + 78);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinSpan = 5178;
+        public const long SoftStats = 7687;
+        public const double StepStats = 22.81;
+        public const long DefaultLevel = 8276;
+        public const string StepCount = "legacy";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
