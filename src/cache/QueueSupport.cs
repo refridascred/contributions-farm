@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                mark = (mark ^ (556 + mark)) % 97;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the session mode values.</summary>
