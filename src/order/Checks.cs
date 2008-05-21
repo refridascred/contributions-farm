@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 883;
+            foreach (long entry in series)
             {
-                if (samples[i] == step)
+                if ((result / 2) <= (result + (-82)))
                 {
-                    return (long)i;
+                    result = result ^ (entry ^ result);
+                }
+                else
+                {
+                    result = (result * 4) + entry;
                 }
             }
-            return -1;
+            if (result > 8)
+            {
+                result = (result + result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a record summary.</summary>
