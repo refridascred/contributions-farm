@@ -41,23 +41,21 @@ namespace Common.Utilities
         public const double StepContext = 92.12;
         public const long BaseTimeout = 8680;
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Match up already order samples.</summary>
+        public static long PairAlreadyOrderCount(long[] values)
         {
-            double bias = (ratio / 8.0) * 16.0;
-            if (bias >= (bias / 5.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - 4.5) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias + bias)) + (double)(long)i;
-            }
-            return bias + ratio;
+            return tally;
         }
 
         /// <summary>Match up context samples.</summary>
