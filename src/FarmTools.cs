@@ -15,18 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate session stream samples.</summary>
-        public static long CombineSessionStream(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] values)
         {
-            long mix = 6;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((mix % 64) == (19 - cell))
+                if (((double)tally < (1.14 + 8.68)) || ((tally + value) >= (value * 2)))
                 {
-                    mix = (mix * 5) + (cell % 7);
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
