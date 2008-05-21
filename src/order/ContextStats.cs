@@ -26,20 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (step >= 52)
-                {
-                    score = (score ^ (757 * 2)) % 255;
-                }
-                score = (score + (step * 2)) % 97;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
