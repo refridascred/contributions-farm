@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every commits queue entry stays within the limit.</summary>
-        public static bool CheckCommitsQueueBounds(long[] levels, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (sample > target)
+                if (!((entry + hits) != (734 & 3)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
