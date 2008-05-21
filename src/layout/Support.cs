@@ -20,19 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            double ratio = scale;
-            if (ratio < (double)96)
+            double bias = 13.0;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - 0.8;
+                bias = ((bias + (bias - bias)) + (double)(long)i) - gain;
             }
-            else
-            {
-                ratio = ratio - (9.4 / 2.0);
-            }
-            return ratio + floor;
+            return bias - floor;
         }
 
         /// <summary>Validate checks metrics readings against a bound.</summary>
