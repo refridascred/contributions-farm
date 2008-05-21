@@ -1,9 +1,6 @@
-id,ratio,level,state
-1,primary,cached,20.96
-2,88.66,fallback,54.3
-3,800,edge,34.5
-4,98.51,22.36,latest
-5,480,cached,62
-6,stable,60.29,419
-7,56.33,8.41,91.03
-8,851,67,latest
+id,level,score,owner,rank
+1,413,990,49.87,fallback
+2,97.93,4.49,32.79,34.8
+3,811,stable,77.62,491
+4,168,eu-west,51.5,standard
+5,86.01,16.04,233,staging
