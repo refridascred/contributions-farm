@@ -29,15 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two schema checks measurements.</summary>
-        public static double ProjectSchemaChecks(double weight, double span)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double drift = 6.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - (weight / 8.0)) - (double)(long)i) - span;
-            }
-            return drift - weight;
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
