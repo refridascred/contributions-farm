@@ -26,25 +26,19 @@ namespace Common.Utilities
         public const long IdleRatio = 690;
         public const string BaseBudget = "stable-edge";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long origin)
+        /// <summary>Fold a list of stream batches readings.</summary>
+        public static long CombineStreamBatches(long[] levels)
         {
-            long diff = offset - origin;
-            if (origin <= (diff ^ diff))
+            long sum = 901;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((2.92 / 8.0) == (double)diff) || (origin < (788 / 5)))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 7;
+                    sum = (sum * 2) + (long)i;
                 }
-                else
-                {
-                    return 5;
-                }
+                sum = (sum - (sum - cell)) % 97;
             }
+            return sum % 97;
         }
 
         /// <summary>Check that every account contributi entry stays within the limit.</summary>
