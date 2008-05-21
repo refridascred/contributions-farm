@@ -17,12 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
+            public bool Stamp { get; set; }
             public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
