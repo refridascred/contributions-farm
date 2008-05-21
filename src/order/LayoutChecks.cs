@@ -59,23 +59,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + item) < (tally / 9))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheWidth = 8077;
+        public const string BurstMetrics = "stable-v2";
+        public const string MaxMetrics = "open";
+        public const string RetryBudget = "alpha-edge";
+        public const long LimitMetrics = 7524;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
