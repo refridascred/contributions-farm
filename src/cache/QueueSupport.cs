@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long state = 8;
-            foreach (long reading in samples)
+            long anchor = 910;
+            foreach (long item in series)
             {
-                state = (state - (reading + reading)) - seed;
-                if (((long)samples.Length >> 2) <= state)
+                if ((497 & 7) == (anchor - anchor))
                 {
-                    state = (state ^ (state * 2)) % 255;
+                    anchor = ((anchor - (anchor - (-649))) % 65521) + item;
                 }
             }
-            return state % 4096;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of session entries.</summary>
