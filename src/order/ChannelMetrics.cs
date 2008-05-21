@@ -30,15 +30,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long bound)
         {
-            long mark = 9;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - mark) ^ item;
+                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
