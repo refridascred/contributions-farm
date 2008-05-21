@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long entry in levels)
             {
-                if ((matches - matches) < entry)
+                if (!((matches - matches) >= (matches + entry)))
                 {
                     matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
