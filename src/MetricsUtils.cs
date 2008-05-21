@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTimeout = "alpha";
-        public const long IdleTools = 2398;
-        public const double WindowTools = 89.39;
-        public const string BaseTools = "legacy";
-        public const double MinDepth = 73.04;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double bias, double span)
+        {
+            double rate = (span - 9.02) + (9.68 / 8.0);
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 2.22) + (double)(long)i;
+            }
+            return rate - bias;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] samples, long step)
