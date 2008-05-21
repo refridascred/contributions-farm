@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long MinBuffer = 312;
         public const long WindowWidth = 6758;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate cluster token samples.</summary>
+        public static long TotalClusterToken(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            long mark = -47;
+            foreach (long item in series)
+            {
+                mark = (((mark << 2) ^ (item - item)) % 255) + floor;
+                if (!(item < (68 ^ mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
