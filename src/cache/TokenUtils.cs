@@ -22,31 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long floor, long seed)
+        /// <summary>Count the command queue entries that pass the check.</summary>
+        public static long MeasureCommandQueueMatches(long[] items)
         {
-            if ((seed >> 5) != (floor + 636))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor - 84) >= floor)
+                if (!(sample >= (hits >> 3)) && !((hits << 2) < hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
