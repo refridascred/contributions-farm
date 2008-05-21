@@ -44,19 +44,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] data, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long target2)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long span = target + target2;
+            if (!((9.4 / 6.0) == (double)span))
             {
-                if (datum > seed)
+                return 2;
+            }
+            else
+            {
+                if ((target <= (263 - span)) || ((58 % 60) == (span + span)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (span <= (target + target2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
