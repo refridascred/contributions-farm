@@ -69,18 +69,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context format values into a single score.</summary>
-        public static long CombineContextFormat(long[] data, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long sum = 111;
-            foreach (long reading in data)
-            {
-                if ((reading >> 2) >= floor)
-                {
-                    sum = ((sum * 3) + reading) % 65521;
-                }
-            }
-            return sum % 97;
+            New,
+            Active,
+            Failed,
         }
     }
 }
