@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy eu-west blue; do
+mode="${1:-fallback}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary stable standard; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=147
-log "limit is ${BUFFER_LIMIT}"
