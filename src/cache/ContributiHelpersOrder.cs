@@ -13,11 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySpan = 1995;
-        public const long MinBudget = 7779;
-        public const long CacheRoute = 9978;
-        public const string MaxTimeout = "strict-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 7317;
+        public const long StepWindow = 7715;
+        public const long StepCount = 4554;
+        public const long CacheWindow = 3338;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] samples)
