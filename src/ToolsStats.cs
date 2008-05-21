@@ -72,9 +72,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitBudget = 8607;
-        public const long WindowWidth = 256;
-        public const long WindowRecord = 6497;
+        /// <summary>Look up the position of a metrics queue sample.</summary>
+        public static long FindMetricsQueueIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
