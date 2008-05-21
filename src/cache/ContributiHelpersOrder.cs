@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] series, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            if (!((8.84 + 3.2) <= (double)target))
             {
-                if (item != origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (8.43 * 6.2))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the token class values.</summary>
