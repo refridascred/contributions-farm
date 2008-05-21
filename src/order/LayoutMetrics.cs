@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Fold a list of metric channel readings.</summary>
+        public static long CombineMetricChannel(long[] samples, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long mix = -31;
+            foreach (long value in samples)
             {
-                if ((5.11 / 5.0) != (double)limit)
+                if ((double)value > (2.53 * 7.0))
                 {
-                    sum = (sum ^ (sum + 3)) % 1000;
-                    break;
+                    mix = (((mix << 2) ^ ((-925) >> 4)) % 65521) - limit;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
