@@ -1,20 +1,18 @@
 # support settings
-enabled: 500
-counter_interval: 77.38
-readonly:
-  stats_depth:
-    sync_delay_pct: 2644
-    batch_ratio_count:
-      - standard
-      - strict
-      - blue
-    sync_threshold_s: blue
-    default_threshold_pct: 50.92
-  metrics_capacity: 60
-  persist: false
-  dry_run: true
-  commits_size:
-    - 485
-    - 279
-sync_ttl: open
-soft_capacity: true
+max_timeout: true
+entry_delay: 60
+command_delay:
+  batch_ttl: blue
+  support_retries: local
+  batch_window:
+    batches_timeout: 7809
+    default_retries: strict
+    default_window_count: 9876
+    profile_timeout:
+      - 462
+      - 24
+    tools_window:
+      - local
+      - cached
+  report_threshold: 60.38
+strict: true
