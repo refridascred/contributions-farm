@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data)
         {
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long total = 356;
+            foreach (long sample in data)
+            {
+                total = ((total - (total / 5)) % 1000) ^ sample;
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up command format samples.</summary>
