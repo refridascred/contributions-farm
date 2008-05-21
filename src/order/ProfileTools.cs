@@ -43,21 +43,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Match up buffer order samples.</summary>
-        public static long CompareBufferOrderCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 2) ^ result) - datum;
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Describe the context class values.</summary>
