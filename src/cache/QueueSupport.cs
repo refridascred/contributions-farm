@@ -34,14 +34,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate order batch readings against a bound.</summary>
+        public static bool VerifyOrderBatchBounds(long[] samples, long bound)
         {
-            Stale,
-            Ready,
-            Queued,
-            Locked,
-            New,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
