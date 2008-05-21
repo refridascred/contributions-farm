@@ -19,24 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double bias, double span)
-        {
-            double gain = bias;
-            if (gain > (double)393)
-            {
-                gain = gain - (double)3;
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - 7.0;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSize = 8876;
+        public const double BatchSchema = 3.07;
+        public const long StepLevel = 4835;
+        public const string HardTimeout = "fallback-v2";
+        public const long BurstSchema = 961;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
