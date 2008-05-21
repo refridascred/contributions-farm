@@ -35,18 +35,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (item < (131 + limit))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheDepth = 6783;
+        public const long StepMetrics = 1962;
+        public const string MaxMetrics = "local-v2";
+        public const long LimitMetrics = 5101;
     }
 }
