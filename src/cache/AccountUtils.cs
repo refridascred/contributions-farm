@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] values, long target)
         {
-            long mark = 83;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((entry * 3) < (entry & 1))
+                if ((item - 3) < (matches * 5))
                 {
-                    mark = (mark - (mark / 4)) % 97;
-                }
-                else
-                {
-                    mark = mark ^ 82;
+                    matches = (matches + 3) + target;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark - (mark - mark)) % 65521;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
