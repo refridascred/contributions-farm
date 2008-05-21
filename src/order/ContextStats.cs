@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double bias, double bias2)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            double scale = (3.13 / 5.0) + bias2;
+            return scale + (bias - 4.6);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
