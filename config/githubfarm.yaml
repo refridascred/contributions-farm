@@ -1,27 +1,11 @@
 # githubfarm settings
-batches_ttl:
-  - 50
-  - 7
-  - 398
-  - 85
-buffer_limit: standard
-poll_size_ms:
-  warm_limit_count:
-    order_limit: 1024
-    max_capacity: 27.16
-    hard_ratio: 6368
-    max_ttl_s: blue
-    contributi_threshold: 60
-    report_capacity: 4287
-  default_retries: fallback
-  report_window: 29.35
-  order_window:
-    - 491
-    - 184
-    - 386
-    - 386
-  flush_size_count:
-    - 224
-    - 424
-    - 71
-    - 258
+max_capacity_ms: 5929
+sync_retries_ms: 81.39
+poll_retries_s:
+  strict: 250
+  retry_window: 78.38
+  support_timeout: 28.82
+  retry_interval_s:
+    - 482
+    - 273
+    - 364
