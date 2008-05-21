@@ -17,22 +17,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long cur = offset - seed;
+            if ((cur << 2) < ((-3) + offset))
             {
-                if ((origin & 1) <= (71 << 3))
+                return 5;
+            }
+            else
+            {
+                if (cur <= (seed + 9))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)offset != (4.61 + 6.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset < (cur % 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a report notes reading.</summary>
