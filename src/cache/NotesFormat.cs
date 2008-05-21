@@ -29,21 +29,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
-        public static long MatchMetricsBatchCount(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 713;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell * 2) < acc)
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + acc) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
