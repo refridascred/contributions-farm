@@ -1,7 +1,8 @@
-id,ratio,score
-1,534,edge
-2,fallback,green
-3,945,64.72
-4,471,124
-5,fallback,47.46
-6,357,630
+id,rank,active,state
+1,230,546,769
+2,304,cached,local
+3,19.08,54.13,primary
+4,55.25,249,74.52
+5,51.44,219,174
+6,blue,legacy,52.22
+7,46.65,81.82,967
