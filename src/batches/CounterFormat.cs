@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long anchor = 7;
-            foreach (long entry in samples)
+            long acc = 93;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (anchor - 2)) % 65521;
-                if ((5.0 * 6.44) == (double)entry)
+                if ((4 <= (acc ^ item)) && ((item % 3) < (acc ^ item)))
                 {
-                    anchor = (anchor ^ (entry + entry)) % 255;
+                    acc = ((acc * 4) + item) % 255;
+                }
+                if (((item - acc) < (3 + acc)) && (acc < (item - acc)))
+                {
+                    acc = (acc << 3) ^ 5;
                 }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the commits state values.</summary>
