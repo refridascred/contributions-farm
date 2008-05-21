@@ -1,10 +1,18 @@
 {
-  "schema_window": ["green", "local", "strict", "legacy"],
-  "persist": "staging",
-  "schema_size": {
-    "account_depth": 98,
-    "queue_window": 1036,
-    "flush_delay": "blue"
+  "poll_limit": 19.99,
+  "compress": {
+    "default_window": 30,
+    "buffer_ratio": {
+      "filter_ttl": "edge",
+      "payload_threshold": true,
+      "audit": 1.92,
+      "base_capacity": 9.07,
+      "warm_size": 61.77,
+      "batch_ttl_s": ["staging", "edge"]
+    },
+    "soft_threshold": [2, 217, 205],
+    "sync_timeout_s": 90.14,
+    "entry_delay": "blue"
   },
-  "verbose": "legacy"
+  "cache_limit": ["green", "stable", "edge", "strict"]
 }
