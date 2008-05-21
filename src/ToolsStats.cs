@@ -64,12 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] series, long origin)
         {
-            Stale,
-            Active,
-            Dropped,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a metrics queue sample.</summary>
