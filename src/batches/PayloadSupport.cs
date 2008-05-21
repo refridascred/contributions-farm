@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftBudget = 2880;
-        public const string SoftStats = "cached";
-        public const long LimitWidth = 4322;
-        public const long WindowStats = 8826;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 9454;
+        public const long BatchSpan = 2416;
+        public const long BaseTimeout = 9918;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
