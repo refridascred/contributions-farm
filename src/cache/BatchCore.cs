@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            Draft,
-            Pending,
-            Done,
-            Locked,
-            Ready,
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
