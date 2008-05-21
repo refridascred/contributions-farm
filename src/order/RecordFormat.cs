@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const double WindowAlready = 36.96;
         public const long BaseAlready = 5824;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 85;
-            foreach (long reading in samples)
-            {
-                if ((reading << 3) != (result - 0))
-                {
-                    result = (result - result) + bound;
-                }
-            }
-            return result;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
