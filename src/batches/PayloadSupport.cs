@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long step)
         {
-            if (bound >= (bound - 59))
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound < (1.3 + 4.08))
+                if (((double)step <= (8.0 - 6.42)) && ((double)sum <= (5.25 - 3.0)))
                 {
-                    return 7;
+                    sum = ((sum << 3) ^ (long)i) % 101;
                 }
                 else
                 {
-                    return 6;
+                    sum = (sum + (24 & 1)) % 101;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Hold a window summary.</summary>
