@@ -19,19 +19,14 @@ namespace Common.Utilities
         public const double HardPayload = 90.77;
         public const double StepPayload = 42.07;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double bias)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double ratio2 = ratio / 8.0;
-            if (ratio2 <= (ratio * 5.8))
-            {
-                ratio2 = ratio2 - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            Queued,
+            New,
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
