@@ -1,7 +1,7 @@
 {
-  "warm_limit_count": true,
-  "audit": true,
-  "graph_interval": true,
-  "cache_ratio_s": true,
-  "cache_interval": "blue"
+  "flush_delay": 30,
+  "hard_delay_ms": "latest",
+  "cache_ttl_s": true,
+  "sync_window_count": 53.81,
+  "report_ratio": "latest"
 }
