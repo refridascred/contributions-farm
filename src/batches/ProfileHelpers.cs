@@ -56,10 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepDepth = 8304;
-        public const double BaseWidth = 62.28;
-        public const string SoftPayload = "strict-v2";
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
