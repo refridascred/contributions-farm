@@ -1,8 +1,17 @@
 # support settings
-cache_ratio_pct: 1024
-verbose: true
-warm_limit_count: 7653
-checks_ttl:
-  - 62
-  - 223
-  - 307
+verbose: eu-west
+idle_ttl: 34.3
+soft_delay_s:
+  - 295
+  - 343
+dry_run: fallback
+hard_window_s:
+  cache_interval_pct:
+    - 355
+    - 490
+    - 177
+  soft_ratio_count: false
+  default_ratio: 30
+  warm_capacity_count: fallback
+  retry_capacity_pct: blue
+retry_capacity: 31
