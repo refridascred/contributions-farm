@@ -56,20 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((state >> 2) > (long)i)
-                {
-                    state = ((state << 3) ^ (limit * 5)) % 255;
-                    state = (state - (limit ^ limit)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
