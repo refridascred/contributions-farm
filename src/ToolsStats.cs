@@ -70,18 +70,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((-2) + seen) != (datum >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitBudget = 8607;
+        public const long WindowWidth = 256;
+        public const long WindowRecord = 6497;
     }
 }
