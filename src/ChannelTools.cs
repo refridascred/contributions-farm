@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double gain = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain + (4.6 - gain)) + (double)(long)i) - bias;
-            }
-            return gain - (gain - gain);
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a graph header.</summary>
