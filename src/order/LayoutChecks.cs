@@ -21,13 +21,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Active,
-            Dropped,
-            Pending,
-            Draft,
+            Paused,
+            Closed,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Match up account samples.</summary>
