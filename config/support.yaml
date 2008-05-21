@@ -1,23 +1,11 @@
 # support settings
-idle_size_ms: false
-poll_window_s:
-  flush_limit_pct:
-    - 30
-    - 182
-    - 105
-  idle_window_pct:
-    editor_delay: 34.32
-    sync_retries_pct: 250
-    order_threshold: 3283
-    burst_ttl: true
-  cluster_size: 8275
-  soft_retries:
-    audit: 9318
-    max_ttl_ms: primary
-    token_delay: 2794
-    poll_ratio_s: 42.39
-    strict: stable
-    contributi_retries: true
-hard_threshold_pct: 250
-default_capacity: 2360
-hard_delay_pct: 71.16
+notes_retries:
+  - 107
+  - 233
+min_retries_s:
+  - staging
+  - stable
+enabled: primary
+poll_limit_ms: 2243
+flush_limit_pct: primary
+warm_timeout_count: false
