@@ -1,17 +1,12 @@
 {
-  "dry_run": 1356,
-  "hard_ttl_pct": true,
-  "session_ttl": {
-    "sync_threshold_s": {
-      "hard_interval_s": 66,
-      "entry_capacity": "staging",
-      "soft_size": "local",
-      "base_timeout_count": "edge"
-    },
-    "persist": "open",
-    "flush_ratio_s": 97,
-    "min_ttl": 95.33,
-    "farm_ratio": 1524,
-    "poll_interval": 22
-  }
+  "notes_limit": {
+    "default_ttl_s": [409, 171, 388],
+    "batch_retries_s": "stable",
+    "min_capacity_count": 2,
+    "strict": 89,
+    "default_ttl_ms": 8512
+  },
+  "compress": "strict",
+  "strict": 81.59,
+  "persist": 83.35
 }
