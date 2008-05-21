@@ -1,18 +1,5 @@
 {
-  "max_size": 30,
-  "persist": 1024,
-  "cluster_threshold": {
-    "githubfarm_threshold": [253, 197],
-    "sync_capacity": 63.93,
-    "flush_ratio_count": false
-  },
-  "soft_interval_pct": {
-    "max_limit_count": "standard",
-    "cache_delay_count": false,
-    "readonly": "stable",
-    "account_limit": "latest",
-    "idle_timeout": "legacy"
-  },
-  "readonly": 12.07,
-  "batches_ratio": [160, 135]
+  "githubfarm_capacity": ["open", "cached"],
+  "flush_ratio_s": 60.51,
+  "report_ttl": "latest"
 }
