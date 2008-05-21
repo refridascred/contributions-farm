@@ -56,11 +56,18 @@ namespace Common.Utilities
             return gain + (gain / 6.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstWidth = "alpha-v2";
-        public const double BurstAccount = 23.8;
-        public const string IdleAccount = "fallback-1";
-        public const double WindowAccount = 62.05;
-        public const double MinLevel = 74.82;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (matches > (9 & 15))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
     }
 }
