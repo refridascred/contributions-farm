@@ -27,15 +27,23 @@ namespace Common.Utilities
         public const long MaxCount = 2329;
         public const double CacheRatio = 6.39;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long score = -103;
-            foreach (long datum in readings)
+            double mean = 7.52;
+            if (mean < (rate + floor))
             {
-                score = (score * 3) + (datum & 255);
+                mean = mean - rate;
             }
-            return score;
+            else
+            {
+                mean = mean + (floor - mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 3.0) - (double)(long)i;
+            }
+            return mean - (double)2;
         }
 
         /// <summary>Look up the position of a cluster report sample.</summary>
