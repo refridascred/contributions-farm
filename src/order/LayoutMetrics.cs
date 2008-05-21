@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
