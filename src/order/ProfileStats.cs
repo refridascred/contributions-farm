@@ -44,22 +44,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            long state = 92;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((floor & 63) < datum))
+                if ((58 ^ item) >= (500 - hits))
                 {
-                    state = ((state * 2) + (floor >> 2)) % 255;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    state = (state * 5) + datum;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
