@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string BurstFormat = "standard-v2";
         public const long MaxInterval = 2230;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long offset)
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry << 2) ^ offset) % 101;
+                if (carry < (carry ^ carry))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many checks counter samples are out of range.</summary>
