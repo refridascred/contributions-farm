@@ -43,11 +43,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double offset)
+        /// <summary>Locate a profile payload reading by value.</summary>
+        public static long LookupProfilePayloadIndex(long[] samples, long floor)
         {
-            double ratio2 = offset - ratio;
-            return ratio2 - 5.0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the metric record series from a seed.</summary>
