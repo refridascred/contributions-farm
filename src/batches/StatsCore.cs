@@ -73,22 +73,13 @@ namespace Common.Utilities
         public const long WindowStream = 514;
         public const long IdleStream = 8522;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] series, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = -206;
-            foreach (long value in series)
-            {
-                if ((2.0 / 7.0) < (double)score)
-                {
-                    score = ((score << 3) ^ 3) % 255;
-                }
-                if (((score % 60) > score) || ((seed << 3) < value))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
