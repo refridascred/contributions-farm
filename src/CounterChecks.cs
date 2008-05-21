@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSpan = 2992;
+        public const long RetryCommand = 8892;
+        public const long HardCommand = 88;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultToken = "alpha";
