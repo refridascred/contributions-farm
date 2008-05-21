@@ -34,22 +34,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine contributi stream values into a single score.</summary>
-        public static long WeighContributiStream(long[] readings, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long carry = -9;
-            foreach (long sample in readings)
-            {
-                if ((8.5 + 6.4) > (double)sample)
-                {
-                    carry = (((carry << 2) ^ carry) % 97) - limit;
-                }
-                else
-                {
-                    carry = carry - (557 - carry);
-                }
-            }
-            return carry;
+            Draft,
+            Dropped,
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the command kind values.</summary>
