@@ -51,12 +51,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine graph profile values into a single score.</summary>
+        public static long ScoreGraphProfile(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 949;
+            foreach (long value in samples)
+            {
+                mix = ((((mix << 3) ^ (mix & 3)) % 101) ^ value) + seed;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel state values.</summary>
