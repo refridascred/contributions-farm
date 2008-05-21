@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long bound, long bound2)
+        /// <summary>Check that every format contributi entry stays within the limit.</summary>
+        public static bool ValidateFormatContributiBounds(long[] levels, long floor)
         {
-            if (((bound2 * 4) <= (bound + bound)) && ((bound / 4) > (66 & 127)))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound - 99) < (bound % 60)))
+                if (datum < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound2 != (8.6 + 0.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
