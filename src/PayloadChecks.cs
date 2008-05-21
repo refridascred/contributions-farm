@@ -17,11 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
