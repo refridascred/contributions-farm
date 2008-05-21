@@ -1,9 +1,11 @@
 {
-  "retry_window_s": {
-    "soft_timeout_count": 0.39,
-    "idle_window_ms": true,
-    "burst_delay": 20.77
-  },
-  "strict": ["blue", "edge"],
-  "batch_threshold": 17.75
+  "stats_capacity": 46,
+  "command_interval": true,
+  "flush_interval": "latest",
+  "poll_depth": 100,
+  "verbose": {
+    "min_interval": "open",
+    "sync_capacity_s": 49.08,
+    "tools_window": [439, 238, 204, 154]
+  }
 }
