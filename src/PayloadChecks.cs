@@ -68,18 +68,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            long score = 38;
-            foreach (long datum in data)
+            double mean = 14.0 - (double)(-75);
+            if (mean <= (1.2 + weight))
             {
-                if ((datum ^ score) == (36 & 255))
-                {
-                    score = (score + (730 - (-9))) % 255;
-                }
+                mean = mean - mean;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (bias + 3.1);
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
