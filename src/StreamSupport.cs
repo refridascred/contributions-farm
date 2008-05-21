@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Accumulate contributi checks samples.</summary>
