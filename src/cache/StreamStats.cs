@@ -51,17 +51,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long seed, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin / 7) >= seed)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed + origin) >= origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed / 7) >= (origin + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
