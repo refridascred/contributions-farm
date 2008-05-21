@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long anchor = 22;
-            foreach (long datum in series)
-            {
-                if ((anchor << 1) >= 87)
-                {
-                    anchor = ((anchor * 3) + 1) ^ datum;
-                }
-            }
-            return anchor;
+            Failed,
+            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
