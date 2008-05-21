@@ -1,13 +1,6 @@
 {
-  "idle_size_ms": "primary",
-  "stats_threshold": 4225,
-  "batch_retries_pct": "blue",
-  "soft_interval": {
-    "metrics_interval": ["legacy", "open"],
-    "batches_retries": 33.84,
-    "base_timeout_s": ["green", "fallback", "standard", "cached"],
-    "flush_ratio_s": "stable",
-    "idle_depth_ms": "latest",
-    "verbose": "strict"
-  }
+  "base_retries_count": 97,
+  "min_retries_ms": ["local", "staging"],
+  "persist": [369, 222, 239, 371],
+  "enabled": 78.62
 }
