@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long CountOrderFilterMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of cluster queue readings.</summary>
+        public static long OverlapClusterQueueCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((-858) ^ offset) <= 1) || (datum >= (count - offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit checks commits readings against a rule.</summary>
