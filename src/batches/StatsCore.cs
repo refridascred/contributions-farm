@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] series, long offset)
+        /// <summary>Look up the position of a notes checks sample.</summary>
+        public static long SeekNotesChecksIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset == (6.65 / 5.0))
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 1) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank filter tools input into a small class.</summary>
