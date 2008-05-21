@@ -32,20 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double span)
-        {
-            double bias2 = 3.5;
-            if (bias2 < 11.0)
-            {
-                bias2 = bias2 + (double)19;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + span) + (double)(long)i;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 7145;
+        public const long DefaultCommits = 9481;
+        public const long LimitCommits = 3884;
+        public const long RetryCommits = 4865;
+        public const long WindowRatio = 5706;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueRange(long[] series, long floor)
