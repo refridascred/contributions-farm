@@ -22,21 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format channel pairs that satisfy a relation.</summary>
-        public static long PairFormatChannelCount(long[] series)
+        /// <summary>Classify a context profile pair into a bucket.</summary>
+        public static long ClassifyContextProfile(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)origin >= (5.1 * 5.0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((seed << 3) <= (seed - (-97))))
                 {
-                    if ((series[i] - series[j]) > 7)
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 2) != (seed << 1))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
