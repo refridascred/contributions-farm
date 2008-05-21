@@ -45,18 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value - value) == ((long)series.Length ^ value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
