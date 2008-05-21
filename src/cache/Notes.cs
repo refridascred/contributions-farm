@@ -33,21 +33,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
