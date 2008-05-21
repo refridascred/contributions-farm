@@ -20,11 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            long carry = 7;
+            foreach (long value in items)
+            {
+                carry = carry + (value % 60);
+            }
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
