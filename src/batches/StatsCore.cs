@@ -20,24 +20,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if (!(step < limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + limit) < limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
