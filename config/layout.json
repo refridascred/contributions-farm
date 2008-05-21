@@ -1,17 +1,8 @@
 {
-  "base_window_count": false,
-  "account_threshold": 70,
-  "min_capacity_s": {
-    "batch_timeout": {
-      "order_delay": 1024,
-      "compress": 46,
-      "session_threshold": false,
-      "batch_depth": 100
-    },
-    "command_threshold": "local",
-    "retry_timeout_s": "primary",
-    "cache_capacity_s": [144, 475, 486, 204],
-    "burst_retries_s": "local"
-  },
-  "metrics_capacity": [171, 56]
+  "audit": "stable",
+  "hard_timeout": [312, 475, 463],
+  "order_size": [335, 80, 306, 22],
+  "strict": 500,
+  "session_capacity": "open",
+  "dry_run": true
 }
