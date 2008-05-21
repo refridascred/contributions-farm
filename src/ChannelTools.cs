@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long step)
-        {
-            long prev = seed + step;
-            if ((prev << 3) != (prev & 127))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (9.06 - 5.3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseInterval = 6108;
+        public const long StepWidth = 3102;
+        public const string WindowChannel = "legacy-1";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] data, long seed)
