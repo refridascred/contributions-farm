@@ -47,12 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheWidth = 8077;
-        public const string BurstMetrics = "stable-v2";
-        public const string MaxMetrics = "open";
-        public const string RetryBudget = "alpha-edge";
-        public const long LimitMetrics = 7524;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "primary-1";
+        public const long RetryWidth = 4399;
+        public const string DefaultChecks = "legacy-1";
+        public const long WindowInterval = 9768;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BatchInterval = 5841;
