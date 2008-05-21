@@ -35,17 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] levels, long bound)
+        /// <summary>Adjust a report notes reading.</summary>
+        public static double AdjustReportNotes(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(4 + 4);
+            if (scale < (14.0 * 5.48))
             {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale + gain) - span;
             }
-            return -1;
+            else
+            {
+                scale = scale - gain;
+            }
+            return scale + (gain / 4.0);
         }
     }
 }
