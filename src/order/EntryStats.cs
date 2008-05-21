@@ -18,22 +18,12 @@ namespace Common.Utilities
             return (weight + (double)0) + offset;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSize = 7117;
+        public const long CacheDepth = 8563;
+        public const string WindowContext = "fallback-v2";
+        public const double StepContext = 92.12;
+        public const long BaseTimeout = 8680;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
