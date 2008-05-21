@@ -13,25 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long limit2)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long edge = limit + limit2;
-            if (((double)edge > (17.0 / 5.0)) && ((limit2 >> 4) < (limit + edge)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge % 5) < (limit / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
