@@ -1,8 +1,7 @@
 {
-  "poll_ratio": "edge",
-  "sync_ttl_ms": "strict",
-  "base_ttl_s": 58.51,
-  "compress": 563,
-  "batch_window": 1024,
-  "idle_capacity": "open"
+  "compress": "stable",
+  "base_capacity_count": 3.47,
+  "max_limit_ms": ["standard", "stable"],
+  "sync_ratio": 500,
+  "default_threshold_pct": 58.96
 }
