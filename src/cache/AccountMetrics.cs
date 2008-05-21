@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSpan = 2572;
-        public const long IdleInterval = 7494;
-        public const long CacheWidth = 7849;
-        public const long CacheTimeout = 6661;
-        public const double CacheDepth = 93.41;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Locate a support filter reading by value.</summary>
         public static long LookupSupportFilterIndex(long[] items, long step)
