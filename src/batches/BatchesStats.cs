@@ -13,15 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double gain, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double load = 3.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (load - gain)) + (double)(long)i) + span;
-            }
-            return load - (double)184;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
