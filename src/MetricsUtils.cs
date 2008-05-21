@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const string BaseTools = "legacy";
         public const double MinDepth = 73.04;
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] samples, long step)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(92 <= (tally - step)))
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
