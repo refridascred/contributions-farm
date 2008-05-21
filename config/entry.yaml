@@ -1,16 +1,11 @@
 # entry settings
-layout_ttl:
-  hard_ratio_count: 84.31
-  enabled: cached
-  payload_ttl: false
-  readonly: 9194
-queue_window:
-  burst_threshold_pct:
-    - stable
-    - edge
-    - staging
-    - standard
-  hard_interval_pct: blue
-  metric_delay: open
-  idle_threshold_count: 7
-sync_ratio_pct: eu-west
+metrics_retries:
+  - eu-west
+  - eu-west
+  - fallback
+enabled:
+  - open
+  - eu-west
+soft_ratio_pct: 8457
+default_interval: fallback
+retry_window_ms: edge
