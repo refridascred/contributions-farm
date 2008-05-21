@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Check that every cluster context entry stays within the limit.</summary>
+        public static bool ValidateClusterContextLimits(long[] values, long offset)
         {
-            Ready,
-            Closed,
-            Stale,
-            Synced,
-            Retry,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a checks info.</summary>
