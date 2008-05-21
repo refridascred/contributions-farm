@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every window batches entry stays within the limit.</summary>
-        public static bool CheckWindowBatchesLimits(long[] levels, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
