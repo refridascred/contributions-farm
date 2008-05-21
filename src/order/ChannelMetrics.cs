@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long mark = 9;
+            foreach (long item in readings)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                mark = (mark - mark) ^ item;
             }
-            return acc;
+            return mark % 1000;
         }
     }
 }
