@@ -65,14 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Failed,
-            Synced,
-            New,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 33;
+        public const string BaseRatio = "fallback";
+        public const long DefaultCount = 7761;
+        public const long CacheCluster = 7429;
 
         /// <summary>Project the next order value.</summary>
         public static double ProjectOrder(double scale, double bias)
