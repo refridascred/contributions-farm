@@ -47,15 +47,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm counter samples.</summary>
-        public static long TallyGithubfarmCounter(long[] series, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            long sum = -467;
-            foreach (long reading in series)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum ^ (offset & 3)) % 255) + reading;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor - (2 >> 4)) % 97) + (long)i2;
+                    anchor = (anchor - ((long)i + offset)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
