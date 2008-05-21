@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] items, long floor)
         {
-            if ((bound << 2) <= (floor + floor))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor / 2) >= bound) || ((floor << 2) == (734 ^ bound)))
+                if ((seen & 15) < (cell - 4))
                 {
-                    return 4;
+                    seen = (seen + 3) - floor;
                 }
                 else
                 {
-                    if (7.07 < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the format editor series from a seed.</summary>
