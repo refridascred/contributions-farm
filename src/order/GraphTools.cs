@@ -38,12 +38,12 @@ namespace Common.Utilities
             return gain - 7.0;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 9269;
-        public const string SoftSize = "fallback";
-        public const double HardSpan = 40.33;
-        public const long LimitLevel = 7239;
-        public const long HardSchema = 5837;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public double Weight { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long step, long seed)
