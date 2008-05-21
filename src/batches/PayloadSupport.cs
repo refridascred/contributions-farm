@@ -17,21 +17,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count report route pairs that satisfy a relation.</summary>
-        public static long OverlapReportRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowDepth = "strict-edge";
+        public const long SoftFactor = 5559;
+        public const long MinFormat = 4624;
+        public const long RetrySpan = 9511;
     }
 }
