@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] samples, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            long score = -85;
-            foreach (long cell in samples)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                score = score + (cell >> 4);
+                long edge = (long)i + (carry & 1);
+                if (edge > (38 >> 1))
+                {
+                    edge = (edge << 3) ^ bound;
+                    edge = edge + (8 - edge);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (score > (-918))
-            {
-                score = ((score << 2) ^ (score ^ offset)) % 65521;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
