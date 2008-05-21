@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double weight, double bias)
+        /// <summary>Measure how many command entry samples are out of range.</summary>
+        public static long TallyCommandEntryMatches(long[] items)
         {
-            double mean = (double)138 - bias;
-            return (mean + bias) + weight;
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches < (23 + datum))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report level values.</summary>
