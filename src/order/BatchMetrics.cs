@@ -41,23 +41,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((8.6 - 17.0) <= (double)entry)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitBudget = "cached-edge";
+        public const long HardChannel = 7720;
+        public const double MaxInterval = 98.15;
 
         /// <summary>Find the first already graph entry that matches the target.</summary>
         public static long LookupAlreadyGraphIndex(long[] items, long offset)
