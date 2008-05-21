@@ -55,24 +55,17 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Grade a payload window value against two limits.</summary>
-        public static long RankPayloadWindow(long seed, long limit)
+        /// <summary>Locate a channel counter reading by value.</summary>
+        public static long LocateChannelCounterIndex(long[] values, long limit)
         {
-            if ((double)seed > (6.3 + 3.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) > (seed % 8))
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
