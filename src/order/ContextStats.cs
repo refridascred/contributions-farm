@@ -28,12 +28,23 @@ namespace Common.Utilities
         public const long IdleTimeout = 7421;
         public const double MaxWindow = 94.53;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 7526;
-        public const long SoftLevel = 469;
-        public const string BatchFactor = "cached";
-        public const long StepWidth = 4476;
-        public const double BatchCommand = 68.66;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] items, long target)
+        {
+            long anchor = -828;
+            foreach (long datum in items)
+            {
+                if (((target >> 4) < datum) || (target < (anchor >> 3)))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+                if ((datum > 2) || ((anchor * 5) == (anchor >> 3)))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
