@@ -1,7 +1,5 @@
 # githubfarm settings
-base_threshold_count: local
-cluster_size: 250
-cache_ttl_s:
-  - 337
-  - 66
-  - 217
+default_retries_s: 1024
+soft_timeout_pct: fallback
+retry_delay: standard
+burst_ttl: true
