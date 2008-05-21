@@ -39,15 +39,12 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-v2";
         public const string SoftBatches = "standard-v2";
 
-        /// <summary>Adjust a layout schema reading.</summary>
-        public static double BlendLayoutSchema(double gain, double bias)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double rate = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)4) - (double)(long)i;
-            }
-            return rate - (gain / 5.0);
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
