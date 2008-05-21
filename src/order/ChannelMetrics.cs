@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Pending,
-            Synced,
-            Stale,
+            Idle,
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
