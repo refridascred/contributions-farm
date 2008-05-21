@@ -56,18 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (6.0 / 7.0))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
