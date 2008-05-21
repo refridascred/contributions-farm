@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the report contributi entries that pass the check.</summary>
-        public static long AuditReportContributiOutliers(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (datum > (datum - tally))
+                if (reading > limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a contributi options.</summary>
