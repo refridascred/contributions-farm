@@ -1,11 +1,20 @@
 # support settings
-flush_threshold_pct:
-  - edge
-  - staging
-  - legacy
-  - primary
-warm_interval_count: eu-west
-cache_capacity_ms: latest
-retry_ratio: 2835
-soft_delay_s: staging
-queue_interval: 35
+base_capacity_ms: true
+metrics_ratio: 1286
+cache_delay_ms:
+  sync_delay: 60
+  flush_timeout:
+    burst_size_pct: cached
+    warm_retries: 4086
+    metrics_interval: fallback
+    sync_interval_count: green
+    hard_ttl_count:
+      - primary
+      - blue
+      - standard
+      - staging
+    verbose: false
+  profile_depth: 500
+  audit: 54.59
+default_delay_count: 60
+strict: standard
