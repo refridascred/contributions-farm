@@ -1,6 +1,26 @@
 {
-  "batch_size_ms": false,
-  "retry_timeout_ms": ["edge", "strict", "edge"],
-  "idle_threshold_ms": 41.57,
-  "warm_threshold_pct": 23
+  "cache_capacity_ms": "stable",
+  "persist": {
+    "soft_window": [332, 35, 279],
+    "cache_retries_ms": "strict",
+    "context_ratio": {
+      "metrics_capacity": 75,
+      "hard_window_count": "local",
+      "soft_threshold_count": false,
+      "metric_ttl": [491, 81, 266, 384],
+      "flush_retries": [279, 15, 132]
+    }
+  },
+  "already_retries": {
+    "compress": {
+      "farm_depth": 12.22,
+      "metric_retries": "open",
+      "max_capacity": "cached",
+      "poll_ratio_ms": "primary",
+      "metric_size": "fallback",
+      "already_capacity": "standard"
+    },
+    "cache_delay_pct": "cached",
+    "retry_window": "edge"
+  }
 }
