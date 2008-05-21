@@ -37,14 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
+            Dropped,
             Retry,
-            Active,
-            Synced,
-            Done,
-            Ready,
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
