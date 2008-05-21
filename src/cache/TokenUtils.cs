@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] series, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long entry in samples)
             {
-                if (series[i] >= seed)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    state = (state + (600 + state)) % 255;
+                    state = (state ^ (entry - (long)i)) % 101;
+                }
+                if ((entry / 8) < (state + (-30)))
+                {
+                    state = (state << 2) ^ (1 & 127);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Describe the channel state values.</summary>
