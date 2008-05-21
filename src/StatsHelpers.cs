@@ -32,16 +32,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long TotalMetricStats(long[] levels, long target)
-        {
-            long result = 4;
-            foreach (long item in levels)
-            {
-                result = ((result + target) % 101) ^ item;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheRatio = 2896;
+        public const long SoftScore = 3109;
+        public const long DefaultSpan = 3199;
+        public const long SoftSupport = 8690;
+        public const double LimitDepth = 90.5;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] values)
