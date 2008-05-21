@@ -60,19 +60,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 7569;
+        public const string CacheCounter = "staging-v2";
+        public const double HardCounter = 0.41;
+        public const long BatchInterval = 3409;
     }
 }
