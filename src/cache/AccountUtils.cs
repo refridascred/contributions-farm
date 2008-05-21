@@ -31,18 +31,38 @@ namespace Common.Utilities
             return ratio + (double)56;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long step2)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if (step > (step >> 2))
             {
-                if ((matches << 1) != (value % 60))
+                return 0;
+            }
+            else
+            {
+                if ((1.38 / 4.0) < (double)step)
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.9 + 8.47) > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step > (4.0 + 3.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
