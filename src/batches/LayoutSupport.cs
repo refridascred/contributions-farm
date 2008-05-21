@@ -33,18 +33,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] levels, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long score = 139;
+            foreach (long datum in series)
             {
-                if ((floor % 12) <= floor)
-                {
-                    hits = (hits + 3) + value;
-                }
+                score = ((score - (score + 52)) % 101) ^ datum;
             }
-            return hits;
+            if (score > 1)
+            {
+                score = (score + score) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
