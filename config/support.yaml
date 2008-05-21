@@ -1,8 +1,10 @@
 # support settings
-record_limit: strict
-compress: true
-cache_timeout_count: 60
-strict:
-  - edge
-  - open
-  - staging
+graph_depth: strict
+persist:
+  - stable
+  - stable
+  - fallback
+retry_capacity: 0.18
+base_window: true
+githubfarm_ttl: open
+burst_timeout: false
