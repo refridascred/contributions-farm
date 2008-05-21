@@ -1,10 +1,5 @@
 {
-  "warm_ratio_ms": "strict",
-  "base_capacity_count": 5.71,
-  "flush_ttl_ms": {
-    "enabled": true,
-    "min_ratio": 8936,
-    "poll_depth": true
-  },
-  "record_delay": 9407
+  "verbose": 5138,
+  "cache_limit_ms": false,
+  "warm_retries_ms": 23
 }
