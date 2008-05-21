@@ -1,30 +1,27 @@
 # entry settings
-queue_interval: stable
-queue_timeout: 30.69
-retry_interval_pct: 20
-flush_size_pct: true
-burst_interval:
-  contributi_threshold: false
-  editor_threshold: stable
-  poll_ttl:
-    metric_retries: 57.65
-    burst_size_ms: 7859
-    support_limit: eu-west
-    entry_threshold: blue
-    sync_timeout_s: false
-idle_retries_ms:
-  strict:
-    flush_interval_ms:
-      - 134
-      - 346
-      - 272
-    soft_window_pct: cached
-    editor_capacity: 400
-    verbose: edge
-  sync_capacity_count: false
-  filter_limit: fallback
-  flush_window_ms:
-    - primary
-    - green
-  idle_delay_ms: 4161
-  enabled: fallback
+burst_limit:
+  - 128
+  - 99
+compress:
+  - blue
+  - eu-west
+  - green
+  - latest
+retry_window_pct: primary
+audit:
+  base_limit_pct: false
+  hard_interval_pct:
+    burst_timeout_s: 65.99
+    min_capacity: eu-west
+    entry_ratio: 92.0
+    batch_timeout_ms: true
+    batch_window: 55.52
+  burst_retries_pct: eu-west
+  base_window_pct: 78
+  githubfarm_timeout: stable
+  idle_delay_pct:
+    - 145
+    - 489
+    - 337
+    - 293
+idle_limit: latest
