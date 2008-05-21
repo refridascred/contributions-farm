@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxFactor = 7789;
-        public const long CacheBudget = 1194;
-        public const long StepToken = 4274;
-        public const string LimitTimeout = "alpha-1";
-        public const long BatchToken = 4478;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data, long step)
+        {
+            long state = 96;
+            foreach (long cell in data)
+            {
+                state = ((state ^ state) ^ cell) + step;
+                if ((double)state > (3.64 / 6.0))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BaseContributi = 92.1;
