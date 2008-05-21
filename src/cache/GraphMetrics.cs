@@ -32,11 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 7874;
-        public const double MaxWindow = 49.2;
-        public const double BaseLevel = 93.59;
-        public const long IdleBudget = 6201;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 2886;
+        public const string MinFilter = "standard-1";
+        public const long IdleFilter = 7505;
+        public const long MaxDepth = 5077;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] readings, long floor)
