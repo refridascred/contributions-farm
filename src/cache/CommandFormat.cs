@@ -31,17 +31,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a session layout sample.</summary>
-        public static long FindSessionLayoutIndex(long[] readings, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (readings[i] >= offset)
+                if ((reading ^ reading) > (target / 8))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
