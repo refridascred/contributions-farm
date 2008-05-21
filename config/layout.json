@@ -1,18 +1,10 @@
 {
-  "cache_threshold_s": 99,
-  "editor_interval": 31,
-  "audit": {
-    "burst_size_s": "edge",
-    "graph_ratio": 23.99,
-    "readonly": false
+  "schema_window": ["green", "local", "strict", "legacy"],
+  "persist": "staging",
+  "schema_size": {
+    "account_depth": 98,
+    "queue_window": 1036,
+    "flush_delay": "blue"
   },
-  "batch_window_count": true,
-  "soft_capacity_count": 54,
-  "record_window": {
-    "min_ratio": 60.22,
-    "hard_delay_ms": ["fallback", "eu-west", "green"],
-    "session_ratio": ["staging", "green"],
-    "hard_interval_pct": 75.39,
-    "entry_limit": 3943
-  }
+  "verbose": "legacy"
 }
