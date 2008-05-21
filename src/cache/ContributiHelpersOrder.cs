@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] levels, long limit)
         {
-            long sum = 462;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((reading - 3) >= sum))
+                if (!((8.25 / 5.0) >= (double)limit))
                 {
-                    sum = (sum << 2) ^ ((long)levels.Length ^ sum);
-                }
-                else
-                {
-                    sum = ((sum * 5) + sum) % 255;
-                }
-                if (!((983 % 97) > reading))
-                {
-                    sum = ((sum << 2) ^ (reading ^ 0)) % 65521;
-                }
-                if (!(7.49 <= (double)sum))
-                {
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            if (sum < 97)
-            {
-                sum = (sum * 5) + (sum - (-7));
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the token class values.</summary>
