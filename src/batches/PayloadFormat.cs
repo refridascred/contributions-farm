@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support route samples.</summary>
-        public static long OverlapSupportRouteCount(long[] data)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a batches entry.</summary>
