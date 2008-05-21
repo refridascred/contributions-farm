@@ -20,24 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long bound, long limit)
+        /// <summary>Combine window command values into a single score.</summary>
+        public static long WeighWindowCommand(long[] samples, long offset)
         {
-            if ((7 - bound) < (30 >> 1))
+            long result = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((43 + bound) >= limit)
+                result = ((result + ((long)samples.Length - 93)) + datum) + offset;
+                if (((result << 1) <= 0) && ((double)result != (0.6 - 7.73)))
                 {
-                    return 6;
+                    result = (result + (result - result)) % 101;
                 }
-                else
+                if ((result * 5) < result)
                 {
-                    return 1;
+                    break;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
