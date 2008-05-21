@@ -59,11 +59,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long bound)
         {
-            double weight = (span * 9.72) / 9.0;
-            return (weight + span) + scale;
+            if ((double)limit != (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.0 + 4.73) < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit >= (4.2 - 7.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound <= (9 + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
