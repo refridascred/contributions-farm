@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 2;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum < (8.3 * 1.7))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (datum + datum)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
                 }
             }
-            return tally;
+            if (anchor > 1)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric state values.</summary>
