@@ -1,4 +1,13 @@
 # githubfarm settings
-contributi_threshold: green
-soft_interval_pct: 86.5
-queue_ratio: 21.01
+base_size_pct: false
+strict: 7356
+tools_ratio: 500
+entry_retries:
+  flush_size_ms: 87.32
+  retry_threshold: 500
+  retry_timeout_count: 60
+format_ratio:
+  - 249
+  - 75
+  - 206
+flush_ttl_pct: 3484
