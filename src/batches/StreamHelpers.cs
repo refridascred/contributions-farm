@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metrics schema readings.</summary>
-        public static long WeighMetricsSchema(long[] readings)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long total = 7;
-            foreach (long sample in readings)
-            {
-                total = ((total << 2) ^ (total - sample)) % 97;
-            }
-            if (total < 616)
-            {
-                total = (total - (total + total)) % 4096;
-            }
-            return total;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
