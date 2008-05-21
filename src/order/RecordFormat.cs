@@ -17,12 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstDepth = 53.54;
-        public const double SoftRatio = 48.9;
-        public const long LimitRatio = 1856;
-        public const double BatchWidth = 24.53;
-        public const double BaseSize = 87.08;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (313 <= ((long)readings.Length << 2))
+                {
+                    matches = ((matches + 2) + entry) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] items)
