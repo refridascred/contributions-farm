@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long offset)
         {
-            double scale = floor;
-            if (scale > (floor / 2.0))
+            long result = 71;
+            foreach (long item in readings)
             {
-                scale = (scale + scale) + ratio;
+                if ((4.31 / 2.0) > (double)item)
+                {
+                    result = (result - item) + offset;
+                }
             }
-            return scale - (double)979;
+            return result % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
