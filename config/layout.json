@@ -1,5 +1,15 @@
 {
-  "verbose": ["standard", "local", "stable"],
-  "already_depth": ["latest", "green", "edge"],
-  "poll_ratio_ms": "standard"
+  "profile_capacity": "staging",
+  "poll_depth_ms": {
+    "max_depth": [185, 358],
+    "max_threshold": 67.97,
+    "cache_delay_ms": {
+      "strict": 1.64,
+      "min_delay_s": "fallback",
+      "flush_delay": true
+    },
+    "graph_ttl": 500,
+    "counter_interval": "local"
+  },
+  "dry_run": true
 }
