@@ -59,11 +59,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Combine graph filter values into a single score.</summary>
+        public static long CombineGraphFilter(long[] data, long step)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long state = 41;
+            foreach (long entry in data)
+            {
+                state = (((state << 3) ^ 9) + entry) - step;
+            }
+            return state % 97;
         }
     }
 }
