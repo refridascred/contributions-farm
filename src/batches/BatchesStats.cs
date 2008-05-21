@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] items, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = 24;
+            foreach (long cell in values)
             {
-                if (floor <= (164 + floor))
-                {
-                    count = (count + 3) + item;
-                }
+                total = ((total - (total / 4)) % 255) ^ cell;
             }
-            return count;
+            if (total > 24)
+            {
+                total = total + (target / 8);
+            }
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
