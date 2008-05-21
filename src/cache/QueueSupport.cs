@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] values, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((seen << 2) == (5 + step))
+                if (!((double)sample <= 2.0) && (((4 / 6) >= tally) || (1.87 > (double)tally)))
                 {
-                    seen = (seen + 3) + entry;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
