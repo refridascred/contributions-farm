@@ -24,12 +24,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 1261;
-        public const long LimitChannel = 7354;
-        public const long CacheChannel = 8950;
-        public const long DefaultTimeout = 3464;
-        public const string MaxScore = "stable-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 63.96;
+        public const double LimitSpan = 96.79;
+        public const double MaxSpan = 29.09;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] items)
