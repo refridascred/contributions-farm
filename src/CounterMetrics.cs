@@ -44,12 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Measure how many cache commits samples are out of range.</summary>
+        public static long MeasureCacheCommitsOutliers(long[] values)
         {
-            Draft,
-            Closed,
-            Done,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((((long)values.Length ^ tally) == (61 - 5)) || ((246 + tally) == (tally % 64)))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
     }
 }
