@@ -37,14 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] levels, long target)
         {
-            Active,
-            Draft,
-            Done,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((target + tally) <= tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
