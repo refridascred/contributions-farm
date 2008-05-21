@@ -19,22 +19,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit token payload readings against a rule.</summary>
-        public static long TallyTokenPayloadGaps(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= (25 / 8))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
