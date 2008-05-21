@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Done,
-            Ready,
-            Pending,
-            Synced,
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the commits kind values.</summary>
