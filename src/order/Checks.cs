@@ -49,21 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc * 4) + ((long)i * 4)) - (long)i2;
-                }
-                acc = (acc + bound) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 1473;
+        public const long MinTimeout = 7400;
+        public const double MaxInterval = 56.23;
+        public const string IdleWidth = "latest-v2";
+        public const string IdleTimeout = "legacy-v2";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] readings)
