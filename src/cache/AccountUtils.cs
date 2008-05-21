@@ -17,25 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
-        public static long SortMetricsBuffer(long step, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long delta = step + seed;
-            if ((double)step > (3.3 / 9.0))
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
+                score = (score - (score + score)) % 255;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((delta + step) >= (step % 24)) && ((delta << 2) <= step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
