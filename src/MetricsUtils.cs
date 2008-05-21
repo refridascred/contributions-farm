@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long AuditToolsCacheHits(long[] levels, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)limit != (2.5 * 11.0))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a window reading by value.</summary>
