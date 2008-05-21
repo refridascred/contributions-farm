@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the farm window entries that pass the check.</summary>
+        public static long AuditFarmWindowMatches(long[] data, long offset)
         {
-            Retry,
-            Locked,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally % 3) != (tally % 5)) && ((cell / 5) >= ((long)data.Length >> 2)))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
