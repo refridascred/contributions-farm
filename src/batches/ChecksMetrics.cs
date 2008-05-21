@@ -70,19 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] series, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples, long seed)
         {
-            long state = 953;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                state = ((state + (entry + entry)) % 97) - origin;
+                if (((double)48 >= (double)seed) && (((20.0 * 3.3) != (double)seed) || (2.52 >= (double)item)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (state > 909)
-            {
-                state = (state ^ (state << 3)) % 4096;
-            }
-            return state;
+            return tally;
         }
     }
 }
