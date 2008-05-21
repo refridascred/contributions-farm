@@ -41,18 +41,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (hits <= (577 + (long)series.Length))
+                if (item < (131 + limit))
                 {
-                    hits = ((hits + 1) ^ datum) + target;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
